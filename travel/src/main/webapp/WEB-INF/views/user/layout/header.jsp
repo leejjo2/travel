@@ -8,7 +8,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="col-7" style="font-size: 40px;">
-					<a href="#" style="text-decoration: none; color: white;">6traptrip</a>
+					<a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white;">6traptrip</a>
 				</div>
 			</div>
 			<div class="col">
@@ -63,10 +63,10 @@
 								여행지추천
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#" >지역별추천</a></li>
-								<li><a class="dropdown-item" href="#" >테마별추천</a></li>
-								<li><a class="dropdown-item" href="#" >축제 이벤트</a></li>
-								<li><a class="dropdown-item" href="#" >맛집</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/city/list" >지역별추천</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/theme/list" >테마별추천</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/festival/list" >축제 이벤트</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/food/list" >맛집</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -78,7 +78,7 @@
 								예약
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#">숙소예약</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/hotel/list">숙소예약</a></li>
 								<li><a class="dropdown-item" href="#">액티비티예약</a></li>
 							</ul>
 						</li>
@@ -91,7 +91,7 @@
 								커뮤니티
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#">여행코스공유</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/travelCourse/list">여행코스공유</a></li>
 								<li><a class="dropdown-item" href="#">같이가요</a></li>
 								<li><a class="dropdown-item" href="#">자유게시판</a></li>
 							</ul>
