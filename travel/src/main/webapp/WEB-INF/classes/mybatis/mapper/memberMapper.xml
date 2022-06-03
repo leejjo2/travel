@@ -3,9 +3,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<select id="loginMember" parameterType="String" resultType="com.sp.trip.member.Member">
-		SELECT m.memberIdx, membership, userId, userName, userPwd, register_date, modify_date, last_login
-		FROM member m
-		JOIN member1 m1 ON m1.memberIdx = m.memberIdx
+		SELECT membership, userId, userName, userPwd, reg_date, modify_date, last_login
+		FROM member
 		WHERE userId = #{userId} AND enabled != 0
 	</select>
 	
