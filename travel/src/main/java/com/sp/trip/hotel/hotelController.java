@@ -10,6 +10,6 @@ public class hotelController {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list() {
-		return ".hotel.hotelList";
+		return ".hotel.hotelList2";
 	}
 }
