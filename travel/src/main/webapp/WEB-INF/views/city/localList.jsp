@@ -8,10 +8,10 @@
 <meta charset="UTF-8" />
 <meta content="width=device-width" name="viewport"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>지역별 여행 리스트</title>
+
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/city/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/city/slick/slick-theme.css"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/icon/bootstrap-icons.css" type="text/css">
 
@@ -19,8 +19,8 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/dist/jquery/js/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/dist/bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/slick/slick.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/slick/slick.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/city/slick/slick.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/city/slick/slick.js"></script>
 <link rel="stylesheet" type="text/css" href="https://korean1.visitkorea.or.kr/kor/tt/pr_gallery/new_photo_gallery/css/common.css" media="all" />
 <script src="https://korean1.visitkorea.or.kr/kor/tt/pr_gallery/new_photo_gallery/js/jquery-3.5.1.min.js"></script>
 <script src="https://korean1.visitkorea.or.kr//kor/tt/pr_gallery/new_photo_gallery/js/common.js"></script>
@@ -313,77 +313,6 @@ $('.mapgovcMov16').hover(function(){
 </script>
 </head>
 <body>
-	
-<header>
-	<div class="container-fluid mb-0 p-2 text-white" style="background-color: #0dcaf0;">
-		
-		
-		
-		<div class="row">
-			<div class="col-2"></div>
-			<div class="col-7" style="font-size: 40px;"> <a href="#" style="text-decoration: none; color: white;">6traptrip</a></div>
-	
-			<div class="col-1" style="padding: 6px; font-size: 20px; text-align: right;"><a href="#"><i class="bi bi-box-arrow-in-right"></i></a></div>
-			<div class="col-1" style="padding: 12px;"><a href="#">회원가입</a></div>
-			<!-- 
-			<div class="col-1" style="padding: 6px; font-size: 20px; text-align: right;"><a href="#"><i class="bi bi-box-arrow-left"></i></i></a></div>
-			<div class="col-1" style="padding: 12px;"><a href="#">마이페이지</a></div> 
-			-->
-			<div class="col-1" style="padding: 6px;"></div>
-		</div>
-	</div>
-	<div class="container-fluid mb-0 p-4 text-white " style="background-color: #0dcaf0; font-weight: bold;" >
-		
-			<div class="row">
-				
-				<div class="col p-2" style="text-align: right; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;">홈</a></div>
-				<div class="col wrap">
-					<ul class="navbar-nav mx-auto flex-nowrap"> 
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
-								여행지추천
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#" >지역별추천</a></li>
-								<li><a class="dropdown-item" href="#" >테마별추천</a></li>
-								<li><a class="dropdown-item" href="#" >축제 이벤트</a></li>
-								<li><a class="dropdown-item" href="#" >맛집</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="col wrap">
-					<ul class="navbar-nav mx-auto flex-nowrap"> 
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
-								예약
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#">숙소예약</a></li>
-								<li><a class="dropdown-item" href="#">액티비티예약</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="col wrap">
-					<ul class="navbar-nav mx-auto flex-nowrap"> 
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
-								커뮤니티
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
-								<li><a class="dropdown-item" href="#">여행코스공유</a></li>
-								<li><a class="dropdown-item" href="#">같이가요</a></li>
-								<li><a class="dropdown-item" href="#">자유게시판</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="col p-2" style="text-align: left; font-size: 17px;">날씨</div>
-				
-			</div>
-	</div>
-</header>
 
 	<div class="box" style="text-align: center; position: relative; top: 30px;">
 		<input type="text" placeholder="가고싶은 지역, 여행지를 입력하세요" style="width:315px;" autocomplete="off"  name="kwd" id="AKCKwd"  onkeypress="if(event.keyCode==13){goSearch();return false;}"/>
@@ -712,31 +641,31 @@ $('.mapgovcMov16').hover(function(){
         <span class="next"> <i class="bi bi-chevron-right"></i>  </span>
         <div class="post-wrapper">
           <div class="post">
-            <img src="img/4.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/4.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#" class="post-subject"> 남산 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/5.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/5.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 경복궁 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/6.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/6.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 청와대 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/7.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/7.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 홍대 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
         </div>
@@ -752,31 +681,31 @@ $('.mapgovcMov16').hover(function(){
         <span class="next1"> <i class="bi bi-chevron-right"></i>  </span>
         <div class="post-wrapper1">
           <div class="post">
-            <img src="img/4.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/4.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#" class="post-subject"> 남산 축제 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/5.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/5.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 경복궁 축제 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/6.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/6.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 청와대 축제 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/7.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/7.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 홍대의 축제 </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
         </div>
@@ -792,71 +721,38 @@ $('.mapgovcMov16').hover(function(){
         <span class="next2"> <i class="bi bi-chevron-right"></i>  </span>
         <div class="post-wrapper2">
           <div class="post">
-            <img src="img/4.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/4.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#" class="post-subject"> 남산의 이벤트! </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/5.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/5.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 경복궁의 이벤트!  </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/6.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/6.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 청와대의 이벤트! </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
           <div class="post">
-            <img src="img/7.jpg" class="slider-image">
+            <img src="${pageContext.request.contextPath}/resources/images/city/7.jpg" class="slider-image">
             <div class="post-info">
               <h4><a href="#"> 홍대의 이벤트! </a></h4>
-              <i class="far fa-user" style="height:10%;">둘러보기</i>
+              <i class="far fa-hand-point-right" style="height:10%;"> 둘러보기</i>
             </div>
           </div>
         </div>
       </div>
       <!--post slider-->
     </div>
-	
-    <!-- Footer 하단공통-->
-	<footer>
-		<section class="Footer">
-			<h2 class="hidden">Footer</h2>
 
-	<div class="wrap">
-		<span class="logo"><img src="/kor/tt/pr_gallery/new_photo_gallery/images/common/footerLogo.png" alt="한국관광공사" /></span>
-		<div class="mid">
-			<ul class="list">
-				<li><button type="button" class="privacy">회원약관</button></li><!-- 2021-09-29 -->
-				<li><button type="button" class="agree">개인정보 처리방침</button></li><!-- 2021-09-29 -->
-				<li><a target="_blank" href="http://kto.visitkorea.or.kr/kor/customer/charter/charter.kto">고객서비스 헌장</a></li>
-				<li><a target="_blank" href="http://kto.visitkorea.or.kr/kor/helpDesk/policy/emailRejection.kto">전자우편 무단수집거부</a></li>
-			</ul>
-			<p>우) 26464 강원도 원주시 세계로 10 한국관광공사  /   TEL) 033-738-3363</p>
-			<p>사업자등록번호 : 202-81-50707   /   통신판매업신고 : 제2009-서울중구-1234호</p>
-		</div>
-
-		<p class="last">Copyright ⓒ KOREA TOURISM ORGANIZATION. All Right Reserved</p>
-	</div>
-
-
-		</section>
-	</footer>
-	<!-- //Footer -->
-	
-	<!-- Quick 하단공통-->
-	<div style="width:1200px; margin:0 auto;">
-			<section class="quick">
-				<h2 class="hidden">quick</h2>
-			
-			</section>
-	</div>
 
 <script type="text/javascript">
 $.noConflict();
