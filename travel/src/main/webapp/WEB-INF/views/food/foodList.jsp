@@ -1,20 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>spring</title>
-
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/icon/bootstrap-icons.css" type="text/css">
-
-<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/css/core.css" type="text/css">
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/bootstrap5/js/bootstrap.bundle.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
 
@@ -52,14 +39,6 @@ a {
 
 </script>
 
-</head>
-<body>
-
-<header>
-
-</header>
-	
-<main>
 	<div class="container mb-3" style="font-size: 25px; font-weight: bold; padding: 10px;">여행지추천 - 맛집 리스트</div>
 		<div class="container mb-3">
 			<div class="sudogun">
@@ -314,13 +293,3 @@ a {
 			
 	  	</div>
 	  	
-	  	
-
-	
-</main>
-
-<footer>
-</footer>
-
-</body>
-</html>
