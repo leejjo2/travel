@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+h3.tit_nor{padding-bottom: 10px; color: #000; font-size: 20px;}
+
+.mdu_bn2col{width: 100%; margin-bottom: 20px;}
+.mdu_bn2col li{float: right; width: 300px;}
+.mdu_bn2col li:first-child{float: left;}
+.mdu_bn2col li a{display: block;}
+.mdu_bn2col li img{width: 300px;height:320px;}
+
+.mdu_bn{width: 100%;}
+.mdu_bn img{width: 620px;height:320px;}
+
+.wrap_sevice1col{width:100%;margin-top:44px;}
+
+.mdu_slider{position: relative; width: 100%; margin-bottom: 40px;}
+.mdu_slider .swiper-slide{position: relative; height: 600px;}
+.mdu_slider .swiper-slide a{display:block;height:100%;}
+.mdu_slider .swiper-slide a:focus{border:2px solid #000;}
+.mdu_slider.slider2{width:620px}
+.mdu_slider.slider2 .swiper-slide{position: relative; height: 780px;}
+.mdu_slider .swiper-slide img{width: 100%; height: 100%;}
+.mdu_slider .txt_info{position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; padding: 30px 40px; background:url(../images/sub/bg_dim2.png) 0 0 repeat;}
+.mdu_slider .txt_info > strong{overflow: hidden; display: block; width: 100%; font-family: NotoSanB; color: #fff; font-size: 28px; font-weight: normal; text-overflow: ellipsis; white-space: nowrap;}
+.mdu_slider .txt_info > p{overflow: hidden; width: 100%; padding-top: 5px; color: #fff; font-size: 16px; text-overflow: ellipsis; white-space: nowrap;}
+.mdu_slider .swiper-button-next{overflow: hidden; right: 25px; width: 40px; height: 40px;margin-top:-20px;background:url(../images/sub/btn_slider_next.png) 0 0 no-repeat; text-indent: -9999px;}
+.mdu_slider .swiper-button-prev{overflow: hidden; left: 25px; width: 40px; height: 40px;margin-top:-20px;background:url(../images/sub/btn_slider_prev.png) 0 0 no-repeat; text-indent: -9999px;}
+.mdu_slider .swiper-pagination{display: inline-block; position: relative; font-size:0;text-align: center;vertical-align:top;}
+.mdu_slider .swiper-pagination button.swiper-pagination-bullet:first-child{margin-left:0;}
+.mdu_slider .swiper-pagination button.swiper-pagination-bullet{margin-left: 8px; background: #fff; opacity: 1;}
+.mdu_slider .swiper-pagination button.swiper-pagination-bullet-active{background: #ff3333;}
+.mdu_slider .btn_autoArea{display: inline-block;margin-right:8px;font-size:0;vertical-align:top;}
+.mdu_slider .btn_autoArea .btn_autoPlay{overflow: hidden; display: none; width: 7px; height: 8px;background:url(../images/sub/btn_play.png) 0 50% no-repeat; text-indent: -9999px;vertical-align:top;}
+.mdu_slider .btn_autoArea .btn_autoStop{overflow: hidden; display: inline-block; width: 8px; height: 8px;background:url(../images/sub/btn_stop.png) 0 50% no-repeat; text-indent: -9999px;vertical-align:top;}
+.mdu_slider .paging{position: absolute; bottom: 15px; left: 0; z-index: 100; width: 100%; text-align: center;}
+.mdu_slider .paging > div{display: inline-block; padding:10px 20px; background:rgba(0,0,0,0.2); border-radius: 20px;font-size:0;}
+.mdu_slider .arwBtnWrap{width: 940px;position: absolute;left: 50%;margin-left: -470px;height: 100%;top: 0;}
+/* 슬라이더 이미지 한 장일 경우 */
+.mdu_slider .paging{display:none;}
+.mdu_slider .swiper-button-prev{display:none;}
+.mdu_slider .swiper-button-next{display:none;}
+/* 수동 슬라이더 이미지 한 장 이상 일 경우 */
+.mdu_slider.slider_ps.js_slider .paging{display:block;}
+.mdu_slider.slider_ps.js_slider .swiper-button-prev{display:block;}
+.mdu_slider.slider_ps.js_slider .swiper-button-next{display:block;}
+/* 자동 슬라이더 이미지 한 장 이상 일 경우 */
+.mdu_slider.slider_auto.js_slider .paging{display:block;}
+.mdu_slider.slider_auto.js_slider .swiper-button-prev{display:block;}
+.mdu_slider.slider_auto.js_slider .swiper-button-next{display:block;}
+.mdu_slider.slider_auto.js_slider.active .btn_autoArea .btn_autoPlay{display:inline-block;}
+.mdu_slider.slider_auto.js_slider.active .btn_autoArea .btn_autoStop{display:none;}
+
+/* 축제 캘린더 */
+.festival_calendar{margin:41px 0 0;text-align: center;padding:45px 0 0;background:url(../images/festival_calendar/bg_festival_calendar.gif) repeat-x;}
+.festival_calendar .inr{width:940px;margin:0 auto;}
+.festival_calendar h3{height:59px;margin:0 0 23px;background:url(../images/festival_calendar/tit_festival_calendar.png) 50% 0 no-repeat;text-indent: -9999px;}
+.festival_calendar .month_btn strong{display:inline-block;width:162px;font-weight: 700;vertical-align: middle;font-size:100px;height:86px;line-height:86px;color:#ef386e;letter-spacing: -8px;}
+.festival_calendar .month_btn button{height:52px;vertical-align: middle;width:52px;text-indent: -9999px;}
+.festival_calendar .month_btn .prev{background:url(../images/festival_calendar/festival_calendar_prev.png) no-repeat;}
+.festival_calendar .month_btn .next{background:url(../images/festival_calendar/festival_calendar_next.png) no-repeat;}
+.festival_calendar .month_btn span{display:block;padding:19px 0 33px;font-size:20px;line-height:23px;letter-spacing: -1px;color:#000;}
+.festival_calendar table .thead{height:84px;border: 2px solid #000;border-radius: 10px;box-shadow: 4px 4px 0px 0px rgba(36, 36, 37, 0.16);}
+.festival_calendar table th{height:80px;font-size: 45px;line-height:50px;color:#333;border-left:1px solid #efeded;font-family: HY견명조;background:#fff;}
+.festival_calendar table th:first-child{border:0;border-radius: 10px 0 0  10px;}
+.festival_calendar table th:last-child{border-radius:0 10px 10px 0;}
+.festival_calendar table th span{display:block;font-size: 13px;line-height:16px;font-weight: 300;font-family:NotoSansKR;}
+.festival_calendar table .holiday{color:#ef386e;}
+.festival_calendar table .saturday{color:#1b8bd7;}
+.festival_calendar table .date{margin-top: 15px;border: 2px solid #000;border-radius: 10px;box-shadow: 4px 4px 0px 0px rgba(36, 36, 37, 0.16);}
+.festival_calendar .date table td{height:133px;border:1px solid #efeded;}
+.festival_calendar .date table td a > span{display:block;font-size:15px;font-weight: 300;line-height:18px;}
+.festival_calendar .date table td a > span:after{content:'';display:inline-block;width:8px;height:8px;margin-left:5px;vertical-align: 1px;background:url(../images/festival_calendar/festival_calendar_arw.png) no-repeat;}
+.festival_calendar .date table td span em{font-weight: 800;font-size:15px;color:#7d42c9;}
+.festival_calendar table td a{display:block;height:100%;}
+.festival_calendar table td a strong{display:block;padding:13px 0 22px;font-weight: 800;font-size: 55px;line-height:60px;letter-spacing: -2px;color:#000;}
+.festival_calendar table td.holiday a strong{color:#ef386e;}
+.festival_calendar table td.saturday a strong{color:#1b8bd7;}
+.festival_calendar .date table tr:first-child td:first-child{border-top:0;}
+.festival_calendar .date table tr:first-child td:last-child{border-top:0;}
+.festival_calendar .date table tr:last-child td:first-child{border-bottom:0;}
+.festival_calendar .date table tr:last-child td:last-child{border-bottom:0;}
+.festival_calendar .date table td:first-child{border-left:0;}
+.festival_calendar .date table tr td:last-child{border-right:0;}
+.festival_calendar .date table td.on{background:#fdebf0;}
+.festival_calendar .list{text-align: left;}
+.festival_calendar h4{padding:47px 0 15px;font-weight: 700;font-size:32px;color:#000;letter-spacing: -2px;line-height:38px;}
+.festival_calendar .btn{padding:60px 0 0;text-align: center;}
+.festival_calendar .btn a{display:inline-block;padding:0 48px;height:56px;line-height:56px;background:#fedd52;box-shadow: 0px 15px 20px 0px rgba(36, 36, 37, 0.15);font-weight: 700;font-size: 26px;letter-spacing: -1.5px;color:#000;border:2px solid #13294b;border-radius: 50px;}
+.festival_calendar .btn a:after{content:'';display:inline-block;width:12px;height:21px;margin-left:8px;vertical-align: -1px;background:url(../images/festival_calendar/festival_calendar_list.png) no-repeat;}
+.festival_calendar .list_default{text-align: center;color:#333;}
+.festival_calendar .list_default h4{text-align: left;border-bottom:1px solid #e6e6e6;}
+.festival_calendar .list_default strong{display:block;font-weight: 700;font-size: 26px;line-height:30px;letter-spacing: -1.7px;}
+.festival_calendar .list_default strong:before{content:'';display:block;width:100%;margin:60px 0 20px;height:62px;background:url(../images/festival_calendar/icon_list_default.png) 50% 0 no-repeat;}
+.festival_calendar .list_default.type1 strong:before{background:url(../images/festival_calendar/icon_list_default1.png) 50% 0 no-repeat;}
+.festival_calendar .list_default p{padding:6px 0 20px;font-size: 18px;line-height:22px;letter-spacing: -1px;font-weight: 300;color:#666}
+/*.festival_calendar .list_default .btn a{background:#fff;}*/
+
+/* mobile */
+@media screen and (max-width:1023px) {
+	.margT_def{margin-top: 30px;}
+
+	.mdu_slider.slider2{width:100%;margin-bottom:10px;}
+	.mdu_slider .swiper-slide{height: auto;}
+	.mdu_slider .swiper-slide img{width:100%;height:100%;min-height:100%;}
+	.mdu_slider .txt_info{min-height: 90px; height: auto; padding: 15px 20px 30px 20px;}
+	.mdu_slider .txt_info > strong{width: 100%; font-size: 1.385em;}
+	.mdu_slider .swiper-button-prev{left: 15px;width:30px;height:30px;margin-top:-15px;background-size:30px 30px;}
+	.mdu_slider .swiper-button-next{right: 15px;width:30px;height:30px;margin-top:-15px;background-size:30px 30px;}
+	.mdu_slider.slider2 .swiper-slide{height: auto;}
+	.mdu_slider .arwBtnWrap{width: 100%;left: 0;margin-left:0;top: 0;}
+
+	.mdu_bn2col li{width:49%;}
+	.mdu_bn2col li:first-child{}
+	.mdu_bn2col li img{width:100%;height:100%;}
+
+	.mdu_bn img{width:100%;height:100%;}
+
+	/** 타부서 **/
+	.wrap_sevice1col{margin-top:30px;}
+
+	.mdu_slider{margin-bottom:10px;}
+
+	/* 축제 캘린더 */
+	.festival_calendar{margin: 20px -15px 0;padding: 23px 0 0;}
+	.festival_calendar .inr{width:100%;}
+	.festival_calendar h3{height:30px;margin: 0 0 13px;background: url(../images/festival_calendar/tit_festival_mcalendar.png) 50% 0 / 152px 30px no-repeat;}
+	.festival_calendar .month_btn button{height: 26px;width: 26px;}
+	.festival_calendar .month_btn .prev{background: url(../images/festival_calendar/festival_calendar_mprev.png) 0 0 / 100% 100% no-repeat;}
+	.festival_calendar .month_btn .next{background: url(../images/festival_calendar/festival_calendar_mnext.png) 0 0 / 100% 100% no-repeat;}
+	.festival_calendar .month_btn strong{height: 55px;line-height: 55px;width: 85px;font-size:50px;letter-spacing: -4px;}
+	.festival_calendar .month_btn span{padding: 2px 0 22px;font-size: 12px;letter-spacing: 0;line-height: 15px;}
+	.festival_calendar table .thead{border-radius: 0;border: 1px solid #000;border-left:0;border-right: 0;box-shadow: 2px 2px 0px 0px rgba(36, 36, 37, 0.16);}
+	.festival_calendar table .date{margin:0;box-shadow: 2px 2px 0px 0px rgba(36, 36, 37, 0.16);border: 0;border-bottom: 1px solid #000;border-radius:0;}
+	.festival_calendar table .thead{height:50px;}
+	.festival_calendar table th:first-child{border-radius: 0;}
+	.festival_calendar table th:last-child{border-radius: 0;}
+	.festival_calendar table th{height: 48px;font-size:24px;line-height: 28px;}
+	.festival_calendar table th span{font-size:10px;line-height: 13px;}
+	.festival_calendar .date table td{height:68px;background:#fff;}
+	.festival_calendar table td a strong{padding: 9px 0 8px;font-size:22px;line-height:26px;letter-spacing: -1.5px;}
+	.festival_calendar .date table td a > span{font-size:12px;line-height:16px;}
+	.festival_calendar .date table td span em{font-size: 12px;}
+	.festival_calendar .date table td a > span:after{display:none;}
+	.festival_calendar .date table td a > span span{display:none;}
+	.festival_calendar .list{padding:0 15px;}
+	.festival_calendar h4{padding: 23px 0 8px;font-size: 18px;line-height: 22px;letter-spacing: -1px;}
+	.festival_calendar .btn{padding: 30px 0 0;}
+	.festival_calendar .btn a{padding: 0 19px;height:33px;line-height:33px;font-size: 14px;letter-spacing: -1px;border: 1px solid #000;background:#fedd52;}
+	.festival_calendar .btn a:after{width:6px;height:11px;margin-left: 5px;background: url(../images/festival_calendar/festival_calendar_mlist.png) 0 0 / 100% 100% no-repeat;}
+	.festival_calendar .list_default{padding:0 15px;}
+	.festival_calendar .list_default strong{font-size: 15px;line-height: 18px;letter-spacing: -1px;}
+	.festival_calendar .list_default strong:before{height:44px;margin: 30px 0 18px;background: url(../images/festival_calendar/icon_list_mdefault.png) 50% 0 / 50px 44px no-repeat;}
+	.festival_calendar .list_default.type1 strong:before{background: url(../images/festival_calendar/icon_list_mdefault1.png) 50% 0 / 50px 44px no-repeat;}
+	.festival_calendar .list_default p{padding: 7px 0 0;font-size: 11px;line-height: 14px;letter-spacing: -0.5px;}
+
+}
