@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet"
-   href="${pageContext.request.contextPath}/dist/travelCourse/travelCourse.css"
+   href="${pageContext.request.contextPath}/dist/travelCourse/travelCourse1.css"
    type="text/css">
 <style type="text/css">   
 .area_course>ul li>span {
@@ -24,17 +24,19 @@
    text-align: -webkit-match-parent;
 }
 
+.slides li:not(:last-child){
+	float: left;
+	margin-right: 30px;
+}
+
+.slides {
+	transition:left 0.5s ease-out;
+	width: 
+}
+
 </style>
 
-<script type="text/javascript">
-var slides = document.querySelector('.slides'),
-	slide = document.querySelectorAll('.slides li'),
-	currentIdx = 0,
-	slideCount = slide.length,
-	preBtn = document.querySelector('.prev'),
-	nextBtn = document.querySelector('.next'); 
-	
-</script>
+
 
 <div class="container-fluid" style="padding: 0; margin: 0 auto;">
 
@@ -385,3 +387,41 @@ var slides = document.querySelector('.slides'),
    </div>
 
 </div>
+
+<script type="text/javascript">
+var slides = document.querySelector('.slides'),
+	slide = document.querySelectorAll('.slides li'),
+	currentIdx = 0,
+	slideCount = slide.length,
+	preBtn = document.querySelector('.prev'),
+	slideWidth = 200,
+	slideMargin = 30,
+	nextBtn = document.querySelector('.next'); 
+	
+	slides.style.width = '2100px';
+	
+	function moveSlide(num){
+		slides.style.left = -num * 230 + 'px';
+		currentIdx = num;
+	}
+	
+	nextBtn.addEventListener('click', function() {
+		if(currentIdx < slideCount - 5 ){
+			moveSlide(currentIdx + 1);
+			console.log(currentIdx);
+
+		} else {
+			moveSlide(0);
+		}
+	});
+	preBtn.addEventListener('click', function() {
+		if(currentIdx > 0){
+			moveSlide(currentIdx - 1);
+		} else {
+			moveSlide(slideCount - 5);
+			console.log(currentIdx);
+
+		}
+	});
+	
+</script>

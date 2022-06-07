@@ -134,8 +134,6 @@ dl, ul, ol, menu, li {
 	border-radius: 4px;
 	box-shadow: 0 3px 8px 0 rgb(0 0 0/ 30%), 0 0 1px 0 rgb(0 0 0/ 30%);
 	display: inline-block;
-	margin-left: 10px;
-	margin-right: 10px;
 	position: relative;
 	transition: box-shadow .2s ease;
 	width: 200px !important;
@@ -193,8 +191,8 @@ h3 {
 .title1_3 { height: 100%; position: relative; width: 100%; }
 .title1_4 { left: auto; right: auto; width: 100%;}
 .title1_5 { 
-	width: 1280px; height: 128px; 
-	transform: translate3d(-150px, 0px, 0px); 
+	width: 1175px; height: 128px; 
+	transform: translate3d(-100px, 0px, 0px); 
 	overflow: hidden; 	z-index: 1; 
 	display: flex; position: relative; 
 	
@@ -228,7 +226,6 @@ h3 {
 .slides {
 	position: absolute;
 	left: 0; top: 0;
-	width: 2255px;
 }
 
 .slides li:not(:last-child){
