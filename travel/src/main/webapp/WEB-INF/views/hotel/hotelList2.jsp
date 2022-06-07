@@ -137,8 +137,8 @@
       <!--page slider -->
       <div class="post-slider">
         <h3 class="silder-title">조회순</h3>
-        <button class="prev"> <i class="bi bi-chevron-left"></i>  </button>
-        <button class="next"> <i class="bi bi-chevron-right"></i>  </button>
+        <span> <i class="bi bi-chevron-left prev"></i> </span>
+        <span> <i class="bi bi-chevron-right next"></i> </span>
         <div class="post-wrapper">
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
@@ -224,8 +224,8 @@
       <!--page slider -->
       <div class="post-slider">
         <h3 class="silder-title">찜순</h3>
-        <button class="prev1"> <i class="bi bi-chevron-left"></i>  </button>
-        <button class="next1"> <i class="bi bi-chevron-right"></i>  </button>
+        <span> <i class="bi bi-chevron-left prev1"></i> </span>
+        <span> <i class="bi bi-chevron-right next1"></i> </span>
         <div class="post-wrapper1">
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
@@ -267,8 +267,8 @@
       <!--page slider -->
       <div class="post-slider">
         <h3 class="silder-title">평점순</h3>
-        <button class="prev2"> <i class="bi bi-chevron-left"></i>  </button>
-        <button class="next2"> <i class="bi bi-chevron-right"></i>  </button>
+        <span> <i class="bi bi-chevron-left prev2"></i> </span>
+        <span> <i class="bi bi-chevron-right next2"></i> </span>
         <div class="post-wrapper2">
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
