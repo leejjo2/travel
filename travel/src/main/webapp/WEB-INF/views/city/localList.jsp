@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta content="width=device-width" name="viewport"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/city/slick/slick.css"/>
@@ -97,7 +96,7 @@ font-weight: bold;
 </style>
 <script>
 $(document).ready(function() {
-//사진
+
 $('#boxPic').click(function(){
 	$(this).addClass('on');
 	$('#boxMov').removeClass('on');
@@ -311,12 +310,55 @@ $('.mapgovcMov16').hover(function(){
  
 });
 </script>
+
+<script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data){
+			fn(data);
+		},
+		error:function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+$(function(){
+	$("#btnSearch").click(function(){
+		
+		location.href = "${pageContext.request.contextPath}/city/searchList";
+		
+		var url="${pageContext.request.contextPath}/trip/searchKeyword";
+		var query = "keyword="+"강원";
+		
+		var fn = function(data) {
+			printXML(data);	
+		};
+		ajaxFun(url, "get", query, "xml", fn);
+		
+	});
+	
+	function printXML(data) {
+		var out="";
+		
+		
+		$("#resultLayout").html(out);
+	}
+	
+});
+</script>
+
 </head>
 <body>
-
+	
 	<div class="box" style="text-align: center; position: relative; top: 30px;">
-		<input type="text" placeholder="가고싶은 지역, 여행지를 입력하세요" style="width:315px;" autocomplete="off"  name="kwd" id="AKCKwd"  onkeypress="if(event.keyCode==13){goSearch();return false;}"/>
-		<button type="button" class="btn red" style="background: #0dcaf0;">검색</button> 
+		<input type="text" placeholder="가고싶은 여행지를 검색해보세요" style="width:315px;" autocomplete="off"  name="kwd" id="AKCKwd"  onkeypress="if(event.keyCode==13){goSearch();return false;}"/>
+		<button type="button" class="btn red" id="btnSearch" style="background: #0dcaf0;">검색</button> 
+		<button type="reset" class="btn red">검색 초기화</button>
 	</div>
 
 	<!-- // 공통 끝 -->
@@ -340,7 +382,7 @@ $('.mapgovcMov16').hover(function(){
 				<!-- left -->
 				<div class="left">
 					<!-- 서울 -->
-					<a href="http://archive.visitseoul.net/html/index.jsp" target="_blank" title="서울관광아카이브 [새창]" class="seoul">
+					<a href="#none" target="_blank" title="서울관광아카이브 [새창]" class="seoul">
 						<div class="cell mapgovc0">
 								<div class="img">
 									<img alt="광역지자체 사진 서울 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicSeoul.jpg"/>
@@ -354,7 +396,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 서울 -->
 					<!-- 인천 -->
-					<a href="https://itour.incheon.go.kr/tourinfo/gallery/list.do" target="_blank" title="인천투어 [새창]" class="incheon">
+					<a href="#none" target="_blank" title="인천투어 [새창]" class="incheon">
 						<div class="cell mapgovc1">
 								<div class="img">
 									<img alt="광역지자체 사진 서울 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicIncheon.jpg"/>
@@ -368,7 +410,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 인천 -->
 					<!-- 경기 -->
-					<a href="https://ggtour.or.kr/info/board_photo.php?tsort=1&msort=160" target="_blank" title="경기관광포털 [새창]" class="gyeonggi">
+					<a href="#none" target="_blank" title="경기관광포털 [새창]" class="gyeonggi">
 						<div class="cell mapgovc2">
 								<div class="img">
 									<img alt="광역지자체 사진 경기 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicGyeonggi.jpg"/>
@@ -382,7 +424,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 경기 -->
 					<!-- 세종 -->
-					<a href="https://www.sejong.go.kr/bbs/R2101/list.do" target="_blank" title="세종사진관 [새창]" class="sejong">
+					<a href="#none" target="_blank" title="세종사진관 [새창]" class="sejong">
 						<div class="cell mapgovc16">
 								<div class="img">
 									<img alt="광역지자체 사진 세종 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicSejong.jpg"/>
@@ -396,7 +438,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 세종 -->
 					<!-- 충남 -->
-					<a href="https://tour.chungnam.go.kr/_prog/_board/?code=photo_0304&site_dvs_cd=kr&menu_dvs_cd=0304" target="_blank" title="충남관광허브 [새창]" class="chungnam">
+					<a href="#none" target="_blank" title="충남관광허브 [새창]" class="chungnam">
 						<div class="cell mapgovc4">
 								<div class="img">
 									<img alt="광역지자체 사진 충남 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicChungnam.jpg"/>
@@ -410,7 +452,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 충남 -->
 					<!-- 대전 -->
-					<a href="http://photo.daejeon.go.kr/kor/index.do" target="_blank" title="대전찰칵! [새창]" class="deajeon">
+					<a href="#none" target="_blank" title="대전찰칵! [새창]" class="deajeon">
 						<div class="cell mapgovc6">
 								<div class="img">
 									<img alt="광역지자체 사진 대전 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicDeajeon.jpg"/>
@@ -424,7 +466,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 대전 -->
 					<!-- 광주 -->
-					<a href="http://tour.gwangju.go.kr/home/image/share/imgList.cs?m=199" target="_blank" title="오매광주 [새창]" class="gwangju">
+					<a href="#none" target="_blank" title="오매광주 [새창]" class="gwangju">
 						<div class="cell mapgovc8">
 								<div class="img">
 									<img alt="광역지자체 사진 서울 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicGwangju.jpg"/>
@@ -438,7 +480,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 광주 -->
 	
-					<a href="#" target="_blank" title="[새창]" class="jeonnam">
+					<a href="#none" target="_blank" title="[새창]" class="jeonnam">
 						<div class="cell mapgovc9">
 								<div class="img">
 									<img alt="광역지자체 사진 전남 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicJeonnam.jpg"/>
@@ -476,29 +518,29 @@ $('.mapgovcMov16').hover(function(){
 				</div>
 
 				<map name="mapgovchoice" id="mapgovchoice">
-					<area shape="poly" class="mapgovc0" target="_blank" href="http://archive.visitseoul.net/html/index.jsp" alt="서울" coords="104,135,133,134,142,155,136,168,101,165,96,143"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc1" target="_blank" href="https://itour.incheon.go.kr/tourinfo/gallery/list.do" alt="인천" coords="81,114,81,131,81,139,94,137,100,161,89,175,77,168,63,171,32,138,38,119,45,114,65,103"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc2" target="_blank" href="https://ggtour.or.kr/info/board_photo.php?tsort=1&msort=160" alt="경기도" coords="125,58,136,78,154,78,172,108,165,117,176,141,192,147,196,157,184,162,191,198,178,207,167,209,146,226,106,227,99,222,87,221,74,211,81,196,75,190,86,178,100,160,113,167,135,165,142,153,132,133,108,136,98,144,92,139,81,140,77,134,80,116,82,112,86,112,90,93,99,90,96,71"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc3" target="_blank" href="https://www.gangwon.to/gwtour/sightseeing_guide/contest" alt="강원도" coords="142,47,124,58,137,77,155,78,172,108,170,108,164,121,176,143,191,146,195,157,182,163,189,196,207,201,221,191,236,209,266,212,273,203,308,205,326,175,305,150,284,85,265,57,247,24,235,13,226,0,220,9,207,8,192,19,182,37,148,50"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc4" target="_blank" href="https://tour.chungnam.go.kr/_prog/_board/?code=photo_0304&site_dvs_cd=kr&menu_dvs_cd=0304" alt="충청남도" coords="27,259,50,215,76,212,111,229,147,224,153,254,145,263,137,245,104,249,97,261,121,270,119,280,125,298,142,307,145,314,174,325,171,346,159,346,149,333,135,329,129,340,122,325,110,320,97,341,67,330,76,319,68,304,53,308"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc5" target="_blank" href="https://tour.chungbuk.go.kr/www/contents.do?key=75" alt="충청북도" coords="152,277,144,262,153,253,145,225,166,208,180,207,189,196,205,201,219,189,236,210,268,210,249,236,226,235,228,252,201,253,195,267,202,279,193,293,197,304,192,298,216,307,212,329,196,340,172,334,174,327,141,312,141,298,161,297,159,281"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc6" target="_blank" href="http://photo.daejeon.go.kr/kor/index.do" alt="대전" coords="123,280,144,265,163,281,162,300,141,294,137,304,125,300,122,290"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc7" target="_blank" href="http://tour.jb.go.kr/board/list.do?skinId=SKIN_0000009&boardId=BBS_0000009&searchType=TMP_FIELD1&keyword=2020&menuCd=DOM_000000104007003000&contentsSid=60" alt="전라북도" coords="197,341,177,334,171,346,156,346,152,336,139,331,127,340,126,333,123,330,123,326,116,320,103,333,99,337,96,341,82,335,70,331,69,353,77,359,71,369,72,378,63,382,56,407,53,423,64,421,79,423,101,406,101,408,137,429,171,427,177,421,177,416,179,396,176,373,201,356"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc8" target="_blank" href="http://tour.gwangju.go.kr/home/image/share/imgList.cs?m=199" alt="광주" coords="115,462,127,445,113,432,107,431,94,431,86,437,81,447,88,458,95,457"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc0" target="_blank" href="#none" alt="서울" coords="104,135,133,134,142,155,136,168,101,165,96,143"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc1" target="_blank" href="#none" alt="인천" coords="81,114,81,131,81,139,94,137,100,161,89,175,77,168,63,171,32,138,38,119,45,114,65,103"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc2" target="_blank" href="#none" alt="경기도" coords="125,58,136,78,154,78,172,108,165,117,176,141,192,147,196,157,184,162,191,198,178,207,167,209,146,226,106,227,99,222,87,221,74,211,81,196,75,190,86,178,100,160,113,167,135,165,142,153,132,133,108,136,98,144,92,139,81,140,77,134,80,116,82,112,86,112,90,93,99,90,96,71"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc3" target="_blank" href="#none" alt="강원도" coords="142,47,124,58,137,77,155,78,172,108,170,108,164,121,176,143,191,146,195,157,182,163,189,196,207,201,221,191,236,209,266,212,273,203,308,205,326,175,305,150,284,85,265,57,247,24,235,13,226,0,220,9,207,8,192,19,182,37,148,50"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc4" target="_blank" href="#none" alt="충청남도" coords="27,259,50,215,76,212,111,229,147,224,153,254,145,263,137,245,104,249,97,261,121,270,119,280,125,298,142,307,145,314,174,325,171,346,159,346,149,333,135,329,129,340,122,325,110,320,97,341,67,330,76,319,68,304,53,308"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc5" target="_blank" href="#none" alt="충청북도" coords="152,277,144,262,153,253,145,225,166,208,180,207,189,196,205,201,219,189,236,210,268,210,249,236,226,235,228,252,201,253,195,267,202,279,193,293,197,304,192,298,216,307,212,329,196,340,172,334,174,327,141,312,141,298,161,297,159,281"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc6" target="_blank" href="#none" alt="대전" coords="123,280,144,265,163,281,162,300,141,294,137,304,125,300,122,290"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc7" target="_blank" href="#none" alt="전라북도" coords="197,341,177,334,171,346,156,346,152,336,139,331,127,340,126,333,123,330,123,326,116,320,103,333,99,337,96,341,82,335,70,331,69,353,77,359,71,369,72,378,63,382,56,407,53,423,64,421,79,423,101,406,101,408,137,429,171,427,177,421,177,416,179,396,176,373,201,356"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc8" target="_blank" href="#none" alt="광주" coords="115,462,127,445,113,432,107,431,94,431,86,437,81,447,88,458,95,457"  onfocus="this.blur()" />
 					<area shape="poly" class="mapgovc9"  href="#none" alt="전라남도" coords="17,465,26,445,40,443,58,422,78,423,103,405,116,418,137,427,170,426,188,461,184,480,200,502,198,511,186,523,177,516,167,524,175,540,159,548,150,542,135,549,134,551,128,559,116,562,114,561,108,562,82,562,68,549,48,552,44,566,17,577,4,560,20,522,6,509,22,488,28,479,17,467"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc10" target="_blank" href="http://tour.gb.go.kr/guide/photo.do" alt="Gyeongsangbuk-do" coords="344,386,332,378,322,385,312,373,302,394,286,387,272,393,265,386,269,369,276,349,275,344,263,336,244,352,238,350,231,386,221,386,199,360,197,338,212,328,213,307,192,300,190,291,200,285,201,275,195,268,203,254,227,250,226,235,250,236,272,201,281,204,309,204,315,197,326,176,341,242,332,275,333,333,353,318"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc11" target="_blank" href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=5" alt="대구" coords="230,384,235,377,235,363,238,349,246,351,262,339,264,338,275,346,269,376,265,380,265,389"  onfocus="this.blur()"/>
+					<area shape="poly" class="mapgovc10" target="_blank" href="#none" alt="Gyeongsangbuk-do" coords="344,386,332,378,322,385,312,373,302,394,286,387,272,393,265,386,269,369,276,349,275,344,263,336,244,352,238,350,231,386,221,386,199,360,197,338,212,328,213,307,192,300,190,291,200,285,201,275,195,268,203,254,227,250,226,235,250,236,272,201,281,204,309,204,315,197,326,176,341,242,332,275,333,333,353,318"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc11" target="_blank" href="#none" alt="대구" coords="230,384,235,377,235,363,238,349,246,351,262,339,264,338,275,346,269,376,265,380,265,389"  onfocus="this.blur()"/>
 					<area shape="poly" class="mapgovc12"  href="#none" alt="경상남도" coords="286,482,282,469,256,466,253,460,265,448,266,445,271,447,280,443,280,444,317,419,296,405,299,403,300,392,287,389,263,389,244,386,235,384,222,384,213,374,195,356,174,374,179,389,176,404,176,416,170,429,184,451,188,463,184,481,202,506,209,512,230,509,236,497,257,502,265,502,267,491"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc13" target="_blank" href="https://tour.ulsan.go.kr/kor/bbs/list.ulsan?bbsId=BBS_0000000000000006&mId=001004008000000000" alt="울산" coords="301,391,312,373,322,384,332,379,343,383,339,406,336,412,330,428,311,414,298,406"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc14" target="_blank" href="https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000204009000000" alt="부산" coords="318,457,331,428,318,418,291,435,286,442,278,445,275,442,261,453,252,461,255,466,281,470"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc15" target="_blank" href="http://photo.visitjeju.net/?lang=ko" alt="제주" coords="116,612,97,588,71,602,42,608,29,629,45,652,80,652,112,635"  onfocus="this.blur()" />
-					<area shape="poly" class="mapgovc16" target="_blank" href="https://www.sejong.go.kr/bbs/R2101/list.do" alt="세종" coords="146,263,135,245,105,248,98,262,119,269,118,278,120,286,130,272"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc13" target="_blank" href="#none" alt="울산" coords="301,391,312,373,322,384,332,379,343,383,339,406,336,412,330,428,311,414,298,406"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc14" target="_blank" href="#none" alt="부산" coords="318,457,331,428,318,418,291,435,286,442,278,445,275,442,261,453,252,461,255,466,281,470"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc15" target="_blank" href="#none" alt="제주" coords="116,612,97,588,71,602,42,608,29,629,45,652,80,652,112,635"  onfocus="this.blur()" />
+					<area shape="poly" class="mapgovc16" target="_blank" href="#none" alt="세종" coords="146,263,135,245,105,248,98,262,119,269,118,278,120,286,130,272"  onfocus="this.blur()" />
 				</map>
 				<!-- // mapgov -->
 				<!-- right -->
 				<div class="right">
 					<!-- 강원 -->
-					<a href="https://www.gangwon.to/gwtour/sightseeing_guide/contest" target="_blank" title="강원관광 [새창]" class="gangwon">
+					<a href="#none" target="_blank" title="강원관광 [새창]" class="gangwon">
 						<div class="cell mapgovc3">
 								<div class="img">
 									<img alt="광역지자체 사진 서울 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicGangwon.jpg"/>
@@ -512,7 +554,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 강원 -->
 					<!-- 충북 -->
-					<a href="https://tour.chungbuk.go.kr/www/contents.do?key=75" target="_blank" title="충북나드리 [새창]" class="chungbuk">
+					<a href="#none" target="_blank" title="충북나드리 [새창]" class="chungbuk">
 						<div class="cell mapgovc5">
 								<div class="img">
 									<img alt="광역지자체 사진 충북 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicChungbuk.jpg"/>
@@ -526,7 +568,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 충북 -->
 					<!-- 경북 -->
-					<a href="http://tour.gb.go.kr/guide/photo.do" target="_blank" title="경북나드리 [새창]" class="gyeongbuk">
+					<a href="#none" target="_blank" title="경북나드리 [새창]" class="gyeongbuk">
 						<div class="cell mapgovc10">
 								<div class="img">
 									<img alt="광역지자체 사진 경북 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicGyeongbuk.jpg"/>
@@ -540,7 +582,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 경북 -->
 					<!-- 대구 -->
-					<a href="http://info.daegu.go.kr/newshome/mtnmain.php?mtnkey=scatelist&mkey=5" target="_blank" title="컬러풀사진 [새창]" class="deagu">
+					<a href="#none" target="_blank" title="컬러풀사진 [새창]" class="deagu">
 						<div class="cell mapgovc11">
 								<div class="img">
 									<img alt="광역지자체 사진 경북 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicDeagu.jpg"/>
@@ -554,7 +596,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 대구 -->
 					<!-- 울산 -->
-					<a href="https://tour.ulsan.go.kr/kor/bbs/list.ulsan?bbsId=BBS_0000000000000006&mId=001004008000000000" target="_blank" title="울산관광 [새창]" class="ulsan">
+					<a href="#none" target="_blank" title="울산관광 [새창]" class="ulsan">
 						<div class="cell mapgovc13">
 								<div class="img">
 									<img alt="광역지자체 사진 서울 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicUlsan.jpg"/>
@@ -569,7 +611,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 울산 -->
 					<!-- 부산 -->
-					<a href="https://www.visitbusan.net/kr/index.do?menuCd=DOM_000000204009000000" target="_blank" title="비짓부산 [새창]" class="busan">
+					<a href="#none" target="_blank" title="비짓부산 [새창]" class="busan">
 						<div class="cell mapgovc14">
 								<div class="img">
 									<img alt="광역지자체 사진 부산 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicBusan.jpg"/>
@@ -596,7 +638,7 @@ $('.mapgovcMov16').hover(function(){
 					</a-->
 					 <!--// 경남 -->
 					<!-- 전북 -->
-					<a href="http://tour.jb.go.kr/board/list.do?skinId=SKIN_0000009&boardId=BBS_0000009&searchType=TMP_FIELD1&keyword=2020&menuCd=DOM_000000104007003000&contentsSid=60" target="_blank" title="전라북도토탈관광 [새창]" class="jeonbuk">
+					<a href="#none" target="_blank" title="전라북도토탈관광 [새창]" class="jeonbuk">
 						<div class="cell mapgovc7">
 								<div class="img">
 									<img alt="광역지자체 사진 전북 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicJeonbuk.jpg"/>
@@ -610,7 +652,7 @@ $('.mapgovcMov16').hover(function(){
 					</a>
 					<!-- // 전북 -->
 					<!-- 제주 -->
-					<a href="http://photo.visitjeju.net/?lang=ko" target="_blank" title="PHOTO JEJU [새창]" class="jeju">
+					<a href="#none" target="_blank" title="PHOTO JEJU [새창]" class="jeju">
 						<div class="cell mapgovc15">
 								<div class="img">
 									<img alt="광역지자체 사진 제주 로고" src="http://tong.visitkorea.or.kr/ktobiz/images/local/govPicJeju.jpg"/>
@@ -631,7 +673,6 @@ $('.mapgovcMov16').hover(function(){
 		<!-- 광역지자체 사진 -->
 	</section>
 	<!-- // 컨텐츠 내용 -->
-	<hr>
 	
 	<div class="page-wrapper" style="position:relative;">
       <!--page slider -->
@@ -752,6 +793,7 @@ $('.mapgovcMov16').hover(function(){
       </div>
       <!--post slider-->
     </div>
+    
 
 
 <script type="text/javascript">
