@@ -3,101 +3,149 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<div class="sidebar-start">
-	<div class="sidebar-head">
-		<a href="/" class="logo-wrapper" title="Home"> <span
-			class="sr-only">Home</span> <span class="icon logo"
-			aria-hidden="true"></span> <span class="logo-text"> <span
-				class="logo-title">Elegant</span> <span class="logo-subtitle">Dashboard</span>
-		</span>
+<div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="${pageContext.request.contextPath }/" class="site_title"><i class="fa fa-paw"></i> <span> OURTRIP </span></a>
+            </div>
 
-		</a>
-		<button class="sidebar-toggle transparent-btn" title="Menu"
-			type="button">
-			<span class="sr-only">Toggle menu</span> <span
-				class="icon menu-toggle" aria-hidden="true"></span>
-		</button>
-	</div>
-	<div class="sidebar-body">
-		<ul class="sidebar-body-menu">
-			<li><a class="active" href="/"><span class="icon home"
-					aria-hidden="true"></span>Dashboard</a></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon document" aria-hidden="true"></span>Posts <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="posts.html">All Posts</a></li>
-					<li><a href="new-post.html">Add new post</a></li>
-				</ul></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon folder" aria-hidden="true"></span>Categories <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="categories.html">All categories</a></li>
-				</ul></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon image" aria-hidden="true"></span>Media <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="media-01.html">Media-01</a></li>
-					<li><a href="media-02.html">Media-02</a></li>
-				</ul></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon paper" aria-hidden="true"></span>Pages <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="pages.html">All pages</a></li>
-					<li><a href="new-page.html">Add new page</a></li>
-				</ul></li>
-			<li><a href="comments.html"> <span class="icon message"
-					aria-hidden="true"></span> Comments
-			</a> <span class="msg-counter">7</span></li>
-		</ul>
-		<span class="system-menu__title">system</span>
-		<ul class="sidebar-body-menu">
-			<li><a href="appearance.html"><span class="icon edit"
-					aria-hidden="true"></span>Appearance</a></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon category" aria-hidden="true"></span>Extentions <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="extention-01.html">Extentions-01</a></li>
-					<li><a href="extention-02.html">Extentions-02</a></li>
-				</ul></li>
-			<li><a class="show-cat-btn" href="##"> <span
-					class="icon user-3" aria-hidden="true"></span>Users <span
-					class="category__btn transparent-btn" title="Open list"> <span
-						class="sr-only">Open list</span> <span class="icon arrow-down"
-						aria-hidden="true"></span>
-				</span>
-			</a>
-				<ul class="cat-sub-menu">
-					<li><a href="users-01.html">Users-01</a></li>
-					<li><a href="users-02.html">Users-02</a></li>
-				</ul></li>
-			<li><a href="##"><span class="icon setting"
-					aria-hidden="true"></span>Settings</a></li>
-		</ul>
-	</div>
-</div>
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="${pageContext.request.contextPath }/resources/images/theme/뽀짝.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>뽀짝</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br>
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section active">
+                <h3>관리자 페이지</h3>
+                <ul class="nav side-menu" style="">
+                  <li class="active"><a><i class="fa fa-home"></i> 대쉬보드 </a>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> 회원정보관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="form.html">General Form</a></li>
+                      <li><a href="form_advanced.html">Advanced Components</a></li>
+                      <li><a href="form_validation.html">Form Validation</a></li>
+                      <li><a href="form_wizards.html">Form Wizard</a></li>
+                      <li><a href="form_upload.html">Form Upload</a></li>
+                      <li><a href="form_buttons.html">Form Buttons</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-desktop"></i> 여행지 추천 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="general_elements.html">General Elements</a></li>
+                      <li><a href="media_gallery.html">Media Gallery</a></li>
+                      <li><a href="typography.html">Typography</a></li>
+                      <li><a href="icons.html">Icons</a></li>
+                      <li><a href="glyphicons.html">Glyphicons</a></li>
+                      <li><a href="widgets.html">Widgets</a></li>
+                      <li><a href="invoice.html">Invoice</a></li>
+                      <li><a href="inbox.html">Inbox</a></li>
+                      <li><a href="calendar.html">Calendar</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-table"></i> 커뮤니티 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="tables.html">Tables</a></li>
+                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> 고객센터 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="chartjs.html">Chart JS</a></li>
+                      <li><a href="chartjs2.html">Chart JS2</a></li>
+                      <li><a href="morisjs.html">Moris JS</a></li>
+                      <li><a href="echarts.html">ECharts</a></li>
+                      <li><a href="other_charts.html">Other Charts</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clone"></i>매출현황 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-clone"></i>숙박업체 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
+                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Live On</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="e_commerce.html">E-commerce</a></li>
+                      <li><a href="projects.html">Projects</a></li>
+                      <li><a href="project_detail.html">Project Detail</a></li>
+                      <li><a href="contacts.html">Contacts</a></li>
+                      <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="page_403.html">403 Error</a></li>
+                      <li><a href="page_404.html">404 Error</a></li>
+                      <li><a href="page_500.html">500 Error</a></li>
+                      <li><a href="plain_page.html">Plain Page</a></li>
+                      <li><a href="login.html">Login Page</a></li>
+                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#level1_1">Level One</a>
+                        </li><li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                            </li>
+                            <li><a href="#level2_1">Level Two</a>
+                            </li>
+                            <li><a href="#level2_2">Level Two</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#level1_2">Level One</a>
+                        </li>
+                    </ul>
+                  </li>                  
+                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="" href="login.html" data-original-title="Logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
 

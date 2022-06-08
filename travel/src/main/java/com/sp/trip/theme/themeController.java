@@ -12,4 +12,8 @@ public class themeController {
 	public String list() {
 		return ".theme.themeList2";
 	}
+	@RequestMapping(value = "write", method = RequestMethod.GET)
+	public String write() {
+		return ".theme.write";
+	}
 }

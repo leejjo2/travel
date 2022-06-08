@@ -11,44 +11,75 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><tiles:insertAttribute name="title"/></title>
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+	<link rel="icon" href="images/favicon.ico" type="image/ico">
+	<!-- Bootstrap -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 	
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/jquery/css/jquery-ui.min.css" type="text/css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" type="text/css">
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/svg/logo.svg" type="image/x-icon">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.admin.css" type="text/css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.admin.basic.css" type="text/css">
+    <!-- bootstrap-progressbar -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-	
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery.min.js"></script>
-	
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/util-jquery.js"></script>
-
+    <!-- Custom Theme Style -->
+    <link href="${pageContext.request.contextPath}/dist/admin/build/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body>
-<div class="layer"></div>
-<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
-<div class="page-flex">
-	<aside class="sidebar">
+<body class="nav-md">
+<div class="container body">
+	<div class="main_container">
 		<tiles:insertAttribute name="sidebar"/>
-	</aside>
-	<div class="main-wrapper">
 		<tiles:insertAttribute name="main-nav"/>
 		<tiles:insertAttribute name="body"/>
 		<tiles:insertAttribute name="footer"/>
 	</div>
-	
 </div>
 
 <div id="loadingLayout" style="display:none; position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 9000; background: #eee;">
 	<div class="loader"></div>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery.ui.datepicker-ko.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/chart.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/feather.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+<!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Flot/jquery.flot.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/moment/min/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="${pageContext.request.contextPath}/dist/admin/build/js/custom.min.js"></script>
 
 
 </body>
