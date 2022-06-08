@@ -78,29 +78,23 @@ $(function(){
 			
 			var title = item.find("title").text();
 			var addr1 = item.find("addr1").text();
+			var img = item.find("firstimage").text();
 			
 			out += "음식점명 : "+title+"</p>";
 			out += "<p>주소:"+addr1+"</p><br>";
-				
-		});
-		
-		$("#resultLayout").html(out);
-		
-		$(data).find("item").each(function() {
-			var item = $(this); // $($(data).find("item")[0])
-			var img = item.find("firstimage").text();
-			
-			
 			if(img) {
-				out += "<img src='"+img+"'>";
+				out += "사진:<img src='"+img+"'><br>";
 			} else {
 				out += "<p>사진이없습니다.</p>";
 			}
 				
 		});
 		
-		$("#resultLayout2").html(out);
+		$("#resultLayout").html(out);
+		
 	}
+	
+	
 });
 </script>
 
@@ -227,9 +221,7 @@ $(function(){
 			</div>
 			
 			<button type="button" id="btnXmlOk" class="btn">API가져와부러쓰~</button>
-			  <div id="resultLayout" style="width: 95%;">
-
-    		 </div>
+		
 			
 
 			
