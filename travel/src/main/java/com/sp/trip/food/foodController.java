@@ -12,4 +12,5 @@ public class foodController {
 	public String list() {
 		return ".food.foodList";
 	}
+	
 }

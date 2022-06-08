@@ -33,10 +33,75 @@ a {
 	color: #333;
 }
 
+
+
 </style>
 
 <script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data){
+			console.log(data);
+			fn(data);
+		},
+		error:function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
 
+
+$(function(){
+	$("#btnXmlOk").click(function(){
+		// XML 받기
+		var url="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
+		var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39";
+		
+		var fn = function(data) {
+			printXML(data);
+		};
+		
+		ajaxFun(url, "get", query, "xml", fn);
+	
+	});
+	
+	function printXML(data) {
+		var out="";
+		
+		var dataCount = $(data).find("totalCount").text();
+		$(data).find("item").each(function() {
+			var item = $(this); // $($(data).find("item")[0])
+			
+			var title = item.find("title").text();
+			var addr1 = item.find("addr1").text();
+			
+			out += "음식점명 : "+title+"</p>";
+			out += "<p>주소:"+addr1+"</p><br>";
+				
+		});
+		
+		$("#resultLayout").html(out);
+		
+		$(data).find("item").each(function() {
+			var item = $(this); // $($(data).find("item")[0])
+			var img = item.find("firstimage").text();
+			
+			
+			if(img) {
+				out += "<img src='"+img+"'>";
+			} else {
+				out += "<p>사진이없습니다.</p>";
+			}
+				
+		});
+		
+		$("#resultLayout2").html(out);
+	}
+});
 </script>
 
 	<div class="container mb-3" style="font-size: 25px; font-weight: bold; padding: 10px;">여행지추천 - 맛집 리스트</div>
@@ -133,10 +198,10 @@ a {
 									<i class="bi bi-hand-thumbs-up"></i> 추천순
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#"> 조회수순</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-shop"></i> 음식점</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-cup-straw"></i> 까페/디저트</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-cup"></i> 술집</a></li>
+									<li><a class="dropdown-item" href="#" style="color: black;"> 조회수순</a></li>
+									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-shop"></i> 음식점</a></li>
+									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-cup-straw"></i> 까페/디저트</a></li>
+									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-cup"></i> 술집</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -151,142 +216,31 @@ a {
 		
 			<div class="row g-0" style="border-bottom: 1px solid gray;">
 				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
+					
+					<div id="resultLayout" class="p-0" style="color: gray;">
+					
 					</div>
 				</div>
 				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
+					<div class="border p-5" id="resultLayout2"></div>
 				</div>
 			</div>
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+			<button type="button" id="btnXmlOk" class="btn">API가져와부러쓰~</button>
+			  <div id="resultLayout" style="width: 95%;">
+
+    		 </div>
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+
 			
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					<div class="p-0" style="font-weight: bold; font-size: 15px;">
-						이름
-					</div>
-					<div class="p-0" style="color: gray;">
-						음식점 설명
-					</div>
-					<div class="p-0">
-						별점★★★★☆
-					</div>
-					<div class="p-0">
-						음식점 지역
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5">사진</div>
-				</div>
-			</div>
+
+			
+			
 			
 	  	</div>
