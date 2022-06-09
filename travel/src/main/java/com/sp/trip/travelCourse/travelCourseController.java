@@ -10,6 +10,11 @@ public class travelCourseController {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list() {
-		return ".travelCourse.trip";
+		return ".travelCourse.travelCourse";
+	}
+	
+	@RequestMapping(value="write", method = RequestMethod.GET)
+	public String write() {
+		return ".travelCourse.makeTravelCourse";
 	}
 }

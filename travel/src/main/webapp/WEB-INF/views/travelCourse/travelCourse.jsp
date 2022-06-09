@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet"
-   href="${pageContext.request.contextPath}/dist/travelCourse/travelCourse1.css"
+   href="${pageContext.request.contextPath}/dist/travelCourse/travelCourse.css"
    type="text/css">
 <style type="text/css">   
 .area_course>ul li>span {
@@ -179,7 +179,7 @@
          <div style="margin-bottom: 20px;">
             <button
                class="btn shadow-sm d-flex justify-content-start rounded-3 title4_1 btn_make"
-               style="float: left;">내 코스 만들기</button>
+               style="float: left;" onclick="location.href='${pageContext.request.contextPath}/travelCourse/write';">내 코스 만들기</button>
 
             <select class="form-select d-flex justify-content-end title3_3"   aria-label="Default select example">
                <option selected>10개씩 보기</option>
