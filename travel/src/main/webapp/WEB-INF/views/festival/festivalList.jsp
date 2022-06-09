@@ -13,6 +13,16 @@
 .slides {
     transition: left 0.5s ease-out;
 }
+
+.selected {
+	font-weight: 800;
+}
+
+.zone_cont .area_mid .img {
+    width: 226px;
+    height: 320px;
+    border-radius: 10px;
+}
 </style>
 
 <script type="text/javascript">
@@ -54,8 +64,8 @@ function readCity(areaCode) {
 
 // 시군구 불러오기
 function readSigungu(areaCode) {
-	var url="${pageContext.request.contextPath}/festival/requestSigungu";
-	var query="areaCode="+areaCode;
+	let url="${pageContext.request.contextPath}/festival/requestSigungu";
+	let query="areaCode="+areaCode;
 	
 	var fn=function(data) {
 		printSigungu(data);
@@ -64,15 +74,15 @@ function readSigungu(areaCode) {
 	ajaxFun(url, "get", query, "json", fn);
 	
 	function printSigungu(data) {
-		var totalCount=data.response.body.totalCount;
-		var out = "";
+		let totalCount=data.response.body.totalCount;
+		let out = "";
 		if(areaCode==="8"){ // 세종일 경우
 			let code = data.response.body.items.item.code;
 			let name = data.response.body.items.item.name;
-			out += "<li><a onclick='' title='"+name+" 축제보기' data-code='"+code+"'>"+name+"</a></li>";
+			out += "<li><a title='"+name+" 축제보기' data-code='"+code+"'>"+name+"</a></li>";
 		} else {
 			$.each(data.response.body.items.item, function(index, item) {
-				out += "<li><a onclick='' title='"+item.name+" 축제보기' data-code='"+item.code+"'>"+item.name+"</a></li>";
+				out += "<li><a title='"+item.name+" 축제보기' data-code='"+item.code+"'>"+item.name+"</a></li>";
 			});
 		}
 		
@@ -90,59 +100,136 @@ function readSigungu(areaCode) {
 	}
 }
 
-// 시도 별 축제 가져오기
-function sidoFestival(areaCode) {
-	var url="${pageContext.request.contextPath}/festival/sidoFestival";
-	var query="areaCode="+areaCode;
+// 축제 가져오기(시도별)
+function sidoFestival(areaCode, count) {
+	let url="${pageContext.request.contextPath}/festival/requestFestival";
+	let query="areaCode="+areaCode+"&count="+count;
 	
 	var fn=function(data) {
-		printSidoFestival(data);
+		printFestival(data);
 	};
 	
 	ajaxFun(url, "get", query, "json", fn);
 	
-	function printSidoFestival(data) {
-		
+	function printFestival(data) {
+		let out1 = "";
+		let out2 = "";
+		$.each(data.response.body.items.item, function(index, item) {
+			if(index === 0){ // 첫 번째 파싱할때만
+				out1 += "<a href='' class='img'>";
+				out1 += 	"<img src='"+item.firstimage+"' alt='"+item.title+"'></a>";
+				
+				$("#arealeft .txt_info strong").html(item.title);
+				$("#arealeft .txt_info p").html(item.addr1);
+			} else {
+				// 날짜 포맷 변경
+				let pattern = /(\d{4})(\d{2})(\d{2})/;
+				let startdate = item.eventstartdate.toString().replace(pattern, '$1.$2.$3');
+				let enddate = item.eventenddate.toString().replace(pattern, '$1.$2.$3');
+				
+				out2 += "<li class='obj1 clfix'>";
+				out2 +=	  "<div>";
+				out2 += 	"<a href=''>"
+				out2 += "<strong class='bn_txtR' style='color: #097faf'>"+startdate + " ~ " + enddate + "</strong>";
+				out2 += item.title;
+				out2 += "</a></div></li>";
+			}
+		});
+		$("#areamid").html(out1);
+		$("#arearight .area_right ul").html(out2);
 	}
 }
+
+
+// 축제 가져오기(슬라이드)
+function slideFestival(areaCode, count) {
+	let url="${pageContext.request.contextPath}/festival/requestFestival";
+	let query="areaCode="+areaCode+"&count="+count;
+	
+	var fn=function(data) {
+		printslideFestival(data);
+	};
+	
+	ajaxFun(url, "get", query, "json", fn);
+	
+	function printslideFestival(data) {
+		let out = "";
+		$.each(data.response.body.items.item, function(index, item) {
+			let pattern = /(\d{4})(\d{2})(\d{2})/;
+			let startdate = item.eventstartdate.toString().replace(pattern, '$1.$2.$3');
+			let enddate = item.eventenddate.toString().replace(pattern, '$1.$2.$3');
+			
+			let arr = item.addr1.split(" ");
+			let addr = arr[0] + " " + arr[1];
+			
+			out += "<div class='swiper-slide swiper-slide-duplicate' style='margin-right: 20px;'>";
+			out +=    "<a href='' title='"+item.title+" 상세보기'>";
+			out += 		"<span class='img swiper-lazy swiper-lazy-loaded'";
+			out += 		"	style='background-image: url(&quot;"+item.firstimage+"&quot;);'></span>";
+			out += 		"<span class='hover_cont'>";
+			out += 			"<span class='date'>"+startdate+" ~ "+enddate+"</span>";
+			out += 			"<strong>"+item.title+"</strong>";
+			out += 			"<span class='area'>"+addr+"</span>";
+			out += 		"</span></a></div>";
+		});
+		$("#fescalendar").html(out);
+	}
+}
+
+
+function slideFestival(sort, month, areaCode, pageNum) {
+	let url="${pageContext.request.contextPath}/festival/festivalList";
+	let query="areaCode="+areaCode+"&count="+count;
+	
+	var fn=function(data) {
+		printfestivalList(data);
+	};
+	
+	ajaxFun(url, "get", query, "json", fn);
+	
+	function printfestivalList(data) {
+		console.log(data);
+	}
+}
+
+
 
 // 최초 실행 시 서울에 대한 정보 읽어오기
 $(function() {
 	readSigungu(1);
 	readCity(1);
+	sidoFestival(1, 4); // 서울 축제 리스트 가져오기
+	slideFestival('NULL', 10); // 슬라이드 축제 리스트 가져오기
 });
 
+
 // 축제 리스트 슬라이드
-$(function() {
+$(document).ready(function() {
 	var slides = document.querySelector('.slides');
-	var slide = document.querySelectorAll('.slides div');
 	var currentIdx = 0;
-	var slideCount = slide.length;
-	var preBtn = document.querySelector('.swiper-button-prev');
-	var nextBtn = document.querySelector('.swiper-button-next');
+	var slideCount = 10;
 	
 	function moveSlide(num) {
 		slides.style.left = -num * 256 + 'px';
 		currentIdx = num;
 	}
 	
-	nextBtn.addEventListener('click', function() {
-		if(currentIdx < slideCount - 3) {
-			moveSlide(currentIdx + 1);
-		} else {
-			moveSlide(0);
-		}
-	});
-	
-	preBtn.addEventListener('click', function() {
+	$(document).on("click", ".swiper-button-prev", function() {
 		if(currentIdx > 0) {
 			moveSlide(currentIdx - 1);
 		} else {
 			moveSlide(slideCount - 3);
 		}
-	});
+    });
+	
+	$(document).on("click", ".swiper-button-next", function() {
+		if(currentIdx < slideCount - 3) {
+			moveSlide(currentIdx + 1);
+		} else {
+			moveSlide(0);
+		}
+    });
 });
-
 
 
 // 지역 선택 버튼
@@ -156,8 +243,11 @@ $(document).ready(function () {
 		var areaCode = $(this).parent().attr('data-areacode');
 		readSigungu(areaCode); // 시군구 읽어오기
 		readCity(areaCode); // 지역 내용 부르기
+		sidoFestival(areaCode, 4);
+		
 	});
 });
+
 
 // 더보기 버튼 활성화
 $(document).ready(function () {
@@ -169,7 +259,31 @@ $(document).ready(function () {
 			$(".list_sub").removeClass('on');
 			$(this).html('더보기');
 		}
+		$("#sigungulist a").removeClass('selected');
+		
 	});
+});
+
+// 리스트 월 선택
+$(document).ready(function() {
+	$(document).on("click", "#monthlist button", function() {
+		$("#monthlist button").removeAttr('class');
+		$("#monthlist button").attr('class', 'btn');
+		
+		$(this).removeClass('btn');
+		$(this).addClass('btn_all_active');
+    });
+});
+
+// 리스트 지역 선택
+$(document).ready(function() {
+	$(document).on("click", "#arealist button", function() {
+		$("#arealist button").removeAttr('class');
+		$("#arealist button").attr('class', 'btn');
+		
+		$(this).removeClass('btn');
+		$(this).addClass('btn_all_active');
+    });
 });
 
 
@@ -261,9 +375,6 @@ $(document).ready(function () {
 								2. 탭메뉴 클릭시 해당되는 컨텐츠에 클래스 zoneCont1~15 가 추가되면서 display:block 이된다. -->
 								<div class="zoneCont8 zone_cont on">
 									<div class="area_mid" id="areamid">
-										<a href="" class="img" title="새창 열림">
-											<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=79709dea-bb4a-4677-9fc6-8c7a141ebf17" alt="지금, 사계展">
-										</a>
 									</div>
 									<div class="area_left" id="arealeft">
 										<span>MY AREA FEED</span>
@@ -280,30 +391,6 @@ $(document).ready(function () {
 									<div id="arearight">
 										<div class="area_right" id="area3" style="">
 											<ul>
-												<li class="obj1 clfix">
-													<div>
-														<a href="" title="새창 열림">
-															<strong class="bn_txtR" style="color: #097faf">걷기만 해도 만병통치!</strong>
-															금강수목원 맨발로 함께 걸어요
-														</a>
-													</div>
-												</li>
-												<li class="obj2 clfix">
-													<div>
-														<a href="" title="새창 열림">
-															<strong class="bn_txtR" style="color: #097faf">5월에 활짝 피어나는 오래된 성당,</strong>
-															영산홍 가득한 부강성당
-														</a>
-													</div>
-												</li>
-												<li class="obj2 clfix">
-													<div>
-														<a href="" title="새창 열림">
-															<strong class="bn_txtR" style="color: #097faf">아이와 함께, 연인과 함께</strong>
-															꽃내음 가득, 국립세종수목원으로!
-														</a>
-													</div>
-												</li>
 											</ul>
 										</div>
 									</div>
@@ -329,49 +416,6 @@ $(document).ready(function () {
 							<div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
 								<div class="swiper-wrapper slides" id="fescalendar"
 									style="transform: translate3d(12px, 0px, 0px);">
-									
-									<div class="swiper-slide swiper-slide-duplicate" style="margin-right: 20px;">
-										<a href="" title="청초누리 봄빛정원 로 이동">
-											<span class="img swiper-lazy swiper-lazy-loaded"
-												style="background-image: url(&quot;https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=82a1ab39-d406-4a6c-97e0-29e10584bf12&quot;);">
-											</span>
-											<span class="hover_cont">
-												<span class="date">2022.04.08 ~ 2022.05.31</span>
-												<strong>청초누리 봄빛정원</strong>
-												<span class="area">강원 속초시</span>
-											</span>
-										</a>
-									</div>
-									
-									<div class="swiper-slide swiper-slide-duplicate" style="margin-right: 20px;">
-										<a href="" title="곡성 세계장미축제 로 이동">
-											<span class="img swiper-lazy swiper-lazy-loaded"
-												style="background-image: url(&quot;https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=0c9e5ce6-f5a4-4a65-b189-eacaf0a6e959&quot;);">
-											</span>
-											<span class="hover_cont">
-												<span class="date">2022.05.21 ~ 2022.06.06</span>
-												<strong>곡성 세계장미축제</strong>
-												<span class="area">전남 곡성군</span>
-											</span>
-										</a>
-									</div>
-									
-									
-									<%for(int i=0; i<5; i++){ %>
-									<div class="swiper-slide swiper-slide-duplicate" style="margin-right: 20px;">
-										<a href="" title="통영 문화재 야행 로 이동">
-											<span class="img swiper-lazy swiper-lazy-loaded"
-												style="background-image: url(&quot;https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=b6b383db-0d04-4caa-b961-c8b7b9793cd6&quot;);">
-											</span>
-											<span class="hover_cont">
-												<span class="date">2022.06.03 ~ 2022.06.05</span>
-												<strong>통영 문화재 야행</strong>
-												<span class="area">경남 통영시</span>
-											</span>
-										</a>
-									</div>
-									<%} %>
-									
 								</div>
 								<div class="swiper-button-next" tabindex="0" role="button"
 									aria-label="Next slide">다음</div>
@@ -523,87 +567,87 @@ $(document).ready(function () {
 								<span>#전체</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="1">
 							<button type="button" class="btn">
 								<span>#서울</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="6">
 							<button type="button" class="btn">
 								<span>#부산</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="4">
 							<button type="button" class="btn">
 								<span>#대구</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="2">
 							<button type="button" class="btn">
 								<span>#인천</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="5">
 							<button type="button" class="btn">
 								<span>#광주</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="3">
 							<button type="button" class="btn">
 								<span>#대전</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="7">
 							<button type="button" class="btn">
 								<span>#울산</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="8">
 							<button type="button" class="btn">
 								<span>#세종</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="31">
 							<button type="button" class="btn">
 								<span>#경기</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="32">
 							<button type="button" class="btn">
 								<span>#강원</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="33">
 							<button type="button" class="btn">
 								<span>#충북</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="34">
 							<button type="button" class="btn">
 								<span>#충남</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="35">
 							<button type="button" class="btn">
 								<span>#경북</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="36">
 							<button type="button" class="btn">
 								<span>#경남</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="37">
 							<button type="button" class="btn">
 								<span>#전북</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="38">
 							<button type="button" class="btn">
 								<span>#전남</span>
 							</button>
 						</li>
-						<li id="">
+						<li id="39">
 							<button type="button" class="btn">
 								<span>#제주</span>
 							</button>

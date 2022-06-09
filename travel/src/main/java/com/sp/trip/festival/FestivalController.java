@@ -85,6 +85,73 @@ public class FestivalController {
 		}
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "requestFestival", produces = "application/xml; charset=utf-8")
+	@ResponseBody
+	public String Festival(
+			HttpServletRequest req,
+			@RequestParam String areaCode,
+			@RequestParam int count
+			) throws Exception {
+		String result = "";
+		try {
+			
+	 		int numOfRows = count;
+	 		int pageNo = 1;
+	 		
+	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
+	 		spec += "&numOfRows="+ numOfRows;
+	 		spec += "&pageNo="+ pageNo;
+	 		spec += "&arrange=B";
+	 		spec += "&listYN=Y";
+	 		spec += "&MobileOS=ETC";
+	 		spec += "&MobileApp=travel";
+	 		spec += "&eventStartDate=20220101";
+	 		spec += "&eventEndDate=20221231";
+	 		if(!areaCode.equals("NULL")) {
+	 			spec += "&areaCode="+areaCode;
+	 		}
+	 		
+	 		result = apiSerializer.receiveXmlToJson(spec);
+	 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	// AJAX - XML로 응답
+	// 축제 카테고리 가져오기
+	@RequestMapping(value = "requsetServiceCode", produces = "application/xml; charset=utf-8")
+	@ResponseBody
+	public String serviceCode(
+			HttpServletRequest req,			
+			@RequestParam int cat1,
+			@RequestParam int cat2,
+			@RequestParam int cat3
+			) throws Exception {
+		
+		String result = "";
+		try {
+	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/categoryCode";
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
+	 		spec += "&MobileOS=ETC";
+	 		spec += "&MobileApp=travel";
+	 		spec += "&cat1="+cat1;
+	 		spec += "&cat2="+cat2;
+	 		spec += "&cat3="+cat3;
+	 		
+	 		result = apiSerializer.receiveXmlToJson(spec);
+	 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
 
 

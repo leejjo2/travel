@@ -1018,7 +1018,7 @@ footer .footer_mLogo{display: none;}
 .zone_cont .area_left span:after{content:'';display:block;width:100%;height:1px;background:#aeaeae;}
 .zone_cont .area_left .txt_info{margin-top:48px;}
 .zone_cont .area_left .txt_info strong{color: #000; font-size:30px;;font-weight:700; letter-spacing: -2px; line-height:36px;}
-.zone_cont .area_left .txt_info p{margin-top:2px;color:#353535;font-size:18px;}
+.zone_cont .area_left .txt_info p{margin-top:2px;color:#353535;font-size:18px;width:300px;}
 .zone_cont .area_left .btn_detail{display: inline-block;margin-top:37px;width:130px;height:34px;padding-left:20px;line-height:34px; border: 1px solid #666;border-radius:50px;letter-spacing:-0.5px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/ico_narrow2.gif) 95px 50% no-repeat;color:#666; font-size: 15px;}
 .zone_cont .area_left .btn_detail:hover{border:1px solid #000;color:#000;}
 
