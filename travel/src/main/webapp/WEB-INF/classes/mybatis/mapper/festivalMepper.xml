@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="festival">
+	<select id="readCity" parameterType="String" resultType="com.sp.trip.festival.Festival">
+		SELECT c1.cityNum num, cityName, areaCode, logoImg, cityInfo
+		FROM city c1
+		LEFT OUTER JOIN citydetail c2 ON c1.citynum = c2.citynum
+		WHERE areaCode = #{areaCode} 
+	</select>
+</mapper>

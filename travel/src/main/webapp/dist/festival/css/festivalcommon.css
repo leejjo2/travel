@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 /* 1219 font-face 수정*/
 /* NotoSans KR */
 @font-face {
@@ -108,7 +108,7 @@ button{ border:0 none; background-color:transparent; cursor:pointer;/*outline:0 
 legend, hr { overflow:hidden; position:absolute; top:0; left:0;visibility:hidden; font-size:0; width:0; height:0; line-height:0;}
 address,caption,cite,code,dfn,em,var{ font-style:normal; font-weight:normal; }
 a{font-family: NotoSansKR,NotoSansJP,"돋움",Dotum,AppleGothic,Tahoma,Sans-serif;color:#333; text-decoration:none; }
-a:link, a:visited, a:hover, a:focus, a:active{text-decoration:none;}
+a:link, a:visited, a:hover, a:focus, a:active{ text-decoration:none; }
 a.under{ text-decoration:underline; }
 input::-ms-clear{ display: none; }
 
@@ -236,7 +236,7 @@ select{padding:3px 2px 3px 2px;background-color:#fff;font-size:13px; line-height
 .btnWhite_auto{display: inline-block; margin-top: 20px; padding: 8px 53px; border: 1px solid #bababa; text-align: center; font-size: 16px; color: #000;}
 .btndark_auto{display: inline-block; margin-top: 20px; padding: 8px 53px; border: 1px solid #13294b;background:#13294b; text-align: center; font-size: 16px; color: #fff;}
 
-#contents{width: 980px; margin: 0 auto; padding:0 10px 27px 20px;}
+#contents{width: 980px; margin: 0 auto; padding:0 20px 27px 20px;}
 #contents.contents_all{width: 100%; margin: 0 auto; padding: 0 0 30px 0;}
 #contents.contents_all .contents_in{width: 980px; margin: 0 auto; padding: 20px 20px 0 20px;}
 #contents.partnersMainContents{width:100%;margin:0;padding:0;}
@@ -1007,7 +1007,7 @@ footer .footer_mLogo{display: none;}
 
 /** common (메인, 지역) 지역 정보 및 전체보기 **/
 /* 지역 정보 */
-.zone_cont{display: none;width: 100%;}
+.zone_cont{display: none; width: 100%;}
 .zone_cont.on{display: block;}
 .zone_cont .area_left{float: left;width:322px;}
 .list_zone .box_logo .logo{float:left;}
@@ -1019,12 +1019,12 @@ footer .footer_mLogo{display: none;}
 .zone_cont .area_left .txt_info{margin-top:48px;}
 .zone_cont .area_left .txt_info strong{color: #000; font-size:30px;;font-weight:700; letter-spacing: -2px; line-height:36px;}
 .zone_cont .area_left .txt_info p{margin-top:2px;color:#353535;font-size:18px;}
-.zone_cont .area_left .btn_detail{display: inline-block;margin-top:37px;width:130px;height:34px;padding-left:20px;line-height:34px; border: 1px solid #666;border-radius:50px;letter-spacing:-0.5px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/ico_narrow2.gif) 95px 50% no-repeat;color:#666; font-size: 15px;}
+.zone_cont .area_left .btn_detail{display: inline-block;margin-top:37px;width:108px;height:34px;padding-left:20px;line-height:34px; border: 1px solid #666;border-radius:50px;letter-spacing:-0.5px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/ico_narrow2.gif) 94px 50% no-repeat;color:#666; font-size: 15px;}
 .zone_cont .area_left .btn_detail:hover{border:1px solid #000;color:#000;}
 
 .zone_cont .area_mid{float: left;width:257px;margin:0 0 26px;}
 .zone_cont .area_mid a{display:block;}
-.zone_cont .area_mid .img{text-align: center;display:inline-block;/* width:226px; *//* height:320px; *//* border-radius:10px; */box-shadow: 14px 14px 43px 0px rgba(15, 37, 72, 0.2);}
+.zone_cont .area_mid .img{text-align: center;display:inline-block;width:226px;height:320px;border-radius:10px;box-shadow: 14px 14px 43px 0px rgba(15, 37, 72, 0.2);}
 .zone_cont .area_mid .img img{width:100%;height:100%;}
 .zone_cont .area_right{float: right;width:300px;}
 .zone_cont .area_right ul{padding: 0 0;}
@@ -1054,7 +1054,7 @@ footer .footer_mLogo{display: none;}
 .zone_cont .list_sub ul{margin-left:-20px;}
 .zone_cont .list_sub ul:after{content:'';display:block;clear:both;}
 .zone_cont .list_sub li{float: left;margin-left:20px;}
-.zone_cont .list_sub li a{display:block;padding:2px 0;font-size:16px;color: #000;}
+.zone_cont .list_sub li a{display:block;padding:2px 0;font-size:15px;color: #000;}
 .zone_cont .list_sub li a:hover{font-weight:800;}
 .zone_cont .list_sub .btn_more{display:none;position:absolute;bottom:15px;right:30px;height:20px;padding-right: 14px; color: #666; font-size: 16px; background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_arrowbtm.png) 100% 50%/7px 4px no-repeat;line-height:20px;}
 .zone_cont .list_sub.on .btn_more{background:url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_arrowtop.png) 100% 50%/7px 4px no-repeat;}
@@ -1699,17 +1699,17 @@ footer .footer_mLogo{display: none;}
 .local_fair .fair_slide{position: relative;margin-left:192px;text-align: left;width:788px;}
 .local_fair .swiper-container{position:static;margin: 0 0 0 10px;padding: 0 0 25px;}
 .local_fair .swiper-container a{display:block;width:236px;height:235px;position: relative;border-radius: 10px;box-sizing: border-box;}
-.local_fair .swiper-container a:after{content:'';display:block;width:236px;height:235px;box-sizing: border-box;position:absolute;left:0;top:0;z-index: 13;border-radius: 10px; border: 1px solid #f4f3f3;}
+.local_fair .swiper-container a:after{content:'';display:block;width:236px;height:235px;border:1px solid #f4f3f3;box-sizing: border-box;position:absolute;left:0;top:0;z-index: 13;border-radius: 10px;}
 .local_fair .swiper-container a:hover{box-shadow: 9px 14px 24px 0px rgba(178, 177, 176, 0.13);}
 .local_fair .img{height:235px;display:block;width:236px;background-position: 50% 50%;background-repeat: no-repeat;background-size:cover;border-radius: 13px;}
 .local_fair .date{display:block;padding:0 0 6px;font-weight: 300;font-size:15px;line-height:18px;color:#357cae;letter-spacing: -0.5px;}
 .local_fair .swiper-slide{width:236px !important;}
-.local_fair .hover_cont{position:absolute;width:236px;left: 0px;right:0px;bottom:0;opacity:0;z-index: 10;padding:17px 18px 0;height:95px;background:#fff;transition: all .5s ease-in-out;border-radius:0 0 8px 8px;}
+.local_fair .hover_cont{position:absolute;width:236px;left: 1px;right:1px;bottom:0;opacity:0;z-index: 10;padding:17px 18px 0;height:95px;background:#fff;transition: all .5s ease-in-out;border-radius:0 0 8px 8px;}
 .local_fair .swiper-container a:hover .hover_cont{bottom: 0px;opacity:1;}
 .local_fair strong{display:block;font-size:16px;letter-spacing: -0.7px;color:#000;line-height:20px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
 .local_fair .area{display:block;padding:5px 0 0;font-weight: 300;font-size:13px;line-height:16px;color:#666;}
-.local_fair .swiper-button-next, .local_fair .swiper-button-prev{margin-top:0;top:100px;text-indent: -9999px;width:39px;height:39px;background:url(https://cdn.visitkorea.or.kr/resources/images/common/btn_slide_fair.png) no-repeat;}
-.local_fair .swiper-button-prev{left:5px;}
+.local_fair .swiper-button-next, .local_fair .swiper-button-prev{margin-top:0;top:96px;text-indent: -9999px;width:39px;height:39px;background:url(https://cdn.visitkorea.or.kr/resources/images/common/btn_slide_fair.png) no-repeat;}
+.local_fair .swiper-button-prev{left:0;}
 .local_fair .swiper-button-next{right:0;background-position: 0 -39px;}
 .local_fair .more{display:inline-block;font-size:14px;color:#333;position:absolute;left:20px;top:107px;line-height:17px;}
 .local_fair .more:after{content:'';display:inline-block;width:12px;height:12px;margin-left:5px;vertical-align: -1px;background:url(https://cdn.visitkorea.or.kr/resources/images/common/btn_local_fair_more.png) no-repeat;}
