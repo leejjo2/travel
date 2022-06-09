@@ -35,6 +35,7 @@ a {
 
 
 
+
 </style>
 
 <script type="text/javascript">
@@ -54,10 +55,11 @@ function ajaxFun(url, method, query, dataType, fn) {
 	});
 }
 
-
 $(function(){
-	$("#btnXmlOk").click(function(){
-		// XML 받기
+	
+	foodList();
+	
+	function foodList() {
 		var url="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
 		var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39";
 		
@@ -66,39 +68,48 @@ $(function(){
 		};
 		
 		ajaxFun(url, "get", query, "xml", fn);
-	
-	});
+	}
 	
 	function printXML(data) {
 		var out="";
 		
+		var noImg = "${pageContext.request.contextPath}/resources/images/noimage.png";
 		var dataCount = $(data).find("totalCount").text();
 		$(data).find("item").each(function() {
-			var item = $(this); // $($(data).find("item")[0])
-			
+			var item = $(this);
 			var title = item.find("title").text();
 			var addr1 = item.find("addr1").text();
 			var img = item.find("firstimage").text();
 			
-			out += "음식점명 : "+title+"</p>";
-			out += "<p>주소:"+addr1+"</p><br>";
-			if(img) {
-				out += "사진:<img src='"+img+"'><br>";
+			out += "<div class='row g-0' style='border-bottom: 1px solid gray;'>";
+			out += "   <div class='col-10' style='border: none'>";
+			out += "       <div class='p-0' style='color: black;'>";
+			out += "          <p>음식점명 : "+title+"</p>";
+			out += "          <p>주소 : "+addr1+"</p>";
+			out += "       </div>";
+			out += "   </div>";
+			
+			out += "   <div class='col-2 text-center'>";
+			out += "       <div class='border p-0'>";
+			if( img ) {
+				out += "       <img src='"+img+"' width='100%' height='100'>";
 			} else {
-				out += "<p>사진이없습니다.</p>";
+				out += "       <img src='"+noImg+"' width='100%' height='100'>";
 			}
+			out += "       </div>";
+			out += "   </div>";
+			
+			out += "</div>";
 				
 		});
 		
-		$("#resultLayout").html(out);
-		
+		$(".matziplist").html(out);
 	}
-	
 	
 });
 </script>
 
-	<div class="container mb-3" style="font-size: 25px; font-weight: bold; padding: 10px;">여행지추천 - 맛집 리스트</div>
+	<div class="container mb-3" style="font-size: 25px; padding: 10px;">여행지추천 - 맛집 리스트</div>
 		<div class="container mb-3">
 			<div class="sudogun">
 				<div class="row row-cols text-dark">
@@ -164,8 +175,6 @@ $(function(){
 	  		</div>
 	  	</div>
 	  	
-	  	
-	
 		
 		<div class="search2">
 			<div class="row row-cols g-0">
@@ -205,34 +214,12 @@ $(function(){
 			</div>
 	  	</div>
 		
+		<!-- 음식점 리스트 -->
+		<div class="matziplist2">
 		
-		<div class="matziplist">
 		
-			<div class="row g-0" style="border-bottom: 1px solid gray;">
-				<div class="col-10" style="border: none">
-					
-					<div id="resultLayout" class="p-0" style="color: gray;">
-					
-					</div>
-				</div>
-				<div class="col-2 text-center">
-					<div class="border p-5" id="resultLayout2"></div>
-				</div>
-			</div>
-			
-			<button type="button" id="btnXmlOk" class="btn">API가져와부러쓰~</button>
+		</div>
 		
-			
-
-			
-
-			
-
-			
-
-			
-
-			
-			
-			
-	  	</div>
+		<div class="matziplist"></div>
+		
+		
