@@ -9,7 +9,6 @@
 	href="/trip/dist/theme/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
 	href="/trip/dist/theme/slick/slick-theme.css" />
-<link rel="stylesheet" type="text/css" href="https://korean1.visitkorea.or.kr/kor/tt/pr_gallery/new_photo_gallery/css/common.css" media="all" />
 
 
 
@@ -152,7 +151,7 @@ a:link {
 
 /* 슬릭 */
 .post-slider {
-	width: 80%;
+	width: 100%;
 	margin: 0px auto;
 	position: relative;
 }
@@ -308,11 +307,11 @@ a:link {
 								</div>
 								<div class="post">
 									<div class="text-left mg-text slider-image"
-										style="background-image: url('${pageContext.request.contextPath}/resources/images/theme/힐링여행.jpg'); background-size:cover; height:100%; margin-right: 6px; border-radius:3px;position:relative;">
+										style="background-image: url('${pageContext.request.contextPath}/resources/images/theme/혼자여행.jpg'); background-size:cover; height:100%; margin-right: 6px; border-radius:3px;position:relative;">
 										<div class="transparentCover"
 											style="background-image: linear-gradient(166deg, #fff 5%, hsla(0, 0%, 100%, 0) 68%); border-radius: 4px; height: 100%; width: 100%;"></div>
 										<span class="mg-text"
-											style="position: absolute; top: 7px; left: 7px; font-family: sans-serif; font-weight: bold; font-size: 15px;">힐링코스</span>
+											style="position: absolute; top: 7px; left: 7px; font-family: sans-serif; font-weight: bold; font-size: 15px;">혼자여행</span>
 									</div>
 								</div>
 								<div class="post">
@@ -637,9 +636,9 @@ a:link {
 <script type="text/javascript">
 $('.post-wrapper').slick({
 	  slidesToShow: 5,
-	  slidesToScroll: 1,
+	  slidesToScroll: 5,
 	  autoplay: true,
-	  autoplaySpeed: 2000,
+	  autoplaySpeed: 5000,
 	  nextArrow:$('.next'),
 	  prevArrow:$('.prev'),
 	});

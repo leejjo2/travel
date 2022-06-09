@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><tiles:insertAttribute name="title"/></title>
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-	<link rel="icon" href="images/favicon.ico" type="image/ico">
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/images/theme/favicon.ico" type="image/ico">
 	<!-- Bootstrap -->
     <link href="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->

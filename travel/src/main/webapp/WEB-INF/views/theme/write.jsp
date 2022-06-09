@@ -117,6 +117,8 @@ $(function(){
 		ajaxFun(url, "get", query, "json", fn);
 	});
 });
+
+
 </script>
 
 <div class="container">
@@ -129,8 +131,10 @@ $(function(){
 		    <div class="alert alert-info" role="alert">
 		        <i class="bi bi-question-square"></i> 게시판 이용자들에게 테마별 코스를 추천해주세요..
 		    </div>
-		    
-			<form name="boardForm" method="post">
+		    <div class="mapSite" >
+				<jsp:include page="/WEB-INF/views/theme/map.jsp"/>
+			</div>
+			<form name="boardForm" method="post">	
 				<table class="table mt-5 write-form">
 					<tr>
 						<td class="table-light col-sm-2" scope="row">분 류</td>
