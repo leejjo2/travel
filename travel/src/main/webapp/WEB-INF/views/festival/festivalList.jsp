@@ -177,33 +177,17 @@ function slideFestival(areaCode, count) {
 }
 
 
-function slideFestival(sort, month, areaCode, pageNum) {
-	let url="${pageContext.request.contextPath}/festival/festivalList";
-	let query="areaCode="+areaCode+"&count="+count;
-	
-	var fn=function(data) {
-		printfestivalList(data);
-	};
-	
-	ajaxFun(url, "get", query, "json", fn);
-	
-	function printfestivalList(data) {
-		console.log(data);
-	}
-}
-
-
-
 // 최초 실행 시 서울에 대한 정보 읽어오기
 $(function() {
 	readSigungu(1);
 	readCity(1);
 	sidoFestival(1, 4); // 서울 축제 리스트 가져오기
 	slideFestival('NULL', 10); // 슬라이드 축제 리스트 가져오기
+	festivalList('R', 'ALL', 'ALL', 1); // 축제 리스트 가져오기
 });
 
 
-// 축제 리스트 슬라이드
+// 축제 리스트 슬라이드 기능
 $(document).ready(function() {
 	var slides = document.querySelector('.slides');
 	var currentIdx = 0;
@@ -230,6 +214,23 @@ $(document).ready(function() {
 		}
     });
 });
+
+// 축제 리스트 불러오기
+function festivalList(sort, month, areaCode, pageNum) {
+	let url="${pageContext.request.contextPath}/festival/festivalList";
+	let query="sort="+sort+"&month="+month+"&areaCode="+areaCode+"&pageNum="+pageNum;
+	
+	var fn=function(data) {
+		printfestivalList(data);
+	};
+	
+	ajaxFun(url, "get", query, "json", fn);
+	
+	function printfestivalList(data) {
+		console.log(data);
+	}
+}
+
 
 
 // 지역 선택 버튼
@@ -264,6 +265,16 @@ $(document).ready(function () {
 	});
 });
 
+//리스트 최신순, 인기순 선택
+$(document).ready(function() {
+	$(document).on("click", ".btn_txt button", function() {
+		$(".btn_txt button").removeAttr('class');
+		$(this).addClass('on');
+		
+		callFestivalList();
+    });
+});
+
 // 리스트 월 선택
 $(document).ready(function() {
 	$(document).on("click", "#monthlist button", function() {
@@ -272,8 +283,11 @@ $(document).ready(function() {
 		
 		$(this).removeClass('btn');
 		$(this).addClass('btn_all_active');
+		
+		callFestivalList();
     });
 });
+
 
 // 리스트 지역 선택
 $(document).ready(function() {
@@ -283,8 +297,21 @@ $(document).ready(function() {
 		
 		$(this).removeClass('btn');
 		$(this).addClass('btn_all_active');
+		
+		callFestivalList();
     });
 });
+
+
+// 하단 축제 리스트 함수 호출
+function callFestivalList() {
+	let sort = $(".btn_txt .on").attr('id');
+	let month = $("#monthlist .btn_all_active").parent().attr('id');
+	let areaCode = $("#arealist .btn_all_active").parent().attr('id');
+	let pageNum = 1;
+	
+	festivalList(sort, month, areaCode, pageNum);
+}
 
 
 </script>
@@ -408,7 +435,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<!-- 달력 -->
-					<div class="local_fair" style="">
+					<div class="local_fair">
 						<h2>
 							<strong>축제</strong> 어디까지 가봤니?
 						</h2>
@@ -441,8 +468,8 @@ $(document).ready(function() {
 				<div class="total_check">
 					<strong>총<span id="totalCnt">1,181</span>건</strong>
 					<div class="btn_txt">
-						<button type="button" class="on" id="1" title="선택됨">최신순</button>
-						<button type="button" id="2">인기순</button>
+						<button type="button" class="on" id="R">최신순</button>
+						<button type="button" id="P">인기순</button>
 					</div>
 					<button type="button" class="btn_mPop">상세조회</button>
 				</div>
