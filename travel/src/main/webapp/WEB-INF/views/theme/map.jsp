@@ -66,7 +66,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=11aacf33c8b65ecc25ba9f1f09fbb470&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=서비스키"></script>
 <script>
 
 // 마커를 담을 배열입니다
@@ -101,6 +101,8 @@ var geocoder = new kakao.maps.services.Geocoder();
 searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
 var seq = 0;
+
+var info = document.querySelector('.info');
 
 // 정조 끝
 
@@ -190,6 +192,7 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
+            
         })(marker, places[i].place_name);
 
         fragment.appendChild(itemEl);
@@ -225,6 +228,7 @@ function getListItem(index, places) {
 
     el.innerHTML = itemStr;
     el.className = 'item';
+    
 
     return el;
 }
@@ -292,6 +296,8 @@ function addMarker(position, idx, title) {
             }   
         });
     });  
+    
+    
     // 정조 끝
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
