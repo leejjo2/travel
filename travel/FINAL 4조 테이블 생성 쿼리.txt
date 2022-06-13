@@ -1,0 +1,838 @@
+---- 멤버 
+CREATE TABLE member (
+    userId  VARCHAR2(50) NOT NULL
+    ,userName VARCHAR2(50) NOT NULL
+    ,userPwd VARCHAR2(100) NOT NULL
+    ,profileImgname VARCHAR2(255)
+    ,birth DATE
+    ,email VARCHAR2(100)
+    ,tel VARCHAR2(20)
+    ,zip VARCHAR2(7)
+    ,addr1 VARCHAR2(100)
+    ,addr2 VARCHAR2(100)
+    ,membership NUMBER(5) DEFAULT 1
+    ,reg_date DATE DEFAULT SYSDATE
+    ,modify_date DATE DEFAULT SYSDATE
+    ,favorite VARCHAR2(20)
+    ,enabled NUMBER(1) DEFAULT 1
+    ,last_login DATE
+    ,failure_cnt NUMBER(2) DEFAULT 0 
+    ,CONSTRAINT pk_member_userId PRIMARY KEY(userId)
+);
+
+
+----------------------------------
+
+------- 관리자 같이가요, 액티비티, 마일리지
+
+
+-- 도시, 테마 
+CREATE TABLE city (
+    cityNum NUMBER,
+    cityName VARCHAR2(30) NOT NULL,
+    CONSTRAINT pk_city_Num PRIMARY KEY(cityNum)
+);
+
+create table cityDetail(
+    cityNum number not null,
+    logoImg varchar2(255),
+    cityInfo varchar2(50),
+    CONSTRAINT pk_cityDetail_cityNum PRIMARY KEY(cityNum),
+    CONSTRAINT fk_cityDetail_cityNum FOREIGN KEY(cityNum) REFERENCES city(cityNum)
+);
+
+CREATE TABLE theme (
+    themeNum NUMBER,
+    themeName VARCHAR2(30) NOT NULL,
+    CONSTRAINT pk_theme_Num PRIMARY KEY(themeNum)
+);
+
+-- 관리자 코스 
+CREATE TABLE adminCourse (
+    courseNum NUMBER,
+    userId VARCHAR2(50) NOT NULL,
+    subject VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    reg_date DATE DEFAULT SYSDATE,
+    hitCount NUMBER DEFAULT 0,
+    cityNum NUMBER,
+    themeNum NUMBER,
+    period VARCHAR2(50) NOT NULL,
+    hashTag VARCHAR2(2000) NOT NULL,
+    CONSTRAINT pk_adminCourse_courseNum PRIMARY KEY(courseNum),
+    CONSTRAINT fk_adminCourse_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE,
+    CONSTRAINT fk_adminCourse_cityNum FOREIGN KEY(cityNUm) REFERENCES city(cityNum) ON DELETE CASCADE,
+    CONSTRAINT fk_adminCourse_themeNum FOREIGN KEY(themeNum) REFERENCES theme(themeNum) ON DELETE CASCADE
+);
+
+CREATE TABLE adminCourseDetail (
+    courseDetailNum NUMBER,
+    courseNum NUMBER,
+    corse_seq NUMBER NOT NULL,
+    placeName VARCHAR2(50) NOT NULL,
+    address VARCHAR2(255) NOT NULL,
+    longitude VARCHAR2(100) NOT NULL,
+    latitude VARCHAR2(100) NOT NULL,
+    content CLOB NOT NULL,
+    CONSTRAINT pk_adminCourseDetail_courseDetailNum PRIMARY KEY(courseDetailNum),
+    CONSTRAINT fk_adminCourseDetail_courseNum FOREIGN KEY(courseNum) REFERENCES adminCourse(courseNum)  ON DELETE CASCADE
+);
+
+CREATE TABLE adminCourseImg (
+    imageFileNum NUMBER,
+    courseDetailNum NUMBER,
+    saveFilename VARCHAR2(255) NOT NULL,
+    CONSTRAINT pk_adminCourseImg_imageFileNum PRIMARY KEY(imageFileNum),
+    CONSTRAINT fk_adminCourseImg_courseNum FOREIGN KEY(courseDetailNum) REFERENCES adminCourseDetail(courseDetailNum) ON DELETE CASCADE
+);
+
+
+-- 같이가요 
+CREATE TABLE goWith (
+    goWithNum NUMBER,
+    userId VARCHAR2(50) NOT NULL,
+    cityNum NUMBER NOT NULL,
+    subject VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    hitCount NUMBER DEFAULT 0,
+    reg_date DATE DEFAULT SYSDATE,
+    recruit_status VARCHAR2(30) DEFAULT  '모집중',
+    recruit_cnt NUMBER  NOT NULL,
+    startDate DATE  NOT NULL,
+    endDate DATE  NOT NULL,
+    period VARCHAR2(50)  NOT NULL,
+    CONSTRAINT pk_goWith_goWithNum PRIMARY KEY(goWithNum),
+    CONSTRAINT fk_goWith_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE,
+    CONSTRAINT fk_goWith_cityNum FOREIGN KEY(cityNum) REFERENCES city(cityNum) ON DELETE CASCADE
+);
+
+CREATE TABLE goWithApply (
+    goWithNum NUMBER,
+    userId VARCHAR2(50),
+    applyContent VARCHAR2(4000) NOT NULL,
+    apply_status VARCHAR2(30) NOT NULL,
+    CONSTRAINT fk_goWithApply_goWithNum FOREIGN KEY(goWithNum) REFERENCES goWith(goWithNum) ON DELETE CASCADE,
+    CONSTRAINT fk_goWithApply_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+
+-- 사업자 
+CREATE TABLE partner (
+    partnerNum NUMBER,
+    partnerId VARCHAR2(50) NOT NULL,
+    partnerName VARCHAR2(50) NOT NULL,
+    partnerTel VARCHAR2(20) NOT NULL,
+    CONSTRAINT pk_partner_partnerNum PRIMARY KEY(partnerNum),
+    CONSTRAINT fk_partner_partnerId FOREIGN KEY(partnerId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+-- 액티비티 
+CREATE TABLE activity (
+    activityNum NUMBER,
+    activityName VARCHAR2(30) NOT NULL,
+    partnerNum NUMBER NOT NULL,
+    activityDetail CLOB NOT NULL,
+    CONSTRAINT pk_activity_activityNum PRIMARY KEY(activityNum),
+    CONSTRAINT fk_activity_partnerNum FOREIGN KEY(partnerNum) REFERENCES partner(partnerNum) ON DELETE CASCADE
+);
+
+CREATE TABLE activityImage (
+    imageFileNum NUMBER,
+    saveFilename VARCHAR2(255),
+    activityNum NUMBER,
+    CONSTRAINT pk_activityImage_imageFileNum PRIMARY KEY(imageFileNum),
+    CONSTRAINT fk_activityImage_activityNum FOREIGN KEY(activityNum) REFERENCES activity(activityNum)
+);
+
+CREATE TABLE activityDetail ( 
+    DetailNum NUMBER,
+    timeRange VARCHAR2(100) NOT NULL,
+    maxNum NUMBER NOT NULL,
+    activityNum NUMBER NOT NULL,
+    price NUMBER NOT NULL,
+    CONSTRAINT pk_activityDetail_DetailNum PRIMARY KEY(DetailNum),
+    CONSTRAINT fk_activityDetail_activityNum FOREIGN KEY(activityNum) REFERENCES activity(activityNum)
+);
+
+CREATE TABLE activityReserve ( 
+    reserveNum NUMBER,
+    totalPrice NUMBER NOT NULL,
+    mileageUse NUMBER,
+    totalmen NUMBER NOT NULL,
+    reserveDoneDate DATE DEFAULT SYSDATE,
+    name varchar(50) NOT NULL,
+    tel VARCHAR2(20) NOT NULL,
+    usingDate DATE NOT NULL,
+    userId VARCHAR2(5)  NOT NULL,
+    CONSTRAINT pk_activityReserve_reserveNum PRIMARY KEY(reserveNum),
+    CONSTRAINT fk_activityReserve_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+CREATE TABLE activityReserveDetail ( 
+    ReserveDetailNum NUMBER,
+    ReserveNum NUMBER NOT NULL,
+    DetailNum NUMBER NOT NULL,
+    Price NUMBER NOT NULL,
+    Men NUMBER NOT NULL,
+    CONSTRAINT pk_activityReserveDetail_ReserveDetailNum PRIMARY KEY(ReserveDetailNum),
+    CONSTRAINT fk_activityReserveDetail_ReserveNum FOREIGN KEY(ReserveNum) REFERENCES activityReserve(ReserveNum) ON DELETE CASCADE,
+    CONSTRAINT fk_activityReserveDetail_DetailNum FOREIGN KEY(DetailNum) REFERENCES activityDetail(DetailNum) ON DELETE CASCADE
+);
+
+CREATE TABLE activityPay( 
+    reserveNum NUMBER,
+    payWay NUMBER NOT NULL,
+    payAmount varchar(30) NOT NULL,
+    payDate DATE,
+    CONSTRAINT pk_activityPay_reserveNum PRIMARY KEY(reserveNum),
+    CONSTRAINT fk_activityPay_reserveNum FOREIGN KEY(reserveNum) REFERENCES activityReserve(reserveNum)
+);
+
+CREATE TABLE activityRefund( 
+    reserveNum NUMBER,
+    refundPrice NUMBER NOT NULL,
+    refundDate DATE,
+    refundWay VARCHAR2(50) NOT NULL,
+    refundWhy VARCHAR2(1000) NOT NULL,
+    processHis VARCHAR2(300),
+    CONSTRAINT pk_activityRefund_reserveNum PRIMARY KEY(reserveNum),
+    CONSTRAINT fk_activityRefund_reserveNum FOREIGN KEY(reserveNum) REFERENCES activityReserve(reserveNum) ON DELETE CASCADE
+);
+
+-- 마일리지 
+CREATE TABLE mileage( 
+    mileageNum NUMBER,
+    userId VARCHAR2(50) NOT NULL,
+    mileage NUMBER,
+    mileageSection NUMBER,
+    mileageDate DATE,
+    mileageMemo VARCHAR2(4000) NOT NULL,
+    CONSTRAINT pk_mileage_mileageNum PRIMARY KEY(mileageNum),
+    CONSTRAINT fk_mileage_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+-- 시퀀스 
+CREATE SEQUENCE city_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+   
+CREATE SEQUENCE theme_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+   
+CREATE SEQUENCE adminCourse_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE adminCourseDetail_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE adminCourseImg_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+   
+CREATE SEQUENCE mileage_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+ 
+CREATE SEQUENCE partner_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE activity_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE activityImage_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE activityDetail_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;  
+
+CREATE SEQUENCE activityReserve_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+CREATE SEQUENCE activityReserveDetail_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+
+-----------------------------------------
+
+--- 자유게시판
+--- 여행코스 - 게시판
+CREATE TABLE travelCourse(
+ courseNum NUMBER NOT NULL
+ , userId VARCHAR2(50) NOT NULL
+ , cityNum NUMBER NOT NULL
+ , themeNum NUMBER NOT NULL
+ , period VARCHAR2(30) NOT NULL
+ , subject VARCHAR2(300) NOT NULL
+ , content CLOB NOT NULL
+ , reg_date DATE DEFAULT SYSDATE
+ , hitCount NUMBER DEFAULT 0
+ , CONSTRAINT pk_travelCourse_courseNum PRIMARY KEY(courseNum)
+ , CONSTRAINT fk_travelCourse_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+ , CONSTRAINT fk_travelCourse_cityNum FOREIGN KEY(cityNum) REFERENCES city(cityNum) ON DELETE CASCADE
+ , CONSTRAINT fk_travelCourse_themeNum FOREIGN KEY(themeNum) REFERENCES theme(themeNum) ON DELETE CASCADE
+);
+
+-- 여행코스 - 게시판 시퀀스
+CREATE SEQUENCE travelCourse_seq
+ INCREMENT BY 1
+ START WITH 1
+ NOMAXVALUE
+ NOCYCLE
+ NOCACHE;
+----------------------
+--여행코스 좋아요
+CREATE TABLE travelCourseLike (
+   courseNum NUMBER 
+   ,userId VARCHAR2(50)
+    ,CONSTRAINT pk_travelCourseLike_numId PRIMARY KEY(courseNum,userId)
+    ,CONSTRAINT fk_travelCourseLike_courseNum FOREIGN KEY(courseNum)
+                REFERENCES travelCourse(courseNum) ON DELETE CASCADE
+    ,CONSTRAINT fk_travelCourseLike_userId FOREIGN KEY(userId)
+                REFERENCES member(userId)  ON DELETE CASCADE          
+);
+
+
+
+------------------------------------------------------
+--여행코스상세
+CREATE TABLE travelCourseDetail(
+ courseDetailNum NUMBER NOT NULL
+ , courseNum NUMBER NOT NULL
+ , course_seq NUMBER NOT NULL
+ , placeName VARCHAR2(100) NOT NULL
+ , address VARCHAR2(255) NOT NULL   
+ , longitude VARCHAR2(100) NOT NULL
+ , latitude VARCHAR2(100) NOT NULL
+ , content CLOB NOT NULL
+ , CONSTRAINT pk_travelCourseDetail_cousrseDetailNum PRIMARY KEY(courseDetailNum)
+ , CONSTRAINT fk_travelCourseDetail_courseNum FOREIGN KEY(courseNum) REFERENCES travelCourse(courseNum) ON DELETE CASCADE
+);
+
+-- 여행코스상세 - 게시판 시퀀스
+CREATE SEQUENCE travelCourseDetail_seq
+ INCREMENT BY 1
+ START WITH 1
+ NOMAXVALUE
+ NOCYCLE
+ NOCACHE;
+
+-------------------------------
+--여행코스 이미지
+CREATE TABLE travelcourseImage (
+   imageFileNum NUMBER PRIMARY KEY
+   ,travelCourseNum NUMBER NOT NULL
+   ,saveFilename VARCHAR2(255)
+   ,CONSTRAINT fk_travelcourseImage_courseDetailNum FOREIGN KEY(travelCourseNum)
+                REFERENCES travelcourseDetail(courseDetailNum) 
+   
+);
+
+--여행코스 이미지 시퀀스
+CREATE SEQUENCE travelcourseImage_seq
+    INCREMENT BY 1
+    START WITH 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE;
+
+
+〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
+
+--자유게시판
+CREATE TABLE freebbs(
+ freeNum NUMBER NOT NULL
+ , userId VARCHAR2(50) NOT NULL
+ , title VARCHAR2(300) NOT NULL
+ , subject VARCHAR2(300) NOT NULL
+ , content CLOB NOT NULL
+ , longitude VARCHAR2(50) NOT NULL
+ , hitCount NUMBER DEFAULT 0
+ , reg_date DATE DEFAULT SYSDATE
+ , CONSTRAINT pk_freebbs_freeNum PRIMARY KEY(freeNum)
+ , CONSTRAINT fk_freebbs_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+-- 자유게시판 시퀀스
+CREATE SEQUENCE freebbs_seq
+ INCREMENT BY 1
+ START WITH 1
+ NOMAXVALUE
+ NOCYCLE
+ NOCACHE;
+
+--------------------------------
+--자유게시판 파일
+CREATE TABLE freebbsFile (
+   freeFileNum NUMBER
+   ,freeNum NUMBER NOT NULL
+   ,saveFilename VARCHAR2(255)
+   ,CONSTRAINT pk_freebbsFile_freeFileNum PRIMARY KEY(freeFileNum)
+   ,CONSTRAINT fk_freebbsFile_freeNum FOREIGN KEY(freeNum)
+                REFERENCES freebbs(freeNum)
+   
+);
+
+--자유게시판 파일 시퀀스
+CREATE SEQUENCE freebbsFile_seq
+    INCREMENT BY 1
+    START WITH 1
+    NOMAXVALUE
+    NOCYCLE
+    NOCACHE;
+
+----------------------
+--자유게시판 좋아요
+CREATE TABLE freebbsLike (
+   freeNum NUMBER 
+   ,userId VARCHAR2(50)
+    ,CONSTRAINT pk_freebbsLike_numId PRIMARY KEY(freeNum,userId)
+    ,CONSTRAINT fk_freebbsLike_freeNum FOREIGN KEY(freeNum)
+                REFERENCES freebbs(freeNum) ON DELETE CASCADE
+    ,CONSTRAINT fk_freebbsLike_userId FOREIGN KEY(userId)
+                REFERENCES member(userId) ON DELETE CASCADE          
+);
+
+------------------
+자유게시판 댓글
+CREATE TABLE freebbsReply (
+    replyNum NUMBER 
+    ,freeNum NUMBER NOT NULL
+    ,userId VARCHAR2(50) NOT NULL
+    ,content VARCHAR2(2000) NOT NULL
+    ,reg_date DATE DEFAULT SYSDATE
+    ,answer NUMBER NOT NULL
+    ,CONSTRAINT pk_freebbsReply_replyNum PRIMARY KEY(replyNum)
+    ,CONSTRAINT fk_freebbsReply_freeNum foreign key(freeNum) references freebbs(freeNum) ON DELETE CASCADE
+    ,CONSTRAINT fk_freebbsReply_userId foreign key(userId) references member(userId) ON DELETE CASCADE
+);
+
+-- 자유게시판 댓글 시퀀스
+create sequence freebbsReply_seq
+    increment by 1
+    start with 1
+    nomaxvalue
+    nocycle
+    nocache;
+
+
+
+
+------------------------------------------
+
+-- 숙박업소 테이블
+CREATE TABLE hotel (
+	hotelNum NUMBER PRIMARY KEY
+	,partnerNum NUMBER NOT NULL
+	,hotelName VARCHAR2(50) NOT NULL
+	,hotelIntro VARCHAR2(50) NOT NULL
+	,hotelNumber VARCHAR2(50) NOT NULL
+	,hotelZip VARCHAR2(7) NOT NULL
+	,hotelAddr1 VARCHAR2(100) NOT NULL
+	,hotelAddr2 VARCHAR2(100) NOT NULL
+	,CONSTRAINT fk_hotel_partnerNum FOREIGN KEY(partnerNum)
+		REFERENCES partner(partnerNum) 
+);
+
+-- 숙박업소 시퀀스
+CREATE SEQUENCE hotel_seq
+	INCREMENT BY 1
+    	START WITH 1
+    	NOMAXVALUE
+    	NOCYCLE
+    	NOCACHE;
+
+-- 숙박업소 - 숙소 이미지
+CREATE TABLE hotelImage (
+	imageFileNum NUMBER PRIMARY KEY
+	,hotelNum NUMBER NOT NULL
+	,saveFilename VARCHAR2(255)
+	,CONSTRAINT fk_hotelImage_hotelNum FOREIGN KEY(hotelNum)
+		REFERENCES hotel(hotelNum)
+);
+
+-- 숙소 이미지 파일번호
+CREATE SEQUENCE hotelImage_seq
+	INCREMENT BY 1
+    	START WITH 1
+    	NOMAXVALUE
+    	NOCYCLE
+    	NOCACHE;
+
+-- 방 상세정보
+CREATE TABLE roomInfo (
+	roomNum NUMBER PRIMARY KEY
+	,hotelNum NUMBER NOT NULL
+	,roomName VARCHAR2(50) NOT NULL
+	,roomPrice NUMBER(10) NOT NULL
+	,roomHo NUMBER(4) NOT NULL
+	,roomMen NUMBER(10) NOT NULL
+	,roomOption VARCHAR2(255)
+	,CONSTRAINT fk_roomInfo_hotelNum FOREIGN KEY(hotelNum)
+		REFERENCES hotel(hotelNum) ON DELETE CASCADE
+);
+
+-- 방 시퀀스
+CREATE SEQUENCE roomInfo_seq
+	INCREMENT BY 1
+    	START WITH 1
+    	NOMAXVALUE
+    	NOCYCLE
+    	NOCACHE;
+
+-- 방 상세정보 - 방 이미지
+CREATE TABLE roomImage (
+	imageFileNum NUMBER PRIMARY KEY
+	,roomNum NUMBER NOT NULL
+	,saveFilename VARCHAR2(255)
+	,CONSTRAINT fk_roomImage_roomNum FOREIGN KEY(roomNum)
+		REFERENCES roomInfo(roomNum)
+);
+
+-- 숙소 예약
+CREATE TABLE hotelReservation (
+	ReserveNum NUMBER PRIMARY KEY
+	,userId VARCHAR2(50) NOT NULL
+	,totalPrice NUMBER NOT NULL
+	,mileageUse NUMBER
+	,men NUMBER NOT NULL
+	,reserveDoneDate DATE DEFAULT SYSDATE
+	,reserveName VARCHAR2(50) NOT NULL
+	,reserveTel VARCHAR2(20) NOT NULL
+	,checkIn DATE NOT NULL
+	,checkOut DATE NOT NULL
+	,CONSTRAINT fk_hotelReservation_userId FOREIGN KEY(userId)
+                REFERENCES member(userId)
+);
+
+-- 숙소 예약 시퀀스
+CREATE SEQUENCE hotelReservation_seq
+	INCREMENT BY 1
+    	START WITH 1
+    	NOMAXVALUE
+    	NOCYCLE
+    	NOCACHE;
+
+-- 숙소 예약 - 숙소 리뷰
+CREATE TABLE hotelReview (
+	ReserveNum NUMBER NOT NULL
+	,userId VARCHAR2(50) NOT NULL
+	,star_ranking NUMBER NOT NULL
+	,reg_date DATE DEFAULT SYSDATE
+	,content VARCHAR2(4000) NOT NULL
+	,reply VARCHAR2(4000) NOT NULL
+	,CONSTRAINT fk_hotelReview_ReserveNum FOREIGN KEY(ReserveNum)
+		REFERENCES hotelReservation(ReserveNum) ON DELETE CASCADE
+	,CONSTRAINT fk_hotelReview_userId FOREIGN KEY(userId)
+          REFERENCES member(userId) 
+);
+
+-- 숙소예약 - 숙박예약상세정보
+CREATE TABLE hotelReservationDetail (
+	hotelReserveDetailNum NUMBER PRIMARY KEY
+	,ReserveNum NUMBER NOT NULL
+	,roomNum NUMBER NOT NULL
+	,roomprice NUMBER(10) NOT NULL
+	,CONSTRAINT fk_hotelReservationDetail_ReserveNum FOREIGN KEY(ReserveNum)
+		REFERENCES hotelReservation(ReserveNum) ON DELETE CASCADE
+	,CONSTRAINT fk_room_roomNum FOREIGN KEY(roomNum)
+		REFERENCES roomInfo(roomNum)
+);
+
+-- 숙박예약상세정보 시퀀스
+CREATE SEQUENCE hotelReservationDetail_seq
+	INCREMENT BY 1
+    	START WITH 1
+    	NOMAXVALUE
+    	NOCYCLE
+    	NOCACHE;
+
+
+-- 숙소 결제
+CREATE TABLE hotelPay (
+	ReserveNum NUMBER NOT NULL
+	,payWay VARCHAR2(20) NOT NULL
+	,payAmount NUMBER NOT NULL
+	,pay_date DATE NOT NULL
+	,CONSTRAINT fk_hotelPay_ReserveNum FOREIGN KEY(ReserveNum)
+		REFERENCES hotelReservation(ReserveNum) ON DELETE CASCADE
+);
+
+-- 숙소 결제 - 환불
+CREATE TABLE hotelRefund (
+	 ReserveNum NUMBER NOT NULL
+	,refundPrice NUMBER NOT NULL
+	,refund_date DATE NOT NULL
+	,refundWay VARCHAR2(50) NOT NULL	
+	,refundWhy VARCHAR2(1000) NOT NULL
+	,processHis VARCHAR2(300)
+	,CONSTRAINT fk_hotelRefund_ReserveNum FOREIGN KEY(ReserveNum)
+		REFERENCES hotelReservation(ReserveNum) ON DELETE CASCADE
+);
+
+-----------------------------------------------------------
+--- 마이페이지(여행코스, 여행기록) + 자주하는질문
+
+-- 테이블
+
+-- 스크랩
+CREATE TABLE  scrap(
+    scrapNum NUMBER NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    scrapSection NUMBER NOT NULL,
+    scrapSectionNum NUMBER NOT NULL,
+    CONSTRAINT pk_scrap_scrapNum PRIMARY KEY(scrapNum),
+    CONSTRAINT fk_scrap_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+
+-- 마일리지
+CREATE TABLE  mileage(
+    mileageNum NUMBER NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    mileage NUMBER NOT NULL,
+    mileageSection NUMBER,
+    mileageDate DATE,
+    mileageMemo VARCHAR2(4000) NOT NULL,
+    CONSTRAINT pk_mileage_mileageNum PRIMARY KEY(mileageNum),
+    CONSTRAINT fk_mileage_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+
+
+-- 내여행기록
+CREATE TABLE  travelRecord(
+    travelRecordNum NUMBER NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    subject VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    reg_date DATE DEFAULT SYSDATE,
+    startDate DATE,
+    endDate DATE,
+    CONSTRAINT pk_travelRecord_travelRecordNum PRIMARY KEY(travelRecordNum),
+    CONSTRAINT fk_travelRecord_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+-- 여행기록 이미지
+CREATE TABLE  travelRecordImage(
+    imageFileNum NUMBER NOT NULL,
+    travelRecordNum NUMBER NOT NULL,
+    saveFilename VARCHAR2(255) NOT NULL,
+    CONSTRAINT pk_travelRecordImg_travelRecordImgNum PRIMARY KEY(imageFileNum),
+    CONSTRAINT fk_travelRecord_travelRecordNum FOREIGN KEY(travelRecordNum) REFERENCES travelRecord(travelRecordNum)
+);
+
+
+-- 여행코스계획(마이페이지)
+CREATE TABLE  travelPlan(
+    travelplanNum NUMBER NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    cityNum NUMBER NOT NULL,
+    subject VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    reg_date DATE DEFAULT SYSDATE,
+    startDate DATE,
+    endDate DATE,
+    CONSTRAINT pk_travelplan_travelplanNum PRIMARY KEY(travelplanNum),
+    CONSTRAINT fk_mypageTravelplan_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE,
+    CONSTRAINT fk_mypageTravelplan_cityNum FOREIGN KEY(cityNum) REFERENCES city(cityNum)
+);
+
+-- 여행코스(마이페이지)
+CREATE TABLE  planCourse(
+    travelCourseNum NUMBER NOT NULL,
+    course_seq NUMBER NOT NULL, -- 순서
+    placeName VARCHAR2(100) NOT NULL,
+    address VARCHAR2(200) NOT NULL,
+    longitude NUMBER(10,6) NOT NULL, -- 경도
+    latitude NUMBER (10,6) NOT NULL, -- 위도
+    content CLOB NOT NULL,
+    TravelplanNum NUMBER,
+    CONSTRAINT pk_travelCourse_travelCourseNum PRIMARY KEY(travelCourseNum),
+    CONSTRAINT fk_travelCourse_TravelplanNum FOREIGN KEY(TravelplanNum) REFERENCES Travelplan(travelplanNum) ON DELETE CASCADE
+);
+
+-- 준비물
+CREATE TABLE  checkList(
+    needsNum NUMBER NOT NULL,
+    travelplanNum NUMBER NOT NULL,
+    needsName VARCHAR2(50) NOT NULL,
+    status NUMBER DEFAULT 0 NOT NULL,
+    CONSTRAINT pk_checkList_needsNum PRIMARY KEY(needsNum),
+    CONSTRAINT fk_checkList_travelplanNum FOREIGN KEY(travelplanNum) REFERENCES Travelplan(travelplanNum) ON DELETE CASCADE
+);
+
+-- Q&A
+CREATE TABLE  qna(
+    qnaNum NUMBER NOT NULL,
+    qnaSubject VARCHAR2(255) NOT NULL,
+    qnaPrivate NUMBER(1),
+    qnaContent CLOB NOT NULL,
+    userId VARCHAR(50) NOT NULL,
+    qnaCategoryNum NUMBER NOT NULL,
+    qnaParent NUMBER UNIQUE,
+    reg_date DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_qna_qnaNum PRIMARY KEY(qnaNum),
+    CONSTRAINT fk_qna_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE,
+    CONSTRAINT fk_qna_qnaCategoryNum FOREIGN KEY(qnaCategoryNum) REFERENCES qnaCategory(qnaCategoryNum)
+);
+
+-- Q&A 카테고리
+CREATE TABLE  qnaCategory(
+    qnaCategoryNum NUMBER NOT NULL,
+    categoryName VARCHAR2(255) NOT NULL,
+    CONSTRAINT pk_qnaCategory_qnaCategoryNum PRIMARY KEY(qnaCategoryNum)
+);
+
+-- Q&A파일
+CREATE TABLE  qnaFile(
+    fileNum NUMBER NOT NULL,
+    saveFilename VARCHAR2(255),
+    originalFilename VARCHAR2(255),
+    qnaNum NUMBER NOT NULL,
+    CONSTRAINT pk_qnafile_fileNum PRIMARY KEY(fileNum),
+    CONSTRAINT fk_qnaFile_qnaNum FOREIGN KEY(qnaNum) REFERENCES qna(qnaNum)
+);
+
+-- 자주하는 질문
+CREATE TABLE  faq(
+    faqNum NUMBER NOT NULL,
+    category VARCHAR2(50) NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    subject VARCHAR2(255) NOT NULL,
+    content CLOB NOT NULL,
+    reg_date DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_faq_faqNum PRIMARY KEY(faqNum),
+    CONSTRAINT fk_faq_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+
+
+
+-- 시퀀스
+
+-- 스크랩 시퀀스
+CREATE SEQUENCE scrap_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+
+
+-- 여행코스계획 시퀀스
+CREATE SEQUENCE travelPlan_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- 여행코스 시퀀스
+CREATE SEQUENCE planCourse_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- 준비물 시퀀스
+CREATE SEQUENCE checkList_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- 내여행기록 시퀀스
+CREATE SEQUENCE travelRecord_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- 여행기록이미지 시퀀스
+CREATE SEQUENCE travelRecordImage_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- Q&A 시퀀스
+CREATE SEQUENCE qna_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- Q&A 카테고리 시퀀스
+CREATE SEQUENCE qnaCategory_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- Q&A 파일 시퀀스
+CREATE SEQUENCE qnaFile_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
+-- 자주하는질문 시퀀스
+CREATE SEQUENCE faq_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+

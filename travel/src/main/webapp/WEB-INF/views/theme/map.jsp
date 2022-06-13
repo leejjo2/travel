@@ -66,12 +66,12 @@
     </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=서비스키"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=11aacf33c8b65ecc25ba9f1f09fbb470&libraries=services"></script>
 <script>
 
 // 마커를 담을 배열입니다
 var markers = [];
-var moveLatLons = [];
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -103,6 +103,8 @@ searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 var seq = 0;
 
 var info = document.querySelector('.info');
+var moveLatLons = [];
+var titles = [];
 
 // 정조 끝
 
@@ -166,17 +168,19 @@ function displayPlaces(places) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
+            marker = addMarker(placePosition, i, places[i].place_name), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
+       
 
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
         (function(marker, title) {
+        	
             kakao.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -266,7 +270,7 @@ function addMarker(position, idx, title) {
                 detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
                 
                 var content = '<div class="bAddr">' +
-                                '<span class="title">법정동 주소정보</span>' + 
+                                '<span class="title">법정동 주소정보</span><br>' + title +
                                 detailAddr + 
                             '</div>';
                             
@@ -284,13 +288,24 @@ function addMarker(position, idx, title) {
                 //marker.setPosition(moveLatLon);
                 //marker.setMap(map);
                 for ( var i = 0; i < moveLatLons.length; i++ ) {
-                	addMarker(moveLatLons[i], i, title);
+                	addMarker(moveLatLons[i], i, titles[i]);
                 }   
+                // 이미 클릭했던 마커를 클릭하면 인포윈도우만 출력 후 탈출
+                for ( var i = 0; i < moveLatLons.length; i++ ) {
+                	if(Object.values(moveLatLons[i])[0]=== Object.values(moveLatLon)[0] && Object.values(moveLatLons[i])[1]=== Object.values(moveLatLon)[1] ){
+                        infowindow.setContent(title);
+                        infowindow.open(map, marker);
+                        address.innerHTML = content;
+                		return false;
+                	}
+                }   
+                
                 addMarker(moveLatLon, seq++, title);
                 moveLatLons.push(moveLatLon);
+                titles.push(title);
 
                 // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-                infowindow.setContent(content);
+                infowindow.setContent(title);
                 infowindow.open(map, marker);
                 address.innerHTML = content;
             }   
