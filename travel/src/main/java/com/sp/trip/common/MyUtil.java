@@ -30,6 +30,7 @@ public abstract class MyUtil {
 	 * @return				페이징 처리 결과
 	 */
 	public abstract String paging(int current_page, int total_page, String list_url);
+	public abstract String pagingfestival(int current_page, int total_page, String list_url);
 
 	/**
 	 * javascript를 이용하여 페이징 처리를하는 메소드 : javascript의 지정한 함수(methodName)를 호출

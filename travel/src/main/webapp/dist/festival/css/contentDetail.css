@@ -756,7 +756,7 @@
 .search_result .banner a span img{width:290px;}
 
 /* 더보기 메뉴 레이어팝업 */
-.pop_subMenu{display:none;position:absolute;top:10px;right:10px;z-index:110;width:170px;border:1px solid #999; padding:0;background:#fff;box-shadow:3px 3px 0px rgba(0, 0, 0, 0.2);}
+.pop_subMenu{display:none;position:absolute;top:60px;right:0;z-index:110;width:170px;border:1px solid #999; padding:0;background:#fff;box-shadow:3px 3px 0px rgba(0, 0, 0, 0.2);}
 
 .tit_cont .pop_subMenu{top:98px;}
 .tit_cont .btn_titview.on + .pop_subMenu{display: block;}
@@ -765,7 +765,7 @@
 .list_board1 li .btn_view.on + .pop_subMenu{display: block;}
 .guide_book_list li .btn_view.on + .pop_subMenu{display: block;top:41px !important;}
 .pop_subMenu.pop_myPage{top: 50px;}
-.pop_subMenu > ul{padding: 5px 0; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/line_menupop.png) 50% 0 no-repeat;}
+.pop_subMenu > ul{padding: 10px 0; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/line_menupop.png) 50% 0 no-repeat;}
 .pop_subMenu > ul:first-child{background: none;}
 .pop_subMenu > ul > li{position: relative; padding: 5px 0;}
 .pop_subMenu > ul > li:hover{background: #ededed;}
@@ -1697,7 +1697,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .brandingIcon .festival .icon2 span{width:102px;}
 .brandingIcon .festival .icon2:after{width:57px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/icon_branding_festival1.gif) 0 0 / auto 100% no-repeat;}
 
-.titleType1{text-align:center;position: relative;}
+.titleType1{text-align:center;position: relative;margin-top: 100px;}
 .titleType1 .area_tag:after{content:'';display:block;width:100%;clear:both;}
 .titleType1 .area_tag{text-align: left;}
 .titleType1 .area_tag > span{float:left;}
@@ -1825,12 +1825,12 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .wrap_map .map_view_layer button span:before{content:'';display:inline-block;width:14px;height:22px;vertical-align:middle;margin-right:2px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/icon_map_info.gif) 0 0 no-repeat;}
 .wrap_map .lmarker{width: 26px;height: 36px;}
 
-.detail_tab.menuFixed{width:940px;padding:0;background:#fff;position:fixed;top:0;z-index:102;}
+.detail_tab.menuFixed{width:940px;padding:0;background:#fff;top:0;z-index:102;margin-bottom: 70px;}
 .detail_tab {padding:0 0 20px;overflow: hidden;top:0;transition:top .5s ease-in-out;}
-.detail_tab ul li{float:left;width:25%;text-align:center;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
+.detail_tab ul li{float:left;width:33.3%;text-align:center;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
 .detail_tab ul li.on a{font-weight:800;color:#333;}
 .detail_tab ul li a{position:relative;display:block;line-height:63px;font-size:18px;color:#666;letter-spacing: -1px;}
-.detail_tab ul li a span{display:inline-block;padding:0 30px;position:relative;}
+.detail_tab ul li a span{display:inline-block;padding:0 60px;position:relative;}
 .detail_tab ul li.on a span:after{content:'';display:block;width:100%;height:3px;background:#333;position:absolute;left:0;bottom:0;}
 .detail_tab ul li a:before{content:'';display:inline-block;width:1px;height:16px;background:#ccc;position:absolute;left:-1px;top:50%;margin-top:-8px;}
 .detail_tab ul li:first-child a:before{display:none;}

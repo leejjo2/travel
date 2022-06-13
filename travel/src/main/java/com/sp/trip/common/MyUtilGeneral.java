@@ -242,4 +242,10 @@ public class MyUtilGeneral extends MyUtil {
 		
 		return sb.toString();
 	}
+
+	@Override
+	public String pagingfestival(int current_page, int total_page, String list_url) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

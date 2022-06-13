@@ -153,6 +153,7 @@ function slideFestival(areaCode, count) {
 	ajaxFun(url, "get", query, "json", fn);
 	
 	function printslideFestival(data) {
+		console.log(data);
 		let out = "";
 		$.each(data.response.body.items.item, function(index, item) {
 			let pattern = /(\d{4})(\d{2})(\d{2})/;
@@ -217,17 +218,70 @@ $(document).ready(function() {
 
 // 축제 리스트 불러오기
 function festivalList(sort, month, areaCode, pageNum) {
-	let url="${pageContext.request.contextPath}/festival/festivalList";
-	let query="sort="+sort+"&month="+month+"&areaCode="+areaCode+"&pageNum="+pageNum;
+	let url="${pageContext.request.contextPath}/festival/festivalList?";
+	url += "sort="+sort+"&month="+month+"&areaCode="+areaCode+"&pageNum="+pageNum;
 	
-	var fn=function(data) {
+	$.getJSON(url, function(data) {
 		printfestivalList(data);
-	};
-	
-	ajaxFun(url, "get", query, "json", fn);
+	});
 	
 	function printfestivalList(data) {
-		console.log(data);
+		console.log(data.totalCnt);
+		
+		
+		if(data.totalCnt === 0) {
+			$(".page-box").html("등록된 게시물이 없습니다.");
+		} else {
+			$(".page-box").html(data.paging);
+		}
+
+		let out = "";
+		
+		for(let i=0; i<data.titles.length; i++){
+			let pattern = /(\d{4})(\d{2})(\d{2})/;
+			let startdate = data.eventstartdates[i].replace(pattern, '$1.$2.$3');
+			let enddate = data.eventenddates[i].replace(pattern, '$1.$2.$3');
+			
+			let flagtype = "";
+			if(data.statuses[i] === "진행전") {
+				flagtype = "type_before";
+			} else if (data.statuses[i] === "진행중") {
+				flagtype = "type_ing";
+			} else if (data.statuses[i] === "종료") {
+				flagtype = "type_end";
+			}
+			
+			out += "<li class='bdr_nor'>";
+			out += 		"<div class='photo'>";
+			out += 			"<a href=''>";
+			out += 				"<img src='"+data.firstimages[i]+"'";
+			out += 				"	alt='"+data.titles[i]+"'><em class='flag "+flagtype+"'>"+data.statuses[i]+"</em>"; // type_ing : 진행중, type_before : 진행전, type_end : 취소
+			out += 			"</a>";
+			out += 		"</div>";
+			out += 		"<div class='area_txt'>";
+			out += 			"<div class='tit'>";
+			out += 				"<a onclick=''>"+data.titles[i]+"</a>";
+			out += 			"</div>";
+			out += 			"<p>["+startdate+"~"+enddate+"]</p>";
+			out += 			"<p class='tag'>";
+			out += 				"<span>"+data.addr1s[i]+"</span>";
+			out += 			"</p>";
+			out += 		"</div>";
+			out += 		"<button type='button' title='열기' class='btn_view'>더보기</button>";
+			out += 		"<div class='pop_subMenu'>";
+			out += 			"<ul>";
+			out += 				"<li class='btn_share' id=''>";
+			out += 					"<a href='' onclick=''>공유하기</a>";
+			out += 				"</li>";
+			out += 			"</ul>";
+			out += 		"</div>";
+			out += "</li>";
+			
+			
+		}
+		$("#festivalList").html(out);
+		$("#totalCnt").html(data.totalCnt);
+		
 	}
 }
 
@@ -250,7 +304,7 @@ $(document).ready(function () {
 });
 
 
-// 더보기 버튼 활성화
+// 시군구 더보기 버튼 스크립트
 $(document).ready(function () {
 	$(".btn_more").click(function() {
 		if($(this).html() === '더보기') {
@@ -265,7 +319,23 @@ $(document).ready(function () {
 	});
 });
 
-//리스트 최신순, 인기순 선택
+
+
+// 축제 리스트 더보기 버튼 스크립트
+$(document).ready(function () {
+	$(document).on("click", ".btn_view", function() {
+		if($(this).html() === '더보기') {
+			$(".btn_view").removeClass('on');
+			$(this).addClass('on');
+			$(this).html('닫기');
+		} else {
+			$(this).removeClass('on');
+			$(this).html('더보기');
+		}
+	});
+});
+
+// 리스트 최신순, 인기순 선택
 $(document).ready(function() {
 	$(document).on("click", ".btn_txt button", function() {
 		$(".btn_txt button").removeAttr('class');
@@ -313,6 +383,11 @@ function callFestivalList() {
 	festivalList(sort, month, areaCode, pageNum);
 }
 
+
+function detailFestival() {
+	let url="${pageContext.request.contextPath}/festival/requestFestival";
+	let query="areaCode="+areaCode+"&count="+count;
+}
 
 </script>
 
@@ -452,8 +527,6 @@ function callFestivalList() {
 									aria-atomic="true"></span>
 							</div>
 						</div>
-
-						<a href="${pageContext.request.contextPath}/festival/calendar" class="calendar"><span>축제 캘린더</span>로 이동</a>
 					</div>
 				</div> <!-- //contents --> 
 			</li>
@@ -474,46 +547,15 @@ function callFestivalList() {
 					<button type="button" class="btn_mPop">상세조회</button>
 				</div>
 				<h3 class="blind" id="blindsearchtype">최신순</h3>
-				<ul class="list_thumType flnon">
-					<%for(int i= 0; i < 5; i++) { %>
-					<li class="bdr_nor">
-						<div class="photo">
-							<a href="javascript:"
-								onclick="goDetail(&quot;b522c193-66bb-4bea-a814-6abad43e845e&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;32&quot;);"><img
-								src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=dd3fbaa5-fb75-4ac8-b37f-643a464e3569&amp;thumb"
-								alt="2022 강릉단오제"><em class="flag type_ing">진행중</em> <!-- type_ing : 진행중, type_before : 진행전, type_end : 취소 -->
-							</a>
-						</div>
-						<div class="area_txt">
-							<div class="tit">
-								<a href="javascript:"
-									onclick="goDetail(&quot;b522c193-66bb-4bea-a814-6abad43e845e&quot;,&quot;A02&quot;,&quot;A0207&quot;,&quot;32&quot;);">2022
-									강릉단오제</a>
-							</div>
-							<p>[2022.05.30~06.06]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-							<p class="tag">
-								<span>#가볼만한축제</span><span>#가족여행</span><span>#강릉가볼만한곳</span><span>#강릉단오제</span><span>#강릉축제</span><span>#강원권</span><span>#관광지</span><span>#기차여행</span><span>#나들이</span><span>#단오제</span><span>#데이트코스</span><span>#문화</span><span>#서울근교여행</span><span>#아이와함께</span><span>#연인과함께</span><span>#이색체험</span><span>#전통&amp;역사문화체험</span><span>#체험학습</span><span>#축제</span><span>#친구와함께</span><span>#힐링</span>
-							</p>
-						</div>
-						<button type="button" title="열기" class="btn_view" onclick="">더보기</button>
-						<div class="pop_subMenu">
-							<ul>
-								<li class="btn_far">
-									<a href="" onclick="">즐겨찾기</a>
-								</li>
-								<li class="btn_share" id="">
-									<a href="" onclick="">공유하기</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-				<%} %>
+				<ul class="list_thumType flnon" id="festivalList">
 				</ul>
 				
 				<!-- paging -->
-				<div class="page_box">
+				
+				<div class="page-box">
 					
 				</div>
+				
 				<!-- //paging -->
 				
 			</div>
