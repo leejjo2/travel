@@ -12,7 +12,7 @@
 	    </div>
 	    
 	    <div class="body-main">
-			관리자 페이지 입니다.
+			파트너 페이지 입니다.
 	    </div>
 	</div>
 	

@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="right_col" role="main" style="min-height: 1758px;">
-호호잇
+여긴 숙소별 방 리스트
+<button type="button" class="btn btn-light" 
+	onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/roomWrite';">방등록하기
+</button>
 </div>
-

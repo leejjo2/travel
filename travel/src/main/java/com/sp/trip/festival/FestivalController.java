@@ -85,7 +85,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&MobileOS=ETC";
@@ -115,7 +115,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange=P";
@@ -163,7 +163,7 @@ public class FestivalController {
 	 		}
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange="+ arrange;

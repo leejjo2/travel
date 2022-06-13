@@ -4,6 +4,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="right_col" role="main" style="min-height: 1758px;">
-호호잇
+여기는 숙소 등록 페이지!!!!
 </div>
-

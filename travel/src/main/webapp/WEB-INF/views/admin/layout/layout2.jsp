@@ -38,7 +38,6 @@
 		<tiles:insertAttribute name="body"/>
 		<tiles:insertAttribute name="footer"/>
 	</div>
-	
 </div>
 
 <div id="loadingLayout" style="display:none; position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 9000; background: #eee;">
