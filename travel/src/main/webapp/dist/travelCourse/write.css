@@ -1,0 +1,219 @@
+@charset "UTF-8";
+
+.title3{position: relative; min-height: 1000px;}
+
+.wrap_contView {
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+.wrap_contView h3 {
+    display: inline-block;
+    margin-top: 11px;
+    color: #000;
+    font-weight: 600;
+}
+.area_msListPc {
+    width: 100%;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.area_msListPc ul:first-child {
+    border-bottom: 1px solid #ccc;
+    list-style: none;
+    
+}
+
+ul, ol, menu, li {
+    list-style: none;
+}
+
+.area_msListPc li:first-child {
+    border-left: 0;
+}
+
+.clfix:after {
+    content: ".";
+    display: block;
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+
+.area_msListPc li {
+    float: left;
+    width: 11.1%;
+    border-left: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.area_msListPc li a {
+    display: block;
+    box-sizing: border-box;
+    padding: 12px 0;
+    font-size: 16px;
+    font-family: 맑은고딕;
+}
+
+.area_msListPc ul {
+	margin: 0px;
+	padding: 0px;}
+
+a:link, a:visited, a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+<!-- 지도 --!>
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+.map_wrap {    
+	position: relative;
+    width: 870px;
+    height: 500px;
+    margin: 20px auto;}
+.option button {
+	padding: 2px; margin-left: 5px;  background-color: #fff;
+    border-radius: 3px;  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 6px 0 rgb(0 0 0 / 5%), 0 4px 12px 0 rgb(0 0 0 / 5%);
+    border: 1px solid gray
+}
+
+.option input {
+	width: 80%;
+    height: 35px;
+    font-weight: 550;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#menu_wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    margin: 5px 0 5px 5px;
+    padding: 5px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+    font-size: 12px;
+    border-radius: 10px;
+}
+    
+.bg_white {background:#fff;}
+#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+#menu_wrap .option{text-align: center;}
+#menu_wrap .option p {margin:10px 0;}  
+
+#placesList ul {padding-left: 0px;}
+#placesList li {list-style: none;}
+#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+#placesList .item span {display: block;margin-top:4px;}
+#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+#placesList .item .info{padding:10px 0 10px 55px;}
+#placesList .info .gray {color:#8a8a8a;}
+#placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+#placesList .info .tel {color:#009900;}
+#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+#placesList .item .marker_1 {background-position: 0 -10px;}
+#placesList .item .marker_2 {background-position: 0 -56px;}
+#placesList .item .marker_3 {background-position: 0 -102px}
+#placesList .item .marker_4 {background-position: 0 -148px;}
+#placesList .item .marker_5 {background-position: 0 -194px;}
+#placesList .item .marker_6 {background-position: 0 -240px;}
+#placesList .item .marker_7 {background-position: 0 -286px;}
+#placesList .item .marker_8 {background-position: 0 -332px;}
+#placesList .item .marker_9 {background-position: 0 -378px;}
+#placesList .item .marker_10 {background-position: 0 -423px;}
+#placesList .item .marker_11 {background-position: 0 -470px;}
+#placesList .item .marker_12 {background-position: 0 -516px;}
+#placesList .item .marker_13 {background-position: 0 -562px;}
+#placesList .item .marker_14 {background-position: 0 -608px;}
+#placesList .item .marker_15 {background-position: 0 -654px;}
+#pagination {margin:10px auto;text-align: center;}
+#pagination a {display:inline-block;margin-right:10px;}
+#pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+
+.search {
+    position: relative;
+    width: 100%;
+}
+
+.main_gnb .search input {
+    padding: 0 50px 0 20px;
+    height: 45px;
+    line-height: 45px;
+    border: 0;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: #eef0f2;
+    outline: none;
+    border-radius: 10px;
+    color: black;
+}
+
+.main_gnb .search a.btn_search {
+    overflow: hidden;
+    text-indent: -9999px;
+    position: absolute;
+    top: 11px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background: url(https://cdn.visitkorea.or.kr/resources/images/common/btn_gnb_search.png) 0 0 no-repeat;
+}
+
+.search1 {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.searchCity_btn {
+	width: 35px;
+    height: 35px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: -internal-light-dark(black, white);
+    transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.inputKeyword{
+	width: 94%;
+    height: 35px;
+    padding: 0 5px;
+    border: 1.5px solid gray;    
+    margin-right: 5px;
+    font-family: 맑은고딕;
+    font-size: 15px;
+}
+
+.ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners { height: 300px;}
+
+.col-9 {
+    flex: 0 0 auto;
+    width: 80%;
+}
+
+.btn, textarea, input { font-family: 맑은고딕; }

@@ -173,7 +173,7 @@
    
 </div>
 
-<div class="container mb-2 pt-3 title3">
+<div class="container-sm mb-2 pt-3 title3">
    <div class="box mt-5">
       <div class="row text-dark g-3 text-center m-9 title3_2">
          <div style="margin-bottom: 20px;">
