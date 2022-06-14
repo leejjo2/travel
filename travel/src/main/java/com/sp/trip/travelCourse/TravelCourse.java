@@ -1,7 +1,9 @@
 package com.sp.trip.travelCourse;
 
+import java.util.List;
+
 public class TravelCourse {
-	private String userId;
+	private String userId; 
 	
 	// 관리자 추천 코스
 	private int courseNum;
@@ -15,20 +17,18 @@ public class TravelCourse {
 	private String hastag;
 	
 	// 코스 상세
-	private int courseDetailNum;
-	private int course_seq;
-	private String placeName;
-	private String address;
-	private String longitude;
-	private String latitude;
-	private String detailContent;
-	private int detailCityNum;
-	private String detailCityName;
+	private List<Integer> courseDetailNum;
+	private List<Integer> course_seq; // 순서
+	private List<String> placeName;
+	private List<String>  address;
+	private List<String>  longitude; // 위도
+	private List<String>  latitude; // 경도
+	private List<String>  detailContent;
 	
 	
 	// 코스 이미지
-	private int imageFileNum;
-	private String saveFilename;
+	private List<Integer> imageFileNum;
+	private List<String> saveFilename;
 	
 	public String getUserId() {
 		return userId;
@@ -90,74 +90,63 @@ public class TravelCourse {
 	public void setHastag(String hastag) {
 		this.hastag = hastag;
 	}
-	public int getCourseDetailNum() {
+	public List<Integer> getCourseDetailNum() {
 		return courseDetailNum;
 	}
-	public void setCourseDetailNum(int courseDetailNum) {
+	public void setCourseDetailNum(List<Integer> courseDetailNum) {
 		this.courseDetailNum = courseDetailNum;
 	}
-	public int getCourse_seq() {
+	public List<Integer> getCourse_seq() {
 		return course_seq;
 	}
-	public void setCourse_seq(int course_seq) {
+	public void setCourse_seq(List<Integer> course_seq) {
 		this.course_seq = course_seq;
 	}
-	public String getPlaceName() {
+	public List<String> getPlaceName() {
 		return placeName;
 	}
-	public void setPlaceName(String placeName) {
+	public void setPlaceName(List<String> placeName) {
 		this.placeName = placeName;
 	}
-	public String getAddress() {
+	public List<String> getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(List<String> address) {
 		this.address = address;
 	}
-	public String getLongitude() {
+	public List<String> getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(String longitude) {
+	public void setLongitude(List<String> longitude) {
 		this.longitude = longitude;
 	}
-	public String getLatitude() {
+	public List<String> getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(String latitude) {
+	public void setLatitude(List<String> latitude) {
 		this.latitude = latitude;
 	}
-	public String getDetailContent() {
+	public List<String> getDetailContent() {
 		return detailContent;
 	}
-	public void setDetailContent(String detailContent) {
+	public void setDetailContent(List<String> detailContent) {
 		this.detailContent = detailContent;
 	}
-	public int getDetailCityNum() {
-		return detailCityNum;
-	}
-	public void setDetailCityNum(int detailCityNum) {
-		this.detailCityNum = detailCityNum;
-	}
-	public String getDetailCityName() {
-		return detailCityName;
-	}
-	public void setDetailCityName(String detailCityName) {
-		this.detailCityName = detailCityName;
-	}
-	public int getImageFileNum() {
+	public List<Integer> getImageFileNum() {
 		return imageFileNum;
 	}
-	public void setImageFileNum(int imageFileNum) {
+	public void setImageFileNum(List<Integer> imageFileNum) {
 		this.imageFileNum = imageFileNum;
 	}
-	public String getSaveFilename() {
+	public List<String> getSaveFilename() {
 		return saveFilename;
 	}
-	public void setSaveFilename(String saveFilename) {
+	public void setSaveFilename(List<String> saveFilename) {
 		this.saveFilename = saveFilename;
 	}
 	
 	
+
 	
 	
 }

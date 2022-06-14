@@ -24,7 +24,7 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}
 		
 	}
-
+ 
 	@Override
 	public List<TravelCourse> listCity(Map<String, Object> map) throws Exception {
 		List<TravelCourse> listCity = null;

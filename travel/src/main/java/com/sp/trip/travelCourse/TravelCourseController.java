@@ -18,9 +18,9 @@ import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
 
 @Controller("travelCourse.travelCourseController")
-@RequestMapping(value = "/travelCourse/*")
+@RequestMapping(value = "/travelCourse/*") 
 public class TravelCourseController {
-	@Autowired
+	@Autowired 
 	private TravelCourseService service;
 	@Autowired
 	private MyUtil myUtil;
