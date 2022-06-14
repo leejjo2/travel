@@ -19,6 +19,7 @@
     margin-top: 11px;
     color: #000;
     font-weight: 600;
+    font-family: 맑은고딕;
 }
 .area_msListPc {
     width: 100%;
@@ -217,3 +218,10 @@ a {
 }
 
 .btn, textarea, input { font-family: 맑은고딕; }
+
+.mapForm1 {background:rgba(204,204,204,.2);  height: 570px; box-shadow: 2px 3px 9px 3px rgb(87 88 89 / 25%); margin: 10px;}
+.mapForm2 {height: 150px;  padding: 10px; background:none;  border: none;}
+.mapForm3 {border:none; width: 100%; background:none; height: 100%; display: flex; align-items: center; justify-content: center; margin-top: 10px;}
+.markerIcon {color:#13A6E8;font-size: 60px; margin-right: 25px;}
+.mapCityName{font-size: 45px; font-weight: 600;}
+.mapBtn{font-size: 18px; background: #13A6E8;  width: 80%; border-radius: 4px; border: none; height: 45px; font-weight: 600; color: white; margin-top: 10px;"}

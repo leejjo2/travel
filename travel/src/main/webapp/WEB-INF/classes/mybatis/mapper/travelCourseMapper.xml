@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="travelCourse">
+
+
+<!-- 도시 카테고리 -->
+<select id="cityCategory" resultType="com.sp.trip.travelCourse.TravelCourse">
+	SELECT cityNum detailCityNum, cityName detailCityName
+	FROM city
+	ORDER BY cityNum
+</select> 
+
+</mapper>

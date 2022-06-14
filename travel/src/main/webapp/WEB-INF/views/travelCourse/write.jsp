@@ -34,6 +34,12 @@
 	background-repeat : no-repeat;
 	background-size : cover;
 }
+
+.mapBtn:hover {
+	font-weight: 900;
+	color: white;
+	font-size: 19px;
+}
 </style>
 
 <script type="text/javascript">
@@ -44,6 +50,43 @@ $(document).ready(function() {
 	});
 });
 
+function sendOk() {
+	var f = document.cityForm;
+	var str;
+	
+	if(! f.cityName2.value) {
+		console.log("22"+f.cityName2.value)
+
+		alert("장소(마커)를 선택하세요. ");
+		f.cityName2.focus();
+		return;
+	}
+	
+	if(! f.cityCategoryNum.value) {
+		alert("지역을 선택하세요. ");
+		f.cityCategoryNum.focus();
+		return;
+	}
+	
+	if(! f.csdesc.value.trim()) {
+		alert("내용을 입력하세요. ");
+		f.csdesc.focus();
+		return;
+	}
+	
+	if(! f.selectFile.value) {
+
+		alert("사진을 추가하세요. ");
+		f.cityCategoryNum.focus();
+		return;
+	}
+	
+	
+	
+	 f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
+	 f.submit();
+
+}
 </script>
 
    
@@ -51,6 +94,10 @@ $(document).ready(function() {
 	
 	
 	<div class="card p-4">
+		<div style="  border-bottom: 3px solid gray;  padding-bottom: 5px;">
+			<i class="far fa-map" style="font-size: 40px;"></i>
+			<span style="font-family: 맑은고딕; font-size: 35px; font-weight: bold;; margin-left: 10px;">코스</span>
+		</div>
 		<div class="wrap_contView padB10">
 			<h3>지역</h3>
 			<div class="area_msListPc">
@@ -97,67 +144,75 @@ $(document).ready(function() {
 		    </div>
 		</div>
 		
-		
-		<form name="boardForm1" method="post">
-			<div>
-				<div>위도 : <span id="latitude"></span></div>
-				<div>경도 : <span id="longitude"></span></div>
-				<div>주소 : <span id="address"></span></div>
-				<div>지도중심주소 : <span id="centerAddr"></span></div>
-			</div>
-		</form>
-		
-		
-		<form name="boardForm" method="post">
-			<div class="container px-6 mt-5 mb-2">
-				<div class="row">
-					<div class="col-9">
-						 <input type="text"  id="selectedCity" name="subject" class="form-control" style="border-radius: .25rem; background: #f8f9fa;"  value="${dto.subject}" placeholder="명소 이름"
-							 disabled="disabled" >
-					</div>
-					<div class="col" >
-						<select name="groupCategoryNum" class="form-select" style="width: 150px;">
-							<option value="">지역</option>
-							<c:forEach var="vo" items="${groupList}">
-								<option value="${vo.categoryNum}" ${dto.groupCategoryNum==vo.categoryNum?"selected='selected'":""}>${vo.category}</option>
-							</c:forEach>
-						</select>
+		<div>
+
+		<form name="cityForm" method="post" enctype="multipart/form-data">
+			<div class="card mapForm1">
+				<div class="card mapForm2">
+					<div class="card mapForm3">
+							<span>
+								<i class="fas fa-map-marker-alt markerIcon" ></i>
+								<span id="cityName" class="mapCityName">City</span><br>
+							</span>
+							<span id="cityaddr" style="margin-top: 5px; font-size: 17px;"></span>
 					</div>
 				</div>
-				
-				<div class="row">
-					<div class="mapIntroduce modify mb-2">
+				<div class="container px-6 mt-2 mb-2">
+					<div class="row">
+						<div class="col-9">
+						</div>
+						<div class="col" >
+							<select name="cityCategoryNum" class="form-select" style="width: 150px;">
+								<option value="">지역</option>
+								<c:forEach var="vo" items="${cityList}">
+									<option value="${vo.detailCityNum}" >${vo.detailCityName}</option>
+								</c:forEach>
+							</select>
+						</div>
+					 </div>
 					
-						<div class="introduceTxt">
-							<p id="csdescview" style="display: none;"></p>
-							<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
+					<div class="row">
+						<div class="mapIntroduce modify mb-2">
+						
+							<div class="introduceTxt">
+								<p id="csdescview" style="display: none;"></p>
+								<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col">
+							<input type="file" name="selectFile" accept="image/*" multiple="multiple" class="form-control" >
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col">
-						<input type="file" name="selectFile" accept="image/*" class="form-control" >
-					</div>
-				</div>
-			</div>
+
 					
-			<table class="table table-borderless">
-				<tr>
-					<td class="text-center">
-						<button type="reset" class="btn btn-light px-4">다시입력</button>
-						<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
-						<c:if test="${mode=='update'}">
-							<input type="hidden" name="num" value="${dto.num}">
-							<input type="hidden" name="page" value="${page}">
-							<input type="hidden" name="group" value="${group}">
-						</c:if>
-					</td>
-				</tr>
-			</table>
-			
+				<table class="table table-borderless">
+					<tr>
+						<td class="text-center">
+							<button type="button" class="btn mapBtn"  onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+							<c:if test="${mode=='update'}">
+							</c:if>
+						</td>
+					</tr>
+				</table>
+				
+
+				
+				<div>
+					<input name = "cityName2" type="hidden" id="cityName2">
+					<input type="hidden" id="latitude">
+					<input type="hidden" id="longitude">
+					<input type="hidden" id="address">
+				</div>
+
+			</div>
 		</form>
+
 	</div>
-	
+				
+
 	
 	<div class="mt-5" >
 		<div class="total_check">
@@ -221,13 +276,13 @@ $(document).ready(function() {
 		</tr>
 	</table>
 			
-			
+	</div>
 </div>
 
 	
 
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=API키&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb77909a0ef2437b5bd6d8d151c7fd78&libraries=services"></script>
 
 <script>
 // 마커를 담을 배열입니다
@@ -422,20 +477,19 @@ function addMarker(position, idx, title) {
 //     	map.setLevel(5);
 //     	map.panTo(moveLatLon);
     	
-    	latitude.innerHTML = Object.values(position)[1];
-    	longitude.innerHTML = Object.values(position)[0];
-    	
+    	latitude.value = Object.values(position)[1];
+    	longitude.value = Object.values(position)[0];
+
     	// 마커 클릭시 도로명주소, 지번 주소 출력
     	 searchDetailAddrFromCoords(moveLatLon, function(result, status) {
             if (status === kakao.maps.services.Status.OK) {
-                var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-                detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+               // var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+                //detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
                 
-                var content = '<div class="bAddr">' +
-                                '<span class="title">법정동 주소정보 는</span><br>' + title +
-                                detailAddr + 
-                            '</div>';
-
+                
+               // var content = '<div class="bAddr">' +
+                //                '<span class="title">법정동 주소정보 는</span><br>' + title + detailAddr + 
+                //           	  '</div>';
                             
                 // 검색 결과 목록에 추가된 항목들을 제거합니다
 //                 var listEl = document.getElementById('placesList');
@@ -459,12 +513,14 @@ function addMarker(position, idx, title) {
                 // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                 //infowindow.setContent(content);
                // infowindow.open(map, marker);
-                address.innerHTML = content;
-                
+               // address.innerHTML = content;
+
                 // 수인
-                 var elem = document.getElementById('selectedCity');
-               	 elem.value = title;
-              
+                address.value = result[0].address.address_name;
+                cityName2.value = title;
+
+                document.getElementById("cityName").textContent = title;
+                document.getElementById("cityaddr").textContent = result[0].address.address_name;
                 //수인
               
             }   

@@ -348,6 +348,7 @@ CREATE TABLE travelCourseDetail(
  , longitude VARCHAR2(100) NOT NULL
  , latitude VARCHAR2(100) NOT NULL
  , content CLOB NOT NULL
+ , city VARCHAR2(30) NOT NULL
  , CONSTRAINT pk_travelCourseDetail_cousrseDetailNum PRIMARY KEY(courseDetailNum)
  , CONSTRAINT fk_travelCourseDetail_courseNum FOREIGN KEY(courseNum) REFERENCES travelCourse(courseNum) ON DELETE CASCADE
 );
