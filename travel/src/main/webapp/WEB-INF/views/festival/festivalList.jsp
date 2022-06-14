@@ -114,11 +114,19 @@ function sidoFestival(areaCode, count) {
 	function printFestival(data) {
 		let out1 = "";
 		let out2 = "";
+		let out3 = "";
 		$.each(data.response.body.items.item, function(index, item) {
 			if(index === 0){ // 첫 번째 파싱할때만
-				out1 += "<a href='' class='img'>";
-				out1 += 	"<img src='"+item.firstimage+"' alt='"+item.title+"'></a>";
+				out1 += "<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+item.contentid+"&contentTypeId="+item.contenttypeid+"' class='img' >";
+				out1 += 	"<img src='"+item.firstimage+"' alt='"+item.title+"'>";
 				
+				out2 += "<span>MY AREA FEED</span>";
+				out2 += 	"<div class='txt_info'>";
+				out2 += 		"<strong style='color: #000000;'>"+item.title+"</strong>";
+				out2 += 		"<p>"+item.addr1+"</p>";
+				out2 += 	"</div>";
+				out2 += "<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+item.contentid+"&contentTypeId="+item.contenttypeid+"' class='btn_detail'>자세히 보기 </a>";
+
 				$("#arealeft .txt_info strong").html(item.title);
 				$("#arealeft .txt_info p").html(item.addr1);
 			} else {
@@ -127,16 +135,17 @@ function sidoFestival(areaCode, count) {
 				let startdate = item.eventstartdate.toString().replace(pattern, '$1.$2.$3');
 				let enddate = item.eventenddate.toString().replace(pattern, '$1.$2.$3');
 				
-				out2 += "<li class='obj1 clfix'>";
-				out2 +=	  "<div>";
-				out2 += 	"<a href=''>"
-				out2 += "<strong class='bn_txtR' style='color: #097faf'>"+startdate + " ~ " + enddate + "</strong>";
-				out2 += item.title;
-				out2 += "</a></div></li>";
+				out3 += "<li class='obj1 clfix'>";
+				out3 +=	  "<div>";
+				out3 += 	"<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+item.contentid+"&contentTypeId="+item.contenttypeid+"'>"
+				out3 += "<strong class='bn_txtR' style='color: #097faf'>"+startdate + " ~ " + enddate + "</strong>";
+				out3 += item.title;
+				out3 += "</a></div></li>";
 			}
 		});
 		$("#areamid").html(out1);
-		$("#arearight .area_right ul").html(out2);
+		$("#arealeft").html(out2);
+		$("#arearight .area_right ul").html(out3);
 	}
 }
 
@@ -164,9 +173,9 @@ function slideFestival(areaCode, count) {
 			let addr = arr[0] + " " + arr[1];
 			
 			out += "<div class='swiper-slide swiper-slide-duplicate' style='margin-right: 20px;'>";
-			out +=    "<a href='' title='"+item.title+" 상세보기'>";
+			out +=    "<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+item.contentid+"&contentTypeId="+item.contenttypeid+"' title='"+item.title+" 상세보기'>";
 			out += 		"<span class='img swiper-lazy swiper-lazy-loaded'";
-			out += 		"	style='background-image: url(&quot;"+item.firstimage+"&quot;);'></span>";
+			out += 		"	style='background-image: url("+item.firstimage+");'></span>";
 			out += 		"<span class='hover_cont'>";
 			out += 			"<span class='date'>"+startdate+" ~ "+enddate+"</span>";
 			out += 			"<strong>"+item.title+"</strong>";
@@ -253,14 +262,14 @@ function festivalList(sort, month, areaCode, pageNum) {
 			
 			out += "<li class='bdr_nor'>";
 			out += 		"<div class='photo'>";
-			out += 			"<a href=''>";
+			out += 			"<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+data.contentids[i]+"&contentTypeId="+data.contenttypeids[i]+"'>";
 			out += 				"<img src='"+data.firstimages[i]+"'";
 			out += 				"	alt='"+data.titles[i]+"'><em class='flag "+flagtype+"'>"+data.statuses[i]+"</em>"; // type_ing : 진행중, type_before : 진행전, type_end : 취소
 			out += 			"</a>";
 			out += 		"</div>";
 			out += 		"<div class='area_txt'>";
 			out += 			"<div class='tit'>";
-			out += 				"<a onclick=''>"+data.titles[i]+"</a>";
+			out += 				"<a href='${pageContext.request.contextPath}/festival/fesDetail?contentId="+data.contentids[i]+"&contentTypeId="+data.contenttypeids[i]+"'>"+data.titles[i]+"</a>";
 			out += 			"</div>";
 			out += 			"<p>["+startdate+"~"+enddate+"]</p>";
 			out += 			"<p class='tag'>";
@@ -479,19 +488,11 @@ function detailFestival() {
 									<div class="area_mid" id="areamid">
 									</div>
 									<div class="area_left" id="arealeft">
-										<span>MY AREA FEED</span>
-										<div class="txt_info">
-											<strong style="color: #000000;">지금, 사계展</strong>
-											<p>
-												레진아티스트와 함께하는<br>전시회에 초대합니다
-											</p>
-										</div>
-										<a href="" class="btn_detail" title="">자세히 보기 </a>
 									</div>
 									
 									<!-- 오른쪽에 3개 짜리 -->
 									<div id="arearight">
-										<div class="area_right" id="area3" style="">
+										<div class="area_right" id="area3">
 											<ul>
 											</ul>
 										</div>

@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,11 +42,6 @@ public class FestivalController {
 	@RequestMapping(value = "calendar", method = RequestMethod.GET)
 	public String calendar() {
 		return ".festival.festivalCalendar";
-	}
-	
-	@RequestMapping(value = "fesDetail", method = RequestMethod.GET)
-	public String fesDetail() {
-		return ".festival.festivalDetail";
 	}
 	
 	@RequestMapping(value = "readCity", method = RequestMethod.GET)
@@ -85,7 +81,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode";
-	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
+	 		spec += "?serviceKey=서비스키" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&MobileOS=ETC";
@@ -115,7 +111,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
+	 		spec += "?serviceKey=서비스키" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange=P";
@@ -135,7 +131,6 @@ public class FestivalController {
 		}
 		return result;
 	}
-	
 	
 	@RequestMapping("festivalList")
 	@ResponseBody
@@ -163,7 +158,7 @@ public class FestivalController {
 	 		}
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
+	 		spec += "?serviceKey=서비스키" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange="+ arrange;
@@ -192,6 +187,8 @@ public class FestivalController {
 	 		List<String> titles = new ArrayList<String>();
 	 		List<String> addr1s = new ArrayList<String>();
 	 		List<String> statuses = new ArrayList<String>();
+	 		List<String> contentids = new ArrayList<String>();
+	 		List<String> contenttypeids = new ArrayList<String>();
 	 		
 	 		int totalCnt = job.getJSONObject("response").getJSONObject("body").getInt("totalCount");
 	 		for(int index = 0; index < items.length(); index++) {
@@ -225,6 +222,8 @@ public class FestivalController {
 	 	        eventenddates.add(eventenddate);
 	 			firstimages.add(ob.getString("firstimage"));
 	 			titles.add(ob.getString("title"));
+	 			contentids.add(Integer.toString(ob.getInt("contentid")));
+	 			contenttypeids.add(Integer.toString(ob.getInt("contenttypeid")));
 	 			
 	 			try {
 	 				addr1s.add(ob.getString("addr1"));
@@ -252,6 +251,8 @@ public class FestivalController {
 	 		model.put("titles", titles);
 	 		model.put("addr1s", addr1s);
 	 		model.put("statuses", statuses);
+	 		model.put("contentids", contentids);
+	 		model.put("contenttypeids", contenttypeids);
 	 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -259,5 +260,124 @@ public class FestivalController {
 		}
 		return model;
 	}
+	
+	// 축제 상세보기
+	@RequestMapping(value = "fesDetail", method = RequestMethod.GET)
+	public String fesDetail(
+			@RequestParam int contentId,
+			@RequestParam int contentTypeId,
+			Model model) {
+		
+		String result = "";
+		
+		try {
+			// 첫번째 API
+			String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon";
+	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "&MobileOS=ETC";
+	 		spec += "&MobileApp=travel";
+	 		spec += "&contentId="+contentId;
+	 		spec += "&contentTypeId="+contentTypeId;
+	 		spec += "&defaultYN=Y";
+	 		spec += "&firstImageYN=Y";
+	 		spec += "&areacodeYN=Y";
+	 		spec += "&addrinfoYN=Y";
+	 		spec += "&overviewYN=Y";
+	 		
+	 		result = apiSerializer.receiveXmlToJson(spec);
+	 		
+	 		JSONObject job = new JSONObject(result);
+	 		JSONObject item = job.getJSONObject("response").getJSONObject("body").getJSONObject("items").getJSONObject("item");
+			
+	 		
+	 		String addr1 = item.getString("addr1");
+	 		int areaCode = item.getInt("areacode");
+	 		String firstimage = item.getString("firstimage");
+	 		String firstimage2 = item.getString("firstimage2");
+	 		String overview = item.getString("overview");
+	 		String title = item.getString("title");
+	 		String homepage = item.getString("homepage");
+
+	 		
+	 		// 두번째 API
+	 		spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro";
+	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "&MobileOS=ETC";
+	 		spec += "&MobileApp=travel";
+	 		spec += "&contentId="+contentId;
+	 		spec += "&contentTypeId="+contentTypeId;
+
+	 		
+	 		result = apiSerializer.receiveXmlToJson(spec);
+	 		
+	 		job = new JSONObject(result);
+	 		item = job.getJSONObject("response").getJSONObject("body").getJSONObject("items").getJSONObject("item");
+	 		
+	 		String eventstartdate = Integer.toString(item.getInt("eventstartdate"));
+	 		String eventenddate = Integer.toString(item.getInt("eventenddate"));
+
+	 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
+ 			Date now = new Date();
+ 			String formatedNow = sdf.format(now);
+ 			
+ 			Date startdate = sdf.parse(eventstartdate);
+ 			Date enddate = sdf.parse(eventenddate);
+ 			Date nowdate = sdf.parse(formatedNow);
+ 			
+ 			String status = "";
+ 			
+ 			if(startdate.after(nowdate)) {
+ 				status = "진행전";
+ 			} else if(enddate.before(nowdate)) {
+ 				status = "종료";
+ 			} else if(startdate.before(nowdate) && enddate.after(nowdate)) {
+ 				status = "진행중";
+ 			} else if(startdate.equals(nowdate) || enddate.equals(nowdate)) {
+ 				status = "진행중";
+ 			}
+	 		
+ 			sdf = new SimpleDateFormat("yyyy.MM.dd"); 
+ 			eventstartdate = sdf.format(startdate);
+ 			eventenddate = sdf.format(enddate);
+ 			
+ 			
+ 			String eventplace = item.getString("eventplace");
+ 			String sponsor1 = item.getString("sponsor1");
+ 			String sponsor2 = "";
+ 			try {
+ 				sponsor2 = item.getString("sponsor2");
+			} catch (Exception e) {
+				sponsor2 = item.getString("sponsor1");
+			}
+ 			
+ 			String sponsor1tel = item.getString("sponsor1tel");
+ 			
+ 			String[] addrStr = addr1.split("\\s+");
+ 			String sigungu = addrStr[0]+ " " + addrStr[1];
+	 		
+	 		model.addAttribute("addr", addr1);
+	 		model.addAttribute("sigungu", sigungu);
+	 		model.addAttribute("areacode", areaCode);
+	 		model.addAttribute("firstimage", firstimage);
+	 		model.addAttribute("firstimage2", firstimage2);
+	 		model.addAttribute("overview", overview);
+	 		model.addAttribute("title", title);
+	 		model.addAttribute("homepage", homepage);
+	 		
+	 		model.addAttribute("eventstartdate", eventstartdate);
+	 		model.addAttribute("eventenddate", eventenddate);
+	 		model.addAttribute("status", status);
+	 		model.addAttribute("eventplace", eventplace);
+	 		model.addAttribute("sponsor1", sponsor1);
+	 		model.addAttribute("sponsor2", sponsor2);
+	 		model.addAttribute("sponsor1tel", sponsor1tel);
+	 		
+	 		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ".festival.festivalDetail";
+	}
+	
 	
 }
