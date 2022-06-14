@@ -12,6 +12,7 @@ public class TravelCourse {
 	private String reg_date;
 	private int hitCount;
 	private int cityNum;
+	private String cityName;
 	private int themeNum;
 	private String period;
 	private String hastag;
@@ -24,12 +25,14 @@ public class TravelCourse {
 	private List<String>  longitude; // 위도
 	private List<String>  latitude; // 경도
 	private List<String>  detailContent;
+	private int detailCityNum;
+	private String detailCityName;
+	
 	
 	
 	// 코스 이미지
 	private List<Integer> imageFileNum;
 	private List<String> saveFilename;
-	
 	public String getUserId() {
 		return userId;
 	}
@@ -71,6 +74,12 @@ public class TravelCourse {
 	}
 	public void setCityNum(int cityNum) {
 		this.cityNum = cityNum;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 	public int getThemeNum() {
 		return themeNum;
@@ -131,6 +140,18 @@ public class TravelCourse {
 	}
 	public void setDetailContent(List<String> detailContent) {
 		this.detailContent = detailContent;
+	}
+	public int getDetailCityNum() {
+		return detailCityNum;
+	}
+	public void setDetailCityNum(int detailCityNum) {
+		this.detailCityNum = detailCityNum;
+	}
+	public String getDetailCityName() {
+		return detailCityName;
+	}
+	public void setDetailCityName(String detailCityName) {
+		this.detailCityName = detailCityName;
 	}
 	public List<Integer> getImageFileNum() {
 		return imageFileNum;
