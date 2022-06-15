@@ -2127,6 +2127,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .cos_section > div{float: right;}
 .cos_section > div span{display:block;}
 
+
 /* 코스 상세 */
 .schedule_info{padding:40px 150px 40px;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}
 .schedule_info .schedule{overflow:hidden;}

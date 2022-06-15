@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/travelCourse/write.css">
 
 
+
 <style type="text/css">
 
 .tit .courseCityName { border:none; overflow:hidden;display: inline-block;width:100%;font-weight:bold;font-size: 20px; color: #000;text-overflow:ellipsis;white-space: nowrap; background: white;}
@@ -380,8 +381,12 @@ var seq = 0;
 // 정조 끝
 
 $(".clfix li a").on("click", function(){
+	var keyword;
 	
-	var keyword = $(this).text();
+	if( $(this).text() === '전체보기') {
+		keyword = '맛집';
+	} else {
+	keyword = $(this).text(); }
 		
 	searchPlacesCity(keyword);
 });

@@ -2,6 +2,7 @@ package com.sp.trip.travelCourse;
 
 import java.util.List;
 
+
 public class TravelCourse {
 	private String userId; 
 	

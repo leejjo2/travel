@@ -17,6 +17,7 @@ import com.sp.trip.common.FileManager;
 import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
 
+
 @Controller("travelCourse.travelCourseController")
 @RequestMapping(value = "/travelCourse/*") 
 public class TravelCourseController {
