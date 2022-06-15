@@ -12,6 +12,7 @@
 	padding: 20px;
 	max-width: 1000px;
 	text-align: center;
+	
 }
 
 .search2 {
@@ -33,7 +34,10 @@ a {
 	color: #333;
 }
 
-
+button {
+	border: none;
+	background-color: white;
+}
 
 
 </style>
@@ -56,57 +60,95 @@ function ajaxFun(url, method, query, dataType, fn) {
 }
 
 $(function(){
+	foodList(1);
+});	
 	
-	foodList();
+function foodList(areaCode, cat3) {
+	if(! cat3) cat3 = "";
 	
-	function foodList() {
-		var url="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
-		var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39";
-		
-		var fn = function(data) {
-			printXML(data);
-		};
-		
-		ajaxFun(url, "get", query, "xml", fn);
-	}
+	var url="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
+	var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39&areaCode="+areaCode+"&cat3="+cat3;
 	
-	function printXML(data) {
-		var out="";
+	var fn = function(data) {
+		printXML(data);
+	};
+	
+	ajaxFun(url, "get", query, "xml", fn);
+}
+	
+function printXML(data) {
+	var out="";
+	
+	var noImg = "${pageContext.request.contextPath}/resources/images/noimage.png";
+	var dataCount = $(data).find("totalCount").text();
+	
+	$(data).find("item").each(function() {
+		var item = $(this);
+		var title = item.find("title").text();
+		var addr1 = item.find("addr1").text();
+		var img = item.find("firstimage").text();
 		
-		var noImg = "${pageContext.request.contextPath}/resources/images/noimage.png";
-		var dataCount = $(data).find("totalCount").text();
-		$(data).find("item").each(function() {
-			var item = $(this);
-			var title = item.find("title").text();
-			var addr1 = item.find("addr1").text();
-			var img = item.find("firstimage").text();
+		out += "<div class='row g-0' style='border-bottom: 1px solid gray;'>";
+		out += "   <div class='col-10' style='border: none'>";
+		out += "       <div class='p-0' style='color: black;'>";
+		out += "          <a href='#'>음식점명 : "+title+"</a>";
+		out += "          <p><a href='#'>주소 : "+addr1+"</a></p>";
+		out += "       </div>";
+		out += "   </div>";
+		
+		out += "   <div class='col-2 text-center'>";
+		out += "       <div class='border p-0'>";
+		if( img ) {
+			out += "       <img src='"+img+"' width='100%' height='100'>";
+		} else {
+			out += "       <img src='"+noImg+"' width='100%' height='100'>";
+		}
+		out += "       </div>";
+		out += "   </div>";
+		
+		out += "</div>";
 			
-			out += "<div class='row g-0' style='border-bottom: 1px solid gray;'>";
-			out += "   <div class='col-10' style='border: none'>";
-			out += "       <div class='p-0' style='color: black;'>";
-			out += "          <p>음식점명 : "+title+"</p>";
-			out += "          <p>주소 : "+addr1+"</p>";
-			out += "       </div>";
-			out += "   </div>";
-			
-			out += "   <div class='col-2 text-center'>";
-			out += "       <div class='border p-0'>";
-			if( img ) {
-				out += "       <img src='"+img+"' width='100%' height='100'>";
-			} else {
-				out += "       <img src='"+noImg+"' width='100%' height='100'>";
+	});
+	
+	$(".matziplist").html(out);
+}
+
+$(function(){
+	$(".sudogun .btnSearch").eq(0).parent().css("background", "#0dcaf0");
+	$(".sudogun .btnSearch").eq(0).css("background", "#0dcaf0");
+	
+	$(".btnSearch").click(function(){
+		var areaCode = $(this).attr("data-areacode");
+		foodList(areaCode);
+		
+		$(".sudogun .btnSearch").parent().css("background", "#fff");
+		$(".sudogun .btnSearch").css("background", "#fff");
+		
+		$(this).parent().css("background", "#0dcaf0");
+		$(this).css("background", "#0dcaf0");
+		
+	});
+});
+
+$(function(){
+	$(".btnSearch2").click(function(){
+		var areaCode = "1";
+		$(".sudogun .btnSearch").each(function(){
+			if($(this).css("background-color") == "rgb(13, 202, 240)") {
+				areaCode = $(this).attr("data-areacode");
 			}
-			out += "       </div>";
-			out += "   </div>";
-			
-			out += "</div>";
-				
 		});
 		
-		$(".matziplist").html(out);
-	}
-	
+		var cat3 = $(this).attr("data-cat3");
+		
+		foodList(areaCode, cat3);
+	});
 });
+
+
+
+
+
 </script>
 
 	<div class="container mb-3" style="font-size: 25px; padding: 10px;">여행지추천 - 맛집 리스트</div>
@@ -114,61 +156,61 @@ $(function(){
 			<div class="sudogun">
 				<div class="row row-cols text-dark">
 					<div class="col border p-2">
-						<a href="#" >서울</a>
+						<button type="button" data-areacode="1" class="btnSearch">서울</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >인천</a>
+					  <button type="button" data-areacode="2" class="btnSearch">인천</button>
 					</div>
 					<div class="col border p-2">
-					 <a href="#" >대전</a>
+					 <button type="button" data-areacode="3" class="btnSearch">대전</button>
+					</div>
+					<div class="col border p-2" >
+					  <button type="button" data-areacode="4" class="btnSearch">대구</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >대구</a>
+					  <button type="button" data-areacode="5" class="btnSearch">광주</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >광주</a>
+					  <button type="button" data-areacode="6" class="btnSearch">부산</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >부산</a>
+					  <button type="button" data-areacode="7" class="btnSearch">울산</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >울산</a>
+					 <button type="button" data-areacode="8" class="btnSearch">세종</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >세종</a>
-					</div>
-					<div class="col border p-2">
-					  <a href="#" >경기</a>
+					 <button type="button" data-areacode="31" class="btnSearch">경기</button>
 					</div>
 				</div>
 				
 				<div class="row row-cols text-dark">
 					<div class="col border p-2">
-					  <a href="#" >강원</a>
+					<button type="button" data-areacode="32" class="btnSearch">강원</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >충북</a>
+					 <button type="button" data-areacode="33" class="btnSearch">충북</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >충남</a>
+					 <button type="button" data-areacode="34" class="btnSearch">충남</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >경북</a>
+					  <button type="button" data-areacode="35" class="btnSearch">경북</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >경남</a>
+					  <button type="button" data-areacode="36" class="btnSearch">경남</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >전북</a>
+					  <button type="button" data-areacode="37" class="btnSearch">전북</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >전남</a>
+					 <button type="button" data-areacode="38" class="btnSearch">전남</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >제주</a>
+					 <button type="button" data-areacode="39" class="btnSearch">제주</button>
 					</div>
 					<div class="col border p-2">
-					  <a href="#" >전체보기</a>
+					  <button type="button" data-areacode="" class="btnSearch">전체보기</button>
 					</div>
 					
 				</div>
@@ -197,14 +239,21 @@ $(function(){
 					<div class="border p-0" style="border-radius: 5px;">
 						<ul class="navbar-nav mx-auto flex-nowrap"> 
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									<i class="bi bi-hand-thumbs-up"></i> 추천순
+								<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									 구분
 								</a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#" style="color: black;"> 조회수순</a></li>
-									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-shop"></i> 음식점</a></li>
-									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-cup-straw"></i> 까페/디저트</a></li>
-									<li><a class="dropdown-item" href="#" style="color: black;"><i class="bi bi-cup"></i> 술집</a></li>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-align: center;">
+									<li><button type="button" class="btnSearch2" data-cat3="">전체</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020100">한식</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020200">서양식</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020300">일식</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020400">중식</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020500">아시아식</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020600">패밀리레스토랑</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020700">이색음식점</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020800">채식전문점</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05020900">바/카페</button></li>
+									<li><button type="button" class="btnSearch2" data-cat3="A05021000">클럽</button></li>
 								</ul>
 							</li>
 						</ul>
@@ -215,10 +264,6 @@ $(function(){
 	  	</div>
 		
 		<!-- 음식점 리스트 -->
-		<div class="matziplist2">
-		
-		
-		</div>
 		
 		<div class="matziplist"></div>
 		
