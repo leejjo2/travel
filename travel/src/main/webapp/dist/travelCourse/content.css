@@ -76,7 +76,7 @@
 .tit_cont .area_titDate .inTxt{padding-right: 10px; margin-right: 10px; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/line_tit.png) 100% 50% no-repeat; background-size: auto 12px;color:#666;}
 .tit_cont .area_titDate .inTxt:last-child{background:none;}
 .tit_cont .btn_titview{overflow: hidden; position: absolute; top: 61px; right: 0;z-index:90; width: 24px; height: 26px; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/btn_dot.png) 0 0 no-repeat; background-size: 100% auto; text-indent: -9999px;}
-.tit_cont.tit_widCol2{width: 600px;}
+.tit_cont.tit_widCol2{width: 100%;}
 .tit_cont.tit_widCol2 .btn_apply{position: absolute; bottom: 0; right: 0;}
 .tit_cont.tit_widCol2 .btn_use_view{position: absolute; bottom: 0; right:102px;}
 
@@ -487,7 +487,7 @@
 
 .total_check{position: relative; padding:15px 0 13px; font-weight:700; border-top: 1px solid #999;}
 .total_check.checkBd{border-top: 2px solid #000;}
-.total_check strong{font-weight:700; font-size: 18px; color: #000;}
+.total_check strong{font-weight:700; font-size: 21px; color: #000;}
 .total_check strong span{padding: 0 2px; color: #0a97cd;}
 .total_check .list_type{display:inline-block;margin-top:18px;}
 .total_check .list_type button{float:left;width:15px;height:15px;text-indent: -9999px;}
@@ -555,7 +555,7 @@
 .list_thumType > li .photo img{width: 140px;height:94px;}
 .list_thumType > li .photo a{display: block;}
 .list_thumType > li .photo .forecast_icon{display:inline-block;position:absolute;left:4px;top:0;width:29px;height:41px;z-index: 5;background:url(https://cdn.visitkorea.or.kr/resources/images/sub/icon_forecast.png) 0 0 no-repeat;text-indent: -9999px;}
-.list_thumType > li .photo .numbering{position:absolute;left:0;top:0;display:inline-block;background:#e54645;color:#fff;font-weight:700;font-size:16px;text-align:center;line-height:28px;width:30px;height:30px;}
+.list_thumType > li .photo .numbering{position:absolute;left:0;top:0;display:inline-block;background:#1192CC;color:#fff;font-weight:700;font-size:16px;text-align:center;line-height:28px;width:30px;height:30px;}
 .list_thumType.event > li .photo{width:142px;}
 .list_thumType.event > li .photo a{border:1px solid #e5e5e5;}
 .list_thumType.type1 > li:first-child{border-top:0;}
@@ -2122,11 +2122,11 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 
 /* 마이코스 */
 .cos_section{overflow:hidden;padding:24px 0 6px;font-weight:700;font-size:16px;color:#000;}
-.cos_section .type1{margin-right:50px;}
-.cos_section > div label{line-height:40px;margin-right:15px;}
-.cos_section > div select{width:170px;height:40px;line-height:40px;color:#000;font-size:14px;}
-.cos_section > div{float:left;}
+.cos_section > div label{line-height: 40px;margin-right: 15px; font-size: 17px;}
+.cos_section > div select{width:150px;height:40px;line-height:40px;color:#000;font-size:16px;}
+.cos_section > div{float: right;}
 .cos_section > div span{display:block;}
+
 
 /* 코스 상세 */
 .schedule_info{padding:40px 150px 40px;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;}

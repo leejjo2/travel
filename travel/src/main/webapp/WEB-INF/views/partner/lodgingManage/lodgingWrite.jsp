@@ -17,9 +17,38 @@
 .ck-content .image>figcaption {
 	min-height: 25px;
 }
+
+.img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 65px);
+	grid-gap: 5px;
+}
+
+.img-grid .item {
+    object-fit: cover; /* 가로세로 비율은 유지하면서 컨테이너에 꽉 차도록 설정 */
+    width: 65px;
+    height: 65px;
+	cursor: pointer;
+}
+
+.img-box {
+	max-width: 600px;
+	padding: 5px;
+	box-sizing: border-box;
+	display: flex; /* 자손요소를 flexbox로 변경 */
+	flex-direction: row; /* 정방향 수평나열 */
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+
+.img-box img {
+	width: 37px; height: 37px;
+	margin-right: 5px;
+	flex: 0 0 auto;
+	cursor: pointer;
+}
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
-
 <script type="text/javascript">
 function sendOk() {
 	var f = document.hotelForm;
@@ -47,6 +76,8 @@ function sendOk() {
 	f.action="${pageContext.request.contextPath}/sbbs/${mode}";
 	f.submit();
 }
+
+
 </script>
 
 <script type="text/javascript">
@@ -79,7 +110,6 @@ function ajaxFun(url, method, query, dataType, fn) {
 		}
 	});
 }
-
 </script>
 
 <div class="right_col" role="main" style="min-height: 1758px;">
@@ -99,7 +129,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 						<tr>
 							<td class="table-light" scope="row" style="width: 90px;">숙소이름</td>
 							<td colspan="3">
-								<input type="text" name="hotelname" class="form-control" value="">
+								<input type="text" name="hotelName" class="form-control" value="">
 							</td>
 						</tr>
 					
@@ -107,20 +137,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td class="table-light" scope="row">전화번호</td>
 							<td colspan="2">
 								<div class="row">
-									<div class="col-sm-3">
-										<input type="text" name="tel1" id="tel1" class="form-control" value="" maxlength="3">
-									</div>
-									<div class="col-sm-1">
-										<p class="form-control-plaintext text-center">-</p>
-									</div>
-									<div class="col-sm-3">
-										<input type="text" name="tel2" id="tel2" class="form-control" value="" maxlength="3">
-									</div>
-									<div class="col-sm-1" >
-										<p class="form-control-plaintext text-center">-</p>
-									</div>
-									<div class="col-sm-3">
-										<input type="text" name="tel3" id="tel3" class="form-control" value="" maxlength="3">
+									<div class="col-sm-5">
+										<input type="text" name="hotelNumber" id="hotelNumber" class="form-control" value="" maxlength="11">
 									</div>
 								</div>
 							</td>
@@ -137,14 +155,14 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td class="table-light" scope="row">내 용</td>
 							<td colspan="3">
 								<div class="editor">${dto.content}</div>
-								<input type="hidden" name="content">
+								<input type="hidden" name="hotelIntro">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="table-light" scope="row" rowspan="2">주소</td>
 							<td>
-								<input type="text" name="zip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.zip}" readonly="readonly">
+								<input type="text" name="hotelZip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.zip}" readonly="readonly">
 							</td>
 							<td>	
 								<button class="btn btn-light" type="button" style="margin-left: 3px;" onclick="daumPostcode();">우편번호 검색</button>
@@ -153,10 +171,32 @@ function ajaxFun(url, method, query, dataType, fn) {
 						
 						<tr>
 							<td colspan="2">
-								<input type="text" name="addr1" id="addr1" class="form-control" placeholder="기본 주소" value="${dto.addr1}" readonly="readonly">
-								<input type="text" name="addr2" id="addr2" class="form-control" placeholder="상세 주소" value="${dto.addr2}">
+								<input type="text" name="hotelAddr1" id="addr1" class="form-control" placeholder="기본 주소" value="${dto.addr1}" readonly="readonly">
+								<input type="text" name="hotelAddr2" id="addr2" class="form-control" placeholder="상세 주소" value="${dto.addr2}">
 							</td>
 						</tr>
+						
+						<tr>
+							<td  class="table-light" scope="row">사&nbsp;&nbsp;&nbsp;&nbsp;진</td>
+							<td colspan="2" style="text-align: left; width: 70px;"> 
+								<div class="img-grid"><img class="item img-add" src="${pageContext.request.contextPath}/resources/images/hotel/add_photo.png"></div>
+								<input type="file" name="selectFile" accept="image/*" multiple="multiple" style="display: none;" class="form-control">
+							</td>
+						</tr>
+						
+						<c:if test="${mode=='update'}">
+							<tr>
+								<td>첨부된 사진</td>
+								<td> 
+									<div class="img-box">
+										<c:forEach var="vo" items="">
+											<img src="${pageContext.request.contextPath}/uploads/management/"
+											onclick="deleteFile('${vo.image_Num}');">
+										</c:forEach>
+									</div>
+								</td>
+							</tr>
+						</c:if>
 						
 					</table>
 					
@@ -167,9 +207,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 								<button type="reset" class="btn btn-light">다시입력</button>
 								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
-									<input type="hidden" name="num" value="${dto.num}">
-									<input type="hidden" name="page" value="${page}">
-									<input type="hidden" name="group" value="${group}">
+									<input type="hidden" name="partnerNum" value="${dto.partnerNum}">
 								</c:if>
 								</td>
 							</tr>

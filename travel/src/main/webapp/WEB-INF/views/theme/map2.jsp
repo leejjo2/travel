@@ -41,13 +41,11 @@
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
 
-
-
 <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-                </form>
+	<div>위도 : <span id="latitude"></span></div>
+	<div>경도 : <span id="longitude"></span></div>
+	<div>주소 : <span id="address"></span></div>
+	<div>지도중심주소 : <span id="centerAddr"></span></div>
 </div>
 
 <div class="map_wrap">
@@ -55,7 +53,12 @@
 
     <div id="menu_wrap" class="bg_white">
         <div class="option">
-            
+            <div>
+                <form onsubmit="searchPlaces(); return false;">
+                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                    <button type="submit">검색하기</button> 
+                </form>
+            </div>
         </div>
         <hr>
         <ul id="placesList"></ul>
@@ -257,34 +260,54 @@ function addMarker(position, idx, title) {
     	map.setLevel(5);
     	map.panTo(moveLatLon);
     	
+    	latitude.innerHTML = Object.values(position)[1];
+    	longitude.innerHTML = Object.values(position)[0];
     	
     	// 마커 클릭시 도로명주소, 지번 주소 출력
     	searchDetailAddrFromCoords(moveLatLon, function(result, status) {
             if (status === kakao.maps.services.Status.OK) {
-//                 var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-//                 detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+                var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+                detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
                 
-//                 var content = '<div class="bAddr">' +
-//                                 '<span class="title">법정동 주소정보</span><br>' + title +
-//                                 detailAddr + 
-//                             '</div>';
+                var content = '<div class="bAddr">' +
+                                '<span class="title">법정동 주소정보</span><br>' + title +
+                                detailAddr + 
+                            '</div>';
                             
-//                 titles.push(title);
+                // 검색 결과 목록에 추가된 항목들을 제거합니다
+                var listEl = document.getElementById('placesList');
+                removeAllChildNods(listEl);
+                
+                var keyword = document.getElementById('keyword');
+                keyword.value = "";
+
+                // 지도에 표시되고 있는 마커를 제거합니다
+                removeMarker();
+
+                // 마커를 클릭한 위치에 표시합니다 
+                //marker.setPosition(moveLatLon);
+                //marker.setMap(map);
+                for ( var i = 0; i < moveLatLons.length; i++ ) {
+                	addMarker(moveLatLons[i], i, titles[i]);
+                }   
+                // 이미 클릭했던 마커를 클릭하면 인포윈도우만 출력 후 탈출
+                for ( var i = 0; i < moveLatLons.length; i++ ) {
+                	if(Object.values(moveLatLons[i])[0]=== Object.values(moveLatLon)[0] && Object.values(moveLatLons[i])[1]=== Object.values(moveLatLon)[1] ){
+                        infowindow.setContent(title);
+                        infowindow.open(map, marker);
+                        address.innerHTML = content;
+                		return false;
+                	}
+                }   
+                
+                addMarker(moveLatLon, seq++, title);
+                moveLatLons.push(moveLatLon);
+                titles.push(title);
 
                 // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
                 infowindow.setContent(title);
                 infowindow.open(map, marker);
-//                 document.getElementById("address").textContent = content;
-                
-             	// 수인
-             	document.getElementById("latitude").value = Object.values(position)[1];
-    			document.getElementById("longitude").value = Object.values(position)[0];
-    			document.getElementById("address1").value = result[0].address.address_name;
-    			document.getElementById("cityName2").value = title;
-
-                document.getElementById("cityName").textContent = title;
-                document.getElementById("cityaddr").textContent = result[0].address.address_name;
-                //수인
+                address.innerHTML = content;
             }   
         });
     });  
@@ -294,8 +317,6 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    
- 	
 
     return marker;
 }
@@ -323,7 +344,7 @@ function displayCenterInfo(result, status) {
         for(var i = 0; i < result.length; i++) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
-                infoDiv.value = result[i].address_name;
+                infoDiv.innerHTML = result[i].address_name;
                 break;
             }
         }

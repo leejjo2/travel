@@ -2,8 +2,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="container-fluid mb-0 p-2 text-white"
-	style="background-color: #0dcaf0;">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
+<div class="container-fluid mb-0 p-2 text-white" style="background-color: #0dcaf0;">
 	<div class="container">
 		<div class="row">
 			<div class="col">
@@ -52,9 +52,8 @@
 	</div>
 	
 	<div class="container-fluid mb-0 p-4 text-white " style="background-color: #0dcaf0; font-weight: bold;" >
-		
 			<div class="row">
-				<div class="col p-2" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
+				<div class="col p-1" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
 				<div class="col p-2" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;">홈</a></div>
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
@@ -79,7 +78,7 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/hotel/list">숙소예약</a></li>
-								<li><a class="dropdown-item" href="#">액티비티예약</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/activity/list">액티비티예약</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -111,8 +110,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="col p-2" style="text-align: center; font-size: 17px;">날씨부분</div>
-				
+				<div class="col p-1" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
 			</div>
 	</div>
 </div>

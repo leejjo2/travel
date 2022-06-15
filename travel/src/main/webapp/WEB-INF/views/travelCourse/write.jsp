@@ -9,18 +9,16 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/travelCourse/write.css">
 
 
+
 <style type="text/css">
 
-.selected {
-	background: rgba(0, 0, 0, 0.05);
-    font-weight: bold;
-}
-
-
-.ck.ck-editor {
-    position: relative;
-    margin-left: 10px; width: 915px;
-}
+.tit .courseCityName { border:none; overflow:hidden;display: inline-block;width:100%;font-weight:bold;font-size: 20px; color: #000;text-overflow:ellipsis;white-space: nowrap; background: white;}
+.courseCityAddress { border: none; font-size: 14px;  font-family: 맑은고딕; background: white; width: 90%; }
+.courseCityContent {border: none; overflow: hidden; width: 90%; padding-top: 5px; text-overflow: ellipsis;  white-space: nowrap; background: white;}
+.selected {	background: rgba(0, 0, 0, 0.05);  font-weight: bold;}
+.selectCityThema { display: flex; float: right;}
+.courseSubject { height: 50px;  width: 100%;  font-size: 21px;  text-align: left;  border: 1px solid #ccc;
+   				 box-sizing: border-box; padding: 5px 5px; font-family: 맑은고딕; margin-top: 10px;}	
 
 .img-viewer {
 	cursor: pointer;
@@ -43,6 +41,33 @@
 </style>
 
 <script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data) {
+			fn(data);
+		},
+		beforeSend:function(jqXHR) {
+			jqXHR.setRequestHeader("AJAX", true);
+		},
+		error:function(jqXHR) {
+			if(jqXHR.status === 403) {
+				login();
+				return false;
+			} else if(jqXHR.status === 400) {
+				alert("요청 처리가 실패했습니다.");
+				return false;
+			}
+	    	
+			console.log(jqXHR.responseText);
+		}
+	});
+}
+
+
 $(document).ready(function() {
 	$(document).on("click", ".clfix li a", function() {
 		$(".clfix li a").removeAttr('class');
@@ -50,27 +75,22 @@ $(document).ready(function() {
 	});
 });
 
-function sendOk() {
-	var f = document.cityForm;
-	var str;
-	
-	if(! f.cityName2.value) {
-		console.log("22"+f.cityName2.value)
+var courseSeq = 0;
 
+function cityOk() {
+	var f = document.cityForm;
+	var str, check;
+	check = false;
+	if(! f.cityName2.value) {
 		alert("장소(마커)를 선택하세요. ");
-		f.cityName2.focus();
+		check = true;
 		return;
 	}
-	
-	if(! f.cityCategoryNum.value) {
-		alert("지역을 선택하세요. ");
-		f.cityCategoryNum.focus();
-		return;
-	}
-	
+
 	if(! f.csdesc.value.trim()) {
 		alert("내용을 입력하세요. ");
 		f.csdesc.focus();
+		check = true;
 		return;
 	}
 	
@@ -78,13 +98,55 @@ function sendOk() {
 
 		alert("사진을 추가하세요. ");
 		f.cityCategoryNum.focus();
+		check = false;
 		return;
 	}
+	console.log() 
+	var out;
+	var cityName, cityAddress, cityContent, cityImg, cityLatitude, cityLongitude;
+	cityName = f.cityName2.value;
+	cityAddress = f.address.value;
+	cityContent = f.csdesc.value;
+	cityImg = f.selectFile.value;
+	cityLatitude = f.latitude.value;
+	cityLongitude = f.longitude.value;
+	courseSeq += 1;
+
+	console.log("123"+cityImg);
+	
+	if(! check ){
+		out = '<ul class="list_thumType flnon">';
+		out += '  <li class="bdr_nor coslist">';
+		out += '    <div class="photo">'	;
+		out += ' 		<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
+				  '				<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=d0a9427f-56a2-42c9-a31a-dc22e977d682" alt="'+cityName+'">' + 
+				  '  		</a>'+	
+				  '     </div>';
+		out += '   	<div class="area_txt">';
+		out += '     	<div class="tit">';
+		out += '   			<input class="courseCityName" id = "placeNames" type="text" value="'+cityName+'" disabled="disabled">';
+		out += '        		<input type="text" id="latitudes" value="'+cityLatitude+'">';
+		out += '        		<input type="text" id="longitudes" value="'+cityLongitude+'"" >';
+		out += '        		<input type="text" id="courseSeq" value="'+courseSeq+'">';
+		out += '      	</div>';
+		out += '   		<input class="courseCityAddress" id ="addresss" type="text" value="'+cityAddress+'" disabled="disabled">';
+		out += ' 		<p></p>'+
+				  '			<input class="courseCityContent" id = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
+		out += '     </div>';
+	
+		$("#courseCity").append(out);
+		document.getElementById("totalCity").textContent = courseSeq;		
+
+//		$(".cos_section span").text() = seq;
+		console.log("seq"+courseSeq);
+	}
+	 
+	 
 	
 	
 	
-	 f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
-	 f.submit();
+	 //f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
+	 //f.submit();
 
 }
 </script>
@@ -94,11 +156,8 @@ function sendOk() {
 	
 	
 	<div class="card p-4">
-		<div style="  border-bottom: 3px solid gray;  padding-bottom: 5px;">
-			<i class="far fa-map" style="font-size: 40px;"></i>
-			<span style="font-family: 맑은고딕; font-size: 35px; font-weight: bold;; margin-left: 10px;">코스</span>
-		</div>
-		<div class="wrap_contView padB10">
+		
+		<div class="wrap_contView padB10" style="margin-top: 0px;">
 			<h3>지역</h3>
 			<div class="area_msListPc">
 				<ul class="clfix ">
@@ -129,7 +188,7 @@ function sendOk() {
 		<div class="search">
 	        <form onsubmit="searchPlaces(); return false;">	        
 	        	  <div class="search1">
-	        	  	<input type="text" id="keyword" size="15" placeholder="어디로, 어떤 여행을 떠날 예정인가요?" class="inputKeyword"> 
+	        	  	<input name="mapSearch" type="text" id="keyword" size="15" placeholder="어디로, 어떤 여행을 떠날 예정인가요?" class="inputKeyword"> 
 	            <button class="searchCity_btn"type="submit"><i class="bi bi-search btn_search"></i></button> 
 	        	  </div>   	
 	        </form>
@@ -144,9 +203,8 @@ function sendOk() {
 		    </div>
 		</div>
 		
-		<div>
-
-		<form name="cityForm" method="post" enctype="multipart/form-data">
+	<div>
+		<form name="cityForm">
 			<div class="card mapForm1">
 				<div class="card mapForm2">
 					<div class="card mapForm3">
@@ -157,25 +215,17 @@ function sendOk() {
 							<span id="cityaddr" style="margin-top: 5px; font-size: 17px;"></span>
 					</div>
 				</div>
+				
 				<div class="container px-6 mt-2 mb-2">
 					<div class="row">
-						<div class="col-9">
-						</div>
-						<div class="col" >
-							<select name="cityCategoryNum" class="form-select" style="width: 150px;">
-								<option value="">지역</option>
-								<c:forEach var="vo" items="${cityList}">
-									<option value="${vo.detailCityNum}" >${vo.detailCityName}</option>
-								</c:forEach>
-							</select>
-						</div>
+						
 					 </div>
 					
 					<div class="row">
 						<div class="mapIntroduce modify mb-2">
 						
 							<div class="introduceTxt">
-								<p id="csdescview" style="display: none;"></p>
+								<p id="csdescview" style="display: none;"></p> 
 								<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
 							</div>
 						</div>
@@ -186,19 +236,16 @@ function sendOk() {
 						</div>
 					</div>
 				</div>
-
 					
 				<table class="table table-borderless">
 					<tr>
 						<td class="text-center">
-							<button type="button" class="btn mapBtn"  onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+							<button type="button" class="btn mapBtn" onclick="cityOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 							<c:if test="${mode=='update'}">
 							</c:if>
 						</td>
 					</tr>
 				</table>
-				
-
 				
 				<div>
 					<input name = "cityName2" type="hidden" id="cityName2">
@@ -206,76 +253,88 @@ function sendOk() {
 					<input type="hidden" id="longitude">
 					<input type="hidden" id="address">
 				</div>
-
+				
 			</div>
 		</form>
-
 	</div>
 				
 
-	
-	<div class="mt-5" >
-		<div class="total_check">
-			<strong>총<span>3</span>건</strong>
-			<div class="btn_txt pos-r0">
-				<span class="txt_nor1">코스 총거리 : <em>406.3km</em></span>
+	<form name="courseForm" method="post" enctype="multipart/form-data">
+		<div class="mt-5">
+			<div style=" border-bottom: 1px solid #999;  padding-bottom: 35px; padding-top: 35px; border-top: 3px dashed #999;">
+				<i class="far fa-map" style="font-size: 40px; color: #2E2E2E;"></i>
+				<span style="font-family: 맑은고딕; font-size: 35px; font-weight: bold; margin-left: 10px; color: #2E2E2E;">코스</span>
+				<input class="courseSubject" type="text" title="코스 제목" placeholder="코스 명을 입력해주세요." maxlength="300" >
+		
 			</div>
-		</div>
-		<ul class="list_thumType flnon">
-			<li class="bdr_nor coslist">
-				<div class="photo">
-					<a
-						href="../detail/ms_detail.do?cotid=6cb1642d-b578-462f-82c6-b1c1ef468af7&amp;big_category=A02&amp;mid_category=A0205&amp;big_area=6"><em
-						class="numbering">1</em><img
-						src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=d0a9427f-56a2-42c9-a31a-dc22e977d682"
-						alt="오륙도 스카이워크"></a>
-				</div>
-				<div class="area_txt">
-					<div class="tit">
-						<a
-							href="../detail/ms_detail.do?cotid=6cb1642d-b578-462f-82c6-b1c1ef468af7&amp;big_category=A02&amp;mid_category=A0205&amp;big_area=6">오륙도
-							스카이워크</a>
+			<div class="tit_cont tit_widCol2">
+					<div class="area_tag">
 					</div>
-					<p>부산 남구</p>
-					<p></p>
-					<p class="tag">
-						<span>#2021대한민국안심여행캠페인</span><span>#경상권</span><span>#관광지</span><span>#바다풍경</span><span>#방역우수관광지</span><span>#부산가볼만한곳</span><span>#부산여행</span><span>#부산여행가볼만한곳</span><span>#부산오륙도</span><span>#숙박대전_가볼만한곳</span><span>#숙박대전_추천기사</span><span>#스카이워크</span><span>#안심경상권여행</span><span>#안심관광지</span><span>#오륙도</span><span>#오륙도스카이워크</span>
-					</p>
-				</div>
-				<button type="button" title="내용 더보기" class="btn_view">더보기</button>
-				<div class="pop_subMenu">
-					<ul>
-						<li class="btn_del"><a href="javascript:" id="0"
-							onclick="">삭제</a></li>
-					</ul>
-				</div>
-			</li>
-		</ul>
-		<!-- 0527 추가 지도 -->
-		<div class="mapIntroduce modify">
-			<div class="introduceTxt">
-				<p id="csdescview" style="display: none;"></p>
-				<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" style="" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
-				<p class="txtNum">현재 글자수 <span id="textNum">0</span>자 / 최대 글자수 2000자</p><!-- 1101 추가 -->
+					<!-- 0527 추가 -->
 			</div>
-		</div>
-	</div>
-	
-	<table class="table table-borderless">
-		<tr>
-			<td class="text-center">
-				<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
-				<button type="reset" class="btn btn-light px-4">다시입력</button>
-				<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/travelCourse/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
-				<c:if test="${mode=='update'}">
-					<input type="hidden" name="num" value="${dto.num}">
-					<input type="hidden" name="page" value="${page}">
-					<input type="hidden" name="group" value="${group}">
-				</c:if>
-			</td>
-		</tr>
-	</table>
 			
+			<div class="total_check">
+				<div class="cos_section">
+					<strong>총<span id="totalCity">0</span>건</strong>
+					<div class="type2">
+						<span >
+							<label for="Category">코스 지역</label>
+							<select name="cityCategoryNum" class="" style="margin-right: 10px;">
+							<option value="">지역 선택</option>
+							<c:forEach var="vo" items="${cityList}">
+								<option value="${vo.cityNum}" >${vo.cityName}</option>
+							</c:forEach>
+						</select>
+						</span>
+					</div>
+					<div class="type1">
+						<span style=" margin-right: 30px;">
+							<label for="Type">코스 테마</label>
+							<select id="Type" title="코스 테마 선택">
+								<option value="0">테마 선택</option>
+								<option value="1">가족코스</option>
+								<option value="2">혼자여행</option>
+								<option value="3">도보코스</option>
+								<option value="4">힐링코스</option>
+								<option value="5">맛 코스</option>
+								<option value="6">캠핑코스</option>
+								<option value="7">반려동물과 함께</option>
+							</select>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			<div id = "courseCity" >
+
+				
+			</div>
+			
+				<!-- 0527 추가 지도 -->
+				<div class="mapIntroduce modify">
+					<div class="introduceTxt">
+						<p id="csdescview" style="display: none;"></p>
+						<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" style="" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
+					</div>
+				</div>
+			</div>
+		
+			<table class="table table-borderless" style="margin-top: 5px;">
+				<tr>
+					<td class="text-center">
+						<button type="button" class="btn btn-dark" onclick="sendOk1();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+						<button type="reset" class="btn btn-light px-4">다시입력</button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/travelCourse/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+						<c:if test="${mode=='update'}">
+							<input type="hidden" name="num" value="${dto.num}">
+							<input type="hidden" name="page" value="${page}">
+							<input type="hidden" name="group" value="${group}">
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</form>	
+		
 	</div>
 </div>
 
@@ -322,8 +381,12 @@ var seq = 0;
 // 정조 끝
 
 $(".clfix li a").on("click", function(){
+	var keyword;
 	
-	var keyword = $(this).text();
+	if( $(this).text() === '전체보기') {
+		keyword = '맛집';
+	} else {
+	keyword = $(this).text(); }
 		
 	searchPlacesCity(keyword);
 });
