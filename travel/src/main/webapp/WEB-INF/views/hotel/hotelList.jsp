@@ -4,12 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/hotel/hotelList.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/bootstrap5/icon/bootstrap-icons.css" type="text/css">
-				
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/jquery/js/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
 
 <div class="container my-sm-4 p-0" style="margin-left: 30px;">
     <div id="content">
@@ -26,47 +20,15 @@
                     <div class="box border-bottom">
                         <div class="box-label text-uppercase d-flex align-items-center">Price <button class="btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#inner-box" aria-expanded="false" aria-controls="inner-box"> <span class="fas fa-plus"></span> </button> </div>
                         <div id="inner-box" class="collapse show">
-                            <div class="my-1"> <label class="tick">Less than 2000 <input type="checkbox" checked="checked"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">2000 - 3000 <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">3000 - 4500 <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">4500 - 6000 <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">6000 - 8000 <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">8000 -10,000 <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">10,000 and Above <input type="checkbox"> <span class="check"></span> </label> </div>
-                        </div>
-                    </div>
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">Property Type <button class="btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#property" aria-expanded="false" aria-controls="property"> <span class="fas fa-plus"></span> </button> </div>
-                        <div id="property" class="collapse">
-                            <div class="my-1"> <label class="tick">Hotels <input type="checkbox" checked="checked"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Apartments <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Guest houses <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Resorts <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Villas <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Lodges <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Holiday Homes <input type="checkbox"> <span class="check"></span> </label> </div>
-                        </div>
-                    </div>
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">Amenities <button class="btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#amenities" aria-expanded="false" aria-controls="amenities"> <span class="fas fa-plus"></span> </button> </div>
-                        <div id="amenities" class="collapse show">
-                            <div class="my-1"> <label class="tick">Parking <input type="checkbox" checked="checked"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Pets Allowed <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Room Service <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Family Rooms <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Free Wifi <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Non-smoking Rooms <input type="checkbox" checked> <span class="check"></span> </label> </div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="box-label text-uppercase d-flex align-items-center">Room Facilities <button class="btn ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#room-facilities" aria-expanded="false" aria-controls="room-facilities"> <span class="fas fa-plus"></span> </button> </div>
-                        <div id="room-facilities" class="collapse">
-                            <div class="my-1"> <label class="tick">Air Condentioning <input type="checkbox" checked="checked"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Desk <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Balcony <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Flat Screen TV <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Coffe/Tea Maker <input type="checkbox"> <span class="check"></span> </label> </div>
-                            <div class="my-1"> <label class="tick">Washing Machine <input type="checkbox" checked> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">무료 WI-FI <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">금연 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">흡연구역 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">발코니 /테라스 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">샤워실/욕조 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">세탁기 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">주방 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">조식 <input type="checkbox"> <span class="check"></span> </label> </div>
+                            <div class="my-1"> <label class="tick">오션뷰 <input type="checkbox"> <span class="check"></span> </label> </div>
                         </div>
                     </div>
                 </div>
@@ -90,8 +52,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-1">
-                        <div class="btn enquiry text-uppercase mx-2">Enquiry</div>
-                        <div class="btn btn-primary text-uppercase">Book Now</div>
+                        <div class="btn btn-primary text-uppercase">예약하기</div>
                     </div>
                 </div>
                 <div class="hotel py-2 px-2 pb-4 border-bottom">
@@ -112,8 +73,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-1">
-                        <div class="btn enquiry text-uppercase mx-2">Enquiry</div>
-                        <div class="btn btn-primary text-uppercase">Book Now</div>
+                        <div class="btn btn-primary text-uppercase">예약하기</div>
                     </div>
                 </div>
                 <div class="hotel py-2 px-2 pb-4">
@@ -134,8 +94,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-1">
-                        <div class="btn enquiry text-uppercase mx-2">Enquiry</div>
-                        <div class="btn btn-primary text-uppercase">Book Now</div>
+                        <div class="btn btn-primary text-uppercase">예약하기</div>
                     </div>
                 </div>
             </div>
