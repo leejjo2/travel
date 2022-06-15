@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="theme">
+	<select id="seq" resultType="Integer">
+		SELECT adminCourse_seq.NEXTVAL FROM dual
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.sp.trip.theme.Theme">
+		INSERT INTO adminCourse(courseNum, userID, content)
+		VALUES (#{courseNum}, #{userId}, #{content})
+	</insert>
+	
+	<insert id="insertCourse" parameterType="com.sp.trip.theme.Theme">
+		INSERT INTO adminCourseDetail (courseDetailNum, courseNum, course_seq, placeName, address)
+  		VALUES (adminCourseDetail_seq.NEXTVAL, #{courseNum} , #{course_seq}, #{placeName}, #{address})
+	</insert>
+</mapper>
