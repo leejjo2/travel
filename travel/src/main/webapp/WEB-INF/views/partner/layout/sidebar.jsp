@@ -49,9 +49,7 @@
 							<i class="fa fa-desktop"></i> 액티비티 관리 <span class="fa fa-chevron-down"></span>
 						</a>
 						<ul class="nav child_menu">
-							<li><a href="#">액티비티 리스트</a></li>
-							<li><a href="#">Media Gallery</a></li>
-
+							<li><a href="${pageContext.request.contextPath}/partner/activityManage/activityList">액티비티 리스트</a></li>
 						</ul>
 					</li>
 					
