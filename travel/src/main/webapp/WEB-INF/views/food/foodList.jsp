@@ -39,7 +39,13 @@ button {
 	background-color: white;
 }
 
-
+.foodView{
+	font-weight: bold;
+	cursor: pointer;
+}
+.foodView:hover{
+	color: tomato;
+}
 </style>
 
 <script type="text/javascript">
@@ -67,7 +73,8 @@ function foodList(areaCode, cat3) {
 	if(! cat3) cat3 = "";
 	
 	var url="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
-	var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39&areaCode="+areaCode+"&cat3="+cat3;
+	var query = "ServiceKey=InzkX%2FX%2BXNAD%2FtYGagIlsUrwmw%2BbVRjVDbYwVBfCzqGEFY3sVVGr7tI4jjKoHTUATqBPgV4Afi1kHqo5nzeBiA%3D%3D";
+	query += "&MobileApp=AppTest&MobileOS=WIN&contentTypeId=39&areaCode="+areaCode+"&cat3="+cat3+"&numOfRows=20";
 	
 	var fn = function(data) {
 		printXML(data);
@@ -87,24 +94,27 @@ function printXML(data) {
 		var title = item.find("title").text();
 		var addr1 = item.find("addr1").text();
 		var img = item.find("firstimage").text();
+		var contentid = item.find("contentid").text();
 		
-		out += "<div class='row g-0' style='border-bottom: 1px solid gray;'>";
-		out += "   <div class='col-10' style='border: none'>";
-		out += "       <div class='p-0' style='color: black;'>";
-		out += "          <a href='#'>음식점명 : "+title+"</a>";
-		out += "          <p><a href='#'>주소 : "+addr1+"</a></p>";
+		out += "<div class='row row-cols'>";
+		out += "   <div class='col' style='border: none'></div>";
+		out += "   <div class='col-4' style='border: none'>";
+		out += "       <div class='p-3' style='color: black;'>";
+		out += "          <p style='font-weight: bold;'>음식점명 : <span data-contentid='"+contentid+"' class='foodView'>" +title+"</span></p>";
+		out += "          <p>주소 : " +addr1+"</a>";
 		out += "       </div>";
 		out += "   </div>";
 		
-		out += "   <div class='col-2 text-center'>";
-		out += "       <div class='border p-0'>";
+		out += "   <div class='col-4 text-center' style='border-radius: 5px; height:200px;'>";
+		out += "       <div class='border p-0' style='border-radius: 5px; height:200px;'>";
 		if( img ) {
-			out += "       <img src='"+img+"' width='100%' height='100'>";
+			out += "       <img src='"+img+"' width='100%' height='100%' style='border-radius: 5px;'>";
 		} else {
-			out += "       <img src='"+noImg+"' width='100%' height='100'>";
+			out += "       <img src='"+noImg+"' width='100%' height='100%' style='border-radius: 5px;'>";
 		}
 		out += "       </div>";
 		out += "   </div>";
+		out += "   <div class='col' style='border: none'></div>";
 		
 		out += "</div>";
 			
@@ -145,7 +155,13 @@ $(function(){
 	});
 });
 
-
+$(function(){
+	$("body").on("click", ".foodView", function(){
+		var contentid = $(this).attr("data-contentid");
+		
+		loaction.href="${pageContext.request.contextPath}/food/foodView?contentid="+contentid;
+	});
+});
 
 
 
@@ -240,7 +256,7 @@ $(function(){
 						<ul class="navbar-nav mx-auto flex-nowrap"> 
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-									 구분
+									 제목순
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-align: center;">
 									<li><button type="button" class="btnSearch2" data-cat3="">전체</button></li>
@@ -263,8 +279,7 @@ $(function(){
 			</div>
 	  	</div>
 		
-		<!-- 음식점 리스트 -->
-		
+
 		<div class="matziplist"></div>
 		
 		
