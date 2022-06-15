@@ -6,7 +6,7 @@
 
 <!-- 도시 카테고리 -->
 <select id="cityCategory" resultType="com.sp.trip.travelCourse.TravelCourse">
-	SELECT cityNum detailCityNum, cityName detailCityName
+	SELECT cityNum cityNum, cityName cityName
 	FROM city
 	ORDER BY cityNum
 </select> 
