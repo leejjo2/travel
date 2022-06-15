@@ -68,12 +68,12 @@ CREATE TABLE adminCourse (
 CREATE TABLE adminCourseDetail (
     courseDetailNum NUMBER,
     courseNum NUMBER,
-    corse_seq NUMBER NOT NULL,
+    course_seq NUMBER NOT NULL,
     placeName VARCHAR2(50) NOT NULL,
     address VARCHAR2(255) NOT NULL,
     longitude VARCHAR2(100) NOT NULL,
     latitude VARCHAR2(100) NOT NULL,
-    content CLOB NOT NULL,
+    courseContent CLOB NOT NULL,
     CONSTRAINT pk_adminCourseDetail_courseDetailNum PRIMARY KEY(courseDetailNum),
     CONSTRAINT fk_adminCourseDetail_courseNum FOREIGN KEY(courseNum) REFERENCES adminCourse(courseNum)  ON DELETE CASCADE
 );

@@ -163,7 +163,7 @@ a:link {
 
 .post-slider .next, .post-slider .next1, .post-slider .next2 {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	right: 0px;
 	font-size: 2em;
 	cursor: pointer;
@@ -171,7 +171,7 @@ a:link {
 
 .post-slider .prev, .post-slider .prev1, .post-slider .prev2 {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 0px;
 	font-size: 2em;
 	cursor: pointer;
