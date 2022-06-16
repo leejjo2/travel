@@ -92,7 +92,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/travelCourse/list">여행코스공유</a></li>
 								<li><a class="dropdown-item" href="#">같이가요</a></li>
-								<li><a class="dropdown-item" href="#">자유게시판</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/freebbs/list">자유게시판</a></li>
 							</ul>
 						</li>
 					</ul>
