@@ -33,19 +33,20 @@
 
 .img-box {
 	max-width: 600px;
-	padding: 5px;
+
 	box-sizing: border-box;
 	display: flex; /* 자손요소를 flexbox로 변경 */
 	flex-direction: row; /* 정방향 수평나열 */
 	flex-wrap: nowrap;
 	overflow-x: auto;
 }
-
 .img-box img {
-	width: 37px; height: 37px;
+	width: 65px; height: 65px;
 	margin-right: 5px;
 	flex: 0 0 auto;
 	cursor: pointer;
+}
+
 }
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
@@ -54,9 +55,9 @@ function sendOk() {
 	var f = document.hotelForm;
 	var str;
 	
-	if(! f.hotelname.value.trim()) {
+	if(! f.hotelName.value.trim()) {
 		alert("숙소이름을 입력하세요. ");
-		f.hotelname.focus();
+		f.hotelName.focus();
 		return;
 	}
 
@@ -71,11 +72,96 @@ function sendOk() {
         window.editor.focus();
         return;
     }
-	f.content.value = str;
+	f.hotelIntro.value = str;
 
-	f.action="${pageContext.request.contextPath}/sbbs/${mode}";
+	f.action="${pageContext.request.contextPath}/partner/lodgingManage/${mode}";
 	f.submit();
 }
+
+
+<c:if test="${mode=='update'}">
+$(function(){
+	$(".delete-img").click(function(){
+		if(! confirm("이미지를 삭제 하시겠습니까 ?")) {
+			return false;
+		}
+		var $img = $(this);
+		var fileNum = $img.attr("data-fileNum");
+		var url="${pageContext.request.contextPath}/partner/deleteFile";
+		$.post(url, {fileNum:fileNum}, function(data){
+			$img.remove();
+		}, "json");
+	});
+});
+</c:if>
+
+$(function(){
+	var sel_files = [];
+	
+	$("body").on("click", ".write-form .img-add", function(event){
+		$("form[name=hotelForm] input[name=selectFile]").trigger("click"); 
+	});
+	
+	$("form[name=hotelForm] input[name=selectFile]").change(function(){
+		if(! this.files) {
+			var dt = new DataTransfer();
+			for(file of sel_files) {
+				dt.items.add(file);
+			}
+			document.hotelForm.selectFile.files = dt.files;
+			
+	    	return false;
+	    }
+	    
+		// 유사 배열을 배열로 변환
+	    const fileArr = Array.from(this.files);
+	
+		fileArr.forEach((file, index) => {
+			sel_files.push(file);
+			
+			const reader = new FileReader();
+			const $img = $("<img>", {class:"item img-item"});
+			$img.attr("data-filename", file.name);
+	        reader.onload = e => {
+	        	$img.attr("src", e.target.result);
+	        };
+	        
+	        reader.readAsDataURL(file);
+	        
+	        $(".img-grid").append($img);
+	    });
+		
+		var dt = new DataTransfer();
+		for(file of sel_files) {
+			dt.items.add(file);
+		}
+		document.hotelForm.selectFile.files = dt.files;		
+	    
+	});
+	
+	$("body").on("click", ".write-form .img-item", function(event) {
+		if(! confirm("선택한 파일을 삭제 하시겠습니까 ?")) {
+			return false;
+		}
+		
+		var filename = $(this).attr("data-filename");
+		
+	    for(var i = 0; i < sel_files.length; i++) {
+	    	if(filename === sel_files[i].name){
+	    		sel_files.splice(i, 1);
+	    		break;
+			}
+	    }
+	
+		var dt = new DataTransfer();
+		for(file of sel_files) {
+			dt.items.add(file);
+		}
+		document.hotelForm.selectFile.files = dt.files;
+		
+		$(this).remove();
+	});
+});
 
 
 </script>
@@ -124,12 +210,12 @@ function ajaxFun(url, method, query, dataType, fn) {
 			        <i class="bi bi-question-square"></i> 숙소에 대한 정보를 올려주세요
 			    </div>
 			    
-				<form name="hotelForm" method="post">
+				<form name="hotelForm" method="post" enctype="multipart/form-data">
 					<table class="table mt-5 write-form">
 						<tr>
 							<td class="table-light" scope="row" style="width: 90px;">숙소이름</td>
 							<td colspan="3">
-								<input type="text" name="hotelName" class="form-control" value="">
+								<input type="text" name="hotelName" class="form-control" value="${dto.hotelName}">
 							</td>
 						</tr>
 					
@@ -138,7 +224,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td colspan="2">
 								<div class="row">
 									<div class="col-sm-5">
-										<input type="text" name="hotelNumber" id="hotelNumber" class="form-control" value="" maxlength="11">
+										<input type="text" name="hotelNumber" id="hotelNumber" class="form-control" value="${dto.hotelNumber}" maxlength="13">
 									</div>
 								</div>
 							</td>
@@ -154,7 +240,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 						<tr>
 							<td class="table-light" scope="row">내 용</td>
 							<td colspan="3">
-								<div class="editor">${dto.content}</div>
+								<div class="editor">${dto.hotelIntro}</div>
 								<input type="hidden" name="hotelIntro">
 							</td>
 						</tr>
@@ -162,7 +248,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 						<tr>
 							<td class="table-light" scope="row" rowspan="2">주소</td>
 							<td>
-								<input type="text" name="hotelZip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.zip}" readonly="readonly">
+								<input type="text" name="hotelZip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.HotelZip}" readonly="readonly">
 							</td>
 							<td>	
 								<button class="btn btn-light" type="button" style="margin-left: 3px;" onclick="daumPostcode();">우편번호 검색</button>
@@ -171,33 +257,33 @@ function ajaxFun(url, method, query, dataType, fn) {
 						
 						<tr>
 							<td colspan="2">
-								<input type="text" name="hotelAddr1" id="addr1" class="form-control" placeholder="기본 주소" value="${dto.addr1}" readonly="readonly">
-								<input type="text" name="hotelAddr2" id="addr2" class="form-control" placeholder="상세 주소" value="${dto.addr2}">
+								<input type="text" name="hotelAddr1" id="addr1" class="form-control" placeholder="기본 주소" value="${dto.hotelAddr1}" readonly="readonly">
+								<input type="text" name="hotelAddr2" id="addr2" class="form-control" placeholder="상세 주소" value="${dto.hotelAddr2}">
 							</td>
 						</tr>
 						
 						<tr>
-							<td  class="table-light" scope="row">사&nbsp;&nbsp;&nbsp;&nbsp;진</td>
-							<td colspan="2" style="text-align: left; width: 70px;"> 
-								<div class="img-grid"><img class="item img-add" src="${pageContext.request.contextPath}/resources/images/hotel/add_photo.png"></div>
+							<td class="table-light" scope="row">이미지</td>
+							<td colspan="2">
+								<div class="img-grid"><img class="item img-add rounded" src="${pageContext.request.contextPath}/resources/images/add_photo.png"></div>
 								<input type="file" name="selectFile" accept="image/*" multiple="multiple" style="display: none;" class="form-control">
 							</td>
 						</tr>
 						
 						<c:if test="${mode=='update'}">
 							<tr>
-								<td>첨부된 사진</td>
+								<td class="table-light" scope="row">등록이미지</td>
 								<td> 
 									<div class="img-box">
-										<c:forEach var="vo" items="">
-											<img src="${pageContext.request.contextPath}/uploads/management/"
-											onclick="deleteFile('${vo.image_Num}');">
+										<c:forEach var="vo" items="${listFile}">
+											<img src="${pageContext.request.contextPath}/uploads/partner/${vo.hotelSaveFilename}"
+												class="delete-img"
+												data-fileNum="${vo.hotelImageFileNum}">
 										</c:forEach>
 									</div>
 								</td>
 							</tr>
 						</c:if>
-						
 					</table>
 					
 					<table class="table table-borderless">

@@ -2,9 +2,17 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="logdingManage">
+	<select id="hotelSeq" resultType="Integer">
+		SELECT hotel_seq.NEXTVAL FROM dual
+	</select>
+	
+	<select id="partnerSeq" resultType="Integer">
+		SELECT partner_seq.NEXTVAL FROM dual
+	</select>
+	
 	<insert id="insertHotel" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		INSERT INTO hotel(hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum)
-		VALUES (hotel_seq.NEXTVAL, #{hotelName}, #{hotelIntro}, #{hotelNumber}, #{hotelZip}, #{hotelAddr1}, #{hotelAddr2})
+		INSERT INTO hotel(hotelNum, partnerNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2)
+		VALUES (hotel_seq, #{partnerNum}, #{hotelName}, #{hotelIntro}, #{hotelNumber}, #{hotelZip}, #{hotelAddr1}, #{hotelAddr2})
 		
 	</insert>
 	
@@ -13,6 +21,13 @@
 		FROM hotel h
 		JOIN partner p ON p.partnerNum = h.partnerNum
 		WHERE p.partnerId = #{partnerId}
+	</select>
+	
+	<select id="readHotel" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum, saveFilename
+		FROM hotel h
+		JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
+		WHERE hotelNum = #{hotelNum}
 	</select>
 	
 	<update id="updateHotel" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
@@ -24,5 +39,28 @@
 	<delete id="deleteHotel" parameterType="map">
 		DELETE FROM hotel WHERE hotelNum = #{hotelNum};
 	</delete>
+	
+	<!-- 파일 -->
+	<insert id="insertFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		INSERT INTO hotelImage(imageFileNum, hotelNum, saveFilename)
+		VALUES (hotelImage_seq.NEXTVAL, #{hotelNum}, #{saveFilename})
+	</insert>
+	
+	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT imageFileNum, hotelNum, saveFilename
+		FROM hotelImage
+		WHERE hotelNum = #{hotelNum}
+	</select>
+	
+	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT imageFileNum, hotelNum, saveFilename
+		FROM hotelImage
+	    WHERE imageFileNum = #{imageFileNum}      
+	</select>
+	
+	<delete id="deleteFile" parameterType="map">
+		DELETE FROM hotelImage WHERE ${field} = #{hotelNum}
+	</delete>
+	
 	
 </mapper>

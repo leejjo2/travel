@@ -5,6 +5,18 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/hotel/hotelList.css" type="text/css">
 
+<script type="text/javascript">
+<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
+	function deleteHotel() {
+	    if(confirm("게시글을 삭제 하시 겠습니까 ? ")) {
+		    let query = "num=${dto.hotelNum}";
+		    let url = "${pageContext.request.contextPath}/lodging/delete?" + query;
+	    	location.href = url;
+	    }
+	}
+</c:if>
+</script>
+
 <div class="right_col" role="main" style="min-height: 1758px;">
 
 
@@ -40,7 +52,8 @@
 	                        </div>
 	                    </div>
 	                    <div class="d-flex justify-content-end mt-1">
-	                        <div class="btn btn-primary text-uppercase">예약하기</div>
+	                    	<div class="btn enquiry text-uppercase mx-2" onclick="deleteHotel();">삭제</div>
+	                        <div class="btn btn-primary text-uppercase">수정</div>
 	                    </div>
 	                </div>
 	            </div>

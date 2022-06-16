@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sp.trip.member.SessionInfo;
 
@@ -39,19 +40,19 @@ public class LodgingManageController {
 	}
 	
 	// 숙소 등록하기
-	@RequestMapping("lodgingWrite")
+	@RequestMapping(value = "lodgingWrite")
 	public String lodgingWrite(Model model) throws Exception {
 		model.addAttribute("mode", "write");
 		return ".partner.lodgingManage.lodgingWrite";
 	}
 	
 	// 등록완료
-	@RequestMapping(value = "lodgingWriteSubmit", method = RequestMethod.POST)
-	public String writesubmit(LodgingManage dto, HttpSession session) throws Exception {
-		SessionInfo info = (SessionInfo)session.getAttribute("member");
-		
+	@RequestMapping(value = "write", method = RequestMethod.POST)
+	public String writeSubmit(LodgingManage dto, HttpSession session) throws Exception {
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "bbs";
+		String pathname = root + "uploads" + File.separator + "partner";
+		
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
 		try {
 			dto.setPartnerId(info.getUserId());
@@ -59,8 +60,22 @@ public class LodgingManageController {
 		} catch (Exception e) {
 		}
 		
-		return "redirect:/lodgingManage/lodgingList";
+		return "redirect:/partner/lodgingManage/lodgingList";
 	}
+	
+	// 숙소보기
+	@RequestMapping(value = "article")
+	public String hotelArticle(@RequestParam int hotelNum,
+			HttpSession session, Model model) throws Exception {
+		
+		// SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		// LodgingManage dto = service.readHotel(hotelNum);
+		
+		
+		return "";
+	}
+	
 	
 	// 숙소별 방 등록하기
 	@RequestMapping("roomWrite")
