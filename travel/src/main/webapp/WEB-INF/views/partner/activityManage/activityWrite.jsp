@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <style type="text/css">
-.body-container {width: 800px; margin: 50px auto 10px }
+.body-container {width: 900px; margin: 50px auto 10px }
 
 .body-title {
     padding-top: 25px; padding-bottom: 5px;
@@ -48,9 +48,20 @@ td.table-light {
 .table {
     margin-bottom: 0;
 }
+
+.img-photo{
+	width: 100%;
+}
+
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
-
+<script>
+$(function() {
+	function sendOk() {
+		
+	}
+});
+</script>
 <div class="right_col" role="main" style="min-height: 1765px;">
 	<div class="container">
 		<div class="body-container">	
@@ -71,12 +82,23 @@ td.table-light {
 								<div class="pe-1">
 									<select name="cityNum" class="form-select form-control">
 										<option value="">선택</option>
-											<option>서울</option>
-											<option>부산</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
+											<option value="1">서울</option>
+											<option value="6">부산</option>
+											<option value="4">대구</option>
+											<option value="2">인천</option>
+											<option value="5">광주</option>
+											<option value="3">대전</option>
+											<option value="7">울산</option>
+											<option value="8">세종</option>
+											<option value="31">경기</option>
+											<option value="32">강원</option>
+											<option value="33">충북</option>
+											<option value="34">충남</option>
+											<option value="35">경북</option>
+											<option value="36">경남</option>
+											<option value="37">전북</option>
+											<option value="38">전남</option>
+											<option value="39">제주</option>
 									</select>
 								</div>
 							</td>
@@ -85,10 +107,12 @@ td.table-light {
 								<div class="pe-1">
 									<select name="activityType" class="form-select form-control">
 										<option value="">선택</option>
-											<option>티켓/패스</option>
-											<option>레저</option>
-											<option>수상 액티비티</option>
-											<option>요트/유람선</option>
+											<option value="티켓/패스">티켓/패스</option>
+											<option value="캠핑">캠핑</option>
+											<option value="스파&마사지">스파&마사지</option>
+											<option value="놀이동산">놀이동산</option>
+											<option value="수상 액티비티">수상 액티비티</option>
+											<option value="요트/유람선">요트/유람선</option>
 									</select>
 								</div>
 							</td>
@@ -103,7 +127,7 @@ td.table-light {
 						</tr>
 						
 						<tr>
-							<td class="table-light" scope="row">가격</td>
+							<td class="table-light" scope="row">가격(1인)</td>
 							<td>
 								<input type="text" name="price" class="form-control" value="">
 							</td>
@@ -143,7 +167,16 @@ td.table-light {
 						<tr>
 							<td class="table-light" scope="row" style="width: 100px;">대표 이미지</td>
 							<td colspan="3">
-								<input type="text" name="activityName" class="form-control" value="">
+								<div class="form">
+									<div class="img-grid">
+										<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+										<c:if test="${mode=='update'}">
+											<img class="item img-item" src="${pageContext.request.contextPath}/uploads/activityManage/${vo.imageFilename}"
+												onclick="deleteFile('${vo.fileNum}');">
+										</c:if>
+									</div>
+									<input type="file" name="selectFile" accept="image/*" style="display: none;">
+								</div>
 							</td>
 						</tr>
 						
