@@ -23,14 +23,13 @@
 .img-viewer {
 	cursor: pointer;
 	border: 1px solid #ccc;
-	width: 45px;
-	height: 45px;
-	border-radius: 45px;
+    width: 140px;
+    height: 94px;
 	background-image: url("${pageContext.request.contextPath}/resources/img/travelCourse/add_photo.png");
 	position: relative;
-	z-index: 9999;
 	background-repeat : no-repeat;
 	background-size : cover;
+	object-fit: initial;
 }
 
 .mapBtn:hover {
@@ -75,8 +74,8 @@ $(document).ready(function() {
 	});
 });
 
-var courseSeq = 0;
 
+/*
 function cityOk() {
 	var f = document.cityForm;
 	var str, check;
@@ -108,47 +107,210 @@ function cityOk() {
 	cityAddress = f.address.value;
 	cityContent = f.csdesc.value;
 	cityImg = f.selectFile.value;
+	cityImgName = f.selectFile.value;
 	cityLatitude = f.latitude.value;
 	cityLongitude = f.longitude.value;
 	courseSeq += 1;
 
 	console.log("123"+cityImg);
 	
+	console.log("파일이름 : " + $("form[name=cityForm] input[name=selectFile]").files[0].name;
+	
 	if(! check ){
-		out = '<ul class="list_thumType flnon">';
-		out += '  <li class="bdr_nor coslist">';
-		out += '    <div class="photo">'	;
-		out += ' 		<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
-				  '				<img src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=d0a9427f-56a2-42c9-a31a-dc22e977d682" alt="'+cityName+'">' + 
-				  '  		</a>'+	
-				  '     </div>';
-		out += '   	<div class="area_txt">';
-		out += '     	<div class="tit">';
-		out += '   			<input class="courseCityName" id = "placeNames" type="text" value="'+cityName+'" disabled="disabled">';
-		out += '        		<input type="text" id="latitudes" value="'+cityLatitude+'">';
-		out += '        		<input type="text" id="longitudes" value="'+cityLongitude+'"" >';
-		out += '        		<input type="text" id="courseSeq" value="'+courseSeq+'">';
-		out += '      	</div>';
-		out += '   		<input class="courseCityAddress" id ="addresss" type="text" value="'+cityAddress+'" disabled="disabled">';
-		out += ' 		<p></p>'+
-				  '			<input class="courseCityContent" id = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
-		out += '     </div>';
+		out = '<div class=course">';
+		out += '	<ul class="list_thumType flnon">';
+		out += '  		<li class="bdr_nor coslist">';
+		out += '    		<div class="photo">'	;
+		out += ' 				<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
+				  '					<img class="img-viewer" alt="'+cityName+'">' + 
+				  '  			</a>'+	
+				  '    	 	</div>';
+		out += '   			<div class="area_txt">';
+		out += '     			<div class="tit">';
+		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
+		out += '        			<input type="text" name="latitudes" value="'+cityLatitude+'">';
+		out += '        			<input type="text" name="longitudes" value="'+cityLongitude+'"" >';
+		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
+		out += '      			</div>';
+		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+cityAddress+'" disabled="disabled">';
+		out += ' 				<p></p>'+
+				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
+		out += '     		</div>';
+		out += '    	 </li>';
+		out += ' 	</ul>';
+		out += ' </div>';
+		
+		
 	
 		$("#courseCity").append(out);
+		//$(".img-viewer").empty();
+		//img = "${pageContext.request.contextPath}/uploads/photo/" + img;
+		//$(".img-viewer").css("background-image", "url("+img+")");
+		
 		document.getElementById("totalCity").textContent = courseSeq;		
 
 //		$(".cos_section span").text() = seq;
 		console.log("seq"+courseSeq);
 	}
-	 
-	 
+*/
+
+var courseSeqNum = 0;
+
+$(function() {
+	$(".cityAddBtn").click(function(){
+		console.log("버튼클릭");
+	
+		var f = document.cityForm;
+
+		if(! f.cityName2.value) {
+			alert("장소(마커)를 선택하세요. ");
+			return false;
+		}
+
+		if(! f.csdesc.value.trim()) {
+			alert("내용을 입력하세요. ");
+			f.csdesc.focus();
+			return false;
+		}
+		
+		if(! f.selectFile.value) {
+
+			alert("사진을 추가하세요. ");
+			f.cityCategoryNum.focus();
+			return false;
+		}
+
+		if(! $(".courseCity div").hasClass("course")) {
+			$(".courseCity").empty();
+		}
+		
+		courseSeqNum += 1;
+		f.courseSeq.value = courseSeqNum;
+		
+		
+		let cityName = f.cityName2.value.trim();
+		let courseSeq = f.courseSeq.value.trim();
+		let address = f.address.value.trim();
+		let latitude = f.latitude.value.trim();
+		let longitude = f.longitude.value.trim();
+		let cityContent = f.csdesc.value.trim();
+		let file = f.selectFile.files[0];
+		
+		out = '<div class="course">';
+		out += '	<ul class="list_thumType flnon">';
+		out += '  		<li class="bdr_nor coslist">';
+		out += '    		<div class="photo">'	;
+		out += ' 				<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
+				  '					<img id="photo" class="img-viewer" alt="'+cityName+'">' + 
+				  '  			</a>'+	
+				  '    	 	</div>';
+		out += '   			<div class="area_txt">';
+		out += '     			<div class="tit">';
+		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
+		out += '        			<input type="text" name="latitudes" value="'+latitude+'">';
+		out += '        			<input type="text" name="longitudes" value="'+longitude+'"" >';
+		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
+		out += '        			<input type="file" name="uploadFile" id="uploadFile"  ">';
+		out += '      			</div>';
+		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+address+'" disabled="disabled">';
+		out += ' 				<p></p>'+
+				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
+		out += '     		</div>';
+		out += '    	 </li>';
+		out += ' 	</ul>';
+		out += ' </div>';
+		
+		$("#courseCity").append(out);
+
+		const courseEls = document.querySelectorAll(".course");
+		const courseEl = courseEls[courseEls.length-1];
+		
+		
+		let imgEl = courseEl.querySelector("#photo");
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			imgEl.src = "none";
+			imgEl.src = e.target.result;
+		}
+		reader.readAsDataURL(file);
+		
+		let fileEl = courseEl.querySelector("input[name=uploadFile]");
+		let dt = new DataTransfer();
+		dt.items.add(file);
+		fileEl.files = dt.files;
+		
+		
+		f.cityName2.value = "";
+		f.csdesc.value = "";
+		f.selectFile.value = "";
+		f.address.value = "";
+		f.latitude.value = "";
+		f.longitude.value = "";
+		
+		document.getElementById("cityName").textContent = "City";
+        document.getElementById("cityaddr").textContent ="";
+		
+         console.log("성공!")
+	}); // cityAddBtn (도시등록)  버튼 끝
+	
+	
+	function createCityForm(frm) { 
+		
+		
+		document.getElementById("totalCity").textContent = courseSeq;
+		
+		out = '<div class=course">';
+		out += '	<ul class="list_thumType flnon">';
+		out += '  		<li class="bdr_nor coslist">';
+		out += '    		<div class="photo">'	;
+		out += ' 				<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
+				  '					<img  id="photo" class="img-viewer" alt="'+cityName+'">' + 
+				  '  			</a>'+	
+				  '    	 	</div>';
+		out += '   			<div class="area_txt">';
+		out += '     			<div class="tit">';
+		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
+		out += '        			<input type="text" name="latitudes" value="'+latitude+'">';
+		out += '        			<input type="text" name="longitudes" value="'+longitude+'"" >';
+		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
+		out += '        			<input type="file" name="uploadFile" id="uploadFile"  ">';
+		out += '      			</div>';
+		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+address+'" disabled="disabled">';
+		out += ' 				<p></p>'+
+				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
+		out += '     		</div>';
+		out += '    	 </li>';
+		out += ' 	</ul>';
+		out += ' </div>';
+		
+
+		$("#courseCity").append(out);
+
+		// 넘어온 이미지 보이게
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById("photo").src = "none";
+			document.getElementById("photo").src = e.target.result;
+		}
+		reader.readAsDataURL(file);
+		
+		// 넘어온 파일 받기
+		let dt = new DataTransfer();
+		dt.items.add(file);
+		document.getElementById("uploadFile").files = dt.files;
+
+		
+		
+	}	
+	
+	
 	
 	
 	
 	 //f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
 	 //f.submit();
 
-}
+});
 </script>
 
    
@@ -232,7 +394,7 @@ function cityOk() {
 					</div>
 					<div class="row ">
 						<div class="col">
-							<input type="file" name="selectFile" accept="image/*" multiple="multiple" class="form-control" >
+							<input type="file" name="selectFile" id="selectFile" accept="image/*" multiple="multiple" class="form-control" >
 						</div>
 					</div>
 				</div>
@@ -240,7 +402,7 @@ function cityOk() {
 				<table class="table table-borderless">
 					<tr>
 						<td class="text-center">
-							<button type="button" class="btn mapBtn" onclick="cityOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+							<button type="button" class="btn mapBtn cityAddBtn" >${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 							<c:if test="${mode=='update'}">
 							</c:if>
 						</td>
@@ -252,6 +414,8 @@ function cityOk() {
 					<input type="hidden" id="latitude">
 					<input type="hidden" id="longitude">
 					<input type="hidden" id="address">
+					<input type="hidden" id="courseSeq">
+
 				</div>
 				
 			</div>
@@ -306,7 +470,7 @@ function cityOk() {
 			</div>
 			
 			<div id = "courseCity" >
-
+				
 				
 			</div>
 			

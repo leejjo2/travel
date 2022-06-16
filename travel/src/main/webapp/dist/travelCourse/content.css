@@ -555,7 +555,7 @@
 .list_thumType > li .photo img{width: 140px;height:94px;}
 .list_thumType > li .photo a{display: block;}
 .list_thumType > li .photo .forecast_icon{display:inline-block;position:absolute;left:4px;top:0;width:29px;height:41px;z-index: 5;background:url(https://cdn.visitkorea.or.kr/resources/images/sub/icon_forecast.png) 0 0 no-repeat;text-indent: -9999px;}
-.list_thumType > li .photo .numbering{position:absolute;left:0;top:0;display:inline-block;background:#1192CC;color:#fff;font-weight:700;font-size:16px;text-align:center;line-height:28px;width:30px;height:30px;}
+.list_thumType > li .photo .numbering{z-index: 9999; position:absolute;left:0;top:0;display:inline-block;background:#1192CC;color:#fff;font-weight:700;font-size:16px;text-align:center;line-height:28px;width:30px;height:30px;}
 .list_thumType.event > li .photo{width:142px;}
 .list_thumType.event > li .photo a{border:1px solid #e5e5e5;}
 .list_thumType.type1 > li:first-child{border-top:0;}

@@ -19,16 +19,17 @@ public class TravelCourse {
 	private String hastag;
 	
 	// 코스 상세 List
-	private List<Integer> courseSeq; // 코스순서
+	private List<Integer> courseSeqs; // 코스순서
 	private List<String> placeNames;
 	private List<String>  addresss;
 	private List<String>  longitudes; // 위도
 	private List<String>  latitudes; // 경도
 	private List<String>  detailContents;
+	private List<String> uploadFile;
 	
 	// 코스 상세 
 	private int courseDetailNum;
-	private int course_seq; // 순서
+	private int courseSeq; // 순서
 	private String placeName;
 	private String  address;
 	private String  longitude; // 위도
@@ -36,12 +37,9 @@ public class TravelCourse {
 	private String  detailContent;
 	
 	
-	
-	
-	
 	// 코스 이미지
-	private List<Integer> imageFileNum;
-	private List<String> saveFilename;
+	private int imageFileNum; // 이미지 파일 번호
+	private String saveFilename; // 서버에 저장된 파일 이름
 	
 	public String getUserId() {
 		return userId;
@@ -109,11 +107,11 @@ public class TravelCourse {
 	public void setHastag(String hastag) {
 		this.hastag = hastag;
 	}
-	public List<Integer> getcourseSeq() {
-		return courseSeq;
+	public List<Integer> getCourseSeqs() {
+		return courseSeqs;
 	}
-	public void setcourseSeq(List<Integer> courseSeq) {
-		this.courseSeq = courseSeq;
+	public void setCourseSeqs(List<Integer> courseSeqs) {
+		this.courseSeqs = courseSeqs;
 	}
 	public List<String> getPlaceNames() {
 		return placeNames;
@@ -145,17 +143,23 @@ public class TravelCourse {
 	public void setDetailContents(List<String> detailContents) {
 		this.detailContents = detailContents;
 	}
+	public List<String> getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(List<String> uploadFile) {
+		this.uploadFile = uploadFile;
+	}
 	public int getCourseDetailNum() {
 		return courseDetailNum;
 	}
 	public void setCourseDetailNum(int courseDetailNum) {
 		this.courseDetailNum = courseDetailNum;
 	}
-	public int getCourse_seq() {
-		return course_seq;
+	public int getCourseSeq() {
+		return courseSeq;
 	}
-	public void setCourse_seq(int course_seq) {
-		this.course_seq = course_seq;
+	public void setCourseSeq(int courseSeq) {
+		this.courseSeq = courseSeq;
 	}
 	public String getPlaceName() {
 		return placeName;
@@ -187,18 +191,19 @@ public class TravelCourse {
 	public void setDetailContent(String detailContent) {
 		this.detailContent = detailContent;
 	}
-	
-	public List<Integer> getImageFileNum() {
+	public int getImageFileNum() {
 		return imageFileNum;
 	}
-	public void setImageFileNum(List<Integer> imageFileNum) {
+	public void setImageFileNum(int imageFileNum) {
 		this.imageFileNum = imageFileNum;
 	}
-	public List<String> getSaveFilename() {
+	public String getSaveFilename() {
 		return saveFilename;
 	}
-	public void setSaveFilename(List<String> saveFilename) {
+	public void setSaveFilename(String saveFilename) {
 		this.saveFilename = saveFilename;
 	}
+
+	
 	
 }
