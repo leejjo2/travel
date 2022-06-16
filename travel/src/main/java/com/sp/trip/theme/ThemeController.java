@@ -1,5 +1,6 @@
 package com.sp.trip.theme;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +41,12 @@ public class ThemeController {
 	@RequestMapping(value="write", method = RequestMethod.POST)
 	public String writeSubmit(Theme dto, HttpSession session)throws Exception{
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "course";
 		try {
 			dto.setUserId(info.getUserId());
-			service.insertBoard(dto);
+			service.insertBoard(dto, pathname);
 		} catch (Exception e) {
 		}
 		return "redirect:/theme/list";

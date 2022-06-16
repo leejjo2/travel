@@ -363,7 +363,7 @@
 					<td class="text-center">
 						<button type="button" class="btn btn-dark" onclick="sendOk1();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 						<button type="reset" class="btn btn-light px-4">다시입력</button>
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/travelCourse/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/theme/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 						<c:if test="${mode=='update'}">
 							<input type="hidden" name="num" value="${dto.num}">
 							<input type="hidden" name="page" value="${page}">

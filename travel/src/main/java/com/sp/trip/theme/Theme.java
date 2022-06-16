@@ -2,6 +2,8 @@ package com.sp.trip.theme;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Theme {
 	// 게시글
 	private int courseNum;
@@ -25,6 +27,8 @@ public class Theme {
 	private String longitude;
 	private String latitude;
 	private String courseContent;
+	private String imageFileNum;
+	private String saveFileName;
 	
 	// 상세 코스 리스트
 	private List<String> placeNameList;
@@ -32,6 +36,7 @@ public class Theme {
 	private List<String> longitudeList;
 	private List<String> latitudeList;
 	private List<String> courseContentList;
+	private List<MultipartFile> uploadFile;
 	
 	public int getCourseNum() {
 		return courseNum;
@@ -171,4 +176,25 @@ public class Theme {
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
+	public List<MultipartFile> getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(List<MultipartFile> uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public String getImageFileNum() {
+		return imageFileNum;
+	}
+	public void setImageFileNum(String imageFileNum) {
+		this.imageFileNum = imageFileNum;
+	}
+	public String getSaveFileName() {
+		return saveFileName;
+	}
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
+	}
+	
+	
+	
 }
