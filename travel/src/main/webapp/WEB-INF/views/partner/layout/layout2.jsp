@@ -28,6 +28,8 @@
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/dist/partner/build/css/custom.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/jquery.min.js"></script>
 </head>
 
 <body class="nav-md">
@@ -44,8 +46,6 @@
 	<div class="loader"></div>
 </div>
 
-<!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/dist/partner/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->

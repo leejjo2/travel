@@ -1,5 +1,9 @@
 package com.sp.trip.partner.lodgingManage;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class LodgingManage {
 	// 사업자 테이블
 	private int partnerNum;
@@ -15,6 +19,7 @@ public class LodgingManage {
 	private int hotelZip;
 	private String hotelAddr1;
 	private String hotelAddr2;
+	private List<MultipartFile> selectFile;
 	
 	// 방 상세정보 테이블
 	private int roomNum;
@@ -31,6 +36,7 @@ public class LodgingManage {
 	// 방 이미지 테이블
 	private int roomImageFileNum;
 	private String roomSaveFilename;
+	
 	
 	public int getPartnerNum() {
 		return partnerNum;
@@ -98,6 +104,12 @@ public class LodgingManage {
 	public void setHotelAddr2(String hotelAddr2) {
 		this.hotelAddr2 = hotelAddr2;
 	}
+	public List<MultipartFile> getSelectFile() {
+		return selectFile;
+	}
+	public void setSelectFile(List<MultipartFile> selectFile) {
+		this.selectFile = selectFile;
+	}
 	public int getRoomNum() {
 		return roomNum;
 	}
@@ -158,5 +170,4 @@ public class LodgingManage {
 	public void setRoomSaveFilename(String roomSaveFilename) {
 		this.roomSaveFilename = roomSaveFilename;
 	}
-	
 }
