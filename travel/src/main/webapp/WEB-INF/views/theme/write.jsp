@@ -72,6 +72,21 @@
 	font-family: 맑은고딕;
 	margin-top: 10px;
 }
+
+.course .remove-course {
+	cursor: pointer;
+	position : absolute;
+	right: 0;
+	top: 20px;
+	border-color: #13A6E8;
+	color: #13A6E8;
+}
+
+.course .remove-course:hover{
+	border-color: #13A6E8;
+	background-color: #13A6E8;
+	color: #fff;
+}
 </style>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/boot-board.css"
@@ -90,8 +105,10 @@
 	src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
 
 <script type="text/javascript">
+	// 코스 시퀀스 번호
 	var courseSeq = 0;
-
+	
+	// 상세 코스 등록
 	function sendOk() {
 		var f = document.cityForm;
 		var str, check;
@@ -116,6 +133,11 @@
 			check = false;
 			return;
 		}
+		
+		if(! $("#courseCity div").hasClass("course")) {
+			$("#courseCity").empty();
+		}
+		
 		var out;
 		var cityName, cityAddress, cityContent, cityImg, cityLatitude, cityLongitude, file;
 		cityName = f.cityName2.value;
@@ -125,25 +147,30 @@
 		cityLongitude = f.longitude.value;
 		file = f.selectFile.files[0];
 		courseSeq += 1;
-		out = '<ul class="list_thumType flnon course">';
+		out =  '<div class="course">';
+		out += '<ul class="list_thumType flnon">';
 		out += '	<li class="bdr_nor coslist">';
-		out += '    <div class="photo">';
-		out += ' 		<a	 href="#"><em class="numbering">'
-				+ courseSeq
-				+ '</em>'
-				+ '				<img class="img-viewer" src="" alt="'
-				+ cityName + '">' + '  		</a>' + ' </div>';
-		out += '   	<div class="area_txt">';
-		out += '     	<div class="tit">';
+		out += '   		<div class="photo">';
+		out += ' 			<a href="#">';
+		out += '				<em class="numbering">'+courseSeq+'</em>';	
+		out += '				<img class="img-viewer" src="" alt="'+cityName + '">';
+		out += ' 			</a>';
+		out += ' 		</div>';
+		out += '   	   	<div class="area_txt">';
+		out += '     		<div class="tit">';
 		out += '   				<input class="courseCityName" name = "placeNameList" type="text" value="'+cityName+'" >';
 		out += '        		<input type="hidden" name="latitudeList" value="'+cityLatitude+'">';
 		out += '        		<input type="hidden" name="longitudeList" value="'+cityLongitude+'"" >';
-		out += '      	</div>';
-		out += '   		<input class="courseCityAddress" name ="addressList" type="text" value="'+cityAddress+'" >';
-		out += ' 		<p></p>'
-				+ '			<input class="courseCityContent" name = "courseContentList" type="text" value="'+cityContent+'">'
-				+ '<input type="file" name="uploadFile" style="display:none;">';
-		out += '    </div>';
+		out += '      		</div>';
+		out += '   			<input class="courseCityAddress" name ="addressList" type="text" value="'+cityAddress+'" >';
+		out += ' 			<p></p>';
+		out += '			<input class="courseCityContent" name = "courseContentList" type="text" value="'+cityContent+'">';
+		out += '			<input type="file" name="uploadFile" style="display:none;">';
+		out += '    	</div>';
+		out += '    	<button type="button" class="btn remove-course"><i class="bi bi-trash" fill="currentColor"></i> 코스삭제</button>';
+		out += '    </li>';
+		out += ' </ul>';
+		out += ' </div>';
 
 		// 	document.querySelector(".list_thumType").append(out);
 		$("#courseCity").append(out);
@@ -167,12 +194,31 @@
 		document.getElementById("totalCity").textContent = courseSeq;
 
 	}
-
+	
+	// 전체 게시물 등록
 	function sendOk1() {
 		var f = document.courseForm;
 		f.action = "${pageContext.request.contextPath}/theme/${mode}";
 		f.submit();
 	}
+	
+	// 삭제 버튼 클릭
+	$(function(){
+		$("body").on("click", ".remove-course", function(){
+			
+			$(this).closest(".course").remove();
+			
+			if(! $("#courseCity div").hasClass("course")) {
+				$("#courseCity").append("<p class='text-center mb-0'>등록된 코스가 없습니다.</p>");
+			}
+			courseSeq -= 1;
+			if(courseSeq>0){
+				for(let i = 0; i<$("#courseCity").find("em").length; i++){
+					$("#courseCity").find("em")[i].innerHTML = i+1;
+				}
+			}
+		});
+	});
 </script>
 
 
