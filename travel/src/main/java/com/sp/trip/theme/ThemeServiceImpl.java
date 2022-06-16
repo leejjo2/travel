@@ -1,5 +1,8 @@
 package com.sp.trip.theme;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,9 @@ public class ThemeServiceImpl implements ThemeService{
 				dto.setCourse_seq(i+1);
 				dto.setPlaceName(dto.getPlaceNameList().get(i));
 				dto.setAddress(dto.getAddressList().get(i));
+				dto.setLongitude(dto.getLongitudeList().get(i));
+				dto.setLatitude(dto.getLatitudeList().get(i));
+				dto.setCourseContent(dto.getCourseContentList().get(i));
 				
 				dao.insertData("theme.insertCourse", dto);
 			}
@@ -32,5 +38,18 @@ public class ThemeServiceImpl implements ThemeService{
 		}
 		
 	}
+
+	@Override
+	public List<Theme> listCity(Map<String, Object> map) throws Exception {
+		List<Theme> listCity = null;
+		try {
+			listCity = dao.selectList("theme.cityCategory", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listCity;
+	}
+	
+	
 
 }

@@ -1,5 +1,9 @@
 package com.sp.trip.theme;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +22,17 @@ public class ThemeController {
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list() {
-		return ".theme.themeList2";
+		return ".theme.themeList";
 	}
 	@RequestMapping(value = "write", method = RequestMethod.GET)
-	public String write(Model model) {
+	public String write(Model model) throws Exception {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Theme> cityList = service.listCity(map);
+		
 		model.addAttribute("mode", "write");
+		model.addAttribute("cityList", cityList);
+		
 		return ".theme.write";
 	}
 	

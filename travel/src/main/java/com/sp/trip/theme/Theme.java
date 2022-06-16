@@ -3,6 +3,7 @@ package com.sp.trip.theme;
 import java.util.List;
 
 public class Theme {
+	// 게시글
 	private int courseNum;
 	private String userId;
 	private String subject;
@@ -11,11 +12,12 @@ public class Theme {
 	private int hitCount;
 	
 	private int cityNum;
+	private String cityName;
 	private int themeNum;
 	private String period;
 	private String hashTag;
 	
-
+	// 상세 코스
 	private int courseDetailNum;
 	private int course_seq;
 	private String placeName;
@@ -24,6 +26,7 @@ public class Theme {
 	private String latitude;
 	private String courseContent;
 	
+	// 상세 코스 리스트
 	private List<String> placeNameList;
 	private List<String> addressList;
 	private List<String> longitudeList;
@@ -161,5 +164,11 @@ public class Theme {
 	}
 	public void setCourseContentList(List<String> courseContentList) {
 		this.courseContentList = courseContentList;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
 	}
 }
