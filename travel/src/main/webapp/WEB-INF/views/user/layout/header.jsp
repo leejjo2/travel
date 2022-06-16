@@ -105,7 +105,9 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
 								<li><a class="dropdown-item" href="#">챗봇</a></li>
-								<li><a class="dropdown-item" href="#">자주 물어보는 질문</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/faq/main">자주 물어보는 질문</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/qna/list">Q&amp;A</a></li>
+								
 							</ul>
 						</li>
 					</ul>
