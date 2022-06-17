@@ -19,6 +19,7 @@
 .selectCityThema { display: flex; float: right;}
 .courseSubject { height: 50px;  width: 100%;  font-size: 21px;  text-align: left;  border: 1px solid #ccc;
    				 box-sizing: border-box; padding: 5px 5px; font-family: 맑은고딕; margin-top: 10px;}	
+.sendBtn{ border-color: #13A6E8; background: #13A6E8; color: white; font-family: 맑은고딕;}
 
 .img-viewer {
 	cursor: pointer;
@@ -36,6 +37,15 @@
 	font-weight: 900;
 	color: white;
 	font-size: 19px;
+}
+
+.course .remove-course {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    border-color: #13A6E8;
+    color: #13A6E8;
 }
 </style>
 
@@ -75,86 +85,7 @@ $(document).ready(function() {
 });
 
 
-/*
-function cityOk() {
-	var f = document.cityForm;
-	var str, check;
-	check = false;
-	if(! f.cityName2.value) {
-		alert("장소(마커)를 선택하세요. ");
-		check = true;
-		return;
-	}
-
-	if(! f.csdesc.value.trim()) {
-		alert("내용을 입력하세요. ");
-		f.csdesc.focus();
-		check = true;
-		return;
-	}
-	
-	if(! f.selectFile.value) {
-
-		alert("사진을 추가하세요. ");
-		f.cityCategoryNum.focus();
-		check = false;
-		return;
-	}
-	console.log() 
-	var out;
-	var cityName, cityAddress, cityContent, cityImg, cityLatitude, cityLongitude;
-	cityName = f.cityName2.value;
-	cityAddress = f.address.value;
-	cityContent = f.csdesc.value;
-	cityImg = f.selectFile.value;
-	cityImgName = f.selectFile.value;
-	cityLatitude = f.latitude.value;
-	cityLongitude = f.longitude.value;
-	courseSeq += 1;
-
-	console.log("123"+cityImg);
-	
-	console.log("파일이름 : " + $("form[name=cityForm] input[name=selectFile]").files[0].name;
-	
-	if(! check ){
-		out = '<div class=course">';
-		out += '	<ul class="list_thumType flnon">';
-		out += '  		<li class="bdr_nor coslist">';
-		out += '    		<div class="photo">'	;
-		out += ' 				<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
-				  '					<img class="img-viewer" alt="'+cityName+'">' + 
-				  '  			</a>'+	
-				  '    	 	</div>';
-		out += '   			<div class="area_txt">';
-		out += '     			<div class="tit">';
-		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
-		out += '        			<input type="text" name="latitudes" value="'+cityLatitude+'">';
-		out += '        			<input type="text" name="longitudes" value="'+cityLongitude+'"" >';
-		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
-		out += '      			</div>';
-		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+cityAddress+'" disabled="disabled">';
-		out += ' 				<p></p>'+
-				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
-		out += '     		</div>';
-		out += '    	 </li>';
-		out += ' 	</ul>';
-		out += ' </div>';
-		
-		
-	
-		$("#courseCity").append(out);
-		//$(".img-viewer").empty();
-		//img = "${pageContext.request.contextPath}/uploads/photo/" + img;
-		//$(".img-viewer").css("background-image", "url("+img+")");
-		
-		document.getElementById("totalCity").textContent = courseSeq;		
-
-//		$(".cos_section span").text() = seq;
-		console.log("seq"+courseSeq);
-	}
-*/
-
-var courseSeqNum = 0;
+var courseSeq = 0;
 
 $(function() {
 	$(".cityAddBtn").click(function(){
@@ -184,12 +115,9 @@ $(function() {
 			$(".courseCity").empty();
 		}
 		
-		courseSeqNum += 1;
-		f.courseSeq.value = courseSeqNum;
-		
+		courseSeq += 1;
 		
 		let cityName = f.cityName2.value.trim();
-		let courseSeq = f.courseSeq.value.trim();
 		let address = f.address.value.trim();
 		let latitude = f.latitude.value.trim();
 		let longitude = f.longitude.value.trim();
@@ -206,16 +134,17 @@ $(function() {
 				  '    	 	</div>';
 		out += '   			<div class="area_txt">';
 		out += '     			<div class="tit">';
-		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
-		out += '        			<input type="text" name="latitudes" value="'+latitude+'">';
-		out += '        			<input type="text" name="longitudes" value="'+longitude+'"" >';
-		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
-		out += '        			<input type="file" name="uploadFile" id="uploadFile"  ">';
+		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" >';
+		out += '        			<input type="hidden" name="latitudes" value="'+latitude+'">';
+		out += '        			<input type="hidden" name="longitudes" value="'+longitude+'"" >';
+		out += '        			<input type="hidden" name="courseSeq" value="'+courseSeq+'">';
+		out += '        			<input type="file" name="uploadFile" id="uploadFile" style="display:none"; >';
 		out += '      			</div>';
-		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+address+'" disabled="disabled">';
+		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+address+'" >';
 		out += ' 				<p></p>'+
-				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
+				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" >';
 		out += '     		</div>';
+		out += '    		<button type="button" class="btn remove-course"><i class="bi bi-trash" fill="currentColor"></i></button>';
 		out += '    	 </li>';
 		out += ' 	</ul>';
 		out += ' </div>';
@@ -239,7 +168,8 @@ $(function() {
 		dt.items.add(file);
 		fileEl.files = dt.files;
 		
-		
+		document.getElementById("totalCity").textContent = courseSeq;
+
 		f.cityName2.value = "";
 		f.csdesc.value = "";
 		f.selectFile.value = "";
@@ -250,66 +180,48 @@ $(function() {
 		document.getElementById("cityName").textContent = "City";
         document.getElementById("cityaddr").textContent ="";
 		
-         console.log("성공!")
 	}); // cityAddBtn (도시등록)  버튼 끝
-	
-	
-	function createCityForm(frm) { 
-		
-		
-		document.getElementById("totalCity").textContent = courseSeq;
-		
-		out = '<div class=course">';
-		out += '	<ul class="list_thumType flnon">';
-		out += '  		<li class="bdr_nor coslist">';
-		out += '    		<div class="photo">'	;
-		out += ' 				<a	href="#"><em class="numbering">'+courseSeq+'</em>' + 
-				  '					<img  id="photo" class="img-viewer" alt="'+cityName+'">' + 
-				  '  			</a>'+	
-				  '    	 	</div>';
-		out += '   			<div class="area_txt">';
-		out += '     			<div class="tit">';
-		out += '   					<input class="courseCityName" name="placeNames" type="text" value="'+cityName+'" disabled="disabled">';
-		out += '        			<input type="text" name="latitudes" value="'+latitude+'">';
-		out += '        			<input type="text" name="longitudes" value="'+longitude+'"" >';
-		out += '        			<input type="text" name="courseSeq" value="'+courseSeq+'">';
-		out += '        			<input type="file" name="uploadFile" id="uploadFile"  ">';
-		out += '      			</div>';
-		out += '   				<input class="courseCityAddress" name ="addresss" type="text" value="'+address+'" disabled="disabled">';
-		out += ' 				<p></p>'+
-				  '				<input class="courseCityContent" name = "detailContents" type="text" value="'+cityContent+'" disabled="disabled">';
-		out += '     		</div>';
-		out += '    	 </li>';
-		out += ' 	</ul>';
-		out += ' </div>';
-		
+});
 
-		$("#courseCity").append(out);
+function sendOk() {
+	var f = document.courseForm;
+	
+	if(! f.subject.value) {
+		alert("코스명을 입력하세요. ");
+		return false;
+	}
+	
+	if(! f.placeNames.value) {
+		alert("코스를 추가하세요. ");
+		return false;
+	}
 
-		// 넘어온 이미지 보이게
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			document.getElementById("photo").src = "none";
-			document.getElementById("photo").src = e.target.result;
+	if(! f.content.value.trim()) {
+		alert("내용을 입력하세요. ");
+		f.content.focus();
+		return false;
+	}
+
+	 f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
+	 f.submit();
+}
+
+// 삭제 버튼 클릭
+$(function(){
+	$("body").on("click", ".remove-course", function(){
+		
+		$(this).closest(".course").remove();
+		
+		if(! $("#courseCity div").hasClass("course")) {
+			$("#courseCity").append("<p class='text-center mb-0'>등록된 코스가 없습니다.</p>");
 		}
-		reader.readAsDataURL(file);
-		
-		// 넘어온 파일 받기
-		let dt = new DataTransfer();
-		dt.items.add(file);
-		document.getElementById("uploadFile").files = dt.files;
-
-		
-		
-	}	
-	
-	
-	
-	
-	
-	 //f.action = "${pageContext.request.contextPath}/travelCourse/${mode}"; 
-	 //f.submit();
-
+		courseSeq -= 1;
+		if(courseSeq>0){
+			for(let i = 0; i<$("#courseCity").find("em").length; i++){
+				$("#courseCity").find("em")[i].innerHTML = i+1;
+			}
+		}
+	});
 });
 </script>
 
@@ -428,7 +340,7 @@ $(function() {
 			<div style=" border-bottom: 1px solid #999;  padding-bottom: 35px; padding-top: 35px; border-top: 3px dashed #999;">
 				<i class="far fa-map" style="font-size: 40px; color: #2E2E2E;"></i>
 				<span style="font-family: 맑은고딕; font-size: 35px; font-weight: bold; margin-left: 10px; color: #2E2E2E;">코스</span>
-				<input class="courseSubject" type="text" title="코스 제목" placeholder="코스 명을 입력해주세요." maxlength="300" >
+				<input class="courseSubject" type="text" name="subject" title="코스 제목" placeholder="코스 명을 입력해주세요." maxlength="300" >
 		
 			</div>
 			<div class="tit_cont tit_widCol2">
@@ -440,45 +352,52 @@ $(function() {
 			<div class="total_check">
 				<div class="cos_section">
 					<strong>총<span id="totalCity">0</span>건</strong>
-					<div class="type2">
+					
+					<div class="type2" style="margin-left: 15px;">
 						<span >
 							<label for="Category">코스 지역</label>
-							<select name="cityCategoryNum" class="" style="margin-right: 10px;">
-							<option value="">지역 선택</option>
-							<c:forEach var="vo" items="${cityList}">
-								<option value="${vo.cityNum}" >${vo.cityName}</option>
-							</c:forEach>
+							<select name="cityNum" class="" style="margin-right: 10px;">
+								<option value="">지역 선택</option>
+								<c:forEach var="vo" items="${cityList}">
+									<option value="${vo.cityNum}" >${vo.cityName}</option>
+								</c:forEach>
 						</select>
 						</span>
 					</div>
+					<div class="type2" style="margin-left: 15px;">
+						<span >
+							<label for="Category">코스 기간</label>
+							<select name="period" title="코스 기간 선택">
+								<option value="0">기간 선택</option>
+								<option value="1">당일치기</option>
+								<option value="2">1박 2일</option>
+								<option value="3">2박 3일</option>
+								<option value="4">3박 4일</option>
+								<option value="5">일주일</option>
+							</select>
+						</span>
+					</div>
 					<div class="type1">
-						<span style=" margin-right: 30px;">
+						<span>
 							<label for="Type">코스 테마</label>
-							<select id="Type" title="코스 테마 선택">
+							<select name="themeNum" id="Type" title="코스 테마 선택">
 								<option value="0">테마 선택</option>
-								<option value="1">가족코스</option>
-								<option value="2">혼자여행</option>
-								<option value="3">도보코스</option>
-								<option value="4">힐링코스</option>
-								<option value="5">맛 코스</option>
-								<option value="6">캠핑코스</option>
-								<option value="7">반려동물과 함께</option>
+								<c:forEach var="vo" items="${themeList}">
+									<option value="${vo.themeNum}" >${vo.themeName}</option>
+								</c:forEach>
 							</select>
 						</span>
 					</div>
 				</div>
 			</div>
 			
-			<div id = "courseCity" >
-				
-				
-			</div>
+			<div id = "courseCity" ></div>
 			
 				<!-- 0527 추가 지도 -->
 				<div class="mapIntroduce modify">
 					<div class="introduceTxt">
 						<p id="csdescview" style="display: none;"></p>
-						<textarea name="csdesc" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" style="" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
+						<textarea name="content" id="csdesc" maxlength="2000" class="inp_textarea" title="코스 소개" style="" placeholder="코스에 대한 간략한 설명을 기재할 수 있습니다."></textarea>
 					</div>
 				</div>
 			</div>
@@ -486,7 +405,7 @@ $(function() {
 			<table class="table table-borderless" style="margin-top: 5px;">
 				<tr>
 					<td class="text-center">
-						<button type="button" class="btn btn-dark" onclick="sendOk1();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
+						<button type="button" class="btn sendBtn"  onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 						<button type="reset" class="btn btn-light px-4">다시입력</button>
 						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/travelCourse/list';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 						<c:if test="${mode=='update'}">

@@ -2,13 +2,42 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="travelCourse">
-
-
-<!-- 도시 카테고리 -->
-<select id="cityCategory" resultType="com.sp.trip.travelCourse.TravelCourse">
-	SELECT cityNum cityNum, cityName cityName
-	FROM city
-	ORDER BY cityNum
-</select> 
+	<!-- 게시물 시퀀스 -->
+	<select id="travelCourseSeq" resultType="Integer">
+		SELECT travelCourse_seq.NEXTVAL FROM dual
+	</select>
+	<!-- 게시물 insert -->
+	<insert id="insertBoard" parameterType="com.sp.trip.travelCourse.TravelCourse">
+		INSERT INTO travelCourse(courseNum, userID, subject, content, cityNum, themeNum, period )
+		VALUES (#{courseNum}, #{userId}, #{subject}, #{content}, #{cityNum}, #{themeNum}, #{period})
+	</insert>
+	
+	<!-- 상세경로 시퀀스 -->
+	<select id="travelCourseDetailSeq" resultType="Integer">
+		SELECT travelCourseDetail_seq.NEXTVAL FROM dual
+	</select>
+	<!-- 게시물 상세 경로 insert -->
+	<insert id="insertCourse" parameterType="com.sp.trip.travelCourse.TravelCourse">
+		INSERT INTO travelCourseDetail (courseDetailNum, courseNum, course_seq, placeName, address, longitude, latitude, content)
+  		VALUES (#{courseDetailNum}, #{courseNum} , #{courseSeq}, #{placeName}, #{address}, #{longitude}, #{latitude}, #{detailContent})
+	</insert>
+	<!-- 상세경로 이미지 insert -->
+	<insert id="travelcourseImage" parameterType="com.sp.trip.travelCourse.TravelCourse">
+		INSERT INTO travelcourseImage (imageFileNum, travelCourseNum, saveFileName)
+		VALUES (travelcourseImage_seq.NEXTVAL, #{courseDetailNum}, #{saveFileName})
+	</insert>
+	
+	<!-- 도시 카테고리 -->
+	<select id="cityCategory" resultType="com.sp.trip.travelCourse.TravelCourse">
+		SELECT cityNum cityNum, cityName cityName
+		FROM city
+		ORDER BY cityNum
+	</select> 
+	<!-- 테마 카테고리 -->
+	<select id="themeCategory" resultType="com.sp.trip.travelCourse.TravelCourse">
+		SELECT themeNum, themeName 
+		FROM theme
+		ORDER BY themeNum
+	</select> 
 
 </mapper>

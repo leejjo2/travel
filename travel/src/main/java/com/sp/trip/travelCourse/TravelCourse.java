@@ -2,6 +2,8 @@ package com.sp.trip.travelCourse;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class TravelCourse {
 	private String userId; 
@@ -12,20 +14,20 @@ public class TravelCourse {
 	private String content;
 	private String reg_date;
 	private int hitCount;
+	
 	private int cityNum;
 	private String cityName;
 	private int themeNum;
+	private String themeName;
 	private String period;
-	private String hastag;
 	
 	// 코스 상세 List
-	private List<Integer> courseSeqs; // 코스순서
 	private List<String> placeNames;
 	private List<String>  addresss;
 	private List<String>  longitudes; // 위도
 	private List<String>  latitudes; // 경도
 	private List<String>  detailContents;
-	private List<String> uploadFile;
+	private List<MultipartFile> uploadFile;
 	
 	// 코스 상세 
 	private int courseDetailNum;
@@ -39,7 +41,7 @@ public class TravelCourse {
 	
 	// 코스 이미지
 	private int imageFileNum; // 이미지 파일 번호
-	private String saveFilename; // 서버에 저장된 파일 이름
+	private String saveFileName; // 서버에 저장된 파일 이름
 	
 	public String getUserId() {
 		return userId;
@@ -95,23 +97,17 @@ public class TravelCourse {
 	public void setThemeNum(int themeNum) {
 		this.themeNum = themeNum;
 	}
+	public String getThemeName() {
+		return themeName;
+	}
+	public void setThemeName(String themeName) {
+		this.themeName = themeName;
+	}
 	public String getPeriod() {
 		return period;
 	}
 	public void setPeriod(String period) {
 		this.period = period;
-	}
-	public String getHastag() {
-		return hastag;
-	}
-	public void setHastag(String hastag) {
-		this.hastag = hastag;
-	}
-	public List<Integer> getCourseSeqs() {
-		return courseSeqs;
-	}
-	public void setCourseSeqs(List<Integer> courseSeqs) {
-		this.courseSeqs = courseSeqs;
 	}
 	public List<String> getPlaceNames() {
 		return placeNames;
@@ -143,10 +139,10 @@ public class TravelCourse {
 	public void setDetailContents(List<String> detailContents) {
 		this.detailContents = detailContents;
 	}
-	public List<String> getUploadFile() {
+	public List<MultipartFile> getUploadFile() {
 		return uploadFile;
 	}
-	public void setUploadFile(List<String> uploadFile) {
+	public void setUploadFile(List<MultipartFile> uploadFile) {
 		this.uploadFile = uploadFile;
 	}
 	public int getCourseDetailNum() {
@@ -197,13 +193,12 @@ public class TravelCourse {
 	public void setImageFileNum(int imageFileNum) {
 		this.imageFileNum = imageFileNum;
 	}
-	public String getSaveFilename() {
-		return saveFilename;
+	public String getSaveFileName() {
+		return saveFileName;
 	}
-	public void setSaveFilename(String saveFilename) {
-		this.saveFilename = saveFilename;
+	public void setSaveFileName(String saveFileName) {
+		this.saveFileName = saveFileName;
 	}
-
 	
 	
 }

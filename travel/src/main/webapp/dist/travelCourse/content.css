@@ -2122,7 +2122,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 
 /* 마이코스 */
 .cos_section{overflow:hidden;padding:24px 0 6px;font-weight:700;font-size:16px;color:#000;}
-.cos_section > div label{line-height: 40px;margin-right: 15px; font-size: 17px;}
+.cos_section > div label{line-height: 40px;margin-right: 10px; font-size: 17px;}
 .cos_section > div select{width:150px;height:40px;line-height:40px;color:#000;font-size:16px;}
 .cos_section > div{float: right;}
 .cos_section > div span{display:block;}

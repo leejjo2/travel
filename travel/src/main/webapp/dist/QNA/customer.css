@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+
+
+/* 고객센터 css * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ .customer{padding:30px; background:#fff;}
+ .customer>.title{font-size:30px; height:60px; line-height:1.2}
+ .customer .section-title{height:35px; margin-top:40px; background:url(/images/bg_package_title.gif) no-repeat; padding-left:10px; font-size:17px; line-height:1;}
+ .customer .sub-title,{height:40px; font-size:22px;    border-bottom: 1px solid #ebebeb; margin-top:15px;}
+ .refund .sub-title{height:40px; font-size:21px;    border-bottom: 1px solid #ebebeb;} /* 각 상세에서 불렀을때 */
+ .customer.counsel .btn_comm{width:140px; height:46px; line-height:46px; text-align:center;}
+ .customer.counsel .board-list{margin-top:5px;}
+ 	.board-list .notice td{background:#fafafa; color:#37b7b5;}
+	.board-list .notice td a{color:#37b7b5; font-weight:bold;}
+ .customer .data-table .no-result{height:255px; font-size:15px; line-height:2;}
+	.board-view{margin-bottom:20px; border:1px solid #ebebeb; border-top:2px solid #b3b3b3; font-size:15px;}
+	.board-view .title{padding:25px 20px; background:#fafafa;}
+	.board-view .title small{display:block; padding-top:10px; font-size:13px; color:#808080; line-height:1; font-weight:normal;}
+	.board-view .title span + span{margin-left:10px; padding-left:10px; border-left:1px solid #a9a9a9;}
+	.board-view .cont{padding:20px; border-top:1px solid #ebebeb; line-height:2;}
+	
+	.board-view .password{padding:20px; border-top:1px solid #ebebeb;}
+	.board-view .password label{display:inline-block; line-height:46px; font-weight:bold;}
+	.board-view .password>*{margin-right:10px;}
+	.board-view .password .btn_other{font-size:17px;}
+	.board-view .origin{padding:30px 0; margin:0 20px; border-top:1px dashed #ebebeb;}
+	.board-view .origin dt{padding-bottom:20px; font-weight:bold; color:#37b7b5;}
+	.board-view .origin dd{color:#999; line-height:2;}
+	.board-view .signature{margin:20px; margin-top:0; padding:25px; border:1px solid #c1dfdd; background:#f4fafa; border-radius:5px;}
+		.signature dl{position:relative; width:100%;}
+		.signature img{position:absolute; top:0; left:0; display: none}
+		.signature dt,
+		.signature dd{padding-left:0px;}
+		.signature small{color:#808080; font-size:13px;}
+		.signature strong + span{margin-left:10px; padding-left:10px; border-left:1px solid #3d3d3d;}
+		.signature .info{color:#37b7b5;}
+.customer .btn_other{width:140px; height:46px; line-height:46px; text-align:center;}
+.customer .btn-group {padding-top:20px;}
+.customer .btn-group a{width:140px; margin-left:5px; font-size:17px; text-align:center;}
+.customer .btn-group a:first-child{margin-left:0;}
+.btn_notice{ width: 230px !important; text-align: center; margin-top: 40px }
+
+/* 여행상담 css */
+.customer.counsel .table-layout .start_area strong{ display:inline-block; margin-bottom:10px;}
+.customer.counsel .table-layout .start_area .lab_choice{ margin-bottom:8px; padding:0 5px;}
+
+.customer.counsel .table-layout .item strong{ display:inline-block; margin-bottom:10px;}
+.customer.counsel .table-layout .item .lab_choice{ margin-bottom:8px; padding:0 5px;}
+
+
+.board-view .cont .help_mail{ width:100%; clear:both; float:left;margin-bottom:20px;}
+.board-view .cont .help_mail dt{ width:15%; clear:both;float:left; font-weight:bold; color:#3d3d3d}
+.board-view .cont .help_mail dd{ width:85%;float:left;  color:#808080}
+
+
+
+
+
+
+.board-write .form>dl>dt{padding:25px 0 10px; font-weight:bold; font-size:15px; line-height:1;}
+.board-write .form>dl>dt:first-child{padding-top:15px;}
+.board-write .form .table-layout{border-top:2px solid #b3b3b3; border-left:1px solid #ebebeb;}
+.board-write .form .table-layout>dl{background:#fafafa; border-bottom:1px solid #ebebeb;}
+.board-write .form .table-layout>dl>dt>*{padding:0; color:#808080; font-size:14px; text-align:center;}
+.board-write .form .table-layout>dl>dd{border-bottom:0;}
+.board-write .form .table-layout>dl>dd>*{font-size:15px;}
+.board-write .area_reserve .agree_form{margin:20px 0 0;}
+.complain .form .table-layout>dl:first-child>dd{border-top:0;}
+
+.faq-tab{padding:20px 0;}
+.faq-tab ul{width:100%;}
+.faq-tab ul:after{content:''; display:block; clear:both;}
+.faq-tab li{float:left; width:10%;}
+.faq-tab li a{display:block; padding:10px 0; text-align:center; border:1px solid #b3b3b3; border-left:0;}
+.faq-tab li a.on{background:#808080; color:#fff; border-color:#808080;}
+.faq-tab li:first-child a{border-left:1px solid #b3b3b3;}
+
+.faq .data-table th,
+.faq .data-table td{font-size:15px;}
+.faq .answer{display:none;}
+.faq .answer td{padding:30px; text-align:left; background:#fafafa;}
+
+.refund .tab-menu>dt a{width:110px;}
+.refund .tab-menu>dt:first-child{left:0;}
+.refund .tab-menu>dt:first-child.selected a{border-left:1px solid #ebebeb;}
+.refund .tab-menu>dt:first-child + dd + dt{left:110px;}
+.refund .tab-menu>dt:first-child + dd + dt + dd + dt{left:220px;}
+.refund .tab-menu>dt:first-child + dd + dt + dd + dt + dd + dt{left:330px;}
+.refund .tab-menu>dt:first-child + dd + dt + dd + dt + dd + dt + dd + dt{left:440px;}
+.refund .tab-menu>dt:first-child + dd + dt + dd + dt + dd + dt + dd + dt + dd + dt{left:550px;}
+.refund .tab-menu>dd{border:1px solid #ebebeb; border-top:1px solid #626d75;}
+.refund .data-table th
+.refund .data-table td{padding:15px 5px; font-size:12px; border-left:1px solid #ebebeb;}
+.refund .data-table tbody th{font-weight:normal; color:#3d3d3d;}
+.refund .data-table img{margin-bottom:10px;}
+.refund li{margin-bottom:5px;}
+
+.refund .dl-cont{font-size:15px;}
+.customer  .refund .dl-cont>dt{padding:20px 0 10px; font-weight:bold; font-size:19px; color:#3d3d3d !important;}
+.refund .dl-cont>dt{padding:20px 0 10px; font-weight:bold; font-size:16px; color:#3d3d3d !important;}
+
+.refund .dl-cont dd{padding-bottom:20px; color:#3d3d3d !important;}
+
+.customer.policy{line-height:1.8;}
+.policy .div{margin:40px 0; border-top:2px solid #b3b3b3;}
+.policy .sub-title{height:60px; padding-top:40px; margin-top:40px; border-top:2px solid #b3b3b3;}
+.policy .panel{padding:20px 30px;}
+.policy .panel dt{padding-bottom:20px;}
+.policy .data-table th,
+.policy .data-table td{padding:15px 10px; font-size:15px;}
+.policy .data-table thead th{text-align:center;}
+.policy .data-table tbody th{font-weight:normal;}
+.policy .list.dot>li{background-position:0 10px;}
+.policy .sub-title{ font-size:20px; }
+
+/* 자주묻는질문-실시간취소환불수수료 테이블 css */
+#div_air_refund .data-table tbody{ background:#fff;}
+#div_air_refund .data-table td,#div_air_refund .data-table th{ background:#fff;}

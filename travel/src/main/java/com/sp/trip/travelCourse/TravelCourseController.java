@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sp.trip.common.FileManager;
-import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
 
 
@@ -23,10 +21,7 @@ import com.sp.trip.member.SessionInfo;
 public class TravelCourseController {
 	@Autowired 
 	private TravelCourseService service;
-	@Autowired
-	private MyUtil myUtil;
-	@Autowired
-	private FileManager fileManager;
+
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list() {
@@ -39,21 +34,32 @@ public class TravelCourseController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<TravelCourse> cityList = service.listCity(map);
-		
+		List<TravelCourse> themeList = service.listTheme(map);
+
 		model.addAttribute("mode", "write");
 		model.addAttribute("cityList", cityList);
+		model.addAttribute("themeList", themeList);
 
 		return ".travelCourse.write";
 	}
 	
 	
-	/*
-	@RequestMapping(value="write", method = RequestMethod.GET)
+	
+	@RequestMapping(value="write", method = RequestMethod.POST)
 	public String writeSubmit(TravelCourse dto, HttpSession session) throws Exception {
-		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "course";
 		try {
-			String root = session.getServletContext().getRealPath("/");
-			String pathname = root + "uploads" + File.separator + "notice";
+			dto.setUserId(info.getUserId());
+			System.out.println("왜왜왜");
+			System.out.println("유저 "+dto.getUserId());
+			System.out.println("유저 "+dto.getUserId());
+			System.out.println(pathname);
+			System.out.println("dto입니다"+dto);
+			
+
 			service.insertCity(dto, pathname);
 
 		} catch (Exception e) {
@@ -62,5 +68,5 @@ public class TravelCourseController {
 		return "redirect:/travelCourse/write";
 		
 	}
-	*/
+	
 }
