@@ -6,6 +6,6 @@
 <div class="right_col" role="main" style="min-height: 1758px;">
 액티비티 리스트
 <button type="button" class="btn btn-light" 
-	onclick="location.href='${pageContext.request.contextPath}/partner/activityManage/activityWrite';">액티비티 등록하기
+	onclick="location.href='${pageContext.request.contextPath}/partner/activityManage/write';">액티비티 등록하기
 </button>
 </div>

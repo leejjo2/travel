@@ -55,13 +55,127 @@ td.table-light {
 
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
-<script>
-$(function() {
-	function sendOk() {
-		
+<script type="text/javascript">
+function sendOk() {
+	var f = document.activityForm;
+	var str;
+	
+	if(! f.cityNum.value) {
+		alert("지역을 선택해주세요. ");
+		f.cityNum.focus();
+		return;
 	}
+
+	if(! f.activityType.value) {
+		alert("종류를 선택해주세요. ");
+		f.activityType.focus();
+		return;
+	}
+        
+	if(! f.activityName.value.trim()) {
+		alert("액티비티 이름을 입력해주세요. ");
+		f.activityName.focus();
+		return;
+	}
+	
+	
+	if(! f.price.value.trim()) {
+		alert("가격을 입력해주세요. ");
+		f.price.focus();
+		return;
+	}
+	
+	if(! f.totalTime.value.trim()) {
+		alert("소요시간을 입력해주세요. ");
+		f.totalTime.focus();
+		return;
+	}
+	
+	if(! f.zip.value) {
+		alert("우편번호를 입력해주세요. ");
+		f.zip.focus();
+		return;
+	}
+	
+	if(! f.addr1.value) {
+		alert("주소를 입력해주세요. ");
+		f.addr1.focus();
+		return;
+	}
+	
+	if(! f.addr2.value.trim()) {
+		alert("상세주소를 입력해주세요. ");
+		f.addr2.focus();
+		return;
+	}
+	
+	/*
+	let mode = "${mode}";
+    if( (mode === "write") && (!f.selectFile.value) ) {
+        alert("대표 이미지를 등록해주세요.");
+        f.selectFile.focus();
+        return;
+    }
+	*/
+	
+	str = window.editor.getData().trim();
+    if(! str) {
+        alert("내용을 입력하세요. ");
+        window.editor.focus();
+        return;
+    }
+    
+	f.activityDetail.value = str;
+
+	f.action="${pageContext.request.contextPath}/partner/activityManage/${mode}";
+	f.submit();
+}
+
+/*
+$(function() {
+	var img = "${dto.titleImgname}";
+	if( img ) { // 수정인 경우
+		img = "${pageContext.request.contextPath}/uploads/activity/" + img;
+		
+		// $(".write-form .img-viewer").empty();
+		// $(".write-form .img-viewer").css("background-image", "url("+img+")");
+	}
+	
+	$(".write-form .img-viewer").click(function(){
+		$("form[name=activityForm] input[name=selectFile]").trigger("click"); 
+	});
+	
+	// selectFile이 바뀌면
+	$("form[name=activityForm] input[name=selectFile]").change(function(){
+		var file = this.files[0];
+		if(! file) { // file이 비어있지 않다면
+			$(".write-form .img-viewer").empty();
+			if( img ) {
+				img = "${pageContext.request.contextPath}/uploads/activity/" + img;
+				$(".write-form .img-viewer").css("background-image", "url("+img+")");
+			} else {
+				img = "${pageContext.request.contextPath}/resources/images/add_photo.png";
+				$(".write-form .img-viewer").css("background-image", "url("+img+")");
+			}
+			return false;
+		}
+		
+		if(! file.type.match("image.*")) {
+			this.focus();
+			return false;
+		}
+		
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			let $img = $("<img>", {class:"item img-item"});
+			$(".write-form .img-viewer").css("background-image", "url("+e.target.result+")");
+		}
+		reader.readAsDataURL(file);
+	});
 });
+*/
 </script>
+
 <div class="right_col" role="main" style="min-height: 1765px;">
 	<div class="container">
 		<div class="body-container">	
@@ -74,7 +188,7 @@ $(function() {
 			        <i class="bi bi-question-square"></i> 판매할 액티비티에 대한 정보를 입력해주세요.
 			    </div>
 			    
-				<form name="activityWriteForm" method="post">
+				<form name="activityForm" method="post" enctype="multipart/form-data">
 					<table class="table write-form">
 						<tr>
 							<td style="width:110px;" class="table-light" scope="row">지역</td>
@@ -159,7 +273,7 @@ $(function() {
 						<tr>
 							<td class="table-light" scope="row">내 용</td>
 							<td colspan="3">
-								<div class="editor">호잇</div>
+								<div class="editor">${dto.activityDetail}</div>
 								<input type="hidden" name="activityDetail">
 							</td>
 						</tr>
@@ -168,11 +282,11 @@ $(function() {
 							<td class="table-light" scope="row" style="width: 100px;">대표 이미지</td>
 							<td colspan="3">
 								<div class="form">
-									<div class="img-grid">
+									<div class="img-viewer">
 										<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
 										<c:if test="${mode=='update'}">
 											<img class="item img-item" src="${pageContext.request.contextPath}/uploads/activityManage/${vo.imageFilename}"
-												onclick="deleteFile('${vo.fileNum}');">
+												onclick="">
 										</c:if>
 									</div>
 									<input type="file" name="selectFile" accept="image/*" style="display: none;">
@@ -243,7 +357,7 @@ ClassicEditor
         },
 		language: 'ko',
 		ckfinder: {
-	        uploadUrl: '${pageContext.request.contextPath}/image/upload' // 업로드 url (post로 요청 감)
+	        uploadUrl: '${pageContext.request.contextPath}/partner/activityImage/upload' // 업로드 url (post로 요청 감)
 	    }
 	})
 	.then( editor => {

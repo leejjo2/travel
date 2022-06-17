@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="activityManage">
+	<select id="seq" resultType="Integer">
+		SELECT activity_seq.NEXTVAL FROM dual
+	</select>
+	
+	<select id="readPartnerNum" parameterType="String" resultType="Integer">
+		SELECT partnerNum FROM partner WHERE partnerId = #{userId}
+	</select>
+	
+	<insert id="insertActivity" parameterType="com.sp.trip.partner.activityManage.Activity">
+		INSERT INTO activity(activityNum, activityName, cityNum, activityType, activityDetail, partnerNum)
+			VALUES(#{activityNum}, #{activityName}, #{cityNum}, #{activityType}, #{activityDetail}, #{partnerNum})
+	</insert>
+	
+	<insert id="insertActivityDetail" parameterType="com.sp.trip.partner.activityManage.Activity">
+		INSERT INTO activityDetail(detailNum, timeRange, maxNum, activityNum, price, totalTime, zip, addr1, addr2, titleImgname)
+			VALUES (activityDetail_seq.NEXTVAL, '시간대', 0, #{activityNum}, #{price}, #{totalTime}, #{zip}, #{addr1}, #{addr2}, null)
+	</insert>
+	
+</mapper>
