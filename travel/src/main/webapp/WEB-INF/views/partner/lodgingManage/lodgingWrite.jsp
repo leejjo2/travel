@@ -276,9 +276,9 @@ function ajaxFun(url, method, query, dataType, fn) {
 								<td> 
 									<div class="img-box">
 										<c:forEach var="vo" items="${listFile}">
-											<img src="${pageContext.request.contextPath}/uploads/partner/${vo.hotelSaveFilename}"
+											<img src="${pageContext.request.contextPath}/uploads/partner/${vo.saveFilename}"
 												class="delete-img"
-												data-fileNum="${vo.hotelImageFileNum}">
+												data-fileNum="${vo.imageFileNum}">
 										</c:forEach>
 									</div>
 								</td>
@@ -291,7 +291,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td class="text-center">
 								<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 								<button type="reset" class="btn btn-light">다시입력</button>
-								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/roomList';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
 									<input type="hidden" name="partnerNum" value="${dto.partnerNum}">
 								</c:if>

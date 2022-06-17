@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="logdingManage">
+<mapper namespace="lodgingManage">
 	<select id="hotelSeq" resultType="Integer">
 		SELECT hotel_seq.NEXTVAL FROM dual
 	</select>
 	
-	<select id="partnerSeq" resultType="Integer">
-		SELECT partner_seq.NEXTVAL FROM dual
+	<select id="partnerNum" resultType="Integer" parameterType="String">
+		SELECT DISTINCT p.partnerNum
+		FROM partner p
+		JOIN hotel h ON h.partnerNum = p.partnerNum
+		WHERE partnerId = #{partnerId}
 	</select>
 	
 	<insert id="insertHotel" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		INSERT INTO hotel(hotelNum, partnerNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2)
-		VALUES (hotel_seq, #{partnerNum}, #{hotelName}, #{hotelIntro}, #{hotelNumber}, #{hotelZip}, #{hotelAddr1}, #{hotelAddr2})
-		
+		VALUES (hotel_seq.NEXTVAL, #{partnerNum}, #{hotelName}, #{hotelIntro}, #{hotelNumber}, #{hotelZip}, #{hotelAddr1}, #{hotelAddr2})
 	</insert>
 	
 	<select id="listHotel" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
@@ -24,7 +26,7 @@
 	</select>
 	
 	<select id="readHotel" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum, saveFilename
+		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
 		FROM hotel h
 		JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
 		WHERE hotelNum = #{hotelNum}
@@ -55,7 +57,7 @@
 	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		SELECT imageFileNum, hotelNum, saveFilename
 		FROM hotelImage
-	    WHERE imageFileNum = #{imageFileNum}      
+	    WHERE imageFileNum = #{imageFileNum}
 	</select>
 	
 	<delete id="deleteFile" parameterType="map">

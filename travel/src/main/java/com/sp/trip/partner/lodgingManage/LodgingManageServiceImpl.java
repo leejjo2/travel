@@ -21,20 +21,20 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertHotel(LodgingManage dto, String pathname) throws Exception {
 		try {
-			int partnerSeq = dao.selectOne("logdingManage.partnerSeq");
-			dto.setHotelNum(partnerSeq);
+			int partnerNum = dao.selectOne("lodgingManage.partnerNum", dto.getPartnerId());
+			dto.setPartnerNum(partnerNum);
 			
-			dao.insertData("logdingManage.insertHotel", dto);
+			dao.insertData("lodgingManage.insertHotel", dto);
 			
 			// 파일 업로드
 			if (!dto.getSelectFile().isEmpty()) {
 				for (MultipartFile mf : dto.getSelectFile()) {
-					String saveFilename = fileManager.doFileUpload(mf, pathname);
-					if (saveFilename == null) {
+					String hotelImageFileNum = fileManager.doFileUpload(mf, pathname);
+					if (hotelImageFileNum == null) {
 						continue;
 					}
 
-					dto.setHotelSaveFilename(saveFilename);
+					dto.setSaveFilename(hotelImageFileNum);
 
 					insertFile(dto);
 				}
@@ -51,7 +51,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 		List<LodgingManage> list = null;
 		
 		try {
-			list = dao.selectList("logdingManage.listHotel", partnerId);
+			list = dao.selectList("lodgingManage.listHotel", partnerId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -76,7 +76,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 		LodgingManage dto = null;
 		
 		try {
-			dto = dao.selectOne("logdingManage.readHotel", hotelNum);
+			dto = dao.selectOne("lodgingManage.readHotel", hotelNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,16 +87,16 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void updateHotel(LodgingManage dto, String pathname) throws Exception {
 		try {
-			dao.updateData("logdingManage.updateHotel", dto);
+			dao.updateData("lodgingManage.updateHotel", dto);
 			
 			if (!dto.getSelectFile().isEmpty()) {
 				for (MultipartFile mf : dto.getSelectFile()) {
-					String saveFilename = fileManager.doFileUpload(mf, pathname);
-					if (saveFilename == null) {
+					String hotelImageFileNum = fileManager.doFileUpload(mf, pathname);
+					if (hotelImageFileNum == null) {
 						continue;
 					}
 
-					dto.setHotelSaveFilename(saveFilename);
+					dto.setSaveFilename(hotelImageFileNum);
 
 					insertFile(dto);
 				}
@@ -114,7 +114,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			List<LodgingManage> listFile = listFile(hotelNum);
 			if (listFile != null) {
 				for (LodgingManage dto : listFile) {
-					fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname);
+					fileManager.doFileDelete(dto.getSaveFilename(), pathname);
 				}
 			}
 
@@ -124,7 +124,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			map.put("hotelNum", hotelNum);
 			deleteFile(map);
 			
-			dao.deleteData("logdingManage.deleteHotel", hotelNum);
+			dao.deleteData("lodgingManage.deleteHotel", hotelNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -134,7 +134,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertFile(LodgingManage dto) throws Exception {
 		try {
-			dao.insertData("logdingManage.insertFile", dto);
+			dao.insertData("lodgingManage.insertFile", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -146,7 +146,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 		List<LodgingManage> listFile = null;
 		
 		try {
-			listFile = dao.selectList("logdingManage.listFile", hotelNum);
+			listFile = dao.selectList("lodgingManage.listFile", hotelNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -158,7 +158,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 		LodgingManage dto = null;
 		
 		try {
-			dto = dao.selectOne("logdingManage.readFile", fileNum);
+			dto = dao.selectOne("lodgingManage.readFile", fileNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -168,7 +168,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void deleteFile(Map<String, Object> map) throws Exception {
 		try {
-			dao.deleteData("logdingManage.deleteFile", map);
+			dao.deleteData("lodgingManage.deleteFile", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
