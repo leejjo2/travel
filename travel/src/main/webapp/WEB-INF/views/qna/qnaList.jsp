@@ -235,6 +235,7 @@
 			</tr>
 				
 			<tr>
+			
 				<td>-</td>
 				<td class="align-left">
 		 <img src="${pageContext.request.contextPath}/resources/img/qna/ico_reply.gif" alt="답변">				
@@ -437,8 +438,9 @@
 		<span style="display:none"><img src="/images/btn_navi_prev.gif" alt="이전 목록"></span>
 		 <span class="current">1</span>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=2">2</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=3">3</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=4">4</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=5">5</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=6">6</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=7">7</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=8">8</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=9">9</a>  <a href="/help/consulting/con_list.html?agt=jeju&amp;page=10">10</a> 
 		
-		<a href="/help/consulting/con_list.html?agt=jeju&amp;page=11"><img src="/images/btn_navi_next.gif" alt="다음 목록"></a>
-		<a href="/help/consulting/con_list.html?agt=jeju&amp;page=13350"><img src="/images/btn_navi_end.gif" alt="마지막으로"></a>
+		<a href="/help/consulting/con_list.html?agt=jeju&amp;page=11"><img src="${pageContext.request.contextPath}/resources/img/qna/btn_navi_next.gif" alt="다음 목록"></a>
+		<a href="/help/consulting/con_list.html?agt=jeju&amp;page=13350">
+		 <img src="${pageContext.request.contextPath}/resources/img/qna/btn_navi_end.gif" alt="마지막으로"></a>
 	</div>
 	<!-- 게시물 검색 start -->
 	<fieldset class="board-search">
