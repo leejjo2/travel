@@ -129,12 +129,16 @@ CREATE TABLE partner (
 -- 액티비티 
 CREATE TABLE activity (
     activityNum NUMBER,
-    activityName VARCHAR2(30) NOT NULL,
+    cityNum NUMBER NOT NULL,
+    activityType VARCHAR2(50) NOT NULL,
+    activityName VARCHAR2(100) NOT NULL,
     partnerNum NUMBER NOT NULL,
     activityDetail CLOB NOT NULL,
     CONSTRAINT pk_activity_activityNum PRIMARY KEY(activityNum),
     CONSTRAINT fk_activity_partnerNum FOREIGN KEY(partnerNum) REFERENCES partner(partnerNum) ON DELETE CASCADE
+    CONSTRAINT fk_activity_cityNum FOREIGN KEY(cityNum) REFERENCES city(cityNum)
 );
+
 
 CREATE TABLE activityImage (
     imageFileNum NUMBER,
@@ -150,6 +154,11 @@ CREATE TABLE activityDetail (
     maxNum NUMBER NOT NULL,
     activityNum NUMBER NOT NULL,
     price NUMBER NOT NULL,
+    totalTime VARCHAR2(50) NOT NULL,
+    zip VARCHAR2(7) NOT NULL,
+    addr1 VARCHAR2(100) NOT NULL,
+    addr2 VARCHAR2(100) NOT NULL,
+    titleImgName VARCHAR2(255),
     CONSTRAINT pk_activityDetail_DetailNum PRIMARY KEY(DetailNum),
     CONSTRAINT fk_activityDetail_activityNum FOREIGN KEY(activityNum) REFERENCES activity(activityNum)
 );
