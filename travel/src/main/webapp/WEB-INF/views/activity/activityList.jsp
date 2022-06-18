@@ -8,33 +8,41 @@
 
 <script type="text/javascript">
 $(function() {
+	function callList() {
+		let cityNum = $(".clfix .on").attr("id");
+		let activityType = $(".hot-deal-category-container .active").attr("data-filter-param");
+		let query = "cityNum="+cityNum+"&activityType="+activityType;
+	    let url = "${pageContext.request.contextPath}/activity/list?" + query;
+	    // 넘길 때 디폴트로 받기
+	    console.log(url);
+	    location.href = url;
+	}
+	
 	$(".clfix li").click(function() {
 		$(".clfix li").removeAttr("class");
 		$(this).attr("class", "on");
+		callList();
 	});
 	
 	$(".hot-deal-category-container a").click(function() {
 		$(".hot-deal-category-container a").removeClass("active");
 		$(this).addClass("active");
+		callList();
 	});
 	
-	$(".select-wrapper").click(function() {
-		if ($(".select-list").css('display') == 'block') {
-            $(".select-list").css('display', 'none');
-        } else {
-            $(".select-list").css('display', 'block');
-        }
-	});
-	
-	$(".select-list a").click(function() {
-		$(".select-list a").removeClass("active");
-		$(this).addClass("active");
-		
-		$(".select-wrapper span").html($(this).text());
-		$(".select-list").css('display', 'none');
-	});
 });
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+		
+});
+
+</script>
+
+
+
 <div class="hot-deal-container">
 	<div class="header-container theme-header">
 		<img alt="액티비티 배너" class="img original"
@@ -44,75 +52,62 @@ $(function() {
 	<div class="wrap_contView">
 		<div class="area_msListPc m_none"><!-- pc -->
 			<ul class="clfix">
-				<li id="1" onclick=""><a>서울</a></li>
-				<li id="2" onclick=""><a>인천</a></li>
-				<li id="3" onclick=""><a>대전</a></li>
-				<li id="4" onclick=""><a>대구</a></li>
-				<li id="5" onclick=""><a>광주</a></li>
-				<li id="6" onclick=""><a>부산</a></li>
-				<li id="7" onclick=""><a>울산</a></li>
-				<li id="8" onclick=""><a>세종</a></li>
-				<li id="31" onclick=""><a>경기</a></li>
+				<li id="1" ${cityNum=="1"?"class='on'":""}><a>서울</a></li>
+				<li id="4" ${cityNum=="4"?"class='on'":""}><a>인천</a></li>
+				<li id="6" ${cityNum=="6"?"class='on'":""}><a>대전</a></li>
+				<li id="2" ${cityNum=="2"?"class='on'":""}><a>부산</a></li>
+				<li id="3" ${cityNum=="3"?"class='on'":""}><a>대구</a></li>
+				<li id="5" ${cityNum=="5"?"class='on'":""}><a>광주</a></li>
+				<li id="7" ${cityNum=="7"?"class='on'":""}><a>울산</a></li>
+				<li id="8" ${cityNum=="8"?"class='on'":""}><a>세종</a></li>
+				<li id="9" ${cityNum=="9"?"class='on'":""}><a>경기</a></li>
 			</ul>
 			<ul class="clfix">
-				<li id="32" onclick=""><a>강원</a></li>
-				<li id="33" onclick=""><a>충북</a></li>
-				<li id="34" onclick=""><a>충남</a></li>
-				<li id="35" onclick=""><a>경북</a></li>
-				<li id="36" onclick=""><a>경남</a></li>
-				<li id="37" onclick=""><a>전북</a></li>
-				<li id="38" onclick=""><a>전남</a></li>
-				<li id="39" onclick=""><a>제주</a></li>
-				<li id="All" onclick="" class="on"><a>전체보기</a></li>
+				<li id="10" ${cityNum=="10"?"class='on'":""}><a>강원</a></li>
+				<li id="11" ${cityNum=="11"?"class='on'":""}><a>충북</a></li>
+				<li id="12" ${cityNum=="12"?"class='on'":""}><a>충남</a></li>
+				<li id="15" ${cityNum=="15"?"class='on'":""}><a>경북</a></li>
+				<li id="16" ${cityNum=="16"?"class='on'":""}><a>경남</a></li>
+				<li id="13" ${cityNum=="13"?"class='on'":""}><a>전북</a></li>
+				<li id="14" ${cityNum=="14"?"class='on'":""}><a>전남</a></li>
+				<li id="17" ${cityNum=="17"?"class='on'":""}><a>제주</a></li>
+				<li id="all" ${cityNum=="all"?"class='on'":""}><a>전체보기</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="hot-deal-content">
 		<div class="hot-deal-category-container">
-			<a class="active hot-deal-category" data-filter-param="all"> 전체 </a>
-			<a class="hot-deal-category" data-filter-param="낚시"> 낚시 </a>
-			<a class="hot-deal-category" data-filter-param="워터파크"> 워터파크 </a>
-			<a class="hot-deal-category" data-filter-param="서핑"> 서핑 </a>
-			<a class="hot-deal-category" data-filter-param="다이빙"> 다이빙 </a>
-			<a class="hot-deal-category" data-filter-param="요트/크루즈"> 요트/크루즈 </a>
-			<a class="hot-deal-category" data-filter-param="수상액티비티"> 수상액티비티 </a>
+			<a class='${activityType=="all"?"active":""} hot-deal-category' data-filter-param="all">전체</a>
+			<a class='${activityType=="ticket"?"active":""} hot-deal-category' data-filter-param="ticket"> 티켓/패스 </a>
+			<a class='${activityType=="camping"?"active":""} hot-deal-category' data-filter-param="camping"> 캠핑 </a>
+			<a class='${activityType=="spa"?"active":""} hot-deal-category' data-filter-param="spa"> 스파&amp;마사지 </a>
+			<a class='${activityType=="amusementPark"?"active":""} hot-deal-category' data-filter-param="amusementPark"> 놀이동산 </a>
+			<a class='${activityType=="waterActivity"?"active":""} hot-deal-category' data-filter-param="waterActivity"> 수상 액티비티 </a>
+			<a class='${activityType=="yacht"?"active":""} hot-deal-category' data-filter-param="yacht"> 요트/유람선 </a>
 		</div>
 
-		<div class="hot-deal-select">
-			<div class="select-wrapper">
-				<span>추천순</span>
-			 	<img class="arrow-img" src="https://d2yoing0loi5gh.cloudfront.net/assets/kitty/offer/hot_deal/ic_lightgrey_dropdown@2x-5d85be4b94fdd7ebefca9950a4978066c0a5fdf4dd923b0d9da6630b7316a162.png" width="8px">
-			</div>
-			<div class="select-list" style="display: none;">
-				<a class="active select-item">추천순</a> 
-				<a class="select-item">인기순</a>
-				<a class="select-item">후기순</a>
-				<a class="select-item">가격순</a> 
-				<a class="select-item">신상품순</a>
-			</div>
-		</div>
 		<div class="offer-container card-type card-hot-deal card-list">
 			<div class="container-without-filter-not-lodging">
 				<div class="CardGridContainer-module__container--Nms6z">
-				<%for(int i=0; i<9; i++) {%>
+				<c:forEach var="dto" items="${list}">
 					<a href="${pageContext.request.contextPath}/activity/detail" class="CardContainer-module__container--B5cqm CardShare-module__container--lu1iP CardContainer-module__fixedWidth--XQbwP CardContainer-module__offer--Npil0 CardContainer-module__grid--El_OK">
 						<span class="OfferVerticalCard-module__thumbnail--hPkZk">
 							<span class="CardThumbnail-module__container--t05no CardThumbnail-module__vertical--fg4fQ">
 								<span class="LazyImageLoader-module__container--xHxKX">
 									<img alt="" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt CardThumbnail-module__image--Tc1b4"
-										src="https://d2ur7st6jjikze.cloudfront.net/offer_photos/103452/563031_medium_1651833766.jpg?1651833766">
+										src="${pageContext.request.contextPath}/uploads/activity/${dto.titleImgname}">
 									<span class="LazyImageLoader-module__placeholder--iH82U CardThumbnail-module__image--Tc1b4"></span>
 								</span>
 							</span>
 						</span>
 						<div class="OfferVerticalCard-module__body--QqE0h CardShare-module__body--SgF6m">
 							<span class="CardCategory-module__container--QvB9e">
-								<span class="CardCategory-module__label--cLofl" style="overflow: hidden; text-overflow: ellipsis;">레저 ・ 강원도</span>
+								<span class="CardCategory-module__label--cLofl" style="overflow: hidden; text-overflow: ellipsis;">${dto.activityTypeName} ・ ${dto.cityName}</span>
 							</span>
 							<h3 class="CardTitle-module__container--l9OrK CardTitle-module__vertical--COffX">
 								<div class="CardTitle-module__title--WAHI8" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2;">
-									[강원 평창] 휘닉스 평창 블루캐니언 입장권 + 워터뷔페 패키지 (소인 종일권 ~)
+									${dto.activityName}
 								</div>
 							</h3>
 							<div class="OfferVerticalCard-module__info--mUIkY">
@@ -125,7 +120,7 @@ $(function() {
 							</div>
 							<div class="OfferVerticalCard-module__immediately--nSrYb">
 								<div class="CardPriceForVertical-module__container--jmRSV">
-									<span class="CardPriceForVertical-module__main--VVTBF">30,264
+									<span class="CardPriceForVertical-module__main--VVTBF">${dto.price}
 										<span class="CardPriceForVertical-module__unit--TTngM">원</span>
 									</span>
 									<span class="CardPriceForVertical-module__standard--jqgFm">/ 1인</span>
@@ -133,9 +128,16 @@ $(function() {
 							</div>
 						</div>
 					</a>
-					<%} %>
+				</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="page-box">
+		${dataCount == 0 ? "등록된 액티비티가 없습니다." : paging}
+	</div>
+	<div style="margin-top: 110px;"></div>
 </div>
+
+

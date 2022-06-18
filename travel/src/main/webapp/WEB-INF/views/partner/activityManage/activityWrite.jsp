@@ -185,6 +185,16 @@ $(function() {
 	});
 });
 
+$(function() {
+	$(".selectType").change(function() {
+		var langSelect = document.getElementById("selectBox");
+	    var selectText = langSelect.options[langSelect.selectedIndex].text;
+		
+		console.log(selectText);
+		$(".activityTypeName").attr("value", selectText);
+	});
+});
+
 </script>
 
 <div class="right_col" role="main" style="min-height: 1765px;">
@@ -230,15 +240,16 @@ $(function() {
 							<td class="table-light" scope="row">종류</td>
 							<td>
 								<div class="pe-1">
-									<select name="activityType" class="form-select form-control">
+									<select id="selectBox" name="activityType" class="form-select form-control selectType">
 										<option value="">선택</option>
-											<option value="티켓/패스" ${dto.activityType=="티켓/패스"?"selected='selected'":""}>티켓/패스</option>
-											<option value="캠핑" ${dto.activityType=="캠핑"?"selected='selected'":""}>캠핑</option>
-											<option value="스파&마사지" ${dto.activityType=="스파&마사지"?"selected='selected'":""}>스파&amp;마사지</option>
-											<option value="놀이동산" ${dto.activityType=="놀이동산"?"selected='selected'":""}>놀이동산</option>
-											<option value="수상 액티비티" ${dto.activityType=="수상 액티비티"?"selected='selected'":""}>수상 액티비티</option>
-											<option value="요트/유람선" ${dto.activityType=="요트/유람선"?"selected='selected'":""}>요트/유람선</option>
+										<option value="ticket" ${dto.activityType=="ticket"?"selected='selected'":""}>티켓/패스</option>
+										<option value="camping" ${dto.activityType=="camping"?"selected='selected'":""}>캠핑</option>
+										<option value="spa" ${dto.activityType=="spa"?"selected='selected'":""}>스파&amp;마사지</option>
+										<option value="amusementPark" ${dto.activityType=="amusementPark"?"selected='selected'":""}>놀이동산</option>
+										<option value="waterActivity" ${dto.activityType=="waterActivity"?"selected='selected'":""}>수상 액티비티</option>
+										<option value="yacht" ${dto.activityType=="yacht"?"selected='selected'":""}>요트/유람선</option>
 									</select>
+									<input class="activityTypeName" type="hidden" name="activityTypeName" value="${dto.activityTypeName}">
 								</div>
 							</td>
 						</tr>

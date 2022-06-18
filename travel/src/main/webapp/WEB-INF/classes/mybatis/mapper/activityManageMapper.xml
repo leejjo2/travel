@@ -11,8 +11,8 @@
 	</select>
 	
 	<insert id="insertActivity" parameterType="com.sp.trip.partner.activityManage.Activity">
-		INSERT INTO activity(activityNum, activityName, cityNum, activityType, activityDetail, partnerNum)
-			VALUES(#{activityNum}, #{activityName}, #{cityNum}, #{activityType}, #{activityDetail}, #{partnerNum})
+		INSERT INTO activity(activityNum, activityName, cityNum, activityType, activityTypeName, activityDetail, partnerNum)
+			VALUES(#{activityNum}, #{activityName}, #{cityNum}, #{activityType}, #{activityTypeName}, #{activityDetail}, #{partnerNum})
 	</insert>
 	
 	<insert id="insertActivityDetail" parameterType="com.sp.trip.partner.activityManage.Activity">
@@ -30,7 +30,7 @@
 	<select id="listActivity" parameterType="map" resultType="com.sp.trip.partner.activityManage.Activity">
 		SELECT * FROM (
 		    SELECT ROWNUM rnum, tb.* FROM (
-		        SELECT a1.activityNum, cityName, activityName, activityType, price, totalTime, titleImgname
+		        SELECT a1.activityNum, cityName, activityName, activityType, activityTypeName, price, totalTime, titleImgname
 		        FROM activity a1
 		        LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
 		        LEFT OUTER JOIN city c ON a1.cityNum = c.cityNum
@@ -41,7 +41,7 @@
 	</select>
 	
 	<select id="readActivity" parameterType="Integer" resultType="com.sp.trip.partner.activityManage.Activity">
-		SELECT a1.activityNum, a1.cityNum, activityName, activityDetail, activityType, 
+		SELECT a1.activityNum, a1.cityNum, activityName, activityDetail, activityType, activityTypeName,
 			detailNum, price, totalTime, zip, addr1, addr2, titleImgname
 		FROM activity a1
 		LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
@@ -50,7 +50,7 @@
 	
 	<update id="updateActivity" parameterType="com.sp.trip.partner.activityManage.Activity">
 		UPDATE activity SET cityNum = #{cityNum}, activityName = #{activityName},
-			activityType = #{activityType}, activityDetail = #{activityDetail}
+			activityType = #{activityType}, activityTypeName = #{activityTypeName}, activityDetail = #{activityDetail}
 		WHERE activityNum = #{activityNum} AND partnerNum = #{partnerNum}
 	</update>
 	

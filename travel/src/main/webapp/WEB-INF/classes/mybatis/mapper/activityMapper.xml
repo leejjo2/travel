@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="activity">
+	<sql id="where-list">
+		<choose>
+			<when test="city != 'all' ">
+				<choose>
+					<when test="type != 'all' ">
+						a1.cityNum = #{city} AND activityType = #{type}
+					</when>
+					<otherwise>
+						a1.cityNum = #{city}
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				<if test="type != 'all' ">
+					activityType = #{type}
+				</if>
+			</otherwise>
+		</choose>
+	</sql>
+	
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) 
+		FROM activity a1
+		<where>
+			<if test="city != 'all' or type != 'all' ">
+				<include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<select id="listActivity" parameterType="map" resultType="com.sp.trip.activity.Activity">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT a1.activityNum, a1.cityNum, cityName, activityName, activityType, activityTypeName, 
+					price, totalTime, titleImgname
+				FROM activity a1
+				LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
+		        LEFT OUTER JOIN city c ON a1.cityNum = c.cityNum
+				<where>
+					<if test="city != 'all' or type != 'all' ">
+						<include refid="where-list"/>
+					</if>
+				</where>
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+
+</mapper>

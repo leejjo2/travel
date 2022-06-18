@@ -119,7 +119,6 @@ function deleteActivity() {
 	let query = "num="+num+"&page=${page}&titleImgname="+titleImgname;
     let url = "${pageContext.request.contextPath}/partner/activityManage/delete?" + query;
     
-    console.log(url);
     if(confirm("해당 액티비티를 삭제하시겠습니까?")) {
   	  location.href = url;
     }
@@ -165,7 +164,7 @@ function deleteActivity() {
 							</div>
 							<br><br>
 							<div><span>${dto.totalTime}</span></div>
-							<div><span>${dto.activityType}</span></div>
+							<div><span>${dto.activityTypeName}</span></div>
 							<div><span>${dto.price}</span>원/ 1인</div>
 							<br>
 							<div>
