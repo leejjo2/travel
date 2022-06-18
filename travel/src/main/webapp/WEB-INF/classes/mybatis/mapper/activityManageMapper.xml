@@ -17,7 +17,57 @@
 	
 	<insert id="insertActivityDetail" parameterType="com.sp.trip.partner.activityManage.Activity">
 		INSERT INTO activityDetail(detailNum, timeRange, maxNum, activityNum, price, totalTime, zip, addr1, addr2, titleImgname)
-			VALUES (activityDetail_seq.NEXTVAL, '시간대', 0, #{activityNum}, #{price}, #{totalTime}, #{zip}, #{addr1}, #{addr2}, null)
+			VALUES (activityDetail_seq.NEXTVAL, '시간대', 0, #{activityNum}, #{price}, #{totalTime}, #{zip}, #{addr1}, #{addr2}, #{titleImgname})
 	</insert>
+	
+	
+	<select id="dataCount" parameterType="Integer" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM activity
+		WHERE partnerNum = #{partnerNum}
+	</select>
+	
+	<select id="listActivity" parameterType="map" resultType="com.sp.trip.partner.activityManage.Activity">
+		SELECT * FROM (
+		    SELECT ROWNUM rnum, tb.* FROM (
+		        SELECT a1.activityNum, cityName, activityName, activityType, price, totalTime, titleImgname
+		        FROM activity a1
+		        LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
+		        LEFT OUTER JOIN city c ON a1.cityNum = c.cityNum
+		        WHERE partnerNum = #{partnerNum}
+		        ORDER BY a1.activityNum DESC
+		    ) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+	
+	<select id="readActivity" parameterType="Integer" resultType="com.sp.trip.partner.activityManage.Activity">
+		SELECT a1.activityNum, a1.cityNum, activityName, activityDetail, activityType, 
+			detailNum, price, totalTime, zip, addr1, addr2, titleImgname
+		FROM activity a1
+		LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
+		WHERE a1.activityNum = #{activityNum}
+	</select>
+	
+	<update id="updateActivity" parameterType="com.sp.trip.partner.activityManage.Activity">
+		UPDATE activity SET cityNum = #{cityNum}, activityName = #{activityName},
+			activityType = #{activityType}, activityDetail = #{activityDetail}
+		WHERE activityNum = #{activityNum} AND partnerNum = #{partnerNum}
+	</update>
+	
+	<update id="updateActivityDetail" parameterType="com.sp.trip.partner.activityManage.Activity">
+		UPDATE activityDetail SET price = #{price}, totalTime = #{totalTime},
+			zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, titleImgname = #{titleImgname}
+		WHERE activityNum = #{activityNum}
+	</update>
+	
+	<delete id="deleteActivityDetail" parameterType="map">
+		DELETE FROM activityDetail 
+		WHERE activityNum = #{activityNum}
+	</delete>
+	
+	<delete id="deleteActivity" parameterType="map">
+		DELETE FROM activity
+		WHERE activityNum = #{activityNum} AND partnerNum = #{partnerNum}
+	</delete>
 	
 </mapper>

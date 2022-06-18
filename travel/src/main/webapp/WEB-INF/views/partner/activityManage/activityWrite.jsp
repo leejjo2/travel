@@ -53,6 +53,18 @@ td.table-light {
 	width: 100%;
 }
 
+.table-form .img-viewer {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	width: 100px;
+	height: 100px;
+	background-image: url("${pageContext.request.contextPath}/resources/images/add_photo.png");
+	position: relative;
+	z-index: 9999;
+	background-repeat : no-repeat;
+	background-size : cover;
+}
+
 </style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/ckeditor5/ckeditor.js"></script>
 <script type="text/javascript">
@@ -109,14 +121,14 @@ function sendOk() {
 		return;
 	}
 	
-	/*
+	
 	let mode = "${mode}";
     if( (mode === "write") && (!f.selectFile.value) ) {
         alert("대표 이미지를 등록해주세요.");
         f.selectFile.focus();
         return;
     }
-	*/
+	
 	
 	str = window.editor.getData().trim();
     if(! str) {
@@ -131,31 +143,30 @@ function sendOk() {
 	f.submit();
 }
 
-/*
+
 $(function() {
-	var img = "${dto.titleImgname}";
+	let img = "${dto.titleImgname}";
 	if( img ) { // 수정인 경우
 		img = "${pageContext.request.contextPath}/uploads/activity/" + img;
-		
-		// $(".write-form .img-viewer").empty();
-		// $(".write-form .img-viewer").css("background-image", "url("+img+")");
+		$(".table-form .img-viewer").empty();
+		$(".table-form .img-viewer").css("background-image", "url("+img+")");
 	}
 	
-	$(".write-form .img-viewer").click(function(){
+	
+	$(".table-form .img-viewer").click(function(){
 		$("form[name=activityForm] input[name=selectFile]").trigger("click"); 
 	});
 	
-	// selectFile이 바뀌면
 	$("form[name=activityForm] input[name=selectFile]").change(function(){
-		var file = this.files[0];
-		if(! file) { // file이 비어있지 않다면
-			$(".write-form .img-viewer").empty();
+		let file = this.files[0];
+		if(! file) {
+			$(".table-form .img-viewer").empty();
 			if( img ) {
 				img = "${pageContext.request.contextPath}/uploads/activity/" + img;
-				$(".write-form .img-viewer").css("background-image", "url("+img+")");
+				$(".table-form .img-viewer").css("background-image", "url("+img+")");
 			} else {
 				img = "${pageContext.request.contextPath}/resources/images/add_photo.png";
-				$(".write-form .img-viewer").css("background-image", "url("+img+")");
+				$(".table-form .img-viewer").css("background-image", "url("+img+")");
 			}
 			return false;
 		}
@@ -165,15 +176,15 @@ $(function() {
 			return false;
 		}
 		
-		var reader = new FileReader();
+		let reader = new FileReader();
 		reader.onload = function(e) {
-			let $img = $("<img>", {class:"item img-item"});
-			$(".write-form .img-viewer").css("background-image", "url("+e.target.result+")");
+			$(".table-form .img-viewer").empty();
+			$(".table-form .img-viewer").css("background-image", "url("+e.target.result+")");
 		}
 		reader.readAsDataURL(file);
 	});
 });
-*/
+
 </script>
 
 <div class="right_col" role="main" style="min-height: 1765px;">
@@ -189,30 +200,30 @@ $(function() {
 			    </div>
 			    
 				<form name="activityForm" method="post" enctype="multipart/form-data">
-					<table class="table write-form">
+					<table class="table write-form table-form">
 						<tr>
 							<td style="width:110px;" class="table-light" scope="row">지역</td>
 							<td>
 								<div class="pe-1">
 									<select name="cityNum" class="form-select form-control">
 										<option value="">선택</option>
-											<option value="1">서울</option>
-											<option value="6">부산</option>
-											<option value="4">대구</option>
-											<option value="2">인천</option>
-											<option value="5">광주</option>
-											<option value="3">대전</option>
-											<option value="7">울산</option>
-											<option value="8">세종</option>
-											<option value="31">경기</option>
-											<option value="32">강원</option>
-											<option value="33">충북</option>
-											<option value="34">충남</option>
-											<option value="35">경북</option>
-											<option value="36">경남</option>
-											<option value="37">전북</option>
-											<option value="38">전남</option>
-											<option value="39">제주</option>
+											<option value="1" ${dto.cityNum=="1"?"selected='selected'":""}>서울</option>
+											<option value="2" ${dto.cityNum=="2"?"selected='selected'":""}>부산</option>
+											<option value="3" ${dto.cityNum=="3"?"selected='selected'":""}>대구</option>
+											<option value="4" ${dto.cityNum=="4"?"selected='selected'":""}>인천</option>
+											<option value="5" ${dto.cityNum=="5"?"selected='selected'":""}>광주</option>
+											<option value="6" ${dto.cityNum=="6"?"selected='selected'":""}>대전</option>
+											<option value="7" ${dto.cityNum=="7"?"selected='selected'":""}>울산</option>
+											<option value="8" ${dto.cityNum=="8"?"selected='selected'":""}>세종</option>
+											<option value="9" ${dto.cityNum=="9"?"selected='selected'":""}>경기</option>
+											<option value="10" ${dto.cityNum=="10"?"selected='selected'":""}>강원</option>
+											<option value="11" ${dto.cityNum=="11"?"selected='selected'":""}>충북</option>
+											<option value="12" ${dto.cityNum=="12"?"selected='selected'":""}>충남</option>
+											<option value="15" ${dto.cityNum=="15"?"selected='selected'":""}>경북</option>
+											<option value="16" ${dto.cityNum=="16"?"selected='selected'":""}>경남</option>
+											<option value="13" ${dto.cityNum=="13"?"selected='selected'":""}>전북</option>
+											<option value="14" ${dto.cityNum=="14"?"selected='selected'":""}>전남</option>
+											<option value="17" ${dto.cityNum=="17"?"selected='selected'":""}>제주</option>
 									</select>
 								</div>
 							</td>
@@ -221,12 +232,12 @@ $(function() {
 								<div class="pe-1">
 									<select name="activityType" class="form-select form-control">
 										<option value="">선택</option>
-											<option value="티켓/패스">티켓/패스</option>
-											<option value="캠핑">캠핑</option>
-											<option value="스파&마사지">스파&마사지</option>
-											<option value="놀이동산">놀이동산</option>
-											<option value="수상 액티비티">수상 액티비티</option>
-											<option value="요트/유람선">요트/유람선</option>
+											<option value="티켓/패스" ${dto.activityType=="티켓/패스"?"selected='selected'":""}>티켓/패스</option>
+											<option value="캠핑" ${dto.activityType=="캠핑"?"selected='selected'":""}>캠핑</option>
+											<option value="스파&마사지" ${dto.activityType=="스파&마사지"?"selected='selected'":""}>스파&amp;마사지</option>
+											<option value="놀이동산" ${dto.activityType=="놀이동산"?"selected='selected'":""}>놀이동산</option>
+											<option value="수상 액티비티" ${dto.activityType=="수상 액티비티"?"selected='selected'":""}>수상 액티비티</option>
+											<option value="요트/유람선" ${dto.activityType=="요트/유람선"?"selected='selected'":""}>요트/유람선</option>
 									</select>
 								</div>
 							</td>
@@ -236,19 +247,19 @@ $(function() {
 						<tr>
 							<td class="table-light" scope="row" style="width: 100px;">액티비티 이름</td>
 							<td colspan="3">
-								<input type="text" name="activityName" class="form-control" value="">
+								<input type="text" name="activityName" class="form-control" value="${dto.activityName}">
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="table-light" scope="row">가격(1인)</td>
 							<td>
-								<input type="text" name="price" class="form-control" value="">
+								<input type="text" name="price" class="form-control" value="${dto.price}">
 							</td>
 							
 							<td class="table-light" scope="row">소요시간</td>
 							<td>
-								<input type="text" name="totalTime" class="form-control" value="">
+								<input type="text" name="totalTime" class="form-control" value="${dto.totalTime}">
 							</td>
 						</tr>
 						
@@ -256,7 +267,7 @@ $(function() {
 						<tr>
 							<td class="table-light" scope="row" rowspan="2">주소</td>
 							<td>
-								<input type="text" name="zip" id="zip" class="form-control" style="" placeholder="우편번호" value="" readonly="readonly">
+								<input type="text" name="zip" id="zip" class="form-control" placeholder="우편번호" value="${dto.zip}" readonly="readonly">
 							</td>
 							<td colspan="2">	
 								<button class="btn btn-light" type="button" style="margin-left: 3px;" onclick="daumPostcode();">우편번호 검색</button>
@@ -265,8 +276,8 @@ $(function() {
 						
 						<tr>
 							<td colspan="3">
-								<input type="text" name="addr1" id="addr1" class="form-control" placeholder="기본 주소" value="" readonly="readonly">
-								<input type="text" name="addr2" id="addr2" class="form-control" placeholder="상세 주소" value="">
+								<input type="text" name="addr1" id="addr1" class="form-control" placeholder="기본 주소" value="${dto.addr1}" readonly="readonly">
+								<input type="text" name="addr2" id="addr2" class="form-control" placeholder="상세 주소" value="${dto.addr2}">
 							</td>
 						</tr>
 	
@@ -281,16 +292,8 @@ $(function() {
 						<tr>
 							<td class="table-light" scope="row" style="width: 100px;">대표 이미지</td>
 							<td colspan="3">
-								<div class="form">
-									<div class="img-viewer">
-										<img class="item img-add" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
-										<c:if test="${mode=='update'}">
-											<img class="item img-item" src="${pageContext.request.contextPath}/uploads/activityManage/${vo.imageFilename}"
-												onclick="">
-										</c:if>
-									</div>
-									<input type="file" name="selectFile" accept="image/*" style="display: none;">
-								</div>
+								<div class="img-viewer"></div>
+								<input type="file" name="selectFile" accept="image/*" style="display: none;">
 							</td>
 						</tr>
 						
@@ -301,9 +304,11 @@ $(function() {
 							<td class="text-center">
 								<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 								<button type="reset" class="btn btn-light">다시입력</button>
-								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/partner/activityManage/activityList?page=${page}';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
-									<input type="hidden" name="num" value="${dto.num}">
+									<input type="hidden" name="titleImgname" value="${dto.titleImgname}">
+									<input type="hidden" name="activityNum" value="${dto.activityNum}">
+									<input type="hidden" name="num" value="${dto.activityNum}">
 									<input type="hidden" name="page" value="${page}">
 								</c:if>
 							</td>
