@@ -32,23 +32,23 @@ public class TravelCourseController {
 			@RequestParam(defaultValue = "") String keyword,
 			HttpServletRequest req,
 			Model model	) {
-		
+		/*
 		Map<String, Object> map = new HashMap<String, Object>();
 		//TravelCourse dto = null;
 		
 		
 		List<TravelCourse> list = service.readBoard(map);
-		/*
+		
 		List<Integer> courseNum = service.readCourseNum();
 		List<TravelCourse> cityList = service.readCity(courseNum);
 		int courseDetailNum = service.readcourseDetailNum();
 		String imgUrl = service.readImg(courseDetailNum);
-		*/
+		
 		
 		model.addAttribute("list", list);
 		//model.addAttribute("cityList", cityList);
 		//model.addAttribute("imgUrl", imgUrl);
-
+		 */
 		return ".travelCourse.list";
 	}
 	
