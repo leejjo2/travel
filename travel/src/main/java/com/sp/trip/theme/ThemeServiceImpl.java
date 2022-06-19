@@ -10,43 +10,43 @@ import com.sp.trip.common.FileManager;
 import com.sp.trip.common.dao.CommonDAO;
 
 @Service("theme.themeService")
-public class ThemeServiceImpl implements ThemeService{
+public class ThemeServiceImpl implements ThemeService {
 	@Autowired
 	private CommonDAO dao;
-	
+
 	@Autowired
 	private FileManager fileManager;
-	
+
 	@Override
 	public void insertBoard(Theme dto, String pathname) throws Exception {
 		try {
 			int seq = dao.selectOne("theme.adminCourseSeq");
 			dto.setCourseNum(seq);
-			
+
 			dao.insertData("theme.insertBoard", dto);
-			
-			for(int i=0; i<dto.getPlaceNameList().size(); i++) {
+
+			for (int i = 0; i < dto.getPlaceNameList().size(); i++) {
 				int detailseq = dao.selectOne("theme.adminCourseDetailseq");
 				dto.setCourseDetailNum(detailseq);
-				dto.setCourse_seq(i+1);
+				dto.setCourse_seq(i + 1);
 				dto.setPlaceName(dto.getPlaceNameList().get(i));
 				dto.setAddress(dto.getAddressList().get(i));
 				dto.setLongitude(dto.getLongitudeList().get(i));
 				dto.setLatitude(dto.getLatitudeList().get(i));
 				dto.setCourseContent(dto.getCourseContentList().get(i));
-				
+
 				dao.insertData("theme.insertCourse", dto);
-				
+
 				String saveFileName = fileManager.doFileUpload(dto.getUploadFile().get(i), pathname);
 				dto.setSaveFileName(saveFileName);
 				dao.insertData("theme.insertCourseImg", dto);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		}
-		
+
 	}
 
 	@Override
@@ -59,7 +59,40 @@ public class ThemeServiceImpl implements ThemeService{
 		}
 		return listCity;
 	}
-	
-	
+
+	@Override
+	public List<Theme> listTheme(Map<String, Object> map) throws Exception {
+		List<Theme> listTheme = null;
+
+		try {
+			listTheme = dao.selectList("theme.themeCategory", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listTheme;
+	}
+
+	@Override
+	public int dataCount(Map<String, Object> map) {
+		int result = 0;
+		try {
+			result = dao.selectOne("theme.dataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public List<Theme> listAdminCourse(Map<String, Object> map) {
+		List<Theme> list = null;
+		
+		try {
+			list = dao.selectList("theme.listAdminCourse", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

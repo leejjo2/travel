@@ -192,7 +192,15 @@
 		fileEl.files = dt.files;
 		
 		document.getElementById("totalCity").textContent = courseSeq;
-
+		f.cityName2.value = "";
+		f.courseContent.value = "";
+		f.selectFile.value = "";
+		f.address.value = "";
+		f.latitude.value = "";
+		f.longitude.value = "";
+		
+		document.getElementById("cityName").textContent = "City";
+        document.getElementById("cityaddr").textContent ="";
 	}
 	
 	// 전체 게시물 등록
@@ -364,13 +372,9 @@
 							<label for="Type"></label>
 							<select name="themeNum" title="코스 테마 선택">
 								<option value="0">테마 선택</option>
-								<option value="1">가족코스</option>
-								<option value="2">혼자여행</option>
-								<option value="3">도보코스</option>
-								<option value="4">힐링코스</option>
-								<option value="5">맛 코스</option>
-								<option value="6">캠핑코스</option>
-								<option value="7">반려동물과 함께</option>
+								<c:forEach var="vo" items="${themeList}">
+									<option value="${vo.themeNum}" >${vo.themeName}</option>
+								</c:forEach>
 							</select>
 						</span>
 					</div>
@@ -387,6 +391,36 @@
 							</select>
 						</span>
 					</div>
+					
+					
+				</div>
+			</div>
+			<div class="w-100 "style="clear:both; position:relative; height: 30px;">
+				<div class="row w-100" style=" position:absolute; left:20px;">
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="산">
+					    # 산
+					</span>
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="바다">
+					    # 바다
+					</span>
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="도시">
+					    # 도시
+					</span>
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="뚜벅이">
+					    # 뚜벅이
+					</span>
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="나들이">
+					    # 나들이
+					</span>
+					<span class="form-check col-2">
+					  <input class="form-check-input" name="hashtag" type="checkbox" value="액티비티">
+					    # 액티비티
+					</span>
 				</div>
 			</div>
 			

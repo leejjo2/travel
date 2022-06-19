@@ -371,7 +371,7 @@ a:link {
 						<!-- 썸네일 리스트 -->
 						<div class="box_leftType1">
 							<div class="total_check">
-								<strong>총<span>111</span>건
+								<strong>총<span>${dataCount}</span>건
 								</strong>
 								<div class="btn_txt">
 									<button type="button" class="on" id="1" title="선택됨">최신순</button>
@@ -381,405 +381,56 @@ a:link {
 							</div>
 							<h3 class="blind" id="blindsearchtype">최신순</h3>
 							<ul class="list_thumType flnon">
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;36&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>55km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=59a7d7d1-a31c-4850-8cdf-7e1d3fcc481a&amp;thumb"
-											alt="거제도 일상 회복 청춘 투어, 지친 나를 위로하고 치유하는 여행"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
+								<c:forEach var="dto" items="${list}" varStatus="status">
+									<li class="bdr_nor"><div class="photo">
 											<a href="javascript:"
-												onclick="goDetail(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;36&quot;);">거제도
-												일상 회복 청춘 투어, 지친 나를 위로하고 치유하는 여행</a>
+												onclick="goDetail(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;36&quot;);"><span
+												class="distance"><span><strong>코스 총거리</strong>55km</span></span>
+												<c:forEach var="detail" items="${dto.adminCourseList}" varStatus="status">
+													<c:if test="${status.first }">
+														<img src="${pageContext.request.contextPath}/uploads/course/${detail.saveFileName}" alt="${dto.subject}">
+													</c:if>
+												</c:forEach>
+											</a>
 										</div>
-										<p>경남 거제시</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#거제가볼만한곳</span><span>#당일코스</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>동부저수지</span> <span>학동흑진주 몽돌해변</span> <span>거제
-												케이블카</span> <span>소노캄 거제 마리나베이 요트투어</span> <span>어방가</span> <span>숲소리공원</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="c771ec7b-ca54-4efb-84db-08a5011e681d"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EA%B1%B0%EC%A0%9C%EB%8F%84%20%EC%9D%BC%EC%83%81%20%ED%9A%8C%EB%B3%B5%20%EC%B2%AD%EC%B6%98%20%ED%88%AC%EC%96%B4%2C%20%EC%A7%80%EC%B9%9C%20%EB%82%98%EB%A5%BC%20%EC%9C%84%EB%A1%9C%ED%95%98%EA%B3%A0%20%EC%B9%98%EC%9C%A0%ED%95%98%EB%8A%94%20%EC%97%AC%ED%96%89&quot;,&quot;59a7d7d1-a31c-4850-8cdf-7e1d3fcc481a&quot;,&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="c771ec7b-ca54-4efb-84db-08a5011e681d"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;,&quot;&quot;,&quot;&quot;,&quot;38&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong></span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=f96b14a5-7430-45d6-804b-23162d57e9b1&amp;thumb"
-											alt="영광의 유서 깊은 불교 역사와 아름다운 자연탐방"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;,&quot;&quot;,&quot;&quot;,&quot;38&quot;);">영광의
-												유서 깊은 불교 역사와 아름다운 자연탐방</a>
+										<div class="area_txt">
+											<div class="tit">
+												<a href="javascript:"
+													onclick="goDetail(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;36&quot;);">${dto.subject}</a>
+											</div>
+											<p>${dto.cityName}</p>
+											<p class="tag">
+												<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#거제가볼만한곳</span><span>#당일코스</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
+											</p>
+											<p class="ar_tag">
+												<c:forEach var="detail" items="${dto.adminCourseList}" varStatus="status">
+													<span>${detail.placeName}</span> 
+												</c:forEach>
+											</p>
 										</div>
-										<p>전남 영광군</p>
-										<p class="tag">
-											<span>#가족코스</span><span>#드라이브코스</span><span>#역사탐방코스</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>백수해안도로</span> <span>내산서원</span> <span>백제불교최초도래지</span>
-											<span>칠산타워</span> <span>숲쟁이공원</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="b2a839d2-8a75-4a37-baba-e4c598e0ced6"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%98%81%EA%B4%91%EC%9D%98%20%EC%9C%A0%EC%84%9C%20%EA%B9%8A%EC%9D%80%20%EB%B6%88%EA%B5%90%20%EC%97%AD%EC%82%AC%EC%99%80%20%EC%95%84%EB%A6%84%EB%8B%A4%EC%9A%B4%20%EC%9E%90%EC%97%B0%ED%83%90%EB%B0%A9&quot;,&quot;f96b14a5-7430-45d6-804b-23162d57e9b1&quot;,&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="b2a839d2-8a75-4a37-baba-e4c598e0ced6"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;b2a839d2-8a75-4a37-baba-e4c598e0ced6&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;,&quot;&quot;,&quot;&quot;,&quot;36&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>약
-													13.2km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=0e2953f1-26e5-4226-8b2a-cb468e50cc3c&amp;thumb"
-											alt="뚜벅뚜벅 두발로 떠나는 통영 속살 여행"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;,&quot;&quot;,&quot;&quot;,&quot;36&quot;);">뚜벅뚜벅
-												두발로 떠나는 통영 속살 여행</a>
+										<button type="button" title="열기" class="btn_view"
+											onclick="viewClick(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;)">더보기</button>
+										<div class="pop_subMenu">
+											<ul>
+												<li class="btn_far"><a href="javascript:"
+													onclick="setFavoContent(&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;)">즐겨찾기</a></li>
+												<li class="btn_share"
+													id="c771ec7b-ca54-4efb-84db-08a5011e681d"><a
+													href="javascript:"
+													onclick="getShareInfo(&quot;%EA%B1%B0%EC%A0%9C%EB%8F%84%20%EC%9D%BC%EC%83%81%20%ED%9A%8C%EB%B3%B5%20%EC%B2%AD%EC%B6%98%20%ED%88%AC%EC%96%B4%2C%20%EC%A7%80%EC%B9%9C%20%EB%82%98%EB%A5%BC%20%EC%9C%84%EB%A1%9C%ED%95%98%EA%B3%A0%20%EC%B9%98%EC%9C%A0%ED%95%98%EB%8A%94%20%EC%97%AC%ED%96%89&quot;,&quot;59a7d7d1-a31c-4850-8cdf-7e1d3fcc481a&quot;,&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,25);">공유하기</a></li>
+												<li class="btn_cart"
+													id="c771ec7b-ca54-4efb-84db-08a5011e681d"><a
+													href="javascript:"
+													onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;c771ec7b-ca54-4efb-84db-08a5011e681d&quot;,&quot;&quot;)">코스에
+														담기</a></li>
+											</ul>
 										</div>
-										<p>경남 통영시</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#당일코스</span><span>#도보코스</span><span>#산책코스</span><span>#자연코스</span><span>#추천코스</span><span>#통영가볼만한곳</span><span>#트레킹코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>청마거리</span> <span>청마문학관</span> <span>세병관</span> <span>윤이상거리</span>
-											<span>통영 충렬사</span> <span>해저터널</span> <span>강구안</span> <span>남망산조각공원</span>
-											<span>통영중앙전통시장</span> <span>점심식사(분소식당, 원조시락국)</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="b4469109-a5c5-4030-9433-dfe01e9051d2"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EB%9A%9C%EB%B2%85%EB%9A%9C%EB%B2%85%20%EB%91%90%EB%B0%9C%EB%A1%9C%20%EB%96%A0%EB%82%98%EB%8A%94%20%ED%86%B5%EC%98%81%20%EC%86%8D%EC%82%B4%20%EC%97%AC%ED%96%89&quot;,&quot;0e2953f1-26e5-4226-8b2a-cb468e50cc3c&quot;,&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="b4469109-a5c5-4030-9433-dfe01e9051d2"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;b4469109-a5c5-4030-9433-dfe01e9051d2&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;,&quot;&quot;,&quot;&quot;,&quot;32&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>41.9km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=91d67007-3863-4763-a743-cc7a4b3f488e&amp;thumb"
-											alt="아이들과 쉽고 즐겁게 떠나는 숲 여행"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;,&quot;&quot;,&quot;&quot;,&quot;32&quot;);">아이들과
-												쉽고 즐겁게 떠나는 숲 여행</a>
-										</div>
-										<p>강원 횡성군</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#당일코스</span><span>#자녀와함께</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>숲체원</span> <span>안흥 찐빵마을</span> <span>국립
-												청태산자연휴양림</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="0c9c7de4-1e4f-4549-b25a-b831aae9b831"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%95%84%EC%9D%B4%EB%93%A4%EA%B3%BC%20%EC%89%BD%EA%B3%A0%20%EC%A6%90%EA%B2%81%EA%B2%8C%20%EB%96%A0%EB%82%98%EB%8A%94%20%EC%88%B2%20%EC%97%AC%ED%96%89&quot;,&quot;91d67007-3863-4763-a743-cc7a4b3f488e&quot;,&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="0c9c7de4-1e4f-4549-b25a-b831aae9b831"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;0c9c7de4-1e4f-4549-b25a-b831aae9b831&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;32&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>89.97km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=e22133c5-d4db-430d-aa6c-9ff6789460f5&amp;thumb"
-											alt="파로호 자전거길로 시작하는 생태여행"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;32&quot;);">파로호
-												자전거길로 시작하는 생태여행</a>
-										</div>
-										<p>강원 화천군</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#당일코스</span><span>#연인코스</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>파로호(화천)</span> <span>붕어섬</span> <span>화천향교</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="059ed7c1-e6be-4adf-9add-76204b2ce57b"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%ED%8C%8C%EB%A1%9C%ED%98%B8%20%EC%9E%90%EC%A0%84%EA%B1%B0%EA%B8%B8%EB%A1%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94%20%EC%83%9D%ED%83%9C%EC%97%AC%ED%96%89&quot;,&quot;e22133c5-d4db-430d-aa6c-9ff6789460f5&quot;,&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="059ed7c1-e6be-4adf-9add-76204b2ce57b"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;059ed7c1-e6be-4adf-9add-76204b2ce57b&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;3&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>16.3km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=cccb8b38-5c45-404e-9a44-aeeff35a5862&amp;thumb"
-											alt="힐링의 명소, 황톳길을 걸어보다"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;3&quot;);">힐링의
-												명소, 황톳길을 걸어보다</a>
-										</div>
-										<p>대전 서구</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#나홀로여행</span><span>#당일코스</span><span>#데이트코스</span><span>#연인과함께</span><span>#자녀와함께</span><span>#자연코스</span><span>#추천코스</span><span>#친구와함께</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>한밭수목원</span> <span>대전엑스포과학공원</span> <span>장동산림욕장</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="a4e1033a-8e1f-402c-b342-90d0f210ec76"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%ED%9E%90%EB%A7%81%EC%9D%98%20%EB%AA%85%EC%86%8C%2C%20%ED%99%A9%ED%86%B3%EA%B8%B8%EC%9D%84%20%EA%B1%B8%EC%96%B4%EB%B3%B4%EB%8B%A4&quot;,&quot;cccb8b38-5c45-404e-9a44-aeeff35a5862&quot;,&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="a4e1033a-8e1f-402c-b342-90d0f210ec76"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;a4e1033a-8e1f-402c-b342-90d0f210ec76&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;,&quot;C01&quot;,&quot;C0113&quot;,&quot;38&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>38.12km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=0b0c43af-e69d-4b7c-a345-07c602c75f6c&amp;thumb"
-											alt="여수 앞바다에 펼쳐진 크고 작은 섬들"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;,&quot;C01&quot;,&quot;C0113&quot;,&quot;38&quot;);">여수
-												앞바다에 펼쳐진 크고 작은 섬들</a>
-										</div>
-										<p>전남 여수시</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#당일코스</span><span>#데이트코스</span><span>#연인코스</span><span>#일출</span><span>#일출명소</span><span>#일출여행</span><span>#자녀와함께</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>향일암</span> <span>오동도 등대</span> <span>여수 진남관</span> <span>이충무공자당기거지</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="49506ec1-adfb-491d-96c7-ba44072daab3"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%97%AC%EC%88%98%20%EC%95%9E%EB%B0%94%EB%8B%A4%EC%97%90%20%ED%8E%BC%EC%B3%90%EC%A7%84%20%ED%81%AC%EA%B3%A0%20%EC%9E%91%EC%9D%80%20%EC%84%AC%EB%93%A4&quot;,&quot;0b0c43af-e69d-4b7c-a345-07c602c75f6c&quot;,&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="49506ec1-adfb-491d-96c7-ba44072daab3"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;49506ec1-adfb-491d-96c7-ba44072daab3&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;,&quot;C01&quot;,&quot;C0112&quot;,&quot;38&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>26.49km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=ef75ab00-f585-406a-9812-2ae011f0763f&amp;thumb"
-											alt="전남 구례 체험하러 가기"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;,&quot;C01&quot;,&quot;C0112&quot;,&quot;38&quot;);">전남
-												구례 체험하러 가기</a>
-										</div>
-										<p>전남 구례군</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#가족코스</span><span>#당일코스</span><span>#자연코스</span><span>#전라권</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>다무락 마을</span> <span>농업기술센터 자연생태학습장</span> <span>구례향교</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="a820bb3f-2a14-4239-8887-05224eb465dc"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%A0%84%EB%82%A8%20%EA%B5%AC%EB%A1%80%20%EC%B2%B4%ED%97%98%ED%95%98%EB%9F%AC%20%EA%B0%80%EA%B8%B0&quot;,&quot;ef75ab00-f585-406a-9812-2ae011f0763f&quot;,&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="a820bb3f-2a14-4239-8887-05224eb465dc"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;a820bb3f-2a14-4239-8887-05224eb465dc&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;35&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>18km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=ca79f113-7230-4948-8b6a-df32facc4126&amp;thumb"
-											alt="세계문화유산에 빛나는 안동하회마을"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;,&quot;C01&quot;,&quot;C0114&quot;,&quot;35&quot;);">세계문화유산에
-												빛나는 안동하회마을</a>
-										</div>
-										<p>경북 안동시</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#Feel_the_rhythm_of_korea</span><span>#가을여행</span><span>#가을여행코스</span><span>#가족코스</span><span>#경북권</span><span>#당일코스</span><span>#봄여행지</span><span>#역사탐방코스</span><span>#자연코스</span><span>#추천코스</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>안동 하회마을 [유네스코 세계문화유산] </span> <span>안동 병산서원</span> <span>부용대</span>
-											<span>하회 겸암정사</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="494e63dc-5038-40af-8967-d3d1b9377a2e"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%84%B8%EA%B3%84%EB%AC%B8%ED%99%94%EC%9C%A0%EC%82%B0%EC%97%90%20%EB%B9%9B%EB%82%98%EB%8A%94%20%EC%95%88%EB%8F%99%ED%95%98%ED%9A%8C%EB%A7%88%EC%9D%84&quot;,&quot;ca79f113-7230-4948-8b6a-df32facc4126&quot;,&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="494e63dc-5038-40af-8967-d3d1b9377a2e"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;494e63dc-5038-40af-8967-d3d1b9377a2e&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
-								<li class="bdr_nor"><div class="photo">
-										<a href="javascript:"
-											onclick="goDetail(&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;,&quot;C01&quot;,&quot;C0112&quot;,&quot;34&quot;);"><span
-											class="distance"><span><strong>코스 총거리</strong>33.05km</span></span><img
-											src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=dddd4098-e295-43d8-8204-e2eb018b5bf5&amp;thumb"
-											alt="서산인들이 백제의 ‘미소’로 반겨주는 곳"></a>
-									</div>
-									<div class="area_txt">
-										<div class="tit">
-											<a href="javascript:"
-												onclick="goDetail(&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;,&quot;C01&quot;,&quot;C0112&quot;,&quot;34&quot;);">서산인들이
-												백제의 ‘미소’로 반겨주는 곳</a>
-										</div>
-										<p>충남 서산시</p>
-										<p class="tag">
-											<span>#1박2일</span><span>#2박3일</span><span>#Feel_the_rhythm_korea</span><span>#Feel_the_rhythm_of_korea</span><span>#가을여행</span><span>#가을여행코스</span><span>#가족코스</span><span>#간월도마을</span><span>#간월암</span><span>#나홀로여행</span><span>#당일코스</span><span>#바다풍경</span><span>#봄나들이</span><span>#서산버드랜드</span><span>#서산해미읍성회화나무</span><span>#연인과함께</span><span>#자녀와함께</span><span>#자연좋은곳</span><span>#자연코스</span><span>#추천코스</span><span>#충청권</span><span>#테마파크</span><span>#힐링코스</span>
-										</p>
-										<p class="ar_tag">
-											<span>서산해미읍성회화나무</span> <span>간월암(서산)</span> <span>간월도마을[해양수산부
-												선정 아름다운 어촌]</span>
-										</p>
-									</div>
-									<button type="button" title="열기" class="btn_view"
-										onclick="viewClick(&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;)">더보기</button>
-									<div class="pop_subMenu">
-										<ul>
-											<li class="btn_far"><a href="javascript:"
-												onclick="setFavoContent(&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;)">즐겨찾기</a></li>
-											<li class="btn_share"
-												id="ec090794-1845-4008-9441-188a67b3ca2d"><a
-												href="javascript:"
-												onclick="getShareInfo(&quot;%EC%84%9C%EC%82%B0%EC%9D%B8%EB%93%A4%EC%9D%B4%20%EB%B0%B1%EC%A0%9C%EC%9D%98%20%E2%80%98%EB%AF%B8%EC%86%8C%E2%80%99%EB%A1%9C%20%EB%B0%98%EA%B2%A8%EC%A3%BC%EB%8A%94%20%EA%B3%B3&quot;,&quot;dddd4098-e295-43d8-8204-e2eb018b5bf5&quot;,&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;,25);">공유하기</a></li>
-											<li class="btn_cart"
-												id="ec090794-1845-4008-9441-188a67b3ca2d"><a
-												href="javascript:"
-												onclick="myCourseList(&quot;C&quot;,&quot;25&quot;,&quot;ec090794-1845-4008-9441-188a67b3ca2d&quot;,&quot;&quot;)">코스에
-													담기</a></li>
-										</ul>
-									</div></li>
+										</li>
+									</c:forEach>
 							</ul>
-							<!-- paging -->
-							<div class="page_box">
-								<a class="on" title="선택됨" href="javascript:" id="1">1<span
-									class="blind">현재 위치</span></a> <a href="javascript:" id="2">2</a> <a
-									href="javascript:" id="3">3</a> <a href="javascript:" id="4">4</a>
-								<a href="javascript:" id="5">5</a> <a href="javascript:"
-									class="btn_next ico" id="6">다음</a><a class="btn_last ico"
-									href="javascript:" id="12">끝</a>
+							<div class="page-box">
+								${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 							</div>
-							<!-- //paging -->
 
 						</div>
 						<!-- //썸네일 리스트 -->

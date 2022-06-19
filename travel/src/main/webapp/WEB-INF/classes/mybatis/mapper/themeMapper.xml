@@ -8,8 +8,8 @@
 	</select>
 	<!-- 게시물 insert -->
 	<insert id="insertBoard" parameterType="com.sp.trip.theme.Theme">
-		INSERT INTO adminCourse(courseNum, userID, subject, content, cityNum, themeNum, period )
-		VALUES (#{courseNum}, #{userId}, #{subject}, #{content}, #{cityNum}, #{themeNum}, #{period})
+		INSERT INTO adminCourse(courseNum, userID, subject, content, cityNum, themeNum, period, hashtag, reg_date)
+		VALUES (#{courseNum}, #{userId}, #{subject}, #{content}, #{cityNum}, #{themeNum}, #{period}, #{hashtag}, SYSDATE)
 	</insert>
 	<!-- 상세경로 시퀀스 증가 -->
 	<select id="adminCourseDetailseq" resultType="Integer">
@@ -22,8 +22,8 @@
 	</insert>
 	<!-- 상세경로 이미지 insert -->
 	<insert id="insertCourseImg" parameterType="com.sp.trip.theme.Theme">
-		INSERT INTO adminCourseImg (imageFileNum, courseDetailNum, saveFileName)
-		VALUES (adminCourseImg_seq.NEXTVAL, #{courseDetailNum}, #{saveFileName})
+		INSERT INTO adminCourseImg (imageFileNum, courseNum, courseDetailNum, saveFileName)
+		VALUES (adminCourseImg_seq.NEXTVAL, #{courseNum}, #{courseDetailNum}, #{saveFileName})
 	</insert>
 	
 	<!-- 도시 카테고리 -->
@@ -32,5 +32,67 @@
 		FROM city
 		ORDER BY cityNum
 	</select> 
+	<!-- 테마 카테고리 -->
+	<select id="themeCategory" resultType="com.sp.trip.theme.Theme">
+		SELECT themeNum, themeName 
+		FROM theme
+		ORDER BY themeNum
+	</select> 
+	<!-- 검색조건 -->
+	<sql id="where-list">
+		<if test="condition=='all'">
+			( INSTR(subject, #{keyword}) &gt; 0
+				OR INSTR(content, #{keyword}) &gt; 0 )
+		</if>
+		<if test="condition=='subject'">
+			INSTR(subject, #{keyword}) &gt; 0
+		</if>
+		<if test="condition=='content'">
+			INSTR(content, #{keyword}) &gt; 0 
+		</if>
+		<if test="condition=='userName'">
+			userName=#{keyword}
+		</if>
+		<if test="condition=='reg_date'">
+			( TO_CHAR(p.reg_date, 'YYYY-MM-DD') = #{keyword}
+				OR TO_CHAR(p.reg_date, 'YYYYMMDD') = #{keyword} )
+		</if>
+	</sql>
+	<!-- 리스트 출력 개수 -->
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM adminCourse ac
+		JOIN member m ON ac.userId=m.userId
+<!-- 		<where> -->
+<!-- 			<if test="keyword!=null and keyword!='' "> -->
+<!-- 				<include refid="where-list"/> -->
+<!-- 			</if> -->
+<!-- 		</where>		 -->
+	</select>
+	<!-- 출력할 리스트 -->
+	<select id="listAdminCourse" parameterType="map" resultType="com.sp.trip.theme.Theme">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT ac.courseNum, ac.userId, userName, subject, content, 
+					hitCount, ac.cityNum, cityName, ac.themeNum, themeName,
+					period, hashtag, acd.courseDetailNum, course_seq, 
+					placeName, address, longitude, latitude, courseContent,
+					saveFileName, TO_CHAR(ac.reg_date, 'yyyy-mm-dd') as reg_date
+				FROM adminCourse ac
+				JOIN member m ON ac.userId = m.userId
+				JOIN adminCourseDetail acd ON ac.courseNum = acd.courseNum
+				JOIN adminCourseImg acdi ON acd.courseDetailNum= acdi.courseDetailNum
+				JOIN city c ON ac.cityNum = c.cityNum
+				JOIN theme t ON ac.themeNum = t.themeNum
+<!-- 				<where> -->
+<!-- 					<if test="keyword != null and keyword != ''"> -->
+<!-- 						<include refid="where-list"/> -->
+<!-- 					</if> -->
+<!-- 				</where> -->
+				ORDER BY ac.courseNum DESC
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+	
 	
 </mapper>

@@ -8,6 +8,7 @@ public class Theme {
 	// 게시글
 	private int courseNum;
 	private String userId;
+	private String userName;
 	private String subject;
 	private String content;
 	private String reg_date;
@@ -16,8 +17,9 @@ public class Theme {
 	private int cityNum;
 	private String cityName;
 	private int themeNum;
+	private String themeName;
 	private String period;
-	private String hashTag;
+	private String hashtag;
 	
 	// 상세 코스
 	private int courseDetailNum;
@@ -38,6 +40,24 @@ public class Theme {
 	private List<String> courseContentList;
 	private List<MultipartFile> uploadFile;
 	
+	// 
+	private List<Theme> adminCourseList;
+	
+	
+	
+	
+	public List<Theme> getAdminCourseList() {
+		return adminCourseList;
+	}
+	public void setAdminCourseList(List<Theme> adminCourseList) {
+		this.adminCourseList = adminCourseList;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getCourseNum() {
 		return courseNum;
 	}
@@ -91,12 +111,6 @@ public class Theme {
 	}
 	public void setPeriod(String period) {
 		this.period = period;
-	}
-	public String getHashTag() {
-		return hashTag;
-	}
-	public void setHashTag(String hashTag) {
-		this.hashTag = hashTag;
 	}
 	public int getCourseDetailNum() {
 		return courseDetailNum;
@@ -194,6 +208,20 @@ public class Theme {
 	public void setSaveFileName(String saveFileName) {
 		this.saveFileName = saveFileName;
 	}
+	public String getThemeName() {
+		return themeName;
+	}
+	public void setThemeName(String themeName) {
+		this.themeName = themeName;
+	}
+	public String getHashtag() {
+		return hashtag;
+	}
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
+	}
+	
+	
 	
 	
 	
