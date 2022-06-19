@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sp.trip.member.SessionInfo;
 
@@ -23,8 +25,30 @@ public class TravelCourseController {
 	private TravelCourseService service;
 
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list() {
+	@RequestMapping(value = "list")
+	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
+			@RequestParam(defaultValue = "0") int group,
+			@RequestParam(defaultValue = "all") String condition,
+			@RequestParam(defaultValue = "") String keyword,
+			HttpServletRequest req,
+			Model model	) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		//TravelCourse dto = null;
+		
+		
+		List<TravelCourse> list = service.readBoard(map);
+		/*
+		List<Integer> courseNum = service.readCourseNum();
+		List<TravelCourse> cityList = service.readCity(courseNum);
+		int courseDetailNum = service.readcourseDetailNum();
+		String imgUrl = service.readImg(courseDetailNum);
+		*/
+		
+		model.addAttribute("list", list);
+		//model.addAttribute("cityList", cityList);
+		//model.addAttribute("imgUrl", imgUrl);
+
 		return ".travelCourse.list";
 	}
 	
@@ -52,13 +76,7 @@ public class TravelCourseController {
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "course";
 		try {
-			dto.setUserId(info.getUserId());
-			System.out.println("왜왜왜");
-			System.out.println("유저 "+dto.getUserId());
-			System.out.println("유저 "+dto.getUserId());
-			System.out.println(pathname);
-			System.out.println("dto입니다"+dto);
-			
+			dto.setUserId(info.getUserId());	
 
 			service.insertCity(dto, pathname);
 
@@ -67,6 +85,12 @@ public class TravelCourseController {
 		
 		return "redirect:/travelCourse/write";
 		
+	}
+	
+	@RequestMapping(value = "article")
+	public String article() throws Exception {
+		
+		return ".travelCourse.article";
 	}
 	
 }
