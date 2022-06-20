@@ -4,17 +4,70 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/hotel/hotelList.css" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/paginate.js"></script>
+
+<style>
+/* paginate */
+.page-box { clear: both; padding: 20px 0; text-align: center; }
+
+.paginate {
+	text-align: center;
+	white-space: nowrap;
+	font-size: 14px;	
+}
+.paginate a {
+	border: 1px solid #ccc;
+	color: #000;
+	font-weight: 600;
+	text-decoration: none;
+	padding: 3px 7px;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+.paginate a:hover, .paginate a:active {
+	color: #6771ff;
+}
+.paginate span {
+	border: 1px solid #e28d8d;
+	color: #cb3536;
+	font-weight: 600;
+	padding: 3px 7px;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+.paginate :first-child {
+	margin-left: 0;
+}
+</style>
 
 <script type="text/javascript">
-<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>90}">
-	function deleteHotel() {
-	    if(confirm("게시글을 삭제 하시 겠습니까 ? ")) {
-		    let query = "num=${dto.hotelNum}";
-		    let url = "${pageContext.request.contextPath}/lodging/delete?" + query;
-	    	location.href = url;
-	    }
-	}
-</c:if>
+/*
+window.addEventListener("load", function(){
+	let page = ${page};
+	let pageSize = ${rows};
+	let dataCount = ${dataCount};
+	let url = "${listUrl}";
+	
+	let total_page = pageCount(dataCount, pageSize);
+	let paging = pagingUrl(page, total_page, url);
+	
+	document.querySelector(".dataCount").innerHTML = dataCount +"개 (" 
+			+ page + "/" + total_page + "페이지)";
+	
+	document.querySelector(".page-box").innerHTML = 
+		dataCount == 0 ? "등록된 게시물이 없습니다." : paging;
+	
+}, false);
+ * 
+ */
+
+function deleteHotel() {
+    if(confirm("게시글을 삭제 하시겠습니까 ? ")) {
+	    let query = "num=${dto.hotelNum}";
+	    let url = "${pageContext.request.contextPath}/partner/lodgingManage/delete?" + query;
+    	location.href = url;
+    }
+}
 </script>
 
 <div class="right_col" role="main" style="min-height: 1758px;">
@@ -58,6 +111,9 @@
 	                </div>
 	            </div>
 	        </c:forEach>
+	        
+	        <div class="page-box"></div>
+	        
 	     </div>
 	 </div>
 </div>

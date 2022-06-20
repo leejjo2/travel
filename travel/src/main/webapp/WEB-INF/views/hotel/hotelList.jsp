@@ -34,70 +34,34 @@
                 </div>
             </div>
             <div class="bg-white p-2 border" id="hotels">
-                <div class="hotel py-2 px-2 pb-4 border-bottom">
-                    <div class="row">
-                        <div class="col-lg-3"> <img src="https://images.unsplash.com/photo-1580835845971-a393b73bf370?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="" class="hotel-img"> </div>
-                        <div class="col-lg-9">
-                            <div class="d-md-flex align-items-md-center">
-                                <div class="name">Mayflower Hibiscus Inn <span class="city">Bandra, Mumbai</span> </div>
-                                <div class="ms-auto code text-uppercase">ABD09eh8</div>
-                            </div>
-                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
-                            </div>
-                            <div class="d-flex flex-column tags pt-1">
-                                <div><span class="fas fa-comment-dollar"></span> Fee Canellation</div>
-                                <div><span class="fas fa-receipt"></span> Express check-in</div>
-                                <div><span class="fas fa-concierge-bell"></span> Concierge</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-1">
-                        <div class="btn btn-primary text-uppercase">예약하기</div>
-                    </div>
-                </div>
-                <div class="hotel py-2 px-2 pb-4 border-bottom">
-                    <div class="row">
-                        <div class="col-lg-3"> <img src="https://images.unsplash.com/photo-1596618502142-d2a9d0c1fc2e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTd8fHJlc29ydHN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" class="hotel-img"> </div>
-                        <div class="col-lg-9">
-                            <div class="d-md-flex align-items-md-center">
-                                <div class="name">Sunflower Hibiscus Inn <span class="city">Zuhu, Mumbai</span> </div>
-                                <div class="ms-auto code text-uppercase">ABD09eh8</div>
-                            </div>
-                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
-                            </div>
-                            <div class="d-flex flex-column tags pt-1">
-                                <div><span class="fas fa-comment-dollar"></span> Fee Canellation</div>
-                                <div><span class="fas fa-receipt"></span> Express check-in</div>
-                                <div><span class="fas fa-concierge-bell"></span> Concierge</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-1">
-                        <div class="btn btn-primary text-uppercase">예약하기</div>
-                    </div>
-                </div>
-                <div class="hotel py-2 px-2 pb-4">
-                    <div class="row">
-                        <div class="col-lg-3"> <img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NzV8fHJlc29ydHN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" class="hotel-img"> </div>
-                        <div class="col-lg-9">
-                            <div class="d-md-flex align-items-md-center">
-                                <div class="name">Atlantic Inn <span class="city">Mulund West, Mumbai</span> </div>
-                                <div class="ms-auto code text-uppercase">ABD09eh8</div>
-                            </div>
-                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
-                            </div>
-                            <div class="d-flex flex-column tags pt-1">
-                                <div><span class="fas fa-comment-dollar"></span> Fee Canellation</div>
-                                <div><span class="fas fa-receipt"></span> Express check-in</div>
-                                <div><span class="fas fa-concierge-bell"></span> Concierge</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-1">
-                        <div class="btn btn-primary text-uppercase">예약하기</div>
-                    </div>
-                </div>
+                <div id="content">
+					<c:forEach var="dto" items="${list}">	            
+			            <div class="bg-white p-2 border" id="hotels">
+			                <div class="hotel py-2 px-2 pb-4 border-bottom">
+			                    <div class="row">
+			                        <div class="col-lg-3"> <img src="https://images.unsplash.com/photo-1580835845971-a393b73bf370?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="" class="hotel-img"> </div>
+			                        <div class="col-lg-9">
+			                            <div class="d-md-flex align-items-md-center">
+			                                <div class="name">${dto.hotelName}<span class="city"> 우편번호 : ${dto.hotelZip} | 주소 : ${dto.hotelAddr1}, ${dto.hotelAddr2}</span> </div>
+			                            </div>
+			                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
+			                            </div>
+			                            <div class="d-flex flex-column tags pt-1">
+			                                <div><span class="fas fa-comment-dollar"></span>${dto.hotelIntro}</div>
+			                                <div><span class="fas fa-receipt"></span> 옵션</div>
+			                                <div><span class="fas fa-concierge-bell"></span> 옵션</div>
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="d-flex justify-content-end mt-1">
+			                    	<div class="btn enquiry text-uppercase mx-2" onclick="">상세보기</div>
+			                        <div class="btn btn-primary text-uppercase">예약하기</div>
+			                    </div>
+			                </div>
+			            </div>
+			        </c:forEach>
             </div>
+          </div>
         </div>
     </div>
 </div>

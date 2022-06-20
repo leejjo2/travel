@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hotel">
+	
+	<select id="listHotel" parameterType="map" resultType="com.sp.trip.hotel.Hotel">
+		SELECT h.hotelNum, p.partnerName, p.partnerTel, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2
+		FROM hotel h
+		JOIN partner p ON p.partnerNum = h.partnerNum
+	</select>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM hotel
+	</select>
+	
+	<select id="readHotel" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
+		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
+		FROM hotel h
+		JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
+		WHERE hotelNum = #{hotelNum}
+	</select>
+
+	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
+		SELECT imageFileNum, hotelNum, saveFilename
+		FROM hotelImage
+		WHERE hotelNum = #{hotelNum}
+	</select>
+	
+	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
+		SELECT imageFileNum, hotelNum, saveFilename
+		FROM hotelImage
+	    WHERE imageFileNum = #{imageFileNum}
+	</select>
+	
+	
+
+</mapper>

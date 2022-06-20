@@ -21,9 +21,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertHotel(LodgingManage dto, String pathname) throws Exception {
 		try {
-			int partnerNum = dao.selectOne("lodgingManage.partnerNum", dto.getPartnerId());
-			dto.setPartnerNum(partnerNum);
-			
+
 			dao.insertData("lodgingManage.insertHotel", dto);
 			
 			// 파일 업로드
@@ -44,6 +42,19 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+	
+	@Override
+	public int dataCount(Map<String, Object> map) {
+		int result = 0;
+		
+		try {
+			result = dao.selectOne("lodgingManage.dataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	@Override
@@ -174,4 +185,18 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			throw e;
 		}
 	}
+
+	@Override
+	public LodgingManage readBoard(int hotelNum) {
+		LodgingManage dto = null;
+		
+		try {
+			dto = dao.selectOne("bbs.readHotel", hotelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
 }
