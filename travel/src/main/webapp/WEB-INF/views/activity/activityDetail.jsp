@@ -6,49 +6,142 @@
 <link rel="stylesheet" media="all" href="/trip/dist/activity/css/activityDetail2.css">
 <link rel="stylesheet" media="screen" href="/trip/dist/activity/css/activityDetail1.css">
 
+<style>
+.Detailinfo img {
+	width: 100%;
+}
+
+#Offer-react-component-364e2bf4-fdfd-4a12-8e5e-5fab3e5b4d3b {
+	margin-top:70px;
+}
+
+</style>
+
+<script type="text/javascript">
+// 천단위 콤마 찍기 함수
+function addComma(value){
+	value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value; 
+}
+
+// 천단위 콤마 제거 함수
+function minusComma(value){
+    value = value.replace(/[^\d]+/g, "");
+    return value; 
+}
+
+function btnDisable() {
+	if($(".Stepper-module__value--RL1SZ").text() === '0'){
+		$(".Stepper-module__container--K8v4J button:first-child").addClass("Stepper-module__disabled--krEGe");
+		$(".Stepper-module__container--K8v4J button:first-child").attr("disabled", "");
+		$(".Stepper-module__container--K8v4J button:first-child img").attr("src", "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjQ0VENERBIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTIuNjY3IDhoMTAuNjY2Ii8+Cjwvc3ZnPgo=");
+	} else {
+		$(".Stepper-module__container--K8v4J button:first-child").removeClass("Stepper-module__disabled--krEGe");
+		$(".Stepper-module__container--K8v4J button:first-child").removeAttr("disabled");
+		$(".Stepper-module__container--K8v4J button:first-child img").attr("src", "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNTFBQkYzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTIuNjY3IDhoMTAuNjY2Ii8+Cjwvc3ZnPgo=");
+	}
+}
+
+function btnPayment() {
+	let out = "";
+	
+	out += "<div class='OfferOption-module__payment--zEcEw'>";
+	out += 		"<div class='OfferOption-module__button--VNiCP'>";
+	out += 			"<button type='button' class='Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu Button-module__block--iT6b7'>결제하기</button>";
+	out += 		"</div>";
+	out += "</div>";
+	
+	if($(".Stepper-module__value--RL1SZ").text() !== '0'){
+		if (!$(".OfferOption-module__payment--zEcEw").length) {
+			$(".OfferOption-module__optionWrapper--vVnih").append(out);
+        }
+	} else {
+		$(".OfferOption-module__payment--zEcEw").remove();
+	}
+
+}
+
+function paymentInfo() {
+	let out = "";
+	let out2 = "";
+	
+	if($(".Stepper-module__value--RL1SZ").text() === '0'){
+		$(".OfferOptionCalculator-module__container--ypb1O").remove();
+		return;
+	}
+	
+	let ticketPrice = ${dto.price};
+	let totalCount = parseInt($(".Stepper-module__value--RL1SZ").text());
+	let totalPrice = parseInt($(".Stepper-module__value--RL1SZ").text()) * ticketPrice;
+	
+	ticketPrice = addComma(ticketPrice.toString());
+	
+	out += "<div class='OfferOptionCalculator-module__container--ypb1O'>";
+	out += 	"</div>";
+	
+	
+	out2 += "<ul class='OfferOptionCalculator-module__selections--C2r4I'>";
+	out2 += 	"<li class='OfferOptionCalculator-module__row--s_rPN'>";
+	out2 += 		"<p class='OfferOptionCalculator-module__title--UF6gF'>[대소공통] 이용권</p>";
+	out2 += 		"<p>"+totalCount+" X "+ ticketPrice + "원</p>";
+	out2 += 		"<p class='OfferOptionCalculator-module__price--Ppc9A'>"+addComma(totalPrice.toString())+"원</p>";
+	out2 += 	"</li>";
+	out2 += "</ul>";
+	out2 += "<div class='OfferOptionCalculator-module__total--EzFco'>";
+	out2 += 	"<span class='OfferOptionCalculator-module__label--Sy3mf'>총 금액</span>";
+	out2 += 	"<span class='OfferOptionCalculator-module__price--Ppc9A'>"+addComma(totalPrice.toString())+"원</span>";
+	out2 += "</div>";
+	
+	if (!$(".OfferOptionCalculator-module__container--ypb1O").length) { // 존재하지 않는다면
+		$(".OfferOption-module__options--lYKqh").append(out);
+		$(".OfferOptionCalculator-module__container--ypb1O").append(out2);
+    } else {
+    	$(".OfferOptionCalculator-module__container--ypb1O").html(out2);
+    }
+
+}
+
+$(function() {
+	btnDisable();
+	let ticketPrice = ${dto.price};
+	ticketPrice = addComma(ticketPrice.toString());
+	$(".OfferOptionItemPrice-module__price--Ftg0b").text(ticketPrice);
+	$(".OfferPrice-module__price--rSHhS").text(ticketPrice + "원");
+});
+
+$(function() {
+	
+	$(".OfferFlexibleBox-module__button--naA9I button").click(function() {
+		$(".Detailinfo").css("max-height", "");
+		$(".OfferFlexibleBox-module__absolute--lHMBW").remove();
+	});
+	
+	$(".Stepper-module__container--K8v4J button:last-child").click(function() {
+		$(".Stepper-module__value--RL1SZ").text(parseInt($(".Stepper-module__value--RL1SZ").text()) + 1);
+		btnDisable();
+		btnPayment();
+		paymentInfo();
+	});
+	
+	$(".Stepper-module__container--K8v4J button:first-child").click(function() {
+		$(".Stepper-module__value--RL1SZ").text(parseInt($(".Stepper-module__value--RL1SZ").text()) - 1);
+		btnDisable();
+		btnPayment();
+		paymentInfo();
+	});
+	
+	
+	
+}); 
+
+</script>
 <div id="Offer-react-component-364e2bf4-fdfd-4a12-8e5e-5fab3e5b4d3b">
 	<div class="Offer-module__container--H4wAP">
-		<div class="OfferSectionNavbar-module__container--qfv5A">
-			<div class="Grid-module__container--YH1rv">
-				<div class="Grid-module__row--GTpEN Grid-module__full--V7SXd OfferSectionNavbar-module__row--VzxHt">
-					<div class="OfferSectionNavbar-module__nav--G9Gdy">
-						<nav id="OFFER-SECTION-BAR" class="TabsWithSwiper-module__container--LkSG7 TabsWithSwiper-module__large--A1mO9 TabsWithSwiper-module__hideBorder--sLUB7">
-							<div class="swiper-container swiper-container-horizontal swiper-container-free-mode" style="cursor: grab;">
-								<div class="swiper-wrapper" style="width: 1084px; transform: translate3d(0px, 0px, 0px);">
-									<button id="OFFER-SECTION-TICKET_TAB" type="button" class="swiper-slide TabItemWithSwiper-module__button--MvuNT TabItemWithSwiper-module__gray--_KhrC TabItemWithSwiper-module__large--m0bDm TabItemWithSwiper-module__active--Ato8D swiper-slide-active" style="margin-right: 24px;">티켓 선택</button>
-									<button id="OFFER-SECTION-INTRODUCTION_TAB" type="button" class="swiper-slide TabItemWithSwiper-module__button--MvuNT TabItemWithSwiper-module__gray--_KhrC TabItemWithSwiper-module__large--m0bDm swiper-slide-next" style="margin-right: 24px;">상품 소개</button>
-									<button id="OFFER-SECTION-GUIDANCE_TAB" type="button" class="swiper-slide TabItemWithSwiper-module__button--MvuNT TabItemWithSwiper-module__gray--_KhrC TabItemWithSwiper-module__large--m0bDm" style="margin-right: 24px;">이용 안내</button>
-									<button id="OFFER-SECTION-REFUND_TAB" type="button" class="swiper-slide TabItemWithSwiper-module__button--MvuNT TabItemWithSwiper-module__gray--_KhrC TabItemWithSwiper-module__large--m0bDm" style="margin-right: 24px;">환불 안내</button>
-									<button id="OFFER-SECTION-REVIEW_TAB" type="button" class="swiper-slide TabItemWithSwiper-module__button--MvuNT TabItemWithSwiper-module__gray--_KhrC TabItemWithSwiper-module__large--m0bDm" style="margin-right: 24px;">후기</button>
-								</div>
-								<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-							</div>
-							<button type="button" class="TabsWithSwiper-module__navButton--zCi1F TabsWithSwiper-module__prev--ayDgn TabsWithSwiper-module__prev--ayDgn--OFFER-SECTION-BAR">
-								<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjMkI5NkVEIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTE0IDZsLTYgNi4wMDNMMTMuOTkzIDE4Ii8+Cjwvc3ZnPgo=" alt="prev">
-							</button>
-							<button type="button" class="TabsWithSwiper-module__navButton--zCi1F TabsWithSwiper-module__next--mNMIi TabsWithSwiper-module__next--mNMIi--OFFER-SECTION-BAR">
-								<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjMkI5NkVEIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgZD0iTTEwIDZsNiA2LjAwM0wxMC4wMDcgMTgiLz4KPC9zdmc+Cg==" alt="next">
-							</button>
-						</nav>
-					</div>
-					<div class="OfferSectionNavbar-module__share--y3JER">
-						<div class="OfferSectionNavbar-module__gradient--MCLVz"></div>
-						<div class="OfferSectionNavbar-module__shareBtn--vYB6I">
-							<button type="button" class="ShareButton-module__shareBtn--gRzpd">
-								<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNDk1MDU2IiBzdHJva2Utd2lkdGg9IjEuMjUiPgogICAgICAgIDxjaXJjbGUgY3g9IjYuMjIyIiBjeT0iMTIiIHI9IjIuMjIyIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMTcuNDQ0IiBjeT0iNi4yMjIiIHI9IjIuMjIyIi8+CiAgICAgICAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgZD0iTTE0LjUgNy41bC01LjYxMSAyLjgzMyIvPgogICAgICAgIDxjaXJjbGUgY3g9IjE3LjQ0NCIgY3k9IjE3Ljc3OCIgcj0iMi4yMjIiIHRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgMzUuNTU2KSIvPgogICAgICAgIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIGQ9Ik0xNC41IDE2LjVsLTUuNjExLTIuODMzIi8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="share">
-							</button>
-							<div class="Popover  bottom-right  "></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="Grid-module__container--YH1rv">
 			<div class="Grid-module__row--GTpEN Offer-module__layout--cUhau">
 				<article class="Offer-module__body--dkTUK">
 					<div class="OfferHeader-module__container--E_5lp">
-						<h1 class="OfferHeaderTitle-module__container--ZcKff">[경기 용인]
-							캐리비안베이 종일권 얼리버드 (오후권~)</h1>
+						<h1 class="OfferHeaderTitle-module__container--ZcKff">${dto.activityName}</h1>
 						<div class="OfferHeader-module__row--FFRdl OfferHeader-module__fix--DvUSn">
 							<div class="OfferHeaderReview-module__container--q3rRE">
 								<button type="button" class="OfferHeaderReview-module__anchor--XKcvG" style="padding: 0px;">
@@ -85,13 +178,13 @@
 							<div>
 								<div class="OfferOptionSelector-module__container--h5Rh6" id="OFFER-SECTION-TICKET">
 									<div>
-										<div class="">
+										<div class="ticketSelect">
 											<div class="OfferOption-module__optionWrapper--vVnih">
 												<div class="OfferOption-module__options--lYKqh">
 													<div class="OfferOptionItem-module__container--tHHlw">
 														<div class="OfferOptionItemHeader-module__container--AmZyy">
 															<h3 class="OfferOptionItemHeader-module__title--F2SRq">[대소공통]
-																종일권</h3>
+																이용권</h3>
 															<div class="OfferOptionItemHeader-module__description--bZ4SZ">
 																<ul class="OfferOptionDescription-module__container--rJlVA">
 																	<li>[유효기간 : 2022.05.21 ~ 2022.06.24]</li>
@@ -101,7 +194,7 @@
 														<div class="OfferOptionItem-module__body--k_jYO">
 															<div class="OfferOptionItemPrice-module__container--HhGOj">
 																<div class="OfferOptionItemPrice-module__row--iNxWQ">
-																	<span class="OfferOptionItemPrice-module__unit--zfEwf">1명</span><span class="OfferOptionItemPrice-module__price--Ftg0b">24,900</span><span class="OfferOptionItemPrice-module__symbol--V_jYc">원</span>
+																	<span class="OfferOptionItemPrice-module__unit--zfEwf">1명</span><span class="OfferOptionItemPrice-module__price--Ftg0b">${dto.price}</span><span class="OfferOptionItemPrice-module__symbol--V_jYc">원</span>
 																</div>
 															</div>
 															<div class="OfferOptionItemCounter-module__container--pASTo">
@@ -122,8 +215,9 @@
 															</div>
 														</div>
 													</div>
-													
+													<!-- 결제 가격 -->
 												</div>
+												<!-- 결제하기 버튼 -->
 											</div>
 										</div>
 									</div>
@@ -135,8 +229,8 @@
 						<div class="OfferSectionBox-module__body--gjNil">
 							<div>
 								<div class="OfferFlexibleBox-module__container--RwDe3">
-									<div class="OfferFlexibleBox-module__body--DlmZc" style="max-height: 1000px;">
-										<img src="https://d2ur7st6jjikze.cloudfront.net/offer_descriptive_images/49299/230068_medium_1653058703.jpg?1653058703" class="OfferDetailSection-module__image--a46mb"><img src="https://d2ur7st6jjikze.cloudfront.net/offer_descriptive_images/49299/230069_medium_1653058709.jpg?1653058709" class="OfferDetailSection-module__image--a46mb"><img src="https://d2ur7st6jjikze.cloudfront.net/offer_descriptive_images/49299/230070_medium_1653058717.jpg?1653058717" class="OfferDetailSection-module__image--a46mb"><img src="https://d2ur7st6jjikze.cloudfront.net/offer_descriptive_images/49299/230071_medium_1653058725.jpg?1653058725" class="OfferDetailSection-module__image--a46mb">
+									<div class="OfferFlexibleBox-module__body--DlmZc Detailinfo" style="max-height: 1000px;">
+										${dto.activityDetail}
 									</div>
 									<div class="OfferFlexibleBox-module__more--c7Nku OfferFlexibleBox-module__absolute--lHMBW">
 										<div class="OfferFlexibleBox-module__gradation--nXQmm"></div>
@@ -152,62 +246,6 @@
 						</div>
 					</section>
 					
-					
-					<section class="OfferSectionBox-module__container--KxKXZ" id="OFFER-SECTION-GUIDANCE">
-						<div class="OfferSectionBox-module__body--gjNil">
-							<h2 class="OfferSectionBox-module__title--LNfKq">이용 안내</h2>
-							<div>
-								<div class="OfferContents-module__container--Gu7X5">
-									<h3 class="OfferContents-module__title--fDFvs">이용 시간</h3>
-									<p class="OfferContents-module__contents--ZvdqS">
-										- 방문 전 캐리비안베이 홈페이지를 참고해주세요. <br class="">(홈페이지 :
-										https://www.everland.com/web/caribbean/main.html)
-									</p>
-								</div>
-								
-								<div class="OfferContents-module__container--Gu7X5">
-									<h3 class="OfferContents-module__title--fDFvs">사용 방법</h3>
-									<div class="OfferFlexibleBox-module__container--RwDe3">
-										<div class="OfferFlexibleBox-module__body--DlmZc">
-											<p class="OfferContents-module__contents--ZvdqS">
-												① 기재해주신 핸드폰 번호로 문자(MMS)혹은 카카오톡 알림톡을 발송해드립니다. <br class="">-
-												통신사별로 수신 시간에 다소 차이가 있을 수 있습니다. <br class="">② 매표소 또는
-												입구에서 수신한 바코드 또는 티켓을 제시하여 입장해주세요.
-											</p>
-										</div>
-										<div class="OfferFlexibleBox-module__more--c7Nku"></div>
-									</div>
-								</div>
-								<div class="OfferContents-module__container--Gu7X5">
-									<h3 class="OfferContents-module__title--fDFvs">추가정보</h3>
-									<div class="OfferFlexibleBox-module__container--RwDe3">
-										<div class="OfferFlexibleBox-module__body--DlmZc" style="max-height: 240px;">
-											<p class="OfferContents-module__contents--ZvdqS">
-												- 대/소 공통 이용 가능하며 36개월부터 요금 적용됩니다. <br class="">- 자켓, 락커
-												,코인물, 대여물 등은 별도 요금이 부과됩니다. <br class="">- 개인 타월 및
-												수영복/세면용품은 개별 준비 바랍니다. <br class="">- 워터파크 특성상 안전을 위하여
-												제한물품(음식물,돗자리 등) 검사를 할 수 있으니 입장 전 보관소에 맡겨 주시기 바랍니다. <br class="">- 정문주차장은 유료, 외곽주차장은 무료로 운영됩니다. <br class="">-
-												QR코드의 사진을 판매사이트에 그대로 올리는 경우 제3자의 무단 도용에 <br class="">
-												따른 피해가 발생할 수 있습니다. <br class="">- 방문 전 캐리비안베이 홈페이지 또는
-												앱을 참고하세요. <br class="">▷캐리비안 베이:
-												https://www.everland.com/web/caribbean/main.html <br class=""> <br class="">[시설정보] <br class="">-
-												주소 : 경기도 용인시 처인구 포곡읍 에버랜드로 199 캐리비안베이 <br class="">-
-												문의: 031-320-5000 <br class=""> <br class="">[판매정보]
-												<br class="">- 플레이스엠 고객센터 : 1544-3913 <br class="">(주중/주말
-												09:00 ~ 18:00, 점심시간 12:00 ~ 13:00
-											</p>
-										</div>
-										<div class="OfferFlexibleBox-module__more--c7Nku">
-											<div class="OfferFlexibleBox-module__text--Jb1pD">
-												<a class="Link-module__link--DdyR6 Link-module__medium--ZTtp0 Button-module__button--nQweC Button-module__link--lCAv7 Button-module__medium--bLzcD" href="" style="left: -6px;"><span class="OfferFlexibleBox-module__textLabel--P4h_Y">더
-														보기</span><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrowdown_12x12_blue_500.svg" alt="" class="OfferFlexibleBox-module__textIcon--3xWIt"></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
 					<section class="OfferSectionBox-module__container--KxKXZ" id="OFFER-SECTION-REFUND">
 						<div class="OfferSectionBox-module__body--gjNil">
 							<h2 class="OfferSectionBox-module__title--LNfKq">취소 및 환불 규정</h2>
@@ -230,15 +268,14 @@
 							<div>
 								<div class="OfferPartnerSection-module__container--sA1VA">
 									<a class="OfferPartnerSection-module__partner--d8__U" href="/guides/5602" target="_blank"><img class="OfferPartnerSection-module__photo--KlgZz" src="https://d2ur7st6jjikze.cloudfront.net/profile_images/234733/234733_original_1483406251.png?1483406251" alt="플레이스엠">
-									<p class="OfferPartnerSection-module__name--XA3hK">플레이스엠</p></a>
+									<p class="OfferPartnerSection-module__name--XA3hK">${dto.partnerTradeName}</p></a>
 								</div>
 								<div class="OfferContents-module__container--Gu7X5 OfferContents-module__noMargin--NyUVG">
 									<div class="OfferFlexibleBox-module__container--RwDe3">
 										<div class="OfferFlexibleBox-module__body--DlmZc">
-											<p class="OfferContents-module__contents--ZvdqS">플레이스엠은
-												여가의 새로운 가치를 창조하는 여가생활 서비스 기업입니다. 이제까지 단순하게 반복되어 오던 여행과 여가생활에
-												색다른 체험을 담아내고 특별한 서비스를 제공함으로써 새로운 여가문화를 만들어가고, 고객의 여가생활에 새로운
-												가치를 담아내겠습니다.</p>
+											<p class="OfferContents-module__contents--ZvdqS">
+												${dto.partnerInfo}
+											</p>
 										</div>
 										<div class="OfferFlexibleBox-module__more--c7Nku"></div>
 									</div>
@@ -348,7 +385,7 @@
 									<div class="OfferSideBarMain-module__price--HtYY8">
 										<div class="OfferPrice-module__container--IsIeb">
 											<div class="OfferPrice-module__bottom--pKut4">
-												<span class="OfferPrice-module__coupon--kAiKf">1인 기준&nbsp;</span><strong class="OfferPrice-module__price--rSHhS">20,900원</strong>
+												<span class="OfferPrice-module__coupon--kAiKf">1인 기준&nbsp;</span><strong class="OfferPrice-module__price--rSHhS">${dto.price}원</strong>
 											</div>
 										</div>
 										<div class="OfferSideBarMain-module__share--QkDGO">
@@ -360,28 +397,18 @@
 									</div>
 									<div class="OfferSideBarMain-module__row--m5nHy">
 										<button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu Button-module__block--iT6b7">
-											<img class="OfferSideBarMainButton-module__buttonIcon--fR5me" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEwIDE4Ij4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMzMzIDEwLjM4NUgwTDYuNjY3IDB2Ny42MTVIMTBMMy4zMzMgMTh6Ii8+Cjwvc3ZnPgo=" alt="즉시사용"><span class="OfferSideBarMainButton-module__buttonLabel--XDvWc">티켓
-												선택</span>
+											<img class="OfferSideBarMainButton-module__buttonIcon--fR5me" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEwIDE4Ij4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMzMzIDEwLjM4NUgwTDYuNjY3IDB2Ny42MTVIMTBMMy4zMzMgMTh6Ii8+Cjwvc3ZnPgo=" alt="즉시사용">
+											<span class="OfferSideBarMainButton-module__buttonLabel--XDvWc">티켓 선택</span>
 										</button>
 										<p class="OfferSideBarMainButton-module__immediately--vZh8p">
 											<img class="OfferSideBarMainButton-module__icon--PP93I" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDEwIDE4Ij4KICAgIDxwYXRoIGZpbGw9IiNGRkJGMDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMuMzMzIDEwLjM4NUgwTDYuNjY3IDB2Ny42MTVIMTBMMy4zMzMgMTh6Ii8+Cjwvc3ZnPgo=" alt=""><span class="OfferSideBarMainButton-module__desc--obqUL">구매
 												후 즉시 확정됩니다.</span><a class="OfferSideBarMainButton-module__question--hMeFv" href="/about/instantbooking" target="_blank"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1IiB4PSIuNSIgeT0iLjUiIHN0cm9rZT0iIzg0OEM5NCIgcng9IjcuNSIvPgogICAgICAgIDx0ZXh0IGZpbGw9IiM4NDhDOTQiIGZvbnQtZmFtaWx5PSJTRlByb1RleHQtU2VtaWJvbGQsIFNGIFBybyBUZXh0IiBmb250LXNpemU9IjExIiBmb250LXdlaWdodD0iNTAwIj4KICAgICAgICAgICAgPHRzcGFuIHg9IjUiIHk9IjEyIj4/PC90c3Bhbj4KICAgICAgICA8L3RleHQ+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="즉시사용"></a>
 										</p>
 									</div>
-									<div class="OfferSideBarMain-module__row--m5nHy">
-										<button type="button" class="Button-module__button--nQweC Button-module__outline--wLxv3 Button-module__medium--bLzcD Button-module__block--iT6b7">
-											<svg class="WishIcon-module__container--AE7UW" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-												<path fill="none" fill-rule="evenodd" stroke="#CED4DA" stroke-width="1.25" d="M15.876 4.625c1.205 0 2.41.46 3.33 1.379.918.92 1.378 2.124 1.378 3.33 0 1.204-.46 2.41-1.379 3.329h0l-7.1 7.1-7.101-7.1c-.92-.92-1.379-2.125-1.379-3.33s.46-2.41 1.379-3.329c.92-.92 2.124-1.379 3.33-1.379 1.204 0 2.41.46 3.329 1.379.161.162.309.332.442.51.133-.178.28-.349.442-.51.919-.92 2.124-1.379 3.329-1.379z"></path></svg>
-											<span class="OfferSideBarMainWishlist-module__label--XHwJO">위시리스트에
-												담기</span>
-										</button>
-										<p class="OfferSideBarMainWishlist-module__desc--W5of9">534명이
-											이 상품을 위시리스트에 담았습니다.</p>
-									</div>
 								</div>
 								<div class="OfferSideBarMain-module__bottom--iJVxv">
 									<div class="OfferSideBarMainPartner-module__container--tWbbq">
-										<a href="/guides/5602" class="OfferSideBarMainPartner-module__partner--qfyl7" target="_blank"><img class="OfferSideBarMainPartner-module__thumbnail--FECTS" src="https://d2ur7st6jjikze.cloudfront.net/profile_images/234733/234733_original_1483406251.png?1483406251" alt="플레이스엠"><span class="OfferSideBarMainPartner-module__name--caCt6">플레이스엠</span></a>
+										<a href="/guides/5602" class="OfferSideBarMainPartner-module__partner--qfyl7" target="_blank"><img class="OfferSideBarMainPartner-module__thumbnail--FECTS" src="https://d2ur7st6jjikze.cloudfront.net/profile_images/234733/234733_original_1483406251.png?1483406251" alt="플레이스엠"><span class="OfferSideBarMainPartner-module__name--caCt6">${dto.partnerTradeName}</span></a>
 									</div>
 								</div>
 							</div></li>

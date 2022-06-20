@@ -11,7 +11,7 @@ public class Activity {
 	private String activityName; // 액티비티 이름
 	private String activityDetail; // 액티비티 상세
 	private String partnerTradeName; // 사업자 상호명
-	private String partnerIntro; // 사업자 소개
+	private String partnerInfo; // 사업자 소개
 	
 	
 	private int detailNum; // 액티비티 상세번호
@@ -89,12 +89,12 @@ public class Activity {
 		this.partnerTradeName = partnerTradeName;
 	}
 
-	public String getPartnerIntro() {
-		return partnerIntro;
+	public String getPartnerInfo() {
+		return partnerInfo;
 	}
 
-	public void setPartnerIntro(String partnerIntro) {
-		this.partnerIntro = partnerIntro;
+	public void setPartnerInfo(String partnerInfo) {
+		this.partnerInfo = partnerInfo;
 	}
 
 	public int getDetailNum() {

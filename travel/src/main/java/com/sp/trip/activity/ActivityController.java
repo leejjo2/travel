@@ -102,7 +102,45 @@ public class ActivityController {
 	}
 	
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detail() {
+	public String detail(
+			@RequestParam int activityNum,
+			@RequestParam String page,
+			@RequestParam(defaultValue = "all") String cityNum,
+			@RequestParam(defaultValue = "all") String activityType,
+			Model model) throws Exception {
+
+		String query = "page=" + page;
+		
+		if (!cityNum.equals("all")) {
+			query += "&cityNum=" + cityNum;
+			if(!activityType.equals("all")) {
+				query += "&activityType=" + activityType;
+			}
+		} else {
+			if(!activityType.equals("all")) {
+				query += "&activityType=" + activityType;
+			}
+		}
+		
+		System.out.println();
+		
+		Activity dto = service.readActivity(activityNum);
+		if( dto == null) {
+			return "redirect:/activity/list?" + query;
+		}
+		
+		// CKEditor 사용
+		// dto.setActivityDetail(myUtil.htmlSymbols(dto.getActivityDetail()));
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("page", page);
+		model.addAttribute("query", query);
+		
 		return ".activity.activityDetail";
+	}
+	
+	@RequestMapping(value = "reserve", method = RequestMethod.GET)
+	public String reserveForm() throws Exception {
+		return ".activity.activityReserve";
 	}
 }
