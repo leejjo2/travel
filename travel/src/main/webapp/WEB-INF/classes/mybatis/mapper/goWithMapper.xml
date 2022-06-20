@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goWith">
+	<!-- 게시글 시퀀스 -->
+	<select id="goWithSeq" resultType="Integer">
+		SELECT goWith_seq.NEXTVAL FROM dual
+	</select>
+	<!-- 게시물 insert -->
+	<insert id="insertGoWith" parameterType="com.sp.trip.goWith.GoWith">
+		INSERT INTO goWith(goWithNum, userId, pwd, subject, content, hitCount, reg_date, recruit_status, recruit_cnt, startDate, endDate, age, gender, discussion, drink, cigar, tripType1, tripType2, tripType3, imageFilename, spotNum)
+		VALUES (goWith_seq.NEXTVAL, #{userId}, #{pwd}, #{subject}, #{content}, #{hitCount}, SYSDATE, #{recruit_status}, #{recruit_cnt}, #{startDate}, #{endDate}, #{age}, #{gender}, #{discussion}, #{drink}, #{cigar}, #{tripType1}, #{tripType2}, #{tripType3}, #{imageFilename}, #{spotNum})
+	</insert>
+</mapper>
