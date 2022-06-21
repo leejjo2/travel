@@ -2702,7 +2702,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	left: 0;
 	z-index: 1000;
 	display: none;
-	float: left;
 	min-width: 160px;
 	padding: 5px 0;
 	margin: 2px 0 0;

@@ -401,7 +401,6 @@ CREATE TABLE freebbs(
  , title VARCHAR2(300) NOT NULL
  , subject VARCHAR2(300) NOT NULL
  , content CLOB NOT NULL
- , longitude VARCHAR2(50) NOT NULL
  , hitCount NUMBER DEFAULT 0
  , reg_date DATE DEFAULT SYSDATE
  , CONSTRAINT pk_freebbs_freeNum PRIMARY KEY(freeNum)

@@ -40,9 +40,15 @@ public class ActivityServiceImpl implements ActivityService {
 	}
 
 	@Override
-	public Activity readActivity(int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public Activity readActivity(int activityNum) {
+		Activity dto = null;
+		
+		try {
+			dto = dao.selectOne("activity.readActivity", activityNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 }

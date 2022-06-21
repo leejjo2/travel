@@ -5,6 +5,7 @@ import java.util.Map;
 
 public interface LodgingManageService {
 	public void insertHotel(LodgingManage dto, String pathname) throws Exception;
+	public int dataCount(Map<String, Object> map);
 	public List<LodgingManage> listHotel(String partnerId);
 	public LodgingManage readHotel(int hotelNum);
 	public void updateHotel(LodgingManage dto, String pathname) throws Exception;
@@ -16,5 +17,6 @@ public interface LodgingManageService {
 	public List<LodgingManage> listFile(int HotelNum);
 	public LodgingManage readFile(int fileNum);
 	public void deleteFile(Map<String, Object> map) throws Exception;
+	public LodgingManage readBoard(int hotelNum);
 	
 }

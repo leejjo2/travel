@@ -1,0 +1,3027 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 1.4;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fontXxs, .rangeContainer > .start, .rangeContainer > .end, .postContent > .top > .text > p, .postDetail > .userInfo > .inside > .top > .right > p, .commentContainer > ul > li .comment > .user > h1, .commentContainer > ul > li .comment > .user > p {
+  font-size: 10px;
+}
+
+.fontXs, .topImg > .content > .badge > .inside, .topImg > .content > h2, .selectBoxType1, .selectBoxType2, .selectBoxType3, .selectBoxType4, .headType1 > p, .headType2 > p, .textInputContainer > .checkBoxContainer > ul > li > p, .popupOptionBox > .head > p, .dateContainer > ul > li > .box > p, .postContent > .top > .text > .score > h2, .postContent > .top > .text > h4, .postContent > .bottom > .left > p, .postContent > .bottom > .right > ul > li > p, .photoUploadContainer > .content > p {
+  font-size: 12px;
+}
+
+.fontSm, .topNav > .inside > .left > .nav > ul > li > a, .topImg > .content > p, .selectBoxType4, .footer > .inside > ul > li, .footer > .inside > p, .textInputContainer > ul > li > p, .popupContainer > .box > .head > p, .popupContainer > .box > .agreement > ul > li > p, .errorMsg, .contentInsideType3 > ul > li > p, .postDetail > .userInfo > .inside > .top > .left > h1, .commentContainer > ul > li .comment > .text, .commentContainer > ul > li .comment > .buttonContainer > ul > li > a {
+  font-size: 14px;
+}
+
+.fontMd, .buttonType1, .buttonType2, .buttonType3, .buttonType4, .buttonType5, .tabButtonType1Deactive, .popupButtonType1, .popupButtonType2, .popupButtonType3, .checkRadioBoxCircleType1 > label > p, .headType1 > h1, .headType2 > h1, .textInputContainer > ul > li > h1, .textInputContainer > ul > li > input, .textInputContainer > ul > li > textarea, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head > h1, .searchBox > .buttonContainer > p, .contentInsideType1 > .text, .postContent > .top > .text > .score > h1, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1, .postDetail > .detailInfo > .inside > .subInfo > ul > li > p, .postDetail > .detailInfo > .inside > .text {
+  font-size: 15px;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .fontMd, .buttonType1, .buttonType2, .buttonType3, .buttonType4, .buttonType5, .tabButtonType1Deactive, .popupButtonType1, .popupButtonType2, .popupButtonType3, .checkRadioBoxCircleType1 > label > p, .headType1 > h1, .headType2 > h1, .textInputContainer > ul > li > h1, .textInputContainer > ul > li > input, .textInputContainer > ul > li > textarea, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head > h1, .searchBox > .buttonContainer > p, .contentInsideType1 > .text, .postContent > .top > .text > .score > h1, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1, .postDetail > .detailInfo > .inside > .subInfo > ul > li > p, .postDetail > .detailInfo > .inside > .text {
+    font-size: 14px;
+  }
+}
+
+.fontLg, .postList > .head > h1, .postContent > .top > .text > h1, .postDetail > .detailInfo > .inside > .head > h1 {
+  font-size: 20px;
+}
+
+.fontXl, .topImg > .content > h1 {
+  font-size: 30px;
+}
+
+.noPaddingTopMobile {
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .noPaddingTopMobile {
+    padding-top: 0 !important;
+  }
+}
+
+.paddingTopMd, .postDetail > .detailInfo > .inside > .subInfo > ul > li {
+  padding-top: 20px;
+}
+
+.paddingTopLg {
+  padding-top: 30px;
+}
+
+.paddingTopXl, .postDetail {
+  padding-top: 40px;
+}
+
+.paddingTopXxl {
+  padding-top: 60px;
+}
+
+.paddingBottomMd, .postDetail > .detailInfo > .inside > .subInfo > ul > li {
+  padding-bottom: 20px;
+}
+
+.paddingBottomLg, .popupContainer > .box > .inside > ul > li {
+  padding-bottom: 30px;
+}
+
+.paddingBottomXl, .postDetail {
+  padding-bottom: 40px;
+}
+
+.paddingBottomXxl {
+  padding-bottom: 60px;
+}
+
+.paddingRightXs {
+  padding-right: 10px;
+}
+
+.paddingVerticalMd {
+  padding: 20px 0;
+}
+
+.marginTopXs, .textInputContainer > .checkBoxContainer > ul > li > p, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postContent > .top > .text > h4, .commentContainer > ul > li .comment > .user {
+  margin-top: 10px;
+}
+
+.marginTopSm, .topImg > .content > h2, .topImg > .content > p, .footer > .inside > p, .textInputContainer > ul > li > p, .postContent > .top > .text > p {
+  margin-top: 15px;
+}
+
+.marginTopMd, .textInputContainer > .checkBoxContainer, .postDetail > .userInfo > .inside > .img, .commentContainer > ul > li .reply {
+  margin-top: 20px;
+}
+
+.marginTopLg, .topImg > .content > h1, .errorMsg, .postDetail > .detailInfo > .inside > .subInfo {
+  margin-top: 30px;
+}
+
+.marginTopXl {
+  margin-top: 40px;
+}
+
+.marginTopXxl, .loading, .footer {
+  margin-top: 60px;
+}
+
+.marginBottomXxs, .popupOptionBox > .head > h1 {
+  margin-bottom: 5px;
+}
+
+.marginBottomXs, .tagsContainer > ul > li, .textInputContainer > ul > li > h1, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > p, .searchBox > ul, .postList > ul, .postList > ul > li, .postContent > .top > .text > .score {
+  margin-bottom: 10px;
+}
+
+.marginBottomSm, .textInputContainer > .checkBoxContainer > ul > li, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head, .photoUploadContainer > .content > p {
+  margin-bottom: 15px;
+}
+
+.marginBottomMd, .textInputContainer > ul, .contentInsideType1 > ul, .postDetail > .userInfo > .inside > .img, .commentContainer > ul > li, .commentContainer > ul > li .comment > .user {
+  margin-bottom: 20px;
+}
+
+.marginBottomLg, .postDetail > .detailInfo > .inside > .subInfo, .postDetail > .detailInfo > .inside > .text {
+  margin-bottom: 30px;
+}
+
+.marginBottomXl {
+  margin-bottom: 40px;
+}
+
+.marginBottomXxl {
+  margin-bottom: 60px;
+}
+
+.marginRightXxs, .postList > ul > li, .postContent > .top > .text > .score > h2, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1 {
+  margin-right: 5px;
+}
+
+.marginRightXs, .tagsContainer > ul > li, .textInputContainer > ul > li, .searchBox > ul > li, .dateContainer > ul > li:nth-child(2), .postList > .subHead > .left > .searchBox > ul > li, .postList > .subHead > .right > .searchBox > ul > li, .postContent > .bottom > .right > ul > li > img, .postDetail > .userInfo > .inside > .top > .right > p, .commentContainer > ul > li .comment > .user > h1 {
+  margin-right: 10px;
+}
+
+.marginRightSm {
+  margin-right: 15px;
+}
+
+.marginRightMd, .postContent > .top > .thumbnail, .postContent > .bottom > .right > ul > li, .postDetail > .detailInfo, .postDetail > .detailInfo > .inside > .buttonContainer > ul > li, .commentContainer > ul > li .comment > .buttonContainer > ul > li, .photoUploadContainer > .thumbnail {
+  margin-right: 20px;
+}
+
+.marginRightLg, .buttonContainer > ul > li, .footer > .inside > ul > li, .searchBox > .buttonContainer > p, .contentInsideType1 > ul > li {
+  margin-right: 30px;
+}
+
+.marginRightXl, .topNav > .inside > .left > .logo, .topNav > .inside > .left > .nav > ul > li {
+  margin-right: 40px;
+}
+
+.marginRightXxl {
+  margin-right: 60px;
+}
+
+.marginLeftXxs, .postList > ul > li:nth-child(2n), .postContent > .top > .text > .score > h2 {
+  margin-left: 5px;
+}
+
+.marginLeftXs, .popupButtonType1 > img, .popupButtonType2 > img, .popupButtonType3 > img, .checkRadioBoxCircleType1 > label > p, .dateContainer > ul > li:nth-child(2) {
+  margin-left: 10px;
+}
+
+.marginLeftSm, .buttonType1 > img, .buttonType2 > img, .buttonType5 > img {
+  margin-left: 15px;
+}
+
+.marginLeftMd, .postList > .subHead > .right > .sortBox {
+  margin-left: 20px;
+}
+
+.marginLeftLg {
+  margin-left: 30px;
+}
+
+.marginLeftXl {
+  margin-left: 40px;
+}
+
+.marginLeftXxl {
+  margin-left: 60px;
+}
+
+.marginVerticalMd {
+  margin: 20px 0;
+}
+
+.marginVerticalLg, .popupContainer > .box > .head, .popupContainer > .box > .inside > ul > li {
+  margin: 30px 0;
+}
+
+html,
+body {
+  width: 100%;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+  word-break: keep-all;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #4DB7FF;
+}
+
+.type1 {
+  color: #4DB7FF;
+}
+
+.type2 {
+  color: #8EBBF3;
+}
+
+.type3 {
+  color: #bfbfbf;
+}
+
+input,
+select,
+textarea {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: transparent;
+  border: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #d8d8d8;
+}
+
+.loading {
+  width: 100%;
+}
+
+.loading > .icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: #ebebeb;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loading > .icon > img {
+  -webkit-filter: invert(79%) sepia(0%) saturate(465%) hue-rotate(148deg) brightness(82%) contrast(88%);
+          filter: invert(79%) sepia(0%) saturate(465%) hue-rotate(148deg) brightness(82%) contrast(88%);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .pc {
+    display: none !important;
+  }
+}
+
+.topNav {
+  width: 100%;
+  background: #1B1C1B;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .topNav {
+    display: none;
+  }
+}
+
+.topNav > .inside {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topNav > .inside > .left {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topNav > .inside > .left > .nav {
+  width: 100%;
+}
+
+.topNav > .inside > .left > .nav > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topNav > .inside > .left > .nav > ul > li:last-child {
+  margin-right: 0;
+}
+
+.topNav > .inside > .left > .nav > ul > li > a {
+  color: #fff;
+  font-weight: 400;
+}
+
+.topNav > .inside > .left > .nav > ul > li > a:hover {
+  color: #4DB7FF;
+}
+
+.topNav > .inside > .left > .nav > ul > .active > a {
+  font-weight: 700;
+  color: #4DB7FF;
+}
+
+.topImg {
+  width: 100%;
+  padding: 125px 0;
+  position: relative;
+}
+
+.topImg > .overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 28, 27, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.topImg > .img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.topImg > .img > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.topImg > .content {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  text-align: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .topImg > .content {
+    padding: 0 25px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+.topImg > .content > .badge {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.topImg > .content > .badge > .inside {
+  display: inline-block;
+  padding: 10px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #4DB7FF;
+  color: #4DB7FF;
+  border-radius: 50px;
+}
+
+.topImg > .content > h1 {
+  color: #fff;
+}
+
+.topImg > .content > h2 {
+  color: #fff;
+}
+
+.topImg > .content > p {
+  color: #fff;
+}
+
+.topImg > .content > p > span {
+  color: #4DB7FF;
+  /*text-decoration: underline;*/
+}
+
+.topNavMobile {
+  width: 100%;
+  display: none;
+  background: #fff;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.topNavMobile > .logo {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.topNavMobile > .nav {
+  width: 100%;
+}
+
+.topNavMobile > .nav > ul {
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 1px;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.topNavMobile > .nav > ul::-webkit-scrollbar {
+  display: none;
+}
+
+.topNavMobile > .nav > ul > li {
+  display: inline-block;
+  padding: 20px 20px;
+}
+
+.topNavMobile > .nav > ul > li > a {
+  color: #1B1C1B;
+}
+
+.topNavMobile > .nav > ul > .active {
+  border-bottom: 2px solid #1B1C1B;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .topNavMobile {
+    display: block;
+  }
+}
+
+.buttonType1 {
+  width: 100%;
+  padding: 20px 25px;
+  border: 1px solid #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 100px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: transparent;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonType1 > img {
+  -webkit-filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(176deg) brightness(108%) contrast(101%);
+          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(176deg) brightness(108%) contrast(101%);
+}
+
+.buttonType1:hover {
+  background: #fff;
+  color: #1B1C1B;
+}
+
+.buttonType1:hover > img {
+  -webkit-filter: invert(5%) sepia(7%) saturate(384%) hue-rotate(71deg) brightness(101%) contrast(86%);
+          filter: invert(5%) sepia(7%) saturate(384%) hue-rotate(71deg) brightness(101%) contrast(86%);
+}
+
+.buttonType2 {
+  width: auto;
+  padding: 20px 80px;
+  border: 1px solid #4DB7FF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #4DB7FF;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.buttonType2:hover {
+  border: 1px solid #2999e3;
+  background: #2999e3;
+  color: #fff;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .buttonType2 {
+    width: 100%;
+  }
+}
+
+.buttonType3 {
+  width: auto;
+  padding: 20px 30px;
+  border: 1px solid #bfbfbf;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #1B1C1B;
+  cursor: pointer;
+  font-size: 13px !important;
+  padding: 15px 25px !important;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .buttonType3 {
+    padding: 10px 20px !important;
+  }
+}
+
+.buttonType3:hover {
+  background: #fff;
+  border: 1px solid #1B1C1B;
+  color: #1B1C1B;
+}
+
+.buttonType4 {
+  width: auto;
+  padding: 20px 80px;
+  border: 1px solid #4DB7FF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #4DB7FF;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.buttonType4:hover {
+  background: #2999e3;
+  border: 1px solid #2999e3;
+  color: #fff;
+}
+
+.buttonType5 {
+  width: 100%;
+  padding: 20px 80px;
+  border: 1px solid #4DB7FF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  color: #4DB7FF;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.buttonType5 > img {
+  -webkit-filter: invert(71%) sepia(22%) saturate(5943%) hue-rotate(177deg) brightness(101%) contrast(101%);
+          filter: invert(71%) sepia(22%) saturate(5943%) hue-rotate(177deg) brightness(101%) contrast(101%);
+}
+
+.buttonType5:hover {
+  background: #2999e3;
+  border: 1px solid #2999e3;
+  color: #fff;
+}
+
+.buttonType5:hover > img {
+  -webkit-filter: invert(99%) sepia(5%) saturate(116%) hue-rotate(306deg) brightness(125%) contrast(100%);
+          filter: invert(99%) sepia(5%) saturate(116%) hue-rotate(306deg) brightness(125%) contrast(100%);
+}
+
+.tabButtonType1 {
+  width: auto;
+  height: 100%;
+  padding: 20px 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #d8d8d8;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  color: #a0a0a0;
+  cursor: pointer;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.tabButtonType1:hover, .tabButtonType1:active {
+  background: #fff;
+  border: 2px solid #1B1C1B;
+  color: #1B1C1B;
+  padding: 19px 34px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .tabButtonType1 {
+    text-align: center;
+    padding: 15px 30px;
+    height: auto;
+  }
+  .tabButtonType1:hover {
+    padding: 14px 29px;
+  }
+}
+
+.tabButtonType1Active {
+  background: #fff;
+  border: 2px solid #1B1C1B;
+  color: #1B1C1B;
+  padding: 19px 34px;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .tabButtonType1Active {
+    text-align: center;
+    padding: 14px 29px;
+    height: auto;
+  }
+}
+
+.tabButtonType1Deactive {
+  width: auto;
+  border-radius: 5px;
+  border: 1px solid #ebebeb;
+  color: #bfbfbf;
+  padding: 20px 35px;
+  display: inline-block;
+  background: #f7f7f7;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .tabButtonType1Deactive {
+    text-align: center;
+    padding: 15px 30px;
+    height: auto;
+  }
+}
+
+.tabButtonType2 {
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .tabButtonType2 {
+    width: 100% !important;
+  }
+}
+
+.popupButtonType1 {
+  width: 100%;
+  padding: 20px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #a0a0a0;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 0;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+
+.popupButtonType1:hover {
+  background: #828283;
+}
+
+.popupButtonType2 {
+  width: 100%;
+  padding: 20px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #4DB7FF;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+
+.popupButtonType2:hover {
+  background: #2999e3;
+}
+
+.popupButtonType3 {
+  width: 100%;
+  padding: 20px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #a0a0a0;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+}
+
+.popupButtonType3:hover {
+  background: #828283;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.buttonContainer > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.buttonContainer > ul > li:last-child {
+  margin-right: 0;
+}
+
+.checkRadioBoxType1 {
+  /*모바일*/
+  /*//모바일*/
+}
+
+.checkRadioBoxType1 > input {
+  display: none;
+}
+
+.checkRadioBoxType1 > input:checked + label {
+  background: #fff;
+  border: 2px solid #1B1C1B;
+  color: #1B1C1B;
+  padding: 19px 34px;
+}
+
+.checkRadioBoxType1 > label {
+  width: auto;
+  height: 100%;
+  padding: 20px 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  color: #a0a0a0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .checkRadioBoxType1 > label {
+    font-size: 14px;
+    padding: 15px 25px;
+  }
+}
+
+.checkRadioBoxType2 {
+  /*모바일*/
+  /*//모바일*/
+}
+
+.checkRadioBoxType2 > input {
+  display: none;
+}
+
+.checkRadioBoxType2 > input:checked + label {
+  background: #fff;
+  border: 2px solid #1B1C1B;
+  color: #1B1C1B;
+  padding: 19px 34px;
+}
+
+.checkRadioBoxType2 > label {
+  width: auto;
+  height: 100%;
+  padding: 20px 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  color: #a0a0a0;
+}
+
+.checkRadioBoxType2 > label {
+  border-radius: 100px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .checkRadioBoxType2 > label {
+    font-size: 14px;
+    padding: 15px 20px;
+  }
+  .checkRadioBoxType2 > input:checked + label {
+    font-size: 14px !important;
+    padding: 15px 20px !important;
+  }
+}
+
+.checkRadioBoxCircleType1 > input {
+  display: none;
+}
+
+.checkRadioBoxCircleType1 > input:checked + label > .circle > .inside {
+  opacity: 1;
+}
+
+.checkRadioBoxCircleType1 > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.checkRadioBoxCircleType1 > label > .circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.checkRadioBoxCircleType1 > label > .circle > .inside {
+  width: 18px;
+  height: 18px;
+  background: #4DB7FF;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkRadioBoxCircleType1 > label > p > a {
+  color: #1B1C1B;
+  text-decoration: underline;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.checkRadioBoxCircleType1 > label > p > a:hover {
+  color: #4DB7FF;
+}
+
+.selectBoxType1 {
+  width: 80px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  background: url(../img/down_arrow_ico.svg) no-repeat center right 15px;
+}
+
+.selectBoxType2 {
+  width: 100px;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  background: url(../img/down_arrow_ico.svg) no-repeat center right 15px;
+}
+
+.selectBoxType3 {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  background: url(../img/down_arrow_ico.svg) no-repeat center right 15px;
+  max-width: 500px;
+}
+
+.selectBoxType4 {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  padding: 15px;
+  background: url(../img/down_arrow_ico.svg) no-repeat center right 15px;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.textBoxType1 {
+  width: 200px;
+  background: #ebebeb;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.textBoxType1::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+.textBoxType1:-ms-input-placeholder {
+  color: #bfbfbf;
+}
+
+.textBoxType1::-ms-input-placeholder {
+  color: #bfbfbf;
+}
+
+.textBoxType1::placeholder {
+  color: #bfbfbf;
+}
+
+.contentWrapperType1 {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.contentWrapperType2 {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.contentBoxType1 {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.contentBoxType2 {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #4DB7FF;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.contentBoxType3 {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.headType1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.headType1 > h1 {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.headType1 > p {
+  color: #828283;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .headType1 {
+    display: block;
+  }
+  .headType1 > h1 {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.headType2 {
+  width: 100%;
+  display: block;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.headType2 > h1 {
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+
+.headType2 > p {
+  color: #828283;
+}
+
+.tagsContainer {
+  width: 100%;
+}
+
+.tagsContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.tagsContainer > ul > li > .inside {
+  font-size: 11px;
+  padding: 10px 13px;
+  border: 1px solid #ebebeb;
+  border-radius: 50px;
+}
+
+.footer {
+  width: 100%;
+  background: #1B1C1B;
+  padding: 30px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.footer > .inside {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.footer > .inside > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer > .inside > ul > li {
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer > .inside > ul > li > a {
+  color: #fff;
+}
+
+.footer > .inside > ul > li > a:hover {
+  opacity: 0.8;
+}
+
+.footer > .inside > p {
+  width: 80%;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.textInputContainer {
+  width: 100%;
+}
+
+.textInputContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .textInputContainer > ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.textInputContainer > ul:last-child {
+  margin-bottom: 0;
+}
+
+.textInputContainer > ul > li {
+  width: 100%;
+  /*모바일*/
+  /*//모바일*/
+  width: 100%;
+}
+
+.textInputContainer > ul > li:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .textInputContainer > ul > li {
+    margin-right: 0 !important;
+  }
+}
+
+.textInputContainer > ul > li > input {
+  width: 100%;
+  padding: 20px;
+  background: #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.textInputContainer > ul > li > input::-webkit-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > input:-ms-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > input::-ms-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > input::placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > textarea {
+  width: 100%;
+  padding: 20px;
+  background: #ebebeb;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 200px;
+}
+
+.textInputContainer > ul > li > textarea::-webkit-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > textarea:-ms-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > textarea::-ms-input-placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > textarea::placeholder {
+  color: #9fa09f;
+}
+
+.textInputContainer > ul > li > p {
+  color: #FC375D;
+}
+
+.textInputContainer > .checkBoxContainer {
+  width: 100%;
+}
+
+.textInputContainer > .checkBoxContainer > ul {
+  width: 100%;
+}
+
+.textInputContainer > .checkBoxContainer > ul > li {
+  width: 100%;
+}
+
+.textInputContainer > .checkBoxContainer > ul > li > p {
+  color: #a0a0a0;
+}
+
+.popupContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(27, 28, 27, 0.8);
+}
+
+.popupContainer > .box {
+  width: 100%;
+  max-width: 800px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #fff;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .popupContainer > .box {
+    width: 95%;
+  }
+}
+
+.popupContainer > .box > .head {
+  width: 100%;
+  text-align: center;
+  padding: 0 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.popupContainer > .box > .head > p {
+  color: #828283;
+}
+
+.popupContainer > .box > .inside {
+  width: 100%;
+  height: 400px;
+  padding: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-y: scroll;
+  border-top: 1px solid #d8d8d8;
+}
+
+.popupContainer > .box > .inside > ul {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.popupContainer > .box > .inside > ul > li {
+  width: 100%;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.popupContainer > .box > .inside > ul > li:first-child {
+  margin-top: 0;
+}
+
+.popupContainer > .box > .inside > ul > li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.popupContainer > .box > .agreement {
+  background: #f7f7f7;
+}
+
+.popupContainer > .box > .agreement > ul {
+  padding: 0;
+}
+
+.popupContainer > .box > .agreement > ul > li > p:last-child {
+  margin-bottom: 0;
+}
+
+.popupContainer > .box > .insideType2 {
+  border-top: none;
+  height: auto;
+  overflow-y: hidden;
+  padding-top: 0;
+}
+
+.popupContainer > .box > .buttonContainer {
+  width: 100%;
+}
+
+.popupContainer > .box > .buttonContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popupContainer > .box > .buttonContainer > ul > li {
+  width: 100%;
+  margin-right: 0;
+}
+
+.popupContainer > .box > .errorContainer {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 80px;
+  z-index: 999;
+}
+
+.popupContainer > .box > .errorContainer > .inside {
+  width: 100%;
+  padding: 0 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.popupOptionBox {
+  width: 100%;
+}
+
+.popupOptionBox > .head {
+  width: 100%;
+}
+
+.popupOptionBox > .head > p {
+  color: #828283;
+}
+
+.popupOptionBox > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+.popupOptionBox > ul > li:last-child {
+  margin-right: 0;
+}
+
+.errorMsg {
+  width: 100%;
+  background: rgba(252, 55, 93, 0.8);
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.fontXxs, .rangeContainer > .start, .rangeContainer > .end, .postContent > .top > .text > p, .postDetail > .userInfo > .inside > .top > .right > p, .commentContainer > ul > li .comment > .user > h1, .commentContainer > ul > li .comment > .user > p {
+  font-size: 10px;
+}
+
+.fontXs, .topImg > .content > .badge > .inside, .topImg > .content > h2, .selectBoxType1, .selectBoxType2, .selectBoxType3, .selectBoxType4, .headType1 > p, .headType2 > p, .textInputContainer > .checkBoxContainer > ul > li > p, .popupOptionBox > .head > p, .dateContainer > ul > li > .box > p, .postContent > .top > .text > .score > h2, .postContent > .top > .text > h4, .postContent > .bottom > .left > p, .postContent > .bottom > .right > ul > li > p, .photoUploadContainer > .content > p {
+  font-size: 12px;
+}
+
+.fontSm, .topNav > .inside > .left > .nav > ul > li > a, .topImg > .content > p, .selectBoxType4, .footer > .inside > ul > li, .footer > .inside > p, .textInputContainer > ul > li > p, .popupContainer > .box > .head > p, .popupContainer > .box > .agreement > ul > li > p, .errorMsg, .contentInsideType3 > ul > li > p, .postDetail > .userInfo > .inside > .top > .left > h1, .commentContainer > ul > li .comment > .text, .commentContainer > ul > li .comment > .buttonContainer > ul > li > a {
+  font-size: 14px;
+}
+
+.fontMd, .buttonType1, .buttonType2, .buttonType3, .buttonType4, .buttonType5, .tabButtonType1Deactive, .popupButtonType1, .popupButtonType2, .popupButtonType3, .checkRadioBoxCircleType1 > label > p, .headType1 > h1, .headType2 > h1, .textInputContainer > ul > li > h1, .textInputContainer > ul > li > input, .textInputContainer > ul > li > textarea, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head > h1, .searchBox > .buttonContainer > p, .contentInsideType1 > .text, .postContent > .top > .text > .score > h1, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1, .postDetail > .detailInfo > .inside > .subInfo > ul > li > p, .postDetail > .detailInfo > .inside > .text {
+  font-size: 15px;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .fontMd, .buttonType1, .buttonType2, .buttonType3, .buttonType4, .buttonType5, .tabButtonType1Deactive, .popupButtonType1, .popupButtonType2, .popupButtonType3, .checkRadioBoxCircleType1 > label > p, .headType1 > h1, .headType2 > h1, .textInputContainer > ul > li > h1, .textInputContainer > ul > li > input, .textInputContainer > ul > li > textarea, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head > h1, .searchBox > .buttonContainer > p, .contentInsideType1 > .text, .postContent > .top > .text > .score > h1, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1, .postDetail > .detailInfo > .inside > .subInfo > ul > li > p, .postDetail > .detailInfo > .inside > .text {
+    font-size: 14px;
+  }
+}
+
+.fontLg, .postList > .head > h1, .postContent > .top > .text > h1, .postDetail > .detailInfo > .inside > .head > h1 {
+  font-size: 20px;
+}
+
+.fontXl, .topImg > .content > h1 {
+  font-size: 30px;
+}
+
+.noPaddingTopMobile {
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .noPaddingTopMobile {
+    padding-top: 0 !important;
+  }
+}
+
+.paddingTopMd, .postDetail > .detailInfo > .inside > .subInfo > ul > li {
+  padding-top: 20px;
+}
+
+.paddingTopLg {
+  padding-top: 30px;
+}
+
+.paddingTopXl, .postDetail {
+  padding-top: 40px;
+}
+
+.paddingTopXxl {
+  padding-top: 60px;
+}
+
+.paddingBottomMd, .postDetail > .detailInfo > .inside > .subInfo > ul > li {
+  padding-bottom: 20px;
+}
+
+.paddingBottomLg, .popupContainer > .box > .inside > ul > li {
+  padding-bottom: 30px;
+}
+
+.paddingBottomXl, .postDetail {
+  padding-bottom: 40px;
+}
+
+.paddingBottomXxl {
+  padding-bottom: 60px;
+}
+
+.paddingRightXs {
+  padding-right: 10px;
+}
+
+.paddingVerticalMd {
+  padding: 20px 0;
+}
+
+.marginTopXs, .textInputContainer > .checkBoxContainer > ul > li > p, .postContent > .top > .text > h2, .postContent > .top > .text > h3, .postContent > .top > .text > h4, .commentContainer > ul > li .comment > .user {
+  margin-top: 10px;
+}
+
+.marginTopSm, .topImg > .content > h2, .topImg > .content > p, .footer > .inside > p, .textInputContainer > ul > li > p, .postContent > .top > .text > p {
+  margin-top: 15px;
+}
+
+.marginTopMd, .textInputContainer > .checkBoxContainer, .postDetail > .userInfo > .inside > .img, .commentContainer > ul > li .reply {
+  margin-top: 20px;
+}
+
+.marginTopLg, .topImg > .content > h1, .errorMsg, .postDetail > .detailInfo > .inside > .subInfo {
+  margin-top: 30px;
+}
+
+.marginTopXl {
+  margin-top: 40px;
+}
+
+.marginTopXxl, .loading, .footer {
+  margin-top: 60px;
+}
+
+.marginBottomXxs, .popupOptionBox > .head > h1 {
+  margin-bottom: 5px;
+}
+
+.marginBottomXs, .tagsContainer > ul > li, .textInputContainer > ul > li > h1, .popupContainer > .box > .head > h1, .popupContainer > .box > .agreement > ul > li > p, .searchBox > ul, .postList > ul, .postList > ul > li, .postContent > .top > .text > .score {
+  margin-bottom: 10px;
+}
+
+.marginBottomSm, .textInputContainer > .checkBoxContainer > ul > li, .popupContainer > .box > .agreement > ul > li > h1, .popupOptionBox > .head, .photoUploadContainer > .content > p {
+  margin-bottom: 15px;
+}
+
+.marginBottomMd, .textInputContainer > ul, .contentInsideType1 > ul, .postDetail > .userInfo > .inside > .img, .commentContainer > ul > li, .commentContainer > ul > li .comment > .user {
+  margin-bottom: 20px;
+}
+
+.marginBottomLg, .postDetail > .detailInfo > .inside > .subInfo, .postDetail > .detailInfo > .inside > .text {
+  margin-bottom: 30px;
+}
+
+.marginBottomXl {
+  margin-bottom: 40px;
+}
+
+.marginBottomXxl {
+  margin-bottom: 60px;
+}
+
+.marginRightXxs, .postList > ul > li, .postContent > .top > .text > .score > h2, .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1 {
+  margin-right: 5px;
+}
+
+.marginRightXs, .tagsContainer > ul > li, .textInputContainer > ul > li, .searchBox > ul > li, .dateContainer > ul > li:nth-child(2), .postList > .subHead > .left > .searchBox > ul > li, .postList > .subHead > .right > .searchBox > ul > li, .postContent > .bottom > .right > ul > li > img, .postDetail > .userInfo > .inside > .top > .right > p, .commentContainer > ul > li .comment > .user > h1 {
+  margin-right: 10px;
+}
+
+.marginRightSm {
+  margin-right: 15px;
+}
+
+.marginRightMd, .postContent > .top > .thumbnail, .postContent > .bottom > .right > ul > li, .postDetail > .detailInfo, .postDetail > .detailInfo > .inside > .buttonContainer > ul > li, .commentContainer > ul > li .comment > .buttonContainer > ul > li, .photoUploadContainer > .thumbnail {
+  margin-right: 20px;
+}
+
+.marginRightLg, .buttonContainer > ul > li, .footer > .inside > ul > li, .searchBox > .buttonContainer > p, .contentInsideType1 > ul > li {
+  margin-right: 30px;
+}
+
+.marginRightXl, .topNav > .inside > .left > .logo, .topNav > .inside > .left > .nav > ul > li {
+  margin-right: 40px;
+}
+
+.marginRightXxl {
+  margin-right: 60px;
+}
+
+.marginLeftXxs, .postList > ul > li:nth-child(2n), .postContent > .top > .text > .score > h2 {
+  margin-left: 5px;
+}
+
+.marginLeftXs, .popupButtonType1 > img, .popupButtonType2 > img, .popupButtonType3 > img, .checkRadioBoxCircleType1 > label > p, .dateContainer > ul > li:nth-child(2) {
+  margin-left: 10px;
+}
+
+.marginLeftSm, .buttonType1 > img, .buttonType2 > img, .buttonType5 > img {
+  margin-left: 15px;
+}
+
+.marginLeftMd, .postList > .subHead > .right > .sortBox {
+  margin-left: 20px;
+}
+
+.marginLeftLg {
+  margin-left: 30px;
+}
+
+.marginLeftXl {
+  margin-left: 40px;
+}
+
+.marginLeftXxl {
+  margin-left: 60px;
+}
+
+.marginVerticalMd {
+  margin: 20px 0;
+}
+
+.marginVerticalLg, .popupContainer > .box > .head, .popupContainer > .box > .inside > ul > li {
+  margin: 30px 0;
+}
+
+.searchBox {
+  width: 100%;
+}
+
+.searchBox > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.searchBox > ul:last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .searchBox > ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.searchBox > ul > li {
+  width: 100%;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.searchBox > ul > li:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .searchBox > ul > li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .searchBox > ul > li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.searchBox > .buttonContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .searchBox > .buttonContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 20px;
+  }
+}
+
+.searchBox > .buttonContainer > p {
+  font-weight: 500;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .searchBox > .buttonContainer > p {
+    text-align: center;
+    margin-right: 0;
+    margin-top: 15px;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: +1;
+            order: +1;
+  }
+}
+
+.searchInput > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchInput > ul > li {
+  width: auto;
+  margin-bottom: 0;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .searchInput > ul > li:nth-child(2) {
+    width: 100%;
+  }
+  .searchInput > ul > li:nth-child(2) > input {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+.contentContainer {
+  width: 100%;
+}
+
+.contentContainer > .menu {
+  width: 100%;
+}
+
+.contentContainer > .menu > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  gap: 10px;
+}
+
+.contentContainer > .menu > ul::after {
+  content: "";
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
+.contentInsideType1 {
+  width: 100%;
+  background: #f7f7f7;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType1 {
+    padding: 15px;
+  }
+}
+
+.contentInsideType1 > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType1 > ul {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.contentInsideType1 > ul:last-child {
+  margin-bottom: 0;
+}
+
+.contentInsideType1 > ul > li {
+  /*모바일*/
+  /*//모바일*/
+}
+
+.contentInsideType1 > ul > li:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType1 > ul > li {
+    margin-right: 0;
+    width: calc(50% - 10px);
+  }
+  .contentInsideType1 > ul > li:nth-child(2) {
+    width: 50%;
+  }
+}
+
+.contentInsideType1 > .text {
+  text-align: center;
+  font-weight: 500;
+}
+
+.contentInsideType2 {
+  background: #fff;
+  padding: 0;
+}
+
+.contentInsideType3 > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType3 > ul {
+    -ms-flex-wrap: nowrap !important;
+        flex-wrap: nowrap !important;
+  }
+}
+
+.contentInsideType3 > ul > li {
+  /*모바일*/
+  /*//모바일*/
+}
+
+.contentInsideType3 > ul > li > p {
+  color: #9fa09f;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType3 > ul > li {
+    width: auto !important;
+    margin-right: 0;
+  }
+}
+
+.contentInsideType4 > ul > li {
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .contentInsideType4 > ul > li {
+    width: auto;
+    margin-right: 20px;
+  }
+}
+
+.rangeContainer {
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+
+.rangeContainer > .bar {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #d8d8d8;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.rangeContainer > .active {
+  width: 50%;
+  background: #4DB7FF;
+}
+
+.rangeContainer > .handle {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background: #fff;
+  border: 1px solid #ebebeb;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.rangeContainer > .start {
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+}
+
+.rangeContainer > .end {
+  position: absolute;
+  bottom: -11px;
+  right: 0;
+}
+
+.dateContainer {
+  width: 100%;
+}
+
+.dateContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dateContainer > ul > li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dateContainer > ul > li:nth-child(2) {
+  width: auto;
+}
+
+.dateContainer > ul > li > .box {
+  width: 100%;
+  border: 1px solid #bfbfbf;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  position: relative;
+  padding: 15px;
+}
+
+.dateContainer > ul > li > .box > .ico {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postList {
+  width: 100%;
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.postList > .head {
+  width: 100%;
+}
+
+.postList > .subHead {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > .subHead {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.postList > .subHead > .left {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > .subHead > .left {
+    margin-bottom: 15px;
+  }
+}
+
+.postList > .subHead > .left > .searchBox {
+  width: auto;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > .subHead > .left > .searchBox {
+    width: 100%;
+  }
+}
+
+.postList > .subHead > .left > .searchBox > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postList > .subHead > .left > .searchBox > ul > li:last-child {
+  margin-right: 0;
+}
+
+.postList > .subHead > .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.postList > .subHead > .right > .searchBox {
+  width: auto;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > .subHead > .right > .searchBox {
+    width: 100%;
+  }
+}
+
+.postList > .subHead > .right > .searchBox > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postList > .subHead > .right > .searchBox > ul > li:last-child {
+  margin-right: 0;
+}
+
+.postList > .subHead > .right > .sortBox {
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > .subHead > .right > .sortBox {
+    width: 100%;
+    margin-left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+.postList > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.postList > ul:last-child {
+  margin-bottom: 0;
+}
+
+.postList > ul > li {
+  width: calc(50% - 5px);
+  /*모바일*/
+  /*//모바일*/
+}
+
+.postList > ul > li:nth-child(2n) {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postList > ul > li {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .postList > ul > li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.postContent {
+  width: 100%;
+}
+
+.postContent > .top {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postContent > .top {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.postContent > .top > .thumbnail {
+  min-width: 175px;
+  max-width: 175px;
+  height: 175px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  /*모바일*/
+  /*//모바일*/
+}
+
+.postContent > .top > .thumbnail > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postContent > .top > .thumbnail {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+}
+
+.postContent > .top > .text {
+  width: 100%;
+}
+
+.postContent > .top > .text > .score {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postContent > .top > .text > .score > h2 {
+  font-weight: 400;
+}
+
+.postContent > .top > .text > h2 {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+.postContent > .top > .text > h3 {
+  font-weight: 400;
+}
+
+.postContent > .top > .text > h4 {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+.postContent > .top > .text > p {
+  font-weight: 400;
+}
+
+.postContent > .top > .text > p > span {
+  margin-left: 10px;
+}
+
+.postContent > .bottom {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postContent > .bottom > .left {
+  width: 100%;
+}
+
+.postContent > .bottom > .left > p {
+  color: #bfbfbf;
+}
+
+.postContent > .bottom > .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postContent > .bottom > .right > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postContent > .bottom > .right > ul > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postContent > .bottom > .right > ul > li:last-child {
+  margin-right: 0;
+}
+
+.ended {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(27, 28, 27, 0.5);
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+}
+
+.deactivated {
+  color: #bfbfbf !important;
+}
+
+.postDetail {
+  width: 100%;
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.postDetail > .detailInfo {
+  width: 60%;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .detailInfo {
+    width: 100%;
+    padding: 0 25px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+.postDetail > .detailInfo > .inside {
+  width: 100%;
+}
+
+.postDetail > .detailInfo > .inside > .head {
+  width: 100%;
+}
+
+.postDetail > .detailInfo > .inside > .subInfo {
+  width: 100%;
+  border: 1px solid #ebebeb;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .detailInfo > .inside > .subInfo > ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul:first-child > li {
+  padding-top: 0;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .detailInfo > .inside > .subInfo > ul:first-child > li {
+    padding-top: 15px;
+  }
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul:last-child > li {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul > li {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #ebebeb;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .detailInfo > .inside > .subInfo > ul > li {
+    padding: 15px 0;
+  }
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul > li > h1 {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+.postDetail > .detailInfo > .inside > .subInfo > ul > li > p {
+  color: #1B1C1B;
+}
+
+.postDetail > .detailInfo > .inside > .text {
+  width: 95%;
+  line-height: 1.6;
+}
+
+.postDetail > .detailInfo > .inside > .buttonContainer {
+  width: 100%;
+}
+
+.postDetail > .detailInfo > .inside > .buttonContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postDetail > .detailInfo > .inside > .buttonContainer > ul > li:last-child {
+  margin-right: 0;
+}
+
+.postDetail > .userInfo {
+  width: 40%;
+  height: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .userInfo {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    position: static;
+    width: 100%;
+    padding: 0 25px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin-bottom: 35px;
+  }
+}
+
+.postDetail > .userInfo > .inside {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 5px 10px 5px rgba(27, 28, 27, 0.1);
+          box-shadow: 0px 5px 10px 5px rgba(27, 28, 27, 0.1);
+  border-radius: 10px;
+}
+
+.postDetail > .userInfo > .inside > .top {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.postDetail > .userInfo > .inside > .top > .left {
+  width: 100%;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .userInfo > .inside > .top > .left {
+    width: 40%;
+  }
+}
+
+.postDetail > .userInfo > .inside > .top > .left > h1 {
+  font-weight: 400;
+}
+
+.postDetail > .userInfo > .inside > .top > .right {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*모바일*/
+  /*//모바일*/
+}
+
+@media only screen and (min-width: 320px) and (max-width: 960px) {
+  .postDetail > .userInfo > .inside > .top > .right {
+    width: 60%;
+  }
+}
+
+.postDetail > .userInfo > .inside > .top > .right > p {
+  color: #9fa09f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postDetail > .userInfo > .inside > .top > .right > p:last-child {
+  margin-right: 0;
+}
+
+.postDetail > .userInfo > .inside > .img {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.postDetail > .userInfo > .inside > .img > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.commentContainer {
+  width: 100%;
+}
+
+.commentContainer > ul {
+  width: 100%;
+}
+
+.commentContainer > ul > li {
+  width: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f7f7f7;
+  border-radius: 10px;
+}
+
+.commentContainer > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+.commentContainer > ul > li .comment {
+  width: 100%;
+}
+
+.commentContainer > ul > li .comment > .text {
+  width: 100%;
+}
+
+.commentContainer > ul > li .comment > .user {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.commentContainer > ul > li .comment > .user > h1 {
+  font-weight: 400;
+}
+
+.commentContainer > ul > li .comment > .user > p {
+  color: #9fa09f;
+}
+
+.commentContainer > ul > li .comment > .buttonContainer {
+  width: 100%;
+}
+
+.commentContainer > ul > li .comment > .buttonContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.commentContainer > ul > li .comment > .buttonContainer > ul > li > a {
+  color: #1B1C1B;
+  text-decoration: underline;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
+
+.commentContainer > ul > li .comment > .buttonContainer > ul > li > a:hover {
+  color: #4DB7FF;
+}
+
+.commentContainer > ul > li .reply {
+  padding: 20px;
+  background: #ebebeb;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.mbtiContainer {
+  width: 100%;
+}
+
+.mbtiContainer > ul {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.mbtiContainer > ul > li:last-child {
+  margin-right: 0;
+}
+
+.photoUploadContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.photoUploadContainer > .thumbnail {
+  width: 115px;
+  min-width: 115px;
+  height: 115px;
+  overflow: hidden;
+  background: #f7f7f7;
+  border-radius: 10px;
+}
+
+.photoUploadContainer > .thumbnail > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.photoUploadContainer > .content {
+  width: 100%;
+}
+
+.photoUploadContainer > .content > p {
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
+
+input[type="range"]{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    pointer-events: none;
+}
+.slider-track{
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: #d8d8d8;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 5px;
+}
+input[type="range"]::-moz-range-track{
+    -moz-appearance: none;
+    height: 5px;
+}
+input[type="range"]::-ms-track{
+    appearance: none;
+    height: 5px;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ebebeb;
+    cursor: pointer;
+    margin-top: -5px;
+    pointer-events: auto;
+    
+}
+input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #4DB7FF;
+    pointer-events: auto;
+}
+input[type="range"]::-ms-thumb{
+    appearance: none;
+    height: 1.7em;
+    width: 1.7em;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #4DB7FF;
+    pointer-events: auto;
+}
+input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #ffffff;
+    border: 3px solid #4DB7FF;
+}
+

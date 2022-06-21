@@ -49,5 +49,16 @@
 			) tb WHERE ROWNUM &lt;= #{end}
 		) WHERE rnum &gt;= #{start}
 	</select>
+	
+	<select id="readActivity" parameterType="Integer" resultType="com.sp.trip.activity.Activity">
+		SELECT a1.activityNum, a1.cityNum, cityName, activityName, activityTypeName, activityDetail,
+            detailNum, price, totalTime, titleImgname, zip, addr1, addr2,
+            partnerTradeName, partnerInfo
+		FROM activity a1
+		LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
+		LEFT OUTER JOIN city c ON a1.cityNum = c.cityNum
+		LEFT OUTER JOIN partner p ON a1.partnerNum = p.partnerNum
+		WHERE a1.activityNum = #{activityNum}
+	</select>
 
 </mapper>

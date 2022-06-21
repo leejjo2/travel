@@ -91,7 +91,7 @@ $(document).ready(function(){
 			<div class="container-without-filter-not-lodging">
 				<div class="CardGridContainer-module__container--Nms6z">
 				<c:forEach var="dto" items="${list}">
-					<a href="${pageContext.request.contextPath}/activity/detail" class="CardContainer-module__container--B5cqm CardShare-module__container--lu1iP CardContainer-module__fixedWidth--XQbwP CardContainer-module__offer--Npil0 CardContainer-module__grid--El_OK">
+					<a href="${pageContext.request.contextPath}/activity/detail?activityNum=${dto.activityNum}&page=${page}&cityNum=${cityNum}&activityType=${activityType}" class="CardContainer-module__container--B5cqm CardShare-module__container--lu1iP CardContainer-module__fixedWidth--XQbwP CardContainer-module__offer--Npil0 CardContainer-module__grid--El_OK">
 						<span class="OfferVerticalCard-module__thumbnail--hPkZk">
 							<span class="CardThumbnail-module__container--t05no CardThumbnail-module__vertical--fg4fQ">
 								<span class="LazyImageLoader-module__container--xHxKX">
