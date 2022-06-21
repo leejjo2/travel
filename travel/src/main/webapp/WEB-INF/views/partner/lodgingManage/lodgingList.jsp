@@ -61,9 +61,9 @@ window.addEventListener("load", function(){
  * 
  */
 
-function deleteHotel() {
+function deleteHotel(hotelNum) {
     if(confirm("게시글을 삭제 하시겠습니까 ? ")) {
-	    let query = "num=${dto.hotelNum}";
+	    let query = "hotelNum="+hotelNum;
 	    let url = "${pageContext.request.contextPath}/partner/lodgingManage/delete?" + query;
     	location.href = url;
     }
@@ -90,13 +90,12 @@ function deleteHotel() {
 	            <div class="bg-white p-2 border" id="hotels">
 	                <div class="hotel py-2 px-2 pb-4 border-bottom">
 	                    <div class="row">
-	                        <div class="col-lg-3"> <img src="https://images.unsplash.com/photo-1580835845971-a393b73bf370?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="" class="hotel-img"> </div>
+	                        <div class="col-lg-3"> <img src="" alt="" class="hotel-img"> </div>
 	                        <div class="col-lg-9">
 	                            <div class="d-md-flex align-items-md-center">
 	                                <div class="name">${dto.hotelName}<span class="city"> 우편번호 : ${dto.hotelZip} | 주소 : ${dto.hotelAddr1}, ${dto.hotelAddr2}</span> </div>
 	                            </div>
-	                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
-	                            </div>
+	                            
 	                            <div class="d-flex flex-column tags pt-1">
 	                                <div><span class="fas fa-comment-dollar"></span>${dto.hotelIntro}</div>
 	                                <div><span class="fas fa-receipt"></span> 옵션</div>
@@ -105,8 +104,8 @@ function deleteHotel() {
 	                        </div>
 	                    </div>
 	                    <div class="d-flex justify-content-end mt-1">
-	                    	<div class="btn enquiry text-uppercase mx-2" onclick="deleteHotel();">삭제</div>
-	                        <div class="btn btn-primary text-uppercase">수정</div>
+	                    	<div class="btn enquiry text-uppercase mx-2" onclick="deleteHotel('${dto.hotelNum}');">삭제</div>
+	                        <div class="btn btn-primary text-uppercase" onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/update?hotelNum=${dto.hotelNum}';">수정</div>
 	                    </div>
 	                </div>
 	            </div>

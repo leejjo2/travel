@@ -8,7 +8,7 @@ public interface LodgingManageService {
 	public int dataCount(Map<String, Object> map);
 	public List<LodgingManage> listHotel(String partnerId);
 	public LodgingManage readHotel(int hotelNum);
-	public void updateHotel(LodgingManage dto, String pathname) throws Exception;
+	public void updateHotel(LodgingManage dto, String userId, String pathname) throws Exception;
 	public void deleteHotel(int hotelNum, String userId, String pathname) throws Exception;
 	List<LodgingManage> listHotel(Map<String, Object> map);
 	

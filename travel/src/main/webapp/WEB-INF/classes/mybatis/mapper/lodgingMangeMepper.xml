@@ -33,7 +33,7 @@
 	
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
-		FROM hotel;
+		FROM hotel
 	</select>
 	
 	<select id="listHotel" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
@@ -44,9 +44,8 @@
 	</select>
 	
 	<select id="readHotel" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
+		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2
 		FROM hotel h
-		JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
 		WHERE hotelNum = #{hotelNum}
 	</select>
 	
@@ -57,7 +56,7 @@
 	</update>
 	
 	<delete id="deleteHotel" parameterType="map">
-		DELETE FROM hotel WHERE hotelNum = #{hotelNum};
+		DELETE FROM hotel WHERE hotelNum = #{hotelNum}
 	</delete>
 	
 	<!-- 파일 -->

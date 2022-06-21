@@ -1,8 +1,8 @@
-package com.sp.trip.image;
+package com.sp.trip.partner.lodgingManage;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Image {
+public class LodgingImage {
 	private MultipartFile upload; // ckeditor5 static const
 
 	public MultipartFile getUpload() {

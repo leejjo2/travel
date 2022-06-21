@@ -1,4 +1,4 @@
-package com.sp.trip.image;
+package com.sp.trip.partner.lodgingManage;
 
 import java.io.File;
 import java.util.HashMap;
@@ -17,20 +17,20 @@ import com.sp.trip.common.FileManager;
 
 @Controller("image.imageController")
 @RequestMapping("/image/*")
-public class ImageController {
+public class LodgingImageController {
 	@Autowired
 	private FileManager fileManager;
 	
 	@RequestMapping(value = "upload", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> fileUpload(Image dto,
+	public Map<String, Object> fileUpload(LodgingImage dto,
 			HttpServletRequest req,
 			HttpSession session
 			) throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		
 		String root=session.getServletContext().getRealPath("/");
-		String pathname=root+"uploads"+File.separator+"image";
+		String pathname=root+"uploads"+File.separator+"hotel";
 		
 		String saveFilename=fileManager.doFileUpload(dto.getUpload(), pathname);
 		
@@ -39,7 +39,7 @@ public class ImageController {
 		String url = null;
 		if(saveFilename != null) {
 			uploaded = true;
-			url = cp +"/uploads/image/"+saveFilename;
+			url = cp +"/uploads/hotel/"+saveFilename;
 			model.put("url", url);
 			model.put("uploaded", uploaded);
 		} else {
