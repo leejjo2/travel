@@ -63,11 +63,25 @@
 		SELECT NVL(COUNT(*), 0)
 		FROM adminCourse ac
 		JOIN member m ON ac.userId=m.userId
-<!-- 		<where> -->
-<!-- 			<if test="keyword!=null and keyword!='' "> -->
-<!-- 				<include refid="where-list"/> -->
-<!-- 			</if> -->
-<!-- 		</where>		 -->
+		JOIN city c ON ac.cityNum = c.cityNum
+		JOIN theme t ON ac.themeNum = t.themeNum
+		<where>
+			<if test="keyword!=null and keyword!='' ">
+				( INSTR(subject, #{keyword}) &gt; 0 )
+			</if>
+			<if test="areaCode != 0">
+				AND ( areaCode = #{areaCode} )
+			</if>
+			<if test="themeNum != 0">
+				AND ( ac.themeNum = #{themeNum} )
+			</if>
+			<if test="hashtag != null and hashtag != ''">
+				AND (INSTR(hashtag, #{hashtag}) &gt; 0)
+			</if>
+			<if test="period != 0">
+				AND ( period = #{period} )
+			</if>
+		</where>
 	</select>
 	<!-- 출력할 리스트 -->
 	<select id="listAdminCourse" parameterType="map" resultType="com.sp.trip.theme.Theme">
@@ -75,24 +89,47 @@
 			SELECT ROWNUM rnum, tb.* FROM (
 				SELECT ac.courseNum, ac.userId, userName, subject, content, 
 					hitCount, ac.cityNum, cityName, ac.themeNum, themeName,
-					period, hashtag, acd.courseDetailNum, course_seq, 
-					placeName, address, longitude, latitude, courseContent,
-					saveFileName, TO_CHAR(ac.reg_date, 'yyyy-mm-dd') as reg_date
+					period, hashtag, TO_CHAR(ac.reg_date, 'yyyy-mm-dd') as reg_date
 				FROM adminCourse ac
 				JOIN member m ON ac.userId = m.userId
-				JOIN adminCourseDetail acd ON ac.courseNum = acd.courseNum
-				JOIN adminCourseImg acdi ON acd.courseDetailNum= acdi.courseDetailNum
 				JOIN city c ON ac.cityNum = c.cityNum
 				JOIN theme t ON ac.themeNum = t.themeNum
-<!-- 				<where> -->
-<!-- 					<if test="keyword != null and keyword != ''"> -->
-<!-- 						<include refid="where-list"/> -->
-<!-- 					</if> -->
-<!-- 				</where> -->
+				<where>
+					<if test="keyword!=null and keyword!='' ">
+						( INSTR(subject, #{keyword}) &gt; 0 )
+					</if>
+					<if test="areaCode != 0">
+						AND ( areaCode = #{areaCode} )
+					</if>
+					<if test="themeNum != 0">
+						AND ( ac.themeNum = #{themeNum} )
+					</if>
+					<if test="hashtag != null and hashtag != ''">
+						AND (INSTR(hashtag, #{hashtag}) &gt; 0)
+					</if>
+					<if test="period != null and period != ''">
+						AND ( period = #{period} )
+					</if>
+				</where>
 				ORDER BY ac.courseNum DESC
 			) tb WHERE ROWNUM &lt;= #{end}
 		) WHERE rnum &gt;= #{start}
 	</select>
+	<!-- 게시물의 상세코스 -->
+	<select id="listAdminDetailCourse" parameterType="Integer"  resultType="com.sp.trip.theme.Theme">
+      SELECT a.courseNum, placeName, course_seq courseSeq
+      FROM adminCourseDetail a
+      JOIN adminCourse b ON a.courseNum = b.courseNum
+      WHERE a.courseNum = #{courseNum}
+      ORDER BY courseSeq ASC
+   </select>
+   <!-- 게시물의 대표 이미지 -->
+   <select id="listImg" parameterType="Integer"  resultType="String">
+      SELECT saveFileName
+      FROM adminCourseImg a
+      JOIN adminCourseDetail b ON  a.courseDetailNum = b.courseDetailNum
+      WHERE course_seq = 1 AND  a.courseNum = #{courseNum}
+   </select>
 	
 	
 </mapper>

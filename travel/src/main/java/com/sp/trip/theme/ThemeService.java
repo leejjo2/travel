@@ -11,5 +11,9 @@ public interface ThemeService {
 	
 	public int dataCount(Map<String, Object> map);
 	public List<Theme> listAdminCourse(Map<String, Object> map);
+
+	public List<Theme> listAdminDetailCourse(int courseNum);
+
+	public String listImg(int courseNum);
 	
 }

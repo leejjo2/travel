@@ -676,7 +676,7 @@
 .list_thumType > li .area_txt .tag{overflow: hidden; width: 100%; padding-top: 5px; text-overflow:ellipsis;white-space: nowrap;}
 .list_thumType > li .area_txt .tag > span{padding-right: 5px; font-size: 14px;}
 .list_thumType > li .area_txt .ar_tag{padding-top: 10px;}
-.list_thumType > li .area_txt .ar_tag > span{display:inline-block;margin:0 10px 10px 0;padding:2px 10px;background: #13294b;color:#fff;border-radius: 11px;}
+.list_thumType > li .area_txt .ar_tag > span{display:inline-block;margin:0 10px 10px 0;padding:2px 10px;background: #0dcaf0; color:#fff;border-radius: 5px;font-weight: bold;} 
 .list_thumType > li .btn_view{overflow: hidden; position: absolute; top: 24px; right: 0;z-index:90;width: 14px; height: 16px; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/btn_dot2.png) 0 0 no-repeat; text-indent: -9999px;}
 .list_thumType h4{font-size: 18px; color: #000;}
 .list_thumType .txt_nor{margin:5px 0;overflow:hidden;display:block;display:-webkit-box;height:54px;text-overflow:ellipsis;-webkit-line-clamp:3;}
@@ -824,7 +824,7 @@
 .area_tagList .tag_list li:first-child button span{font-weight:800;color:#000;}
 .area_tagList .tag_list li button.active{background-color:#57667e;}
 .area_tagList .tag_list li button.active span{color:#fff;}
-.area_tagList .tag_list li button.btn_all_active{background-color:#57667e;color:#fff;}
+.area_tagList .tag_list li button.btn_all_active{height:36px; background-color:#57667e;color:#fff;}
 .area_tagList .tag_list li button.btn_all_active span{color:#fff;}
 .area_tagList .tag_list li:hover button.btn_all_active:after{display:none;}
 .area_tagList .tag_list.area_view_list{display:none;border-top:1px solid #e6e6e6 !important;}

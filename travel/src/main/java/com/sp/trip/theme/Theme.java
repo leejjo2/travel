@@ -40,7 +40,7 @@ public class Theme {
 	private List<String> courseContentList;
 	private List<MultipartFile> uploadFile;
 	
-	// 
+	// 게시물의 상세코스 리스트
 	private List<Theme> adminCourseList;
 	
 	

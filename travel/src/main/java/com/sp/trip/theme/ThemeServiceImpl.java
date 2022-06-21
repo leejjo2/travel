@@ -94,5 +94,29 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return list;
 	}
+	@Override
+	public List<Theme> listAdminDetailCourse(int courseNum) {
+		List<Theme> list = null;
+		
+		try {
+			list = dao.selectList("theme.listAdminDetailCourse", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	@Override
+	public String listImg(int courseNum) {
+		String saveFileName = null;
+		
+		try {
+			saveFileName = dao.selectOne("theme.listImg", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return saveFileName;
+	}
+	
+	
 
 }

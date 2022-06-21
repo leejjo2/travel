@@ -80,9 +80,11 @@ CREATE TABLE adminCourseDetail (
 
 CREATE TABLE adminCourseImg (
     imageFileNum NUMBER,
+    courseNum NUMBER,
     courseDetailNum NUMBER,
     saveFilename VARCHAR2(255) NOT NULL,
     CONSTRAINT pk_adminCourseImg_imageFileNum PRIMARY KEY(imageFileNum),
+    CONSTRAINT fk_courseNum foreign KEY(courseNum) references adminCourse (courseNum) ON DELETE CASCADE
     CONSTRAINT fk_adminCourseImg_courseNum FOREIGN KEY(courseDetailNum) REFERENCES adminCourseDetail(courseDetailNum) ON DELETE CASCADE
 );
 

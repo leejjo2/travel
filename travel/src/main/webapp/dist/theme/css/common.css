@@ -1,63 +1,63 @@
 @charset "utf-8";
 /* 1219 font-face 수정*/
 /* NotoSans KR */
-@font-face {
-	font-family: 'NotoSansKR';
-	font-style: normal;
-	font-weight: 300;
-	src:url(font/NotoSansKR-Light.woff2) format('woff2'),
-	url(font/NotoSansKR-Light.woff) format('woff'),
-	url(font/NotoSansKR-Light.otf) format('opentype');
-}
-@font-face {
-	font-family: 'NotoSansKR';
-	font-style: normal;
-	font-weight: 400;
-	src:url(font/NotoSansKR-Regular.woff2) format('woff2'),
-	url(font/NotoSansKR-Regular.woff) format('woff'),
-	url(font/NotoSansKR-Regular.otf) format('opentype');
-}
-@font-face {
-	font-family: 'NotoSansKR';
-	font-style: normal;
-	font-weight: 700;
-	src:url(font/NotoSansKR-Medium.woff2) format('woff2'),
-	url(font/NotoSansKR-Medium.woff) format('woff'),
-	url(font/NotoSansKR-Medium.otf) format('opentype');
-}
-@font-face {
-	font-family: 'NotoSansKR';
-	font-style: normal;
-	font-weight: 800;
-	src:url(font/NotoSansKR-Bold.woff2) format('woff2'),
-	url(font/NotoSansKR-Bold.woff) format('woff'),
-	url(font/NotoSansKR-Bold.otf) format('opentype');
-}
-/* NotoSans JP */
-@font-face {
-	font-family: 'NotoSansJP';
-	font-style: normal;
-	font-weight: 300;
-	src:url(font/NotoSansJP-Light.woff2) format('woff2');
-}
-@font-face {
-	font-family: 'NotoSansJP';
-	font-style: normal;
-	font-weight: 400;
-	src:url(font/NotoSansJP-Regular.woff2) format('woff2');
-}
-@font-face {
-	font-family: 'NotoSansJP';
-	font-style: normal;
-	font-weight: 700;
-	src:url(font/NotoSansJP-Medium.woff2) format('woff2');
-}
-@font-face {
-	font-family: 'NotoSansJP';
-	font-style: normal;
-	font-weight: 800;
-	src:url(font/NotoSansJP-Bold.woff2) format('woff2');
-}
+/* @font-face { */
+/* 	font-family: 'NotoSansKR'; */
+/* 	font-style: normal; */
+/* 	font-weight: 300; */
+/* 	src:url(font/NotoSansKR-Light.woff2) format('woff2'), */
+/* 	url(font/NotoSansKR-Light.woff) format('woff'), */
+/* 	url(font/NotoSansKR-Light.otf) format('opentype'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansKR'; */
+/* 	font-style: normal; */
+/* 	font-weight: 400; */
+/* 	src:url(font/NotoSansKR-Regular.woff2) format('woff2'), */
+/* 	url(font/NotoSansKR-Regular.woff) format('woff'), */
+/* 	url(font/NotoSansKR-Regular.otf) format('opentype'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansKR'; */
+/* 	font-style: normal; */
+/* 	font-weight: 700; */
+/* 	src:url(font/NotoSansKR-Medium.woff2) format('woff2'), */
+/* 	url(font/NotoSansKR-Medium.woff) format('woff'), */
+/* 	url(font/NotoSansKR-Medium.otf) format('opentype'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansKR'; */
+/* 	font-style: normal; */
+/* 	font-weight: 800; */
+/* 	src:url(font/NotoSansKR-Bold.woff2) format('woff2'), */
+/* 	url(font/NotoSansKR-Bold.woff) format('woff'), */
+/* 	url(font/NotoSansKR-Bold.otf) format('opentype'); */
+/* } */
+/* /* NotoSans JP */ */
+/* @font-face { */
+/* 	font-family: 'NotoSansJP'; */
+/* 	font-style: normal; */
+/* 	font-weight: 300; */
+/* 	src:url(font/NotoSansJP-Light.woff2) format('woff2'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansJP'; */
+/* 	font-style: normal; */
+/* 	font-weight: 400; */
+/* 	src:url(font/NotoSansJP-Regular.woff2) format('woff2'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansJP'; */
+/* 	font-style: normal; */
+/* 	font-weight: 700; */
+/* 	src:url(font/NotoSansJP-Medium.woff2) format('woff2'); */
+/* } */
+/* @font-face { */
+/* 	font-family: 'NotoSansJP'; */
+/* 	font-style: normal; */
+/* 	font-weight: 800; */
+/* 	src:url(font/NotoSansJP-Bold.woff2) format('woff2'); */
+/* } */
 /* // 1219 font-face 수정*/
 
 /* for print */
