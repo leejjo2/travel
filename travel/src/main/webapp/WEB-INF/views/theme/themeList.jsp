@@ -253,7 +253,7 @@ $(function() {
 })
 
 $(function(){
-	adminCourseList(0, '', 0, '', '', 1);
+	adminCourseList(0, '', 0, '', '', ${page});
 });
 	
 // 관리자 코스 리스트 불러오기
@@ -275,8 +275,7 @@ function adminCourseList(themeNum, keyword, areaCode, hashtag, period, pageNum )
 			$(".page-box").html(data.paging);
 		}
 
-		let out = "";
-		
+		var out ="";
 		for(let i=0; i<data.list.length; i++){
 			let list = data.list[i];
 			
@@ -287,9 +286,9 @@ function adminCourseList(themeNum, keyword, areaCode, hashtag, period, pageNum )
 			out +=	'</div>';
 			out +=	'<div class="area_txt">';
 			out +=		'<div class="tit">';
-			out +=			'<a href="" onclick=""> |'+list.themeName+'| '+list.subject+'</a>';
+			out +=			'<a href="" title="'+list.subject+'"onclick="">'+list.subject+'</a>';
 			out +=		'</div>';
-			out +=		'<p>'+list.cityName+'</p>';
+			out +=		'<p>&lt;'+list.themeName+'&gt;'+list.cityName+' - '+list.period+'</p>';
 			out +=		'<p class="tag">';
 			const hashtags = list.hashtag.split(",");
 			for(let j=0; j<hashtags.length; j++){
@@ -319,6 +318,19 @@ function adminCourseList(themeNum, keyword, areaCode, hashtag, period, pageNum )
 		
 	}
 }
+// 키워드 테마 검색
+$(document).ready(function() {
+	$(document).on("click", ".search .search-icon", function() {
+		
+		let keyword = $(".search .search-input").val();
+		$("#hidden-search-input").val(keyword);
+		
+		let pageNum = $("#hiddenPaging").val(1);
+		
+		callAdminCourseList();
+    });
+});
+
 // 리스트 테마 선택
 $(document).ready(function() {
 	$(document).on("click", ".slider-image .transparentCover", function() {
@@ -326,7 +338,9 @@ $(document).ready(function() {
 		
 		$(this).addClass('on');
  		$(".courseTheme").text($(this).parent().find($(".post .mg-text")).text());
-		
+ 		
+ 		let pageNum = $("#hiddenPaging").val(1);
+ 		
 		callAdminCourseList();
     });
 });
@@ -340,6 +354,8 @@ $(document).ready(function() {
 		$(this).removeClass('btn');
 		$(this).addClass('btn_all_active');
 		
+		let pageNum = $("#hiddenPaging").val(1);
+		
 		callAdminCourseList();
     });
 });
@@ -351,6 +367,8 @@ $(document).ready(function() {
 		
 		$(this).removeClass('btn');
 		$(this).addClass('btn_all_active');
+		
+		let pageNum = $("#hiddenPaging").val(1);
 		
 		callAdminCourseList();
     });
@@ -364,9 +382,16 @@ $(document).ready(function() {
 		$(this).removeClass('btn');
 		$(this).addClass('btn_all_active');
 		
+		let pageNum = $("#hiddenPaging").val(1);
+		
 		callAdminCourseList();
     });
 });
+
+function pagingMethod(i){
+	$("#hiddenPaging").val(i);
+	callAdminCourseList();
+}
 
 
 // 관리자 코스 리스트 함수 호출
@@ -374,13 +399,14 @@ function callAdminCourseList() {
 // 	let sort = $(".btn_txt .on").attr('id');
 // 	let month = $("#monthlist .btn_all_active").parent().attr('id');
 	let themeNum = $(".slider-image .transparentCover.on").attr('id');
+	let keyword = $("#hidden-search-input").val();
 	let areaCode = $("#arealist .btn_all_active").parent().attr('id');
 	let hashtag = $("#hashtagPickList .btn_all_active").parent().attr('id');
 	let period = $("#periodPicklist .btn_all_active").parent().attr('id');
-	let pageNum = 1;
+	let pageNum = $("#hiddenPaging").val();
 	
 // 	adminCourseList(sort, month, areaCode, pageNum);
-	adminCourseList(themeNum,'',areaCode, hashtag, period, pageNum);
+	adminCourseList(themeNum,keyword,areaCode, hashtag, period, pageNum);
 }
 </script>
 
@@ -406,6 +432,7 @@ function callAdminCourseList() {
 						<div class="search">
 							<input type="text" class="search-input"
 								placeholder="가고싶은 테마를 검색하세요 !" name="" style="border: 0px;">
+							<input id="hidden-search-input" type="hidden" value="">
 							<a href="#" class="search-icon"><i class="fa fa-search"></i></a>
 						</div>
 					</div>
@@ -505,15 +532,9 @@ function callAdminCourseList() {
 
 					<div class="tit_cont">
 						<div class="area_tag">
-							<span class="name2"><span class="ico">Easy</span>코스</span>
+							<span class="name2"><span class="ico">Easy</span ><strong class="courseTheme">전체코스</strong></span>
 						</div>
-						<h2 class="tag">
-							|<strong class="courseTheme">전체코스</strong>
-						</h2>
-						<!-- 0724 클래스 추가 strong 태그 추가 -->
-						<!-- // 0724 클래스 추가 strong 태그 추가 -->
 						<a href="javascript:" class="btn_represch">새로고침</a>
-						<!-- 0731 태그 위치 수정 -->
 					</div>
 
 					<div class="wrap_contView clfix">
@@ -531,40 +552,11 @@ function callAdminCourseList() {
 							</div>
 							<h3 class="blind" id="blindsearchtype">최신순</h3>
 							<ul class="list_thumType flnon" id="adminCourseList">
-<!-- 									<li class="bdr_nor"><div class="photo"> -->
-<!-- 											<a href=""> -->
-<%-- 												<img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}"> --%>
-<!-- 											</a> -->
-<!-- 										</div> -->
-<!-- 										<div class="area_txt"> -->
-<!-- 											<div class="tit"> -->
-<%-- 												<a href="" onclick="">${dto.subject}</a> --%>
-<!-- 											</div> -->
-<%-- 											<p>${dto.cityName}</p> --%>
-<!-- 											<p class="tag"> -->
-<%-- 												<c:forEach items="${fn:split(dto.hashtag, ',') }" var="item"> --%>
-<%-- 													<span># ${item}</span> --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</p> -->
-<!-- 											<p class="ar_tag"> -->
-<%-- 												<c:forEach var="detail" items="${dto.adminCourseList}" varStatus="status"> --%>
-<%-- 													<span>${detail.placeName}</span>  --%>
-<%-- 												</c:forEach> --%>
-<!-- 											</p> -->
-<!-- 										</div> -->
-<!-- 										<button type="button" title="열기" class="btn_view" onclick="">더보기</button> -->
-<!-- 										<div class="pop_subMenu"> -->
-<!-- 											<ul> -->
-<!-- 												<li class="btn_share" id=""> -->
-<!-- 													<a href="" onclick="">공유하기</a> -->
-<!-- 												</li> -->
-<!-- 											</ul> -->
-<!-- 										</div> -->
-<!-- 									</li> -->
 							</ul>
 							<div class="page-box">
 								${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 							</div>
+								<input type="hidden" id="hiddenPaging" value="1">
 
 						</div>
 						<!-- //썸네일 리스트 -->
@@ -715,46 +707,36 @@ function callAdminCourseList() {
 											<span>#전체</span>
 										</button>
 									</li>
-									<li id="1">
+									<li id="당일치기">
 										<button type="button" class="btn">
 											<span>#당일치기</span>
 										</button>
 									</li>
-									<li id="2">
+									<li id="1박2일">
 										<button type="button" class="btn">
 											<span>#1박2일</span>
 										</button>
 									</li>
-									<li id="3">
+									<li id="2박3일">
 										<button type="button" class="btn">
 											<span>#2박3일</span>
 										</button>
 									</li>
-									<li id="4">
+									<li id="3박4일">
 										<button type="button" class="btn">
 											<span>#3박4일</span>
 										</button>
 									</li>
-									<li id="5">
+									<li id="일주일">
 										<button type="button" class="btn">
 											<span>#일주일</span>
 										</button>
 									</li>
 								</ul>
-
 							</div>
 						</div>
-
 					</div>
-
 				</div>
-
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>

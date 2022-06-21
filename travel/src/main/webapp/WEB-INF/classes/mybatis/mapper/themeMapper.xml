@@ -97,6 +97,8 @@
 				<where>
 					<if test="keyword!=null and keyword!='' ">
 						( INSTR(subject, #{keyword}) &gt; 0 )
+						OR
+						( INSTR(content, #{keyword}) &gt; 0 )
 					</if>
 					<if test="areaCode != 0">
 						AND ( areaCode = #{areaCode} )
