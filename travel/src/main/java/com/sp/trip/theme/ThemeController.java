@@ -45,7 +45,7 @@ public class ThemeController {
 			@RequestParam (defaultValue = "") String period,
 			HttpServletRequest req) throws Exception {
 		String cp = req.getContextPath();
-		int rows = 10;
+		int rows = 10; 
 		int total_page;
 		int dataCount;
 
