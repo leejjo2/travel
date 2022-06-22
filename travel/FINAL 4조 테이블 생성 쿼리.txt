@@ -169,12 +169,14 @@ CREATE TABLE activityReserve (
     reserveNum NUMBER,
     totalPrice NUMBER NOT NULL,
     mileageUse NUMBER,
-    totalmen NUMBER NOT NULL,
+    totalMen NUMBER NOT NULL,
     reserveDoneDate DATE DEFAULT SYSDATE,
     name varchar(50) NOT NULL,
     tel VARCHAR2(20) NOT NULL,
+    email VARCHAR2(100) NOT NULL,
     usingDate DATE NOT NULL,
-    userId VARCHAR2(5)  NOT NULL,
+    userId VARCHAR2(50) NOT NULL,
+    usingStatus VARCHAR2(20) NOT NULL,  
     CONSTRAINT pk_activityReserve_reserveNum PRIMARY KEY(reserveNum),
     CONSTRAINT fk_activityReserve_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
 );
@@ -184,7 +186,6 @@ CREATE TABLE activityReserveDetail (
     ReserveNum NUMBER NOT NULL,
     DetailNum NUMBER NOT NULL,
     Price NUMBER NOT NULL,
-    Men NUMBER NOT NULL,
     CONSTRAINT pk_activityReserveDetail_ReserveDetailNum PRIMARY KEY(ReserveDetailNum),
     CONSTRAINT fk_activityReserveDetail_ReserveNum FOREIGN KEY(ReserveNum) REFERENCES activityReserve(ReserveNum) ON DELETE CASCADE,
     CONSTRAINT fk_activityReserveDetail_DetailNum FOREIGN KEY(DetailNum) REFERENCES activityDetail(DetailNum) ON DELETE CASCADE
@@ -193,7 +194,7 @@ CREATE TABLE activityReserveDetail (
 CREATE TABLE activityPay( 
     reserveNum NUMBER,
     payWay NUMBER NOT NULL,
-    payAmount varchar(30) NOT NULL,
+    payAmount NUMBER NOT NULL,
     payDate DATE,
     CONSTRAINT pk_activityPay_reserveNum PRIMARY KEY(reserveNum),
     CONSTRAINT fk_activityPay_reserveNum FOREIGN KEY(reserveNum) REFERENCES activityReserve(reserveNum)
@@ -211,11 +212,12 @@ CREATE TABLE activityRefund(
 );
 
 -- 마일리지 
-CREATE TABLE mileage( 
-    mileageNum NUMBER,
+CREATE TABLE  mileage(
+    mileageNum NUMBER NOT NULL,
     userId VARCHAR2(50) NOT NULL,
-    mileage NUMBER,
+    mileage NUMBER NOT NULL,
     mileageSection NUMBER,
+    totalMileage NUMBER,
     mileageDate DATE,
     mileageMemo VARCHAR2(4000) NOT NULL,
     CONSTRAINT pk_mileage_mileageNum PRIMARY KEY(mileageNum),
