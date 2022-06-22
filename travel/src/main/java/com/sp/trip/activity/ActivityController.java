@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sp.trip.common.MyUtil;
+import com.sp.trip.member.SessionInfo;
 
 @Controller("activity.activityController")
 @RequestMapping(value = "/activity/*")
@@ -83,8 +85,6 @@ public class ActivityController {
 			articleUrl = cp + "/activity/detail?page=" + current_page + "&" + query;
 		}
 		
-		System.out.println(listUrl);
-		System.out.println(articleUrl);
 
 		String paging = myUtil.paging(current_page, total_page, listUrl);
 		
@@ -122,15 +122,10 @@ public class ActivityController {
 			}
 		}
 		
-		System.out.println();
-		
 		Activity dto = service.readActivity(activityNum);
 		if( dto == null) {
 			return "redirect:/activity/list?" + query;
 		}
-		
-		// CKEditor 사용
-		// dto.setActivityDetail(myUtil.htmlSymbols(dto.getActivityDetail()));
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("page", page);
@@ -140,7 +135,32 @@ public class ActivityController {
 	}
 	
 	@RequestMapping(value = "reserve", method = RequestMethod.GET)
-	public String reserveForm() throws Exception {
+	public String reserveForm(
+			@RequestParam int activityNum,
+			@RequestParam int totalMen,
+			HttpSession session,
+			Model model
+			) throws Exception {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String userId = info.getUserId();
+		
+		Reserve mdto = service.readMemberInfo(userId);
+		Reserve rdto = service.readReserveInfo(activityNum);
+		
+		if( mdto == null || rdto == null) {
+			return "redirect:/activity/detail?activityNum="+activityNum+"&page=1";
+		}
+		
+		model.addAttribute("mdto", mdto);
+		model.addAttribute("rdto", rdto);
+		model.addAttribute("totalMen", totalMen);
+		
 		return ".activity.activityReserve";
+	}
+	
+	@RequestMapping(value = "completePage", method = RequestMethod.GET)
+	public String reserveComplete() throws Exception {
+		return ".activity.paymentComplete";
 	}
 }

@@ -51,4 +51,27 @@ public class ActivityServiceImpl implements ActivityService {
 		return dto;
 	}
 
+	@Override
+	public Reserve readMemberInfo(String userId) {
+		Reserve dto = null;
+		
+		try {
+			dto = dao.selectOne("activity.readMemberInfo", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	@Override
+	public Reserve readReserveInfo(int activityNum) {
+		Reserve dto = null;
+		try {
+			dto = dao.selectOne("activity.readReserveInfo", activityNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
 }

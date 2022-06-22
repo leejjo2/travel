@@ -60,5 +60,24 @@
 		LEFT OUTER JOIN partner p ON a1.partnerNum = p.partnerNum
 		WHERE a1.activityNum = #{activityNum}
 	</select>
+	
+	<select id="readMemberInfo" parameterType="String" resultType="com.sp.trip.activity.Reserve">
+		SELECT userId, name, email, tel, totalMileage
+		  FROM (
+		        SELECT me.userId, userName name, email, tel, NVL(totalMileage, 0)totalMileage, mileageDate
+		        FROM member me
+		        LEFT OUTER JOIN mileage mi ON me.userId = mi.userId
+		        WHERE me.userId = #{userId}
+		        ORDER BY mileagedate DESC
+		       )
+		 WHERE ROWNUM &lt;= 1
+	</select>
+	
+	<select id="readReserveInfo" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
+		SELECT a1.activityNum, activityName, detailNum, price, titleImgname
+	    FROM activity a1
+	    LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
+	    WHERE a1.activityNum = #{activityNum}
+	</select>
 
 </mapper>

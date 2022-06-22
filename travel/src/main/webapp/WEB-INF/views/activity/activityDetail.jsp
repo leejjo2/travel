@@ -30,6 +30,14 @@ function minusComma(value){
     return value; 
 }
 
+function goReserve() {
+	let totalMen = parseInt($(".Stepper-module__value--RL1SZ").text());
+	let query = "activityNum="+${dto.activityNum}+"&totalMen="+totalMen;
+    let url = "${pageContext.request.contextPath}/activity/reserve?" + query;
+    // console.log(url);
+    location.href = url;
+}
+
 function btnDisable() {
 	if($(".Stepper-module__value--RL1SZ").text() === '0'){
 		$(".Stepper-module__container--K8v4J button:first-child").addClass("Stepper-module__disabled--krEGe");
@@ -47,7 +55,7 @@ function btnPayment() {
 	
 	out += "<div class='OfferOption-module__payment--zEcEw'>";
 	out += 		"<div class='OfferOption-module__button--VNiCP'>";
-	out += 			"<button type='button' class='Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu Button-module__block--iT6b7'>결제하기</button>";
+	out += 			"<button type='button' onclick='goReserve();' class='Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu Button-module__block--iT6b7'>결제하기</button>";
 	out += 		"</div>";
 	out += "</div>";
 	
@@ -166,12 +174,10 @@ $(function() {
 					
 					<ul class="OfferMeta-module__container--QVvCg">
 						<li class="OfferMetaItem-module__container--gE4Kd"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_meta_eticket_md_gray_700.svg" alt="eticket" class="OfferMetaItem-module__icon--_ZoWa"><span class="OfferMetaItem-module__label--Lu7vt">e-ticket</span></li>
-						<li class="OfferMetaItem-module__container--gE4Kd"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_meta_calendar_md_gray_700.svg" alt="calendar" class="OfferMetaItem-module__icon--_ZoWa"><span class="OfferMetaItem-module__label--Lu7vt">유효기간(~2022.06.24)
-								내 사용</span></li>
 						<li class="OfferMetaItem-module__container--gE4Kd"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_meta_language_md_gray_700.svg" alt="language" class="OfferMetaItem-module__icon--_ZoWa"><span class="OfferMetaItem-module__label--Lu7vt">한국어</span></li>
 					</ul>
 					<div class="OfferIntro-module__container--r9d_2"></div>
-					
+				
 					<section class="OfferSectionBox-module__container--KxKXZ OfferSectionBox-module__noBorder--gF70t OfferSectionBox-module__noPadding--PihcY" id="OFFER-SECTION-TICKET">
 						<div class="OfferSectionBox-module__body--gjNil OfferOptionSection-module__container--SIYUu">
 							<h2 class="OfferSectionBox-module__title--LNfKq">티켓 선택</h2>
@@ -183,13 +189,7 @@ $(function() {
 												<div class="OfferOption-module__options--lYKqh">
 													<div class="OfferOptionItem-module__container--tHHlw">
 														<div class="OfferOptionItemHeader-module__container--AmZyy">
-															<h3 class="OfferOptionItemHeader-module__title--F2SRq">[대소공통]
-																이용권</h3>
-															<div class="OfferOptionItemHeader-module__description--bZ4SZ">
-																<ul class="OfferOptionDescription-module__container--rJlVA">
-																	<li>[유효기간 : 2022.05.21 ~ 2022.06.24]</li>
-																</ul>
-															</div>
+															<h3 class="OfferOptionItemHeader-module__title--F2SRq">[대소공통] 이용권</h3>
 														</div>
 														<div class="OfferOptionItem-module__body--k_jYO">
 															<div class="OfferOptionItemPrice-module__container--HhGOj">

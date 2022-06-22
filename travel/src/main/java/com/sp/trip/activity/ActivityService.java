@@ -7,4 +7,8 @@ public interface ActivityService {
 	public int dataCount(Map<String, Object> map);
 	public List<Activity> listActivity(Map<String, Object> map);
 	public Activity readActivity(int activityNum);
+	
+	// 예약을 위한 함수
+	public Reserve readMemberInfo(String userId);
+	public Reserve readReserveInfo(int activityNum);
 }
