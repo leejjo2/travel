@@ -23,28 +23,28 @@
 
 <script type="text/javascript">
 function sendOk() {
-	var f = document.hotelForm;
+	var f = document.roomForm;
 	var str;
 	
-	if(! f.ho.value.trim()) {
+	if(! f.roomHo.value.trim()) {
 		alert("호수를 입력하세요. ");
 		f.groupCategoryNum.focus();
 		return;
 	}
 	
-	if(! f.price.value.trim()) {
+	if(! f.roomPrice.value.trim()) {
 		alert("가격을 입력하세요. ");
 		f.price.focus();
 		return;
 	}
 
-	if(! f.person.value) {
+	if(! f.roomMen.value) {
 		alert("인원수를 선택하세요. ");
 		f.person.focus();
 		return;
 	}
 	
-	if(! f.bed.value) {
+	if(! f.roomBed.value) {
 		alert("침대수를 선택하세요. ");
 		f.bed.focus();
 		return;
@@ -64,7 +64,7 @@ function sendOk() {
     }
 	f.content.value = str;
 
-	f.action="${pageContext.request.contextPath}/sbbs/${mode}";
+	f.action="${pageContext.request.contextPath}/partner/lodgingManage/${mode}";
 	f.submit();
 }
 </script>
@@ -115,23 +115,23 @@ function ajaxFun(url, method, query, dataType, fn) {
 			        <i class="bi bi-question-square"></i> 방에 대한 정보를 올려주세요
 			    </div>
 			    
-				<form name="hotelForm" method="post">
+				<form name="roomForm" method="post">
 					<table class="table mt-5 write-form">
 						<tr>
 							<td class="table-light" scope="row" style="width: 100px;">숙소이름</td>
 							<td colspan="3">
-								<p class="form-control-plaintext">숙소이름</p>
+								<p class="form-control-plaintext">${hotelName}</p>
 							</td>
 						</tr>
 						
 						<tr>
 							<td class="table-light" scope="row">호수</td>
 							<td>
-								<input type="text" name="ho" class="form-control" value="">
+								<input type="text" name="roomHo" class="form-control" value="${dto.roomHo}">
 							</td>
 							<td class="table-light" scope="row">가격</td>
 							<td>
-								<input type="text" name="price" class="form-control" value="">
+								<input type="text" name="roomPrice" class="form-control" value="${dto.roomPrice}">
 							</td>
 						</tr>
 					
@@ -140,8 +140,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td>
 								<div class="row">
 									<div class="col-sm-6 pe-1">
-										<select name="person" class="form-select">
-											<option value="">선택</option>
+										<select name="roomMen" class="form-select">
+											<option value="${dto.roomMen}">선택</option>
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
@@ -156,7 +156,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td>
 								<div class="row">
 									<div class="col-sm-5 pe-1">
-										<select name="bed" class="form-select">
+										<select name="roomBed" class="form-select">
 											<option value="">선택</option>
 												<option>1</option>
 												<option>2</option>
@@ -190,31 +190,31 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td colspan="3">
 								<div class="row">
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 무료 Wi-Fi
+										<input type="checkbox" name="roomOption"> 무료 Wi-Fi
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 금연
+										<input type="checkbox" name="roomOption"> 금연
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 흡연구역
+										<input type="checkbox" name="roomOption"> 흡연구역
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 발코니/테라스
+										<input type="checkbox" name="roomOption"> 발코니/테라스
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 샤워실/욕조
+										<input type="checkbox" name="roomOption"> 샤워실/욕조
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 세탁기
+										<input type="checkbox" name="roomOption"> 세탁기
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 주방
+										<input type="checkbox" name="roomOption"> 주방
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 조식
+										<input type="checkbox" name="roomOption"> 조식
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox"> 오션뷰
+										<input type="checkbox" name="roomOption"> 오션뷰
 									</div>
 								</div>
 							</td>
@@ -228,9 +228,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 								<button type="reset" class="btn btn-light">다시입력</button>
 								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
-									<input type="hidden" name="num" value="${dto.num}">
-									<input type="hidden" name="page" value="${page}">
-									<input type="hidden" name="group" value="${group}">
+									<input type="hidden" name="roomNum" value="${dto.roomNum}">
+									<input type="hidden" name="" value="">
 								</c:if>
 							</td>
 						</tr>

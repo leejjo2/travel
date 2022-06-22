@@ -13,6 +13,14 @@
 		WHERE partnerId = #{partnerId}
 	</select>
 	
+	<select id="hotelName" resultType="String" parameterType="Integer">
+		SELECT hotelName
+		FROM hotel h
+		LEFT JOIN roomInfo r 
+		ON r.hotelNum = h.hotelNum
+		WHERE h.hotelNum = #{hotelNum}
+	</select>
+	
 	<insert id="insertHotel" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		INSERT INTO hotel(hotelNum, partnerNum, hotelName, hotelIntro,hotelNumber, hotelZip, hotelAddr1, hotelAddr2
 	) VALUES (
@@ -59,20 +67,21 @@
 		DELETE FROM hotel WHERE hotelNum = #{hotelNum}
 	</delete>
 	
-	<!-- 파일 -->
+	
+	<!-- 숙소파일 -->
 	<insert id="insertFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		INSERT INTO hotelImage(imageFileNum, hotelNum, saveFilename)
+		INSERT INTO hotelImage(imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename)
 		VALUES (hotelImage_seq.NEXTVAL, #{hotelNum}, #{saveFilename})
 	</insert>
 	
 	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT imageFileNum, hotelNum, saveFilename
+		SELECT imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename
 		FROM hotelImage
 		WHERE hotelNum = #{hotelNum}
 	</select>
 	
 	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT imageFileNum, hotelNum, saveFilename
+		SELECT imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename
 		FROM hotelImage
 	    WHERE imageFileNum = #{imageFileNum}
 	</select>
@@ -81,5 +90,84 @@
 		DELETE FROM hotelImage WHERE ${field} = #{hotelNum}
 	</delete>
 	
+	
+	<!-- 방 -->
+	<select id="roomSeq" resultType="Integer">
+		SELECT roomInfo_seq.NEXTVAL FROM dual
+	</select>
+	
+	<select id="roomNum" resultType="Integer" parameterType="String">
+		SELECT DISTINCT r.roomNum
+		FROM roomInfo r
+		JOIN hotel h ON h.hotelNum = r.roomNum
+		WHERE hotelNum = #{hotelNum}
+	</select>
+	
+	<insert id="insertRoom" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		INSERT INTO roomInfo(roomNum, hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
+	) VALUES (
+		roomInfo_seq.NEXTVAL, 
+		(SELECT hotelNum FROM hotel WHERE hotelNum = #{hotelNum}), 
+		#{roomName}, 
+		#{roomPrice},
+		#{roomHo}, 
+		#{roomMen}, 
+		#{roomOption},
+		#{roomBed}
+	)
+	</insert>
+	
+	<select id="dataRoom" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM roomInfo
+	</select>
+	
+	<select id="listRoom" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelNum, h.partnerNum, roomOption, roomBed
+		FROM roomInfo r
+		JOIN hotel h ON h.hotelNum = r.hotelNum
+		JOIN partner p ON p.partnerNum = h.partnerNum
+		WHERE p.partnerId = #{partnerId}
+	</select>
+	
+	<select id="readRoom" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT roomNum, hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
+		FROM roomInfo r
+		JOIN hotel h ON h.hotelNum = r.hotelNum
+		WHERE roomNum = #{roomNum}
+	</select>
+	
+	<update id="updateRoom" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		UPDATE roomInfo SET roomName=#{roomName}, roomPrice=#{roomPrice}, roomHo=#{roomHo},
+						roomMen=#{roomMen}, roomOption=#{roomOption}, roomBed=#{roomBed}
+		WHERE roomNum = #{roomNum}
+	</update>
+	
+	<delete id="deleteRoom" parameterType="map">
+		DELETE FROM roomInfo WHERE roomNum = #{roomNum}
+	</delete>
+	
+	
+	<!-- 방 파일 -->
+	<insert id="insertRoomFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		INSERT INTO roomImage(imageFileNum AS roomImageFileNum, roomNum, saveFilename AS roomSaveFilename)
+		VALUES (roomImage_seq.NEXTVAL, #{roomNum}, #{roomSaveFilename})
+	</insert>
+	
+	<select id="listRoomFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT imageFileNum AS roomImageFileNum, roomNum, saveFilename AS roomSaveFilename
+		FROM roomImage
+		WHERE roomNum = #{roomNum}
+	</select>
+	
+	<select id="readRoomFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
+		SELECT imageFileNum AS roomImageFileNum, roomNum, saveFilename AS roomSaveFilename
+		FROM roomImage
+	    WHERE imageFileNum = #{imageFileNum}
+	</select>
+	
+	<delete id="deleteRoomFile" parameterType="map">
+		DELETE FROM roomImage WHERE ${field} = #{roomNum}
+	</delete>
 	
 </mapper>

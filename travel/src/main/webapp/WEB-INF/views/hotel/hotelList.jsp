@@ -16,7 +16,7 @@
 }
 .paginate a {
 	border: 1px solid #ccc;
-	color: #000;
+	color: #000;	
 	font-weight: 600;
 	text-decoration: none;
 	padding: 3px 7px;
@@ -38,6 +38,14 @@
 	margin-left: 0;
 }
 </style>
+
+<script type="text/javascript">
+function deleteHotel(hotelNum) {
+    let query = "hotelNum="+hotelNum;
+    let url = "${pageContext.request.contextPath}/hotel/detail?" + query;
+   	location.href = url;
+}
+</script>
 
 <div class="container my-sm-4 p-0" style="margin-left: 30px;">
     <div id="content">
@@ -87,7 +95,7 @@
 			                        </div>
 			                    </div>
 			                    <div class="d-flex justify-content-end mt-1">
-			                    	<div class="btn enquiry text-uppercase mx-2" onclick="${articleUrl}&num=${dto.hotelNum}">상세보기</div>
+			                    	<div class="btn enquiry text-uppercase mx-2" onclick="location.href='${pageContext.request.contextPath}/hotel/hotelDetail?hotelNum=${dto.hotelNum}';">상세보기</div>
 			                        <div class="btn btn-primary text-uppercase">예약하기</div>
 			                    </div>
 			                </div>

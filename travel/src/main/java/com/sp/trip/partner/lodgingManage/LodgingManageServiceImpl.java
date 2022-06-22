@@ -32,7 +32,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 						continue;
 					}
 
-					dto.setSaveFilename(hotelImageFileNum);
+					dto.setHotelSaveFilename(hotelImageFileNum);
 
 					insertFile(dto);
 				}
@@ -71,18 +71,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	}
 
 	@Override
-	public List<LodgingManage> listHotel(Map<String, Object> map) {
-		List<LodgingManage> list = null;
-		
-		try {
-			
-		} catch (Exception e) {
-		}
-		
-		return list;
-	}
-
-	@Override
 	public LodgingManage readHotel(int hotelNum) {
 		LodgingManage dto = null;
 		
@@ -107,7 +95,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 						continue;
 					}
 
-					dto.setSaveFilename(hotelImageFileNum);
+					dto.setHotelSaveFilename(hotelImageFileNum);
 
 					insertFile(dto);
 				}
@@ -125,7 +113,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			List<LodgingManage> listFile = listFile(hotelNum);
 			if (listFile != null) {
 				for (LodgingManage dto : listFile) {
-					fileManager.doFileDelete(dto.getSaveFilename(), pathname);
+					fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname);
 				}
 			}
 
@@ -141,7 +129,9 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			throw e;
 		}
 	}
-
+	
+	
+	// 숙소 이미지
 	@Override
 	public void insertFile(LodgingManage dto) throws Exception {
 		try {
@@ -185,18 +175,169 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			throw e;
 		}
 	}
+	
+	
+	// 방
+	@Override
+	public void insertRoom(LodgingManage dto, String pathname) throws Exception {
+		try {
+			
+			
+			dao.insertData("lodgingManage.insertRoom", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 
 	@Override
-	public LodgingManage readBoard(int hotelNum) {
+	public int dataRoom(Map<String, Object> map) {
+		int result = 0;
+		
+		try {
+			result = dao.selectOne("lodgingManage.dataRoom", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	
+	// 방
+	@Override
+	public List<LodgingManage> listRoom(String partnerId) {
+		List<LodgingManage> list = null;
+		
+		try {
+			list = dao.selectList("lodgingManage.listRoom", partnerId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public LodgingManage readRoom(int roomNum) {
 		LodgingManage dto = null;
 		
 		try {
-			dto = dao.selectOne("bbs.readHotel", hotelNum);
+			dto = dao.selectOne("lodgingManage.readRoom", roomNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return dto;
+	}
+
+	@Override
+	public void updateRoom(LodgingManage dto, String userId, String pathname) throws Exception {
+		try {
+			dao.updateData("lodgingManage.updateRoom", dto);
+			
+			if (!dto.getSelectFile().isEmpty()) {
+				for (MultipartFile mf : dto.getSelectFile()) {
+					String roomImageFileNum = fileManager.doFileUpload(mf, pathname);
+					if (roomImageFileNum == null) {
+						continue;
+					}
+
+					dto.setRoomSaveFilename(roomImageFileNum);
+
+					insertRoomFile(dto);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void deleteRoom(int roomNum, String userId, String pathname) throws Exception {
+		// 파일 지우기
+		try {
+			List<LodgingManage> listFile = listRoomFile(roomNum);
+			if (listFile != null) {
+				for (LodgingManage dto : listFile) {
+					fileManager.doFileDelete(dto.getRoomSaveFilename(), pathname);
+				}
+			}
+
+			// 파일 테이블 내용 지우기
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("field", "roomNum");
+			map.put("roomNum", roomNum);
+			deleteFile(map);
+			
+			dao.deleteData("lodgingManage.deleteRoom", roomNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	// 방 파일
+	@Override
+	public void insertRoomFile(LodgingManage dto) throws Exception {
+		try {
+			dao.insertData("lodgingManage.insertRoomFile", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public List<LodgingManage> listRoomFile(int roomNum) {
+		List<LodgingManage> listFile = null;
+		
+		try {
+			listFile = dao.selectList("lodgingManage.listRoomFile", roomNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listFile;
+	}
+
+	@Override
+	public LodgingManage readRoomFile(int fileNum) {
+		LodgingManage dto = null;
+		
+		try {
+			dto = dao.selectOne("lodgingManage.readRoomFile", fileNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
+	@Override
+	public void deleteRoomFile(Map<String, Object> map) throws Exception {
+		try {
+			dao.deleteData("lodgingManage.deleteRoomFile", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public String hotelName(int hotelNum) {
+		
+		System.out.println(" :: service hotelNum : " + hotelNum);
+		
+		String hotelName = "";
+		
+		try {
+			hotelName = dao.selectOne("lodgingManage.hotelName", hotelNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return hotelName;
 	}
 
 }

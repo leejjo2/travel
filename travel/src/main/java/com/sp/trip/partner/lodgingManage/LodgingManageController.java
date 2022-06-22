@@ -75,12 +75,7 @@ public class LodgingManageController {
 		
 		return ".partner.lodgingManage.lodgingList";
 	}
-	
-	// 숙소별 룸 리스트
-	@RequestMapping("roomList")
-	public String roomList() throws Exception {
-		return ".partner.lodgingManage.roomList";
-	}
+
 	
 	// 숙소 등록하기
 	@RequestMapping(value = "lodgingWrite")
@@ -127,6 +122,7 @@ public class LodgingManageController {
 		return ".partner.lodgingManage.lodgingWrite";
 	}
 	
+	// 수정완료
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String updateSubmit(
 			LodgingManage dto,
@@ -145,13 +141,7 @@ public class LodgingManageController {
 
 		return "redirect:/partner/lodgingManage/lodgingList";
 	}
-	
-	// 숙소별 방 등록하기
-	@RequestMapping("roomWrite")
-	public String roomWrite(Model model) throws Exception {
-		model.addAttribute("mode", "write");
-		return ".partner.lodgingManage.roomWrite";
-	}
+
 	
 	// 삭제
 	@RequestMapping(value = "delete")
@@ -187,16 +177,76 @@ public class LodgingManageController {
 		}
 
 		try {
-			if (dto.getSaveFilename() != null) {
-				fileManager.doFileDelete(dto.getSaveFilename(), pathname); // 실제파일삭제
-				dto.setSaveFilename("");
-				dto.setImageFileNum(0);
+			if (dto.getHotelSaveFilename() != null) {
+				fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname); // 실제파일삭제
+				dto.setHotelSaveFilename("");
+				dto.setHotelImageFileNum(0);
 				service.updateHotel(dto, userId, pathname); // DB 테이블의 파일명 변경(삭제)
 			}
 		} catch (Exception e) {
 		}
 
 		return "redirect:/partner/lodgingManage/update?num=" + hotelNum;
+	}
+	
+	
+	// 숙소별 룸 리스트
+	@RequestMapping("roomList")
+	public String roomList(HttpServletRequest req, HttpSession session, 
+			Model model) throws Exception {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		List<LodgingManage> list = service.listRoom(info.getUserId());
+		
+		model.addAttribute("list", list);
+		
+		return ".partner.lodgingManage.roomList";
+	}
+	
+	
+	// 숙소별 방 등록하기
+	@RequestMapping(value = "roomWrite", method = RequestMethod.GET)
+	public String roomWrite( @RequestParam int hotelNum, Model model) throws Exception {
+		String hotelName = service.hotelName(hotelNum);
+
+		model.addAttribute("hotelName", hotelName);
+		model.addAttribute("mode", "roomWrite");
+		
+		return ".partner.lodgingManage.roomWrite";
+	}
+	
+	// 방 등록완료
+	@RequestMapping(value = "roomWrite", method = RequestMethod.POST)
+	public String roomWriteSubmit(@RequestParam int hotelNum,
+			@RequestParam String hotelName,
+			LodgingManage dto, HttpSession session) throws Exception {
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "room";
+		
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		
+		try {
+			dto.setPartnerId(info.getUserId());
+			dto.setHotelName(hotelName);
+			service.insertRoom(dto, pathname);
+		} catch (Exception e) {
+		}
+		
+		return "redirect:/partner/lodgingManage/roomList";
+	}
+	
+	// 삭제
+	@RequestMapping(value = "roomDelete")
+	public String deleteRoom(@RequestParam int roomNum,
+			HttpSession session) throws Exception {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "room";
+		
+		service.deleteHotel(roomNum, info.getUserId(), pathname);
+		
+		return "redirect:/partner/lodgingManage/roomList";
 	}
 	
 }

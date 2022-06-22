@@ -1,0 +1,830 @@
+.Grid-module__container--YH1rv {
+    position: relative;
+    width: 100%;
+}
+
+.Grid-module__row--GTpEN {
+    margin: 0 auto;
+    position: relative;
+    width: 1060px;
+}
+
+.StayDetailHeaderDesktop-module__header--p7Or6 {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.StayDetailDesktop-module__container--KuTRC {
+    display: flex;
+    margin-bottom: 64px;
+    margin-top: 48px;
+    position: relative;
+}
+
+.StayDetailHeaderDesktop-module__title--Z4xQj.StayDetailHeaderDesktop-module__withSummary--SuCKV {
+    margin-bottom: 8px;
+}
+
+.StayDetailHeaderDesktop-module__title--Z4xQj {
+    color: #343a40;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -.44px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    max-width: 590px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.StayDetailHeaderDesktop-module__hashtag--Z2nXb>p {
+    color: #848c94;
+    letter-spacing: -.18px;
+    line-height: 20px;
+}
+
+.StayHashTag-module__hashtag--iVCqy {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    color: #848c94;
+    display: -webkit-box;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -.3px;
+    line-height: 18px;
+    margin-left: 4px;
+    overflow: hidden;
+    width: 100%;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0;
+}
+
+.StayDetailHeaderDesktop-module__meta--hynTx {
+    align-items: flex-start;
+    border-bottom: 1px solid #e9ecef;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding: 23px 0;
+    width: 700px;
+}
+
+.StayDetailServices-module__iconList--YF9V5>li {
+    margin-bottom: 24px;
+}
+
+.StayDetailServices-module__itemWithIcon--XSvcL {
+    flex-basis: 16.66%;
+    text-align: center;
+}
+
+.StayDetailServices-module__itemWithIcon--XSvcL>p {
+    color: #495056;
+    font-size: 13px;
+}
+
+.StayDetailServices-module__itemText--hOnPv {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.StayDetailServices-module__iconList--YF9V5 {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+}
+
+.StayDetailServices-module__wrapper--tWrQ3 {
+    display: inline-block;
+    width: 540px;
+}
+
+
+.StayDetailIntroduction-module__inner--IHDNk {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+}
+
+.StayDetailIntroduction-module__title--Tqsrt {
+    color: #343a40;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 0;
+    width: 160px;
+}
+
+.StayDetailDesktop-module__checkIn--qO978 {
+    padding: 32px 0;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.StayDetailServices-module__container--VX94D {
+    padding-bottom: 32px;
+    padding-top: 32px;
+}
+
+.StayDetailGuide-module__inner--kddjC {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+}
+
+.StayDetailGuide-module__title--vOJV6 {
+    color: #343a40;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 0;
+    width: 160px;
+}
+
+.StayDetailDesktop-module__checkInOutInfo--BXf_w {
+    display: inline-block;
+    font-size: 14px;
+    white-space: pre-line;
+    width: 540px;
+}
+
+.StayDetailDesktop-module__checkInOutTitle--JVzkF {
+    color: #343a40;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 0;
+    width: 160px;
+}
+
+.StayDetailHeaderDesktop-module__address--AUPmn {
+    padding-right: 20px;
+}
+
+.StayDetailHeaderDesktop-module__address--AUPmn, .StayDetailHeaderDesktop-module__checkInOut--Y0C1P {
+    align-items: center;
+    color: #343a40;
+    display: flex;
+    flex: 1;
+    font-size: 15px;
+    line-height: 22px;
+    padding-right: 20px;
+}
+
+.StayDetailHeaderDesktop-module__address--AUPmn, .StayDetailHeaderDesktop-module__description--Xr2uc, .StayDetailHeaderDesktop-module__title--Z4xQj {
+    margin: 0;
+}
+
+.StayDetailHeaderDesktop-module__address--AUPmn, .StayDetailHeaderDesktop-module__checkInOut--Y0C1P {
+    align-items: center;
+    color: #343a40;
+    display: flex;
+    flex: 1;
+    font-size: 15px;
+    line-height: 22px;
+    padding-right: 20px;
+}
+
+.StayImageViewer-module__photo--WD7vM {
+    margin: 32px 0;
+    width: 700px;
+}
+
+.StayImageViewer-module__wrapper--R6Qcb {
+    margin: 24px 0;
+}
+
+.StayImageViewer-module__title--a2h6Y {
+    color: #343a40;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.StayImageViewer-module__wrapper--R6Qcb {
+    margin: 24px 0;
+}
+
+.StayImageViewer-module__view--mA4wW {
+    cursor: pointer;
+    width: 705px;
+}
+
+.StayImageViewer-module__big--X0znA {
+    background-position: 50%;
+    background-size: cover;
+    height: 467px;
+    margin-bottom: 4px;
+    position: relative;
+    width: 700px;
+}
+
+.StayImageViewer-module__small--Ncmhf {
+    background-size: cover;
+    height: 129px;
+    margin-right: 4px;
+    position: relative;
+    width: 172px;
+}
+
+.StayDetailSearchDesktop-module__searchContainer--eJWmd {
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    padding: 24px;
+}
+
+.StayDetailSearchDesktop-module__searchForm--yAuD1 {
+    display: flex;
+}
+
+.StayDetailSearchDesktop-module__searchDate--QpGyu, .StayDetailSearchDesktop-module__searchPerson--Rythj {
+    margin-right: 8px;
+}
+
+.StayDetailSearchDesktop-module__searchDate--QpGyu {
+    width: 320px;
+}
+
+.StaySearchDate-module__container--yjcJw {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+.StaySearchDate-module__button--tnMR8 {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.StayDetailSearchDesktop-module__searchDate--QpGyu, .StayDetailSearchDesktop-module__searchPerson--Rythj {
+    margin-right: 8px;
+}
+
+.StayDetailSearchDesktop-module__searchPerson--Rythj {
+    width: 232px;
+}
+
+.StaySearchPerson-module__container--S5cMs {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+.StaySearchPerson-module__button--qUDZh {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.StayDetailHeaderDesktop-module__review--OFknh {
+    margin-bottom: 16px;
+}
+
+.css-sbks2i--ReviewRatingCount--Container {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+
+.css-labkkb {
+    display: inline-block;
+    border: 0px;
+    vertical-align: middle;
+}
+
+.StayRoomDesktop-module__container--oJm9D {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%), 0 0 0 1px #e9ecef;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.StayRoomDesktop-module__roomSummary--YACv2 {
+    padding: 24px;
+    position: relative;
+}
+
+.StayRoomDesktop-module__roomImages--cnXOR {
+    border-radius: 4px;
+    cursor: pointer;
+    height: 120px;
+    left: 24px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    z-index: 10;
+}
+
+.StayRoomDesktop-module__roomInfo--otxvB {
+    justify-content: flex-start;
+    min-height: 120px;
+    padding-left: 196px;
+    position: relative;
+    z-index: 1;
+}
+
+.StayRoomDesktop-module__column--Gmr6W {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.LazyImageLoader-module__container--xHxKX {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.StayRoomDesktop-module__roomImages--cnXOR .StayRoomDesktop-module__image--B2J58 {
+    height: 100%;
+    width: 100%;
+}
+
+.LazyImageLoader-module__image--FB3yN.LazyImageLoader-module__visible--n47Jt, .LazyImageLoader-module__placeholder--iH82U.LazyImageLoader-module__visible--n47Jt {
+    opacity: 1;
+}
+
+.LazyImageLoader-module__image--FB3yN, .LazyImageLoader-module__placeholder--iH82U {
+    -o-object-fit: cover;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.LazyImageLoader-module__placeholder--iH82U {
+    background-color: #f1f3f5;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIyNCI+PGcgZmlsbD0iI0RFRTJFNiIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIGN4PSI5IiBjeT0iOCIgcj0iMyIvPjxwYXRoIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTI5IDNIM3YxOGgyNlYzem0zLTF2MjBhMiAyIDAgMCAxLTIgMkgyYTIgMiAwIDAgMS0yLTJWMmEyIDIgMCAwIDEgMi0yaDI4YTIgMiAwIDAgMSAyIDJ6Ii8+PHBhdGggZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMjAuMjc1IDEwLjMzMWExIDEgMCAwIDEgMS41NTguMDlsNC45ODIgN0ExIDEgMCAwIDEgMjYgMTlIOGMtLjg5OCAwLTEuMzQtMS4wOTEtLjY5Ny0xLjcxN2w1LjE0My01YTEgMSAwIDAgMSAxLjM2MS0uMDNsMi42MzIgMi4zNCAzLjgzNi00LjI2MnoiLz48L2c+PC9zdmc+);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 32px 24px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.LazyImageLoader-module__image--FB3yN, .LazyImageLoader-module__placeholder--iH82U {
+    -o-object-fit: cover;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.StayRoomDesktop-module__nameContainer--AcNgi {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.StayRoomDesktop-module__desc--bxMsz {
+    align-items: center;
+    color: #848c94;
+    display: flex;
+    font-size: 12px;
+    letter-spacing: -.4px;
+    line-height: 18px;
+    margin: 0 0 2px;
+}
+
+.StayRoomDesktop-module__desc--bxMsz img {
+    margin-right: 2px;
+}
+
+.StayRoomRatePlanDesktop-module__roomPackage--vO2Ew {
+    border-top: 1px solid #e9ecef;
+    padding: 0 24px;
+}
+
+.StayRoomRatePlanDesktop-module__packageInfo--g5DmW {
+    padding-top: 24px;
+}
+
+.StayRoomRatePlanDesktop-module__priceBox--uqMXE {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-bottom: 24px;
+}
+
+.Button-module__primary--loIc3 {
+    background-color: #51abf3;
+    border: 1px solid #51abf3;
+    color: #fff;
+}
+
+.Button-module__medium--bLzcD {
+    font-size: 14px;
+    height: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.StayRoomDesktop-module__moreButton--y4q6H {
+    background: none;
+    border: none;
+    color: #2b96ed;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    line-height: 20px;
+    outline: none;
+    padding: 4px 6px;
+    line-height: inherit;
+}
+
+.Button-module__button--nQweC {
+    background-color: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    transition: box-shadow .1s ease-out,background-color .1s ease-out,color .1s ease-out,border-bottom .1s ease-out;
+}
+
+.StaySideBarPrice-module__totalPrice--nbnzY .StaySideBarPrice-module__nights--NaYZG {
+    color: #212529;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-right: 4px;
+}
+
+.StaySideBar-module__sideBar--mW8v2 {
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgb(52 58 64 / 10%), 0 2px 4px 0 rgb(52 58 64 / 10%);
+    margin-bottom: 16px;
+    padding: 20px 24px 24px;
+}
+
+.StayDetailDesktop-module__article--nuYpy {
+    width: 700px;
+}
+
+.StayDetailDesktop-module__aside--m7usv {
+    align-self: flex-start;
+    margin-left: 40px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 80px;
+}
+
+.StayDetailHeaderDesktop-module__header--p7Or6 {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.StayImageViewer-module__photo--WD7vM {
+    margin: 32px 0;
+    width: 700px;
+}
+
+.StayDetailDesktop-module__section--vaK4b {
+    margin-top: 24px;
+    min-height: 259px;
+    position: relative;
+    width: 700px;
+}
+
+.StayDetailDesktop-module__introduction--thV7D {
+    margin-top: 32px;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.StayDetailIntroduction-module__container--XUNw2 {
+    padding: 32px 0;
+}
+
+.StayDetailDesktop-module__checkIn--qO978 {
+    padding: 32px 0;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.StayDetailDesktop-module__subsection--k85Ly {
+    border-top: 1px solid #e9ecef;
+}
+
+.css-1sfu9pu--ReviewListLayout-style--container {
+    margin: 38px auto 0px;
+}
+
+.css-11vligd--QueryClientProvider--Container {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    z-index: 9999;
+}
+
+.css-twkohc--ReviewListTitle-style--container {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.css-1u8qeou--ReviewListContent-style--container {
+    padding-top: 16px;
+}
+
+.css-8i9jzs--ReviewScore-style--wrapper {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 32px 56px;
+    background-color: var(--gray-50);
+}
+
+.css-1wi7tt7--ReviewScore-style--avgBox {
+    text-align: center;
+}
+
+.css-1c0idtt--ReviewScore-style--divider {
+    width: 1px;
+    height: 80px;
+    background-color: var(--gray-200);
+}
+
+.css-1ihe0e9--Statistics-style--wrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.css-jnyb5c--DetailScoreRankList-style--container {
+    margin-top: 16px;
+    padding: 24px 16px;
+    border: 1px solid var(--gray-80);
+    border-radius: 12px;
+}
+
+.css-17sp3rs--ReviewSearchKeys-style--wrapper {
+    display: flex;
+    padding-top: 20px;
+}
+
+.css-17sp3rs--ReviewSearchKeys-style--wrapper > ul {
+    flex: initial;
+}
+
+.css-97wp26--ReviewFilterList-style--listWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.css-17sp3rs--ReviewSearchKeys-style--wrapper > ul:last-child {
+    margin-left: auto;
+}
+
+.css-17sp3rs--ReviewSearchKeys-style--wrapper > ul {
+    flex: initial;
+}
+
+.css-8nhtoi--ReviewSortList-style--listWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.css-3rrsci--ReviewCommentList-style--wrapper > div {
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.css-7ruqj6--ReviewComment-style--wrapper {
+    display: flex;
+    padding: 24px 0px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.css-1jjazzo--ReviewComment-style--textInfoWrapper {
+    width: calc(100% - 141px);
+}
+
+.css-8in2oi--ReviewCommentInfo-style--scoreWrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.css-b8ggop--RatingStars-style--container {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 74px;
+}
+
+.css-1ftpvuv--ReviewCommentInfo-style--username {
+    padding-left: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    color: var(--gray-800);
+}
+
+.css-1vkng0a--ReviewCommentInfo-style--infoWrapper {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.css-1vkng0a--ReviewCommentInfo-style--infoWrapper span {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.4px;
+    color: var(--gray-500);
+}
+
+.css-1cdknso--ReviewComment-style--comment {
+    display: block;
+    width: 100%;
+    height: auto;
+    color: var(--gray-800);
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    padding-bottom: 0px;
+    white-space: pre-wrap;
+}
+
+.css-f89r2h--ReviewComment-style--image {
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 125px;
+    height: 125px;
+    border-radius: 4px;
+    background-color: var(--gray-80);
+    cursor: pointer;
+}
+
+.css-y5m0bt {
+    display: inline-flex;
+    overflow: hidden;
+    position: relative;
+    inset: 0px;
+    width: inherit;
+    height: inherit;
+    min-width: inherit;
+    min-height: inherit;
+    object-fit: cover;
+}
+
+.css-kknodv {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.css-aymlz4 {
+    list-style: none;
+    padding: 0px;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.css-13fjuep {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: var(--blue-400);
+    transition: color 0.4s var(--motion-easing-basic),background 0.4s var(--motion-easing-basic);
+}
+
+.StayDetailDesktop-module__aside--m7usv, .StayDetailDesktop-module__sidebar--koS_U {
+    width: 320px!important;
+}
+
+.StaySideBar-module__container--LzdcQ {
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.StaySideBarPrice-module__totalPrice--nbnzY {
+    color: #343a40;
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+    line-height: 32px;
+    margin-bottom: 24px;
+}
+
+.StaySideBar-module__shareBtn--gSs9Z {
+    position: absolute;
+    right: 0;
+    top: 6px;
+}
+
+.css-q35oaw--ShareButton-style--container {
+    position: relative;
+}
+
+.StaySideBar-module__sideBar--mW8v2>a>button {
+    line-height: 46px;
+}
+
+.StaySideBar-module__selectBtn--WD6HD {
+    font-weight: 700;
+    width: 272px;
+}
+
+.Button-module__primary--loIc3 {
+    background-color: #51abf3;
+    border: 1px solid #51abf3;
+    color: #fff;
+    width: 150px;
+}
+
+.StaySideBar-module__selectBtn--WD6HD {
+    font-weight: 700;
+    width: 272px;
+}
+
+.Button-module__large--vtisu {
+    font-size: 16px;
+    height: 48px;
+    padding-left: 32px;
+    padding-right: 32px;
+}

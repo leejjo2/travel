@@ -15,10 +15,11 @@
 	</select>
 	
 	<select id="readHotel" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
-		SELECT hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
+		SELECT h.hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
 		FROM hotel h
-		JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
-		WHERE hotelNum = #{hotelNum}
+		LEFT JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
+		WHERE h.hotelNum = #{hotelNum};
+		
 	</select>
 
 	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">

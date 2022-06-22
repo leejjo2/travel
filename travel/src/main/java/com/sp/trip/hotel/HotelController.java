@@ -70,26 +70,36 @@ public class HotelController {
 		return ".hotel.hotelList";
 	}
 	
-	@RequestMapping(value = "article")
-	public String hotelArticle(@RequestParam int hotelNum,
-			@RequestParam String page,
-			Model model
-			) throws Exception {
+	@RequestMapping(value = "hotelDetail", method = RequestMethod.GET)
+//	public String hotelArticle(@RequestParam("hotelNum") int hotelNum, Model model ) throws Exception {
+	public String hotelArticle(@RequestParam int hotelNum, Model model ) throws Exception {
 		
-		String query = "page=" + page;
-		
-		Hotel dto = service.readHotel(hotelNum);
-		if(dto == null) {
-			return "redirect:/hotel/hotelList?" + query;
+		// String query = "page=" + page;
+		try {
+			
+			Hotel dto = service.readHotel(hotelNum);
+			System.out.println("dto 갔따옴");
+			
+			dto.setHotelIntro(myUtil.htmlSymbols(dto.getHotelIntro()));
+			System.out.println("dto 갔따옴2222 "  + dto.getHotelIntro());
+			
+			model.addAttribute("dto", dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		dto.setHotelIntro(myUtil.htmlSymbols(dto.getHotelIntro()));
+		/*
+		if(dto == null) {
+			return "redirect:/hotel/hotelList";
+		}
+		*/
 		
-		model.addAttribute("dto", dto);
-		model.addAttribute("page", page);
-		model.addAttribute("query", query);
+		// model.addAttribute("page", page);
+		// model.addAttribute("query", query);
 		
-		return ".hotel.hotelArticle";
+		
+		return ".hotel.hotelDetail";
 	}
 	
 }
