@@ -823,7 +823,7 @@
 .area_tagList .tag_list li:first-child button span{font-weight:800;color:#000;}
 .area_tagList .tag_list li button.active{background-color:#57667e;}
 .area_tagList .tag_list li button.active span{color:#fff;}
-.area_tagList .tag_list li button.btn_all_active{background-color:#57667e;color:#fff;}
+.area_tagList .tag_list li button.btn_all_active{height:36px; background-color:#57667e;color:#fff;}
 .area_tagList .tag_list li button.btn_all_active span{color:#fff;}
 .area_tagList .tag_list li:hover button.btn_all_active:after{display:none;}
 .area_tagList .tag_list.area_view_list{display:none;border-top:1px solid #e6e6e6 !important;}

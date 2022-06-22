@@ -96,7 +96,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	}
 
 	@Override
-	public void updateHotel(LodgingManage dto, String pathname) throws Exception {
+	public void updateHotel(LodgingManage dto, String userId, String pathname) throws Exception {
 		try {
 			dao.updateData("lodgingManage.updateHotel", dto);
 			

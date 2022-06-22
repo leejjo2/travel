@@ -93,7 +93,7 @@ public class LodgingManageController {
 	@RequestMapping(value = "write", method = RequestMethod.POST)
 	public String writeSubmit(LodgingManage dto, HttpSession session) throws Exception {
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "partner";
+		String pathname = root + "uploads" + File.separator + "hotel";
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
@@ -106,19 +106,45 @@ public class LodgingManageController {
 		return "redirect:/partner/lodgingManage/lodgingList";
 	}
 	
-	// 숙소보기
-	@RequestMapping(value = "article")
-	public String hotelArticle(@RequestParam int hotelNum,
-			HttpSession session, Model model) throws Exception {
+	// 수정
+	@RequestMapping(value = "update")
+	public String updateForm(
+			@RequestParam int hotelNum,
+			HttpSession session,
+			Model model) throws Exception {
 		
-		// SessionInfo info = (SessionInfo) session.getAttribute("member");
+		LodgingManage dto = service.readHotel(hotelNum);
 		
-		// LodgingManage dto = service.readHotel(hotelNum);
-		
-		
-		return "";
+		/*
+		if (dto == null) {
+			return "redirect:/partner/lodgingManage/lodgingList";
+		}
+		*/
+		model.addAttribute("dto", dto);
+		// model.addAttribute("page", page);
+		model.addAttribute("mode", "update");
+
+		return ".partner.lodgingManage.lodgingWrite";
 	}
 	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateSubmit(
+			LodgingManage dto,
+			HttpSession session) throws Exception {
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "hotel";
+			
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String userId = info.getUserId();
+		
+		try {
+			service.updateHotel(dto, userId, pathname);
+		} catch (Exception e) {
+		}
+
+		return "redirect:/partner/lodgingManage/lodgingList";
+	}
 	
 	// 숙소별 방 등록하기
 	@RequestMapping("roomWrite")
@@ -134,7 +160,7 @@ public class LodgingManageController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "partner";
+		String pathname = root + "uploads" + File.separator + "hotel";
 		
 		service.deleteHotel(hotelNum, info.getUserId(), pathname);
 		
@@ -146,9 +172,10 @@ public class LodgingManageController {
 	public String deleteHotelFile(@RequestParam int hotelNum,
 			HttpSession session) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
-
+		String userId = info.getUserId();
+		
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "partner";
+		String pathname = root + "uploads" + File.separator + "hotel";
 
 		LodgingManage dto = service.readHotel(hotelNum);
 		if (dto == null) {
@@ -164,7 +191,7 @@ public class LodgingManageController {
 				fileManager.doFileDelete(dto.getSaveFilename(), pathname); // 실제파일삭제
 				dto.setSaveFilename("");
 				dto.setImageFileNum(0);
-				service.updateHotel(dto, pathname); // DB 테이블의 파일명 변경(삭제)
+				service.updateHotel(dto, userId, pathname); // DB 테이블의 파일명 변경(삭제)
 			}
 		} catch (Exception e) {
 		}

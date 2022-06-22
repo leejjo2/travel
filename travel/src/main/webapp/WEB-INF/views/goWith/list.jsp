@@ -75,10 +75,10 @@
                                             </li>
                                         </ul>
                                     </div>	
-                                    	<div id="divProduct0" class="contentInsideType1" style="display:block">
+                                    	<div id="divProduct0" class="contentInsideType" style="display:block">
 	                                        <ul>  	
 	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
+	                                                <div class="checkRadioBoxCircleType">
 	                                                	<input type="checkbox" id="placeSelect0" name="place" value="M0101" onclick="checkProduct(this)">
 	                                                    <label for="placeSelect0">
 	                                                        <div class="circle">
@@ -89,7 +89,7 @@
 	                                                </div>
 	                                            </li>   	
 	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
+	                                                <div class="checkRadioBoxCircleType">
 	                                                	<input type="checkbox" id="placeSelect1" name="place" value="M0102" onclick="checkProduct(this)">
 	                                                    <label for="placeSelect1">
 	                                                        <div class="circle">
@@ -100,7 +100,7 @@
 	                                                </div>
 	                                            </li>              	
 	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
+	                                                <div class="checkRadioBoxCircleType">
 	                                                	<input type="checkbox" id="placeSelect2" name="place" value="M0103" onclick="checkProduct(this)">
 	                                                    <label for="placeSelect2">
 	                                                        <div class="circle">

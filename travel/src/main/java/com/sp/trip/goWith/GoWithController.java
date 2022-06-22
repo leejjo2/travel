@@ -1,11 +1,17 @@
 package com.sp.trip.goWith;
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.sp.trip.member.SessionInfo;
 
 
 @Controller("gowith.gowithController")
@@ -21,19 +27,42 @@ public class GoWithController {
 	}
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)
-	public String write() {
+	public String write(Model model) throws Exception {
+		List<GoWith> listCity = null;
+		List<GoWith> listSpot = null;
+		   
+		try {
+			listCity = service.listCity();
+			if(listCity.size() > 0) {
+				listSpot = service.listSpot(listCity.get(0).getCityNum());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		model.addAttribute("listCity", listCity);
+		model.addAttribute("listSpot", listSpot);
+		
 		return ".goWith.write";
+		
+		
 	}
 	
 	@RequestMapping(value = "write", method = RequestMethod.POST)
-	public String writeSubmit(GoWith dto, HttpServletRequest req) throws Exception {
+	public String writeSubmit(GoWith dto, HttpSession session) throws Exception {
+		String root = session.getServletContext().getRealPath("/");
+		String path = root + "uploads" + File.separator + "photo";
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		
 		try {
-			service.insertGoWith(dto);
+			dto.setUserId(info.getUserId());
+			service.insertGoWith(dto, path);
 		} catch (Exception e) {
 			
 		}
 		
-		return "redirect:/goWith/list";
+		return "redirect:/gowith/list";
 	}
 }

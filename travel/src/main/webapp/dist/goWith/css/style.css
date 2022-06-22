@@ -820,9 +820,8 @@ textarea:focus {
           filter: invert(99%) sepia(5%) saturate(116%) hue-rotate(306deg) brightness(125%) contrast(100%);
 }
 
-.tabButtonType1 {
+.tabButtonType {
   width: auto;
-  height: 100%;
   padding: 20px 35px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -840,7 +839,7 @@ textarea:focus {
   /*//모바일*/
 }
 
-.tabButtonType1:hover, .tabButtonType1:active {
+.tabButtonType:hover, .tabButtonType:active {
   background: #fff;
   border: 2px solid #1B1C1B;
   color: #1B1C1B;
@@ -848,17 +847,17 @@ textarea:focus {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 960px) {
-  .tabButtonType1 {
+  .tabButtonType {
     text-align: center;
     padding: 15px 30px;
     height: auto;
   }
-  .tabButtonType1:hover {
+  .tabButtonType:hover {
     padding: 14px 29px;
   }
 }
 
-.tabButtonType1Active {
+.tabButtonTypeActive {
   background: #fff;
   border: 2px solid #1B1C1B;
   color: #1B1C1B;
@@ -868,14 +867,14 @@ textarea:focus {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 960px) {
-  .tabButtonType1Active {
+  .tabButtonTypeActive {
     text-align: center;
     padding: 14px 29px;
     height: auto;
   }
 }
 
-.tabButtonType1Deactive {
+.tabButtonTypeDeactive {
   width: auto;
   border-radius: 5px;
   border: 1px solid #ebebeb;
@@ -888,7 +887,7 @@ textarea:focus {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 960px) {
-  .tabButtonType1Deactive {
+  .tabButtonTypeDeactive {
     text-align: center;
     padding: 15px 30px;
     height: auto;
@@ -906,7 +905,7 @@ textarea:focus {
   }
 }
 
-.popupButtonType1 {
+.popupButtonType {
   width: 100%;
   padding: 20px 0;
   -webkit-box-sizing: border-box;
@@ -928,7 +927,7 @@ textarea:focus {
   transition: background 0.2s ease-in-out;
 }
 
-.popupButtonType1:hover {
+.popupButtonType:hover {
   background: #828283;
 }
 
@@ -1095,15 +1094,15 @@ textarea:focus {
   }
 }
 
-.checkRadioBoxCircleType1 > input {
+.checkRadioBoxCircleType > input {
   display: none;
 }
 
-.checkRadioBoxCircleType1 > input:checked + label > .circle > .inside {
+.checkRadioBoxCircleType > input:checked + label > .circle > .inside {
   opacity: 1;
 }
 
-.checkRadioBoxCircleType1 > label {
+.checkRadioBoxCircleType > label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1112,7 +1111,7 @@ textarea:focus {
           align-items: center;
 }
 
-.checkRadioBoxCircleType1 > label > .circle {
+.checkRadioBoxCircleType > label > .circle {
   width: 30px;
   height: 30px;
   border-radius: 15px;
@@ -1123,7 +1122,7 @@ textarea:focus {
   position: relative;
 }
 
-.checkRadioBoxCircleType1 > label > .circle > .inside {
+.checkRadioBoxCircleType > label > .circle > .inside {
   width: 18px;
   height: 18px;
   background: #4DB7FF;

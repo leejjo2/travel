@@ -31,13 +31,19 @@ public class ThemeController {
 	private MyUtil myUtil;
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list() {
+	public String list(
+			@RequestParam(value = "page", defaultValue ="1") int current_page,
+			Model model
+			) {
+		
+		model.addAttribute("page", current_page);
 		return ".theme.themeList";
 	}
 
 	@RequestMapping(value = "listCourse")
 	@ResponseBody
-	public Map<String, Object> listCourse(@RequestParam(value = "page") int current_page,
+	public Map<String, Object> listCourse(
+			@RequestParam(value = "page") int current_page,
 			@RequestParam (defaultValue = "0") int themeNum, 
 			@RequestParam (defaultValue = "") String keyword,
 			@RequestParam (defaultValue = "0") int areaCode,
@@ -45,7 +51,7 @@ public class ThemeController {
 			@RequestParam (defaultValue = "") String period,
 			HttpServletRequest req) throws Exception {
 		String cp = req.getContextPath();
-		int rows = 10; 
+		int rows = 3; 
 		int total_page;
 		int dataCount;
 
@@ -93,7 +99,7 @@ public class ThemeController {
 			listUrl = cp + "/theme/list?" + query;
 			articleUrl = cp + "/theme/article?page=" + current_page + "&" + query;
 		}
-		String paging = myUtil.paging(current_page, total_page, listUrl);
+		String paging = myUtil.pagingMethod(current_page, total_page, "pagingMethod");
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		

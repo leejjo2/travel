@@ -4,17 +4,44 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link href="${pageContext.request.contextPath}/dist/goWith/css/style.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/dist/goWith/css/pretendard.css" rel="stylesheet"/>
 
-<script type="text/javascript">
-function sendOk() {
-    const f = document.boardForm;
-	
-    f.action = "${pageContext.request.contextPath}/goWith/write";
-    
-    f.submit();
-}
-
+<script>   	
+	       $(document).on('click', '#productTab0', function(e){
+	        		
+	        	document.getElementById("productTab0").className = "tabButtonType tabButtonType1Active";
+	        	document.getElementById("divProduct0").style.display = "block";
+	        		
+	        	});
+	        
+	        function setThumbnail(event,el){
+	        	var file = el.files;
+	        	
+	        	if(file[0].size > 1024*1024*5){
+	        		alert("5MB 이하 사진으로 업로드 해주세요.");
+	        		
+	        		if(document.querySelector("#thumbnail").childElementCount > 0){
+	    				document.getElementById("thumbnailImg").src = "img/no_thumbnail_ex.jpg";
+	    			}
+	        		document.getElementById("uploadFile").value = "";
+	        		return;
+	        	}
+	    		var reader = new FileReader();
+	    		
+	    		reader.onload = function(event){
+	    			document.getElementById("thumbnailImg").src = event.target.result;
+	    		};
+	    		
+	    		reader.readAsDataURL(event.target.files[0]);
+	    	}
+	        
+	        $(document).on('click', '#btnRegister', function(e) {
+	        	const f = document.goWithForm;
+	        	
+	            f.action = "${pageContext.request.contextPath}/goWith/write";
+	            
+	            f.submit();
+	        });
+	        
 </script>
 
             <div class="topImg">
@@ -23,7 +50,7 @@ function sendOk() {
                     <h1>동행 모집 글 게시하기</h1>
                 </div>
             </div>
-            <form id="boardForm" action="" method="post" encType="multipart/form-data">
+            <form id="goWithForm" action="" method="post" encType="multipart/form-data">
 			
             <div class="contentWrapperType1 marginTopXxl">
                 <div class="searchBox">
@@ -41,56 +68,31 @@ function sendOk() {
                                 	<input type="hidden" id="product_code" name="product_code" value="">
                                     <div class="menu marginTopMd marginBottomMd">
                                         <ul>
-                                        	<li>
-                                                	<div id="productTab0" class="tabButtonType1 tabButtonType1Active">
-                                                	서울
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>
-                                                    <div id="productTab0" class="tabButtonType1 tabButtonType1Active">
-                                                	경기
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>
-                                                    <div id="productTab0" class="tabButtonType1 tabButtonType1Active">
-                                                	인천
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>
+                                        	<li>  
+                                                <c:forEach var="vo" items="${listCity}">
+                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active">
+                                                	<input type="hidden" name="product_name"  value="${vo.cityNum}" ${vo.cityNum==dto.cityNum ? "selected='selected'":""} onclick="clickCity();">	
+                                                		${vo.cityName}
+                                             		</div>
+													</c:forEach>
+												</div>
                                             </li>
                                         </ul>
                                     </div>
                                     	<div id="divProduct0" class="contentInsideType1" style="display:block">
 	                                        <ul>
 	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
-	                                                	<input type="checkbox" id="placeSelect0" name="place" value="M0101" onclick='checkProduct(this)' />
-	                                                    <label for="placeSelect0">
+	                                            	<c:forEach var="vo" items="${listSpot}">
+	                                                <div class="checkRadioBoxCircleType">
+	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="place" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""} onclick= '' />
+	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
 	                                                        </div>
-	                                                        <p>청와대</p>
+	                                                        <p>${vo.spotName}</p>
 	                                                    </label>
 	                                                </div>
-	                                            </li>
-	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
-	                                                	<input type="checkbox" id="placeSelect1" name="place" value="M0102" onclick='checkProduct(this)' />
-	                                                    <label for="placeSelect1">
-	                                                        <div class="circle">
-	                                                            <div class="inside"></div>
-	                                                        </div>
-	                                                        <p>광화문</p>
-	                                                    </label>
-	                                                </div>
-	                                            </li>
-	                                            <li>
-	                                                <div class="checkRadioBoxCircleType1">
-	                                                	<input type="checkbox" id="placeSelect2" name="place" value="M0103" onclick='checkProduct(this)' />
-	                                                    <label for="placeSelect2">
-	                                                        <div class="circle">
-	                                                            <div class="inside"></div>
-	                                                        </div>
-	                                                        <p>남산</p>
-	                                                    </label>
-	                                                </div>
+	                                                </c:forEach>
 	                                            </li>
 	                                        </ul>
 	                                    </div>
@@ -108,12 +110,12 @@ function sendOk() {
                                         모두 선택해 주세요
                                     </p>
                                 </div>
-                                <div class="contentContainer marginTopMd">
+                                <div class="contentContainer marginTopMd" >
                                     <div class="contentInsideType1">
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="10s" name="age_10" value="Y" onclick='checkAge(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="checkbox" id="10s" name="age" value="10대" onclick='' />
                                                     <label for="10s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -123,8 +125,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="20s" name="age_20" value="Y" onclick='checkAge(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="checkbox" id="20s" name="age" value="20대" onclick='' />
                                                     <label for="20s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -134,8 +136,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="30s" name="age_30" value="Y" onclick='checkAge(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="checkbox" id="30s" name="age" value="30대" onclick='' />
                                                     <label for="30s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -145,8 +147,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="40s" name="age_40" value="Y" onclick='checkAge(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="checkbox" id="40s" name="age" value="40대" onclick='' />
                                                     <label for="40s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -156,8 +158,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="50s" name="age_50" value="Y" onclick='checkAge(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="checkbox" id="50s" name="age" value="50대" onclick='' />
                                                     <label for="50s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -185,8 +187,8 @@ function sendOk() {
                                     <div class="contentInsideType1">
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="radio" id="all" name="gender" value="0" onclick='checkGender(this)' checked />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="radio" id="all" name="gender" value="0" onclick='' checked />
                                                     <label for="all">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -198,8 +200,8 @@ function sendOk() {
                                         </ul>
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="radio" id="male" name="gender" value="1" onclick='checkGender(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="radio" id="male" name="gender" value="1" onclick='' />
                                                     <label for="male">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -209,8 +211,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="radio" id="female" name="gender" value="2" onclick='checkGender(this)' />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="radio" id="female" name="gender" value="2" onclick='' />
                                                     <label for="female">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -238,13 +240,13 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_start" name="tour_start">
+                                                    <input type="date" id="tour_start" name="startDate">
                                                 </div>
                                             </li>
                                              <li><i class="bi bi-dash-lg"></i></li>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_end" name="tour_end">
+                                                    <input type="date" id="tour_end" name="endDate">
                                                 </div>
                                             </li>
                                         </ul>
@@ -252,8 +254,8 @@ function sendOk() {
                                     <div class="contentInsideType1 contentInsideType2 contentInsideType4" >
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="radio" id="yes" name="consultationType" value="0" onclick='checkDate(this)' checked />
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="radio" id="yes" name="discussion" value="0" onclick='' checked />
                                                     <label for="yes">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -263,8 +265,8 @@ function sendOk() {
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="radio" id="no" name="consultationType" value="1"  onclick='checkDate(this)'/>
+                                                <div class="checkRadioBoxCircleType" >
+                                                    <input type="radio" id="no" name="discussion" value="1"  onclick=''/>
                                                     <label for="no">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -291,7 +293,7 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect1" name="drinkType" value="0" onclick='checkDrinkType(this)' checked />
+                                                    <input type="radio" id="alcoholselect1" name="drink" value="0" onclick='' checked />
                                                     <label for="alcoholselect1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -302,7 +304,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect2" name="drinkType" value="1" onclick='checkDrinkType(this)' />
+                                                    <input type="radio" id="alcoholselect2" name="drink" value="1" onclick='' />
                                                     <label for="alcoholselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -313,7 +315,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect3" name="drinkType" value="2" onclick='checkDrinkType(this)' />
+                                                    <input type="radio" id="alcoholselect3" name="drink" value="2" onclick='' />
                                                     <label for="alcoholselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -339,7 +341,7 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect1" name="smokingType" value="0" onclick='checkSmokingType(this)' checked />
+                                                    <input type="radio" id="tabaccoselect1" name="cigar" value="0" onclick='' checked />
                                                     <label for="tabaccoselect1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -350,7 +352,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect2" name="smokingType" value="1" onclick='checkSmokingType(this)' />
+                                                    <input type="radio" id="tabaccoselect2" name="cigar" value="1" onclick='' />
                                                     <label for="tabaccoselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -361,7 +363,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect3" name="smokingType" value="2" onclick='checkSmokingType(this)' />
+                                                    <input type="radio" id="tabaccoselect3" name="cigar" value="2" onclick='' />
                                                     <label for="tabaccoselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -390,7 +392,7 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tripselect2" name="trip1" value="1" onclick="checkTourType1(this)"/>
+                                                    <input type="radio" id="tripselect2" name="tripType1" value="1" onclick=""/>
                                                     <label for="tripselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -404,7 +406,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tripselect3" name="trip1" value="2" onclick="checkTourType1(this)"/>
+                                                    <input type="radio" id="tripselect3" name="tripType1" value="2" onclick=""/>
                                                     <label for="tripselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -421,7 +423,7 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip2select1" name="trip2" value="1" onclick="checkTourType2(this)" />
+                                                    <input type="radio" id="trip2select1" name="tripType2" value="1" onclick="" />
                                                     <label for="trip2select1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -435,7 +437,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip2select2" name="trip2" value="2" onclick="checkTourType2(this)" />
+                                                    <input type="radio" id="trip2select2" name="tripType2" value="2" onclick="" />
                                                     <label for="trip2select2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -450,7 +452,7 @@ function sendOk() {
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip3select1" name="trip3" value="1" onclick="checkTourType3(this)"/>
+                                                    <input type="radio" id="trip3select1" name="tripType3" value="1" onclick=""/>
                                                     <label for="trip3select1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -464,7 +466,7 @@ function sendOk() {
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip3select2" name="trip3" value="2" onclick="checkTourType3(this)"/>
+                                                    <input type="radio" id="trip3select2" name="tripType3" value="2" onclick=""/>
                                                     <label for="trip3select2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -490,7 +492,7 @@ function sendOk() {
                                 <!-- 옵션 -->
                                 <div class="contentContainer">
                                     <div class="rangeContainer marginTopMd marginBottomMd" >
-                                    	<input class="bar" type="range" id="headcount" name="headcount" min="1" max="8" step="1" value="1"
+                                    	<input class="bar" type="range" id="headcount" name="recruit_cnt" min="1" max="8" step="1" value="1"
                                     	oninput="document.getElementById('pplval').innerHTML=this.value+'명을 선택했습니다';"/>
                                     	<p class="start">1명</p>
                                     	<p class="end">8명</p>
@@ -515,7 +517,7 @@ function sendOk() {
                                 <div class="contentContainer marginTopMd">
                                     <div class="photoUploadContainer">
                                         <div id="thumbnail" class="thumbnail">
-                                            <img id="thumbnailImg" src="img/no_thumbnail_ex.jpg" alt="사진"/>
+                                            <img id="thumbnailImg" name="imageFilename" src="${pageContext.request.contextPath}/dist/goWith/img/01.png" alt="사진"/>
                                         </div>
                                         <div class="content">
                                             <p></p>
@@ -548,8 +550,8 @@ function sendOk() {
                                 <div class="contentInsideType1 contentInsideType2 contentInsideType4" >
                                     <ul>
                                         <li>
-                                            <div class="checkRadioBoxCircleType1" >
-                                                <input type="radio" id="completeN" name="regCompletionFlag" value="N" onclick='checkComplete(this)' checked />
+                                            <div class="checkRadioBoxCircleType" >
+                                                <input type="radio" id="completeN" name="recruit_status" value="N" onclick='checkComplete(this)' checked />
                                                 <label for="completeN">
                                                     <div class="circle">
                                                         <div class="inside" ></div>
@@ -559,8 +561,8 @@ function sendOk() {
                                             </div>
                                         </li>
                                         <li>
-                                            <div class="checkRadioBoxCircleType1" >
-                                                <input type="radio" id="completeY" name="regCompletionFlag" value="Y" onclick='checkComplete(this)' />
+                                            <div class="checkRadioBoxCircleType" >
+                                                <input type="radio" id="completeY" name="recruit_status" value="Y" onclick='checkComplete(this)' />
                                                 <label for="completeY">
                                                     <div class="circle">
                                                         <div class="inside" ></div>
@@ -581,7 +583,7 @@ function sendOk() {
                     <ul>
                         <li>
                             <h1>제목</h1>
-                            <input type="text" id="title" name="title" placeholder="제목을 입력해주세요" />
+                            <input type="text" id="title" name="subject" placeholder="제목을 입력해주세요" />
                         </li>
                     </ul>
                     <ul>
@@ -593,14 +595,15 @@ function sendOk() {
                     <ul>
                         <li>
                             <h1>비밀번호</h1>
-                            <input type="text" id="doc_pwd" name="doc_pwd" placeholder="암호를 쓰시오!" />
+                            <input type="text" id="doc_pwd" name="pwd" placeholder="암호를 쓰시오!" />
                         </li>
                     </ul>
                     
                     <div class="buttonContainer marginTopLg">
-                        <div id="btnRegister" class="buttonType2" onclick="sendOk();">모집글 업로드</div>
+                        <button id="btnRegister" class="buttonType2">모집글 업로드</button>
                     </div>
                 </div>
             </div>
             </form>
+            
           

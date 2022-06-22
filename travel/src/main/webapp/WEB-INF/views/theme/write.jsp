@@ -382,12 +382,12 @@
 						<span style=" margin-right: 30px;">
 							<label for="Type"></label>
 							<select name="period" title="코스 테마 선택">
-								<option value="0">기간 선택</option>
-								<option value="1">당일치기</option>
-								<option value="2">1박 2일</option>
-								<option value="3">2박 3일</option>
-								<option value="4">3박 4일</option>
-								<option value="5">일주일</option>
+								<option value="">기간 선택</option>
+								<option value="당일치기">당일치기</option>
+								<option value="1박2일">1박 2일</option>
+								<option value="2박3일">2박 3일</option>
+								<option value="3박4일">3박 4일</option>
+								<option value="일주일">일주일</option>
 							</select>
 						</span>
 					</div>

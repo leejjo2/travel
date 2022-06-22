@@ -232,7 +232,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 		
 						<tr>
 							<td class="table-light" scope="row">판매자 명</td>
-								<td colspan="3">
+							<td colspan="3">
 								<p class="form-control-plaintext">${sessionScope.member.userName}</p>
 							</td>
 						</tr>
@@ -248,7 +248,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 						<tr>
 							<td class="table-light" scope="row" rowspan="2">주소</td>
 							<td>
-								<input type="text" name="hotelZip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.HotelZip}" readonly="readonly">
+								<input type="text" name="hotelZip" id="zip" class="form-control" style="width: 160px;" placeholder="우편번호" value="${dto.hotelZip}" readonly="readonly">
 							</td>
 							<td>	
 								<button class="btn btn-light" type="button" style="margin-left: 3px;" onclick="daumPostcode();">우편번호 검색</button>
@@ -291,9 +291,10 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<td class="text-center">
 								<button type="button" class="btn btn-dark" onclick="sendOk();">${mode=='update'?'수정완료':'등록하기'}&nbsp;<i class="bi bi-check2"></i></button>
 								<button type="reset" class="btn btn-light">다시입력</button>
-								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/roomList';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
+								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/lodgingList';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
 									<input type="hidden" name="partnerNum" value="${dto.partnerNum}">
+									<input type="hidden" name="hotelNum" value="${dto.hotelNum}">						
 								</c:if>
 								</td>
 							</tr>

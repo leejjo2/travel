@@ -1,5 +1,7 @@
 package com.sp.trip.goWith;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class GoWith {
 	private int goWithNum;
 	private String userId;
@@ -21,7 +23,11 @@ public class GoWith {
 	private String tripType2;
 	private String tripType3;
 	private String imageFilename;
+	private String cityName;
+	private int cityNum;
 	private int spotNum;
+	private String spotName;
+	private MultipartFile selectFile;
 	
 	public int getGoWithNum() {
 		return goWithNum;
@@ -144,12 +150,39 @@ public class GoWith {
 	public void setImageFilename(String imageFilename) {
 		this.imageFilename = imageFilename;
 	}
+	
+	public int getCityNum() {
+		return cityNum;
+	}
+	public void setCityNum(int cityNum) {
+		this.cityNum = cityNum;
+	}
 	public int getSpotNum() {
 		return spotNum;
 	}
 	public void setSpotNum(int spotNum) {
 		this.spotNum = spotNum;
 	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public String getSpotName() {
+		return spotName;
+	}
+	public void setSpotName(String spotName) {
+		this.spotName = spotName;
+	}
+	public MultipartFile getSelectFile() {
+		return selectFile;
+	}
+	public void setSelectFile(MultipartFile selectFile) {
+		this.selectFile = selectFile;
+	}
+	
+	
 	
 	
 }
