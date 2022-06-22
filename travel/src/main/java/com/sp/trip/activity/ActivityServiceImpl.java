@@ -74,4 +74,39 @@ public class ActivityServiceImpl implements ActivityService {
 		return dto;
 	}
 
+	@Override
+	public int insertReserve(Reserve dto) throws Exception {
+		int reserveNum = 0;
+		try {
+			reserveNum = dao.selectOne("activity.reserveNum_seq");
+			dto.setReserveNum(reserveNum);
+			
+			dao.insertData("activity.insertActivityReserve", dto); // 액티비티 예약 테이블
+			dao.insertData("activity.insertActivityReserveDetail", dto); // 액티비티 예약 상세 테이블
+			dao.insertData("activity.insertActivityPay", dto); // 액티비티 결제 테이블
+			
+			if(dto.getMileageUse() != 0) { // 마일리지 사용을 했다면
+				dao.insertData("activity.insertMileageUse", dto);
+			}
+			
+			dto.setTotalMileage(dto.getTotalMileage() + dto.getMileageSave());
+			dao.insertData("activity.insertMileageSave", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return reserveNum;
+	}
+
+	@Override
+	public Reserve readPayment(int reserveNum) {
+		Reserve dto = null;
+		try {
+			dto = dao.selectOne("activity.readPayment", reserveNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
 }

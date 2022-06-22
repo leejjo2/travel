@@ -29,13 +29,19 @@ function checkPoint() {
 	}
 }
 
+function getSavePoint(totalPayment) {
+	let savePoint = Math.ceil(totalPayment * 0.05);
+	$(".savingPoint").html(comma(savePoint));
+	$('input[name=mileageSave]').val(savePoint);
+}
+
 $(function() {
 	$(".ticketPrice").html(comma(${rdto.price}) + "원");
 	$(".totalPrice").html(comma(${rdto.price} * ${totalMen}));
 	$(".totalPoint").html(comma(${mdto.totalMileage}));
 	$('input[name=totalPrice]').val(${rdto.price} * ${totalMen});
 	$('input[name=payAmount]').val(${rdto.price} * ${totalMen});
-	
+	getSavePoint(${rdto.price} * ${totalMen}); // 적립 예정 포인트 구하기
 	
 	if(${mdto.totalMileage} === 0){
 		$(".checkout-point-inputbox input").attr("disabled", "");
@@ -54,10 +60,12 @@ $(function() {
 				$(".usingPoint").html(0);
 				$(".totalPay").html(comma(${rdto.price} * ${totalMen}));
 				$('input[name=payAmount]').val(${rdto.price} * ${totalMen});
+				getSavePoint(${rdto.price} * ${totalMen});
 			} else {
 				$(".usingPoint").html("-"+$(this).val());
 				$(".totalPay").html(comma(${rdto.price} * ${totalMen} - usingPoint));
 				$('input[name=payAmount]').val(${rdto.price} * ${totalMen} - usingPoint);
+				getSavePoint(${rdto.price} * ${totalMen} - usingPoint);
 			}
 		}
 	});
@@ -73,8 +81,6 @@ $(function() {
 		let payWay = $(this).children('input').attr('data-gtm-form-interact-field-id');
 		$('input[name=payWay]').val(payWay);
 	});
-	
-	
 });
 
 $(document).ready(function() {
@@ -85,7 +91,6 @@ $(document).ready(function() {
 	        $('input[name=name]').focus();
 	        return;
 	    }
-	    
 	    payment();
 	});
 });
@@ -98,6 +103,7 @@ function payment(){
 	let buyer_name = $('input[name=name]').val();
 	let buyer_tel = $('input[name=tel]').val();
 	let payWay = $('input[name=payWay]').val();
+	
 	let pg = 'html5_inicis';
 	if(payWay === "1"){
 		pg = 'html5_inicis';
@@ -126,7 +132,6 @@ function payment(){
 	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	        */
 	        insertReserve();
-	        
 	    } else {
 	    	 var msg = rsp.error_msg;
 	    	 alert(msg);
@@ -135,14 +140,16 @@ function payment(){
 }
 
 function insertReserve() {
-	
+	var f = document.reserveForm;
+	f.action="${pageContext.request.contextPath}/activity/insertReserve";
+	f.submit();
 }
 </script>
 
 
 <div id="Mrt3Payment-react-component-af4ab29c-68dc-4758-85df-2bfa96d167d6">
 	<main class="css-iiwtf3--Order-style--container">
-		<form class="css-rl7jky--Order-style--formWrapper" data-gtm-form-interact-id="0" method="post">
+		<form name="reserveForm" class="css-rl7jky--Order-style--formWrapper" data-gtm-form-interact-id="0" method="post">
 			<input type="hidden" name="email" value="${mdto.email}">
 			<input type="hidden" name="tel" value="${mdto.tel}">
 			<input type="hidden" name="price" value="${rdto.price}">
@@ -152,6 +159,8 @@ function insertReserve() {
 			<input type="hidden" name="activityName" value="${rdto.activityName}">
 			<input type="hidden" name="payAmount" value="">
 			<input type="hidden" name="payWay" value="1">
+			<input type="hidden" name="mileageSave" value="">
+			<input type="hidden" name="totalMileage" value="${mdto.totalMileage}">
 			
 			<h1 class="css-asuv60--OrderForm-style--title">예약하기</h1>
 			<div class="css-ho0ft8--OrderForm-style--content">
@@ -332,6 +341,10 @@ function insertReserve() {
 								<div class="css-907gbs--PaymentInfo-style--orderPrice">
 									<span class="css-ngwitj--PaymentInfo-style--orderPriceText">포인트 사용</span>
 									<span class="css-ngwitj--PaymentInfo-style--orderPriceText"><span class="usingPoint">0</span>원</span>
+								</div>
+								<div class="css-907gbs--PaymentInfo-style--orderPrice">
+									<span class="css-ngwitj--PaymentInfo-style--orderPriceText">적립 예정 포인트(결제 금액의 5%)</span>
+									<span class="css-ngwitj--PaymentInfo-style--orderPriceText"><span class="savingPoint"></span>원</span>
 								</div>
 							</div>
 							<div class="css-aqobhm--PaymentInfo-style--totalPriceWrapper">

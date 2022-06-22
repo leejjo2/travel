@@ -68,7 +68,7 @@
 		        FROM member me
 		        LEFT OUTER JOIN mileage mi ON me.userId = mi.userId
 		        WHERE me.userId = #{userId}
-		        ORDER BY mileagedate DESC
+		        ORDER BY mileagenum DESC
 		       )
 		 WHERE ROWNUM &lt;= 1
 	</select>
@@ -78,6 +78,44 @@
 	    FROM activity a1
 	    LEFT OUTER JOIN activityDetail a2 ON a1.activityNum = a2.activityNum
 	    WHERE a1.activityNum = #{activityNum}
+	</select>
+	
+	<select id="reserveNum_seq" resultType="Integer">
+		SELECT activityReserve_seq.NEXTVAL FROM dual
+	</select>
+	
+	<insert id="insertActivityReserve" parameterType="com.sp.trip.activity.Reserve">
+		INSERT INTO activityReserve(reserveNum, totalPrice, mileageUse, totalMen, reserveDoneDate,
+			name, tel, email, userId, usingStatus)
+		VALUES(#{reserveNum}, #{totalPrice}, #{mileageUse}, #{totalMen}, SYSDATE, 
+			#{name}, #{tel}, #{email}, #{userId}, '미사용')
+	</insert>
+	
+	<insert id="insertActivityReserveDetail" parameterType="com.sp.trip.activity.Reserve">
+		INSERT INTO activityReserveDetail(reserveDetailNum, reserveNum, detailNum, price)
+		VALUES(activityReserveDetail_seq.NEXTVAL, #{reserveNum}, #{detailNum}, #{price})
+	</insert>
+	
+	<insert id="insertActivityPay" parameterType="com.sp.trip.activity.Reserve">
+		INSERT INTO activityPay(reserveNum, payWay, payAmount, payDate)
+		VALUES(#{reserveNum}, #{payWay}, #{payAmount}, SYSDATE)
+	</insert>
+	
+	<insert id="insertMileageUse" parameterType="com.sp.trip.activity.Reserve">
+		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageUse}, 2 , #{totalMileage}, SYSDATE, '액티비티 구매 사용')
+	</insert>
+	
+	<insert id="insertMileageSave" parameterType="com.sp.trip.activity.Reserve">
+		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '액티비티 구매 적립')
+	</insert>
+	
+	<select id="readPayment" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
+		SELECT totalPrice, payAmount
+		FROM activityreserve ar
+		JOIN activityPay ap ON ar.reserveNum = ap.reserveNum
+		WHERE ar.reserveNum = #{reserveNum}
 	</select>
 
 </mapper>

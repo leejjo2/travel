@@ -21,7 +21,6 @@ public class ActivityManageServiceImpl implements ActivityManageService{
 	@Override
 	public void insertActivity(Activity dto, String userId, String pathname) throws Exception {
 		try {
-			System.out.println(pathname);
 			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
 			if (saveFilename != null) {
 				System.out.println("title"+ saveFilename);

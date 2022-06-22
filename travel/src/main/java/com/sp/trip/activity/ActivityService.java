@@ -11,4 +11,8 @@ public interface ActivityService {
 	// 예약을 위한 함수
 	public Reserve readMemberInfo(String userId);
 	public Reserve readReserveInfo(int activityNum);
+	
+	// 결제를 위한 함수
+	public int insertReserve(Reserve dto) throws Exception;
+	public Reserve readPayment(int reserveNum);
 }

@@ -159,8 +159,44 @@ public class ActivityController {
 		return ".activity.activityReserve";
 	}
 	
+	// 액티비티 등록 폼
+	@RequestMapping(value = "insertReserve", method = RequestMethod.POST)
+	public String writeSubmit(
+			Reserve dto, 
+			HttpSession session) throws Exception {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String userId = info.getUserId();
+		dto.setUserId(userId);
+		
+		// 총 마일리지에 적립 금액 더하고 사용 금액 빼기
+		int totalMileage = dto.getTotalMileage() - dto.getMileageUse();
+		dto.setTotalMileage(totalMileage);
+		
+		int reserveNum = 0;
+		try {
+			reserveNum = service.insertReserve(dto);
+		} catch (Exception e) {
+		}
+		
+		return "redirect:/activity/completePage?reserveNum="+reserveNum;
+	}
+	
+	
 	@RequestMapping(value = "completePage", method = RequestMethod.GET)
-	public String reserveComplete() throws Exception {
+	public String reserveComplete(
+			@RequestParam int reserveNum,
+			Model model) throws Exception {
+		
+		
+		Reserve dto = service.readPayment(reserveNum);
+		if( dto == null) {
+			return "redirect:/activity/list?";
+		}
+		
+		model.addAttribute("totalPrice", dto.getTotalPrice());
+		model.addAttribute("payAmount", dto.getPayAmount());
+		
 		return ".activity.paymentComplete";
 	}
 }

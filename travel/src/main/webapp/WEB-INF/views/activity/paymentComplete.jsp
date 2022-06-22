@@ -382,6 +382,19 @@ div {
 }
 </style>
 
+<script type="text/javascript">
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+$(function() {
+	$(".totalPrice").html(comma(${totalPrice}));
+	$(".payAmount").html(comma(${payAmount}));
+});
+</script>
+
 <div
 	id="Mrt3Payment-react-component-ba70d1e2-c2dd-47c8-bab5-5fa4ad964c1f">
 	<div class="css-19exa0t--Success-style--container">
@@ -398,26 +411,26 @@ div {
 				<div class="css-a14ldt--OrderResultPaymentInfo-style--itemList">
 					<div class="css-i4h26i--OrderResultPaymentField-style--wrapper--OrderResultPaymentField-style--basic">
 						<span class="css-h2frcg--OrderResultPaymentField-style--item">주문
-							금액</span><span class="css-197nz83--OrderResultPaymentField-style--price">24,900원</span>
+							금액</span><span class="css-197nz83--OrderResultPaymentField-style--price"><span class="totalPrice"></span>원</span>
 					</div>
 				</div>
 				<div
 					class="css-15hx54q--OrderResultPaymentField-style--wrapper--OrderResultPaymentField-style--total">
-					<span class="css-h2frcg--OrderResultPaymentField-style--item">총
-						결제 금액</span><span
-						class="css-1ci2c8t--OrderResultPaymentField-style--price--OrderResultPaymentField-style--totalPrice">24,900원</span>
+					<span class="css-h2frcg--OrderResultPaymentField-style--item">총 결제 금액</span>
+					<span class="css-1ci2c8t--OrderResultPaymentField-style--price--OrderResultPaymentField-style--totalPrice"><span class="payAmount"></span>원</span>
 				</div>
 			</div>
 			<div class="css-1f39bi3--OrderResultButtonList-style--wrapper">
-				<span role="button"
-					class="css-fgfjm--OrderResultButton-style--button"><button
-						type="button" class="mrt-button css-onylof">
-						<span class="css-1s4v6ia">홈으로 가기</span>
-					</button></span><span role="button"
-					class="css-fgfjm--OrderResultButton-style--button"><button
-						type="button" class="mrt-button css-17x5dyz">
+				<span role="button" class="css-fgfjm--OrderResultButton-style--button">
+					<button type="button" class="mrt-button css-onylof" onclick="location.href='${pageContext.request.contextPath}/'">
+							<span class="css-1s4v6ia">홈으로 가기</span>
+					</button>
+				</span>
+				<span role="button" class="css-fgfjm--OrderResultButton-style--button">
+					<button type="button" class="mrt-button css-17x5dyz">
 						<span class="css-1s4v6ia">예약상세 보기</span>
-					</button></span>
+					</button>
+				</span>
 			</div>
 		</div>
 	</div>

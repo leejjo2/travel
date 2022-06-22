@@ -12,7 +12,9 @@ public class Reserve {
 	private int price; // 가격
 	private int totalMen; // 총 인원
 	private int totalPrice; // 총 가격(마일리지 사용액 + 결제 금액)
-	private int totalMileage; // 마일리지 테이블에서 아이디로 group 시킨다음 넣기
+	
+	
+	private int totalMileage; // 총 마일리지 액
 	private int mileageUse; // 마일리지 사용금액
 	private int mileageSave; // 마일리지 적립 금액
 	
