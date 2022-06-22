@@ -202,6 +202,7 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}		
 	}
 
+	
 	@Override
 	public void deleteBoardScrap(Map<String, Object> map) throws Exception {
 		try {

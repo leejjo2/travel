@@ -303,6 +303,7 @@ public class TravelCourseController {
 		return model;
 	}
 	
+	
 	@RequestMapping(value = "userBoardScraped", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> userBoardScraped(

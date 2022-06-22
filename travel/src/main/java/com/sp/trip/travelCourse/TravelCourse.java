@@ -41,6 +41,7 @@ public class TravelCourse {
 	
 	private List<TravelCourse> travelCourseList;
 	
+	
 	// 코스 이미지
 	private int imageFileNum; // 이미지 파일 번호
 	private String saveFileName; // 서버에 저장된 파일 이름

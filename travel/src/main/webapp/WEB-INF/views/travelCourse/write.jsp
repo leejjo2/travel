@@ -150,6 +150,7 @@ $(function() {
 		out += ' </div>';
 		
 		$("#courseCity").append(out);
+		
 
 		const courseEls = document.querySelectorAll(".course");
 		const courseEl = courseEls[courseEls.length-1];

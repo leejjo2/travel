@@ -79,6 +79,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 	});
 }
 
+
 $(function() {
 	function travelCourseList() {
 	let themeNum = $(".title1_5 ul .on").attr("id");

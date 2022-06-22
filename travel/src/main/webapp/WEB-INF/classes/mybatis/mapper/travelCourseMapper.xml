@@ -154,6 +154,7 @@
 	</delete>
 	
 	
+	
 	<!-- 게시글 스크랩 개수 -->
 	<select id="boardScrapCount" parameterType="Integer" resultType="Integer">
 		SELECT NVL(COUNT(*), 0) FROM scrap

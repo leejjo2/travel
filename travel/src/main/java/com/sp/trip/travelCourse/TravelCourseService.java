@@ -19,6 +19,7 @@ public interface TravelCourseService {
 	public int boardLikeCount(int courseNum);
 	public boolean userBoardLiked(Map<String, Object> map);
 	
+	
 	public void insertBoardScrap(Map<String, Object> map) throws Exception;
 	public void deleteBoardScrap(Map<String, Object> map) throws Exception;
 	public int boardScrapCount(int courseNum);
