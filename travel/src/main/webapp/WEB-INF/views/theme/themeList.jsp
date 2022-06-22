@@ -250,7 +250,7 @@ $(function() {
 			animated = false;
 		}
 	});
-})
+});
 
 $(function(){
 	adminCourseList(0, '', 0, '', '', ${page});
@@ -280,7 +280,7 @@ function adminCourseList(themeNum, keyword, areaCode, hashtag, period, pageNum )
 			let list = data.list[i];
 			
 			out +='<li class="bdr_nor"><div class="photo">';
-			out +=		'<a href="">';
+			out +=		'<a href="${pageContext.request.contextPath}/theme/article?courseNum='+list.courseNum+'&page='+pageNum+'">';
 			out +=			'<img src="${pageContext.request.contextPath}/uploads/course/'+list.saveFileName+'" alt="${dto.subject}">';
 			out +=		'</a>';
 			out +=	'</div>';

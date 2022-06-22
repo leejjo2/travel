@@ -144,4 +144,55 @@ public class ThemeController {
 		}
 		return "redirect:/theme/list";
 	}
+	
+	@RequestMapping(value = "article", method = RequestMethod.GET)
+	public String article(
+			@RequestParam int courseNum,
+			@RequestParam String page,
+			Model model
+			) throws Exception {
+		String query = "page=" + page;
+		
+		Theme dto = service.readBoard(courseNum);
+		if (dto == null) {
+			return "redirect:/theme/list?" + query;
+		}
+		dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+		List<Theme> courseList = service.listAdminDetailCourse(courseNum);
+		int courseCount = 0;
+		for(Theme dto2 : courseList) {
+			courseCount++;
+			dto2.setSaveFileName(service.listImg(dto2.getCourseNum()));
+		}
+		String latitude = courseList.get(0).getLatitude();
+		String longitude = courseList.get(0).getLongitude();
+		model.addAttribute("dto", dto);
+		model.addAttribute("courseList", courseList);
+		model.addAttribute("courseCount", courseCount);
+		model.addAttribute("latitude", latitude);
+		model.addAttribute("longitude", longitude);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("query", query);
+			
+		return ".theme.article";
+	}
+	@RequestMapping(value = "regions")
+	@ResponseBody
+	public Map<String, Object> regions(
+			@RequestParam(defaultValue = "") int courseNum
+			) throws Exception {
+
+		// 지도를 표시할 리전
+		List<Theme> list = null;
+		
+		list = service.listAdminDetailCourse(courseNum);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+
+		model.put("list", list);
+		
+		return model;
+	}	
+	
 }

@@ -525,6 +525,7 @@ CREATE TABLE roomInfo (
 	,CONSTRAINT fk_roomInfo_hotelNum FOREIGN KEY(hotelNum)
 		REFERENCES hotel(hotelNum) ON DELETE CASCADE
 );
+ALTER TABLE roomInfo ADD roomBed VARCHAR2(3) NOT NULL;
 
 -- 방 시퀀스
 CREATE SEQUENCE roomInfo_seq

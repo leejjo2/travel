@@ -116,6 +116,20 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return saveFileName;
 	}
+
+	@Override
+	public Theme readBoard(int courseNum) {
+		Theme dto = null;
+		
+		try {
+			dto = dao.selectOne("theme.readBoard", courseNum);
+		} catch (Exception e) {
+		}
+		
+		return dto;
+	}
+	
+	
 	
 	
 

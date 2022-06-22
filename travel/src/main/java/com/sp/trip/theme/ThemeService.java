@@ -16,4 +16,6 @@ public interface ThemeService {
 
 	public String listImg(int courseNum);
 	
+	public Theme readBoard(int courseNum);
+	
 }
