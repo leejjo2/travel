@@ -37,7 +37,7 @@
 	        $(document).on('click', '#btnRegister', function(e) {
 	        	const f = document.goWithForm;
 	        	
-	            f.action = "${pageContext.request.contextPath}/goWith/write";
+	            f.action = "${pageContext.request.contextPath}/gowith/write";
 	            
 	            f.submit();
 	        });
@@ -46,11 +46,14 @@
 
             <div class="topImg">
                 <div class="overlay"></div>
+                 <div class="img">
+                    <img src="${pageContext.request.contextPath}/dist/goWith/img/03.jpg" />
+                </div>
                 <div class="content">
                     <h1>동행 모집 글 게시하기</h1>
                 </div>
             </div>
-            <form id="goWithForm" action="" method="post" encType="multipart/form-data">
+            <form name="goWithForm" action="" method="post" encType="multipart/form-data">
 			
             <div class="contentWrapperType1 marginTopXxl">
                 <div class="searchBox">
@@ -84,7 +87,7 @@
 	                                            <li>
 	                                            	<c:forEach var="vo" items="${listSpot}">
 	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="place" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""} onclick= '' />
+	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""} onclick= '' />
 	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
@@ -97,9 +100,6 @@
 	                                        </ul>
 	                                    </div>
                                 </div>
-                                
-                        </li>
-                    </ul>
                     <ul>
                         <li>
                             <div class="contentBoxType1">
@@ -600,7 +600,7 @@
                     </ul>
                     
                     <div class="buttonContainer marginTopLg">
-                        <button id="btnRegister" class="buttonType2">모집글 업로드</button>
+                        <button type="button" id="btnRegister" class="buttonType2">모집글 업로드</button>
                     </div>
                 </div>
             </div>

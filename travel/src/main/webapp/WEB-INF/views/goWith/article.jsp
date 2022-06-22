@@ -3,14 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link href="${pageContext.request.contextPath}/dist/css/goWith/style.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/dist/css/goWith/pretendard.css" rel="stylesheet"/>
+<link href="${pageContext.request.contextPath}/dist/goWith/css/style.css" rel="stylesheet"/>
 
 
            <div class="topImg">
-                <div class="overlay"></div>
                 <div class="img">
-                    <img src="img/post_thumbnail_example.jpg" />
+                    <img src="${pageContext.request.contextPath}/dist/goWith/img/04.jpg" />
                 </div>
                 <div class="content">
                     <div class="badge">

@@ -15,4 +15,82 @@
 		INSERT INTO goWith(goWithNum, userId, pwd, subject, content, hitCount, reg_date, recruit_status, recruit_cnt, startDate, endDate, age, gender, discussion, drink, cigar, tripType1, tripType2, tripType3, imageFilename, spotNum)
 		VALUES (goWith_seq.NEXTVAL, #{userId}, #{pwd}, #{subject}, #{content}, 0, SYSDATE, #{recruit_status}, #{recruit_cnt}, #{startDate}, #{endDate}, #{age}, #{gender}, #{discussion}, #{drink}, #{cigar}, #{tripType1}, #{tripType2}, #{tripType3}, #{imageFilename}, #{spotNum})
 	</insert>
+	
+	<sql id="where-list">
+		<choose>
+			<when test="condition == 'all' ">
+			   ( INSTR(subject, #{keyword}) &gt; 0
+		          OR DBMS_LOB.INSTR(content, #{keyword}) &gt; 0 )
+			</when>
+			<when test="condition == 'everything' ">
+				( spotNum = #{keyword} AND startAge = #{keyword} AND endAge = #{keyword} AND gender = #{keyword}
+		          AND startDate = #{keyword} AND endDate = #{keyword} AND discussion = #{keyword})
+			</when>
+			<when test="condition == 'userName' ">
+				( INSTR(userName, #{keyword}) &gt; 0)
+			</when>
+			<otherwise>
+				INSTR(${condition}, #{keyword}) &gt; 0
+			</otherwise>
+		</choose>
+	</sql>
+			
+	<!-- 글개수 -->
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM goWith
+		<where>
+			<if test="keyword!=null and keyword!='' ">
+				<include refid="where-list"/>
+			</if>
+		</where>   
+	</select>
+	
+	<!-- 글리스트 -->
+	<select id="listGoWith" parameterType="map" resultType="com.sp.trip.goWith.GoWith">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT g.goWithNum, g.userId, userName, subject, cityName, spotName, 
+				recruit_cnt, recruit_status, TO_CHAR(startDate, 'YYYY-MM-DD') startDate,
+				TO_CHAR(endDate, 'YYYY-MM-DD') endDate, age, gender, discussion, drink, cigar,
+				tripType1, tripType2, tripType3,
+				TO_CHAR(g.reg_date, 'YYYY-MM-DD') reg_date,
+				hitCount, imageFilename, NVL(replyCount, 0) replyCount
+				FROM goWith g
+				JOIN member m ON g.userId=m.userId
+                JOIN goWithSpot s ON g.spotNum = s.spotNum
+                JOIN goWithCity c ON s.cityNum = c.cityNum
+				LEFT OUTER JOIN (
+					SELECT goWithNum, COUNT(*) replyCount FROM goWithReply
+					GROUP BY goWithNum
+				) a ON g.goWithNum = a.goWithnum
+				<where>
+					<if test="keyword != null and keyword != ''">
+						<include refid="where-list"/>
+					</if>
+				</where>
+				ORDER BY goWithNum DESC
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}	
+	</select>
+	
+	<!-- 글보기 -->
+	<select id="readGoWith" parameterType="Integer" resultType="com.sp.trip.goWith.GoWith">
+		SELECT g.goWithNum, g.userId, userName, subject, cityName, spotName, 
+				recruit_cnt, recruit_status, TO_CHAR(startDate, 'YYYY-MM-DD') startDate,
+				TO_CHAR(endDate, 'YYYY-MM-DD') endDate, age, gender, discussion, drink, cigar,
+				tripType1, tripType2, tripType3,
+				TO_CHAR(g.reg_date, 'YYYY-MM-DD') reg_date,
+				hitCount, imageFilename
+				FROM goWith g
+				JOIN member m ON g.userId=m.userId
+                JOIN goWithSpot s ON g.spotNum = s.spotNum
+                JOIN goWithCity c ON s.cityNum = c.cityNum
+				WHERE g.goWithNum = #{goWithNum}
+	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Integer">
+		UPDATE goWith SET hitCount=hitCount+1 WHERE goWithNum = #{goWithNum}
+	</update>
 </mapper>

@@ -4,10 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link href="${pageContext.request.contextPath}/dist/goWith/css/style.css" rel="stylesheet"/>
-<link href="${pageContext.request.contextPath}/dist/goWith/css/pretendard.css" rel="stylesheet"/>
 
-            <div id="topImgDiv" class="topImg" style="padding:0px; padding-top:30px;">
+
+            <div id="topImgDiv" class="topImg">
                 <div class="overlay"></div>
+                <div class="img">
+                    <img src="${pageContext.request.contextPath}/dist/goWith/img/02.jpg" />
+                </div>
                 <div class="content">
                     <h1 style="margin-top: 20px;">동행을 구해보세요</h1>
                     <p>
@@ -30,18 +33,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="buttonContainer marginTopXxl">
-                	<div id="btnMoveList" class="buttonType1" style="border:0px; width:180px; height:50px;">
-                	<ul>
-                        <li>
-                            <p>전체 동행모집 보기</p>
-                        </li>
-                        <li>
-                        	<p style="text-align:center;">V</p>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
+                
             </div>
             <div class="contentWrapperType1 marginTopXxl">
                 <div id="searchDiv1" class="searchBox">
@@ -60,21 +52,22 @@
                                     <div class="menu marginTopMd marginBottomMd">
                                         <ul>
                                         	<li>
-                                                	<div id="productTab0" class="tabButtonType1 tabButtonType1Active">
+                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active">
                                                 	서울
                                                     <input type="hidden" name="product_name" value="M01">
                                                     </div>                                       
-                                                    <div id="productTab1" class="tabButtonType1 tabButtonType1Active">
+                                                    <div id="productTab1" class="tabButtonType tabButtonType1Active">
                                                 	경기
                                                     <input type="hidden" name="product_name" value="M01">
                                                     </div>
-                                                    <div id="productTab2" class="tabButtonType1 tabButtonType1Active">
+                                                    <div id="productTab2" class="tabButtonType tabButtonType1Active">
                                                 	인천
                                                     <input type="hidden" name="product_name" value="M01">
                                                     </div>  
                                             </li>
                                         </ul>
                                     </div>	
+                                    	
                                     	<div id="divProduct0" class="contentInsideType" style="display:block">
 	                                        <ul>  	
 	                                            <li>
@@ -163,7 +156,7 @@
                                     <div class="contentInsideType1">
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1">
+                                                <div class="checkRadioBoxCircleType">
                                                     <input type="radio" id="all" name="gender" value="0" onclick="checkGender(this)" checked="">                                     
                                                     <label for="all">
                                                         <div class="circle">
@@ -176,7 +169,7 @@
                                         </ul>
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1">
+                                                <div class="checkRadioBoxCircleType">
                                                     <input type="radio" id="male" value="1" name="gender" onclick="checkGender(this)">
                                                     <label for="male">
                                                         <div class="circle">
@@ -187,7 +180,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1">
+                                                <div class="checkRadioBoxCircleType">
                                                     <input type="radio" id="female" value="2" name="gender" onclick="checkGender(this)">
                                                     <label for="female">
                                                         <div class="circle">
@@ -217,13 +210,13 @@
                                         <ul>
                                             <li>
                                                 <div class="box">            	
-                                                	<input type="text" id="startDate" name="startDate" style="width:75px" placeholder="일정 선택" class="hasDatepicker" readonly="readonly"><img class="ui-datepicker-trigger" src="img/calendar_ico.svg" alt="..." title="..." align="absmiddle" style="cursor: pointer; margin-bottom: -5px;">
+                                                	<input type="date" id="startDate" name="startDate" class="hasDatepicker">
                                                 </div>
                                             </li>
                                             <li><i class="bi bi-dash-lg"></i></li>
                                             <li>
                                                 <div class="box">                              	
-                                                	<input type="text" id="endDate" name="endDate" style="width:75px" placeholder="일정 선택" class="hasDatepicker" readonly="readonly"><img class="ui-datepicker-trigger" src="img/calendar_ico.svg" alt="..." title="..." align="absmiddle" style="cursor: pointer; margin-bottom: -5px;">  	
+                                                	<input type="date" id="endDate" name="endDate" class="hasDatepicker">
                                                 </div>
                                             </li>
                                         </ul>
@@ -232,7 +225,7 @@
                                     <input type="hidden" id="dateType" name="dateType" value="">
                                         <ul>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1">
+                                                <div class="checkRadioBoxCircleType">
                                                     <input type="radio" id="yes" value="0" name="negotiation" onclick="checkDate(this)" checked="">       
                                                     <label for="yes">
                                                         <div class="circle">
@@ -243,7 +236,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="checkRadioBoxCircleType1">
+                                                <div class="checkRadioBoxCircleType">
                                                     <input type="radio" id="no" value="1" name="negotiation" onclick="checkDate(this)">
                                                     <label for="no">
                                                         <div class="circle">
@@ -260,7 +253,7 @@
                         </li>
                     </ul>
                     <div class="buttonContainer">
-                        <p>현재 125 개의 동행 리스트가 있어요 :D</p>
+                        <p>현재 ${dataCount} 개의 동행 리스트가 있어요 :D</p>
                         <div id="btnNext" class="buttonType2">
                             검색하기&nbsp;
                             <i class="bi bi-search"></i>
@@ -281,7 +274,7 @@
                 <input type="hidden" id="keyword" name="keyword" value="">
                 <input type="hidden" id="orderType" name="orderType" value="">
                     <div class="left">
-                        <div id="btnStatus1" class="tabButtonType1">진행중만 보기</div>
+                        <div id="btnStatus1" class="tabButtonType">진행중만 보기</div>
                     </div>
                     <div class="right">
                         <div class="searchBox searchInput">
@@ -297,11 +290,13 @@
                                 </li>
                             </ul>
                         </div>
+                        
                         <div class="sortBox">
                             <select class="selectBoxType2" id="sort" name="sort" onchange="onchange_sort()">
-                                <option value="0" selected="">최신순</option>
+                                <option value="0" selected="">최신순 </option>
                                 <option value="1">매칭점수순</option>
                             </select>
+                            
                         </div>
                     </div>
                 </div>
@@ -323,6 +318,7 @@
                     </div>
                     <div class="right">
                         <div id="btnStatus2" class="tabButtonType1 tabButtonType2">진행중만 보기</div>
+                        
                         <div class="sortBox">
                             <select class="selectBoxType2" id="sort2" name="sort2" onchange="onchange_sort2()">
                                 <option value="0" selected="">최신순</option>
@@ -331,66 +327,65 @@
                         </div>
                     </div>
                 </div>
+                <c:forEach var="vo" items="${list}">
                 <ul>
-                			<li>
-                				<a onclick="fn_detail(202)" style="cursor:pointer;">
+                <li>
+                	<a href="${articleUrl}&num=${vo.goWithNum}" style="cursor:pointer;">
 		                        <div class="contentBoxType3">
 		                            <div class="postContent">
 		                                <div class="top">
 		                                    <div class="thumbnail">
-		                                    			<img src="/odawith/upload/3639dbbc-b074-4eb2-be36-72eb9e82275e.png" alt="사진">
+		                                    			<img src="${pageContext.request.contextPath}/uploads/photo/${vo.imageFilename}" alt="사진">
 		                                    </div>
 		                                    <div class="text">
 		                                        <div class="score">
 		                                        			<i class="bi bi-activity"></i>
-		                                            <h2>AI 매칭점수</h2>
-		                                            <h1 class="type1">0</h1>
+		                                            <h2>${vo.recruit_status=='N'?'모집중':'모집완료'}</h2>
 		                                        </div>
-		                                        <h1 style="word-break:break-all;white-space:pre-line">[8.14-8.23] 인물 사진 작가와 동행할 분들 구해요! 현재 2명!</h1>
-		                                        <h2>서울 . 광화문 . 4명</h2>
-		                                        <h3>(하나투어)서울여행 1박2일</h3>
-		                                        <h4>문인과</h4>
-		                                        <p>2022-08-14 - 2022-08-15 <span class="type1">협의가능</span></p>
+		                                        <h1 style="word-break:break-all;white-space:pre-line">${vo.subject}</h1>
+		                                        <h2>${vo.cityName} . ${vo.spotName} . ${recruit_cnt}명</h2>
+		                                        <h4>${vo.userName}</h4>
+		                                        <p>${vo.startDate} - ${vo.endDate} <span class="type1">${discussion}</span></p>
 		                                    </div>
 		                                </div>
 		                                <div class="tagsContainer marginTopMd marginBottomSm " >
 		                                    <ul>
 			                                    		<li>
-				                                            <div class="inside">#혼성이요</div>
+				                                            <div class="inside">#${vo.gender==0?'혼성이요':(vo.gender==1?'남성만요':'여성만요')}</div>
 				                                        </li>
 		                                    		<li>
-		                                            	<div class="inside">#30대</div>
+		                                            	<div class="inside">#${vo.age}</div>
 		                                        	</li>
 			                                    		<li>
-				                                            <div class="inside">#술 상관없어요</div>
+				                                            <div class="inside">#${vo.drink==0?'상관없어요':(vo.drink==1?'여행은술이죠':'술은싫어요')}</div>
 				                                        </li>
 			                                    		<li>
-				                                            <div class="inside">#비흡연자 선호</div>
+				                                            <div class="inside">#${vo.cigar==0?'상관없어요':(vo.cigar==1?'흡연자 선호':'비흡연자 선호')}</div>
 				                                        </li>
 			                                    		<li>
-				                                            <div class="inside">#활동적인</div>
+				                                            <div class="inside">#${vo.tripType1==1?'느긋한':'활동적인'}</div>
 				                                        </li>
 			                                    		<li>
-				                                            <div class="inside">#로컬형</div>
+				                                            <div class="inside">#${vo.tripType2==1?'로컬형':'랜드마크형'}</div>
 				                                        </li>
 			                                    		<li>
-				                                            <div class="inside">#모혐형</div>
+				                                            <div class="inside">#${vo.tripType3==1?'모험형':'휴양형'}</div>
 				                                        </li>
 		                                    </ul>
 		                                </div>
 		                                <div class="bottom">
 		                                    <div class="left">
-		                                        <p>게시일. 2022-06-15</p>
+		                                        <p>게시일. ${vo.reg_date}</p>
 		                                    </div>
 		                                    <div class="right">
 		                                        <ul>
 		                                            <li>
 		                                                <i class="bi bi-chat-left-dots"></i>&nbsp;
-		                                                <p>0</p>
+		                                                <p>${vo.replyCount}</p>
 		                                            </li>
 		                                            <li>
 		                                                <i class="bi bi-eye"></i>
-		                                                <p>28</p>
+		                                                <p>${vo.hitCount}</p>
 		                                            </li>
 		                                        </ul>
 		                                    </div>
@@ -399,199 +394,11 @@
 		                        </div>
 		                        </a>
 		                    </li>
-                			<li>
-                				<a onclick="fn_detail(201)" style="cursor:pointer;">
-		                        <div class="contentBoxType3">
-		                            <div class="postContent">
-		                                <div class="top">
-		                                    <div class="thumbnail">
-		                                    <img src="/odawith/upload/8afb984c-5cc4-4c24-97ab-265106e7c8ce.jpeg" alt="사진">
-		                                    </div>
-		                                    <div class="text">
-		                                        <div class="score">
-		                                        <i class="bi bi-activity"></i>
-		                                            <h2>AI 매칭점수</h2>
-		                                            <h1 class="type1">0</h1>
-		                                        </div>
-		                                        <h1 style="word-break:break-all;white-space:pre-line">절거운 몽골여행 5박6일 고비사막 투어 동행 구합니다🤗</h1>
-		                                        <h2>몽골 . 고비사막 . 4명</h2>
-		                                        <h3>(오다투어)고비사막 5박6일</h3>
-		                                        <h4>silvia baek</h4>
-		                                        <p>2022-07-20 - 2022-08-07 <span class="type1">협의가능</span></p>
-		                                    </div>
-		                                </div>
-		                                <div class="tagsContainer marginTopMd marginBottomSm " >
-		                                    <ul>
-			                                    		<li>
-				                                            <div class="inside">#여성만요</div>
-				                                        </li>
-		                                    		<li>
-		                                            	<div class="inside">#30대</div>
-		                                        	</li>
-		                                        	<li>
-				                                            <div class="inside">#여행은 술이죠</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#담배 상관없어요</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#여행 상관없어요</div>
-				                                        </li>
-		                                    </ul>
-		                                </div>
-		                                <div class="bottom">
-		                                    <div class="left">
-		                                        <p>게시일. 2022-06-15</p>
-		                                    </div>
-		                                    <div class="right">
-		                                        <ul>
-		                                            <li>
-		                                                <i class="bi bi-chat-left-dots"></i>&nbsp;
-		                                                <p>0</p>
-		                                            </li>
-		                                            <li>
-		                                                <i class="bi bi-eye"></i>
-		                                                <p>20</p>
-		                                            </li>
-		                                        </ul>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </div>
-		                        </a>
-		                    </li>
-                			<li>
-                				<a onclick="fn_detail(200)" style="cursor:pointer;">
-		                        <div class="contentBoxType3">
-		                            <div class="postContent">
-		                                <div class="top">
-		                                    <div class="thumbnail">
-		                                    			<img src="/odawith/upload/625b31b1-96fd-4d07-845c-d1daf69bd198.jpg" alt="사진">
-		                                    </div>
-		                                    <div class="text">
-		                                        <div class="score">
-		                                        			<i class="bi bi-activity"></i>
-		                                            <h2>AI 매칭점수</h2>
-		                                            <h1 class="type1">0</h1>
-		                                        </div>
-		                                        <h1 style="word-break:break-all;white-space:pre-line">[6박7일 비행8/20-28, 투어8/21-8/27] 동행 6명(4명 모집 중)</h1>
-		                                        <h2>몽골 . 고비사막 . 1명</h2>
-		                                        <h3>(오다투어)고비사막 7박8일</h3>
-		                                        <h4>몽골몽골</h4>
-		                                        <p>2022-08-21 - 2022-08-27 <span class="type1">협의가능</span></p>
-		                                    </div>
-		                                </div>
-		                                <div class="tagsContainer marginTopMd marginBottomSm " >
-		                                    <ul>
-			                                    		<li>
-				                                            <div class="inside">#혼성이요</div>
-				                                        </li>
-				                                        <li>
-		                                            	<div class="inside">#20대</div>
-		                                        	</li>
-			                                    		<li>
-				                                            <div class="inside">#술 상관없어요</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#비흡연자 선호</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#여행 상관없어요</div>
-				                                        </li>
-		                                    </ul>
-		                                </div>
-		                                <div class="bottom">
-		                                    <div class="left">
-		                                        <p>게시일. 2022-06-15</p>
-		                                    </div>
-		                                    <div class="right">
-		                                        <ul>
-		                                            <li>
-		                                                <i class="bi bi-chat-left-dots"></i> &nbsp;
-		                                                <p>0</p>
-		                                            </li>
-		                                            <li>
-		                                                <i class="bi bi-eye"></i>
-		                                                <p>29</p>
-		                                            </li>
-		                                        </ul>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </div>
-		                        </a>
-		                    </li>
-                			<li>
-                				<a onclick="fn_detail(199)" style="cursor:pointer;">
-		                        <div class="contentBoxType3">
-		                            <div class="postContent">
-		                                <div class="top">
-		                                    <div class="thumbnail">
-		                                    			<img src="img/no_thumbnail_ex.jpg" alt="사진">
-		                                    </div>
-		                                    <div class="text">
-		                                        <div class="score">
-		                                        			<i class="bi bi-activity"></i>
-		                                            <h2>AI 매칭점수</h2>
-		                                            <h1 class="type1">0</h1>
-		                                        </div>
-		                                        <h1 style="word-break:break-all;white-space:pre-line">9월 4일 - 9월 10일 홉스골 투어 동행구합니다</h1>
-		                                        <h2>몽골 . 홉스골 . 4명</h2>
-		                                        <h3>(오다투어) 홉스골 6박7일</h3>
-		                                        <h4>돌돌이</h4>
-		                                        <p>2022-09-04 - 2022-09-10 <span class="type1">협의가능</span></p>
-		                                    </div>
-		                                </div>
-		                                <div class="tagsContainer marginTopMd marginBottomSm " >
-		                                    <ul>
-			                                    		<li>
-				                                            <div class="inside">#혼성이요</div>
-				                                        </li>
-		                                    		<li>
-		                                            	<div class="inside">#30대</div>
-		                                        	</li>
-			                                    		<li>
-				                                            <div class="inside">#술 상관없어요</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#비흡연자 선호</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#느긋한</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#로컬형</div>
-				                                        </li>
-			                                    		<li>
-				                                            <div class="inside">#모혐형</div>
-				                                        </li>
-		                                    </ul>
-		                                </div>
-		                                <div class="bottom">
-		                                    <div class="left">
-		                                        <p>게시일. 2022-06-15</p>
-		                                    </div>
-		                                    <div class="right">
-		                                        <ul>
-		                                            <li>
-		                                                <i class="bi bi-chat-left-dots"></i>&nbsp;
-		                                                <p>0</p>
-		                                            </li>
-		                                            <li>
-		                                                <i class="bi bi-eye"></i>
-		                                                <p>12</p>
-		                                            </li>
-		                                        </ul>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </div>
-		                        </a>
-		                    </li>
-                </ul>
+		                    </ul>
+		                    </c:forEach>
             </div>
-            <div class="loading">
-                <div id="btnNextPage" class="icon" onclick="fn_nextPage()">
-                    <img src="img/loading_ico.svg">
-                </div>
-            </div>
+		                 
+		                         
+               <div class="page-box">
+				${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+			</div>

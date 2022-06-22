@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class GoWith {
 	private int goWithNum;
 	private String userId;
+	private String userName;
 	private String pwd;
 	private String subject;
 	private String content;
@@ -27,7 +28,8 @@ public class GoWith {
 	private int cityNum;
 	private int spotNum;
 	private String spotName;
-	private MultipartFile selectFile;
+	private MultipartFile uploadFile;
+	private int replyCount;
 	
 	public int getGoWithNum() {
 		return goWithNum;
@@ -40,6 +42,12 @@ public class GoWith {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPwd() {
 		return pwd;
@@ -175,11 +183,17 @@ public class GoWith {
 	public void setSpotName(String spotName) {
 		this.spotName = spotName;
 	}
-	public MultipartFile getSelectFile() {
-		return selectFile;
+	public MultipartFile getUploadFile() {
+		return uploadFile;
 	}
-	public void setSelectFile(MultipartFile selectFile) {
-		this.selectFile = selectFile;
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 	
 	

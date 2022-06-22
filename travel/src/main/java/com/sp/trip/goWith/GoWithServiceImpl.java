@@ -18,11 +18,11 @@ public class GoWithServiceImpl implements GoWithService {
 	@Override
 	public void insertGoWith(GoWith dto, String pathname) throws Exception {
 		try {
-			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
+			String saveFilename = fileManager.doFileUpload(dto.getUploadFile(), pathname);
 			if (saveFilename != null) {
 				dto.setImageFilename(saveFilename);
 			
-			dao.insertData("goWith.insertGoWith", dto);
+				dao.insertData("goWith.insertGoWith", dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,9 +59,66 @@ public class GoWithServiceImpl implements GoWithService {
 	}
 
 	@Override
-	public int dataCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<GoWith> listGoWith(Map<String, Object> map) {
+		List<GoWith> list = null;
+		
+		try {
+			list = dao.selectList("goWith.listGoWith", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
+	
+	@Override
+	public int dataCount(Map<String, Object> map) {
+		int result = 0;
+
+		try {
+			result = dao.selectOne("goWith.dataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	@Override
+	public GoWith readGoWith(int num) {
+		GoWith dto = null;
+		
+		try {
+			dto = dao.selectOne("goWith.readGoWith", num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public void updateHitCount(int goWithNum) throws Exception {
+		try {
+			dao.updateData("goWith.updateHitCount", goWithNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
+
+	@Override
+	public void updateGoWith(GoWith dto, String pathname) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteGoWith(int num, String pathname, String userId, int membership) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
