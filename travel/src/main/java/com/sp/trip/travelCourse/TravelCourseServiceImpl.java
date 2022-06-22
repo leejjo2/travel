@@ -54,7 +54,68 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}
 		
 	}
- 
+	
+	// 리스트 정보 
+	@Override
+	public List<TravelCourse> listBoard(Map<String, Object> map) {
+		List<TravelCourse> list = null;
+		
+		try {
+			list = dao.selectList("travelCourse.listBoard", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Integer> readcourseDetailNum() { 
+		List<Integer> courseDetailNumList = null;
+		try {
+			courseDetailNumList = dao.selectOne("travelCourse.courseDetailNum");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return courseDetailNumList ;
+	}
+	
+	@Override
+	public int dataCount(Map<String, Object> map) {
+		int result = 0;
+		try {
+			result = dao.selectOne("travelCourse.dataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	// 리스트 보여줄 도시 이름
+	@Override
+	public List<TravelCourse> listCity(int courseNum) {
+		List<TravelCourse> list = null;
+		try {
+			list = dao.selectList("travelCourse.listCourse", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	// 리스트에 보여줄 이미지
+	@Override
+	public String listImg(int courseDetailNum) {
+		String result = "";
+		try {
+			result = dao.selectOne("travelCourse.listImg", courseDetailNum);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	// 도시 카테고리
 	@Override
 	public List<TravelCourse> listCity(Map<String, Object> map) throws Exception {
 		List<TravelCourse> listCity = null;
@@ -67,6 +128,8 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		return listCity;
 	}
 
+	
+	// 테마 카테고리
 	@Override
 	public List<TravelCourse> listTheme(Map<String, Object> map) throws Exception {
 		List<TravelCourse> listTheme = null;
@@ -78,7 +141,108 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}
 		return listTheme;
 	}
+
+	// 좋아요 누르기
+	@Override
+	public void insertBoardLike(Map<String, Object> map) throws Exception {
+		try {
+			dao.insertData("travelCourse.insertBoardLike", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
 	
+	// 좋아요 취소
+	@Override
+	public void deleteBoardLike(Map<String, Object> map) throws Exception {
+		try {
+			dao.deleteData("travelCourse.deleteBoardLike", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
 	
+	// 좋아요 개수
+	@Override
+	public int boardLikeCount(int courseNum) {
+		int result = 0;
+		try {
+			result = dao.selectOne("travelCourse.boardLikeCount", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	// 유저 좋아요 불러오기
+	@Override
+	public boolean userBoardLiked(Map<String, Object> map) {
+		boolean result = false;
+		try {
+			TravelCourse dto = dao.selectOne("travelCourse.userBoardLiked", map);
+			if(dto != null) { // 검색 된 것이 없으면
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public void insertBoardScrap(Map<String, Object> map) throws Exception {
+		try {
+			dao.insertData("travelCourse.insertBoardScrap", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}		
+	}
+
+	@Override
+	public void deleteBoardScrap(Map<String, Object> map) throws Exception {
+		try {
+			dao.deleteData("travelCourse.deleteBoardScrap", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
+
+	@Override
+	public int boardScrapCount(int courseNum) {
+		int result = 0;
+		try {
+			result = dao.selectOne("travelCourse.boardLikeCount", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public boolean userBoardScraped(Map<String, Object> map) {
+		boolean result = false;
+		try {
+			TravelCourse dto = dao.selectOne("travelCourse.userBoardScraped", map);
+			if(dto != null) { // 검색 된 것이 없으면
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+
+
+	
+
+
 
 }

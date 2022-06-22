@@ -24,26 +24,28 @@
 	left: 15px;
 	z-index: 1;
 	font-size: 30px;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .imtext3 {
 	position: absolute;
-	top: 175px; left : 15px;
-	z-index: 1;
-	font-size: 20px;
-	color: white;
-	font-weight: bold;
-	left: 15px;
+	top: 175px; left : 15px;	z-index: 1;
+	font-size: 20px;	color: white;	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .imtext4 {
 	position: absolute;
-	top: 205px;
-	left: 15px;
-	z-index: 1;
-	font-size: 20px;
-	color: white;
-	font-weight: bold;
+	top: 205px;	left: 15px;	z-index: 1;
+	font-size: 20px;	color: white;	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.imtext5 {
+	position: absolute;
+	top: 54px; left : 15px;	z-index: 1;
+	font-size: 20px;	color: white;	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
 }
 
 .tripImg {
@@ -84,14 +86,13 @@
 }
 
 .searchImg {
-	position: absolute;
-	left: 18px;
-	display: flex;
-	-webkit-box-pack: center;
-	justify-content: center;
-	-webkit-box-align: center;
-	align-items: center;
-	flex: 0 0 48px;
+position: absolute;
+    /* float: right; */
+    left: 18px;
+    /* display: flex; */
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
 }
 
 .searchIcon {
@@ -102,6 +103,7 @@
 }
 
 .search-bar__input {
+	z-index: 999;
 	width: 100%;
 	height: 100%;
 	background: none;
@@ -151,15 +153,7 @@ h3 {
 	width: 100%;
 }
 
-.btn-group {
-	position: absolute;
-	display: inline-flex;
-	vertical-align: middle;
-	background: white;
-	top: 10px;
-	left: 200px;
-	height: 40px;
-}
+
 
 .btn1:hover {
 	font-weight: bolder;

@@ -9,6 +9,7 @@ public class TravelCourse {
 	private String userId; 
 	
 	// 추천 코스
+	private int listNum;
 	private int courseNum;
 	private String subject;
 	private String content;
@@ -38,10 +39,22 @@ public class TravelCourse {
 	private String  latitude; // 경도
 	private String  detailContent;
 	
+	private List<TravelCourse> travelCourseList;
 	
 	// 코스 이미지
 	private int imageFileNum; // 이미지 파일 번호
 	private String saveFileName; // 서버에 저장된 파일 이름
+	
+	// 좋아요, 스크랩 개수
+	private int likeCount;
+	private int scrapCount;
+	private int scrapNum;
+
+	
+	private boolean userBoardLiked;
+	private boolean userBoardScraped;
+
+
 	
 	public String getUserId() {
 		return userId;
@@ -198,6 +211,48 @@ public class TravelCourse {
 	}
 	public void setSaveFileName(String saveFileName) {
 		this.saveFileName = saveFileName;
+	}
+	public List<TravelCourse> getTravelCourseList() {
+		return travelCourseList;
+	}
+	public void setTravelCourseList(List<TravelCourse> travelCourseList) {
+		this.travelCourseList = travelCourseList;
+	}
+	public int getListNum() {
+		return listNum;
+	}
+	public void setListNum(int listNum) {
+		this.listNum = listNum;
+	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+	public int getScrapCount() {
+		return scrapCount;
+	}
+	public void setScrapCount(int scrapCount) {
+		this.scrapCount = scrapCount;
+	}
+	public boolean isUserBoardLiked() {
+		return userBoardLiked;
+	}
+	public void setUserBoardLiked(boolean userBoardLiked) {
+		this.userBoardLiked = userBoardLiked;
+	}
+	public int getScrapNum() {
+		return scrapNum;
+	}
+	public void setScrapNum(int scrapNum) {
+		this.scrapNum = scrapNum;
+	}
+	public boolean isUserBoardScraped() {
+		return userBoardScraped;
+	}
+	public void setUserBoardScraped(boolean userBoardScraped) {
+		this.userBoardScraped = userBoardScraped;
 	}
 	
 	

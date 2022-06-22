@@ -29,14 +29,189 @@
 	margin-right: 30px;
 }
 
-.slides {
-	transition:left 0.5s ease-out;
-	width: 
-}
+.slides {transition:left 0.5s ease-out;	width: }
 
+.imgSize{ width: 100%; height: 250px;object-fit: initial;}
+.btnIcons {border: none;}
+
+.btn-group {
+   vertical-align: middle;
+    background: white;
+    height: 40px;
+    float: left;
+    margin-right: 5px;
+}
+.iconSize{font-size: 25px; padding-top: 3px;}
+.btnBack{position:absolute; top: 10px; left: 300px; z-index: 9999;}
+.imtext5 {
+	position: absolute;
+	top: 54px; left : 15px;	z-index: 1;
+	font-size: 20px;	color: white;	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+.yesBoardLike {font-weight: bolder; background: blue;}
 </style>
 
+<script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data) {
+			fn(data);
+		},
+		beforeSend:function(jqXHR) {
+			jqXHR.setRequestHeader("AJAX", true);
+		},
+		error:function(jqXHR) {
+			if(jqXHR.status === 403) {
+				login();
+				return false;
+			} else if(jqXHR.status === 400) {
+				alert("요청 처리가 실패 했습니다.");
+				return false;
+			}
+	    	
+			console.log(jqXHR.responseText);
+		}
+	});
+}
 
+$(function() {
+	function travelCourseList() {
+	let themeNum = $(".title1_5 ul .on").attr("id");
+	console.log("테마번호" + themeNum);
+	
+	let query = "themeNum="+themeNum;
+    let url = "${pageContext.request.contextPath}/travelCourse/list?" + query;
+    console.log("쿼리"+query);
+    location.href = url;
+	}
+	
+	$(".title1_5 ul li").click(function() {
+		$(".title1_5 ul li").removeAttr("class");
+		$(this).attr("class", "on");
+		travelCourseList();
+	
+	});
+});
+
+function searchList() {
+	if (window.event.keyCode == 13) {
+    	// 엔터키가 눌렸을 때
+		const f = document.searchForm;
+		f.submit();
+    }
+}
+
+function insertLike(userLiked, courseNum, $i) {
+	let url = "${pageContext.request.contextPath}/travelCourse/insertBoardLike";
+	let query = "courseNum="+courseNum+"&userLiked="+userLiked;
+	console.log(query);
+	console.log("userLiked"+userLiked);
+	console.log("state1 !! : ");
+
+	const fn = function(data) {
+		let state = data.state;
+
+		if(state === "true") {
+			if( userLiked ){
+				$i.removeClass("fas fa-heart iconSize").addClass("far fa-heart iconSize");
+
+			} else {
+				$i.removeClass("far fa-heart iconSize").addClass("fas fa-heart iconSize");
+			}
+		}
+	};
+	ajaxFun(url, "post", query, "json", fn);
+}
+
+function insertScrap(userScraped, courseNum, $i) {
+	let url = "${pageContext.request.contextPath}/travelCourse/insertBoardScrap";
+	let query = "courseNum="+courseNum+"&userScraped="+userScraped;
+	console.log(query);
+	console.log("userScraped"+userScraped);
+	console.log("state1 !! : ");
+
+	const fn = function(data) {
+		let state = data.state;
+
+		if(state === "true") {
+			if( userScraped ){
+				$i.removeClass("fas fa-bookmark iconSize").addClass("far fa-bookmark iconSize");
+
+			} else {
+				$i.removeClass("far fa-bookmark iconSize").addClass("fas fa-bookmark iconSize");
+			}
+		}
+	};
+	ajaxFun(url, "post", query, "json", fn);
+}
+
+function boardLiked(courseNum) {
+	let url = "${pageContext.request.contextPath}/travelCourse/userBoardLiked";
+	let query = "courseNum="+courseNum;
+	
+	const fn = function(data) {
+		let state = data.state;
+		if(state === "true") {
+			console.log("눌럿다.");
+		} else {
+			console.log("안눌렀다.");
+		}
+	};
+	ajaxFun(url, "post", query, "json", fn);
+}
+
+function boardScraped(courseNum) {
+	let url = "${pageContext.request.contextPath}/travelCourse/userBoardScraped";
+	let query = "courseNum="+courseNum;
+	
+	const fn = function(data) {
+		let state = data.state;
+		if(state === "true") {
+			console.log("눌럿다.");
+		} else {
+			console.log("안눌렀다.");
+		}
+	};
+	ajaxFun(url, "post", query, "json", fn);
+}
+
+// 좋아요 여부
+$(function() {
+	$(".boardLike").click(function() {
+		const $i = $(this).find("i");
+		let userLiked = $i.hasClass("fas fa-bookmark iconSize");
+		
+		let courseNum =$(this).find(".courseNum").text();
+		console.log("CourseNum : "+ courseNum)
+		
+		insertLike(userLiked, courseNum, $i); // 좋아요/좋아요 취소
+		boardLiked(courseNum); // 좋아요 여부 가져오기
+		
+	});
+});
+
+//스크랩 여부
+$(function() {
+	$(".boardScrap").click(function() {
+		const $i = $(this).find("i");
+		let userLiked = $i.hasClass("fas fa-bookmark iconSize");
+		
+		let courseNum =$(this).find(".courseNum").text();
+		console.log("CourseNum : "+ courseNum)
+		
+		insertScrap(userLiked, courseNum, $i); // 스크랩/스크랩 취소
+		boardScraped(courseNum); // 스크랩 여부 가져오기
+
+
+	});
+});
+
+</script>
 
 <div class="container-fluid" style="padding: 0; margin: 0 auto;">
 
@@ -45,13 +220,15 @@
       <div class="input1">
          <div class="search-bar Small shadow align-middle"
             style="max-width: 470px;">
-            <div class="searchImg">
-               <img alt="icon"
-                  src="https://dffoxz5he03rp.cloudfront.net/icons/ic_search_sm_white.svg"
-                  class="searchIcon">
-            </div>
-            <input class="search-bar__input text-white search" type="text"
-               style="height: 25px;" placeholder="도시나 상품을 검색해보세요">
+           <form class="row" name="searchForm" style="width: 100%" action="${pageContext.request.contextPath}/travelCourse/list" method="post">
+	            <div class="searchImg">
+	               <img alt="icon"
+	                  src="https://dffoxz5he03rp.cloudfront.net/icons/ic_search_sm_white.svg"
+	                  class="searchIcon">
+	            </div>
+	            <input name = "keyword" class="search-bar__input text-white search" type="text"
+	               style="height: 25px;" onkeypress="searchList()" placeholder="도시나 기간을 검색해보세요">
+            </form>
          </div>
       </div>
    </div>
@@ -66,34 +243,43 @@
                <div class="title1_4">
                   <div class="title1_5">
                   	<ul class="slides">
-                  		<li>	                    
-		                  	 <a href="#" class="tagImg" 
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/1.jpg); ">
+                  		<li  id = "0" ${themeNum=="0"?"class='on'":""}>
+		                      <a href="#" class="tagImg"
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
-		                           <span>가족</span>
+		                           <span>전체</span>
 		                        </h3>
-		                     </a> 
+		                      </a>
+	                 	</li>
+                  		<li id = "1" ${themeNum=="1"?"class='on'":""}>
+			                  	 <a href="#" class="tagImg" 
+			                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/1.jpg); ">
+			                        <div class="title2_1"></div>
+			                        <h3>
+			                           <span>가족코스</span>
+			                        </h3>
+			                     </a>
 	                     </li>
-	                     <li>
+	                     <li id = "2" ${themeNum=="2"?"class='on'":""}>
 		                     <a href="#" class="tagImg" 
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/2.JPG); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>혼자여행</span>
 		                        </h3>
-		                     </a> 
+		                     </a>
 		                  </li>
-		                  <li>
+		                  <li id = "3" ${themeNum=="3"?"class='on'":""}>
 		                     <a href="#" class="tagImg" 
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/3.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>도보코스</span>
 		                        </h3>
-		                     </a> 
+		                     </a>
 		                  </li>
-		                  <li>
+		                  <li id = "4" ${themeNum=="4"?"class='on'":""}>
 		                     <a href="#" class="tagImg"   
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/4.jpg); ">
 		                        <div class="title2_1"></div>
@@ -102,7 +288,7 @@
 		                        </h3>
 		                     </a>
 		                  </li>
-		                  <li>
+		                  <li id = "5" ${themeNum=="5"?"class='on'":""}>
 		                   	 <a href="#" class="tagImg"
 		                         style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/5.jpg); ">
 		                        <div class="title2_1"></div>
@@ -111,8 +297,8 @@
 		                        </h3>
 		                     </a>
 		                   </li>
-		                   <li>
-		                      <a href="#" class="tagImg"
+		                   <li id = "6" ${themeNum=="6"?"class='on'":""}>
+		                     <a href="#" class="tagImg"
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
@@ -120,33 +306,25 @@
 		                        </h3>
 		                     </a>
 		                   </li>
-		                   <li>
+		                   <li id = "7" ${themeNum=="7"?"class='on'":""}>
 		                      <a href="#" class="tagImg"
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
-		                           <span>캠핑코스2</span>
+		                           <span>반려둥물과 함께</span>
 		                        </h3>
 		                     </a>
 		                   </li>
-		                   <li>
+		                   <li id = "8" ${themeNum=="8"?"class='on'":""}>
 		                      <a href="#" class="tagImg"
 		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
-		                           <span>캠핑코스3</span>
+		                           <span>문화코스</span>
 		                        </h3>
 		                     </a>
 		                   </li>	
-		                   <li>
-		                      <a href="#" class="tagImg"
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
-		                        <div class="title2_1"></div>
-		                        <h3>
-		                           <span>캠핑코스4</span>
-		                        </h3>
-		                     </a>
-		                   </li>	                   
+		                   	                   
 		                   
                   	</ul>
                   	
@@ -187,204 +365,348 @@
                <option value="2">20개씩 보기</option>
             </select> <select class="form-select d-flex justify-content-end title3_4"
                aria-label="Default select example">
-               <option selected>스크랩순</option>
+               <option selected>최신순</option>
                <option value="1">좋아요순</option>
-               <option value="2">최신순</option>
+               <option value="2">스크랩순</option>
                <option value="3">조회순</option>
             </select>
          </div>
+         
          <div class="col">
-            <div class="card w-100 title4" >
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_1.jpg" class="card-img-top" alt="..."> <span
-                  class="imtext2">청와대</span>
-               <div class="btn-group" style="background: none;" role="group"
-                  aria-label="Basic outlined example">
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                  </button>
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                  </button>
-               </div>
-               <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                  : 3.8km</span>
-               <div class="card-body">
-                  <div class="p-3 area_course">
-                     <ul>
-                        <li><span>청와대 앞길</span></li>
-                        <li><span>명성황후 조난지</span></li>
-                        <li><span>팔레 드 서울</span></li>
-                        <li><span>국립민속박물관</span></li>
-                        <li><span>한국전통주연구소</span></li>
-                        <li><span>남도분식</span></li>
-                        <li><span>황학정</span></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
+        	<c:forEach var="dto" items="${list}" varStatus="status" begin="0" end="0">
+	            <div class="card w-100 title4" >
+	            	<div style="background: black;">
+		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+		               <span class="imtext2">${dto.subject}</span>
+		               <div class="btnBack" >
+			               	<div class="btn-group" style="background: none;" role="group"
+			                  aria-label="Basic outlined example">
+			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			               		 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+			                  </button>
+			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+			                  </button>
+			               </div>
+						</div>
+		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+		                  : ${dto.period}</span>
+		             </div>
+	               <div class="card-body">
+	                  <div class="p-3 area_course">
+	                     <ul>
+	                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+								<li><span>${citydto.placeName}</span></li>
+		                    </c:forEach>
+	                     </ul>
+	                  </div>
+	               </div>
+	            </div>
+	         </c:forEach>
+
 
             <div class="row" style="margin-top: 10px;">
                <div class="col">
-                  <div class="card w-100 title4">
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_1.jpg" class="card-img-top" alt="..."> <span
-                        class="imtext2">청와대</span>
-                     <div class="btn-group" style="background: none;" role="group"
-                        aria-label="Basic outlined example">
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                        </button>
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                        </button>
-                     </div>
-                     <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                        : 3.8km</span>
-                     <div class="card-body">
-                        <div class="p-3 area_course">
-                           <ul>
-                              <li><span>청와대 앞길</span></li>
-                              <li><span>명성황후 조난지</span></li>
-                              <li><span>팔레 드 서울</span></li>
-                              <li><span>국립민속박물관</span></li>
-                              <li><span>한국전통주연구소</span></li>
-                              <li><span>남도분식</span></li>
-                              <li><span>황학정</span></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+					<c:forEach var="dto" items="${list}" varStatus="status" begin="3" end="3">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		               			<div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+			                           	<i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					               </div>
+								</div>
+		              		<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
                </div>
             </div>
+            
+            <div class="row" style="margin-top: 10px;">
+                   <div class="col">
+	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="6" end="6">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		              			 <div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+	                           			 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+					                  </button>
+					               </div>
+								</div>
+		              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
+               	</div>
+            </div>
+            
          </div>
 
          <div class="col">
-            <div class="card w-100 title4">
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_2.jpg" class="card-img-top" alt="..."> <span
-                  class="imtext2">청와대</span>
-               <div class="btn-group" style="background: none;" role="group"
-                  aria-label="Basic outlined example">
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                  </button>
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                  </button>
-               </div>
-               <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                  : 3.8km</span>
-               <div class="card-body">
-                  <div class="p-3 area_course">
-                     <ul>
-                        <li><span>유기방가옥-해미읍성 동한</span></li>
-                        <li><span>개심사(서산)</span></li>
-                        <li><span>서산해미읍성축제</span></li>
-                        <li><span>간월암(서산)</span></li>
-                        <li><span>안면도</span></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
+            <c:forEach var="dto" items="${list}" varStatus="status" begin="1" end="1">
+	            <div class="card w-100 title4" >
+	            	<div style="background: black;">
+		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+		               <span class="imtext2">${dto.subject}</span>
+		              	 <div class="btnBack" >
+			               <div class="btn-group" style="background: none;" role="group"
+			                  aria-label="Basic outlined example">
+			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+			                  </button>
+			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+			                  </button>
+			               </div>
+						</div>
+		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+		                  : ${dto.period}</span>
+		             </div>
+	               <div class="card-body">
+	                  <div class="p-3 area_course">
+	                     <ul>
+	                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+								<li><span>${citydto.placeName}</span></li>
+		                    </c:forEach>
+	                     </ul>
+	                  </div>
+	               </div>
+	            </div>
+	         </c:forEach>
 
             <div class="row" style="margin-top: 10px;">
                <div class="col">
-                  <div class="card w-100 title4">
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_2.jpg" class="card-img-top" alt="..."> <span
-                        class="imtext2">청와대</span>
-                     <div class="btn-group" style="background: none;" role="group"
-                        aria-label="Basic outlined example">
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                        </button>
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                        </button>
-                     </div>
-                     <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                        : 3.8km</span>
-                     <div class="card-body">
-                        <div class="p-3 area_course">
-                           <ul>
-                              <li><span>청와대 앞길</span></li>
-                              <li><span>명성황후 조난지</span></li>
-                              <li><span>팔레 드 서울</span></li>
-                              <li><span>국립민속박물관</span></li>
-                              <li><span>한국전통주연구소</span></li>
-                              <li><span>남도분식</span></li>
-                              <li><span>황학정</span></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+					<c:forEach var="dto" items="${list}" varStatus="status" begin="4" end="4">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		               			<div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+					                  </button>
+					               </div>
+								</div>
+		             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
                </div>
+            </div>
+            
+                           <div class="row" style="margin-top: 10px;">
+                   <div class="col">
+	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="7" end="7">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		               			 <div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+					                  </button>
+					               </div>
+								</div>
+		            			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
+               	</div>
             </div>
 
          </div>
 
          <div class="col">
-            <div class="card w-100 title4">
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_3.jpg" class="card-img-top" alt="..."> <span
-                  class="imtext2">청와대</span>
-               <div class="btn-group" style="background: none;" role="group"
-                  aria-label="Basic outlined example">
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                  </button>
-                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                     <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                  </button>
-               </div>
-               <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                  : 3.8km</span>
-               <div class="card-body">
-                  <div class="p-3 area_course">
-                     <ul>
-                        <li><span>세종호수공원 일원</span></li>
-                        <li><span>농업회사법인주식회사태신목장예산지점</span></li>
-                        <li><span>서산 유기방가옥</span></li>
-                        <li><span>신두리사구센터</span></li>
-                        <li><span>천리포수목원</span></li>
-                        <li><span>2022 태안 세계튤립꽃박람회</span></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
+           <c:forEach var="dto" items="${list}" varStatus="status" begin="2" end="2">
+	            <div class="card w-100 title4" >
+	            	<div style="background: black;">
+		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+		               <span class="imtext2">${dto.subject}</span>
+		              	 <div class="btnBack" >
+			               <div class="btn-group" style="background: none;" role="group"
+			                  aria-label="Basic outlined example">
+			                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+			                  </button>
+			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+                       	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+			                  </button>
+			               </div>
+						</div>
+		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+		                  : ${dto.period}</span>
+		             </div>
+	               <div class="card-body">
+	                  <div class="p-3 area_course">
+	                     <ul>
+	                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+								<li><span>${citydto.placeName}</span></li>
+		                    </c:forEach>
+	                     </ul>
+	                  </div>
+	               </div>
+	            </div>
+	         </c:forEach>
 
             <div class="row" style="margin-top: 10px;">
                <div class="col">
-                  <div class="card w-100 title4">
-               <img src="${pageContext.request.contextPath}/resources/img/travelCourse/2_3.jpg" class="card-img-top" alt="..."> <span
-                        class="imtext2">청와대</span>
-                     <div class="btn-group" style="background: none;" role="group"
-                        aria-label="Basic outlined example">
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-heart" style="color: red;"></i>&nbsp;좋아요
-                        </button>
-                        <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1">
-                           <i class="far fa-bookmark" style="color: blue;"></i>&nbsp;스크랩
-                        </button>
-                     </div>
-                     <span class="imtext3">지역 : 서울 종로구</span> <span class="imtext4">총거리
-                        : 3.8km</span>
-                     <div class="card-body">
-                        <div class="p-3 area_course">
-                           <ul>
-                              <li><span>청와대 앞길</span></li>
-                              <li><span>명성황후 조난지</span></li>
-                              <li><span>팔레 드 서울</span></li>
-                              <li><span>국립민속박물관</span></li>
-                              <li><span>한국전통주연구소</span></li>
-                              <li><span>남도분식</span></li>
-                              <li><span>황학정</span></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="5" end="5">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		               			 <div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+					                  </button>
+					               </div>
+								</div>
+		             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
                </div>
+              </div>
+               
+               <div class="row" style="margin-top: 10px;">
+                   <div class="col">
+	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="8" end="8">
+			            <div class="card w-100 title4" >
+			            	<div style="background: black;">
+				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+				               <span class="imtext2">${dto.subject}</span>
+		              			 <div class="btnBack" >
+					               <div class="btn-group" style="background: none;" role="group"
+					                  aria-label="Basic outlined example">
+					                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+					                  </button>
+					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
+					                  </button>
+					               </div>
+								</div>
+		              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+				                  : ${dto.period}</span>
+				             </div>
+			               <div class="card-body">
+			                  <div class="p-3 area_course">
+			                     <ul>
+			                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+										<li><span>${citydto.placeName}</span></li>
+				                    </c:forEach>
+			                     </ul>
+			                  </div>
+			               </div>
+			            </div>
+			         </c:forEach>
+               	</div>
             </div>
-         </div>
 
       </div>
    </div>
+   	<div style="margin-top: 100px;"></div>
+	<div class="page-box">
+		${dataCount == 0 ? "등록된 코스가 없습니다." : paging}
+	</div>
 
 </div>
 
