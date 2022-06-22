@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class foodController {
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String list() {
+	public String list()  {
+		
 		return ".food.foodList";
 	}
 	
@@ -19,7 +20,6 @@ public class foodController {
 	public String foodView(@RequestParam String contentid, Model model) {
 		
 		model.addAttribute("contentid", contentid);
-		
 		return ".food.foodView";
 	}
 }

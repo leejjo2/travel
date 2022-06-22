@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freebbs">
+	<select id="seq" resultType="Integer">
+		SELECT freebbs_seq.NEXTVAL FROM dual
+	</select>
+	
+	<insert id="insertBoard" parameterType="com.sp.trip.freebbs.Board">
+		INSERT INTO freebbs(freeNum, userId, title, subject, content, hitCount, reg_date)
+		VALUES(#{freeNum}, #{userId}, #{title}, #{subject}, #{content}, 0, SYSDATE)
+	</insert>
+	
+	<sql id="where-list">
+		<if test="condition=='all' ">
+			( INSTR(subject, #{keyword}) &gt; 0
+				OR INSTR(content, #{keyword}) &gt; 0 )
+		</if>
+		<if test="condition=='subject' ">
+			INSTR(subject, #{keyword}) &gt; 0
+		</if>
+		<if test="condition=='content' ">
+			INSTR(content, #{keyword}) &gt; 0 
+		</if>
+		<if test="condition=='reg_date' ">
+			( TO_CHAR(reg_date, 'YYYY-MM-DD') = #{keyword}
+				OR TO_CHAR(reg_date, 'YYYYMMDD') = #{keyword} )
+		</if>
+	</sql>
+	
+		<!-- 데이터개수  -->
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM freebbs
+		<where>
+			userId = #{userId}
+			<if test="keyword != null and keyword!=''  ">
+				AND <include refid="where-list"/>
+			</if>
+		</where>
+	</select>
+	
+	<!-- 리스트 -->
+	<select id="listBoard" parameterType="map" resultType="com.sp.trip.freebbs.Board">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT a.freenum, userId, subject, imageFilename
+				FROM freebbs a
+				LEFT OUTER JOIN (
+					SELECT freeFileNum, freeNum, saveFilename FROM (
+						SELECT freeFileNum, freeNum, imageFilename, 
+							ROW_NUMBER() OVER(PARTITION BY freeNum ORDER BY fileNum ASC) rank
+						 FROM freebbsFile
+					) WHERE rank = 1
+				) i ON a.freeNum = i.freeNum
+				<where>
+					userId = #{userId}
+					<if test="keyword != null and keyword != ''">
+						AND <include refid="where-list"/>
+					</if>
+				</where>
+				ORDER BY num DESC			
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	 </select>
+	
+    <!-- 글보기 -->
+    <select id="readBoard" parameterType="Integer" resultType="com.sp.trip.freebbs.Board">
+		SELECT freeNum, a.userId, userName, subject, content, reg_date,
+		NVL(boardLikeCount, 0) boardLikeCount
+		FROM freebbs a
+		JOIN member1 m ON a.userId = m.userId
+		LEFT OUTER JOIN (
+			SELECT freeNum, COUNT(*) boardLikeCount FROM freebbsLike
+			GROUP BY freeNum
+		) bc ON a.freeNum = ac.freeNum
+		WHERE a.freeNum = #{freeNum}
+	</select>
+	
+		<!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Integer">
+		UPDATE freebbs SET hitCount=hitCount+1 WHERE num = #{num}
+	</update>
+	
+</mapper>

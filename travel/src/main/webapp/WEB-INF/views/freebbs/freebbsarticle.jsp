@@ -63,9 +63,9 @@ function imageViewer(src) {
 							<div class="row row-cols-6 img-box">
 								<c:forEach var="vo" items="${listFile}">
 									<div class="col p-1">
-										<img src="${pageContext.request.contextPath}/uploads/album/${vo.imageFilename}"
+										<img src="${pageContext.request.contextPath}/uploads/freebbs/${vo.saveFilename}"
 											class="img-thumbnail w-100 h-100" style="max-height: 130px;"
-											onclick="imageViewer('${pageContext.request.contextPath}/uploads/album/${vo.imageFilename}');">
+											onclick="imageViewer('${pageContext.request.contextPath}/uploads/freebbs/${vo.saveFilename}');">
 									</div>
 								</c:forEach>
 							</div>
@@ -82,7 +82,7 @@ function imageViewer(src) {
 						<td colspan="2">
 							이전글 :
 							<c:if test="${not empty preReadDto}">
-								<a href="${pageContext.request.contextPath}/album/article?${query}&num=${preReadDto.num}">${preReadDto.subject}</a>
+								<a href="${pageContext.request.contextPath}/freebbs/article?${query}&num=${preReadDto.num}">${preReadDto.subject}</a>
 							</c:if>
 						</td>
 					</tr>
@@ -100,11 +100,11 @@ function imageViewer(src) {
 			<table class="table table-borderless">
 				<tr>
 					<td width="50%">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/album/update?num=${dto.num}&page=${page}';">수정</button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/update?num=${dto.num}&page=${page}';">수정</button>
 		    			<button type="button" class="btn btn-light" onclick="deleteOk();">삭제</button>
 					</td>
 					<td class="text-end">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/album/list?${query}';">리스트</button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/list?${query}';">리스트</button>
 					</td>
 				</tr>
 			</table>

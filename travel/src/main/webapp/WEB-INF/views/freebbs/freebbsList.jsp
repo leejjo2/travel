@@ -121,7 +121,7 @@ function searchList() {
 							<div class="share">
 							<button type="button" class="btn-like thread-likes">
 								
-								<span>12</span>
+								
 							</button>
 							</div>
 							
@@ -254,7 +254,7 @@ function searchList() {
 					</form>
 				</div>
 				<div class="col text-end">
-					<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/freebbswrite';">글올리기</button>
+					<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/write';">글올리기</button>
 				</div>
 			</div>
 	  			
