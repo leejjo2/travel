@@ -25,7 +25,8 @@ public class LodgingManage {
 	private int roomNum;
 	private String roomName;
 	private int roomPrice;
-	private int roomNo;
+	private int roomHo;
+	private int roomBed;
 	private int roomMen;
 	private String roomOption;
 	
@@ -36,6 +37,7 @@ public class LodgingManage {
 	// 방이미지 테이블
 	private int roomImageFileNum;
 	private String roomSaveFilename;
+	
 	
 	public int getPartnerNum() {
 		return partnerNum;
@@ -127,11 +129,17 @@ public class LodgingManage {
 	public void setRoomPrice(int roomPrice) {
 		this.roomPrice = roomPrice;
 	}
-	public int getRoomNo() {
-		return roomNo;
+	public int getRoomHo() {
+		return roomHo;
 	}
-	public void setRoomNo(int roomNo) {
-		this.roomNo = roomNo;
+	public void setRoomHo(int roomHo) {
+		this.roomHo = roomHo;
+	}
+	public int getRoomBed() {
+		return roomBed;
+	}
+	public void setRoomBed(int roomBed) {
+		this.roomBed = roomBed;
 	}
 	public int getRoomMen() {
 		return roomMen;
@@ -169,5 +177,4 @@ public class LodgingManage {
 	public void setRoomSaveFilename(String roomSaveFilename) {
 		this.roomSaveFilename = roomSaveFilename;
 	}
-
 }

@@ -76,15 +76,12 @@ public class HotelController {
 		
 		// String query = "page=" + page;
 		try {
-			
 			Hotel dto = service.readHotel(hotelNum);
-			System.out.println("dto 갔따옴");
-			
+			Hotel rdto = service.readRoom(hotelNum);
 			dto.setHotelIntro(myUtil.htmlSymbols(dto.getHotelIntro()));
-			System.out.println("dto 갔따옴2222 "  + dto.getHotelIntro());
 			
 			model.addAttribute("dto", dto);
-			
+			model.addAttribute("rdto", rdto);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

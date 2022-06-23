@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sp.trip.common.FileManager;
 
-@Controller("image.imageController")
-@RequestMapping("/image/*")
+@Controller("partner.lodgingManage.lodgingImageController")
+@RequestMapping("/partner/lodgingImage/*")
 public class LodgingImageController {
 	@Autowired
 	private FileManager fileManager;

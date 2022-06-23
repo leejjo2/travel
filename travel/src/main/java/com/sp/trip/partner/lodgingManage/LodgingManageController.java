@@ -217,8 +217,8 @@ public class LodgingManageController {
 	
 	// 방 등록완료
 	@RequestMapping(value = "roomWrite", method = RequestMethod.POST)
-	public String roomWriteSubmit(@RequestParam int hotelNum,
-			@RequestParam String hotelName,
+	public String roomWriteSubmit(@RequestParam String hotelName,
+			@RequestParam int roomNum,
 			LodgingManage dto, HttpSession session) throws Exception {
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "room";
@@ -235,7 +235,47 @@ public class LodgingManageController {
 		return "redirect:/partner/lodgingManage/roomList";
 	}
 	
-	// 삭제
+	// 방 수정
+	@RequestMapping(value = "roomUpdate")
+	public String updateRoomForm(
+			@RequestParam int roomNum,
+			HttpSession session,
+			Model model) throws Exception {
+		
+		LodgingManage dto = service.readRoom(roomNum);
+		/*
+		if (dto == null) {
+			return "redirect:/partner/lodgingManage/lodgingList";
+		}
+		*/
+		model.addAttribute("dto", dto);
+		// model.addAttribute("page", page);
+		model.addAttribute("mode", "roomUpdate");
+
+		return ".partner.lodgingManage.roomWrite";
+	}
+	
+	// 방 수정완료
+	@RequestMapping(value = "roomUpdate", method = RequestMethod.POST)
+	public String updateRoomSubmit(
+			LodgingManage dto,
+			HttpSession session) throws Exception {
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "room";
+			
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String userId = info.getUserId();
+		
+		try {
+			service.updateRoom(dto, userId, pathname);
+		} catch (Exception e) {
+		}
+
+		return "redirect:/partner/lodgingManage/roomList";
+	}
+	
+	// 방 삭제
 	@RequestMapping(value = "roomDelete")
 	public String deleteRoom(@RequestParam int roomNum,
 			HttpSession session) throws Exception {
@@ -244,7 +284,7 @@ public class LodgingManageController {
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "room";
 		
-		service.deleteHotel(roomNum, info.getUserId(), pathname);
+		service.deleteRoom(roomNum, info.getUserId(), pathname);
 		
 		return "redirect:/partner/lodgingManage/roomList";
 	}

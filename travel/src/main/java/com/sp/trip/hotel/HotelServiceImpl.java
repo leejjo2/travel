@@ -38,6 +38,19 @@ public class HotelServiceImpl implements HotelService {
 		
 		return dto;
 	}
+	
+	@Override
+	public Hotel readRoom(int hotelNum) {
+		Hotel dto = null;
+		
+		try {
+			dto = dao.selectOne("hotel.readRoom", hotelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 
 	@Override
 	public int dataCount(Map<String, Object> map) {
@@ -51,5 +64,7 @@ public class HotelServiceImpl implements HotelService {
 		
 		return result;
 	}
+
+
 
 }

@@ -73,7 +73,7 @@
 	 */
 
 	function deleteHotel(hotelNum) {
-		if (confirm("게시글을 삭제 하시겠습니까 ? ")) {
+		if (confirm("숙소를 삭제 하시겠습니까 ? ")) {
 			let query = "hotelNum=" + hotelNum;
 			let url = "${pageContext.request.contextPath}/partner/lodgingManage/delete?"
 					+ query;

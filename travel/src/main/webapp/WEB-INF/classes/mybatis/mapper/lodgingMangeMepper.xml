@@ -71,7 +71,7 @@
 	<!-- 숙소파일 -->
 	<insert id="insertFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		INSERT INTO hotelImage(imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename)
-		VALUES (hotelImage_seq.NEXTVAL, #{hotelNum}, #{saveFilename})
+		VALUES (hotelImage_seq.NEXTVAL, #{hotelNum}, #{hotelSaveFilename})
 	</insert>
 	
 	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
@@ -83,7 +83,7 @@
 	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		SELECT imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename
 		FROM hotelImage
-	    WHERE imageFileNum = #{imageFileNum}
+	    WHERE imageFileNum = #{hotelImageFileNum}
 	</select>
 	
 	<delete id="deleteFile" parameterType="map">
@@ -100,7 +100,7 @@
 		SELECT DISTINCT r.roomNum
 		FROM roomInfo r
 		JOIN hotel h ON h.hotelNum = r.roomNum
-		WHERE hotelNum = #{hotelNum}
+		WHERE h.hotelNum = #{hotelNum}
 	</select>
 	
 	<insert id="insertRoom" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
@@ -131,7 +131,7 @@
 	</select>
 	
 	<select id="readRoom" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT roomNum, hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
+		SELECT roomNum, h.hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
 		FROM roomInfo r
 		JOIN hotel h ON h.hotelNum = r.hotelNum
 		WHERE roomNum = #{roomNum}
@@ -163,7 +163,7 @@
 	<select id="readRoomFile" parameterType="Integer" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		SELECT imageFileNum AS roomImageFileNum, roomNum, saveFilename AS roomSaveFilename
 		FROM roomImage
-	    WHERE imageFileNum = #{imageFileNum}
+	    WHERE imageFileNum = #{roomImageFileNum}
 	</select>
 	
 	<delete id="deleteRoomFile" parameterType="map">

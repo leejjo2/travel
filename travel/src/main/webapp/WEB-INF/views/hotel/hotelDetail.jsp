@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/hotel/css/hotelDetail.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/hotel/hotelDetail.css" type="text/css">
 
 </head>
 <body>
@@ -21,7 +21,7 @@
                 <section>
                     <header class="StayDetailHeaderDesktop-module__header--p7Or6">
                         <div class="StayDetailHeaderDesktop-module__headerWrapper--MRbx0">
-                            <h2 class="StayDetailHeaderDesktop-module__title--Z4xQj StayDetailHeaderDesktop-module__withSummary--SuCKV">더 베스트 제주 성산</h2>
+                            <h2 class="StayDetailHeaderDesktop-module__title--Z4xQj StayDetailHeaderDesktop-module__withSummary--SuCKV">${dto.hotelName}</h2>
                             <div class="StayDetailHeaderDesktop-module__hashtag--Z2nXb">
                                 <p class="StayHashTag-module__hashtag--iVCqy">4성급</p>
                             </div><a href="/accommodations/stays/1083146#StayDetail__review">
@@ -31,7 +31,7 @@
                                 </div>
                             </a>
                             <div class="StayDetailHeaderDesktop-module__meta--hynTx">
-                                <address class="StayDetailHeaderDesktop-module__address--AUPmn"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_location_sm_line_gray_700.svg" alt="ic_location_sm_line_gray_700" class="StayDetailHeaderDesktop-module__ico--HXROE">제주 서귀포시 성산읍 동류암로 26</address>
+                                <address class="StayDetailHeaderDesktop-module__address--AUPmn"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_location_sm_line_gray_700.svg" alt="ic_location_sm_line_gray_700" class="StayDetailHeaderDesktop-module__ico--HXROE">${dto.hotelAddr1} , ${dto.hotelAddr2}</address>
                                 <div class="StayDetailHeaderDesktop-module__checkInOut--Y0C1P"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_clock_sm_outline_gray_700.svg" alt="ic_clock_sm_outline_gray_700" class="StayDetailHeaderDesktop-module__ico--HXROE">체크인 15:00 ~ 체크아웃 11:00</div>
                             </div>
                             
@@ -114,9 +114,9 @@
                                     </div>
                                     <div class="StayRoomDesktop-module__column--Gmr6W StayRoomDesktop-module__roomInfo--otxvB">
                                         <div class="StayRoomDesktop-module__nameContainer--AcNgi">
-                                            <h3 class="StayRoomDesktop-module__name--CFUZD">[단독 특가★]체크인 시 배정 2인</h3>
+                                            <h3 class="StayRoomDesktop-module__name--CFUZD">${rdto.roomName}</h3>
                                         </div>
-                                        <p class="StayRoomDesktop-module__desc--bxMsz"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_person_12x12_line_gray_500.svg" alt="수용인원">기준 2인 / 최대 2인</p>
+                                        <p class="StayRoomDesktop-module__desc--bxMsz"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_person_12x12_line_gray_500.svg" alt="수용인원">기준 ${rdto.roomMen}인 </p>
                                         <div class="StayTagLabels-module__container--XcFLa StayRoomDesktop-module__tag-list--oumS9"></div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="StayRoomRatePlanDesktop-module__priceBox--uqMXE">
                                         <div>
-                                            <h1 class="StayPrice-module__mainPrice--kAnIk"><span class="StayPrice-module__benefitTotal--PfId7">68,400</span><span class="StayPrice-module__mainSuffix--RrxXq">원</span></h1>
+                                            <h1 class="StayPrice-module__mainPrice--kAnIk"><span class="StayPrice-module__benefitTotal--PfId7">${rdto.roomPrice}</span><span class="StayPrice-module__mainSuffix--RrxXq">원</span></h1>
                                         </div><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__medium--bLzcD">예약</button>
                                     </div>
                                 </div>

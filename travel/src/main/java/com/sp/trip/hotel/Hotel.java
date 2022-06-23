@@ -15,6 +15,16 @@ public class Hotel {
 	private String hotelAddr2;
 	private List<MultipartFile> selectFile;
 	
+	// 방테이블
+	private int roomNum;
+	private String roomName;
+	private int roomPrice;
+	private int roomHo;
+	private int roomBed;
+	private int roomMen;
+	private String roomOption;
+	
+	
 	public int getHotelNum() {
 		return hotelNum;
 	}
@@ -62,5 +72,47 @@ public class Hotel {
 	}
 	public void setSelectFile(List<MultipartFile> selectFile) {
 		this.selectFile = selectFile;
+	}
+	public int getRoomNum() {
+		return roomNum;
+	}
+	public void setRoomNum(int roomNum) {
+		this.roomNum = roomNum;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public int getRoomPrice() {
+		return roomPrice;
+	}
+	public void setRoomPrice(int roomPrice) {
+		this.roomPrice = roomPrice;
+	}
+	public int getRoomHo() {
+		return roomHo;
+	}
+	public void setRoomHo(int roomHo) {
+		this.roomHo = roomHo;
+	}
+	public int getRoomBed() {
+		return roomBed;
+	}
+	public void setRoomBed(int roomBed) {
+		this.roomBed = roomBed;
+	}
+	public int getRoomMen() {
+		return roomMen;
+	}
+	public void setRoomMen(int roomMen) {
+		this.roomMen = roomMen;
+	}
+	public String getRoomOption() {
+		return roomOption;
+	}
+	public void setRoomOption(String roomOption) {
+		this.roomOption = roomOption;
 	}
 }

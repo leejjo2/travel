@@ -18,8 +18,13 @@
 		SELECT h.hotelNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2, partnerNum
 		FROM hotel h
 		LEFT JOIN hotelImage hI ON h.hotelNum = hI.hotelNum
-		WHERE h.hotelNum = #{hotelNum};
-		
+		WHERE h.hotelNum = #{hotelNum}
+	</select>
+	
+	<select id="readRoom" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
+		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, hotelNum, roomOption, roomBed
+		FROM roomInfo 
+        WHERE hotelNum = (SELECT hotelNum FROM hotel WHERE hotelNum = #{hotelNum})
 	</select>
 
 	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
