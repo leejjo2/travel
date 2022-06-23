@@ -30,6 +30,7 @@ public class Reserve {
 	private int payWay; // 결제 방법
 	private int payAmount; // 결제 금액
 	private String payDate; // 결제완료일
+	
 	public int getActivityNum() {
 		return activityNum;
 	}
