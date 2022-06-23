@@ -162,7 +162,7 @@ public class ThemeController {
 		int courseCount = 0;
 		for(Theme dto2 : courseList) {
 			courseCount++;
-			dto2.setSaveFileName(service.listImg(dto2.getCourseNum()));
+			dto2.setSaveFileName(service.listImgs(dto2.getCourseDetailNum()));
 		}
 		String latitude = courseList.get(0).getLatitude();
 		String longitude = courseList.get(0).getLongitude();

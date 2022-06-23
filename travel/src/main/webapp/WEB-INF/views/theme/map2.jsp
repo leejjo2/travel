@@ -48,7 +48,21 @@ function ajaxFun(url, method, query, dataType, fn) {
 	
 	function createMarker(data){
 		var positions = [];
+		
+		// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+		var bounds = new kakao.maps.LatLngBounds();	
+		
+		//선좌표 배열변수
+		var linePath = new Array;
+		
 		$(data.list).each(function(index, item){
+			// 선좌표 담기
+			var linePath2;
+			linePath2 = new kakao.maps.LatLng(item.latitude, item.longitude);
+			linePath.push(linePath2);
+			// LatLngBounds 객체에 좌표를 추가합니다
+	  	 	bounds.extend(new kakao.maps.LatLng(item.latitude, item.longitude));
+			
 			let mobj = {
 					content: "<div class='marker-info'>"+ item.placeName + "</div>", 
 					latlng: new kakao.maps.LatLng(item.latitude, item.longitude)
@@ -84,6 +98,19 @@ function ajaxFun(url, method, query, dataType, fn) {
 			kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 			
 		}
+		// 지도에 표시할 선을 생성합니다
+		var polyline = new kakao.maps.Polyline({
+			path: linePath, // 선을 구성하는 좌표배열 입니다
+			strokeWeight: 3, // 선의 두께 입니다
+			strokeColor: '#FF3333', // 선의 색깔입니다
+			strokeOpacity: 0.6, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+			strokeStyle: 'solid' // 선의 스타일입니다
+		});
+		
+		// 범위 설정
+		map.setBounds(bounds);
+		//선그리기
+		polyline.setMap(map);
 	}
 
 	

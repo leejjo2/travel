@@ -411,7 +411,6 @@ function callAdminCourseList() {
 </script>
 
 
-
 <div class="container-fluid">
 	<div class="container mt-4">
 		<div class="row justify-content-center">

@@ -116,6 +116,17 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return saveFileName;
 	}
+	@Override
+	public String listImgs(int courseDetailNum) {
+		String saveFileName = null;
+		
+		try {
+			saveFileName = dao.selectOne("theme.listImgs", courseDetailNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return saveFileName;
+	}
 
 	@Override
 	public Theme readBoard(int courseNum) {

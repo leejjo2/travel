@@ -119,7 +119,7 @@
 	</select>
 	<!-- 게시물의 상세코스 -->
 	<select id="listAdminDetailCourse" parameterType="Integer"  resultType="com.sp.trip.theme.Theme">
-      SELECT a.courseNum, placeName, course_seq, longitude, latitude
+      SELECT courseDetailNum, a.courseNum, placeName, course_seq, longitude, latitude, address, courseContent
       FROM adminCourseDetail a
       JOIN adminCourse b ON a.courseNum = b.courseNum
       WHERE a.courseNum = #{courseNum}
@@ -134,6 +134,7 @@
       ORDER BY course_seq ASC
    </select>
    
+   <!-- 게시물읽어오기 -->
    <select id="readBoard" parameterType="Integer" resultType="com.sp.trip.theme.Theme">
    	  SELECT ac.courseNum, ac.userId, userName, subject, content, 
 			hitCount, ac.cityNum, cityName, ac.themeNum, themeName,
@@ -143,6 +144,14 @@
 		JOIN city c ON ac.cityNum = c.cityNum
 		JOIN theme t ON ac.themeNum = t.themeNum
       WHERE ac.courseNum = #{courseNum}
+   </select>
+	<!-- 각 코스별 이미지 -->
+   <select id="listImgs" parameterType="Integer"  resultType="String">
+      SELECT saveFileName
+      FROM adminCourseImg a
+      JOIN adminCourseDetail b ON  a.courseDetailNum = b.courseDetailNum
+      WHERE a.courseDetailNum = #{courseDetailNum}
+      ORDER BY course_seq ASC
    </select>
    
 </mapper>

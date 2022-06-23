@@ -1703,7 +1703,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .titleType1 .area_tag{text-align: left;}
 .titleType1 .area_tag > span{float:left;}
 .titleType1 .tit h2{display:block;}
-.titleType1 .tit h2 .tit_cos{display:inline-block;width:65px;height:32px;line-height:32px;vertical-align: 5px;margin-right:10px;background:#ed4956;border-radius: 50px;color:#fff;font-weight:700;font-size:18px;}
+.titleType1 .tit h2 .tit_cos{display:inline-block;width:65px;height:32px;line-height:32px;vertical-align: 5px;margin-right:10px;background:#0dcaf0;border-radius: 50px;color:#fff;font-weight:700;font-size:18px;}
 .titleType1 .tit span{display:inline-block;width:58px;line-height:28px;border-radius: 50px;color:#fff;font-size:14px;vertical-align: 7px;margin-left:12px;}
 .titleType1 .titTypeWrap h3{padding:25px 0 0;font-weight:700;word-break: keep-all;font-size:28px;color:#333;letter-spacing: -1px;}
 .titleType1 .area_address{display:inline-block;padding-top:10px;}
@@ -2148,8 +2148,8 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .course_detail .wrap_contView .area_txtView .btn_more:after{content:'+';width:auto;height:auto;font-size:16px;font-weight:700;background:none;margin:0 0 0 5px;color: #333;}
 .course_detail .wrap_contView .area_txtView.on .btn_more:after{content:'-';width:auto;height:auto;font-size:16px;font-weight:700;background:none;margin:0 0 0 5px;color: #333;}
 .course_detail .area_map{margin-top:44px;}
-.course_detail .cos_cont{display:none;margin-top: -9px;position: relative;padding: 0 30px 30px;background: #f3f2f2;}
-.course_detail .detail_box{padding: 0 29px 31px;border:1px solid #ed4956;background:#fff;border-radius: 10px;box-shadow: 2px 3px 9px 3px rgba(87,88,89,.25);}
+.course_detail .cos_cont{display:none;margin-top: -9px;position: relative;padding: 0 30px 30px;background: #f3f2f2;text-align:center;}
+.course_detail .detail_box{padding: 0 29px 31px;border:1px solid #0dcaf0;background:#fff;border-radius: 10px;box-shadow: 2px 3px 9px 3px rgba(87,88,89,.25);}
 .course_detail .cos_cont.active{display:block;}
 
 .relation_cos .cos_wrap .pc.js_slider ul li{padding: 85px 0 39px;}
@@ -2170,7 +2170,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .course_detail .info_area .wrap > div:first-child{margin:0;}
 .course_detail .info_area .wrap > div a{display:block;height:100%;border-radius: 10px;font-size:0;text-indent:-9999px;}
 .course_detail .cos_cont .pc:before, .course_detail .cos_cont .pc:after{display:none;}
-.course_detail .cos_cont .tag{padding:32px 0 0;overflow:hidden;display:block;}
+.course_detail .cos_cont .tag{padding:32px 0 0;overflow:hidden;}
 .course_detail .cos_cont .tag li{float:left;margin-right: 15px;}
 .course_detail .cos_cont .tag li:last-child {margin: 0;}
 .course_detail .cos_cont .tag li a{display: block;font-size: 16px;}
@@ -2201,12 +2201,13 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos .cos_wrap + .cos_wrap{margin-top:20px;}
 .relation_cos .cos_wrap .mo{display:none;}
 .relation_cos .title{overflow:hidden;text-align:center;margin:10px 0 0;}
-.relation_cos .title em{display:inline-block;height:30px;line-height:28px;color:#fff;width:30px;background:#ed4956;border-radius:50px;font-size:16px;font-weight:700;}
+.relation_cos .title em{display:inline-block;height:30px;line-height:28px;color:#fff;width:30px;background:#0dcaf0;border-radius:50px;font-size:16px;font-weight:700;}
 .relation_cos .title strong{padding:5px 0 2px;display:block;font-weight:700;font-size:22px;color:#000;letter-spacing: -1px;}
 .relation_cos .title span{display:inline-block;font-size:16px;color:#666;}
 .relation_cos .title span + span:before{content:'';display:inline-block;width:1px;height:14px;background:#ccc;vertical-align: -1px;margin:0 10px;}
 .relation_cos .pc.js_slider{display:block;}
 .relation_cos .pc{display:inline-block;position:relative;}
+.relation_cos .info_area{display:inline-block;position:relative;}
 .relation_cos ul{display:inline-block;width:auto;}
 .db_cont_detail .relation_cos .cos_wrap ul li{padding: 72px 0 40px !important;}
 .db_cont_detail .relation_cos ul li em{top:25px;}
@@ -2225,7 +2226,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos .cos_wrap ul li.on1:after{content:'';display:inline-block;width:28px;height:16px;position:absolute;left:50%;bottom:0;margin-left:-14px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_arw.png) 0 0 / 100% 100%;}
 
 .relation_cos .cos_wrap .pc.js_slider ul li.on1:after{bottom:8px;}
-.relation_cos .cos_wrap ul li.on:before{content:'';display:block;width:100%;height:4px;background:#ed4956;position:absolute;left:10px;top: 52px;}
+.relation_cos .cos_wrap ul li.on:before{content:'';display:block;width:100%;height:4px;background:#0dcaf0;position:absolute;left:10px;top: 52px;}
 
 .relation_cos .js_slider .swiper-container:before{content:'';display:inline-block;width:28px;height:16px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_box01.gif) 0 0 / 100% 100%;position:absolute;left:0;top:280px;z-index: 10;}
 .relation_cos .js_slider .swiper-container:after{content:'';display:inline-block;width:28px;height:16px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_box02.gif) 0 0 / 100% 100%;position:absolute;right:0;top:280px;z-index: 10;}
@@ -2233,14 +2234,14 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos .pc.js_slider:before {content: '';display: inline-block;width: 30px;height: 205px;position: absolute;left: -20px;top: 80px;background:#f3f2f2;z-index: 5;}
 .relation_cos .pc.js_slider:after {content: '';display: inline-block;width: 30px;height: 275px;position: absolute;right: -20px;top: 0;background:#f3f2f2;z-index: 5;}
 .relation_cos ul li em{display:inline-block;position:absolute;left:50%;top:34px;margin-left:-15px;font-weight:700;font-size:16px;line-height:28px;width:30px;height:30px;border:2px solid #bfbfbf;border-radius: 100%;background:#fff;color:#999;}
-.relation_cos ul li.on em, .relation_cos ul li.on1 em{border:2px solid #ed4956;color:#ed4956;}
+.relation_cos ul li.on em, .relation_cos ul li.on1 em{border:2px solid #0dcaf0;color:#0dcaf0;}
 .relation_cos ul li em span{font-size:0;text-indent: -9999px;}
 .relation_cos ul li .img{display: block;position: absolute;left: 0;top: 0;width: 100%;height: 100%;border-radius: 10px;}
 .relation_cos ul li .tit{position:absolute;left:0;top:50%;margin-top:-30px;width:100%;height:60px;padding:0 20px 0;color:#fff;font-size:16px;font-weight:700;z-index: 10;}
 .relation_cos ul li .tit span{display:block;position:absolute; left:15px;right:15px; top:50%;transform: translateY(-50%);letter-spacing:-0.5px;line-height: 23px;display:block;overflow:hidden;display: -webkit-box;max-height: 46px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 .relation_cos .cos_wrap ul li a:after{content:'';display:block;width:100%;height:100%;position:absolute;left:0;top:0;background:rgba(0,0,0,.3);border-radius: 10px;}
-.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background:rgba(237,73,86,.8);}
+.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background:rgba(13,202,240,.8);}
 .relation_cos .swiper-container{position: static;}
 /*.relation_cos .swiper-container:after{position:absolute;left:30px;right:30px;bottom:80px;content:'';display:block;width:auto;height:2px;background:#e2e1e1;}*/
 .relation_cos .cos_wrap .swiper-button-next, .relation_cos .cos_wrap .swiper-button-prev{display:none;}

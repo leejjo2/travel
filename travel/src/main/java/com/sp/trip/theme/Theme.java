@@ -31,6 +31,7 @@ public class Theme {
 	private String courseContent;
 	private String imageFileNum;
 	private String saveFileName;
+	private List<String> saveFileNames;
 	
 	// 상세 코스 리스트
 	private List<String> placeNameList;
@@ -46,6 +47,12 @@ public class Theme {
 	
 	
 	
+	public List<String> getSaveFileNames() {
+		return saveFileNames;
+	}
+	public void setSaveFileNames(List<String> saveFileNames) {
+		this.saveFileNames = saveFileNames;
+	}
 	public List<Theme> getAdminCourseList() {
 		return adminCourseList;
 	}
