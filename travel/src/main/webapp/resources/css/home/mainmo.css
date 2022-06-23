@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/* header */
+.main_mo .main_gnb{height:50px;}
+.main_mo .main_gnb #gnbMain{height:50px;position: fixed;top: 0;left: 0;z-index: 103;transition:top .3s ease-in-out}
+.main_mo .main_gnb #gnbMain.fixed{height:50px;}
+.main_mo .main_gnb #gnbMain:before{content: "";display: block;position: fixed;right: 0;top: 0;left: 0;height: 40px;background-image: linear-gradient(to top,transparent,rgba(0,0,0,.4));}
+.main_mo .main_gnb #gnbMain.fixed:before{display:none;}
+.main_mo .main_gnb #gnbMain.fixed .top_menu{display:block;height: 0;}
+.main_mo .main_gnb .all_menu #btnMenu{background: url(https://cdn.visitkorea.or.kr/resources/images/main/gnb_mallmenu01.png) 0 0 / 19px 16.5px no-repeat;}
+.main_mo .main_gnb .fixed .all_menu #btnMenu{background: url(https://cdn.visitkorea.or.kr/resources/images/common/gnb_mallmenu.gif) 0 0 / 19px 16.5px no-repeat;}
+.main_mo .main_gnb .top_menu{height:50px;position: fixed;width: 100%;}
+
+/* visu */
+.main_mo .mo_visu{position:relative;width: 100%;height: calc((100% - 210px));overflow: hidden;}
+.main_mo .mo_visu .swiper-container{height:100%;}
+.main_mo .main_mocont{width: 100%;height:auto;float: none;position: absolute;left: 0;background: #fff;z-index: 10;}
+.main_mo .m_slide{position:fixed;left:0;top:0;width:100%;height: calc((100% - 210px));}
+.main_mo .mo_visu .swiper-slide{overflow:hidden;opacity:0;}
+.main_mo .mo_visu .swiper-slide.swiper-slide-active{opacity:1;}
+.main_mo .mo_visu .bg{position: absolute;top: 0;left: 0;right: 0;bottom: 0;width:100%;height:100%;transition: All 5s ease-in-out;transform: scale(1);display: block;background-size:cover;background-position: 50% 50%;background-repeat: no-repeat;}
+.main_mo .mo_visu .swiper-slide.swiper-slide-active a .bg{transform: scale(1.10) rotate(0.02deg);}
+.main_mo .mo_visu .swiper-slide a{display:block;position: relative;width: 100%;height: 100%;overflow: hidden;}
+.main_mo .mo_visu .swiper-slide a:after{content: "";display: block;position: absolute;right: 0;bottom: 0;left: 0;height: 50%;background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,.7));}
+.main_mo .mo_visu .swiper-slide strong{z-index: 10;display: inline-block;word-break: break-all;position: absolute;bottom: 73px;left: 30px;right: 30px;font-size: 20px;line-height: 26px;color: #fff;opacity:0;transform: translateY(50px);}
+.main_mo .mo_visu .swiper-slide.swiper-slide-active strong{transform: scale(1) rotate(0.02deg);opacity: 1;transform: translateY(0);transition: 0.8s;transition-delay: 0.3s;}
+.main_mo .mo_visu .swiper-slide p{position: absolute;bottom: 38px;height:32px;left: 30px;right: 30px;font-size: 12px;display: block;z-index: 10;opacity:0;color:#fff;transform: translateY(30px);word-break:keep-all;}
+.main_mo .mo_visu .swiper-slide.swiper-slide-active p{opacity: 1;transform: translateY(0);transition: 0.8s;transition-delay: .7s;}
+.main_mo .mo_visu .swiper-slide span{position: absolute;width:40px;height:17px;line-height:15px;border:1px solid rgba(255, 255, 255, .5);bottom: 35px;left: 30px;right: 30px;font-size: 10px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;z-index: 10;opacity:0;color:#fff;text-align:center;transform: translateY(30px);}
+.main_mo .mo_visu .swiper-slide.swiper-slide-active span{opacity: 1;transform: translateY(0);transition: 0.8s;transition-delay: 1.2s;}
+.main_mo .mo_visu .swiper-pagination{bottom:0;right:0;left:auto;width:40px;height:25px;color:#666;font-size:12px;letter-spacing:-0.3px;line-height:25px;background:rgba(255, 255, 255, .7);}
+.main_mo .mo_visu .swiper-pagination-current{font-weight:800;color:#000;}
+
+/* 하단 퀵메뉴 */
+.main_mo .quick_menu.none{display:none;}
+.main_mo .quick_menu{display:block;position:fixed;left:0;bottom:0;width:100%;background:#fff;z-index: 11;box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);}
+.main_mo .quick_menu .menu{height:50px;border-top:1px solid #efefef;}
+.main_mo .quick_menu ul li{float:left;width:25%;text-align: center;}
+.main_mo .quick_menu ul li a{display:block;font-size:11px;color:#000;}
+.main_mo .quick_menu ul li a:before{content:'';display:block;margin:10px 0 2px;height:14px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/icon_quick_menu1.png) 50% 0 / 21px auto no-repeat;}
+.main_mo .quick_menu ul li .home:before{background-position:50% 0;}
+.main_mo .quick_menu ul li .search:before{background-position:50% -14px;}
+.main_mo .quick_menu ul li .mypage:before{background-position:50% -28px;}
+.main_mo .quick_menu ul li .more:before{background-position:50% -42px;margin:17px 0 0;}
+.main_mo .quick_menu ul li .more.on:before{background-position:50% -56px;}
+.main_mo .quick_menu ul li .more{text-indent: -9999px;font-size:0;}
+.main_mo .quick_menu ul li .map:before{background: url(https://cdn.visitkorea.or.kr/resources/images/main/icon_quick_map.png) 50% 0 / 22px 14px no-repeat;}
+.main_mo .quick_menu .s_menu{height:50px;display: none;}
+.main_mo .quick_menu .s_menu ul li a:before{background: url(https://cdn.visitkorea.or.kr/resources/images/main/icon_quick_menu2.png) 50% 0 / 14px auto no-repeat;}
+.main_mo .quick_menu .s_menu ul li .smenu2:before{background-position:50% -14px;}
+.main_mo .quick_menu .s_menu ul li .smenu3:before{background-position:50% -28px;}
+.main_mo .quick_menu .s_menu ul li .smenu4:before{background: url(https://cdn.visitkorea.or.kr/resources/images/main/icon_quick_map.png) 50% 0 / 22px 14px no-repeat;}
+.main_mo .quick_menu.high .menu{height:80px;}
+.main_mo .quick_menu.high ul li a:before{margin:25px 0 2px;}
+.main_mo .quick_menu.high ul li .more:before{margin:30px 0 0;}
+.main_mo .quick_menu.high .s_menu{height:80px;}
+
+/* cont */
+.main_mo #contents{width:100%;padding: 27px 0 0;}
+.main_mo .typing{padding:0 15px;}
+.main_mo .typing > em{display:block;font-size:11px;color:#666;font-weight: 300;}
+.main_mo .typing a{display:block;padding:10px 0 25px;font-size:20px;letter-spacing: -1px;line-height: 24px;}
+.main_mo .typing a p{color:#4e4e4e;font-weight:300;}
+.main_mo .typing a span{display:block;font-weight:700;color:#333;}
+.main_mo .typing a span .line{position: relative;display:inline-block;margin:0 5px;height: 25px;}
+.main_mo .typing a span .line:after{content: '|';font-size:18px;display: inline;-webkit-animation: blink 1s infinite;-moz-animation: blink 1s infinite;animation: blink 1s infinite;}
+.main_mo .typing a span .line.end:after{position: absolute;left: -2px;top: 0;}
+.main_mo .typing a span strong{display:inline-block;font-weight:700;}
+.main_mo .typing a span .line.end strong{min-width: 60px;}
+.main_mo .typing a span strong:after{content:'';min-width:0;display:block;height:2px;margin-bottom: -2px;background:#333;transition: .3s ease-in-out;}
+.main_mo .typing a span .line.end strong:after{min-width:60px;position: absolute;left: 0;bottom: 0px;}
+.main_mo .typing a span .spring{color:#6da406;}
+.main_mo .typing a span .summer{color:#4790c4;}
+.main_mo .typing a span .autumn{color:#e24e11;}
+.main_mo .typing a span .winter{color:#9a9491;}
+.main_mo .area_keyword, .words_list{overflow:hidden;border: 0;border-radius: 0;width: 100%;background: #fff;z-index: 102;text-align: left;}
+.main_mo .search h2{padding:0 0 2px;height: 20px;line-height: 20px;font-size: 14px;margin-top: 17.5px;font-weight: 800;color: #333;letter-spacing: -0.5px;}
+.main_mo .area_keyword ul{float: left;width: 50%;padding-bottom: 20px;}
+.main_mo .area_keyword ul li{overflow: hidden;margin-top: 11px;padding-left: 15px;}
+.main_mo .area_keyword ul li .num{float: left;background: #666;color: #fff;width: 14px;height: 14px;padding: 0;font-size: 10px;letter-spacing: -0.5px;border-radius: 2px;text-align: center;vertical-align: middle;}
+.main_mo .area_keyword ul li a{overflow: hidden;line-height: 1;font-weight: 700;text-overflow: ellipsis;white-space: nowrap;float: none;display: block;width: auto;font-size: 12px;margin: 0;padding: 0 15px 0 7px;}
+.main_mo .area_keyword ul + ul li .num {background: #949494;}
+.main_mo .words_list ul{padding: 14px 0 14px;}
+.main_mo .words_list ul li{overflow: hidden;}
+.main_mo .words_list ul li a{display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 13px;padding: 0 30px;height: 24.5px;line-height: 24.5px;}
+.main_mo .words_list ul li a strong{font-weight: 800;}
+.main_mo .main_mocont .search.floating{position: fixed;padding-bottom: 20px;top: 50px;width: 100%;border-radius: 0% 0% 0% 0%;z-index: 99;background-color: white;}
+.main_mo .main_mocont .search.floating + form{padding-top: 40px;}
+.main_mo .main_mocont .search.floating + div{padding-top: 40px;}
+.main_mo .main_mocont .search .close{overflow: hidden;text-align: right;height: 36px;margin: 0 15px;width: auto;clear: both;border-radius: 0;background: #fff;border-top: 1px solid #d8d7d7;}
+.main_mo .main_mocont .search .close button{color: #333;font-size: 11px;line-height: 30px;padding: 0 2px;}
+.main_mo .search_form .search .close{overflow: hidden;text-align: right;height: 36px;margin: 0 15px;width: auto;clear: both;border-radius: 0;background: #fff;border-top: 1px solid #d8d7d7;}
+.main_mo .search_form .search .close button{color: #333;font-size: 11px;line-height: 30px;padding: 0 2px;}
+.search_tag{padding:17px 15px 25px;background:#fff;border-top:1px solid #efefef;overflow: hidden;}
+.search_tag h2{padding:0 0 4px;height: 20px;line-height: 20px;font-size: 14px;font-weight: 800;color: #333;letter-spacing: -0.5px;}
+.search_tag ul{margin-left:-8px;overflow: hidden;}
+.search_tag ul li{float:left;padding:10px 0 0 8px;}
+.search_tag ul li a.all{background: #0a97cd;color: #fff;}
+.search_tag ul li a{display: block;height: 26px;line-height: 26px;border: 1px solid #0a97cd;border-radius: 50px;font-size: 12px;color: #0a97cd;padding: 0 10px;background: #fff;}
+.search_tag .more{padding:14px 0 0;}
+.search_tag .more button{width:100%;height:21px;line-height:21px;font-size:12px;color:#666;}
+.search_tag .more button:after{content:'';display:inline-block;width:9px;height:5px;vertical-align: 2px;margin-left: 4px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/search_tag_btn.gif) 0 0 / 100% 100% no-repeat;}
+
+/*Removes cursor that comes with typed.js*/
+.main_mo .typed-cursor{
+	opacity: 0;
+	display: none;
+}
+/*Custom cursor animation*/
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-ms-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-o-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+.main_mo .search{padding:0 15px;position: relative;}
+.main_mo .search input{border: 0;width: 100%;font-size: 12px;box-sizing: border-box;background: #eef0f2;outline: none;height: 40px;line-height: 40px;padding: 0 46px 0 15px;border-radius: 7px;}
+.main_mo .search span {display: block;}
+.main_mo .search input:focus {background: #fff;outline: 0;border: 1px solid #666;}
+.main_mo .search a.btn_search{overflow: hidden;text-indent: -9999px;position: absolute;top: 0;right: 15px;width: 46px;height: 40px;background: url(https://cdn.visitkorea.or.kr/resources/images/common/btn_gnb_msearch.png) 50% 50% / 16px 16px no-repeat;}
+
+.main_mo .forecastMainWrap{margin: 30px auto 0;}
+
+/*.main_mo .component_wrap > div:last-child{padding-bottom:0;}*/
+.main_mo .main_mocont h3{position:relative;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;padding:25px 30px 19px 15px;font-weight:700;font-size:17px;letter-spacing: -1px;line-height: 21px;color:#000;}
+.main_mo .main_mocont h3 a{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display:block;font-weight:700;font-size:17px;letter-spacing: -1px;line-height: 21px;color:#000;}
+.main_mo .main_mocont h3 a:after{content:'';display:inline-block;width:8px;height:12px;position:absolute;right:15px;top:31px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/tit_bg_arw.png) 0 0 / 100% 100% no-repeat;}
+.main_mo .component_wrap > div{position:relative;border-top:1px solid #efefef;}
+.main_mo .component_wrap > div:first-child{border-top:0;}
+.main_mo .component_wrap h2.tit_atc {font-size: 20px;padding: 25px 0 10px 15px;font-weight: 700;letter-spacing: -1px;color: #333;}
+.main_mo .main_mocont .bookmark{position:absolute;right:15px;top:15px;width:24px;height:24px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/icon_bookmark.png) 0 0 / 100% auto no-repeat;text-indent: -9999px;}
+.main_mo .main_mocont .bookmark.on{background-position: 0 -24px;}
+
+.main_mo .btn_topWrap .btn_topMove2{position: fixed;left: auto;bottom: 0;right: 15px;z-index: 101;top:auto !important;bottom: 61px !important;border:0;height:41px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/ico_top_btn.png) 0 0 / 100% 100% no-repeat;}
+.main_mo .btn_topWrap .btn_topMove2.type1{top:auto !important;bottom: 111px !important;}
+.main_mo .btn_topWrap .btn_topMove2.type2{top:auto !important;bottom: 16px !important;}
+.main_mo .btn_topWrap .btn_topMove2.high{top:auto !important;bottom: 91px !important;}
+.main_mo .btn_topWrap .btn_topMove2.high.type1{top:auto !important;bottom: 171px !important;}
+.main_mo .btn_topWrap .btn_topMove2.high.type2{top:auto !important;bottom: 16px !important;}
+
+.main_mo .main_quick .btn_go{bottom:107px;}
+.main_mo .main_quick button{bottom: 180px;}
+
+.main_mo .main_quick.type1 .btn_go{bottom:160px;}
+.main_mo .main_quick.type1 button{bottom: 233px;}
+
+.main_mo .main_quick.high .btn_go{bottom:137px;}
+.main_mo .main_quick.high button{bottom: 210px;}
+
+.main_mo .main_quick.high.type1 .btn_go{bottom:220px;}
+.main_mo .main_quick.high.type1 button{bottom: 293px;}
+
+.main_mo .main_quick.type2 .btn_go{bottom:63px;}
+.main_mo .main_quick.type2 button{bottom: 137px;}
+
+/* tag */
+.tag_area + div{border-top:0 !important;}
+.tag_area h3{padding: 27px 30px 14px 15px !important;}
+.tag_area .swiper-container{height:59px;background:#f6f7f8;}
+.tag_area ul{padding:15px 0 0 15px;}
+.tag_area ul li{float:left;width:auto;}
+.tag_area ul li a.all{background:#6f6f6f;color:#fff;border:1px solid #6f6f6f;}
+.tag_area ul li a{display:block;height:26px;line-height:26px;border:1px solid #e5e5e5;border-radius: 50px;font-size:12px;color:#666;padding:0 10px;background:#fff;}
+
+/* video_area */
+.video_area h3{padding: 0 30px 14px 15px !important;}
+.video_area{padding: 27px 0 30px;}
+.video_area .videoArea{margin:0 15px;}
+.video_area .videoArea + .videoArea{margin:15px 15px 0;}
+.video_area .videoArea .youtube_area{position: relative;}
+.video_area .videoArea .youtube_area .img_dummy{width: 100%;}
+.video_area .videoArea .youtube_area .youtube_box{position: absolute;left: 0;top: 0;right: 0;bottom: 0;}
+.video_area .videoArea .youtube_area .youtube_box iframe{height: 100%;}
+
+/* component */
+.main_mo .article.mt20{margin-top:0;padding: 0 0 29px;}
+.main_mo .article.mt20 span.btn_more{display:none;}
+
+.main_mo .mo_component01 h3{font-weight: 300;padding:25px 30px 14px 15px;}
+.main_mo .mo_component01 h3 strong{font-weight:700;}
+.main_mo .mo_component01 .swiper-container{position:static;padding: 0 15px;}
+.main_mo .mo_component01 .swiper-slide{width:70%;position:relative;}
+.main_mo .mo_component01 a{display:block;overflow: hidden;}
+.main_mo .mo_component01 a span{display:block;height:190px;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;border-radius: 10px;}
+.main_mo .mo_component01 .swiper-button-next, .mo_component01 .swiper-button-prev{margin:0;top:26px;width:20px;height:20px;}
+.main_mo .mo_component01 .swiper-button-next{right:15px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/swiper_button_next01.png) 0 0 / 100% auto no-repeat;}
+.main_mo .mo_component01 .swiper-button-prev{left:auto;right:44px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/swiper_button_prev01.png) 0 0 / 100% auto no-repeat;}
+.main_mo .mo_component01 .swiper-button-next.swiper-button-disabled{background-position: 0 -20px;opacity:1;}
+.main_mo .mo_component01 .swiper-button-prev.swiper-button-disabled{background-position: 0 -20px;opacity:1;}
+.main_mo .mo_component01 .swiper-slide strong{overflow:hidden;display:block;margin:10px 0 25px;font-weight:300;display: -webkit-box;font-size:14px;line-height:18px;color:#000;max-height: 36px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+
+.main_mo .mo_component02 h3{padding:25px 30px 0 15px;}
+.main_mo .mo_component02 .img{display:block;border-radius: 10px 10px 0 0;}
+.main_mo .mo_component02 .img span{display:block;height:230px;border-radius:10px 10px 0 0;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;}
+.main_mo .mo_component02 .swiper-container{position:static;padding: 14px 15px 58px;}
+.main_mo .mo_component02 .swiper-slide{width:80%;position:relative;box-shadow: 1px 1px 20px 0px rgba(158, 154, 153, 0.32);border-radius:10px;}
+.main_mo .mo_component02 .text{position:relative;padding:0 20px;height:91px;border-radius: 0 0 10px 10px;}
+.main_mo .mo_component02 .text strong{display:block;}
+.main_mo .mo_component02 .text strong a{overflow:hidden;font-weight:300;display:block;margin:17px 0 0;display: -webkit-box;font-size:14px;line-height:18px;color:#000;max-height: 36px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.main_mo .mo_component02 .text .tag{position:absolute;left:15px;right:20px;bottom:20px;}
+.main_mo .mo_component02 .text .tag > div{text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.main_mo .mo_component02 .text .tag > div a{margin-left:5px;height:25px;line-height:25px;padding:0 10px;font-size:12px;background:#f0f0f0;border-radius: 50px;}
+.main_mo .mo_component02 .swiper-scrollbar{left:15px;right:15px;width:auto;bottom:30px;height:2px;background:#dddbdb;}
+.main_mo .mo_component02 .swiper-scrollbar-drag{background:#000;}
+
+.main_mo .mo_component03 a{display:block;}
+.main_mo .mo_component03 .wrap{position: relative;padding:0 0 29px;}
+.main_mo .mo_component03 .img{display:block;}
+.main_mo .mo_component03 .img img{width:100%;}
+.main_mo .mo_component03 strong{padding:0 15px;font-weight:300;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display:block;margin:11px 0 0;font-size:14px;line-height:18px;color:#000;}
+.main_mo .mo_component03 .tag{margin:7px 15px 0 10px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.main_mo .mo_component03 .tag a{display:inline-block;margin-left:5px;height:25px;line-height:25px;padding:0 10px;font-size:12px;background:#f0f0f0;border-radius: 50px;}
+
+.main_mo .mo_component04{padding:0 0 55px !important;}
+.main_mo .mo_component04 .swiper-container{position:static;padding: 0 15px;}
+.main_mo .mo_component04 .swiper-slide{width:43%;position:relative;}
+.main_mo .mo_component04 .swiper-slide a{position:relative;display:block;height:140px;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;border-radius: 10px;}
+.main_mo .mo_component04 .swiper-slide a:after{content: "";display: block;position: absolute;right: 0;bottom: 0;left: 0;height: 60%;border-radius: 10px;background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,.6));}
+.main_mo .mo_component04 .swiper-slide a strong{position:absolute;left:15px;right:15px;bottom:13px;overflow:hidden;display:block;display: -webkit-box;font-size:14px;line-height:18px;color:#fff;max-height: 36px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;z-index: 5;}
+.main_mo .mo_component04 .swiper-pagination{bottom: 26px;}
+.main_mo .mo_component04 .swiper-pagination-bullet{width:10px;height:10px;opacity:1;background: #d2d2d2;margin: 0 3px !important;}
+.main_mo .mo_component04 .swiper-pagination-bullet-active{background:#333;}
+
+.main_mo .mo_component05{padding:0 0 55px;}
+.main_mo .mo_component05 .swiper-container{position:static;padding: 0 15px;}
+.main_mo .mo_component05 .swiper-slide{width:125px;position:relative;}
+.main_mo .mo_component05 .swiper-slide span{display:block;width:125px;height:125px;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;border-radius: 100%;text-indent: -9999px;}
+.main_mo .mo_component05 .swiper-slide a{display:block;}
+.main_mo .mo_component05 .swiper-slide a strong{text-align:center;font-weight:300;margin:12px 10px 0;overflow:hidden;display:block;display: -webkit-box;font-size:14px;line-height:18px;color:#000;max-height: 36px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.main_mo .mo_component05 .swiper-pagination{bottom: 26px;}
+.main_mo .mo_component05 .swiper-pagination-bullet{width:10px;height:10px;opacity:1;background: #d2d2d2;margin: 0 3px !important;}
+.main_mo .mo_component05 .swiper-pagination-bullet-active{background:#333;}
+
+.main_mo .mo_component06{padding:0 15px 30px;overflow: hidden;}
+.main_mo .mo_component06 h3{padding: 25px 30px 19px 0;}
+.main_mo .mo_component06 a{display:block;}
+.main_mo .mo_component06 a + a{margin:10px 0 0;}
+.main_mo .mo_component06 a .wrap{display:table;height:100px;}
+.main_mo .mo_component06 a .wrap div{display:table-cell;vertical-align: middle;}
+.main_mo .mo_component06 .img{float:left;width:100px;height:100px;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;border-radius: 30px;text-indent: -9999px;}
+.main_mo .mo_component06 strong{margin:0 0 7px 15px;overflow:hidden;font-weight:300;display:block;display: -webkit-box;font-size:14px;line-height:18px;color:#000;max-height: 36px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.main_mo .mo_component06 .area{display:block;margin-left:15px;font-size:12px;color:#666;font-weight: 300;}
+
+.main_mo .mo_component07{padding:0 15px 30px;overflow: hidden;}
+.main_mo .mo_component07 .wrap{position: relative;}
+.main_mo .mo_component07 .wrap + .wrap{margin:29px 0 0;}
+.main_mo .mo_component07 .wrap:after{content: "";display: block;position: absolute;right: 0;bottom: 0;left: 0;height: 33%;border-radius: 10px;background-image: linear-gradient(to bottom,transparent,rgba(0,0,0,.7));}
+.main_mo .mo_component07 h3{padding: 25px 30px 19px 0;}
+.main_mo .mo_component07 a{display:block;}
+.main_mo .mo_component07 .img{display:block;}
+.main_mo .mo_component07 .img img{width:100%;border-radius: 10px;}
+.main_mo .mo_component07 strong{position:absolute;left:20px;right:20px;bottom:18px;overflow:hidden;display:block;display: -webkit-box;font-size:15px;line-height:19px;color:#fff;max-height: 44px;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;z-index: 5;font-weight: 700;}
+
+.main_mo .mo_component08 .tit_wrap{padding:0 15px 80px;background:#efefef;}
+.main_mo .mo_component08 h3{font-weight:300;font-size:20px;line-height: 24px;padding: 25px 30px 7px 0;}
+.main_mo .mo_component08 h3 strong{font-weight:700;}
+.main_mo .mo_component08 .tit_wrap p{font-size:13px;line-height:17px;color:#666;font-weight: 300;}
+.main_mo .mo_component08 .swiper-container{position:static;padding: 0 15px;margin-top: -62px;}
+.main_mo .mo_component08 .swiper-slide{width:43%;position:relative;}
+.main_mo .mo_component08 .swiper-slide span{display:block;height:125px;background-size: cover;background-position: 50% 50%;background-repeat: no-repeat;border-radius: 20px;text-indent: -9999px;}
+.main_mo .mo_component08 .swiper-slide strong{display:block;padding:7px 0 4px;font-size:14px;line-height:18px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.main_mo .mo_component08 .swiper-slide em{display:block;font-size:12px;color:#666;font-weight: 300;}
+
+.main_mo .search_form{position:fixed;display:none;left:0;top:0;width:100%;height:100%;background:#eef0f2;z-index: 103;}
+.main_mo .search_form .header{position:relative;height:50px;background:#fff;}
+.main_mo .search_form .logo{display: block;text-align: center;}
+.main_mo .search_form .logo img{width: 144px;height: auto;}
+.main_mo .search_form .back_btn{position:absolute;left:0;top:0;width:40px;height:50px;background: url(https://cdn.visitkorea.or.kr/resources/images/main/mo_button_back.gif) 0 0 / 100% auto no-repeat;text-indent: -9999px;}
+.main_mo .search_form .search{background:#fff;}
+.main_mo .search_form .search input{background:#fff;border:1px solid #666;}
+
+.main_mo footer{margin-top: 30px;}
+
+@media all and (min-width:768px) and (max-width:1023px) {
+	.main_mo .mo_component01 .swiper-slide{width:235px;}
+	.main_mo .mo_component02 .swiper-slide{width:230px;}
+	.main_mo .mo_component04 .swiper-slide{width:125px;}
+	.main_mo .mo_component08 .swiper-slide{width:125px;}
+}
