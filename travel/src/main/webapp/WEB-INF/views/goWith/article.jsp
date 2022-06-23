@@ -7,21 +7,16 @@
 
 
            <div class="topImg">
-                <div class="img">
-                    <img src="${pageContext.request.contextPath}/dist/goWith/img/04.jpg" />
-                </div>
+                	<div class="img">
+                    <img src="${pageContext.request.contextPath}/dist/goWith/img/05.jpg" />
+                	</div>
                 <div class="content">
                     <div class="badge">
                         <div class="inside">
-                        
-                        
-                        	진행중
-                        
-                        
-                        
+                        	${dto.recruit_status=='N'?'모집중':'모집완료'}
                         </div>
                     </div>
-                    <h1 style="word-break:break-all;white-space:pre-line">2022년 08월 28일 ~ 2022년 09월 04일 예정(실투어8/29~9/3 5박6일)</h1>
+                    <h1 style="word-break:break-all;white-space:pre-line">${dto.subject}</h1>
                 </div>
             </div>
             <form action="" id="viewForm" method="post" encType="multipart/form-data">
@@ -30,69 +25,57 @@
                 <div class="detailInfo">
                     <div class="inside">
                         <div class="head">
-                            <h1 style="word-break:break-all;white-space:pre-line">2022년 08월 28일 ~ 2022년 09월 04일 예정(실투어8/29~9/3 5박6일)</h1>
+                            <h1 style="word-break:break-all; white-space:pre-line;">${dto.subject}</h1>
                         </div>
                         <div class="subInfo">
                             <ul>
                                 <li class="noPaddingTopMobile">
-                                    <h1>여행국가.</h1>
-                                    <p>몽골</p>
+                                    <h1>여행도시.</h1>
+                                    <p>${dto.cityName}</p>
                                 </li>
                                 <li>
-                                    <h1>여행지.</h1>
-                                    <p>고비사막</p>
+                                    <h1>관광지.</h1>
+                                    <p>${dto.spotName}</p>
                                 </li>
                                 <li>
                                     <h1>모집인원.</h1>
-                                    <p>5</p>
+                                    <p>${dto.recruit_cnt}</p>
                                 </li>
                             </ul>
                             <ul>
                                 <li>
                                     <h1>연령대.</h1>
                                     
-                                    <p>20대 . 30대 . 40대</p>
+                                    <p>${dto.age}</p>
                                 </li>
                                 <li>
                                     <h1>성별.</h1>
-                                    <p>혼성이요</p>
+                                    <p>${dto.gender==0?'혼성이요':(dto.gender==1?'남성만요':'여성만요')}</p>
                                 </li>
                                 <li class="pc">&nbsp;</li>
                             </ul>
                             <ul>
                                 <li>
-                                    <h1>여행상품.</h1>
-                                    <p>(오다투어)고비사막 5박6일</p>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
                                     <h1>일정.</h1>
-                                    <p>2022-08-28 ~ 2022-09-04 (7박8일)</p>
+                                    <p>${dto.startDate} ~ ${dto.endDate}</p>
                                 </li>
                             </ul>
                         </div>
+                        <p>&nbsp;</p>
                         <div class="text" style="" >
-                        	<p style="word-break:break-all;white-space:pre-line">몽골의 초원과 자연을 만끽하러 가고 싶네요 제 나이는 이제 40이구요
-
-
-동행자들은 20대30대부터 40대까지 상관없으니 몽골의 초원과 은하수 보러 갔으면 하네요
-
-
-아직 정한건 없으니 동행 다 모인후 서로 도우면서 알아보고 결정해요..
-
-인원은 남3 여3으로 가서 조은추억남겨요
-
-
-저는 사진이랑 영상찍는게 취미라 여행가면 인생샷 여행영상 만들어드릴께요..
-
-
-항공 발권은 동행 구한후 상의후 결정했으면 하네요..</p>
+                        	<p style="word-break:break-all;white-space:pre-line">${dto.content}</p>
                         </div>
-                        <div class="buttonContainer">
-                            <ul>
+                        <div class="buttonContainer">                
+                           <ul>	
                                 <li>
-                                    <div id="btnBoardModify" class="buttonType3">수정하기</div>
+                                <c:choose>
+                                	<c:when test="${sessionScope.member.userId==dto.userId}">
+                                    	<div id="btnBoardModify" class="buttonType3" onclick="location.href='${pageContext.request.contextPath}/gowith/update?num=${dto.goWithNum}&page=${page}';">수정하기</div>
+                                    </c:when>
+                                    <c:otherwise>
+                                    	<div id="btnBoardModify" class="buttonType3">수정하기</div>
+                                    </c:otherwise>
+                                 </c:choose>
                                 </li>
                                 <li>
                                     <div id="btnDelete" class="buttonType3">삭제하기</div>
@@ -101,6 +84,46 @@
                         </div>
                         <div class="divider marginTopXxl marginBottomXxl"></div>
                         <div class="commentContainer">
+                        	 <ul>
+                                
+                                <div class="textInputContainer marginTopMd">
+                                <ul>
+                                	<li>
+                                		<h1>댓글</h1>
+                                	</li>
+                                </ul>
+                                </div>
+                                
+                                <li>
+                                    <div class="comment">
+                                        <div class="text" style="word-break:break-all;white-space:pre-line">아 본문에 혼성이라고 되어 있는데, 저희는 여성 2명입니다. 모집하는 두분 성별은 상관없어요. 
+
+대학원/회사로부터 잠시 휴식을 취하기 위해 자연과 가깝게 있을 수 있는 몽골로 여행을 떠나게 되었습니다. 기본적으로 휴식과 힐링을 목적으로 하는 여행이에요. 저희 둘다 사람에 대한 애정이 있고, 삶에 대한 깊은 고민을 하고, (음주)가무를 참 좋아합니다. (둘이 마지막으로 다녀온 해외여행이 파티섬 코팡안이었어요. 약 7년전이라 그때와 텐션이 같지는 않지만 마음만큼은 같습니다^^. ) 
+
+낮에는 사막과 밤에는 하늘과 깊게 연결되는, 편하고 즐거운 여행 하실 분들 함께해요. 
+
+생각하는 여행의 스케치가 있는만큼, 동행을 거절할 수 있다는 점 미리 양해부탁드릴게요. 연락주실 때 부담 안되실 정도의 간단한 자기소개와 저희 여행이 잘 맞을 것 같은지 말씀주시면 소통이 원활할 것 같아요. 감사합니다 :D
+
+* 대학원 기말 텀페이퍼 작성 중으로 카톡 답장이 다소 느릴 수 있습니다. 잠시만 기다려주세요!</div>
+                                        <div class="user">
+                                            <h1>dy001</h1>
+                                            <p>4시간전</p>
+                                        </div>
+                                        <div class="buttonContainer">
+                                            <ul>
+                                                <li>
+                                                    <a onclick="fn_displayModifyComment('modifyCommentDiv0');" style="cursor:pointer;"> 수정 </a>
+                                                </li>
+                                                <li>
+                                                    <a onclick="fn_deleteComment('0');" style="cursor:pointer;"> 삭제 </a>
+                                                </li>
+                                                <li>
+                                                    <a onclick="fn_displayAddComment('addCommentDiv0');" style="cursor:pointer;"> 대댓글 </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                	</div>
+                                </li>
                             <ul>
                                 <div class="textInputContainer">
                                     <ul>
@@ -173,45 +196,39 @@
                     <div class="inside">
                         <div class="top">
                             <div class="left">
-                                <h1>시흥갈매기</h1>
+                                <h1>${dto.userName}</h1>
                             </div>
                             <div class="right">
-                                <p>2022-06-16</p>
-                                <p><img src='img/view_ico.svg'/>조회수. 14</p>
+                                <p>${dto.reg_date}</p>
+                                <p><i class="bi bi-eye"></i>조회수. ${dto.hitCount}</p>
                             </div>
                         </div>
                         <div class="img">
-                        			<img id="thumbnailImg" src="img/no_thumbnail_ex.jpg"/>
+                        			<img src="${pageContext.request.contextPath}/uploads/photo/${dto.imageFilename}" alt="사진">
                         </div>
                        
                         <div class="tagsContainer">
                             <ul>
                             <li>
-                                            <div class="inside">#혼성이요</div>
+                                            <div class="inside">#${dto.gender==0?'혼성이요':(dto.gender==1?'남성만요':'여성만요')}</div>
                                         </li>
                                		<li>
-                                       	<div class="inside">#20대</div>
-                                   	</li>
-                               		<li>
-                                       	<div class="inside">#30대</div>
-                                   	</li>
-                               		<li>
-                                       	<div class="inside">#40대</div>
+                                       	<div class="inside">#${dto.age}</div>
                                    	</li>
                                    		<li>
-                                            <div class="inside">#술 상관없어요</div>
+                                            <div class="inside">#${dto.drink==0?'상관없어요':(dto.drink==1?'여행은술이죠':'술은싫어요')}</div>
                                         </li>
                                    		<li>
-                                            <div class="inside">#담배 상관없어요</div>
+                                            <div class="inside">#${dto.cigar==0?'상관없어요':(dto.cigar==1?'흡연자 선호':'비흡연자 선호')}</div>
                                         </li>
                                    		<li>
-                                            <div class="inside">#활동적인</div>
+                                            <div class="inside">#${dto.tripType1==1?'느긋한':'활동적인'}</div>
                                         </li>
                                    		<li>
-                                            <div class="inside">#랜드마크형</div>
+                                            <div class="inside">#${dto.tripType2==1?'로컬형':'랜드마크형'}</div>
                                         </li>
                                    		<li>
-                                            <div class="inside">#모혐형</div>
+                                            <div class="inside">#${dto.tripType3==1?'모험형':'휴양형'}</div>
                                         </li>
                             </ul>
                         </div>
@@ -229,6 +246,7 @@
             	<input type="hidden" id="rep_pwd" name="rep_pwd" value="">
             	<input type="hidden" id="rep_g_no" name="rep_g_no" value="">
             </form>
+            
             <div id="modifyPopup" class="popupContainer" style="display:none">
                 <div class="box">
                     <div class="head">

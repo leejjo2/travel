@@ -37,11 +37,62 @@
 	        $(document).on('click', '#btnRegister', function(e) {
 	        	const f = document.goWithForm;
 	        	
-	            f.action = "${pageContext.request.contextPath}/gowith/write";
+	            f.action = "${pageContext.request.contextPath}/gowith/${mode}";
 	            
 	            f.submit();
 	        });
 	        
+</script>
+
+
+<script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data){
+			fn(data);
+		},
+		error:function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+$(function(){
+	$(".tabButtonType").click(function(){
+		var cityNum = $(this).attr("data-cityNum");
+				
+		let url = "${pageContext.request.contextPath}/gowith/cityList";
+		let query = "cityNum="+cityNum;
+		var out="";
+				
+		const fn = function(data){
+			for(var i=0; i<data.list.length; i++) {
+				var item = data.list[i];
+				console.log(data.list[i]);
+				var spotName = item.spotName;
+				var spotNum = item.spotNum;
+				
+               	out += "<div class='checkRadioBoxCircleType'>";	
+               	out += "<input type='checkbox' id='placeSelect"+ spotNum + "' name='spotNum' value='"+ spotNum + "'/>";
+               	out += "<label for='placeSelect"+ spotNum + "'>"; 
+               	out += "<div class='circle'>";
+               	out += "<div class='inside' ></div>";
+               	out += "</div>";
+               	out += "<p>"+spotName+"</p>";
+               	out += "</label>";
+               	out += "</div>";
+			}
+				
+			$(".spotList").html(out);
+		}; 
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+});
 </script>
 
             <div class="topImg">
@@ -73,8 +124,8 @@
                                         <ul>
                                         	<li>  
                                                 <c:forEach var="vo" items="${listCity}">
-                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active">
-                                                	<input type="hidden" name="product_name"  value="${vo.cityNum}" ${vo.cityNum==dto.cityNum ? "selected='selected'":""} onclick="clickCity();">	
+                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active" data-cityNum="${vo.cityNum}">
+                                                	<input type="hidden" name="product_name" class="cityNum" value="${vo.cityNum}" ${vo.cityNum==dto.cityNum ? "selected='selected'":""} onclick="clickCity();">	
                                                 		${vo.cityName}
                                              		</div>
 													</c:forEach>
@@ -84,10 +135,10 @@
                                     </div>
                                     	<div id="divProduct0" class="contentInsideType1" style="display:block">
 	                                        <ul>
-	                                            <li>
+	                                            <li class="spotList">
 	                                            	<c:forEach var="vo" items="${listSpot}">
 	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""} onclick= '' />
+	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""}/>
 	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
@@ -600,7 +651,9 @@
                     </ul>
                     
                     <div class="buttonContainer marginTopLg">
-                        <button type="button" id="btnRegister" class="buttonType2">모집글 업로드</button>
+                        <button type="button" id="btnRegister" class="buttonType2">${mode=='update'?'모집글 수정':'모집글 업로드'}</button>
+                        <p>&nbsp;</p>
+                        <button type="button" class="buttonType2" onclick="location.href='${pageContext.request.contextPath}/gowith/list';">${mode=='update'?'수정취소':'등록취소'}</button>
                     </div>
                 </div>
             </div>

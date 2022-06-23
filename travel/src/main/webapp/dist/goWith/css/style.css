@@ -2672,12 +2672,12 @@ textarea:focus {
 }
 
 .postDetail > .detailInfo > .inside > .subInfo > ul > li > h1 {
-  color: #a0a0a0;
+  color: white;
   font-weight: 400;
 }
 
 .postDetail > .detailInfo > .inside > .subInfo > ul > li > p {
-  color: #1B1C1B;
+  color: white;
 }
 
 .postDetail > .detailInfo > .inside > .text {

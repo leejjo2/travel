@@ -274,7 +274,7 @@
                 <input type="hidden" id="keyword" name="keyword" value="">
                 <input type="hidden" id="orderType" name="orderType" value="">
                     <div class="left">
-                        <div id="btnStatus1" class="tabButtonType">진행중만 보기</div>
+                        <div id="btnStatus1" class="tabButtonType">모집중만 보기</div>
                     </div>
                     <div class="right">
                         <div class="searchBox searchInput">
@@ -343,7 +343,7 @@
 		                                            <h2>${vo.recruit_status=='N'?'모집중':'모집완료'}</h2>
 		                                        </div>
 		                                        <h1 style="word-break:break-all;white-space:pre-line">${vo.subject}</h1>
-		                                        <h2>${vo.cityName} . ${vo.spotName} . ${recruit_cnt}명</h2>
+		                                        <h2>${vo.cityName} . ${vo.spotName} . ${vo.recruit_cnt}명</h2>
 		                                        <h4>${vo.userName}</h4>
 		                                        <p>${vo.startDate} - ${vo.endDate} <span class="type1">${discussion}</span></p>
 		                                    </div>

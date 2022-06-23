@@ -76,7 +76,7 @@
 	
 	<!-- 글보기 -->
 	<select id="readGoWith" parameterType="Integer" resultType="com.sp.trip.goWith.GoWith">
-		SELECT g.goWithNum, g.userId, userName, subject, cityName, spotName, 
+		SELECT g.goWithNum, g.userId, userName, subject, cityName, spotName, content,
 				recruit_cnt, recruit_status, TO_CHAR(startDate, 'YYYY-MM-DD') startDate,
 				TO_CHAR(endDate, 'YYYY-MM-DD') endDate, age, gender, discussion, drink, cigar,
 				tripType1, tripType2, tripType3,
@@ -93,4 +93,18 @@
 	<update id="updateHitCount" parameterType="Integer">
 		UPDATE goWith SET hitCount=hitCount+1 WHERE goWithNum = #{goWithNum}
 	</update>
+	
+	<!-- 수정 -->
+	<update id="updateGoWith" parameterType="com.sp.trip.goWith.GoWith">
+		UPDATE GoWith SET subject=#{subject}, content=#{content}, recruit_status=#{recruit_status} , recruit_cnt=#{recruit_cnt}, 
+				startDate=#{startDate}, endDate=#{endDate}, age=#{age}, gender=#{gender}, 
+				discussion=#{discussion}, drink=#{drink}, cigar=#{cigar}, tripType1=#{tripType1}, tripType2=#{tripType2}, 
+				tripType3=#{tripType3}, imageFilename=#{imageFilename, jdbcType=VARCHAR}, spotNum=#{spotNum}
+		WHERE goWithNum = #{goWithNum}
+	</update>
+      
+	<!-- 삭제 -->
+	<delete id="deleteGoWith" parameterType="Integer">
+		DELETE FROM goWith WHERE goWithNum = #{goWithNum}
+	</delete>
 </mapper>

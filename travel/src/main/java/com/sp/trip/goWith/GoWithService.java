@@ -13,4 +13,9 @@ public interface GoWithService {
 	public void updateHitCount(int goWithNum) throws Exception;
 	public void updateGoWith(GoWith dto, String pathname) throws Exception;
 	public void deleteGoWith(int goWithNum, String pathname, String userId, int membership) throws Exception;
+	
+	public void insertReply(Reply dto) throws Exception;
+	public List<Reply> listReply(Map<String, Object> map);
+	public int replyCount(Map<String, Object> map);
+	public void deleteReply(Map<String, Object> map) throws Exception;
 }

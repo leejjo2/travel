@@ -17,7 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
@@ -79,13 +79,7 @@ public class GoWithController {
 		// 글 리스트
 		List<GoWith> list = service.listGoWith(map);
 
-		// 리스트의 번호
-		int listNum, n = 0;
-		for (GoWith dto : list) {
-			listNum = dataCount - (start + n - 1);
-			dto.setGoWithNum(listNum);
-			n++;
-		}
+
 
 		String query = "";
 		String listUrl = cp + "/gowith/list";
@@ -100,8 +94,8 @@ public class GoWithController {
 		}
 
 		if (query.length() != 0) {
-			listUrl = cp + "/bbs/list?" + query;
-			articleUrl = cp + "/bbs/article?page=" + current_page + "&" + query;
+			listUrl = cp + "/gowith/list?" + query;
+			articleUrl = cp + "/gowith/article?page=" + current_page + "&" + query;
 		}
 
 		String paging = myUtil.paging(current_page, total_page, listUrl);
@@ -190,4 +184,53 @@ public class GoWithController {
 		return ".goWith.article";
 	}
 	
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public String updateForm(@RequestParam int num,
+			@RequestParam String page,
+			HttpSession session,
+			Model model) throws Exception {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		GoWith dto = service.readGoWith(num);
+		
+		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
+			return "redirect:/gowith/list?page=" + page;
+		}
+
+		model.addAttribute("dto", dto);
+		model.addAttribute("mode", "update");
+		model.addAttribute("page", page);
+		
+		return ".goWith.write";
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateSubmit(GoWith dto,
+			@RequestParam String page,
+			HttpSession session) throws Exception {
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "photo";
+
+		try {
+			service.updateGoWith(dto, pathname);
+			
+		} catch (Exception e) {
+		}
+		
+		return "redirect:/gowith/list?page=" + page;
+	}
+	
+	@RequestMapping(value = "cityList")
+	@ResponseBody
+	public Map<String, Object> cityList(@RequestParam int cityNum) throws Exception{
+		List<GoWith> list = service.listSpot(cityNum);
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		model.put("list", list);
+		
+		System.out.println(list.size());
+		
+		return model;
+	}
 }
