@@ -4,6 +4,8 @@ public class Reply {
 	private int goWithReplyNum;
 	private int goWithNum;
 	private String userId;
+	private String userName;
+	private String pwd;
 	private String content;
 	private String reg_date;
 	
@@ -36,6 +38,18 @@ public class Reply {
 	}
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
 	

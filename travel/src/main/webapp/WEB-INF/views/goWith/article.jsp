@@ -5,6 +5,99 @@
 
 <link href="${pageContext.request.contextPath}/dist/goWith/css/style.css" rel="stylesheet"/>
 
+<script type="text/javascript">
+
+<c:if test="${sessionScope.member.userId==dto.userId||sessionScope.member.membership>50}">
+function deleteGoWith() {
+    if(confirm("게시글을 삭제 하시겠습니까 ? ")) {
+	    let query = "${query}&num=${dto.goWithNum}";
+	    let url = "${pageContext.request.contextPath}/gowith/delete?" + query;
+    	location.href = url;
+    }
+}
+</c:if>
+</script>
+
+<script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data) {
+			fn(data);
+		},
+		beforeSend:function(jqXHR) {
+			jqXHR.setRequestHeader("AJAX", true);
+		},
+		error:function(jqXHR) {
+			if(jqXHR.status === 403) {
+				login();
+				return false;
+			} else if(jqXHR.status === 400) {
+				alert("요청 처리가 실패 했습니다.");
+				return false;
+			}
+	    	
+			console.log(jqXHR.responseText);
+		}
+	});
+}
+
+//페이징 처리
+$(function(){
+	listPage(1);
+});
+
+function listPage(page) {
+	let url = "${pageContext.request.contextPath}/gowith/listReply";
+	let query = "goWithNum=${dto.goWithNum}&pageNo="+page;
+	let selector = "#listReply";
+	
+	const fn = function(data){
+		$(selector).html(data);
+	};
+	ajaxFun(url, "get", query, "html", fn);
+}
+
+// 리플 등록
+$(function(){
+	$(".btnSendReply").click(function(){
+		let num = "${dto.goWithNum}";
+		const $div = $(this).closest(".commentContainer");
+
+		let content = $div.find("textarea").val().trim();
+		if(! content) {
+			$div.find("textarea").focus();
+			return false;
+		}
+		let pwd = $("#commentPwd").val();
+		if(! pwd ) {
+			$("#commentPwd").focus();
+			return false;
+		}
+		content = encodeURIComponent(content);
+		
+		let url = "${pageContext.request.contextPath}/gowith/insertReply";
+		let query = "goWithNum=" + num + "&content=" + content + "&pwd=" + pwd;
+		
+		const fn = function(data){
+			$div.find("textarea").val("");
+			
+			let state = data.state;
+			if(state === "true") {
+				listPage(1);
+			} else if(state === "false") {
+				alert("댓글을 추가 하지 못했습니다.");
+			}
+		};
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+});
+
+</script>
 
            <div class="topImg">
                 	<div class="img">
@@ -78,112 +171,28 @@
                                  </c:choose>
                                 </li>
                                 <li>
-                                    <div id="btnDelete" class="buttonType3">삭제하기</div>
+                                    <div id="btnDelete" class="buttonType3" onclick="deleteGoWith();">삭제하기</div>
                                 </li>
                             </ul>
                         </div>
                         <div class="divider marginTopXxl marginBottomXxl"></div>
                         <div class="commentContainer">
-                        	 <ul>
-                                
-                                <div class="textInputContainer marginTopMd">
-                                <ul>
-                                	<li>
-                                		<h1>댓글</h1>
-                                	</li>
-                                </ul>
-                                </div>
-                                
-                                <li>
-                                    <div class="comment">
-                                        <div class="text" style="word-break:break-all;white-space:pre-line">아 본문에 혼성이라고 되어 있는데, 저희는 여성 2명입니다. 모집하는 두분 성별은 상관없어요. 
-
-대학원/회사로부터 잠시 휴식을 취하기 위해 자연과 가깝게 있을 수 있는 몽골로 여행을 떠나게 되었습니다. 기본적으로 휴식과 힐링을 목적으로 하는 여행이에요. 저희 둘다 사람에 대한 애정이 있고, 삶에 대한 깊은 고민을 하고, (음주)가무를 참 좋아합니다. (둘이 마지막으로 다녀온 해외여행이 파티섬 코팡안이었어요. 약 7년전이라 그때와 텐션이 같지는 않지만 마음만큼은 같습니다^^. ) 
-
-낮에는 사막과 밤에는 하늘과 깊게 연결되는, 편하고 즐거운 여행 하실 분들 함께해요. 
-
-생각하는 여행의 스케치가 있는만큼, 동행을 거절할 수 있다는 점 미리 양해부탁드릴게요. 연락주실 때 부담 안되실 정도의 간단한 자기소개와 저희 여행이 잘 맞을 것 같은지 말씀주시면 소통이 원활할 것 같아요. 감사합니다 :D
-
-* 대학원 기말 텀페이퍼 작성 중으로 카톡 답장이 다소 느릴 수 있습니다. 잠시만 기다려주세요!</div>
-                                        <div class="user">
-                                            <h1>dy001</h1>
-                                            <p>4시간전</p>
-                                        </div>
-                                        <div class="buttonContainer">
-                                            <ul>
-                                                <li>
-                                                    <a onclick="fn_displayModifyComment('modifyCommentDiv0');" style="cursor:pointer;"> 수정 </a>
-                                                </li>
-                                                <li>
-                                                    <a onclick="fn_deleteComment('0');" style="cursor:pointer;"> 삭제 </a>
-                                                </li>
-                                                <li>
-                                                    <a onclick="fn_displayAddComment('addCommentDiv0');" style="cursor:pointer;"> 대댓글 </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                	</div>
-                                </li>
-                            <ul>
+                        	 <div id="listReply"></div>
                                 <div class="textInputContainer">
                                     <ul>
                                         <li>
                                         	<h1>댓글 쓰기</h1>
-                                            <textarea id="commentContent" placeholder="어느 말이든 좋아요. 무엇이든 물어보세요:D"></textarea>
+                                            <textarea id="commentContent" name="content" placeholder="어느 말이든 좋아요. 무엇이든 물어보세요:D"></textarea>
                                         </li>
                                     </ul>
                                     <ul>
                                         <li>
-                                            <h1>닉네임</h1>
-                                            <input type="text" id="commentName" placeholder="닉네임을 쓰시오" />
-                                        </li>
-                                        <li>
-                                            <h1>연락처(카카오톡 알림용)</h1>
-                                            <input type="text" id="commentNumber" placeholder="알림용으로만 쓰겠슈!" oninput="autoHyphen(this)" maxlength="13"/>
-                                        </li>
-                                        <li>
                                             <h1>비밀번호</h1>
-                                            <input type="text" id="commentPwd" placeholder="암호를 쓰시오!" />
+                                            <input type="text" id="commentPwd" name="pwd" placeholder="암호를 쓰시오!" />
                                         </li>
                                     </ul>
-                                    <div class="checkBoxContainer">
-                                        <ul>
-                                        	<li>
-                                                <div
-                                                    class="checkRadioBoxCircleType1">
-                                                    <input
-                                                        type="checkbox"
-                                                        id="secret"
-                                                        name="secret"
-                                                    />
-                                                    <label for="secret">
-                                                        <div class="circle">
-                                                            <div
-                                                                class="inside"
-                                                            ></div>
-                                                        </div>
-                                                        <p>비밀 댓글</p>
-                                                    </label>
-                                                </div>
-                                            </li> 
-                                            <li>
-                                                <div class="checkRadioBoxCircleType1" >
-                                                    <input type="checkbox" id="agree" name="agree" onclick="fn_privacyPopup3('agree')" />
-                                                    <label for="agree">
-                                                        <div class="circle">
-                                                            <div class="inside" ></div>
-                                                        </div>
-                                                        <p>
-                                                            <a onclick="document.getElementById('agree').onclick">개인정보</a> 수집에
-                                                            동의합니다.
-                                                        </p>
-                                                    </label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                     <div class="buttonContainer marginTopLg">
-                                        <div id="commentRegister" class="buttonType2">
+                                        <div id="commentRegister" class="buttonType2 btnSendReply">
                                             댓글 달기
                                         </div>
                                     </div>

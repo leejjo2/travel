@@ -196,4 +196,56 @@ public class cityController {
 		return result;
 	}
 	
+	// 지역 상세보기
+	@RequestMapping(value = "localDetail", method = RequestMethod.GET)
+	public String localDetail(@RequestParam int contentId,
+			@RequestParam int contentTypeId,
+			Model model) {
+		
+		String result = "";
+		
+		try {
+			// 첫번째 API
+			String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon";
+	 		spec += "?serviceKey=t5hhTD%2BtI3ygSFurlzc0GxMGmmEeDIp9pXphHT%2FXuq5Aw3bFiwsxFMuUs5FokAIKDn7kdbP2otYXVKdmbUuBlg%3D%3D" ;
+	 		spec += "&MobileOS=ETC";
+	 		spec += "&MobileApp=travel";
+	 		spec += "&contentId="+contentId;
+	 		spec += "&contentTypeId="+contentTypeId;
+	 		spec += "&defaultYN=Y";
+	 		spec += "&firstImageYN=Y";
+	 		spec += "&areacodeYN=Y";
+	 		spec += "&addrinfoYN=Y";
+	 		spec += "&overviewYN=Y";
+	 		
+	 		result = apiSerializer.receiveXmlToJson(spec);
+	 		
+	 		JSONObject job = new JSONObject(result);
+	 		JSONObject item = job.getJSONObject("response").getJSONObject("body").getJSONObject("items").getJSONObject("item");
+			
+	 		
+	 		String addr1 = item.getString("addr1");
+	 		String addr2 = item.getString("addr2");
+	 		int areaCode = item.getInt("areacode");
+	 		String firstimage = item.getString("firstimage");
+	 		String firstimage2 = item.getString("firstimage2");
+	 		String overview = item.getString("overview");
+	 		String title = item.getString("title");
+	 		String homepage = item.getString("homepage");
+	 		
+	 		model.addAttribute("addr1", addr1);
+	 		model.addAttribute("addr2", addr2);
+	 		model.addAttribute("areacode", areaCode);
+	 		model.addAttribute("firstimage", firstimage);
+	 		model.addAttribute("firstimage2", firstimage2);
+	 		model.addAttribute("overview", overview);
+	 		model.addAttribute("title", title);
+	 		model.addAttribute("homepage", homepage);
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	 		
+		return ".city.localDetail";
+	}
 }

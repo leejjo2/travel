@@ -37,7 +37,7 @@
 	        $(document).on('click', '#btnRegister', function(e) {
 	        	const f = document.goWithForm;
 	        	
-	            f.action = "${pageContext.request.contextPath}/gowith/${mode}";
+	            f.action = "${pageContext.request.contextPath}/gowith/write";
 	            
 	            f.submit();
 	        });
@@ -77,7 +77,7 @@ $(function(){
 				var spotNum = item.spotNum;
 				
                	out += "<div class='checkRadioBoxCircleType'>";	
-               	out += "<input type='checkbox' id='placeSelect"+ spotNum + "' name='spotNum' value='"+ spotNum + "'/>";
+               	out += "<input type='radio' id='placeSelect"+ spotNum + "' name='spotNum' value='"+ spotNum + "'/>";
                	out += "<label for='placeSelect"+ spotNum + "'>"; 
                	out += "<div class='circle'>";
                	out += "<div class='inside' ></div>";
@@ -138,7 +138,7 @@ $(function(){
 	                                            <li class="spotList">
 	                                            	<c:forEach var="vo" items="${listSpot}">
 	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""}/>
+	                                                	<input type="radio" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""}/>
 	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
@@ -166,7 +166,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="checkbox" id="10s" name="age" value="10대" onclick='' />
+                                                    <input type="radio" id="10s" name="age" value="10대" onclick='' />
                                                     <label for="10s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -177,7 +177,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="checkbox" id="20s" name="age" value="20대" onclick='' />
+                                                    <input type="radio" id="20s" name="age" value="20대" onclick='' />
                                                     <label for="20s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -188,7 +188,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="checkbox" id="30s" name="age" value="30대" onclick='' />
+                                                    <input type="radio" id="30s" name="age" value="30대" onclick='' />
                                                     <label for="30s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -199,7 +199,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="checkbox" id="40s" name="age" value="40대" onclick='' />
+                                                    <input type="radio" id="40s" name="age" value="40대" onclick='' />
                                                     <label for="40s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -210,7 +210,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="checkbox" id="50s" name="age" value="50대" onclick='' />
+                                                    <input type="radio" id="50s" name="age" value="50대" onclick='' />
                                                     <label for="50s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -651,7 +651,7 @@ $(function(){
                     </ul>
                     
                     <div class="buttonContainer marginTopLg">
-                        <button type="button" id="btnRegister" class="buttonType2">${mode=='update'?'모집글 수정':'모집글 업로드'}</button>
+                        <button type="button" id="btnRegister" class="buttonType2">모집글 업로드</button>
                         <p>&nbsp;</p>
                         <button type="button" class="buttonType2" onclick="location.href='${pageContext.request.contextPath}/gowith/list';">${mode=='update'?'수정취소':'등록취소'}</button>
                     </div>

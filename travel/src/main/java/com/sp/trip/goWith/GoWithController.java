@@ -184,43 +184,6 @@ public class GoWithController {
 		return ".goWith.article";
 	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public String updateForm(@RequestParam int num,
-			@RequestParam String page,
-			HttpSession session,
-			Model model) throws Exception {
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-		
-		GoWith dto = service.readGoWith(num);
-		
-		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
-			return "redirect:/gowith/list?page=" + page;
-		}
-
-		model.addAttribute("dto", dto);
-		model.addAttribute("mode", "update");
-		model.addAttribute("page", page);
-		
-		return ".goWith.write";
-	}
-	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String updateSubmit(GoWith dto,
-			@RequestParam String page,
-			HttpSession session) throws Exception {
-		
-		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "photo";
-
-		try {
-			service.updateGoWith(dto, pathname);
-			
-		} catch (Exception e) {
-		}
-		
-		return "redirect:/gowith/list?page=" + page;
-	}
-	
 	@RequestMapping(value = "cityList")
 	@ResponseBody
 	public Map<String, Object> cityList(@RequestParam int cityNum) throws Exception{
@@ -231,6 +194,89 @@ public class GoWithController {
 		
 		System.out.println(list.size());
 		
+		return model;
+	}
+	
+	@RequestMapping(value = "delete")
+	public String delete(@RequestParam int num,
+			@RequestParam String page,
+			@RequestParam(defaultValue = "all") String condition,
+			@RequestParam(defaultValue = "") String keyword,
+			HttpSession session) throws Exception {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+		keyword = URLDecoder.decode(keyword, "utf-8");
+		String query = "page=" + page;
+		if (keyword.length() != 0) {
+			query += "&condition=" + condition + "&keyword=" + URLEncoder.encode(keyword, "UTF-8");
+		}
+
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "photo";
+
+		service.deleteGoWith(num, pathname, info.getUserId(), info.getMembership());
+		
+		return "redirect:/gowith/list?" + query;
+	}
+	
+	@RequestMapping(value = "listReply")
+	public String listReply(@RequestParam int goWithNum,
+			@RequestParam(value = "pageNo", defaultValue = "1") int current_page,
+			Model model) throws Exception {
+		
+		int rows = 10;
+		int total_page = 0;
+		int dataCount = 0;
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("goWithNum", goWithNum);
+
+		dataCount = service.replyCount(map);
+		total_page = myUtil.pageCount(rows, dataCount);
+		if (current_page > total_page) {
+			current_page = total_page;
+		}
+
+		int start = (current_page - 1) * rows + 1;
+		int end = current_page * rows;
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<Reply> listReply = service.listReply(map);
+		
+		for (Reply dto : listReply) {
+			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+		}
+
+		String paging = myUtil.pagingMethod(current_page, total_page, "listPage");
+
+		model.addAttribute("listReply", listReply);
+		model.addAttribute("pageNo", current_page);
+		model.addAttribute("replyCount", dataCount);
+		model.addAttribute("total_page", total_page);
+		model.addAttribute("paging", paging);
+
+		return "goWith/listReply";
+	}
+
+
+	
+	@RequestMapping(value = "insertReply", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> insertReply(Reply dto, HttpSession session) {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String state = "true";
+
+		try {
+			dto.setUserId(info.getUserId());
+			service.insertReply(dto);
+		} catch (Exception e) {
+			state = "false";
+		}
+
+		Map<String, Object> model = new HashMap<>();
+		model.put("state", state);
 		return model;
 	}
 }
