@@ -185,6 +185,7 @@ public class TravelCourseController {
 
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "course";
+		System.out.println("저장된주소" + pathname);
 		try {
 			dto.setUserId(info.getUserId());	
 
@@ -197,138 +198,187 @@ public class TravelCourseController {
 		
 	}
 	
-	@RequestMapping(value = "article")
-	public String article() throws Exception {
+	@RequestMapping(value = "article", method = RequestMethod.GET)
+	public String article(
+			@RequestParam int courseNum,
+			@RequestParam String page,
+			Model model
+			) throws Exception {
+		String query = "page=" + page;
+		service.updateHitCount(courseNum);
+		TravelCourse dto = service.readBoard(courseNum);
+		System.out.println("코스번호" + courseNum);
+		System.out.println("디티오" + dto);
+		int likeCount = service.boardLikeCount(courseNum);
+		int scrapCount = service.boardScrapCount(courseNum);
 		
+		dto.setLikeCount(likeCount);
+		dto.setScrapCount(scrapCount);
+		
+		dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+		List<TravelCourse> courseList = service.listCity(courseNum);
+		int courseCount = courseList.size();
+
+		String latitude = courseList.get(0).getLatitude();
+		String longitude = courseList.get(0).getLongitude();
+		model.addAttribute("dto", dto);
+		model.addAttribute("courseList", courseList);
+		model.addAttribute("courseCount", courseCount);
+		model.addAttribute("latitude", latitude);
+		model.addAttribute("longitude", longitude);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("query", query);
+			
+
 		return ".travelCourse.article";
 	}
 	
+	@RequestMapping(value = "regions")
+	@ResponseBody
+	public Map<String, Object> regions(
+			@RequestParam(defaultValue = "") int courseNum
+			) throws Exception {
+
+		// 지도를 표시할 리전
+		List<TravelCourse> list = null;
+		
+		list = service.listCity(courseNum);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+
+		model.put("list", list);
+		
+		return model;
+	}	
+	
+	
 	// 게시글 좋아요 추가/삭제
-	@RequestMapping(value = "insertBoardLike", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> insertBoardLike(
-			@RequestParam int courseNum, 
-			@RequestParam boolean userLiked,
-			HttpSession session) {
-		String state = "true";
-		int boardLikeCount = 0;
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("courseNum", courseNum);
-		map.put("userId", info.getUserId());
-		
-		try {
-			if(userLiked) {
-				service.deleteBoardLike(map);
-			} else {
-				service.insertBoardLike(map);
+		@RequestMapping(value = "insertBoardLike", method = RequestMethod.POST)
+		@ResponseBody
+		public Map<String, Object> insertBoardLike(
+				@RequestParam int courseNum, 
+				@RequestParam boolean userLiked,
+				HttpSession session) {
+			String state = "true";
+			int boardLikeCount = 0;
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("courseNum", courseNum);
+			map.put("userId", info.getUserId());
+			
+			try {
+				if(userLiked) {
+					service.deleteBoardLike(map);
+				} else {
+					service.insertBoardLike(map);
+				}
+			} catch (DuplicateKeyException e) {
+				state = "liked";
+			} catch (Exception e) {
+				state = "false";
 			}
-		} catch (DuplicateKeyException e) {
-			state = "liked";
-		} catch (Exception e) {
-			state = "false";
+			
+			boardLikeCount = service.boardLikeCount(courseNum);
+			Map<String, Object> model = new HashMap<>();
+			model.put("state",state);
+			model.put("boardLikeCount",boardLikeCount);
+			
+
+			return model;
 		}
 		
-		boardLikeCount = service.boardLikeCount(courseNum);
-		Map<String, Object> model = new HashMap<>();
-		model.put("state",state);
-		model.put("boardLikeCount",boardLikeCount);
-		
+		@RequestMapping(value = "userBoardLiked", method = RequestMethod.POST)
+		@ResponseBody
+		public Map<String, Object> userBoardLiked(
+				@RequestParam int courseNum, 
+				HttpSession session) {
+			
+			String state = "true";
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
 
-		return model;
-	}
-	
-	@RequestMapping(value = "userBoardLiked", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> userBoardLiked(
-			@RequestParam int courseNum, 
-			HttpSession session) {
-		
-		String state = "true";
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
+			Map<String, Object> map = new HashMap<>();
+			map.put("courseNum", courseNum);
+			map.put("userId", info.getUserId());
 
-		Map<String, Object> map = new HashMap<>();
-		map.put("courseNum", courseNum);
-		map.put("userId", info.getUserId());
-
-		boolean userBoardLiked = false; // 우선 초기 값을 부여
-		try {
-			userBoardLiked = service.userBoardLiked(map);
-		} catch (Exception e) {
-			state = "fasle";
-		}
-		
-		Map<String, Object> model = new HashMap<>();
-		
-		model.put("state", state);
-		model.put("userBoardLiked", userBoardLiked);
-
-		return model;
-	}
-	
-	// 게시글 스크랩 추가/삭제
-	@RequestMapping(value = "insertBoardScrap", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> insertBoardScrap(
-			@RequestParam int courseNum, 
-			@RequestParam boolean userScraped,
-			HttpSession session) {
-		String state = "true";
-		int boardScrapCount = 0;
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("courseNum", courseNum);
-		map.put("userId", info.getUserId());
-		
-		try {
-			if(userScraped) {
-				service.deleteBoardScrap(map);
-			} else {
-				service.insertBoardScrap(map);
+			boolean userBoardLiked = false; // 우선 초기 값을 부여
+			try {
+				userBoardLiked = service.userBoardLiked(map);
+			} catch (Exception e) {
+				state = "fasle";
 			}
-		} catch (DuplicateKeyException e) {
-			state = "scraped";
-		} catch (Exception e) {
-			state = "false";
+			
+			Map<String, Object> model = new HashMap<>();
+			
+			model.put("state", state);
+			model.put("userBoardLiked", userBoardLiked);
+
+			return model;
 		}
 		
-		boardScrapCount = service.boardScrapCount(courseNum);
-		Map<String, Object> model = new HashMap<>();
-		model.put("state",state);
-		model.put("boardScrapCount",boardScrapCount);
-		
+		// 게시글 스크랩 추가/삭제
+		@RequestMapping(value = "insertBoardScrap", method = RequestMethod.POST)
+		@ResponseBody
+		public Map<String, Object> insertBoardScrap(
+				@RequestParam int courseNum, 
+				@RequestParam boolean userScraped,
+				HttpSession session) {
+			String state = "true";
+			int boardScrapCount = 0;
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("courseNum", courseNum);
+			map.put("userId", info.getUserId());
+			
+			try {
+				if(userScraped) {
+					service.deleteBoardScrap(map);
+				} else {
+					service.insertBoardScrap(map);
+				}
+			} catch (DuplicateKeyException e) {
+				state = "scraped";
+			} catch (Exception e) {
+				state = "false";
+			}
+			
+			boardScrapCount = service.boardScrapCount(courseNum);
+			Map<String, Object> model = new HashMap<>();
+			model.put("state",state);
+			model.put("boardScrapCount",boardScrapCount);
+			
 
-		return model;
-	}
-	
-	
-	@RequestMapping(value = "userBoardScraped", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> userBoardScraped(
-			@RequestParam int courseNum, 
-			HttpSession session) {
-		
-		String state = "true";
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-
-		Map<String, Object> map = new HashMap<>();
-		map.put("courseNum", courseNum);
-		map.put("userId", info.getUserId());
-
-		boolean userBoardLiked = false; // 우선 초기 값을 부여
-		try {
-			userBoardLiked = service.userBoardLiked(map);
-		} catch (Exception e) {
-			state = "fasle";
+			return model;
 		}
 		
-		Map<String, Object> model = new HashMap<>();
-		
-		model.put("state", state);
-		model.put("userBoardLiked", userBoardLiked);
+		@RequestMapping(value = "userBoardScraped", method = RequestMethod.POST)
+		@ResponseBody
+		public Map<String, Object> userBoardScraped(
+				@RequestParam int courseNum, 
+				HttpSession session) {
+			
+			String state = "true";
+			SessionInfo info = (SessionInfo) session.getAttribute("member");
 
-		return model;
-	}
+			Map<String, Object> map = new HashMap<>();
+			map.put("courseNum", courseNum);
+			map.put("userId", info.getUserId());
+
+			boolean userBoardScraped = false; // 우선 초기 값을 부여
+			try {
+				userBoardScraped = service.userBoardScraped(map);
+			} catch (Exception e) {
+				state = "fasle";
+			}
+			
+			Map<String, Object> model = new HashMap<>();
+			
+			model.put("state", state);
+			model.put("userBoardScraped", userBoardScraped);
+
+			return model;
+		}
+	
 }

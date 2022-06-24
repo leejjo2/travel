@@ -79,34 +79,6 @@ function ajaxFun(url, method, query, dataType, fn) {
 	});
 }
 
-
-$(function() {
-	function travelCourseList() {
-	let themeNum = $(".title1_5 ul .on").attr("id");
-	console.log("테마번호" + themeNum);
-	
-	let query = "themeNum="+themeNum;
-    let url = "${pageContext.request.contextPath}/travelCourse/list?" + query;
-    console.log("쿼리"+query);
-    location.href = url;
-	}
-	
-	$(".title1_5 ul li").click(function() {
-		$(".title1_5 ul li").removeAttr("class");
-		$(this).attr("class", "on");
-		travelCourseList();
-	
-	});
-});
-
-function searchList() {
-	if (window.event.keyCode == 13) {
-    	// 엔터키가 눌렸을 때
-		const f = document.searchForm;
-		f.submit();
-    }
-}
-
 function insertLike(userLiked, courseNum, $i) {
 	let url = "${pageContext.request.contextPath}/travelCourse/insertBoardLike";
 	let query = "courseNum="+courseNum+"&userLiked="+userLiked;
@@ -185,7 +157,7 @@ function boardScraped(courseNum) {
 $(function() {
 	$(".boardLike").click(function() {
 		const $i = $(this).find("i");
-		let userLiked = $i.hasClass("fas fa-bookmark iconSize");
+		let userLiked = $i.hasClass("fas fa-heart iconSize");
 		
 		let courseNum =$(this).find(".courseNum").text();
 		console.log("CourseNum : "+ courseNum)
@@ -372,65 +344,69 @@ $(function() {
                <option value="3">조회순</option>
             </select>
          </div>
-         
          <div class="col">
-        	<c:forEach var="dto" items="${list}" varStatus="status" begin="0" end="0">
-	            <div class="card w-100 title4" >
-	            	<div style="background: black;">
-		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-		               <span class="imtext2">${dto.subject}</span>
-		               <div class="btnBack" >
-			               	<div class="btn-group" style="background: none;" role="group"
-			                  aria-label="Basic outlined example">
-			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			               		 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-			                  </button>
-			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-			                  </button>
-			               </div>
-						</div>
-		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-		                  : ${dto.period}</span>
-		             </div>
-	               <div class="card-body">
-	                  <div class="p-3 area_course">
-	                     <ul>
-	                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
-								<li><span>${citydto.placeName}</span></li>
-		                    </c:forEach>
-	                     </ul>
-	                  </div>
-	               </div>
-	            </div>
+        	<c:forEach var="dto" items="${list}" varStatus="status" begin="0" end="0">        	
+		            <div class="card w-100 title4" >
+		            	<div style="background: black;">
+		            	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+			               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+			               <span class="imtext2">${dto.subject}</span>
+			            </a>
+			               
+			               <div class="btnBack" >
+				               	<div class="btn-group" style="background: none;" role="group"
+				                  aria-label="Basic outlined example">
+				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+		                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				               		 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				               </div>
+							</div>
+			              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+			                  : ${dto.period}</span>
+			             </div>
+		               <div class="card-body">
+		                  <div class="p-3 area_course">
+		                     <ul>
+		                     	<c:forEach var="citydto" items="${dto.travelCourseList}" varStatus="status">
+									<li><span>${citydto.placeName}</span></li>
+			                    </c:forEach>
+		                     </ul>
+		                  </div>
+		               </div>
+		            </div>
 	         </c:forEach>
 
 
             <div class="row" style="margin-top: 10px;">
                <div class="col">
 					<c:forEach var="dto" items="${list}" varStatus="status" begin="3" end="3">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		               			<div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-			                           	<i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					               </div>
-								</div>
-		              		<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+						<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+						</a>
+			               			<div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+				                           	<i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						               </div>
+									</div>
+			              		<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -448,26 +424,28 @@ $(function() {
             <div class="row" style="margin-top: 10px;">
                    <div class="col">
 	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="6" end="6">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		              			 <div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-	                           			 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-					                  </button>
-					               </div>
-								</div>
-		              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+	                 	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+						</a>
+			              			 <div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+		                           			 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum} </span>
+						                  </button>
+						               </div>
+									</div>
+			              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -486,26 +464,28 @@ $(function() {
 
          <div class="col">
             <c:forEach var="dto" items="${list}" varStatus="status" begin="1" end="1">
-	            <div class="card w-100 title4" >
-	            	<div style="background: black;">
-		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-		               <span class="imtext2">${dto.subject}</span>
-		              	 <div class="btnBack" >
-			               <div class="btn-group" style="background: none;" role="group"
-			                  aria-label="Basic outlined example">
-			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-			                  </button>
-			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-			                  </button>
-			               </div>
-						</div>
-		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-		                  : ${dto.period}</span>
-		             </div>
+		            <div class="card w-100 title4" >
+		            	<div style="background: black;">
+            	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+			               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+			               <span class="imtext2">${dto.subject}</span>
+				</a>
+			              	 <div class="btnBack" >
+				               <div class="btn-group" style="background: none;" role="group"
+				                  aria-label="Basic outlined example">
+				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+		                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				               </div>
+							</div>
+			              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+			                  : ${dto.period}</span>
+			             </div>
 	               <div class="card-body">
 	                  <div class="p-3 area_course">
 	                     <ul>
@@ -521,26 +501,28 @@ $(function() {
             <div class="row" style="margin-top: 10px;">
                <div class="col">
 					<c:forEach var="dto" items="${list}" varStatus="status" begin="4" end="4">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		               			<div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-					                  </button>
-					               </div>
-								</div>
-		             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+						<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+		                </a>
+			               			<div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+				                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum} </span>
+						                  </button>
+						               </div>
+									</div>
+			             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -555,29 +537,31 @@ $(function() {
                </div>
             </div>
             
-                           <div class="row" style="margin-top: 10px;">
+            <div class="row" style="margin-top: 10px;">
                    <div class="col">
 	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="7" end="7">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		               			 <div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-					                  </button>
-					               </div>
-								</div>
-		            			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+	                 	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+		                </a>
+			               			 <div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+				                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						               </div>
+									</div>
+			            			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -596,26 +580,28 @@ $(function() {
 
          <div class="col">
            <c:forEach var="dto" items="${list}" varStatus="status" begin="2" end="2">
-	            <div class="card w-100 title4" >
-	            	<div style="background: black;">
-		               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-		               <span class="imtext2">${dto.subject}</span>
-		              	 <div class="btnBack" >
-			               <div class="btn-group" style="background: none;" role="group"
-			                  aria-label="Basic outlined example">
-			                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-	                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-	                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-			                  </button>
-			                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-	                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-                       	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-			                  </button>
-			               </div>
-						</div>
-		              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-		                  : ${dto.period}</span>
-		             </div>
+		            <div class="card w-100 title4" >
+		            	<div style="background: black;">
+           		<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+			               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+			               <span class="imtext2">${dto.subject}</span>
+                 </a>
+			              	 <div class="btnBack" >
+				               <div class="btn-group" style="background: none;" role="group"
+				                  aria-label="Basic outlined example">
+				                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+		                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+	                       	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+				                  </button>
+				               </div>
+							</div>
+			              <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+			                  : ${dto.period}</span>
+			             </div>
 	               <div class="card-body">
 	                  <div class="p-3 area_course">
 	                     <ul>
@@ -631,26 +617,28 @@ $(function() {
             <div class="row" style="margin-top: 10px;">
                <div class="col">
 	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="5" end="5">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		               			 <div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-					                  </button>
-					               </div>
-								</div>
-		             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+	                 	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+		                </a>
+			               			 <div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+				                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						               </div>
+									</div>
+			             			 <span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -668,26 +656,28 @@ $(function() {
                <div class="row" style="margin-top: 10px;">
                    <div class="col">
 	                 <c:forEach var="dto" items="${list}" varStatus="status" begin="8" end="8">
-			            <div class="card w-100 title4" >
-			            	<div style="background: black;">
-				               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
-				               <span class="imtext2">${dto.subject}</span>
-		              			 <div class="btnBack" >
-					               <div class="btn-group" style="background: none;" role="group"
-					                  aria-label="Basic outlined example">
-					                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
-			                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
-			                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
-					                  </button>
-					                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-			                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
-	                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}
-					                  </button>
-					               </div>
-								</div>
-		              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
-				                  : ${dto.period}</span>
-				             </div>
+				            <div class="card w-100 title4" >
+				            	<div style="background: black;">
+	                 	<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=${dto.courseNum}&page=${page}">
+					               <img src="${pageContext.request.contextPath}/uploads/course/${dto.saveFileName}" alt="${dto.subject}" class="card-img-top imgSize" style="opacity: 0.9;"> 
+					               <span class="imtext2">${dto.subject}</span>
+		                </a>
+			              			 <div class="btnBack" >
+						               <div class="btn-group" style="background: none;" role="group"
+						                  aria-label="Basic outlined example">
+						                 <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike">
+				                           	 <i class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}" style="color: red;"></i>
+				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
+						                  </button>
+						               </div>
+									</div>
+			              			<span class="imtext5"># ${dto.themeName}</span> <span class="imtext3">지역 : ${dto.cityName}</span> <span class="imtext4">기간
+					                  : ${dto.period}</span>
+					             </div>
 			               <div class="card-body">
 			                  <div class="p-3 area_course">
 			                     <ul>
@@ -708,7 +698,7 @@ $(function() {
 	<div class="page-box">
 		${dataCount == 0 ? "등록된 코스가 없습니다." : paging}
 	</div>
-
+</div>
 </div>
 
 <script type="text/javascript">

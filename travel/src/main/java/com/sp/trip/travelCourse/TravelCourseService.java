@@ -25,7 +25,8 @@ public interface TravelCourseService {
 	public int boardScrapCount(int courseNum);
 	public boolean userBoardScraped(Map<String, Object> map);
 	
-	
+	public TravelCourse readBoard(int courseNum);
+	public void updateHitCount(int courseNum) throws Exception;
 
 
 }

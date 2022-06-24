@@ -100,9 +100,10 @@
 	
 	<!-- 상세코스 select -->
 	<select id="listCourse" parameterType="Integer"  resultType="com.sp.trip.travelCourse.TravelCourse">
-		select a.courseNum, placeName, course_seq courseSeq, courseDetailNum
+		select a.courseNum, placeName, course_seq courseSeq, courseDetailNum, address, longitude, latitude, saveFilename , a.content detailContent
 		from travelCourseDetail a
 		JOIN travelCourse b ON  a.courseNum = b.courseNum
+		JOIN travelcourseImage c ON  c.travelCourseNum = a.courseDetailNum
 		WHERE a.courseNum = #{courseNum}
         ORDER BY courseSeq ASC
 	</select>
@@ -115,9 +116,10 @@
 		WHERE course_seq = 1 AND  a.travelCourseNum = #{courseDetailNum}
 	</select>
 	
+	
 	<!-- 조회수 -->
 	<update id="updateHitCount" parameterType="Integer">
-		UPDATE travelCourse SET hitCount=hitCount+1 WHERE num = #{num}
+		UPDATE travelCourse SET hitCount=hitCount+1 WHERE courseNum = #{courseNum}
 	</update>
 
 
@@ -158,7 +160,7 @@
 	<!-- 게시글 스크랩 개수 -->
 	<select id="boardScrapCount" parameterType="Integer" resultType="Integer">
 		SELECT NVL(COUNT(*), 0) FROM scrap
-		WHERE scrapSectionNum = #{courseNum}
+		WHERE scrapSection = 1 AND scrapSectionNum = #{courseNum}
 	</select>
 	
 	<!-- 게시글 스크랩 여부 -->
@@ -166,4 +168,15 @@
 		SELECT scrapSectionNum, userId FROM scrap WHERE scrapSectionNum = #{courseNum} AND userId = #{userId}
 	</select>
 
+
+	<select id="readBoard" parameterType="Integer" resultType="com.sp.trip.travelCourse.TravelCourse">
+	 SELECT a.courseNum, a.userId, userName, subject, content, 
+				hitCount, a.cityNum, cityName, a.themeNum, themeName,
+				period, TO_CHAR(a.reg_date, 'yyyy-mm-dd') as reg_date
+	      FROM travelCourse a
+			JOIN member m ON a.userId = m.userId
+			JOIN city c ON a.cityNum = c.cityNum
+			JOIN theme t ON a.themeNum = t.themeNum
+	      WHERE a.courseNum = #{courseNum}
+   	</select>
 </mapper>

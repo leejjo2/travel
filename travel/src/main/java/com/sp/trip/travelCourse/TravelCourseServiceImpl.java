@@ -101,7 +101,7 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		
 		return list;
 	}
-
+	
 	// 리스트에 보여줄 이미지
 	@Override
 	public String listImg(int courseDetailNum) {
@@ -114,7 +114,8 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}
 		return result;
 	}
-	
+
+
 	// 도시 카테고리
 	@Override
 	public List<TravelCourse> listCity(Map<String, Object> map) throws Exception {
@@ -142,7 +143,6 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		return listTheme;
 	}
 
-	// 좋아요 누르기
 	@Override
 	public void insertBoardLike(Map<String, Object> map) throws Exception {
 		try {
@@ -238,6 +238,28 @@ public class TravelCourseServiceImpl implements TravelCourseService{
 		}
 		return result;
 	}
+
+	@Override
+	public TravelCourse readBoard(int courseNum) {
+		TravelCourse dto = null;
+		try {
+			dto = dao.selectOne("travelCourse.readBoard", courseNum);
+		} catch (Exception e) {
+		}
+		return dto;
+	}
+
+	@Override
+	public void updateHitCount(int courseNum) throws Exception {
+		try {
+			dao.updateData("travelCourse.updateHitCount", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+	}
+
 
 
 

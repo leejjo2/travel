@@ -191,7 +191,7 @@
 .post_area .btn_cos .ico{width:23px;height:21px;background:url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_post05.png) no-repeat;}
 .post_area .btn_map .ico{width:22px;height:21px;background:url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_post06.png) no-repeat;}
 .post_area .num_view{float:left;}
-.post_area .num_view .tit{color:#000;font-size:16px;font-weight:700;}
+.post_area .num_view .tit{ font-family: 맑은고딕;color:#000;font-size:16px;font-weight:700;}
 .post_area .num{display:inline-block;margin-left:8px;color:#000;font-size:16px;vertical-align:top;}
 .postBtnWrap{text-align:center;}
 .postBtnWrap .post_area{position: static;display:inline-block;margin:0 auto 33px;padding:17px 40px;border:1px solid #bababa;}
@@ -233,7 +233,7 @@
 .wrap_contView .area_txtView.top .inr_wrap{overflow:hidden;height:140px;}
 .wrap_contView .area_txtView.bottom .inr_wrap{overflow:hidden;height:140px;}
 .wrap_contView .area_txtView.top.on .inr{border-bottom:0;padding-bottom:0;}
-.wrap_contView .area_txtView .inr > p{color: #333; font-size: 18px; line-height:1.7;letter-spacing: -1px;}
+.wrap_contView .area_txtView .inr > p{text-align:center; color: #333; font-size: 18px; line-height:1.7;letter-spacing: -1px; font-family: 맑은고딕;}
 .wrap_contView .area_txtView .inr > p p{color: #333; /*font-size: 16px;*/ line-height:25px;}
 .wrap_contView .area_txtView .inr ul li{overflow: hidden;padding-left: 12px; background:url(https://cdn.visitkorea.or.kr/resources/images/sub/dot1.png) 0 8px no-repeat;}
 .wrap_contView .area_txtView .inr ul li > strong{float: left; width: 26%;margin-right:4%;font-size: 15px; color: #333; font-weight: normal;}
@@ -1703,7 +1703,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .titleType1 .area_tag{text-align: left;}
 .titleType1 .area_tag > span{float:left;}
 .titleType1 .tit h2{display:block;}
-.titleType1 .tit h2 .tit_cos{display:inline-block;width:65px;height:32px;line-height:32px;vertical-align: 5px;margin-right:10px;background:#ed4956;border-radius: 50px;color:#fff;font-weight:700;font-size:18px;}
+.titleType1 .tit h2 .tit_cos{display:inline-block;width:65px;height:32px;line-height:32px;vertical-align: 5px;margin-right:10px;background:#ed4956;border-radius: 50px;color:#fff;font-family: 맑은고딕;font-size:18px;}
 .titleType1 .tit span{display:inline-block;width:58px;line-height:28px;border-radius: 50px;color:#fff;font-size:14px;vertical-align: 7px;margin-left:12px;}
 .titleType1 .titTypeWrap h3{padding:25px 0 0;font-weight:700;word-break: keep-all;font-size:28px;color:#333;letter-spacing: -1px;}
 .titleType1 .area_address{display:inline-block;padding-top:10px;}
@@ -2138,7 +2138,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .schedule_info .schedule li .img{float:left;}
 .schedule_info .schedule li img{width:80px;height:80px;}
 .schedule_info .schedule li em{display:block;padding:15px 0 3px 98px;font-weight:700;font-size:14px;color:#777;}
-.schedule_info .schedule li strong{display:block;padding:0 0 0 98px;font-weight:700;font-size:18px;color:#333;}
+.schedule_info .schedule li strong{ font-family: 맑은고딕; display:block;padding:0 0 0 98px;font-weight:700;font-size:18px;color:#333;}
 .schedule_info .tag{overflow:hidden;width:100%;min-height:80px;margin:33px 0 0 0;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_schedule_tag.png) 0 0 / 80px 80px no-repeat;}
 .schedule_info .tag em{display:block;padding:6px 0 3px 98px;font-weight:700;font-size:14px;color:#777;}
 .schedule_info .tag span{display:block;padding:0 0 0 98px;overflow:hidden;margin-left:-18px;max-height:46px;text-overflow: ellipsis;word-wrap: break-word;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
@@ -2149,7 +2149,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .course_detail .wrap_contView .area_txtView.on .btn_more:after{content:'-';width:auto;height:auto;font-size:16px;font-weight:700;background:none;margin:0 0 0 5px;color: #333;}
 .course_detail .area_map{margin-top:44px;}
 .course_detail .cos_cont{display:none;margin-top: -9px;position: relative;padding: 0 30px 30px;background: #f3f2f2;}
-.course_detail .detail_box{padding: 0 29px 31px;border:1px solid #ed4956;background:#fff;border-radius: 10px;box-shadow: 2px 3px 9px 3px rgba(87,88,89,.25);}
+.course_detail .detail_box{padding: 0 29px 31px;border:1px solid #0dcaf0;background:#fff;border-radius: 10px;box-shadow: 2px 3px 9px 3px rgba(87,88,89,.25);}
 .course_detail .cos_cont.active{display:block;}
 
 .relation_cos .cos_wrap .pc.js_slider ul li{padding: 85px 0 39px;}
@@ -2201,9 +2201,9 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos .cos_wrap + .cos_wrap{margin-top:20px;}
 .relation_cos .cos_wrap .mo{display:none;}
 .relation_cos .title{overflow:hidden;text-align:center;margin:10px 0 0;}
-.relation_cos .title em{display:inline-block;height:30px;line-height:28px;color:#fff;width:30px;background:#ed4956;border-radius:50px;font-size:16px;font-weight:700;}
+.relation_cos .title em{display:inline-block;height:30px;line-height:28px;color:#fff;width:30px;background:#0dcaf0;border-radius:50px;font-size:16px;font-weight:700;}
 .relation_cos .title strong{padding:5px 0 2px;display:block;font-weight:700;font-size:22px;color:#000;letter-spacing: -1px;}
-.relation_cos .title span{display:inline-block;font-size:16px;color:#666;}
+.relation_cos .title span{font-family: 맑은고딕; display:inline-block;font-size:16px;color:#666;}
 .relation_cos .title span + span:before{content:'';display:inline-block;width:1px;height:14px;background:#ccc;vertical-align: -1px;margin:0 10px;}
 .relation_cos .pc.js_slider{display:block;}
 .relation_cos .pc{display:inline-block;position:relative;}
@@ -2222,25 +2222,25 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos .cos_wrap .js_slider ul{display: flex;width:100%;}
 .relation_cos .cos_wrap ul li:hover a, .relation_cos .cos_wrap ul li.on1 a{box-shadow: 2px 2px 10px 0px rgba(150,149,149,1);}
 .relation_cos .cos_wrap ul li.on1:before{content:'';display:block;width:50% !important;height:4px;background:#ed4956;position:absolute;left:10px;top: 52px;}
-.relation_cos .cos_wrap ul li.on1:after{content:'';display:inline-block;width:28px;height:16px;position:absolute;left:50%;bottom:0;margin-left:-14px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_arw.png) 0 0 / 100% 100%;}
+.relation_cos .cos_wrap ul li.on1:after{content:'';display:inline-block;width:28px;height:16px;position:absolute;left:50%;bottom:0;margin-left:-14px;}
 
 .relation_cos .cos_wrap .pc.js_slider ul li.on1:after{bottom:8px;}
-.relation_cos .cos_wrap ul li.on:before{content:'';display:block;width:100%;height:4px;background:#ed4956;position:absolute;left:10px;top: 52px;}
+.relation_cos .cos_wrap ul li.on:before{content:'';display:block;width:100%;height:4px;background:#0dcaf0;;position:absolute;left:10px;top: 52px;}
 
-.relation_cos .js_slider .swiper-container:before{content:'';display:inline-block;width:28px;height:16px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_box01.gif) 0 0 / 100% 100%;position:absolute;left:0;top:280px;z-index: 10;}
-.relation_cos .js_slider .swiper-container:after{content:'';display:inline-block;width:28px;height:16px;background: url(https://cdn.visitkorea.or.kr/resources/images/sub/bg_cosdetail_box02.gif) 0 0 / 100% 100%;position:absolute;right:0;top:280px;z-index: 10;}
+.relation_cos .js_slider .swiper-container:before{content:'';display:inline-block;width:28px;height:16px;position:absolute;left:0;top:280px;z-index: 10;}
+.relation_cos .js_slider .swiper-container:after{content:'';display:inline-block;width:28px;height:16px;position:absolute;right:0;top:280px;z-index: 10;}
 
 .relation_cos .pc.js_slider:before {content: '';display: inline-block;width: 30px;height: 205px;position: absolute;left: -20px;top: 80px;background:#f3f2f2;z-index: 5;}
 .relation_cos .pc.js_slider:after {content: '';display: inline-block;width: 30px;height: 275px;position: absolute;right: -20px;top: 0;background:#f3f2f2;z-index: 5;}
 .relation_cos ul li em{display:inline-block;position:absolute;left:50%;top:34px;margin-left:-15px;font-weight:700;font-size:16px;line-height:28px;width:30px;height:30px;border:2px solid #bfbfbf;border-radius: 100%;background:#fff;color:#999;}
-.relation_cos ul li.on em, .relation_cos ul li.on1 em{border:2px solid #ed4956;color:#ed4956;}
+.relation_cos ul li.on em, .relation_cos ul li.on1 em{border:2px solid #0dcaf0;color:#0dcaf0;}
 .relation_cos ul li em span{font-size:0;text-indent: -9999px;}
 .relation_cos ul li .img{display: block;position: absolute;left: 0;top: 0;width: 100%;height: 100%;border-radius: 10px;}
 .relation_cos ul li .tit{position:absolute;left:0;top:50%;margin-top:-30px;width:100%;height:60px;padding:0 20px 0;color:#fff;font-size:16px;font-weight:700;z-index: 10;}
-.relation_cos ul li .tit span{display:block;position:absolute; left:15px;right:15px; top:50%;transform: translateY(-50%);letter-spacing:-0.5px;line-height: 23px;display:block;overflow:hidden;display: -webkit-box;max-height: 46px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.relation_cos ul li .tit span{font-family: 맑은고딕;display:block;position:absolute; left:15px;right:15px; top:50%;transform: translateY(-50%);letter-spacing:-0.5px;line-height: 23px;display:block;overflow:hidden;display: -webkit-box;max-height: 46px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 .relation_cos .cos_wrap ul li a:after{content:'';display:block;width:100%;height:100%;position:absolute;left:0;top:0;background:rgba(0,0,0,.3);border-radius: 10px;}
-.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background:rgba(237,73,86,.8);}
+.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background:rgb(13, 202, 204 / 0.5);}
 .relation_cos .swiper-container{position: static;}
 /*.relation_cos .swiper-container:after{position:absolute;left:30px;right:30px;bottom:80px;content:'';display:block;width:auto;height:2px;background:#e2e1e1;}*/
 .relation_cos .cos_wrap .swiper-button-next, .relation_cos .cos_wrap .swiper-button-prev{display:none;}
