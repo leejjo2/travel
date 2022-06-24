@@ -30,7 +30,7 @@
 									title="로그아웃"><i class="bi bi-box-arrow-left"></i></a>
 							</div>
 							<div class="p-2">
-								<a href="#" title="알림"><i class="bi bi-bell"></i></a>
+								<a href="${pageContext.request.contextPath}/mypage/mypageList" title="마이페이지"><i class="bi bi-person"></i></a>
 							</div>
 							<c:if test="${sessionScope.member.membership>50}">
 								<div class="p-2">
@@ -54,7 +54,7 @@
 	<div class="container-fluid mb-0 p-4 text-white " style="background-color: #0dcaf0; font-weight: bold;" >
 			<div class="row">
 				<div class="col p-1" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
-				<div class="col p-2" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;">홈</a></div>
+				<div class="col p-2" style="text-align: center; font-size: 17px;"><a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white;">홈</a></div>
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
 						<li class="nav-item dropdown">

@@ -6,6 +6,7 @@
 <link rel="stylesheet"
    href="${pageContext.request.contextPath}/dist/travelCourse/travelCourse.css"
    type="text/css">
+   
 <style type="text/css">   
 .area_course>ul li>span {
    display: block;
