@@ -8,18 +8,79 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/mainmo.css">
 
+
+
+
 <div class="swiper-container" id="mainTab">
 	<ul class="swiper-wrapper">
 		<li class="otherTab swiper-slide" style="display: none;"></li>
 		<li class="homeTab swiper-slide" style="display: list-item;">
 			<div id="contents" class="main_contents">
+
 				<div class="main_curation_area">
 					<div class="tit">
-						<h2>
-							님을 위한 맞춤 여행지 추천
-						</h2>
+						<c:choose>
+							<c:when test="${not empty sessionScope.member.userName}">
+								<h2><strong>${sessionScope.member.userName}</strong>님을 위한 테마별 여행 코스</h2>
+							</c:when>
+							<c:otherwise>
+								<h2><strong>테마별 </strong>여행 코스 추천</h2>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+						<div class="swiper-wrapper" id="curationlist" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+							<div class="swiper-slide swiper-slide-duplicate" onclick="" >
+								<a href="">
+									<div class="wrap">
+										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/산.jpg');"></span>
+									</div>
+									<strong>산 코스</strong>
+								</a>
+							</div>
+							
+							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" onclick="">
+								<a href="">
+									<div class="wrap">
+										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/바다.jpg');"></span>
+									</div>
+									<strong>바다 코스</strong></a>
+							</div>
+							<div class="swiper-slide swiper-slide-active" onclick="">
+								<a href="">
+									<div class="wrap">
+										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/도시.jpg');"></span>
+									</div>
+									<strong>도시 코스</strong></a>
+							</div>
+							<div class="swiper-slide swiper-slide-next" onclick="">
+								<a href="">
+									<div class="wrap">
+										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/나들이.jpg');"></span>
+									</div>
+									<strong>나들이 코스</strong></a>
+							</div>
+							
+							
+							<div class="swiper-slide" onclick="">
+								<a href="">
+									<div class="wrap">
+										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/액티비티.jpg');"></span>
+									</div>
+									<strong>액티비티 코스</strong></a>
+							</div>
+							
+							
+						</div>
+						
+						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 					</div>
 				</div>
+
+
+
+
+
 				<!-- taglist -->
 				<div class="specialEdition">
 					<div class="mc_inner">
@@ -38,27 +99,29 @@
 									</div>
 								</div>
 								<div class="article bd0">
-									<a href="/notice/news_list.do" class="tit_atc">오늘의 여행 Issue<span
+									<a href="/notice/news_list.do" class="tit_atc">자유 소통 공간<span
 										class="btn_more">더보기</span></a>
 									<ul class="list_board">
-										<li><a href="javascript:"
-											onclick="goCuration(1,&quot;https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=1c6cdee5-d08c-4275-a4c5-f0ced260fd7c&quot;)"
-											title="일상회복 프로젝트! 번아웃 트래블 영상 공개! 로 이동"><em
-												style="color: #a2660d">넉살 x 카더가든 |</em>일상회복 프로젝트! 번아웃 트래블 영상
-												공개!</a></li>
-										<li><a href="javascript:"
-											onclick="goCuration(1,&quot;https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=49b5ca54-b003-4730-b773-edcb8fb6912d&quot;)"
-											title="2022 관광기업 미니잡페어 in 서울 로 이동"><em
-												style="color: #a2660d">한국관광공사ㅣ</em>2022 관광기업 미니잡페어 in 서울</a></li>
-										<li><a href="javascript:"
-											onclick="goCuration(1,&quot;https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=1c2ad23d-0429-4d7c-9a2c-b31c864b3e7f&quot;)"
-											title="2022년도 공공기관과 함께하는 혁신 아이디어 공모 로 이동"><em
-												style="color: #a2660d">한국관광공사ㅣ</em>2022년도 공공기관과 함께하는 혁신 아이디어
-												공모</a></li>
-										<li><a href="javascript:"
-											onclick="goCuration(1,&quot;https://www.movv.co/event?code=172&quot;)"
-											title="KTX+무브 무료픽업 로 이동"><em style="color: #a2660d">2022-03-10
-													~ 2022-06-30 | </em>KTX+무브 무료픽업</a></li>
+										<li>
+											<a href="" onclick="" title="">
+												<em style="color: #a2660d"> 제주토박이 |</em>제주도 현지인 로컬 맛집 추천합니다!!(광고 아님)
+											</a>
+										</li>
+										<li>
+											<a href="" onclick="" title="">
+												<em style="color: #a2660d"> 할룽 ㅣ</em>강릉 여행 코스 한 번만 봐주세요~~
+											</a>
+										</li>
+										<li>
+											<a href="" onclick="" title="">
+												<em style="color: #a2660d">핑크모자ㅣ</em>강릉 카페거리 쪽 맛집 추천 좀 해주세용! 
+											</a>
+										</li>
+										<li>
+											<a href="" onclick="" title="">
+												<em style="color: #a2660d">인산타수ㅣ</em>놀려왔는데 비오네요..ㅜ
+											</a>
+										</li>
 									</ul>
 								</div>
 							</div>

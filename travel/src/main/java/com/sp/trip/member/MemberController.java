@@ -71,6 +71,19 @@ public class MemberController {
 		model.addAttribute("mode", "member");
 		return ".member.member";
 	}
+	
+	@RequestMapping(value = "pwd", method = RequestMethod.GET)
+	public String pwdForm(String dropout, Model model) {
+		
+		if (dropout == null) {
+			model.addAttribute("mode", "update");
+		} else {
+			model.addAttribute("mode", "dropout");
+		}
+
+		
+		return ".member.pwd";
+	}
 
 	
 	

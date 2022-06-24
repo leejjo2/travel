@@ -1,0 +1,1285 @@
+@charset "utf-8";
+#contents.wide{width:auto;padding:0;margin:0 auto;}
+#contents.wide.main{height: calc((100% - 90px));}
+footer{margin-top:0;}
+body{overflow-x: auto;}
+.mo{display:none;}
+.subscription_logo{height:90px;background:#fff;}
+.subscription_logo .logo{width:1280px;margin:0 auto;}
+.subscription_logo .logo a{display:inline-block;width:275px;height:90px;background:url(../images/travelsubscribe/logo_header.png) 0 50% no-repeat;text-indent: -9999px;}
+
+/* main */
+.subscription_main{background:#23f69a;height:100%;}
+.subscription_main .mo_stit{display:none;}
+.subscription_main .swiper-wrapper .swiper-slide:nth-child(1) {width: 100vw !important;height: 100%;}
+.subscription_main .swiper-wrapper .swiper-slide:nth-child(1) img{width:auto;height:auto;}
+.subscription_main .btn_share{position:absolute;right:49px;top:123px;text-indent: -9999px;width:70px;height:70px;z-index: 5;background:url(../images/travelsubscribe/btn_share.png) 0 0 / 100% 100% no-repeat;}
+.subscription_main .btn_mission{position:absolute;right:129px;top:123px;text-indent: -9999px;width:70px;height:70px;z-index: 5;background:url(../images/travelsubscribe/btn_mission.png) 0 0 / 100% 100% no-repeat;}
+.subscription_main .inr{position: relative;height: 100%;margin:0 auto;text-align: center;}
+.subscription_main .inr .txt{height:100%;}
+.subscription_main .push_btn{position:absolute;left:50%;margin-left:-140px;bottom:47px;}
+.subscription_main .push_btn button{width:100%;}
+.subscription_main .pagination_num{position:absolute;right:50px;bottom: 36px;font-size:17px;color:#512dd8;font-weight: 300;}
+.subscription_main .current{font-weight: 800;display:inline-block;padding:0 7px;}
+.subscription_main .total{padding-left:7px;}
+.subscription_main .swiper-pagination-progressbar{height:6px;top:auto;bottom:64px;right:50px;left:50px;width:auto;border-radius: 50px;background:#f7f7f7;z-index: 0;}
+.subscription_main .swiper-pagination-progressbar.on{z-index: 5;}
+.subscription_main .swiper-pagination-progressbar .swiper-scrollbar-drag{border-radius: 50px;background:#512dd8;}
+.subscription_main .cont_wrap{width:100%;height:100%;position:absolute;left:0;bottom:0;color:#fff;background:url(../images/travelsubscribe/bg_slide_dim.png) 0 100% no-repeat;}
+.subscription_main .cont_wrap.last{display:block;background:rgba(0,0,0,.3);}
+.subscription_main .cont_wrap.last:after{content:'';display:block;width:100%;height:164px;position:absolute;left:0;top:50%;margin-top:-82px;background:url(../images/travelsubscribe/icon_slide_last.png) no-repeat;}
+.subscription_main .swiper-slide-active .cont_wrap.last strong span{display:inline-block;}
+.subscription_main .swiper-slide-active .cont_wrap.last strong span:after{display:none;}
+.subscription_main .cont{width:100%;position:absolute;left:0;bottom:0;}
+.subscription_main .cont em{display:block;padding:0 50px;font-weight: 300;font-size: 30px;line-height:38px;letter-spacing: -1.5px;overflow:hidden;display:block;display: -webkit-box;max-height: 76px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.subscription_main .cont em a{color:#fff;}
+.subscription_main .cont strong a{color:#fff;}
+.subscription_main .cont strong{display:block;padding:10px 50px 46px;font-weight: 700;font-size: 48px;line-height:54px;letter-spacing: -2.8px;}
+.subscription_main .cont strong span{display:none;}
+.subscription_main .cont strong span:after{content:'';display:inline-block;width:41px;height:42px;background:url(../images/travelsubscribe/icon_slide.png) no-repeat;vertical-align: -3px;margin-left:13px;}
+.subscription_main .swiper-slide-active .cont strong span{display:inline-block;color:#23f69a;}
+.subscription_main .cont .btn{display:none;padding:0 0 49px;text-align: center;}
+.subscription_main .swiper-slide-active .cont .btn{display:block;}
+
+.subscription_main .cont .btn button{width:210px;height:56px;text-indent: -9999px;}
+.subscription_main .cont .btn .ok{background:url(../images/travelsubscribe/btn_slide01.png) no-repeat;}
+.subscription_main .cont .btn .no{margin-left:20px;background:url(../images/travelsubscribe/btn_slide02.png) no-repeat;}
+
+.rfa-sl-container-start {
+    top: 0;
+    right: 0;
+    left: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	z-index: 6;
+    background: url('../images/travelsubscribe/bg_main.gif') 50% 0;
+}
+.subscription_main .swiper-container {width: 100%;height: 300px;margin-left: auto;margin-right: auto;}
+.subscription_main .rfa-slide-container {position: relative;height: 100%;width: 100%;top: 0;right: 0;bottom: 0;left: 0;}
+.rfa-chap-sect-slide,
+.chapter-content--slide {
+	display: flex;
+	flex-direction: column;
+	-webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    align-items: center;
+	min-width: 320px;
+}
+.swiper-pagination-bullet {position: relative;}
+.subscription_main .swiper-pagination-bullet-active:after {
+	content: "";
+	position: absolute;
+	width: 18px;
+    height: 18px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	top: 50%;
+    left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);}
+
+.rfa-chap-sect-slide .img_wrap{position:absolute;width: 100%;left: 0;top: 76px;bottom: 134px;-webkit-transition: top 300ms;transition: top 300ms;}
+.rfa-chap-sect-slide .img_wrap .source{position:absolute;right:10px;top:10px;font-size:12px;color:#fff;font-weight: 300;display:inline-block;}
+.rfa-chap-sect-slide .img_wrap .bg{width:100%;height:100%;text-indent: -9999px;}
+.rfa-chap-sect-slide {height:100%;box-sizing: border-box;width: 780px;}
+.rfa-chap-sect-wrapper .swiper-slide-prev .img_wrap, .rfa-chap-sect-wrapper .swiper-slide-next .img_wrap{top: 136px;bottom: 194px;}
+.rfa-chap-sect-wrapper .swiper-slide-prev:after, .rfa-chap-sect-wrapper .swiper-slide-next:after{content:'';display:block;width:100%;background:rgba(17,185,112,.8);position:absolute;left:0;top:136px !important;bottom:194px !important;}
+.rfa-chap-sect-wrapper .swiper-slide:after{-webkit-transition: top 300ms;transition: top 300ms;content:'';display:block;width:100%;left:0;top: 76px;bottom:134px}
+.rfa-chap-sect-wrapper #rfaCover:after{display:none;}
+
+.subscription_main.typeb{background:#fb9eff;}
+.subscription_main .month_bg{text-indent: -9999px;height:100%;font-size:0;}
+.typeb .rfa-sl-container-start{background: url(../images/travelsubscribe/bg_mainb.gif) 50% 0;}
+.subscription_main.typeb .btn_share{background: url(../images/travelsubscribe/btn_share_b.png) 0 0 / 100% 100% no-repeat;}
+.subscription_main.typeb .btn_mission{background: url(../images/travelsubscribe/btn_mission_b.png) 0 0 / 100% 100% no-repeat;}
+.typeb .rfa-chap-sect-wrapper .swiper-slide-prev:after, .typeb .rfa-chap-sect-wrapper .swiper-slide-next:after{background: rgba(210,88,215,.8);}
+.subscription_main.typeb .swiper-pagination-progressbar .swiper-scrollbar-drag{background: #3426f2 ;}
+.subscription_main.typeb .swiper-pagination-progressbar{background: #fff;}
+.subscription_main.typeb .pagination_num{color:#512dd8;}
+.subscription_main.typeb .cont .btn .ok {background: url(../images/travelsubscribe/btn_slide01_b.png) no-repeat;}
+.subscription_main.typeb .cont .btn .no {background: url(../images/travelsubscribe/btn_slide02_b.png) no-repeat;}
+.subscription_main.typeb .swiper-slide-active .cont strong span{color: #fb9eff;}
+.subscription_main.typeb .cont strong span:after{background: url(../images/travelsubscribe/icon_slide_b.png) no-repeat;}
+.subscription_main.typeb .cont_wrap.last:after{background: url(../images/travelsubscribe/icon_slide_last01.png) no-repeat;}
+
+.subscription_main .title_txt{padding:214px 0 0;}
+.subscription_main .title_txt em{display:inline-block;height:48px;padding:0 30px;line-height:48px;font-size:26px;color:#fff;letter-spacing: -1.2px;background:#512dd8;border-radius: 50px;}
+.subscription_main .title_txt em span{color:#23f69a;}
+.subscription_main .title_txt .stit{display:block;padding:18px 0 0;font-weight: 700;font-size:75px;line-height:85px;letter-spacing: -4px;color:#fff;}
+.subscription_main .title_txt strong{display:block;font-weight: 800;font-size: 170px;letter-spacing: -10px;color:#23f69a;line-height:180px;}
+.subscription_main .mo_space{display:none;}
+
+.subscription_main.typeb .title_txt em{background:#2b1ddd;}
+.subscription_main.typeb .title_txt em span{color:#fb9eff;}
+.subscription_main.typeb .title_txt strong{color:#fb9eff;}
+
+/* 구독신청 */
+
+.mission_info {background: #fda4ff;text-align: center;}
+
+.subscription_application{position: relative;max-width:1920px;min-width:1280px;margin: 0 auto;background:url(../images/travelsubscribe/bg_subscription_application.gif) 50% 0 no-repeat;}
+.subscription_application:after{content:'';display:block;clear: both;}
+.subscription_application .floating_btn{position:fixed;right:23px;bottom:50px;width:162px;height:162px;background:url(../images/travelsubscribe/floating_btn.png) no-repeat;text-indent: -9999px;z-index: 50;}
+.subscription_application .floating_btn01{position:fixed;right:23px;bottom:190px;width:162px;height:186px;background:url(../images/travelsubscribe/floating_btn02.png) no-repeat;text-indent: -9999px;z-index: 50;}
+.subscription_application .visu{position:relative;height:836px;width:1280px;margin:0 auto;}
+.subscription_application .visu:before{content:'';display:inline-block;width:237px;height:689px;position:absolute;left:-63px;bottom:-70px;background:url(../images/travelsubscribe/bg_man.png) no-repeat;}
+.subscription_application .visu:after{content:'';display:inline-block;width:418px;height:713px;position:absolute;right:-175px;bottom:-65px;background:url(../images/travelsubscribe/bg_woman.png) no-repeat;z-index: 5;}
+.subscription_application .visu a{position:absolute;left:392px;bottom:-102px;width:488px;height:163px;background:url(../images/travelsubscribe/btn_subscription_application.png) no-repeat;z-index: 5;text-indent: -9999px;}
+.subscription_application .visu a.btn01{background:url(../images/travelsubscribe/btn_subscription_application01.png) no-repeat;}
+
+.subscription_application .taster .cont{position:relative;float:left;width:53.1%;}
+.subscription_application .taster .img_wrap{position:relative;float:left;width:46.9%;background:url(../images/travelsubscribe/bg_slide_active.png) no-repeat;}
+.subscription_application .gallery-thumbs{width:690px;float:right;position:static;}
+.subscription_application .gallery-thumbs .bg1:after{content:'';width:123px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_01.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg2:after{content:'';width:156px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_02.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg3:after{content:'';width:156px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_03.png) no-repeat;}
+
+.subscription_application .gallery-thumbs .bg4:after{content:'';width:162px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_04.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg5:after{content:'';width:156px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_05.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg6:after{content:'';width:157px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_06.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg7:after{content:'';width:157px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_07.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg8:after{content:'';width:159px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_08.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg9:after{content:'';width:157px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_09.png) no-repeat;}
+.subscription_application .gallery-thumbs .bg10:after{content:'';width:133px;height:126px;position:absolute;right:0;top:40px;background:url(../images/travelsubscribe/bg_num_10.png) no-repeat;}
+
+.subscription_application .pagination_wrap{position:absolute;right:-22px;bottom:-59px;width:156px;height:24px;}
+.subscription_application .swiper-button-next, .subscription_application .swiper-button-prev{text-indent: -9999px;width:15px;height:24px;margin:0;top:0;}
+.subscription_application .swiper-button-prev{left:0;background:url(../images/travelsubscribe/btn_slide_prev.png) no-repeat;}
+.subscription_application .swiper-button-next{right:0;background:url(../images/travelsubscribe/btn_slide_next.png) no-repeat;}
+.subscription_application .swiper-pagination{width:auto;text-align: center;position:static;color:#aca6fd;font-size:17px;}
+.subscription_application .swiper-pagination-current{color:#fff;}
+.subscription_application .cont .tit{width:700px;position:absolute;right:0;top:66px;}
+.subscription_application .cont .tit em{display:block;font-size:30px;line-height:34px;font-weight: 300;letter-spacing: -1.5px;color:#fff;}
+.subscription_application .cont .tit strong{padding:4px 0 0;display:block;font-size:60px;line-height:64px;font-weight: 700;letter-spacing: -4px;color:#f9fa36;}
+.subscription_application .gallery-thumbs  p.text{padding:238px 0 0;font-size:26px;line-height:33px;font-weight: 300;color:#fff;letter-spacing: -1.2px;overflow:hidden;display:block;display: -webkit-box;max-height:132px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 4;-webkit-box-orient: vertical;}
+.subscription_application .gallery-thumbs .btn_more{display:inline-block;color:#fff;font-size:16px;padding:42px 0 0;}
+.subscription_application .gallery-thumbs .btn_more:after{content:'';display:inline-block;width:5px;height:8px;vertical-align: 2px;margin-left:7px;background:url(../images/travelsubscribe/icon_btn_more.png) no-repeat;}
+.subscription_application .gallery-top{height:617px;padding:71px 0 0;margin-left:71px;position:static}
+.subscription_application .gallery-top .img{width:420px;height:420px;background-size:cover;background-repeat: no-repeat;background-position: 50% 50%;text-indent: -9999px;}
+.subscription_application .gallery-top .img br{display:none;}
+.subscription_application .gallery-top .swiper-slide{width:420px;}
+.subscription_application .taster{height:742px;padding:127px 0 0;background:#594cfb;}
+.subscription_application .mission_info .inr{width: 1280px; margin: 0 auto; }
+
+.subscription_application .level_up{text-align:center;background:#672afb url(../images/travelsubscribe/bg_level_up.gif) 50% 0 no-repeat;}
+.subscription_application .level_up .inr{width:1280px;margin:0 auto;}
+.level_up .level_view{position:relative;padding-bottom:270px;}
+.level_up .level_view.on{padding-bottom:100px;}
+.level_up .level_view button{position:absolute;left:413px;top:0;width:488px;height:164px;text-indent: -9999px;background: url(../images/travelsubscribe/btn_level01.png) 50% 0 no-repeat;}
+.level_up .level_view.on button{top:-62px;background: url(../images/travelsubscribe/btn_level.png) 50% 0 no-repeat;}
+.level_up .level_view.on .box{display:block;margin:62px 0 0;}
+.level_up .level_view .box{display:none;border:2px dashed #fff;background:#5c23e6;color:#fff;}
+.level_up .level_view .icon{margin:100px 0 0;display:block;height:254px;background: url(../images/travelsubscribe/level_stit01.gif) 50% 0 no-repeat;text-indent: -9999px;}
+.level_up .level1_1 .icon{background: url(../images/travelsubscribe/level_stit02.gif) 50% 0 no-repeat;}
+.level_up .level2 .icon{background: url(../images/travelsubscribe/level_stit03.gif) 50% 0 no-repeat;}
+.level_up .level_view .stit{height:165px;background: url(../images/travelsubscribe/level_line.png) 50% 0 no-repeat;}
+.level_up .level_view .stit em{padding:26px 0 8px;display:block;font-size:30px;letter-spacing: -1.5px;line-height:34px;}
+.level_up .level_view .stit em span{font-weight: 800;color:#e8fe08;}
+.level_up .level_view .stit strong{display:block;font-size: 50px;line-height:54px;font-weight: 800;letter-spacing: -3.5px;}
+.level_up .level_view .stit strong span{color:#54f2f9;}
+.level_up .level_view .level2 .stit strong span{color:#fc58fc;}
+.level_up .level_view p{padding:22px 12% 120px;font-size:32px;font-weight: 300;letter-spacing: -1.7px;line-height: 39px; word-break: keep-all;}
+.level_up .level_view p strong{font-weight: 700;}
+.level_up .level_view .level2 p{padding:22px 12% 28px;}
+.level_up .level_view .level2 .letter_btn{padding:0 0 50px;}
+.level_up .level_view .level2 .letter_btn a{display:inline-block;width:200px;height:50px;line-height:50px;font-weight: 700;font-size:23px;background:#f1ea26;color:#3a00a2;border-radius: 10px;}
+
+/* 인트로 */
+.subscription_intro{background: url(../images/travelsubscribe/bg_intro.jpg) 50% 0 no-repeat;text-align: center;}
+.subscription_intro .question{width:1280px;margin:0 auto;}
+.subscription_intro .stit{display:block;color:#fff;font-size:50px;font-weight:700;line-height:54px;letter-spacing: -3px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.subscription_intro .stit:before{content:'';display:block;width:100%;height:119px;background: url(../images/travelsubscribe/icon_question.png) 50% 0 no-repeat;}
+.subscription_intro ul{position:relative;padding:145px 0 237px 33px;overflow: hidden;}
+.subscription_intro ul:after{content:'';display:inline-block;width:194px;height:194px;position:absolute;left:542px;top:325px;background: url(../images/travelsubscribe/icon_vs.png) no-repeat;}
+.subscription_intro ul li{position:relative;float:left;width:510px;height:879px;padding:0 33px;margin-left:58px;}
+.subscription_intro ul li:first-child{margin:0;}
+.subscription_intro ul li span{display:block;width:510px;height:550px;background-position: 50% 0;background-size:cover;background-repeat: no-repeat;text-indent: -9999px;}
+.subscription_intro ul li strong{padding:25px 0 13px;display:block;font-weight: 800;font-size:40px;line-height:44px;letter-spacing: -2.5px;color:#5d0fbc;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.subscription_intro ul li p{font-size:30px;line-height:34px;letter-spacing: -2px;color:#333;overflow:hidden;display:block;display: -webkit-box;max-height: 68px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+.subscription_intro ul li a{display:inline-block;position:absolute;left:100px;bottom:0;width:333px;height:155px;background: url(../images/travelsubscribe/btn_choice01.png) no-repeat;text-indent: -9999px;}
+.subscription_intro ul li .btn02{left:133px;background: url(../images/travelsubscribe/btn_choice02.png) no-repeat;}
+
+/* 모아보기 */
+.letter_more_view .title{height:686px;background:#7256fd;text-align: center;}
+.letter_more_view .more_list{background:#eef0f6;}
+.letter_more_view .more_list:after{content:'';display:block;clear: both;width:100%;}
+.letter_more_view .more_list .inr{width:1280px;margin:0 auto;position: relative;}
+.letter_more_view .more_list .left{width:670px;float:left;margin-top: -138px;}
+.letter_more_view .poster_inner {width:558px;height:869px;margin-left:112px;background: url(../images/travelsubscribe/bg_more_poster.png) no-repeat;}
+.letter_more_view .poster_inner.fixed{position:fixed;top:0;}
+.letter_more_view .left .tit{position: relative;z-index: 5;padding-left: 30px;}
+.letter_more_view .left .tit span{display:block;font-size: 24px;line-height:27px;color:#16211c;letter-spacing: -1.3px;}
+.letter_more_view .left .swiper-container{width:415px;margin-left: 78px;padding:78px 0 50px;}
+.letter_more_view .left .tit strong{display:block;font-weight: 700;font-size:60px;line-height:65px;letter-spacing: -5px;color:#3df289;}
+.letter_more_view .left .tit strong em{display:inline-block;padding-left:14px;font-weight: 700;font-size:22px;letter-spacing: -1px;}
+.letter_more_view .left .img{position:relative;display:block;height:558px;margin-top: -49px;background-size:cover;background-repeat: no-repeat;background-position: 50% 50%;text-indent: -9999px;}
+.letter_more_view .left .img:after{content: "";display: block;position: absolute; left: 0;top: 0;width:100%;height: 10%;background-image: linear-gradient(to top,transparent,rgba(0,0,0,.8));}
+.letter_more_view .swiper-button-next, .letter_more_view .swiper-button-prev{width:19px;height:28px;margin-top:0;top:403px;text-indent: -9999px;}
+.letter_more_view .swiper-button-next{background: url(../images/travelsubscribe/btn_slide_next01.png) no-repeat;}
+.letter_more_view .swiper-button-prev{background: url(../images/travelsubscribe/btn_slide_prev01.png) no-repeat;}
+.letter_more_view .swiper-pagination{bottom: 18px;}
+.letter_more_view .swiper-pagination-bullet{opacity: 1;background:#333;width:14px;height:14px;}
+.letter_more_view .swiper-pagination-bullet em{display:none;}
+.letter_more_view .swiper-pagination-bullet-active{background:#1cfc9a;}
+.letter_more_view .swiper-pagination-bullet-active em{display:inline-block;}
+.letter_more_view .more_list .right{width:460px;float:right;margin:-109px 150px 0 0;padding:0 0 100px;text-align: center;}
+.letter_more_view .right ul li{float:left;width:50%;margin:0 0 24px;}
+.letter_more_view .right ul li .wrap{width:210px;margin-right:20px;}
+.letter_more_view .right ul li .img{display:block;height:282px;background-size:cover;background-repeat: no-repeat;background-position: 50% 50%;text-indent: -9999px;box-shadow: 12px 16px 27px 0px rgba(155, 144, 196, 0.39);}
+.letter_more_view .right ul li .wrap div{height:50px;display:inline-block;}
+.letter_more_view .right ul li .wrap div span{float:left;font-size:20px;letter-spacing: -1px;color:#333;line-height:50px;}
+.letter_more_view .right ul li .wrap div span + span:before{content:'';display:inline-block;margin:0 11px 0 9px;width:1px;height:18px;background:#333;vertical-align: -2px;}
+.letter_more_view .right .btn{clear: both;}
+.letter_more_view .right .btn button{width:120px;height:44px;line-height:44px;border-radius: 50px;background:#7256fd;color:#fff;font-size:18px;box-shadow: 6px 9px 27px 0px rgba(173, 176, 199, 0.58);}
+.letter_more_view .right .btn button:after{content:'';display:inline-block;width:13px;height:13px;margin-left:8px;background: url(../images/travelsubscribe/btn_more_icon.png) no-repeat;}
+
+/* input */
+input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
+input[type="checkbox"] + label {position:relative;font-size:20px;letter-spacing:-1.3px; display:inline-block; min-height:30px; padding-left:37px; font-weight:700; vertical-align:middle;color:#303030;}
+input[type="checkbox"] + label:before {content:''; position:absolute; left:0; top:1px; width:24px; height:24px; border:2px solid #d2d2d2; background: #fff;border-radius: 10px;}
+input[type="checkbox"]:checked + label:before{border:2px solid #584cfa;}
+input[type="checkbox"]:checked + label {font-weight:700;}
+input[type="checkbox"]:checked + label:after {content:''; position:absolute; left:5px; top:-2px; width:24px; height:25px; background:url(../images/travelsubscribe/icon_ckeckbox_on.png) no-repeat center;}
+input[type="checkbox"]:focus + label {outline:1px dotted #000; outline:-webkit-focus-ring-color auto 5px;}
+
+/* 팝업 */
+#login.wrap_layerpop .layerpop, #popShare01.wrap_layerpop .layerpop{width: 300px !important;left: 50% !important;right: auto !important;margin-left: -150px !important;}
+#missionPop .layerpop{padding:0;background: none;}
+.layerpop{padding:0 !important;background: none !important;}
+#missionPop .layerpop .box_cont{padding:0;}
+.layerpop .box_cont{padding:0;}
+.layerpop .btn_area{padding:40px 0;text-align: center;}
+.layerpop .popup_close{position:absolute;right:34px;top:18px;width:30px;height:28px;background: url(../images/travelsubscribe/btn_pop_close01.png) no-repeat;text-indent: -9999px;}
+#subscribePop .layerpop{width:700px;}
+#subscribePop .layerpop .box_cont{padding:0 45px;overflow: hidden;border-radius:0 0 40px 40px;border:5px solid #584cfa;border-top:0;overflow-y: auto;max-height: 525px;}
+#subscribePop .layerpop .tit{padding-left:40px;border-radius: 40px 40px 0 0;background:#584cfa;color:#fff;height:81px;line-height:81px;font-weight: 700;font-size:30px;letter-spacing: -2px;}
+#subscribePop .layerpop .tit em{font-weight: 700;color:#e8fe08;}
+#subscribePop .box_cont strong.stit{display:block;padding:23px 0 49px;font-weight: 800;font-size:28px;letter-spacing: -1.5px;color:#603de2;text-align: center;}
+#subscribePop .box_cont strong.stit span{display:inline-block;box-shadow: inset 0 -13px 0 rgba(239,254,82,1);}
+#subscribePop .form em{float:left;width:90px;height:50px;line-height:50px;font-weight: 700;font-size:20px;letter-spacing: -1px;color:#303030;}
+#subscribePop .form div{margin-left:90px;}
+#subscribePop .form ul li{overflow:hidden;padding:0 0 28px;}
+#subscribePop .form p{padding-top:5px;font-size:18px;font-weight: 300;color:#a2a2a2;letter-spacing: -0.7px;}
+#subscribePop .form input{width:320px;border-radius: 10px;padding:0 0 0 15px;border:2px solid #d2d2d2;height:50px;font-size:20px;letter-spacing: -1px;box-sizing: border-box;}
+#subscribePop .form input:focus{border:2px solid #584cfa;outline:none;border-radius: 10px;}
+#subscribePop .form .phone select:focus{border:2px solid #584cfa;outline:none;border-radius: 10px;}
+#subscribePop .form .phone input:focus{border:2px solid #584cfa;outline:none;border-radius: 10px;}
+#subscribePop .form .phone input{float:left;width:100px;margin-left:10px;border:2px solid #d2d2d2;}
+#subscribePop .form .phone select{appearance: none;float:left;padding:0 0 0 15px;width:100px;border-radius: 10px;border:2px solid #d2d2d2;height:50px;font-size:20px;letter-spacing: -1px;background: #fff url(../images/travelsubscribe/ico_select.gif) 100% 50%/30px 11px no-repeat;}
+#subscribePop .form .phone select::-ms-expand{display:none;}
+#subscribePop .form .phone select{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+
+#subscribePop .layerpop .popup_close{top:23px;right:39px;}
+.consent_wrap + .consent_wrap{padding-top:6px;}
+.consent_wrap + .consent_wrap .consent{margin:6px 0 0;}
+.consent_wrap .wrap{overflow: hidden;}
+.consent_wrap .wrap .chk{float:left;padding:4px 0;}
+.consent_wrap .wrap .btn{float:right;}
+.consent_wrap .wrap .btn button{padding:0 15px;height:34px;line-height:30px;border:2px solid #584cfa;border-radius: 5px;font-size:16px;font-weight: 700;letter-spacing: -0.7px;color:#584cfa;}
+.consent_wrap .wrap .btn button:after{content:'';display:inline-block;width:17px;height:10px;margin-left:5px;background: url(../images/travelsubscribe/icon_consent_view.gif) no-repeat;}
+.consent_wrap .wrap.on .btn button:after{background-position: 0 -10px;vertical-align: 2px;}
+.consent_wrap .consent{display:none;padding:20px;margin:6px 0 20px;background:#f3f3f3;font-size:15px;max-height:155px;overflow-y:auto;}
+.consent_wrap .wrap.on + .consent{display:block;}
+#subscribePop .btn_area a{display:inline-block;width:250px;background:#584cfa;border-radius: 10px;height:60px;line-height:60px;font-weight: 700;font-size:26px;letter-spacing: -1.5px;color:#e8fe08;}
+
+#subscribePop01 .layerpop{width:700px;}
+#subscribePop01 .layerpop .box_cont{padding:0 45px;overflow: hidden;border-radius:0 0 40px 40px;border:5px solid #584cfa;border-top:0;}
+#subscribePop01 .layerpop .tit{padding-left:40px;border-radius: 40px 40px 0 0;background:#584cfa;color:#fff;height:81px;line-height:81px;font-weight: 700;font-size:30px;letter-spacing: -2px;}
+#subscribePop01 .layerpop .tit em{font-weight: 700;color:#e8fe08;}
+#subscribePop01 .box_cont strong.stit{display:block;padding:23px 0 12px;font-weight: 800;font-size:28px;letter-spacing: -1.5px;color:#603de2;text-align: center;}
+#subscribePop01 .box_cont strong.stit span{display:inline-block;box-shadow: inset 0 -13px 0 rgba(239,254,82,1);}
+#subscribePop01 .btn_area a{display:inline-block;width:200px;background:#584cfa;border-radius: 10px;height:60px;line-height:60px;font-weight: 700;font-size:26px;letter-spacing: -1.5px;color:#e8fe08;}
+#subscribePop01 .txt01{font-size:26px;line-height:32px;letter-spacing: -1.5px;text-align: center;color:#666;}
+#subscribePop01 .txt01 strong{font-weight: 700;color:#603de2;}
+#subscribePop01 .txt02{font-size:18px;line-height:22px;letter-spacing: -0.7px;color:#999;padding:0 0 43px;}
+#subscribePop01 .txt02 a{color:#603de2;}
+#subscribePop01 .layerpop .btn_area {padding: 28px 0;}
+#subscribePop01 .layerpop .popup_close{top:23px;right:39px;}
+
+#subscribePop02 .layerpop{width:500px;}
+#subscribePop02 .layerpop .box_cont{padding:35px 30px 0;border-radius: 20px;text-align: center;word-break:keep-all;}
+#subscribePop02 .layerpop strong{display:block;padding:0 0 13px;font-weight: 700;font-size:30px;letter-spacing: -1.5px;line-height:34px;color:#5d0fbc;}
+#subscribePop02 .layerpop strong:before{content:'';margin:0 0 17px;display:block;width:100%;height:80px;background: url(../images/travelsubscribe/icon_finger.png) 50% 0 no-repeat;}
+#subscribePop02 .layerpop p{font-size:20px;line-height:26px;letter-spacing: -1px;color:#333;}
+#subscribePop02 .layerpop p span{box-shadow: inset 0 -10px 0 rgba(221,205,250,1);}
+#subscribePop02 .layerpop p + p{padding:13px 0 0;font-weight: 300;color:#666;}
+#subscribePop02 .layerpop .popup_close{width:26px;height:26px;top:30px;right:31px;background: url(../images/travelsubscribe/btn_pop_close05.png) no-repeat;}
+#subscribePop02 .layerpop .btn_area a{display:inline-block;font-size:20px;width:188px;height:48px;line-height:48px;letter-spacing: -1px;border:1px solid #5d0fbc;border-radius: 10px;color:#5d0fbc;}
+#subscribePop02 .layerpop .btn_area a + a{background:#5d0fbc;color:#fff;margin-left:8px;}
+
+#sharePop .layerpop{width:420px;text-align: center;}
+#sharePop .popup_close{width:48px;height:48px;top:0;right:0;background: url(../images/travelsubscribe/btn_pop_close02.gif) no-repeat;}
+#sharePop .subscribe_info strong{display:block;padding:40px 0 10px;font-weight: 700;font-size:28px;letter-spacing: -1.5px;color:#512dd8;}
+#sharePop .subscribe_info p{font-size:18px;font-weight: 300;letter-spacing: -1px;color:#666;line-height: 22px;}
+#sharePop .layerpop .btn_area{padding: 30px 0 40px;}
+#sharePop .btn_area a{display:inline-block;width:250px;height:50px;background: url(../images/travelsubscribe/btn_share_pop.gif) no-repeat;text-indent: -9999px;}
+#sharePop .typeb .subscribe_info strong{color:#3426f2;}
+#sharePop .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_close02_b.gif) no-repeat;}
+#sharePop .typeb .btn_area a{background: url(../images/travelsubscribe/btn_share_pop_b.gif) no-repeat;}
+
+#subscriptionDetailPop.wrap_layerpop{visibility: hidden;display: inline-block;opacity: 0;height: 0;text-indent: -9999px;}
+#subscriptionDetailPop.wrap_layerpop.active{height: 100%;text-indent: 0;opacity: 1;visibility: inherit;}
+#subscriptionDetailPop .layerpop{width:590px;background:none;}
+#subscriptionDetailPop .layerpop .box_cont{padding:20px 20px 0;overflow-y: auto;max-height: 570px;}
+#subscriptionDetailPop .popup_close{width:50px;height:50px;top:0;right:-50px;background: url(../images/travelsubscribe/btn_pop_close03.gif) no-repeat;}
+.slide_pop .swiper-container{padding: 0 0 34px;}
+.slide_pop .swiper-slide .bg{height:300px;background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;text-indent: -9999px;}
+.slide_pop .swiper-slide .source{position: absolute;right: 15px;top: 13px;font-size: 12px;color: #fff;font-weight: 300;display: inline-block;}
+.slide_pop .paging{position: absolute;bottom: 0;left: 0;z-index: 100;width: 100%;font-size: 0;text-align: right;}
+.slide_pop .btn_autoArea{display: inline-block;vertical-align: middle;}
+.slide_pop .btn_autoArea .btn_autoPlay {overflow: hidden;display: none;width: 12px;height: 14px;background: url(../images/travelsubscribe/btn_slide_play.gif) no-repeat;text-indent: -9999px;vertical-align: top;}
+.slide_pop .btn_autoArea .btn_autoStop {overflow: hidden;display: inline-block;width: 11px;height: 14px;background: url(../images/travelsubscribe/btn_slide_stop.gif) no-repeat;text-indent: -9999px;vertical-align: top;}
+.slide_pop.active .btn_autoArea .btn_autoPlay {display: inline-block;}
+.slide_pop.active .btn_autoArea .btn_autoStop {display: none;}
+.slide_pop .swiper-pagination{display: inline-block;position: relative;font-size: 0;text-align: center;left: auto !important;bottom: 0 !important;}
+.slide_pop .swiper-pagination button.swiper-pagination-bullet{width:12px;height:12px;background:#333;opacity: 1;margin-left:10px;}
+.slide_pop .swiper-pagination button.swiper-pagination-bullet-active {width:24px;background: #23f69a;border-radius: 50px;}
+#subscriptionDetailPop .slide_cont em{display:block;padding:0 0 2px;font-size:24px;line-height:28px;font-weight: 300;letter-spacing: -1.3px;color:#333;}
+#subscriptionDetailPop .slide_cont{padding:13px 0 0;font-size: 18px;font-weight: 300;color: #666;letter-spacing: -1px;overflow: hidden;}
+#subscriptionDetailPop .slide_cont .stit{display:block;padding:0 0 14px;font-weight: 700;font-size:38px;line-height:42px;letter-spacing: -3px;color:#333;}
+#subscriptionDetailPop .slide_cont .stit span{color:#08e685;}
+#subscriptionDetailPop .btn_area a{display:inline-block;width:185px;height:50px;background: url(../images/travelsubscribe/btn_detail_pop.gif) no-repeat;text-indent: -9999px;}
+#subscriptionDetailPop .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_close03_b.gif) no-repeat;}
+.typeb .slide_pop .swiper-pagination button.swiper-pagination-bullet-active{background:#fb9eff;}
+.typeb .slide_pop .btn_autoArea .btn_autoStop{background: url(../images/travelsubscribe/btn_slide_stop_b.gif) no-repeat;}
+.typeb .slide_pop .btn_autoArea .btn_autoPlay{background: url(../images/travelsubscribe/btn_slide_play_b.gif) no-repeat;}
+#subscriptionDetailPop .typeb .slide_cont .stit span{color:#f287f7;}
+#subscriptionDetailPop .typeb .btn_area a{background: url(../images/travelsubscribe/btn_detail_pop_b.gif) no-repeat;}
+#subscriptionDetailPop .layerpop .btn_area{padding: 20px 0;background: #fff;}
+#subscriptionDetailPop .slide_scr{overflow-y:auto ;max-height:570px;}
+
+#detailPop01 .layerpop{width:400px;text-align: center;}
+#detailPop01 .popup_close{width:48px;height:48px;top:0;right:0;background: url(../images/travelsubscribe/btn_pop_close02.gif) no-repeat;}
+#detailPop01 .layerpop strong{display:block;padding-top:39px;font-weight: 700;font-size:25px;letter-spacing: -1.3px;color:#333;}
+#detailPop01 .layerpop strong:before{content:'';display:block;height:62px;margin: 0 0 13px;width:100%;background: url(../images/travelsubscribe/icon_face.gif) 50% 0 no-repeat;}
+#detailPop01 .layerpop p{font-size:18px;font-weight: 300;letter-spacing: -1px;color:#333;}
+#detailPop01 .layerpop span{display:inline-block;font-size:18px;font-weight: 400;letter-spacing: -1px;color:#333;box-shadow: inset 0 -8px 0 rgba(145,250,204,1);}
+#detailPop01 .btn_area a{display:inline-block;width:160px;height:50px;background: url(../images/travelsubscribe/btn_detail_pop01.gif) no-repeat;text-indent: -9999px;}
+#detailPop01 .layerpop .btn_area{padding: 33px 0 40px;}
+#detailPop01 .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_close02_b.gif) no-repeat;}
+#detailPop01 .layerpop.typeb strong:before{background: url(../images/travelsubscribe/icon_face_b.gif) 50% 0 no-repeat;}
+#detailPop01 .layerpop.typeb span{box-shadow: inset 0 -8px 0 rgba(253,206,255,1);}
+#detailPop01 .typeb .btn_area a{background: url(../images/travelsubscribe/btn_detail_pop01_b.gif) no-repeat;}
+
+#missionPop.wrap_layerpop{visibility: hidden;display: inline-block;opacity: 0;height: 0;text-indent: -9999px;}
+#missionPop.wrap_layerpop.active{height: 100%;text-indent: 0;opacity: 1;visibility: inherit;}
+#missionPop .layerpop{width:546px;text-align: center;}
+#missionPop .layerpop .box_cont{background:none;}
+#missionPop .layerpop .cont{position:absolute;left:0;top:0;width:100%;}
+#missionPop .layerpop .date{display:block;height:30px;line-height:30px;letter-spacing: -1px;font-size:18px;font-weight: 700;color:#08f4ff;}
+#missionPop .layerpop .popup_close{width:33px;height:33px;left:255px;top:39px;background: url(../images/travelsubscribe/btn_pop_close04.png) no-repeat;}
+#missionPop .layerpop .form{height:35px;margin:0 83px 0 78px;position: relative;text-align: left;}
+#missionPop .layerpop .form a{width:55px;height:35px;line-height:35px;display:inline-block;position:absolute;right:0;top:0;font-size:15px;color:#fff;background:#2f1e85;border-radius: 5px;text-align: center;font-weight: 300;}
+#missionPop .layerpop .form input{border:0;padding:0 0 0 10px;height:35px;width: calc((100% - 65px));border-radius: 5px;font-size:15px;box-sizing: border-box;}
+#missionPop .layerpop .db_txt{padding:0 73px 0 77px;font-size: 17px;line-height:21px;color:#fff;text-align: left;letter-spacing: -0.5px;}
+#missionPop .layerpop .db_txt strong{font-weight: 700;color:#04f87d;}
+
+#cancelPop .layerpop, #cancelfinishPop .layerpop{width:340px;}
+#cancelPop .layerpop .box_cont, #cancelfinishPop .layerpop .box_cont {padding: 23px 0 20px;text-align: center;}
+#cancelPop .layerpop strong, #cancelfinishPop .layerpop strong{display:block;font-weight: 700;font-size:20px;letter-spacing: -1px;color:#333;}
+#cancelPop .layerpop p{padding:3px 0 0;color:#666;font-size:14px;line-height:18px;}
+#cancelPop .btn_center, #cancelfinishPop .btn_center{padding:28px 0 0;}
+#cancelPop .btn_01{width:70px;height:30px;line-height:30px;background:#a1a9b7;display:inline-block;color:#fff;font-size: 14px;}
+#cancelPop .layerpop .btn_ok, #cancelfinishPop .layerpop .btn_ok{padding:0;width:70px;height:30px;line-height:30px;}
+
+.layerpop.gift{width:500px;text-align: center;border-radius: 15px 15px 0 0;}
+.layerpop.gift .btn_close3{overflow: hidden;position: absolute;top: 21px;right: 20px;width: 16px;padding:0;height: 16px;background: url(../images/travelsubscribe/pop_btn_close.png) no-repeat;text-indent: -9999px;}
+.layerpop.gift .tit > h2{background:#4a59fc;font-size:20px;padding:0;height:59px;line-height:59px;font-weight: 400;}
+.layerpop.gift .box_cont{background:#4a59fc;padding:0 8px 8px;}
+.layerpop.gift .stit_wrap{position:relative;display:table;width:100%;height:164px;background:#f8e5fe;border-bottom:2px dashed #989fef;}
+.layerpop.gift .stit_wrap:before{content:'';display:inline-block;width:11px;height:24px;position:absolute;left:0;bottom:-12px;background: url(../images/travelsubscribe/pop_left_round.png) no-repeat;}
+.layerpop.gift .stit_wrap:after{content:'';display:inline-block;width:11px;height:24px;position:absolute;right:0;bottom:-12px;background: url(../images/travelsubscribe/pop_right_round.png) no-repeat;}
+.layerpop.gift .stit{display:table-cell;vertical-align: middle;}
+.layerpop.gift .stit strong{display:block;font-weight: 700;font-size:25px;letter-spacing: -1.2px;line-height:27px;color:#4a59fc;}
+.layerpop.gift .stit span{display:inline-block;margin-top:9px;padding:0 33px;height:26px;line-height:26px;background:#4a59fc;border-radius: 50px;color:#fff;font-size:16px;font-weight: 300;}
+.layerpop.gift .info{padding:37px 0 0;background:#fff;}
+.layerpop.gift .info p{padding:0 0 25px;font-size:18px;line-height:22px;color:#666;letter-spacing: -0.7px;}
+.layerpop.gift .info ul li{position:relative;padding:0 0 5px 12px;text-align: left;display: flex;font-size:18px;line-height:22px;letter-spacing: -0.7px;}
+.layerpop.gift .info ul li strong{font-weight: 700;color:#4a59fc;}
+.layerpop.gift .info ul li span{flex: 1;color:#333;padding-left:20px;word-break:break-all;}
+.layerpop.gift .info ul li:before {content: '';width: 5px;height: 5px;background: #4a59fc;border-radius: 100%;position: absolute;left: 0;top: 7px;}
+.layerpop.gift .btn_center{padding:20px 0 40px;background:#fff;}
+.layerpop.gift .btn_center a{width:100px;height:40px;padding:0;line-height: 40px;font-size:17px;background:#4a59fc;}
+
+.layerpop.gift .scr_wrap{overflow-y:auto;max-height:300px;padding: 0 40px;}
+
+.layerpop.gift.slide .info{padding:11px 0 0;background:#fff;}
+.layerpop.gift.slide .info .scr_wrap{overflow-y:auto;height:285px;max-height:285px;padding: 25px 40px 0;}
+.layerpop.gift.slide .btn_center{padding: 20px 0 67px;}
+.layerpop.gift.slide .swiper-container{position:static;}
+.layerpop.gift.slide .btn_slide{position:absolute;left:0;bottom:8px;background:#4a59fc;width:100%;height:47px;}
+.layerpop.gift.slide .btn_slide > div{position:relative;width:150px;height:47px;margin:0 auto;}
+.layerpop.gift.slide .swiper-pagination{color:#a5acfe;font-size:17px;}
+.layerpop.gift.slide .swiper-pagination-current{color:#fff;}
+.layerpop.gift.slide .swiper-button-next, .layerpop.gift.slide .swiper-button-prev{top: 17px;margin:0;text-indent: -9999px;z-index: 20;width:13px;height:22px;background: url(../images/travelsubscribe/pop_slide_btn.png) no-repeat;}
+.layerpop.gift.slide .swiper-button-next{background-position: 0 -22px;}
+
+.layerpop.gift .code_form{padding:32px 0 0;text-align: left;overflow: hidden;}
+.layerpop.gift .code_form em{float:left;font-size:18px;font-weight: 700;color:#333;letter-spacing: -0.7px;}
+.layerpop.gift .code_form em label{height:40px;line-height:40px;}
+.layerpop.gift .code_form span{display:block;padding-left:106px;}
+.layerpop.gift .code_form span input{box-sizing: border-box;width:100%;border:1px solid #ccc;height:40px;font-size: 18px;}
+.layerpop.gift .code_form p{padding: 8px 0 0;font-size:16px;line-height: 20px;letter-spacing: -0.7px;}
+
+#personalInformation .layerpop{width:760px;padding:0 0 50px;}
+#personalInformation .box_cont{padding:0 0 50px;border-radius: 30px;}
+#personalInformation .consent{padding:50px 40px 0;text-align: center;}
+#personalInformation .consent em{display:inline-block;padding:0 28px;height:44px;line-height:44px;color:#fff;background:#4a59fc;border-radius: 50px;font-size:23px;letter-spacing: -1.2px;}
+#personalInformation .consent em span{color:#fef96d;}
+#personalInformation .consent strong{display:block;padding:18px 0 38px;font-weight: 700;font-size:30px;line-height:34px;letter-spacing: -2.5px;color:#333;}
+#personalInformation .consent input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
+#personalInformation .consent input[type="checkbox"] + label {position:relative; display:inline-block; line-height: 33px;min-height:33px; padding-left:38px; font-weight:700; vertical-align:middle;color:#333;}
+#personalInformation .consent input[type="checkbox"] + label:before {content:''; position:absolute; left:0; top:0; width:28px; height:31px; background:url(../images/travelsubscribe/icon_ckeckbox.gif) no-repeat;border-radius: 0;border:0;}
+#personalInformation .consent input[type="checkbox"]:checked + label:before {border-color:#2469b0;}
+#personalInformation .consent input[type="checkbox"]:checked + label:after {content:''; position:absolute; left:0; top:0; width:28px; height:31px; background:url(../images/travelsubscribe/icon_ckeckbox_on01.gif) no-repeat;}
+#personalInformation .consent input[type="checkbox"]:focus + label {outline:1px dotted #000; outline:-webkit-focus-ring-color auto 5px;}
+#personalInformation .consent .chk{display:block;margin:0 0 8px;text-align: left;}
+#personalInformation .clause{padding:20px;height:150px;overflow-y:auto;font-size:15px;border-radius: 10px;background:#f3f3f3;text-align: left;color:#9a9a9a;}
+#personalInformation .consent p{padding:8px 0 28px;font-size:16px;line-height:20px;font-weight: 300;color:#666;text-align: left;letter-spacing: -0.5px;}
+#personalInformation .btn_center a{display:inline-block;height:48px;width:188px;line-height:48px;font-size:20px;letter-spacing: -1px;border-radius: 10px;color:#999;border:1px solid #d2d2d2;}
+#personalInformation .btn_center .btn02{background:#4a59fc;border:1px solid #4a59fc;color:#fff;}
+
+#prizePop01 .layerpop{overflow-x: hidden;overflow-y: auto;max-height: 90%;width:620px;text-align: center;border-radius: 20px;}
+.layerpop.gift .box_cont.prize .tit{background:#f8e5fe;position: relative;border-radius: 18px 18px 0 0;}
+.layerpop.gift .box_cont.prize .tit > h2{height:40px;width:300px;margin: 0 auto;background: url(../images/travelsubscribe/pop_prize_stit1.png) no-repeat;text-indent: -9999px;}
+.layerpop.gift .box_cont.prize{padding: 6px 6px 6px;border-radius: 20px;}
+.layerpop.gift .box_cont.prize .btn_close3{right:21px;top:30px;width:26px;height:26px;background: url(../images/travelsubscribe/pop_btn_close01.png) no-repeat;z-index:5;}
+.layerpop.gift .box_cont.prize .stit strong{padding: 0 50px;font-size:30px;line-height:34px;letter-spacing: -2.5px;}
+.layerpop.gift .box_cont.prize .stit span{height:30px;line-height:30px;margin-top: 8px;padding: 0 38px;font-size:18px;letter-spacing: -0.7px;}
+.layerpop.gift .box_cont.prize .stit_wrap{height:304px;display:block;}
+.layerpop.gift .box_cont.prize .stit{display:block;padding:26px 0 0;}
+.layerpop.gift .box_cont.prize .stit_wrap .img{position:absolute;left:101px;right:101px;top:166px;display:block;height:278px;border-radius: 10px;background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;box-shadow: 11px 15px 35px 0px rgba(53, 58, 109, 0.29);text-indent: -9999px;}
+.layerpop.gift .box_cont.prize .info{padding: 165px 35px 0;}
+.layerpop.gift .box_cont.prize .info p{padding: 0 0 27px;font-size:18px;line-height: 22px;letter-spacing: -0.7px;}
+.layerpop.gift .box_cont.prize .info ul li{display:table;width:100%;overflow: hidden;padding:0;margin:0 0 10px;}
+.layerpop.gift .box_cont.prize .info ul li:before{display:none;}
+.layerpop.gift .box_cont.prize .info ul li strong{display:table-cell;width:130px;}
+.layerpop.gift .box_cont.prize .info ul li strong em{display:block;font-weight: 700;position: relative;padding-left:12px;}
+.layerpop.gift .box_cont.prize .info ul li strong em:before{content:'';display:inline-block;width:5px;height:5px;border-radius: 100%;background:#4a59fc;position:absolute;left:0;top:7px;}
+.layerpop.gift .box_cont.prize .info ul li span{flex: auto;display:table-cell;padding-left:0;}
+.layerpop.gift .box_cont.prize .adrs_form{display:table;width:100%;padding:0 0 10px;}
+.layerpop.gift .box_cont.prize .adrs_form strong{display:table-cell;width:130px;text-align: left;font-weight: 700;font-size:18px;color:#000;vertical-align: middle;}
+.layerpop.gift .box_cont.prize .adrs_form strong em{display:block;font-size: 16px;font-weight: 300;color:#999;}
+.layerpop.gift .box_cont.prize .adrs_form span{display:table-cell;vertical-align: middle;}
+.layerpop.gift .box_cont.prize .adrs_form textarea{width:100%;height:76px;border:1px solid #dcdcdc;border-radius: 10px;box-sizing: border-box;font-size:18px;}
+.layerpop.gift .box_cont.prize .btn_center a{width:293px;height:40px;line-height: 40px;border-radius: 10px;font-size:18px;}
+.layerpop.gift .box_cont.prize .scr_wrap{max-height: 200px;}
+.layerpop.gift .box_cont.prize .btn_center p{padding:8px 0 0;font-size:16px;line-height:19px;font-weight: 300;color:#666;letter-spacing: -0.5px;}
+.layerpop.gift .box_cont.prize .btn_center p a{width:auto;background:none;height:auto;line-height:19px;font-size: 18px;font-weight: 300;color: #666;}
+#prizePop02 .layerpop{overflow-x: hidden;overflow-y: auto;max-height: 90%;width:620px;text-align: center;border-radius: 20px;}
+.layerpop.gift .box_cont.prize .btn_center{padding: 20px 0 30px;border-radius:0 0 18px 18px;}
+#prizePop02 .layerpop::-webkit-scrollbar {width: 6px;height: 6px;}
+#prizePop02 .layerpop::-webkit-scrollbar-thumb {background: #666;}
+#prizePop02 .layerpop::-webkit-scrollbar-track-piece {background: #e5e5e5;margin:10px;}
+#prizePop01 .layerpop::-webkit-scrollbar {width: 6px;height: 6px;}
+#prizePop01 .layerpop::-webkit-scrollbar-thumb {background: #666;}
+#prizePop01 .layerpop::-webkit-scrollbar-track-piece {background: #e5e5e5;margin:10px;}
+
+#prizePop02 .layerpop.gift .box_cont.prize .tit > h2{background: url(../images/travelsubscribe/pop_prize_stit2.png) no-repeat;}
+#login input[type="checkbox"] + label:before{border:0 !important;}
+#login .auto_login input[type="checkbox"] + label:before{top:4px;}
+#login .auto_login input[type="checkbox"]:checked + label:after{top:4px;}
+#remainingGiftPop.wrap_layerpop, #randomPop01.wrap_layerpop{visibility: hidden;display: inline-block;opacity: 0;height: 0;text-indent: -9999px;}
+#remainingGiftPop.wrap_layerpop.active, #randomPop01.wrap_layerpop.active{height: 100%;text-indent: 0;opacity: 1;visibility: inherit;}
+#remainingGiftPop{left: 50%; top: 50%; margin-left: -250px; margin-top: -327.5px;}
+#remainingGiftPop .btn_close3{box-sizing: content-box; background-color: #4a59fc; border: 9px solid #4a59fc; border-right: 14px solid #4a59fc; right: 9px; margin: -9px; z-index: 2;}
+#remainingGiftPop .swiper-slide .tit{width: 200px; margin: auto;}
+#remainingGiftPop .swiper-container .btn_slide{z-index: 1;}
+
+#popShare .share .inp_url {padding:0 15px;}
+
+
+
+/* 플로팅배너 */
+.subscription_quick{position: fixed;left: 0;bottom: 0;right: 0;z-index: 100;transition: bottom .5s ease-in-out;}
+.subscription_quick.on{bottom: 410px;}
+.subscription_quick .inr{position: relative;width: 940px;margin: 0 auto;}
+.subscription_quick .btn_go{position: absolute;right: -268px;bottom: 40px;width: 290px;height: 309px;background: url(../images/travelsubscribe/subscription_quick.png) no-repeat;}
+.subscription_quick .btn_go em{display:block;font-size:15px;color:#00ffff;padding: 198px 0 0 75px;letter-spacing: -1px;}
+.subscription_quick button{position: absolute;right: -161px;bottom: 267px;width: 27px;height: 27px;background: url(../images/travelsubscribe/subscription_quick_close.png) no-repeat;text-indent: -9999px;}
+
+/* 댓글 */
+.wrap_reply .level_mission{background:#f0f1fa;margin:24px 0 0;}
+.wrap_reply .level_mission div.mission{display:block;margin:0 0 10px 70px;color:#17dd33;font-size:14px;}
+.wrap_reply .level_mission div.mission span{display:inline-block;height:26px;line-height:26px;background:#7256fd;padding:0 10px;}
+.wrap_reply .level_mission div.mission span:before{content:'';display:inline-block;width:5px;height:5px;background:#17dd33;vertical-align: 4px;margin-right:5px;border-radius: 100%;}
+.wrap_reply .level_mission div.mission span:after{content:'';display:inline-block;width:5px;height:5px;background:#17dd33;vertical-align: 4px;margin-left:5px;border-radius: 100%;}
+.wrap_reply .list_reply .level_mission .btn_view{right:20px;top:68px;}
+.wrap_reply .list_reply .level_mission{padding: 31px 10px;}
+.wrap_reply .list_reply .level_mission + .level_mission{margin:0;}
+.replyWrap.subscription .subscription_txt{padding:0 0 18px;font-size:16px;color:#7256fd;margin: 0 !important;}
+.replyWrap.subscription .subscription_txt strong{font-weight: 800;color:#7256fd !important;}
+.replyWrap.subscription .tit_reply{padding: 4px 0px 0 0;}
+.replyWrap.subscription .write{background:#7256fd;border: 1px solid #7256fd !important;}
+.replyWrap.subscription .fileLayer{border: 1px solid #7256fd;border-top:0;}
+.replyWrap.subscription .replyBox .fileLayer{border:0;}
+
+/* 마이페이지 */
+.subscription_banner{margin-top:34px;}
+.subscription_current h3{float:left;font-weight:800;font-size:25px;letter-spacing: -1.5px;color:#4c2de5;}
+.subscription_current h3 span{display:inline-block;font-weight: 700;}
+.subscription_current h3 span:before{content:'';display:inline-block;width:1px;vertical-align: -3px;margin:0 10px;height:23px;background:#a596f2;}
+.subscription_current h3:before{content:'';display:inline-block;width:7px;height:7px;border-radius: 100%;background:#0af08c;vertical-align: 14px;margin-right:6px;}
+.subscription_current .title{margin:34px 0 20px;overflow: hidden;}
+.subscription_current .title .txt{float:right;font-size:15px;color:#666;}
+.subscription_current{padding:0 0 35px;border-bottom:1px solid #e6e6e6;}
+.subscription_current > ul{overflow: hidden;margin-left:-20px;}
+.subscription_current > ul > li{position:relative;float:left;width:220px;padding: 29px 30px 0;margin-left:20px;height:195px;background:#7256fd;box-sizing: border-box;}
+.subscription_current > ul > li.lottery{background:#23f69a;}
+.subscription_current ul li.lottery strong{color:#4928c7;}
+.subscription_current ul li.lottery a{color:#4928c7;}
+.subscription_current ul li.lottery a:after{background:#4928c7;}
+.subscription_current ul li.lottery a.star:before{content:'';display:inline-block;width:11px;height:11px;margin-right:5px;background:url(../images/travelsubscribe/icon_lottery_star.png) no-repeat;}
+.subscription_current ul li.lottery a.star:after{display:none;}
+.subscription_current ul li strong{display:block;font-weight: 700;font-size: 18px;line-height:22px;letter-spacing: -1px;color:#fff;}
+.subscription_current ul li ul{padding:15px 0 0;}
+.subscription_current ul li ul li{padding:0 0 1px;color:#d5cdfe;font-size:16px;line-height: 19px;}
+.subscription_current ul li em.type1{position:absolute;bottom:30px;right:30px;display:inline-block;font-size:16px;width:65px;height:25px;line-height: 25px;background:#23f69a;color:#2e22cd;text-align: center;}
+.subscription_current .modify{width:22px;height:22px;position:absolute;right:30px;top:30px;background:url(../images/travelsubscribe/btn_modify.png) no-repeat;text-indent: -9999px;}
+.subscription_current ul li a{display:inline-block;font-size:16px;color:#23f69a;position:absolute;right:30px;bottom:30px;}
+.subscription_current ul li a:after{content:'';display:block;width:100%;height:1px;margin-top:1px;background:#23f69a;}
+.subscription_current ul li em.type2{position:absolute;top:30px;right:30px;display:inline-block;font-weight:700;font-size:14px;width:60px;height:24px;line-height: 24px;background:#4928c7;color:#23f69a;text-align: center;border-radius: 50px;}
+.subscription_current + .box_tit{padding:26px 0 0;font-weight: 700;font-size:25px;line-height:30px;letter-spacing: -1.5px;color:#333;}
+.box_tit + .mypage_banner{margin: -5px -10px 0;}
+.btn_center a + a{margin-left:8px;}
+.box_leftType1.subscription .write_board1 .tit_write{display:block;}
+.box_leftType1.subscription .phone{overflow: hidden;}
+.box_leftType1.subscription .phone select{float:left;width:90px;height: 38px;box-sizing: border-box;border: 1px solid #ccc;}
+.box_leftType1.subscription .write_board1 .phone input{float:left;width:90px;margin-left:20px;}
+.box_leftType1.subscription .write_board1 .inp_write{width:310px;}
+.box_leftType1.subscription .notice{padding:25px 0 0;}
+.box_leftType1.subscription .notice strong{display:block;font-size:14px;color:#000;}
+.box_leftType1.subscription .notice ul li{position:relative;padding:6px 0 0 12px;font-size:13px;line-height:16px;color:#333;}
+.box_leftType1.subscription .notice ul li:before{content:'';display:inline-block;width:3px;height:3px;background:#333;border-radius: 100%;position:absolute;left:0;top:13px;}
+h2.mission_tit span{display:inline-block;font-weight: 300;font-size:30px;}
+h2.mission_tit span:before{content:'';display:inline-block;width:1px;height:32px;background:#333;margin:0 15px;vertical-align: -3px;}
+.mypage_banner li a{background:#ecf0fd;}
+.mypage_banner li .profile_box{background:#ecf0fd;}
+.mypage_banner li.btn_myList:hover a:after{border: 2px solid #587ae9;box-sizing: border-box;}
+.mypage_banner li .profile .photo{background: url(../images/travelsubscribe/ico_profile.png) 0 0 no-repeat;}
+.box_rightType1 img{height:auto !important;}
+
+.mission_box{overflow:hidden;padding:34px 38px 40px;border:2px solid #7256fd;background:url(../images/travelsubscribe/bg_mission_box.gif) no-repeat;}
+.mission_box .stit{padding:0 0 3px;color:#4c2de5;font-size:35px;line-height:40px;letter-spacing: -2px;}
+.mission_box .stit strong{font-weight: 800;}
+.mission_box .stit strong:after{content:'';display:inline-block;width:10px;height:10px;border-radius: 100%;background:#0af08c;vertical-align: 20px;margin-left:10px;}
+.mission_box .info{overflow: hidden;}
+.mission_box .info > ul > li{display:table;width:100%;padding:21px 0 0;}
+.mission_box .info ul li em{vertical-align: top;display:table-cell;width:88px;font-weight: 700;font-size:20px;letter-spacing: -1px;color:#4c2de5;clear: left;}
+.mission_box .info > ul > li > div{vertical-align: top;display:table-cell;font-size:18px;color:#666;line-height:24px;}
+.mission_box .info > ul > li > div strong{font-weight: 700;color:#333;}
+.mission_box .info > ul > li > div .btn_ev{display:inline-block;margin-left:10px;}
+.mission_box .info > ul > li > div .btn_ev a{display:inline-block;font-size:15px;line-height: 23px;background:#f7f5f5;border:1px solid #d4d2d2;padding:0 10px;height:23px;text-align: center;letter-spacing: -0.5px;}
+.mission_box .info > ul > li > div .btn_ev a:after{content:'';display:inline-block;width:6px;height:10px;margin-left:4px;background:url(../images/travelsubscribe/btn_ev_arw.png) no-repeat;}
+.mission_box .info ul li.step em{display:block;width:100%;}
+.mission_box .info ul li.step .swiper-container{display:block;margin: 15px 0 0;position: relative;}
+.mission_box .info ul li.step .swiper-container:after{content:'';display:block;width:100%;height:2px;background:#eee;position:absolute;top:27px;}
+.mission_box .info ul li.step div ul li{float:left;width:25%;text-align: center; margin:3% 0%;}
+.mission_box .info ul li.step div strong{display:block;padding:0 0 2px;font-size:16px;font-weight: 700;color:#0af08c;letter-spacing: -1px;}
+.mission_box .info ul li.step div strong:before{content:'';display:block;width:100%;height:56px;background: url(../images/travelsubscribe/ico_step1.png) 50% 0 no-repeat;}
+.mission_box .info ul li.step div strong.step2:before{background-position: 50% -56px;}
+.mission_box .info ul li.step div strong.step3:before{background-position: 50% -112px;}
+.mission_box .info ul li.step div strong.step4:before{background-position: 50% -168px;}
+.mission_box .info ul li.step div p{font-size: 16px;color:#666;line-height:19px;letter-spacing: -0.6px;}
+.mission_box .info ul li.step div p span{color:#0fd57f;}
+.mission_box .info ul li.step .swiper-pagination{display:none;}
+.mission_box .info ul li.more em{display:block;width:100%;}
+.mission_box .info ul li.more .swiper-container{display:block;margin: 15px 0 0;}
+.mission_box .info ul li.more div ul{margin-left:-20px;}
+.mission_box .info ul li.more div ul li{float:left;width:200px;margin-left:20px;text-align: center;}
+.mission_box .info ul li.more div ul li a{display:block;width:200px;}
+.mission_box .info ul li.more div ul li a img{border-radius: 10px;}
+.mission_box .info ul li.more .swiper-pagination{display:none;}
+.mission_banner + .mission_stit{display:block;padding:36px 0 7px;font-weight: 700;font-size:20px;line-height:24px;letter-spacing: -1px;color:#000;}
+.mission_list .comment_wrap{padding-left:10px;color:#666;text-align: left;}
+.mission_box .info .none{padding:48px 0 0;margin-top:27px;background:#f7f7f7;height:203px;color:#4c2de5;text-align: center;}
+.mission_box .info .none strong{display:block;padding:0 0 7px;font-weight: 700;font-size: 26px;line-height:30px;letter-spacing: -1.5px;}
+.mission_box .info .none strong:before{content:'';display:block;width:100%;margin:0 0 10px;height:18px;background:url(../images/travelsubscribe/icon_mission_box.gif) 50% 0 no-repeat;}
+.mission_box .info .none p{font-weight: 300;font-size: 18px;line-height:18px;letter-spacing: -1px;}
+.tourList .mission_list td{padding:10px;}
+.tourList .mission_list td .separate{display:block;color:#7256fd;font-weight: 700;}
+.tourList .mission_list td .img{display:inline-block;width:160px;height:106px;background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;text-indent: -9999px;}
+.tourList .mission_list td .img + p{padding:18px 0 0;}
+.tourList .mission_list td .btn{padding:8px 0 0;}
+.tourList .mission_list td .btn button{width:120px;height:25px;font-weight: 700;font-size:14px;background:#f7f7f7;border:1px solid #e6e6e6;letter-spacing: -0.5px;}
+.tourList .mission_list td .list_none{height:106px;line-height:106px;font-size:16px;color:#666;}
+.tourList .mission_list td.stit{text-align: left;}
+.tourList .mission_list td.stit a{display:block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.tourList .mission_list td .btn_reason{display:inline-block;margin-left:18px;}
+.tourList .mission_list td .btn_reason button{width: 120px;height: 30px;font-size: 14px;background: #fcfbfb;border: 1px solid #ccc;letter-spacing: -0.5px;}
+.mission_banner{padding:26px 0 0;overflow: hidden;}
+.mission_banner a{display:block;}
+.mission_banner .type2{margin-left:-10px;}
+.mission_banner .type2 a{float:left;margin-left:10px;width: calc((50% - 10px));}
+.tourList .pclistBoard .tab{position:absolute;right:0;top:-49px;border:1px solid #7256fd;border-radius: 50px;}
+.tourList .pclistBoard .tab button{float:left;color:#7256fd;font-size:16px;height:26px;width:120px;}
+.tourList .pclistBoard .tab button + button{border-left:1px solid #7256fd;}
+.tourList .pclistBoard .tab button.on{background:#7256fd;color:#fff;border-radius: 50px 0 0 50px;}
+.tourList .pclistBoard .tab button + button.on{border-radius:0 50px 50px 0 ;}
+
+/* 복권 상세 */
+.my_lottery_box{overflow: hidden;text-align: center;}
+.my_lottery_box > div{float:left;width:460px;height:335px;position: relative;}
+.my_lottery_box > div.box1{border:2px solid #7256fd;background: url(../images/travelsubscribe/bg_lottery_box01.gif) no-repeat;color:#4c2de5;}
+.my_lottery_box > div.box1 .btn a{background:#7256fd;}
+.my_lottery_box > div.box2{float:right;border:2px solid #4a59fc;background: url(../images/travelsubscribe/bg_lottery_box02.gif) no-repeat;color:#4a59fc;}
+.my_lottery_box > div.box2 .btn a{background:#5663ed;}
+.my_lottery_box .stit{padding:33px 0 35px 39px;text-align: left;}
+.my_lottery_box .stit span{display: block;font-size: 25px;line-height: 29px;letter-spacing: -1.2px;}
+.my_lottery_box .stit strong{display: block;font-size: 50px;line-height: 54px;letter-spacing: -2.5px;font-weight: 800;}
+.my_lottery_box .stit strong:after {content: '';display: inline-block;width: 10px;height: 10px;border-radius: 100%;background: #0af08c;vertical-align: 31px;margin-left: 12px;}
+.my_lottery_box em{display:block;padding:0 0 9px;font-weight: 700;font-size:24px;line-height: 28px;letter-spacing: -1px;}
+.my_lottery_box p{font-size:18px;color:#666;letter-spacing: -0.7px;line-height: 23px;}
+.my_lottery_box .btn{padding:18px 0 0;}
+.my_lottery_box .btn a{display:inline-block;height:40px;line-height:40px;width:191px;color:#fff;font-size:17px;letter-spacing: -0.6px;}
+.my_lottery_box + .mission_stit{display: block;padding: 36px 0 7px;font-weight: 700;font-size: 20px;line-height: 24px;letter-spacing: -1px;color: #000;}
+.tourList .mission_list .prize_wrap{text-align: left;padding:10px;}
+.tourList .mission_list .prize_wrap em{display:inline-block;padding:0 10px;height:24px;line-height:24px;color:#fff;font-size:14px;background:#5663ed;}
+.tourList .mission_list .prize_wrap ul{display:block;margin-top:4px;}
+.tourList .mission_list .prize_wrap ul li{width:auto;position:relative;display: flex;font-size:14px;color:#666;padding:3px 0 0 13px;border:0;}
+.tourList .mission_list .prize_wrap ul li:before{content:'';width:4px;height:4px;background:#666;border-radius: 100%;position:absolute;left:0;top:10px;}
+.tourList .mission_list .prize_wrap ul li strong{font-weight:400;}
+.tourList .mission_list .prize_wrap ul li span{flex: 1;padding-left:3px;}
+.tourList .mission_list .prize_wrap ul li strong:after{content:'\003A';display:inline-block;padding-left:3px;}
+.tourList .mission_list .prize_wrap ul li.pdt{font-weight: 700;color:#4a59fc;}
+.tourList .mission_list .prize_wrap ul li.pdt:before{background:#4a59fc;}
+.tourList .mission_list .prize_wrap ul li.pdt strong{font-weight: 700;}
+.tourList .mission_list .prize_wrap ul li.line strong{text-decoration: underline;}
+.tourList .mission_list .prize_wrap button{width:50px;height:25px;line-height: 25px;color:#fff;font-size:14px;background:#999;margin-left:5px;vertical-align: middle;}
+.tourList .mission_list .prize_wrap input{width:260px;box-sizing: border-box;height:25px;border:1px solid #ccc;vertical-align: middle;}
+
+.my_lottery_notice{padding:16px 0 0;}
+.my_lottery_notice strong{display:block;font-size:14px;color:#000;}
+.my_lottery_notice ul li{position:relative;padding:6px 0 0 12px;font-size:14px;line-height:17px;color:#333;}
+.my_lottery_notice ul li:before{content:'';display:inline-block;width:3px;height:3px;background:#333;border-radius: 100%;position:absolute;left:0;top:13px;}
+
+/* 복권 긁기 */
+.lottery_ev{overflow: hidden;background:url(../images/travelsubscribe/bg_lottery_ev.gif) 50% 0 repeat-y;}
+.lottery_ev .title{background:url(../images/travelsubscribe/bg_lottery_tit.gif) 50% 0 no-repeat;text-align: center;height:783px;}
+.lottery_ev .title .date strong{display:inline-block;width:175px;height:35px;text-indent: -9999px;vertical-align: middle;background:url(../images/travelsubscribe/stit_lottery.png) no-repeat;}
+.lottery_ev .title .date span{display:inline-block;font-size: 22px;color:#333;vertical-align: middle;margin-left:7px;letter-spacing: -1px;}
+.lottery_ev .scratch{height:604px;padding-top:81px;background:url(../images/travelsubscribe/bg_lottery_scratch.gif) 50% 0 no-repeat;text-align: center;}
+.lottery_ev .scratch .wrap{width:740px;height:440px;margin: auto;position: relative;}
+.lottery_ev .scratch .inr{width:740px;height:440px;margin: auto;position: relative;background:url(../images/travelsubscribe/bg_lottery.png) 0 0 / 100% 100% no-repeat;}
+.lottery_ev .scratch .inr:before{content:'';display:inline-block;width:84px;height:84px;position:absolute;left: -18px;top: -25px;background:url(../images/travelsubscribe/box_lottery_bg1.png) no-repeat;z-index: 5;}
+.lottery_ev .scratch .inr:after{content:'';display:inline-block;width:84px;height:84px;position:absolute;right: -16px;top: -25px;background:url(../images/travelsubscribe/box_lottery_bg2.png) no-repeat;z-index: 5;}
+.lottery_ev .scratch .wrap:before{content:'';display:inline-block;width:84px;height:84px;position:absolute;left: -18px;bottom: -19px;background:url(../images/travelsubscribe/box_lottery_bg3.png) no-repeat;z-index: 5;}
+.lottery_ev .scratch .wrap:after{content:'';display:inline-block;width:84px;height:84px;position:absolute;right: -16px;bottom: -19px;background:url(../images/travelsubscribe/box_lottery_bg4.png) no-repeat;z-index: 5;}
+.lottery_ev .scratch_box{height:100%;position: relative;margin:0 auto;}
+.lottery_ev .scratch_box a{display:inline-block;font-size:22px;font-weight: 700;letter-spacing: -1.2px;background:#000;color:#fff;border-radius: 10px;height:60px;line-height: 60px;width:260px;position:absolute;left:50%;margin-left:-130px;bottom:101px;}
+.lottery_ev .list{padding:0 0 36px;background:url(../images/travelsubscribe/bg_lottery_list.png) 50% 0 no-repeat;overflow: hidden;}
+.lottery_ev .list .inr{width:940px;margin:0 auto;padding-left:26px;}
+.lottery_ev .list ul{margin-left:-34px;display: flex;align-items: center;flex-wrap: wrap;justify-content: center;}
+.lottery_ev .list ul:after{content:'';display:block;width:100%;clear: both;}
+.lottery_ev .list ul li{float:left;width:33.3%;}
+.lottery_ev .list .wrap{display:block;position:relative;box-sizing: border-box;margin:0 0 44px 34px;width:276px;height:309px;padding:18px 26px 0 20px;background:url(../images/travelsubscribe/box_lottery_list.png) no-repeat;}
+.lottery_ev .list .wrap span{display:block;height:156px;background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;border:2px solid #000;border-radius: 10px;text-indent: -9999px;}
+.lottery_ev .list .wrap .logo{position:absolute;left:0;bottom:20px;width:100%;border:0;height:20px;border-radius: 0;background:url(../images/travelsubscribe/logo_wellness.png) 50% 0 / 100px 20px no-repeat;}
+.lottery_ev .list .wrap strong{display:block;padding:37px 0 0;font-size:20px;line-height:23px;letter-spacing: -1px;color:#000;text-align: center;}
+.lottery_ev .list .wrap em{position:absolute;left:-20px;top:-20px;display:inline-block;width:66px;height:66px;border-radius: 100%;border:2px solid #000;background:#4a59fc;font-weight: 800;font-size:20px;line-height:66px;letter-spacing: -1.2px;color:#f9fb52;text-align: center;}
+.lottery_ev .notice {color:#000;text-align:left;background:#fff;}
+.lottery_ev .notice .inr{width:940px;margin:0 auto;padding:30px 0 70px;}
+.lottery_ev .notice .tit{display: block;height:70px;line-height:70px;padding: 0 0 0 0;font-weight: 700;font-size: 24px;color: #fcee4e;background:#000;letter-spacing: -1.2px;}
+.lottery_ev .notice .tit span{display:block;width:940px;margin:0 auto;}
+.lottery_ev .notice ul li{padding:7px 0 0 13px;font-size:18px;line-height:22px;font-weight:400;position:relative;letter-spacing: -1px;}
+.lottery_ev .notice ul li:before{content:'';display:inline-block;width:4px;height:4px;background:#191919;border-radius:100%;position:absolute;left:0;top:16px;}
+
+/* 미션방법, 경품안내 */
+.giveaway_guide .cont1{padding:0 0 100px;background:#fda4ff;text-align: center;}
+.giveaway_guide .cont2{background:#7256fd;text-align: center;}
+.giveaway_guide .cont2 .inr{position:relative;width:1280px;margin:0 auto;}
+.giveaway_guide .cont2 .stit{display:block;}
+.giveaway_guide .cont2 .stit img{margin-top: -56px;}
+.giveaway_guide .cont2 ul li .wrap{float:left;width:271px !important;margin-left:34px;position:relative;height:353px;background:url(../images/travelsubscribe/bg_giveaway_guide.gif) no-repeat;}
+.giveaway_slide{position: relative;padding:0 0 118px;}
+.giveaway_slide .swiper-container{margin:80px 44px 0 16px;position:static;}
+.giveaway_guide .cont2 ul li .img{display:block;padding:20px 0 0 20px;text-align: left;}
+.giveaway_guide .cont2 ul li strong{display:block;padding:36px 0 4px;font-weight: 700;font-size: 20px;line-height:23px;color:#4e18d1;letter-spacing: -1px;}
+.giveaway_guide .cont2 ul li .name{display:block;font-size: 18px;line-height:21px;letter-spacing: -0.7px;color:#333;word-break: keep-all;}
+.giveaway_guide .cont2 ul li .name em{display:block;}
+.giveaway_guide .cont2 ul li .name span{display:block;}
+.giveaway_guide .cont2 ul li .num{position:absolute;left:50%;bottom:0;margin-left:-30px;width:60px;height:60px;border-radius: 100%;background:#4e18d1;font-size: 18px;font-weight: 700;color:#1cfb9a;line-height:60px;}
+.giveaway_guide .swiper-button-next, .giveaway_guide .swiper-button-prev{width:44px;height:44px;margin:0;top:140px;}
+.giveaway_guide .swiper-button-next{right:-22px;background:url(../images/travelsubscribe/giveaway_next.png) 0 0 / 100% 100%;}
+.giveaway_guide .swiper-button-prev{left:-22px;background:url(../images/travelsubscribe/giveaway_prev.png) 0 0 / 100% 100%;}
+.giveaway_guide .paging{position: absolute;bottom: 72px;left: 0;z-index: 100;width: 100%;font-size: 0;}
+.giveaway_guide .btn_autoArea {display: inline-block;vertical-align: middle;}
+.giveaway_guide .swiper-pagination {display: inline-block;position: relative;font-size: 0;text-align: center;left: auto !important;bottom: 0 !important;}
+
+.giveaway_slide .btn_autoArea .btn_autoPlay {overflow: hidden;display: none;width: 12px;height: 16px;background: url(../images/travelsubscribe/btn_slide_play01.png) no-repeat;text-indent: -9999px;vertical-align: top;}
+.giveaway_slide .btn_autoArea .btn_autoStop {overflow: hidden;display: inline-block;width: 11px;height: 16px;background: url(../images/travelsubscribe/btn_slide_stop01.png) no-repeat;text-indent: -9999px;vertical-align: top;}
+.giveaway_slide.active .btn_autoArea .btn_autoPlay {display: inline-block;}
+.giveaway_slide.active .btn_autoArea .btn_autoStop {display: none;}
+.giveaway_guide .swiper-pagination button.swiper-pagination-bullet{width:16px;height:16px;background:#4819bb;opacity: 1;margin-left:10px;}
+.giveaway_guide .swiper-pagination button.swiper-pagination-bullet-active {width:30px;background: #23f69a;border-radius: 50px;}
+
+@media screen and (max-width: 1023px) {
+    #contents.wide{margin: 0 auto 0;}
+    #contents.wide.main{height: calc((100% - 50px));}
+    .mo{display:block;}
+    .pc{display:none;}
+    img{width:100%;}
+    .subscription_logo{height:50px;}
+    .subscription_logo .logo{width:100%;}
+    .subscription_logo .logo a{display:block;height:50px;background:url(../images/travelsubscribe/logo_m_header.png) 20px 50% / 170px auto no-repeat;}
+
+    /* 메인 */
+    .subscription_main{position: relative;height: 100%;}
+    .subscription_main .push_btn{margin-left: 0;left:22.8%;right:22.3%;bottom:5.5%;}
+    .subscription_main .swiper-wrapper .swiper-slide:nth-child(1) img{width:100%;}
+    .subscription_main .rfa-slide-container{height: 100%;}
+    .subscription_main .swiper-wrapper .swiper-slide:nth-child(1){width:100% !important;height:auto;}
+    .subscription_main .inr{width:100%;height: 100%;}
+    .rfa-sl-container-start{background: url(../images/travelsubscribe/bg_m_main.gif) 0 0 / 9.5px auto repeat;}
+    .subscription_main .btn_share{width:35px;height:35px;right:15px;top:32px;}
+    .subscription_main .btn_mission{width:35px;height:35px;right:55px;top:32px;}
+    .rfa-chap-sect-slide{width:100%;padding:0 15px;height:auto;transition: auto;top:0;transform: translate(0, 0);position: relative;}
+    .rfa-chap-sect-slide img{width:100%; height:auto;transition: auto;}
+    .rfa-chap-sect-wrapper .swiper-slide-prev:after, .rfa-chap-sect-wrapper .swiper-slide-next:after{display:none;}
+    .rfa-chap-sect-wrapper .swiper-slide-prev img, .rfa-chap-sect-wrapper .swiper-slide-next img{height:auto;}
+    .rfa-chap-sect-wrapper .swiper-slide-prev, .rfa-chap-sect-wrapper .swiper-slide-next{height:auto;}
+    .rfa-chap-sect-wrapper .swiper-slide:after{display:none;}
+    .subscription_main .img_wrap{width: auto;left: 15px;right: 15px;top:0 !important;bottom: 160px !important;}
+    .rfa-chap-sect-slide .img_wrap .source{font-size:11px;right:8px;top:6px;}
+    .subscription_main .cont_wrap{background: url(../images/travelsubscribe/bg_slide_mdim.png) 0 100% / 100% auto no-repeat;}
+    .subscription_main .cont em{padding: 0 15px;font-size:13px;line-height: 16px;letter-spacing: 0;max-height: 32px;}
+    .subscription_main .cont strong{padding: 5px 15px 18px;font-size:21px;line-height:25px;letter-spacing: -1px;}
+    .subscription_main .cont strong span:after{display:none;}
+    .subscription_main .cont .btn{padding: 0 0 20px;}
+    .subscription_main .cont .btn button{width:115px;height:28px;}
+    .subscription_main .cont .btn .ok{background: url(../images/travelsubscribe/btn_m_slide01.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_main .cont .btn .no {margin-left: 10px;background: url(../images/travelsubscribe/btn_m_slide02.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_main .swiper-pagination-progressbar{height:4px;bottom: 30px;right: 15px;left: 15px;}
+    .subscription_main .mo_stit{display:block;height:130px;background:#7256fd url(../images/travelsubscribe/stit_mo_slide.gif) 0 0 / 218px auto no-repeat;position:absolute;left:0;top:0;width:100%;text-indent: -9999px;}
+    .rfa-chap-sect-slide,
+    .chapter-content--slide{display:block;top:106px;}
+    .subscription_main .pagination_num{font-size:11px;right:15px;bottom: 12px;}
+    .subscription_main .current{padding: 0 5px;}
+    .subscription_main .total{padding-left: 5px;}
+    .subscription_main .cont_wrap.last:after{height:220px;top:50%;margin-top:-110px;background: url(../images/travelsubscribe/icon_slide_mlast.png) 50% 0 / 290px auto no-repeat;}
+
+    .typeb .rfa-sl-container-start{background: url(../images/travelsubscribe/bg_m_mainb.gif) 0 0 / 22.5px auto repeat;}
+    .subscription_main.typeb .mo_stit{background: #564afb url(../images/travelsubscribe/stit_mo_slideb.gif) 0 0 / 218px auto no-repeat;}
+    .subscription_main.typeb .cont .btn .ok {background: url(../images/travelsubscribe/btn_mslide01_b.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_main.typeb .cont .btn .no {background: url(../images/travelsubscribe/btn_mslide02b.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_main.typeb .cont_wrap.last:after{background: url(../images/travelsubscribe/icon_slide_mlast01.png) 50% 0 / 290px auto no-repeat;}    
+
+    .subscription_main .mo_space{display:block;}
+    .subscription_main .title_txt{position:absolute;left:0;top:111px;width:100%;padding:0;}
+    .subscription_main .title_txt em{font-size:15px;height:26px;line-height:26px;padding:0 15px;letter-spacing: -0.7px;}
+    .subscription_main .title_txt .stit{padding: 12px 0 3px;font-size:36px;line-height: 100%;letter-spacing: -2px;}
+    .subscription_main .title_txt strong{font-size:81px;line-height: 100%;letter-spacing: -4px;}
+
+    /* 구독신청 */
+    .subscription_application .floating_btn{right:0;bottom: 20px;width:92px;height: 92px;background: url(../images/travelsubscribe/floating_mbtn.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application .floating_btn01{right:0;bottom: 110px;width:92px;height: 108px;background: url(../images/travelsubscribe/floating_mbtn02.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application{max-width:100%;min-width: 100%;}
+    .subscription_application .visu{width:auto;height:auto;}
+    .subscription_application .visu:before{display:none;}
+    .subscription_application .visu:after{display:none;}
+    .subscription_application .visu a{width: 265px;height: 83px;left:50%;margin-left:-132.5px;bottom: -49px;background: url(../images/travelsubscribe/btn_subscription_mapplication.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application .visu a.btn01{background: url(../images/travelsubscribe/btn_subscription_mapplication01.png) 0 0 / 100% 100% no-repeat;}
+
+    .subscription_application .cont .tit{position:static;width:auto;padding-left:15px;}
+    .subscription_application .cont .tit em{font-size:16px;line-height:20px;letter-spacing:-0.6px;}
+    .subscription_application .cont .tit strong{padding:8px 0 0;font-size:30px;line-height:34px;letter-spacing: -2px;}
+    .subscription_application .taster{height:auto;overflow: hidden;padding: 80px 0 0;background:#594cfb url(../images/travelsubscribe/bg_taster.png) 100% 41px / 232px 55px no-repeat;}
+    .subscription_application .taster .cont{float:none;width:auto;overflow: hidden;}
+    .subscription_application .taster .img_wrap{margin:26px 0 0;float:none;width:auto;background: url(../images/travelsubscribe/bg_mslide_active.png) 0 0 / 269px 317px no-repeat;}
+    .subscription_application .gallery-thumbs .bg1:after,
+    .subscription_application .gallery-thumbs .bg2:after,
+    .subscription_application .gallery-thumbs .bg3:after,
+    .subscription_application .gallery-thumbs .bg4:after,
+    .subscription_application .gallery-thumbs .bg5:after,
+    .subscription_application .gallery-thumbs .bg6:after,
+    .subscription_application .gallery-thumbs .bg7:after,
+    .subscription_application .gallery-thumbs .bg8:after,
+    .subscription_application .gallery-thumbs .bg9:after,
+    .subscription_application .gallery-thumbs .bg10:after{display:none}
+    .subscription_application .gallery-thumbs{width:auto;float:none;}
+    .subscription_application .gallery-thumbs p.text{padding: 25px 15px 0;font-size: 14px;max-height: 76px;line-height:19px;letter-spacing: -0.3px;}
+    .subscription_application .gallery-thumbs .btn_more{font-size:11px;padding:30px 0 0 15px;}
+    .subscription_application .gallery-thumbs .btn_more:after{width: 4px;height: 6px;margin-left: 5px;vertical-align: 1px;background: url(../images/travelsubscribe/icon_mbtn_more.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application .pagination_wrap{right:15px;bottom: 0;width: 82px;height: 16px;}
+    .subscription_application .swiper-pagination{font-size:12px;}
+    .subscription_application .swiper-button-next, .subscription_application .swiper-button-prev{width: 10px;height: 16px;}
+    .subscription_application .swiper-button-prev{background: url(../images/travelsubscribe/btn_slide_mprev.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application .swiper-button-next{background: url(../images/travelsubscribe/btn_slide_mnext.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_application .gallery-top{height:317px;padding: 35.5px 0 0;margin-left: 23px;}
+    .subscription_application .gallery-top .swiper-slide{width: 210px;}
+    .subscription_application .gallery-top .img{width:210px;height:210px;}
+    .subscription_application .mission_info .inr{ width: auto;}
+    .subscription_application .level_up .inr{width:auto;}
+    .level_up .level_view{padding-bottom: 85px;}
+    .level_up .level_view.on{padding-bottom: 50px;}
+    .level_up .level_view button{left: 50%;width: 254px;margin-left:-127px;height: 82px;background: url(../images/travelsubscribe/btn_mlevel01.png) 0 0 / 100% 100% no-repeat;}
+    .level_up .level_view.on button{top: -31px;background: url(../images/travelsubscribe/btn_mlevel.png) 0 0 / 100% 100% no-repeat;}
+    .level_up .level_view.on .box{margin:31px 15px 0;padding:0 20px;}
+    .level_up .level_view .icon{height: 125px;margin: 50px 0 0;background: url(../images/travelsubscribe/level_mstit01.gif) 50% 0 / 248px auto no-repeat;}
+    .level_up .level_view .stit {height: 113px;background: url(../images/travelsubscribe/level_mline.gif) 50% 0 / 100% 113px no-repeat;}
+    .level_up .level_view .stit em{padding: 16px 0 4px;font-size: 14px;letter-spacing: -0.7px;line-height: 18px;}
+    .level_up .level_view .stit strong{font-size: 25px;line-height: 29px;letter-spacing: -2px;}
+    .level_up .level_view .stit strong span{display:block;}
+    .level_up .level_view p{padding: 22px 0 40px;font-size: 15px;letter-spacing: -0.8px;line-height: 19px;word-break: keep-all;}
+    .level_up .level1_1 .icon{background: url(../images/travelsubscribe/level_mstit02.gif) 50% 0 / 248px auto no-repeat;}
+    .level_up .level2 .icon{background: url(../images/travelsubscribe/level_mstit03.gif) 50% 0 / 248px auto no-repeat;}
+    .level_up .level_view .level2 p{padding: 22px 0 15px;}
+    .level_up .level_view .level2 .letter_btn{padding: 0 0 30px;}
+    .level_up .level_view .level2 .letter_btn a{font-size: 13px;height:30px;line-height: 30px;width:120px;border-radius: 5px;}
+
+    /* 인트로 */
+    .subscription_intro{background:#9b61ff url(../images/travelsubscribe/bg_mintro.png) 50% 100% / auto 119px no-repeat;}
+    .subscription_intro .stit:before{display:none;}
+    .subscription_intro .question{width:auto;}
+    .subscription_intro .stit{padding:0 15px;font-size: 22px;line-height: 26px;letter-spacing: -1.2px;overflow:hidden;display:block;display: -webkit-box;max-height: 52px;white-space: inherit;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+    .subscription_intro ul{padding: 76px 0 105px 0;background: url(../images/travelsubscribe/bg_intro_img.png) 0 25px / 100% 399px no-repeat;}
+    .subscription_intro ul li{width:50%;height:348px;padding:0;margin-left: 0;}
+    .subscription_intro ul li span{width:auto;margin:0 14.5px;height:200px;}
+    .subscription_intro ul li a{bottom:3px;left:50% !important;margin-left:-72px;width:144px;height:63px;background: url(../images/travelsubscribe/btn_mchoice01.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_intro ul li .btn02{background: url(../images/travelsubscribe/btn_mchoice02.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_intro ul li strong{padding: 13px 14px 5px;font-size:17px;line-height:21px;letter-spacing: -1px;}
+    .subscription_intro ul li p{font-size:13px;line-height:17px;letter-spacing:0;max-height:34px;}
+    .subscription_intro ul:after{width:68px;height: 68px;left: 50%;margin-left:-34px;top:143px;background: url(../images/travelsubscribe/icon_mvs.png) 0 0 / 100% 100% no-repeat;}
+
+    /* 모아보기 */
+    .letter_more_view .title{height:auto;}
+    .letter_more_view .more_list .inr{width:100%;}
+    .letter_more_view .more_list .left{float:none;width:100%;margin-top:-81px;}
+    .letter_more_view .poster_inner{width:auto;height:503px;margin:0;background: url(../images/travelsubscribe/bg_more_mposter.png) 0 0 / 100% 100% no-repeat;}
+    .letter_more_view .left .swiper-container{width:auto;margin:0 10.8% 0 11.6%;padding: 42px 0 30px;}
+    .letter_more_view .left .img{height:334px;margin-top: -28px;}
+    .letter_more_view .left .tit{padding-left: 15px;}
+    .letter_more_view .left .tit span{font-size:14px;line-height: 17px;letter-spacing: -0.5px;}
+    .letter_more_view .left .tit strong{font-size:35px;letter-spacing: -2.5px;line-height:38px;}
+    .letter_more_view .left .tit strong em{padding-left: 10px;font-size:12px;letter-spacing: 0;}
+    .letter_more_view .swiper-button-next, .letter_more_view .swiper-button-prev{display:none;}
+    .letter_more_view .swiper-pagination{bottom: 2px;}
+    .letter_more_view .swiper-pagination-bullet{width:10px;height:10px;}    
+    .letter_more_view .more_list .right{float:none;width:100%;margin: 0;}
+    .letter_more_view .poster_inner.fixed{position:static;}
+    .letter_more_view .right ul{padding:0 3.3%;}
+    .letter_more_view .right ul li .wrap{width:auto;margin:0 5px;}
+    .letter_more_view .right ul li .img{height:188px;box-shadow: 6px 8px 13px 0px rgba(155, 144, 196, 0.39);}
+    .letter_more_view .right ul li .wrap div{height:30px;}
+    .letter_more_view .right ul li .wrap div span{font-size:13px;letter-spacing: 0;line-height: 30px;}
+    .letter_more_view .right ul li .wrap div span + span:before{height:11px;margin: 0 7px 0 6px;vertical-align: -1px;}
+    .letter_more_view .right ul li{margin: 0 0 16px;}
+    .letter_more_view .right .btn button{width:78px;height:29px;line-height:29px;font-size:13px;box-shadow: 3px 5px 13px 0px rgba(173, 176, 199, 0.58);}
+    .letter_more_view .right .btn button:after{width:10px;height:10px;margin-left:4px;background: url(../images/travelsubscribe/btn_more_micon.png) 0 0 / 100% 100% no-repeat;}
+
+    /* input */
+    input[type="checkbox"] + label{font-size:13px;letter-spacing:0;padding-left:22px;min-height: 18px;}
+    input[type="checkbox"] + label:before{width:13px;height:13px;border-radius: 5px;}
+    input[type="checkbox"]:checked + label:after{width: 14px;height: 15px;left: 4px;top: -1px;background: url(../images/travelsubscribe/icon_mckeckbox_on.png) 0 0 / 100% 100% no-repeat;}
+
+    /* 팝업 */
+    .layerpop {left: 15px !important;right: 15px !important;width: auto !important;margin-left: 0 !important;}
+    .layerpop .btn_area{padding:15px 0;}
+    #subscribePop .layerpop{border-radius: 20px;}
+    #subscribePop .layerpop .tit{height:52px;padding-left: 25px;line-height:52px;font-size:18px;letter-spacing: -1.5px;border-radius: 20px 20px 0 0;}
+    #subscribePop .layerpop .box_cont{padding: 0 25px;border:3px solid #584cfa;border-radius: 0 0 20px 20px;max-height: 300px;}
+    #subscribePop .layerpop .box_cont::-webkit-scrollbar {width: 3px;}
+    #subscribePop .layerpop .box_cont::-webkit-scrollbar-thumb {background: rgba(0,0,0,.3);} 
+    .layerpop .popup_close{width:16px;height:16px;right:25px;top:18px;background: url(../images/travelsubscribe/btn_pop_mclose01.png) 0 0 / 100% 100% no-repeat;}
+    #subscribePop .box_cont strong.stit{padding: 25px 0 23px;font-size:15px;letter-spacing: -0.8px;}
+    #subscribePop .box_cont strong.stit span{box-shadow: inset 0 -6px 0 rgb(239 254 82);}
+    #subscribePop .form ul li{padding: 0 0 15px;}
+    #subscribePop .form em{height:30px;line-height:30px;width:50px;font-size:13px;letter-spacing: 0;}
+    #subscribePop .form div{margin-left:50px;}
+    #subscribePop .form input:focus{border-radius:5px;}
+    #subscribePop .form .phone select:focus{border-radius:5px;}
+    #subscribePop .form .phone input:focus{border-radius:5px;}
+    #subscribePop .form input{width:100%;height:30px;padding: 0 0 0 8px;border-radius: 5px;letter-spacing: 0;font-size:12px;}
+    #subscribePop .form .phone input{width: calc((33.3% - 5px));margin-left: 5px;}
+    #subscribePop .form .phone select{width:33.3%;height:30px;padding: 0 0 0 8px;border-radius: 5px;letter-spacing: 0;font-size:12px;background: #fff url(../images/travelsubscribe/ico_mselect.gif) 100% 50%/17px auto no-repeat;}
+    #subscribePop .form p{font-size:11px;letter-spacing: 0;}
+    .consent_wrap .wrap .chk{padding:0;}
+    .consent_wrap .wrap .btn button{padding:0 6px;height:20px;line-height:16px;font-size:11px;letter-spacing:0;}
+    .consent_wrap .wrap .btn button:after{width:9px;height:5px;margin-left:3px;vertical-align: 1px;background: url(../images/travelsubscribe/icon_consent_mview.gif) 0 0 / 100% auto no-repeat;}
+    .consent_wrap .wrap.on .btn button:after{background-position: 0 -5px;}
+    .consent_wrap + .consent_wrap{padding-top: 10px;}
+    .consent_wrap .consent{margin: 10px 0 10px;font-size:12px;padding: 10px;max-height: 100px;}
+    #subscribePop .btn_area a{height:35px;line-height:35px;width:125px;border-radius:5px;font-size:15px;letter-spacing: -0.5px;}
+    #subscribePop .layerpop .popup_close{top:17px;right:25px;}
+
+    #subscribePop01 .layerpop{border-radius: 20px;}
+    #subscribePop01 .layerpop .tit{height:52px;padding-left: 25px;line-height:52px;font-size:18px;letter-spacing: -1.5px;border-radius: 20px 20px 0 0;}
+    #subscribePop01 .layerpop .box_cont{padding: 0 25px;border:3px solid #584cfa;border-radius: 0 0 20px 20px;max-height: 300px;}
+    #subscribePop01 .layerpop .popup_close {top: 17px;right: 25px;}
+    #subscribePop01 .box_cont strong.stit{padding: 25px 0 8px;font-size:15px;letter-spacing: -0.8px;}
+    #subscribePop01 .box_cont strong.stit span{box-shadow: inset 0 -6px 0 rgb(239 254 82);}
+    #subscribePop01 .txt01 {font-size: 14px;line-height: 18px;letter-spacing: -0.5px;}
+    #subscribePop01 .txt02 {font-size: 12px;line-height: 15px;letter-spacing: 0px;padding: 0 0 25px;text-align: center;}
+    #subscribePop01 .txt02 a{font-weight: 700;}
+    #subscribePop01 .layerpop .btn_area {padding: 18px 0;}
+    #subscribePop01 .btn_area a{height:35px;line-height:35px;width:125px;border-radius:5px;font-size:15px;letter-spacing: -0.5px;}
+    
+    #subscribePop02 .layerpop .box_cont{padding: 23px 25px 0;border-radius: 15px;}
+    #subscribePop02 .layerpop strong{padding: 0 0 7px;font-size:20px;line-height:23px;letter-spacing: -1px;}
+    #subscribePop02 .layerpop strong:before{height:56px;margin: 0 0 13px;background: url(../images/travelsubscribe/icon_m_finger.png) 50% 0 / 56px 56px no-repeat;}
+    #subscribePop02 .layerpop p {font-size: 13px;line-height: 17px;letter-spacing: 0;}
+    #subscribePop02 .layerpop p br{display:none;}
+    #subscribePop02 .layerpop p + p{padding: 11px 0 0;}
+    #subscribePop02 .layerpop p span{box-shadow: inset 0 -5px 0 rgba(221,205,250,1);}
+    #subscribePop02 .layerpop .btn_area {padding: 30px 0;}
+    #subscribePop02 .layerpop .btn_area a{font-size: 14px;width: 109px;height: 29px;line-height: 29px;letter-spacing: 0;border-radius: 5px;}
+
+    #sharePop .popup_close{width:29px;height: 29px;background: url(../images/travelsubscribe/btn_pop_mclose02.gif) 0 0 / 100% 100% no-repeat;}
+    #sharePop .subscribe_info strong{padding:25px 0 5px;font-size:18px;letter-spacing: -1px;}
+    #sharePop .subscribe_info p{font-size:12px;letter-spacing: 0;line-height: 15px;}
+    #sharePop .btn_area a{width:130px;height:28px;background: url(../images/travelsubscribe/btn_mshare_pop.gif) 0 0 / 100% 100% no-repeat;}
+    #sharePop .layerpop .btn_area{padding: 20px 0 20px;}
+    #sharePop .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_mclose02_b.gif) 0 0 / 100% 100% no-repeat;}
+    #sharePop .typeb .btn_area a{background: url(../images/travelsubscribe/btn_mshare_pop_b.gif) 0 0 / 100% 100% no-repeat;}
+
+    #subscriptionDetailPop .layerpop .box_cont{padding: 15px 15px 0;max-height: 430px;}
+    .slide_pop .swiper-container {padding: 0 0 20px;}
+    .slide_pop .swiper-slide .bg{height:173px;}
+    .slide_pop .swiper-slide .source{font-size:11px;top:6px;right:8px;}
+    .slide_pop .btn_autoArea .btn_autoStop{width: 9px;height: 10px;background: url(../images/travelsubscribe/btn_slide_mstop.gif) 0 0 / 100% 100% no-repeat;}
+    .slide_pop .btn_autoArea .btn_autoPlay{width: 9px;height: 10px;background: url(../images/travelsubscribe/btn_slide_mplay.gif) 0 0 / 100% 100% no-repeat;}
+    .slide_pop .swiper-pagination{padding:0 !important;}
+    .slide_pop .swiper-pagination button.swiper-pagination-bullet{width:10px;height:10px;margin-left: 5px;}
+    .slide_pop .swiper-pagination button.swiper-pagination-bullet-active{width: 18px;}
+    #subscriptionDetailPop .slide_cont{padding: 13px 0 0;font-size: 12px;letter-spacing: 0;}
+    #subscriptionDetailPop .slide_cont em{padding: 0 0 5px;font-size:13px;line-height:17px;letter-spacing: 0;}
+    #subscriptionDetailPop .slide_cont .stit{padding: 0 0 13px;font-size:19px;line-height:23px;letter-spacing: -1px;}
+    #subscriptionDetailPop .btn_area a{width:105px;height: 28px;background: url(../images/travelsubscribe/btn_detail_mpop.gif) 0 0 / 100% 100% no-repeat;}
+    #subscriptionDetailPop .popup_close{right:0;top:-29px;width:29px;height:29px;background: url(../images/travelsubscribe/btn_pop_mclose03.gif) 0 0 / 100% 100% no-repeat;}
+    #subscriptionDetailPop .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_mclose03_b.gif) 0 0 / 100% 100% no-repeat;}
+    .typeb .slide_pop .btn_autoArea .btn_autoStop{background: url(../images/travelsubscribe/btn_slide_mstop_b.gif) 0 0 / 100% 100% no-repeat;}
+    .typeb .slide_pop .btn_autoArea .btn_autoPlay{background: url(../images/travelsubscribe/btn_slide_mplay_b.gif) 0 0 / 100% 100% no-repeat;}
+    #subscriptionDetailPop .typeb .btn_area a{background: url(../images/travelsubscribe/btn_detail_mpop_b.gif) 0 0 / 100% 100% no-repeat;}
+    #subscriptionDetailPop .layerpop .btn_area{padding: 15px 0;}
+    #subscriptionDetailPop .slide_scr{overflow-y: hidden;max-height: 100%;}
+
+    #detailPop01 .layerpop{width:225px !important;left:50% !important;right:auto !important;margin-left:-112.5px !important;}
+    #detailPop01 .popup_close{width:29px;height: 29px;background: url(../images/travelsubscribe/btn_pop_mclose02.gif) 0 0 / 100% 100% no-repeat;}
+    #detailPop01 .layerpop strong{padding-top: 20px;font-size: 14px;letter-spacing: -0.7px;}
+    #detailPop01 .layerpop strong:before{height: 37px;margin: 0 0 9px;background: url(../images/travelsubscribe/icon_mface.gif) 50% 0 / 37px 37px no-repeat;}
+    #detailPop01 .layerpop p{padding:4px 0 0;font-size:12px;letter-spacing:0;}
+    #detailPop01 .layerpop span{font-size:12px;letter-spacing:0;box-shadow: inset 0 -5px 0 rgba(145,250,204,1);}
+    #detailPop01 .btn_area a{width: 88px;height: 28px;background: url(../images/travelsubscribe/btn_detail_mpop01.gif) 0 0 / 100% 100% no-repeat;}
+    #detailPop01 .layerpop .btn_area {padding: 16px 0 20px;}
+    #detailPop01 .typeb .popup_close{background: url(../images/travelsubscribe/btn_pop_mclose03_b.gif) 0 0 / 100% 100% no-repeat;}
+    #detailPop01 .layerpop.typeb strong:before{background: url(../images/travelsubscribe/icon_mface_b.gif) 50% 0 / 37px 37px no-repeat;}
+    #detailPop01 .layerpop.typeb span{box-shadow: inset 0 -5px 0 rgba(253,206,255,1);}
+    #detailPop01 .typeb .btn_area a{background: url(../images/travelsubscribe/btn_detail_mpop01_b.gif) 0 0 / 100% 100% no-repeat;}
+
+    #missionPop .layerpop{left: 0 !important;right: 0 !important;}    
+    #missionPop .layerpop .date{height:18px;line-height:18px;font-size:11px;letter-spacing: 0px;}
+    #missionPop .layerpop .popup_close{width: 21px;height: 21px;left: 50%;margin-left:-10.5px;top: 4.2%;background: url(../images/travelsubscribe/btn_pop_mclose04.png) 0 0 / 21px 21px no-repeat;}
+    #missionPop .layerpop .form{height:23px;margin: 0 12.8% 0 12.6%;}
+    #missionPop .layerpop .form input{height:23px;border-radius: 3px;width: calc((100% - 39px));font-size: 12px;padding:0 0 0 5px;}
+    #missionPop .layerpop .form a{height:23px;line-height: 23px;width:33px;border-radius: 3px;font-size:11px;}
+    #missionPop .layerpop .db_txt{font-size:11px;letter-spacing:0;line-height: 15px;padding: 0 12.8% 0 12.6%;}
+
+    #cancelPop .layerpop strong, #cancelfinishPop .layerpop strong{font-size:15px;letter-spacing: -0.6px;}
+    #cancelPop .layerpop p{font-size:12px;line-height: 16px;}
+    #cancelPop .layerpop .box_cont, #cancelfinishPop .layerpop .box_cont{padding: 23px 0 20px;}
+
+    .layerpop.gift{border-radius: 7px 7px 0 0;}
+    .layerpop.gift .tit > h2{height:32px;line-height:32px;font-size: 13px;}
+    .layerpop.gift .btn_close3{width:12px;height:12px;top:9px;right:15px;background: url(../images/travelsubscribe/pop_btn_mclose.png) 0 0 / 100% 100% no-repeat;}
+    .layerpop.gift .stit_wrap{height:111px;border-bottom: 1px dashed #989fef;}
+    .layerpop.gift .stit strong{font-size: 17px;letter-spacing: -1px;line-height: 20px;}
+    .layerpop.gift .stit span{height:18px;line-height: 18px;font-size:11.5px;padding: 0 18px;}
+    .layerpop.gift .stit_wrap:before{width:7px;height:15px;bottom: -7.5px;background: url(../images/travelsubscribe/pop_left_mround.png) 0 0 / 100% 100% no-repeat;}
+    .layerpop.gift .stit_wrap:after{width:7px;height:15px;bottom: -7.5px;background: url(../images/travelsubscribe/pop_right_mround.png) 0 0 / 100% 100% no-repeat;}
+    .layerpop.gift .info{padding: 18px 0 0;}
+    .layerpop.gift .scr_wrap{padding: 0 15px;max-height: 220px;}
+    .layerpop.gift .scr_wrap::-webkit-scrollbar {width: 3px;}
+    .layerpop.gift .scr_wrap::-webkit-scrollbar-thumb {background: rgba(0,0,0,.3);}
+    .layerpop.gift .info p{padding: 0 0 18px;font-size: 12px;line-height: 15px;letter-spacing:0;}
+    .layerpop.gift .info ul li{padding: 0 0 5px 9px;font-size: 12px;line-height: 15px;letter-spacing:0;}
+    .layerpop.gift .code_form{padding: 15px 0 0;}
+    .layerpop.gift .code_form em{font-size: 12px;letter-spacing: 0;}
+    .layerpop.gift .code_form em label{height: 25px;line-height: 25px;}
+    .layerpop.gift .code_form span{padding-left: 75px;}
+    .layerpop.gift .code_form span input{height:25px;line-height:25px;font-size:12px;}
+    .layerpop.gift .code_form p{padding: 8px 0 0;}
+    .layerpop.gift .btn_center{padding: 20px 0 25px;}
+    .layerpop.gift .btn_center a{width:75px;height:30px;line-height:30px;font-size:13px;}   
+    .layerpop.gift.slide .info{padding: 7px 0 0;}
+    .layerpop.gift.slide .info .scr_wrap{height: 180px;max-height: 180px;padding: 11px 15px 0;}
+    .layerpop.gift.slide .btn_center{padding: 20px 0 51px;}
+    .layerpop.gift.slide .btn_slide{height: 31px;bottom: 5px;}
+    .layerpop.gift.slide .swiper-pagination{font-size:12px;bottom: 5px;}
+    .layerpop.gift.slide .swiper-button-next, .layerpop.gift.slide .swiper-button-prev{width: 10px;height: 16px;top: 11px;background: url(../images/travelsubscribe/pop_slide_mbtn.png) 0 0 / 100% auto no-repeat;}
+    .layerpop.gift.slide .swiper-button-prev{background-position: 0 -16px;}
+    .layerpop.gift.slide .btn_slide > div{width:97px;height: 31px;}
+
+    #personalInformation .box_cont{padding: 0 0 25px;border-radius: 15px;}
+    #personalInformation .consent{padding: 0 20px 0;}
+    #personalInformation .consent em{display:block;padding:10px 0 9px;border-radius: 0 0 10px 10px;height:auto;line-height:18px;font-size:14px;letter-spacing: -0.5px;}
+    #personalInformation .consent strong{padding: 18px 0 20px;font-size:17px;letter-spacing: -1px;line-height: 21px;text-align: left;}
+    #personalInformation .consent input[type="checkbox"] + label{line-height: 19px;min-height: 19px;padding-left: 22px;}
+    #personalInformation .consent input[type="checkbox"] + label:before{width:18px;height:19px;background: url(../images/travelsubscribe/icon_mckeckbox.gif) 0 0 / 100% 100% no-repeat;}
+    #personalInformation .consent input[type="checkbox"]:checked + label:after{width:18px;height:19px;background: url(../images/travelsubscribe/icon_ckeckbox_mon01.gif) 0 0 / 100% 100% no-repeat;}
+    #personalInformation .consent .chk{margin: 0 0 10px;}
+    #personalInformation .clause{padding:10px;border-radius: 5px;font-size:11px;height:120px;}
+    #personalInformation .consent p{padding: 8px 0 18px;font-size:11px;line-height:14px;letter-spacing:0;}
+    #personalInformation .btn_center a{height:28px;width:106px;line-height:28px;font-size:14px;letter-spacing: -0.5px;border-radius: 5px;}
+
+    #prizePop01 .layerpop:after{display:none;}
+    .layerpop.gift .box_cont.prize{padding: 4px 4px 4px;border-radius: 7px;}
+    .layerpop.gift .box_cont.prize .tit{border-radius: 7px 7px 0 0;}
+    .layerpop.gift .box_cont.prize .btn_close3{z-index: 5;width:16px;height:16px;right:16px;top:10px;background: url(../images/travelsubscribe/pop_btn_mclose01.png) 0 0 / 100% 100% no-repeat;}
+    .layerpop.gift .box_cont.prize .tit > h2{height: 25px;width: 165px;background: #4a59fc url(../images/travelsubscribe/pop_prize_mstit1.png) 50% 50% / 89px auto no-repeat;}
+    .layerpop.gift .box_cont.prize .stit strong{padding: 0 20px;font-size:18px;line-height:21px;letter-spacing: -1.5px;}
+    .layerpop.gift .box_cont.prize .stit{padding:18px 0 0;}
+    .layerpop.gift .box_cont.prize .stit span{height:18px;line-height: 18px;font-size: 11px;font-weight: 300;letter-spacing:0;margin-top: 8px;padding: 0 20px;}
+    .layerpop.gift .box_cont.prize .stit_wrap{height:175px;}
+    .layerpop.gift .box_cont.prize .stit_wrap .img{height:139px;border-radius: 5px;left: 41px;right: 41px;top: 105px;}
+    .layerpop.gift .box_cont.prize .info{padding: 87px 15px 0;}
+    .layerpop.gift .box_cont.prize .info p{font-size:12px;line-height:16px;letter-spacing:0;padding: 0 0 15px;}
+    .layerpop.gift .box_cont.prize .info ul li strong{width:90px;}
+    .layerpop.gift .box_cont.prize .info ul li strong em{padding-left: 8px;}
+    .layerpop.gift .box_cont.prize .info ul li strong em:before{width: 3px;height: 3px;top: 5px;}
+    .layerpop.gift .box_cont.prize .adrs_form{padding: 15px 0 5px;}
+    .layerpop.gift .box_cont.prize .adrs_form strong{width:95px;font-size:12px;}
+    .layerpop.gift .box_cont.prize .adrs_form strong em{font-size:11px;}
+    .layerpop.gift .box_cont.prize .adrs_form textarea{border: 1px solid #dcdcdc;border-radius: 5px;height:38px;font-size:12px;}
+    .layerpop.gift .box_cont.prize .btn_center p{padding: 8px 0 0;font-size:11px;letter-spacing: 0;line-height: 14px;}
+    .layerpop.gift .box_cont.prize .btn_center p a{font-size: 11px;line-height: 14px;}
+    .layerpop.gift .box_cont.prize .scr_wrap{max-height: 150px;}
+    .layerpop.gift .box_cont.prize .btn_center a{height:30px;line-height:30px;width:215px;border-radius: 5px;font-size: 14px;}
+    .layerpop.gift .info ul li:before{width:3px;height:3px;top: 5px;}
+    .layerpop.gift .box_cont.prize .btn_center{border-radius: 0 0 7px 7px;}
+    #prizePop02 .layerpop{border-radius: 10px;}
+    #prizePop01 .layerpop{border-radius: 10px;}
+    #prizePop02 .layerpop:after{display:none;}
+    #prizePop02 .layerpop.gift .box_cont.prize .tit > h2{background: #4a59fc url(../images/travelsubscribe/pop_prize_mstit2.png) 50% 50% / auto 17px no-repeat;}
+    #remainingGiftPop{left: 0; top: 50%; margin-left: 0; margin-top: -220px;}
+    #remainingGiftPop .swiper-slide .tit{width: 90px;}
+
+    #login .layerpop .login{padding: 15px 0 ;}
+    #login .auto_login{padding: 9px 0 8px 20px;}
+    #login .auto_login input[type="checkbox"] + label:before{top: -2px;}
+    #login .auto_login input[type="checkbox"]:checked + label:after{top: -2px;}
+
+    .layerpop .share .inp_url{padding: 0 15px 20px !important;}
+
+    /* 플로팅배너 */
+    .subscription_quick .inr{width: auto;}
+	.subscription_quick .btn_go{bottom: 100px;right: 0;width: 183px;height: 191px;background: url(../images/travelsubscribe/subscription_mquick.png) 0 0 / 100% 100% no-repeat;}	
+	.subscription_quick button{position: absolute;right:60px;bottom: 233px;width: 35px;height:35px;background: url(../images/travelsubscribe/subscription_quick_mclose.png) 50% 50% / 19px 19px no-repeat;}
+	.subscription_quick.on {bottom: 280px;}
+    .subscription_quick .btn_go em{font-size: 10px;padding: 128px 0 0 42px;letter-spacing: -0.5px;}
+
+    /* 댓글 */
+    .wrap_reply .list_reply .level_mission{padding: 15px 15px;}
+    .wrap_reply .level_mission div.mission{margin: 0 0 7px 60px;font-size:12px;}
+    .wrap_reply .level_mission div.mission span{height:20px;line-height: 20px;}
+    .wrap_reply .level_mission div.mission span:before{width:4px;height:4px;vertical-align: 3px;}
+    .wrap_reply .level_mission div.mission span:after{width:4px;height:4px;vertical-align: 3px;}
+    .wrap_reply .list_reply .level_mission .btn_view{top:36px;right:6px;}
+    .replyWrap.login .write{height:auto;}
+    .replyWrap.subscription .write{background:none;}
+    .replyWrap.subscription .subscription_txt{padding: 2px 0 12px;font-size:11.5px;line-height:14px;}
+    .replyWrap.subscription .write .form{background:#f0f1fa !important;}
+    .replyWrap.subscription .write .form .btn_apply{background:#7256fd;}
+    .replyWrap.login.subscription .write .form textarea{background:#f0f1fa;}
+    .replyWrap.subscription .btn_apply{background:#7256fd;}
+    .replyWrap.subscription .write .form textarea{background:#f0f1fa;line-height: 16px;}
+    .replyWrap.subscription .fileRegbtn_wrap{border-top: 1px solid #d7d2fb;}
+    .replyWrap.subscription .fileLayer{background:#f0f1fa;}
+    .replyWrap.subscription .replyBox .fileLayer{background:#f7f7f7;}
+
+    /* 마이페이지 */
+    .subscription_banner{margin-top:20px;}
+    .subscription_current .title{margin: 18px 0 20px;}
+    .subscription_current{padding: 0 0 20px;}
+    .subscription_current h3{font-size:18px;letter-spacing: -1.5px;}
+    .subscription_current h3 span:before{height:16px;vertical-align: -1px;margin: 0 8px 0 9px;}
+    .subscription_current h3:before{width:5px;height:5px;margin-right:4px;vertical-align: 10px;}
+    .subscription_current .title .txt{padding:9px 0 0;clear:both;float:none;font-size:11px;font-weight: 300;line-height: 13px;}
+    .subscription_current .title .txt p{width: 100%;}
+    .subscription_current .title .txt p + p{padding-top:4px;}
+    .subscription_current > ul{margin-left:-10px;}
+    .subscription_current > ul > li{margin:0 0 10px 10px;height:132px;padding: 19px 20px 0;width: calc((50% - 10px));}
+    .subscription_current ul li strong{font-size:15px;line-height: 19px;letter-spacing: -0.5px;}
+    .subscription_current ul li ul{padding: 7px 0 0;}
+    .subscription_current ul li ul li{padding: 0;font-size:12px;line-height: 15px;font-weight: 300;}
+    .subscription_current ul li em.type1{right:20px;bottom:20px;width:45px;height:17px;line-height:17px;font-size:12px;}
+    .subscription_current .modify{right:20px;top:20px;width:17px;height:17px;background: url(../images/travelsubscribe/btn_m_modify.png) 0 0 / 100% auto no-repeat;}
+    .subscription_current ul li a{right:20px;bottom:20px;font-size:12px;}
+    .subscription_current ul li.lottery a.star:before{width:8px;height:8px;margin-right:3px;background: url(../images/travelsubscribe/icon_lottery_mstar.png) 0 0 / 100% 100% no-repeat;}
+    .subscription_current ul li em.type2{right:auto;left:20px;top:44px;width:45px;height:18px;line-height: 18px;font-size:11px;}
+    .subscription_current + .box_tit{padding: 17px 0 7px;font-weight: 800;font-size:18px;letter-spacing: -1.5px;line-height: 22px;}
+    .box_leftType1.subscription .write_board1 .inp_write{width:100%;}
+    .box_leftType1.subscription .phone select{width:33.3%;height: 35px;font-size: 12px;}
+    .box_leftType1.subscription .write_board1 .phone input{width: calc((33.3% - 10px));margin-left:10px;}
+    .box_leftType1.subscription .notice{padding:18px 0 0;}
+    .box_leftType1.subscription .notice strong{font-size:12px;}
+    .box_leftType1.subscription .notice ul li{padding: 5px 0 0 8px;font-size: 11px;line-height: 14px;}
+    .box_leftType1.subscription .notice ul li:before{top:10px;}
+
+    h2.mission_tit span{font-size:17px;}
+    h2.mission_tit span:before{height:18px;margin: 0 8px;}
+    .mission_box{position:relative;min-height:auto;padding:0;border:1px solid #7256fd;background: url(../images/travelsubscribe/bg_mission_mbox01.gif) 0 0 / 16px 16px no-repeat;}    
+    .mission_box:after{content:'';display:block;clear: both;}
+    .mission_box .stit{float:none;padding:18px 0 5px 18px;font-size:22.5px;line-height: 26px;letter-spacing: -1.5px;}
+    .mission_box .stit strong:after{vertical-align: 15px;margin-left:5px;width: 5px;height: 5px;}
+    .mission_box .info{float:none;width:100%;}
+    .mission_box .info > ul > li{padding: 13px 0 0;}
+    .mission_box .info ul li em{width: 63px;padding:0 0 0 18px;font-size:13px;letter-spacing:0;}
+    .mission_box .info ul li em:after{width:1px;height:12px;vertical-align: -2px;margin-left:8px;}
+    .mission_box .info > ul > li > div{font-size:13px;line-height:17px;}
+    .mission_box .info > ul > li > div .btn_ev{display:block;margin:8px 0 0 0;}
+    .mission_box .info > ul > li > div .btn_ev a{font-size:11px;height:21px;line-height:21px;padding:0 7px;letter-spacing: 0;}
+    .mission_box .info > ul > li > div .btn_ev a:after{width:5px;height:8px;background: url(../images/travelsubscribe/btn_ev_arw01.png) 0 0 / 100% 100% no-repeat;}
+    .mission_box .info ul li div br{display:none;}
+    .mission_box .info ul li.step em{padding:0;}
+    .mission_box .info ul li.step {display:block;width:auto;padding: 13px 2px 0 18px;}
+    .mission_box .info ul li.step div ul li{width:49%; word-break: keep-all;}
+    .mission_box .info ul li.step .swiper-container:after{height:1px;top:18.5px;}
+    .mission_box .info ul li.step div strong:before{height:37px;background: url(../images/travelsubscribe/ico_step1.png) 50% 0 / 37px auto no-repeat;}
+    .mission_box .info ul li.step div strong.step2:before{background-position: 50% -37px;}
+    .mission_box .info ul li.step div strong.step3:before{background-position: 50% -74px;}
+    .mission_box .info ul li.step div strong.step4:before{background-position: 50% -111px;}
+    .mission_box .info ul li.step .swiper-container{margin: 10px 0 0;padding:0 0 40px;}
+    .mission_box .info ul li.step div strong{padding:0;font-size:12px;letter-spacing: -0.5px;}
+    .mission_box .info ul li.step div p{padding:0 10px;font-size:11.5px;line-height: 15px;letter-spacing: 0;}
+    .mission_box .info ul li.step .swiper-pagination{display:block;}
+    .mission_box .info ul li.more{padding:13px 18px 0 8px;display:block;width:auto;}
+    .mission_box .info ul li.more .swiper-container{margin: 10px 0 0;padding:0 0 40px;}
+    .mission_box .info ul li .swiper-pagination-bullet{width:10px;height:10px;opacity:1;background:#e0e0e0;}
+    .mission_box .info ul li .swiper-pagination-bullet-active{background:#7256fd}
+    .mission_box .info ul li.more .swiper-pagination{display:block;bottom: 15px;}
+    .mission_box .info ul li.more div ul{margin:0;}
+    .mission_box .info ul li.more div ul li{width:50%;margin:0 0 0 10px;width: calc((50% - 10px));}
+    .mission_box .info ul li.more div ul li a{width:auto;margin-left:0;}
+    .mission_box .info ul li.more div ul li a img{border-radius: 5px;}
+    .mission_box .btn a{float:left;width:50%;height:30px;line-height: 30px;font-size: 13px;}
+    .mission_box .btn a + a{margin-left:10px;width: calc((50% - 10px));}
+    .mission_box .info .none{padding: 32px 0 35px;height: auto;margin:15px 18px 20px;}
+    .mission_box .info .none strong:before{margin: 0 0 4px;height: 9px;background: url(../images/travelsubscribe/icon_mission_mbox.gif) 50% 0 / 12px auto no-repeat;}
+    .mission_box .info .none strong{padding: 0 0 2px;font-size:14px;line-height: 18px;letter-spacing: -0.5px;}
+    .mission_box .info .none p{font-size:12px;line-height: 16px;letter-spacing: 0;}
+    .mission_box .info p.txt{font-size: 12px;letter-spacing: 0;font-weight: 300;}
+    .mission_banner + .mission_stit{padding: 28px 0 0;font-size:14px;letter-spacing: -0.5px;line-height:18px;}
+    .mission_list_mo .tit{position:relative;padding:0 0 10px;}
+    .mission_list_mo .tit strong{display:block;font-size:13px;color:#333;line-height:17px;}
+    .mission_list_mo .tit span{display:inline-block;position:absolute;right:0;top:0;font-size:12px;font-weight: 300;color:#666;}
+    .mission_list_mo .img{margin:0 0 10px;display:inline-block !important;width: 145px !important;height: 96px;background-repeat: no-repeat;background-position: 50% 50%;background-size: cover;text-indent: -9999px;}
+    .mission_list_mo p{font-size:12px;}
+    .mission_list_mo .btn_reason{display:inline-block;margin-left:8px;}
+    .mission_list_mo .btn_reason button{width: 95px;height: 22px;font-size: 11px;background: #fcfbfb;border: 1px solid #ccc;color: #666;letter-spacing: -0.5px;}
+    .tourList .pclistBoard ul .list_none{padding:30px 0;text-align: center;font-size:12px;}
+    .mission_list_mo .separate{padding:15px 0 0;}
+    .mission_list_mo .separate span{float:left;color:#7256fd;font-size:12px;}
+    .mission_list_mo .separate button{float:left;width: 100px;margin-left:10px;height: 20px;font-weight: 700;font-size: 12px;background: #f7f7f7;border: 1px solid #e6e6e6;color:#666;letter-spacing: -0.5px;}
+    .mission_banner{padding: 22px 0 0;}
+    .mission_banner .type1{display:none;}
+    .mission_banner .type2 a{float:none;width:auto;}
+    .mission_banner .type2 a + a{margin-top:7px;}
+    .tourList .pclistBoard .tab{top: -31px;}
+    .tourList .pclistBoard .tab button{height:20px;font-size:12px;width:75px;}
+
+    /* 복권 상세 */
+    .my_lottery_box > div{float:none !important;width:auto;height:204px;}
+    .my_lottery_box .stit{padding: 16px 0 15px 19px;}
+    .my_lottery_box > div.box1{border: 1px solid #7256fd;background: url(../images/travelsubscribe/bg_lottery_mbox01.gif) 0 0 / 16px auto no-repeat;}
+    .my_lottery_box > div.box2{margin-top:10px;border: 1px solid #4a59fc;background: url(../images/travelsubscribe/bg_lottery_mbox02.gif) 0 0 / 16px auto no-repeat;}
+    .my_lottery_box .stit span{padding: 0 0 2px;font-size: 14px;line-height: 18px;letter-spacing: -0.7px;}
+    .my_lottery_box .stit strong{font-size: 27px;line-height: 31px;letter-spacing: -2px;}
+    .my_lottery_box .stit strong:after{vertical-align: 17px;margin-left: 6px;width: 6px;height: 6px;}
+    .my_lottery_box em{padding: 0 0 6px;font-size: 16px;font-weight: 700;line-height:19px;letter-spacing: -0.6px;}
+    .my_lottery_box p{font-size: 13px;letter-spacing:0;line-height: 17px;}
+    .my_lottery_box .btn{padding: 13px 0 0;}
+    .my_lottery_box > div.box2 .btn a, .my_lottery_box > div.box1 .btn a{height:30px;line-height:30px;width:143px;font-size: 13px;}
+    .my_lottery_box + .mission_stit{padding: 28px 0 0;font-size: 14px;letter-spacing: -0.5px;line-height: 18px;}
+
+    .lottery_list_mo .type{overflow: hidden;position: relative;}
+    .lottery_list_mo .type span{display: inline-block;position: absolute;right: 0;top: 0;font-size: 12px;line-height:20px;height:20px;font-weight: 300;color: #666;}
+    .lottery_list_mo em{float:left;padding:0 10px;height:20px;line-height:20px;color:#fff;font-size:12px;background:#5663ed;}
+    .lottery_list_mo em.win{background:#23f69a;color:#2e22cd;margin-right:5px;}
+    .lottery_list_mo .receipt{display:block;padding:11px 0 0;font-weight: 700;font-size: 12px;color:#5663ed;}
+    .lottery_list_mo > li{padding: 20px 0 !important;}
+    .lottery_list_mo ul li{width:auto !important;position:relative;display: flex;font-size:12px;color:#666 !important;padding:3px 0 0 10px !important;border:0 !important;}
+    .lottery_list_mo ul li:before{content:'';width:4px;height:4px;background:#666;border-radius: 100%;position:absolute;left:0;top:10px;}
+    .lottery_list_mo ul li strong{font-weight:400;}
+    .lottery_list_mo ul li span{flex: 1;padding-left:3px;}
+    .lottery_list_mo ul li strong:after{content:'\003A';display:inline-block;padding-left:3px;}
+    .lottery_list_mo ul li.pdt{font-weight: 700;color:#4a59fc !important;}
+    .lottery_list_mo ul li.pdt:before{background:#4a59fc;}
+    .lottery_list_mo ul li.pdt strong{font-weight: 700;}
+    .lottery_list_mo ul li.line strong{text-decoration: underline;}
+    .lottery_list_mo ul li button{width:35px;height:23px;line-height: 23px;color:#fff;font-size:12px;background:#999;margin-left:5px;vertical-align: middle;}
+    .lottery_list_mo ul li input{width: calc((100% - 40px));box-sizing: border-box;height:23px;border:1px solid #ccc;vertical-align: middle;}
+    .lottery_list_mo ul li.line.form{display:block;}
+    .lottery_list_mo ul li.line.form strong{display:block;}
+    .lottery_list_mo ul li.line.form span{display:block;padding:10px 0 0 0;}
+    .lottery_list_mo > li .list_none{padding:20px 0;text-align: center;font-size:12px;}
+
+    .my_lottery_notice strong{font-size: 12px;}
+    .my_lottery_notice ul li{padding: 5px 0 0 8px;font-size: 11px;line-height: 14px;}
+    .my_lottery_notice ul li:before{top: 10px;}
+
+    /* 복권 긁기 */
+    .lottery_ev .title{height:auto;}
+    .lottery_ev .title .date strong{background: url(../images/travelsubscribe/stit_m_lottery.png) 0 0 / 100% 100% no-repeat;width:101px;height:21px;}
+    .lottery_ev .title .date span{font-size: 12px;letter-spacing: 0;margin-left: 4px;}
+    .lottery_ev .scratch{height:auto;padding:0;background:#5b68f9;}
+    .lottery_ev .scratch .wrap{width:auto;height:220px;margin:0 15px;}
+    .lottery_ev .scratch .inr{width:auto;height:220px;}
+    .lottery_ev .scratch .inr:before{top:-8px;left:-8px;width:42px;height:42px;background: url(../images/travelsubscribe/box_lottery_mbg1.png) 0 0 / 100% 100% no-repeat;}
+    .lottery_ev .scratch .inr:after{top:-8px;right:-8px;width:42px;height:42px;background: url(../images/travelsubscribe/box_lottery_mbg2.png) 0 0 / 100% 100% no-repeat;}
+    .lottery_ev .scratch_box{height: 220px;width: auto;}
+    .lottery_ev .scratch .wrap:before{bottom:-8px;left:-8px;width:42px;height:42px;background: url(../images/travelsubscribe/box_lottery_mbg3.png) 0 0 / 100% 100% no-repeat;}
+    .lottery_ev .scratch .wrap:after{bottom:-8px;right:-8px;width:42px;height:42px;background: url(../images/travelsubscribe/box_lottery_mbg4.png) 0 0 / 100% 100% no-repeat;}
+    .lottery_ev .scratch_box a{bottom:45px;width:130px;height:30px;line-height:30px;font-size:12px;letter-spacing:0;border-radius: 5px;margin-left: -65px;}
+    .lottery_ev .list{padding:0 12px 20px;background:none;}
+    .lottery_ev .list .inr{width:auto;padding-left:3px;}
+    .lottery_ev .list ul{margin-left:-17px;}
+    .lottery_ev .list ul li{width:50%;}
+    .lottery_ev .list .wrap{width:auto;height:169px;margin: 0 0 30px 17px;padding:5.3% 9.4% 0 7.2%;background: url(../images/travelsubscribe/box_lottery_mlist.png) 0 0 / 100% 100% no-repeat;}
+    .lottery_ev .list .wrap span{height:78px;border: 1px solid #000;border-radius: 5px;}
+    .lottery_ev .list .wrap .logo{height:14px;bottom:12px;background: url(../images/travelsubscribe/logo_m_wellness.png) 50% 0 / 72px 14px no-repeat;}
+    .lottery_ev .list .wrap strong{font-size:12px;line-height: 15px;padding:19px 0 0;letter-spacing: 0;}
+    .lottery_ev .list .wrap em{left:-10px;top:-10px;border: 1px solid #000;width:33px;height:33px;line-height:33px;font-size:11px;letter-spacing:-0.5px;}
+
+    .lottery_ev .notice .tit span{width:auto;padding:0 15px;}
+    .lottery_ev .notice .inr{width:auto;padding:15px 15px 30px;}
+    .lottery_ev .notice .tit{height:50px;line-height:50px;font-size: 14px;}
+    .lottery_ev .notice ul li{padding: 4px 0 0 8px;font-size:12px;letter-spacing: 0;line-height: 16px;}
+    .lottery_ev .notice ul li:before{width:3px;height:3px;top: 10px;}
+
+    /* 미션방법, 경품안내 */
+    .giveaway_guide .cont1{padding:0 0 60px;}
+    .giveaway_guide .cont2 .inr{width:auto;}
+    .giveaway_guide .cont2 .stit img {margin-top: -60px;}
+    .giveaway_guide .cont2{padding-top: 25px;}
+    .giveaway_slide .swiper-container{margin: 33px 16px 0 18px;}
+    .giveaway_slide{padding: 0 0 47px;}
+    .giveaway_guide .cont2 ul li .wrap{height:193px;width: calc((50% - 17px)) !important;margin-left:17px;background:url(../images/travelsubscribe/bg_giveaway_mguide.gif) 0 0 / 100% 178px no-repeat;}
+    .giveaway_guide .swiper-button-next, .giveaway_guide .swiper-button-prev{display:none;}
+    .giveaway_guide .cont2 ul li .img{padding: 5.6% 9.6% 0 7.4%;}
+    .giveaway_guide .cont2 ul li .img img{height:78px;}
+    .giveaway_guide .cont2 ul li strong{padding:1px 0 1px;font-size:12px;line-height: 15px;letter-spacing:0;}
+    .giveaway_guide .cont2 ul li strong:before{content:'';display:block;width:100%;height:17px;background:url(../images/travelsubscribe/bg_giveaway_mguide01.gif) 0 0 / 100% 100% no-repeat;}
+    .giveaway_guide .cont2 ul li .name{font-size:12px;line-height: 14px;}
+    .giveaway_guide .cont2 ul li .num{width:33px;height:33px;line-height: 33px;margin-left: -16.5px;font-size:11px;letter-spacing: -0.5px;}
+    .giveaway_guide .paging{bottom:26px;}
+    .giveaway_slide .btn_autoArea .btn_autoStop{width:8px;height: 10px;background-size: 100% 100%;}
+    .giveaway_slide .btn_autoArea .btn_autoPlay{width:7px;height: 10px;background-size: 100% 100%;}
+    .giveaway_guide .swiper-pagination button.swiper-pagination-bullet{width:10px;height:10px;margin-left:6px;}
+    .giveaway_guide .swiper-pagination button.swiper-pagination-bullet-active{width:19px;}
+
+}
+
+@media all and (min-width:768px) and (max-width:1023px) {
+    .lottery_ev .scratch_box {height: 220px;width: 370px;}
+    .lottery_ev .list ul li {width: 138px;}
+    #subscriptionDetailPop.wrap_layerpop .layerpop{left: 150px !important;right: 150px !important;}
+}
