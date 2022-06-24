@@ -2,13 +2,22 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="freebbs">
+
+	<!-- 게시물 시퀀스 증가 -->
 	<select id="seq" resultType="Integer">
 		SELECT freebbs_seq.NEXTVAL FROM dual
 	</select>
 	
+	<!-- 자유게시판 카테고리 -->
+	<select id="freeCategory" resultType="com.sp.trip.freebbs.Board">
+		SELECT freecateNum, freecateName 
+		FROM freecate
+		ORDER BY freecateNum
+	</select> 
+	
 	<insert id="insertBoard" parameterType="com.sp.trip.freebbs.Board">
-		INSERT INTO freebbs(freeNum, userId, title, subject, content, hitCount, reg_date)
-		VALUES(#{freeNum}, #{userId}, #{title}, #{subject}, #{content}, 0, SYSDATE)
+		INSERT INTO freebbs(freeNum, userId, subject, content, freecateNum, hitCount, reg_date)
+		VALUES(#{freeNum}, #{userId}, #{subject}, #{content}, #{freecateNum}, 0, SYSDATE)
 	</insert>
 	
 	<sql id="where-list">

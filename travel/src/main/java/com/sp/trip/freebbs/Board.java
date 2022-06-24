@@ -5,23 +5,28 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Board {
+	// 게시글
 	private int freeNum;
-	
     private String userId;
     private String userName;
     private String subject;
     private String content;
-    private String title;
     private String reg_date;
     private int hitCount;
     
+    //카테고리
+    private int freecateNum;
+    private String freecateName;
+    
+    //이미지파일
     private int freeFileNum;
     private String saveFilename;
 	private List<MultipartFile> selectFile; 
 	
+	//댓글
 	private int replyCount;
+	//좋아요
 	private int boardLikeCount;
-	
 	public int getFreeNum() {
 		return freeNum;
 	}
@@ -52,12 +57,6 @@ public class Board {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getReg_date() {
 		return reg_date;
 	}
@@ -69,6 +68,18 @@ public class Board {
 	}
 	public void setHitCount(int hitCount) {
 		this.hitCount = hitCount;
+	}
+	public int getFreecateNum() {
+		return freecateNum;
+	}
+	public void setFreecateNum(int freecateNum) {
+		this.freecateNum = freecateNum;
+	}
+	public String getFreecateName() {
+		return freecateName;
+	}
+	public void setFreecateName(String freecateName) {
+		this.freecateName = freecateName;
 	}
 	public int getFreeFileNum() {
 		return freeFileNum;
@@ -100,6 +111,13 @@ public class Board {
 	public void setBoardLikeCount(int boardLikeCount) {
 		this.boardLikeCount = boardLikeCount;
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

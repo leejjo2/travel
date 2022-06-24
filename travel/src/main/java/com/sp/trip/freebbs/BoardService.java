@@ -9,6 +9,10 @@ public interface BoardService {
 	public int dataCount(Map<String, Object> map);
 	public List<Board> listBoard(Map<String, Object> map);
 	
+	public List<Board> listCate(Map<String, Object> map) throws Exception;
+	
+	
+	
 	public Board readBoard(int num);
 	public Board preReadBoard(Map<String, Object> map);
 	public Board nextReadBoard(Map<String, Object> map);

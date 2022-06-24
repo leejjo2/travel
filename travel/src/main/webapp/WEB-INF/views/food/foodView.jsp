@@ -115,13 +115,19 @@ function printXML2(data) {
 	var out="";
 	
 	var dataCount = $(data).find("totalCount").text();
+	var noImg = "${pageContext.request.contextPath}/resources/images/noimage.png";
 	
 	$(data).find("item").each(function() {
 		var item = $(this);
 		var originimgurl = item.find("originimgurl").text();
 		
 		out += " <div class='carousel-item active'> ";
-		out += "<img src=' "+originimgurl+"' width='100%' height='100%' class='d-block'>";
+		if( originimgurl ) {
+			out += "<img src=' "+originimgurl+"' width='500' height='318' class='d-block'>";
+		} else {
+			out += "<img src=' "+noImg+"' width='500' height='318' class='d-block'>";
+		}
+		
 		out += "<div class='carousel-caption d-none d-md-block'>";
 		out += "</div>";
 		out += "</div>";
@@ -159,9 +165,12 @@ function printXML3(data) {
 	
 	$(data).find("item").each(function() {
 		var item = $(this);
-		var telname = item.find("telname").text();
+		var title = item.find("title").text();
+		var overview = item.find("overview").text();
 		
-		out += "<p>"+telname+"</p> ";
+		out += "<p style='font-size: 20px; padding-top:15px; font-weight: bold;'>"+title+"</p> ";
+		out += "<p>"+overview+"</p> ";
+		
 		
 		
 	});
@@ -172,9 +181,10 @@ function printXML3(data) {
 
 </script>
 
-<div class="container mb-3 title" style="font-size: 20px; padding-top:15px; font-weight: bold;">
+<div class="container mb-3 title">
 
 </div>
+
 
 
 <div class="container mb-3">
@@ -182,15 +192,9 @@ function printXML3(data) {
 		<div class="col border p-2" style="max-height: 333px; max-width: 500px;">
 		
 		<div id="carouselImageCaptions" class="carousel slide" data-bs-ride="carousel">
-			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#carouselImageCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="첫번째 이미지"></button>
-				<button type="button" data-bs-target="#carouselImageCaptions" data-bs-slide-to="1" aria-current="true" aria-label="두번째 이미지"></button>
-				<button type="button" data-bs-target="#carouselImageCaptions" data-bs-slide-to="2" aria-current="true" aria-label="세번째 이미지"></button>
-			</div>
+
 			
 			<div class="carousel-inner image" style="max-height: 333px; max-width: 500px;">
-			
-			
 			</div>
 			
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselImageCaptions" data-bs-slide="prev">
@@ -214,10 +218,5 @@ function printXML3(data) {
 	<button class="backlist" type="button" onclick="location.href='${pageContext.request.contextPath}/food/list';">목록</button>
 </div>
 
-<div class="container mb-3">
-	<div class="ex">
-	
-	</div>
-</div>
 		
 		

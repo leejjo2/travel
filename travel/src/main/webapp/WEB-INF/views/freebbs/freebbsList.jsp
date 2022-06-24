@@ -109,15 +109,15 @@ function searchList() {
 		</div>
 		
 	<div class="container mb-3">
+	<c:forEach var="dto" items="${list}">
 		<div class="box">
 			<div class="row gx-5">
 				<div class="col">
 					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/66.jpeg" width="100%" height="100%">
+						<img src="${pageContext.request.contextPath}/uploads/Board/${dto.saveFilename}" width="100%" height="100%">
 					</div>
 					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 17px; line-height: 3px;">캠핑왔어요</a></p>
-						<p><a href="#" style="font-size: 15px; padding: 3px;">캠핑와서 어쩌구 저쩌구 좋았습니다..</a></p>
+						<p><a href="#" style="font-weight: bold; font-size: 17px; line-height: 3px;">${dto.subject}</a></p>
 							<div class="share">
 							<button type="button" class="btn-like thread-likes">
 								
@@ -125,109 +125,17 @@ function searchList() {
 							</button>
 							</div>
 							
-						<p style="line-height: 10px;">작성자 : 직거래쉘인마</p>
-						<p style="line-height: 0px;">조회수 : 15</p>
-						<p style="line-height: 0px;">업로드 시간 : 2022-06-17 01:01:14</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/44.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">낚시중 한컷했습니다. 화려한조명이..</a></p>
-						<p><a href="#" style="font-size: 15px; padding: 3px;">캠핑와서 어쩌구 저쩌구 좋았습니다..</a></p>
-							<div class="share">
-							<button type="button" class="btn-like thread-likes">
-								
-								<span>12</span>
-							</button>
-							</div>
-							
-						<p style="line-height: 10px;">작성자 : 직거래쉘인마</p>
-						<p style="line-height: 0px;">조회수 : 15</p>
-						<p style="line-height: 0px;">업로드 시간 : 2022-06-17 01:01:14</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/33.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">팬션빌렸어요</a></p>
-						<p><a href="#" style="font-size: 15px; padding: 3px;">캠핑와서 어쩌구 저쩌구 좋았습니다..</a></p>
-							<div class="share">
-							<button type="button" class="btn-like thread-likes">
-								
-								<span>12</span>
-							</button>
-							</div>
-							
-						<p style="line-height: 10px;">작성자 : 직거래쉘인마</p>
-						<p style="line-height: 0px;">조회수 : 15</p>
-						<p style="line-height: 0px;">업로드 시간 : 2022-06-17 01:01:14</p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/22.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">서핑중입니다 말걸지말아주세요</a></p>
-						<p><a href="#" style="font-size: 15px; padding: 3px;">캠핑와서 어쩌구 저쩌구 좋았습니다..</a></p>
-							<div class="share">
-							<button type="button" class="btn-like thread-likes">
-								
-								<span>12</span>
-							</button>
-							</div>
-							
-						<p style="line-height: 10px;">작성자 : 직거래쉘인마</p>
-						<p style="line-height: 0px;">조회수 : 15</p>
-						<p style="line-height: 0px;">업로드 시간 : 2022-06-17 01:01:14</p>
+						<p style="line-height: 10px;">작성자 : ${dto.userName}</p>
+						<p style="line-height: 0px;">조회수 : ${dto.hitCount}</p>
+						<p style="line-height: 0px;">${dto.reg_date}</p>
 					</div>
 				</div>
 			</div>
-	  	</div>
-	  	
+		</div>	
+	  	</c:forEach>
 	  <div style="padding: 10px;"></div>
 	  	
-	  	<div class="box">
-			<div class="row gx-5">
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/66.jpeg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">캠핑왔어요</a></p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/44.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">낚시중 한컷했습니다. 화려한조명이..</a></p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/33.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">팬션빌렸어요</a></p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/img/freebbs/22.jpg" width="100%" height="100%">
-					</div>
-					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 15px;">서핑중입니다 말걸지말아주세요</a></p>
-					</div>
-				</div>
-			</div>
-	  	</div>
+	  
 	  	
 	  <div style="padding: 10px;"></div>
 	  	
