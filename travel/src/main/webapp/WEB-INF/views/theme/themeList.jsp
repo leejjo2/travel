@@ -254,6 +254,8 @@ $(function() {
 
 $(function(){
 	adminCourseList(0, '', 0, '', '', ${page});
+	$(".page-item.active .page-link").css("background-color", "#0dcaf0");
+	$(".page-item.active .page-link").css("border-color", "#0dcaf0");
 });
 	
 // 관리자 코스 리스트 불러오기
@@ -286,7 +288,7 @@ function adminCourseList(themeNum, keyword, areaCode, hashtag, period, pageNum )
 			out +=	'</div>';
 			out +=	'<div class="area_txt">';
 			out +=		'<div class="tit">';
-			out +=			'<a href="" title="'+list.subject+'"onclick="">'+list.subject+'</a>';
+			out +=			'<a href="${pageContext.request.contextPath}/theme/article?courseNum='+list.courseNum+'&page='+pageNum+'" title="'+list.subject+'"onclick="">'+list.subject+'</a>';
 			out +=		'</div>';
 			out +=		'<p>&lt;'+list.themeName+'&gt;'+list.cityName+' - '+list.period+'</p>';
 			out +=		'<p class="tag">';

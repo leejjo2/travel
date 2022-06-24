@@ -153,5 +153,9 @@
       WHERE a.courseDetailNum = #{courseDetailNum}
       ORDER BY course_seq ASC
    </select>
+   <!-- 조회수 증가 -->
+	<update id="updateHitCount" parameterType="Integer">
+		UPDATE adminCourse SET hitCount=hitCount+1 WHERE courseNum = #{courseNum}
+	</update>
    
 </mapper>

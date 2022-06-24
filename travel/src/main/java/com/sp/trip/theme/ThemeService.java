@@ -19,5 +19,7 @@ public interface ThemeService {
 	public Theme readBoard(int courseNum);
 
 	public String listImgs(int courseDetailNum);
+
+	void updateHitCount(int num) throws Exception;
 	
 }

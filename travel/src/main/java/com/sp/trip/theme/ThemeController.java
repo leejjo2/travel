@@ -153,6 +153,8 @@ public class ThemeController {
 			) throws Exception {
 		String query = "page=" + page;
 		
+		service.updateHitCount(courseNum);
+		
 		Theme dto = service.readBoard(courseNum);
 		if (dto == null) {
 			return "redirect:/theme/list?" + query;

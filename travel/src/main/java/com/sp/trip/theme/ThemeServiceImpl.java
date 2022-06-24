@@ -140,6 +140,18 @@ public class ThemeServiceImpl implements ThemeService {
 		return dto;
 	}
 	
+	@Override
+	public void updateHitCount(int num) throws Exception {
+		// 조회수 증가
+		try {
+			dao.updateData("theme.updateHitCount", num);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 	
 	
 	
