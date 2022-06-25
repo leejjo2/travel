@@ -24,6 +24,8 @@ public class Hotel {
 	private int roomMen;
 	private String roomOption;
 	
+	private String partnerName;
+	
 	
 	public int getHotelNum() {
 		return hotelNum;
@@ -115,4 +117,11 @@ public class Hotel {
 	public void setRoomOption(String roomOption) {
 		this.roomOption = roomOption;
 	}
+	public String getPartnerName() {
+		return partnerName;
+	}
+	public void setPartnerName(String partnerName) {
+		this.partnerName = partnerName;
+	}
+	
 }

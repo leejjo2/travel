@@ -26,8 +26,6 @@
                                 <p class="StayHashTag-module__hashtag--iVCqy">4성급</p>
                             </div><a href="/accommodations/stays/1083146#StayDetail__review">
                                 <div class="StayDetailHeaderDesktop-module__review--OFknh css-sbks2i--ReviewRatingCount--Container e1qwal8s3"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_not_filled_gray_200.svg" alt="icon">
-                                    <p class="css-1dfdfpz--ReviewRatingCount--Rating e1qwal8s2">4.0</p>
-                                    <p class="css-bucx7d--ReviewRatingCount--Count e1qwal8s1">(26)</p><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_arrow_down_12x12_gray_500.svg" alt="icon">
                                 </div>
                             </a>
                             <div class="StayDetailHeaderDesktop-module__meta--hynTx">
@@ -117,13 +115,14 @@
                                             <h3 class="StayRoomDesktop-module__name--CFUZD">${rdto.roomName}</h3>
                                         </div>
                                         <p class="StayRoomDesktop-module__desc--bxMsz"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_person_12x12_line_gray_500.svg" alt="수용인원">기준 ${rdto.roomMen}인 </p>
+                                        <p class="StayRoomDesktop-module__desc--bxMsz">호수 : ${rdto.roomHo} </p>
+                                        <p class="StayRoomDesktop-module__desc--bxMsz">판매자 : ${rdto.partnerName} </p>
                                         <div class="StayTagLabels-module__container--XcFLa StayRoomDesktop-module__tag-list--oumS9"></div>
                                     </div>
                                 </div>
                                 <div class="StayRoomRatePlanDesktop-module__roomPackage--vO2Ew">
                                     <div class="StayRoomRatePlanDesktop-module__packageInfo--g5DmW">
-                                        <div class="StayRoomRatePlanDesktop-module__packageTitle--X6aIA"><span class="StayRoomRatePlanDesktop-module__packageNumber--HuH4o">01</span><span class="StayRoomRatePlanDesktop-module__packageName--YUgRB">[단독 특가★]체크인 시 배정 2인 객실 only</span></div>
-                                        <div class="StayTagLabels-module__container--XcFLa"><span class="StayTag-module__container--i6tks StayTag-module__service--m2w40"><strong class="StayTag-module__label--QGLJh StayTag-module__service--m2w40">부분환불(~70%)</strong></span></div>
+                                        <div class="StayTagLabels-module__container--XcFLa"><span class="StayTag-module__container--i6tks StayTag-module__service--m2w40"><strong class="StayTag-module__label--QGLJh StayTag-module__service--m2w40"> 가격 </strong></span></div>
                                     </div>
                                     <div class="StayRoomRatePlanDesktop-module__priceBox--uqMXE">
                                         <div>
@@ -346,7 +345,7 @@
                     <div class="StaySideBar-module__container--LzdcQ">
                         <div class="StaySideBar-module__sideBar--mW8v2">
                             <div class="StaySideBar-module__wrapper--HpLbH">
-                                <p class="StaySideBarPrice-module__totalPrice--nbnzY"><span class="StaySideBarPrice-module__nights--NaYZG">1박</span>68,400<small>원~</small></p>
+                                <p class="StaySideBarPrice-module__totalPrice--nbnzY"><span class="StaySideBarPrice-module__nights--NaYZG">1박</span>${minPrice}<small>원~</small></p>
                                 <div class="StaySideBar-module__shareBtn--gSs9Z">
                                     <div class=" css-q35oaw--ShareButton-style--container">
                                         <div class="css-2dmbly--SharePopover-style--container">
@@ -357,7 +356,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><a href="/accommodations/stays/1083146#StayDetail__price"><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu StaySideBar-module__selectBtn--WD6HD">객실 선택하기</button></a>
+                            </div><a href=""><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__large--vtisu StaySideBar-module__selectBtn--WD6HD">객실 선택하기</button></a>
                         </div>
                     </div>
                 </div>

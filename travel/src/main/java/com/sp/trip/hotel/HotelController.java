@@ -71,17 +71,19 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "hotelDetail", method = RequestMethod.GET)
-//	public String hotelArticle(@RequestParam("hotelNum") int hotelNum, Model model ) throws Exception {
 	public String hotelArticle(@RequestParam int hotelNum, Model model ) throws Exception {
-		
+
 		// String query = "page=" + page;
 		try {
 			Hotel dto = service.readHotel(hotelNum);
 			Hotel rdto = service.readRoom(hotelNum);
+			int minPrice = service.minPrice(hotelNum);
+			
 			dto.setHotelIntro(myUtil.htmlSymbols(dto.getHotelIntro()));
 			
 			model.addAttribute("dto", dto);
 			model.addAttribute("rdto", rdto);
+			model.addAttribute("minPrice", minPrice);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -8,6 +8,9 @@ public interface HotelService {
 	
 	public Hotel readHotel(int hotelNum);
 	public Hotel readRoom(int hotelNum);
-
+	public int minPrice(int hotelNum);
+	
 	public int dataCount(Map<String, Object> map);
+
+	
 }

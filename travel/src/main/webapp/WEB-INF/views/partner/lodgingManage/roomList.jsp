@@ -31,8 +31,7 @@
 	function deleteRoom(roomNum) {
 		if (confirm("방을 삭제 하시겠습니까 ? ")) {
 			let query = "roomNum=" + roomNum;
-			let url = "${pageContext.request.contextPath}/partner/lodgingManage/roomDelete?"
-					+ query;
+			let url = "${pageContext.request.contextPath}/partner/lodgingManage/roomDelete?"+ query;
 			location.href = url;
 		}
 	}
@@ -49,10 +48,6 @@
 					</h3>
 				</div>
 			</div>
-			
-		<button type="button" class="btn btn-light" 
-			onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/roomWrite';">방등록하기
-		</button>
 		</div>
 		
 				<div id="content">
@@ -71,6 +66,8 @@
 								</div>
 
 								<div class="d-flex flex-column tags pt-1">
+									<div>
+										<span class="fas fa-comment-dollar">숙소이름 : ${dto.hotelName}</span></div>
 									<div>
 										<span class="fas fa-comment-dollar"></span> 숙박 가능 인원 : ${dto.roomMen}</div>
 									<div>

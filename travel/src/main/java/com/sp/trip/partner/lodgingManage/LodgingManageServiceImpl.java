@@ -181,8 +181,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertRoom(LodgingManage dto, String pathname) throws Exception {
 		try {
-			
-			
 			dao.insertData("lodgingManage.insertRoom", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -269,7 +267,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("field", "roomNum");
 			map.put("roomNum", roomNum);
-			deleteFile(map);
+			deleteRoomFile(map);
 			
 			dao.deleteData("lodgingManage.deleteRoom", roomNum);
 		} catch (Exception e) {
@@ -325,9 +323,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 
 	@Override
 	public String hotelName(int hotelNum) {
-		
-		System.out.println(" :: service hotelNum : " + hotelNum);
-		
 		String hotelName = "";
 		
 		try {
