@@ -5,9 +5,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller("member.memberController")
 @RequestMapping(value = "/member/*")
@@ -75,20 +77,78 @@ public class MemberController {
 	@RequestMapping(value = "pwd", method = RequestMethod.GET)
 	public String pwdForm(String dropout, Model model) {
 		
-		if (dropout == null) {
-			model.addAttribute("mode", "update");
-		} else {
-			model.addAttribute("mode", "dropout");
-		}
 
-		
+		model.addAttribute("mode", "update");
+
+
 		return ".member.pwd";
 	}
-
 	
+	@RequestMapping(value= "pwd", method = RequestMethod.POST)
+	public String pwdSubmit(@RequestParam String userPwd,
+			@RequestParam String mode,
+			final RedirectAttributes reAttr,
+			HttpSession session,
+			Model model) {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		
+		Member dto = service.readMember(info.getUserId());
+		if(dto == null) {
+			System.out.println("널이다!@!!!");
+			session.invalidate();
+			return "redirect:/";
+		}
+		
+		if(! dto.getUserPwd().equals(userPwd)) {
+			model.addAttribute("mode", "update");
+			model.addAttribute("message", "패스워드가 일치하지 않습니다.");
+			
+			return ".member.pwd";
+		}
+		
+		// 회원정보 수정폼
+		model.addAttribute("dto", dto);
+		model.addAttribute("mode", "update");
+		System.out.println("수정포오옴");		
+		return ".member.member";
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String updateSubmit(Member dto,
+			final RedirectAttributes reAttr,
+			Model model) {
+		
+		try {
+			service.updateMember(dto);
+		} catch (Exception e) {
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(dto.getUserName() + "님의 회원정보가 정상적으로 변경되었습니다.<br>");
+		sb.append("메인화면으로 이동 하시기 바랍니다.<br>");
+		
+		reAttr.addFlashAttribute("title", "회원 정보 수정");
+		reAttr.addFlashAttribute("message", sb.toString());
+		
+		return "redirect:/member/complete";
+	}
+
 	
 	@RequestMapping(value = "noAuthorized")
 	public String noAuthorized(Model model) {
 		return ".member.noAuthorized";
+	}
+	
+	@RequestMapping(value = "complete")
+	public String complete(@ModelAttribute("message") String message) throws Exception {
+
+		// 컴플릿 페이지(complete.jsp)의 출력되는 message와 title는 RedirectAttributes 값이다.
+		// F5를 눌러 새로 고침을 하면 null이 된다.
+
+		if (message == null || message.length() == 0) // F5를 누른 경우
+			return "redirect:/";
+
+		return ".member.complete";
 	}
 }

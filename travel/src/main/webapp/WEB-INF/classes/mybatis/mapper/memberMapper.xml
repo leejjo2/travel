@@ -13,4 +13,20 @@
 		WHERE userId=#{userId}
 	</update>
 	
+	<select id="readMember" parameterType="String" resultType="com.sp.trip.member.Member">
+		SELECT userId, userName, userPwd, email, tel, TO_CHAR(birth, 'YYYY-MM-DD') birth,
+				 zip, addr1, addr2
+		FROM member 
+		WHERE userId = #{userId}
+	</select>
+	
+	<update id="updateMember" parameterType="com.sp.trip.member.Member">
+		UPDATE member SET userPwd=#{userPwd}, modify_date=SYSDATE,
+			email=#{email, jdbcType=VARCHAR}, 
+			tel=#{tel, jdbcType=VARCHAR}, birth=#{birth, jdbcType=VARCHAR},
+			zip=#{zip, jdbcType=VARCHAR},
+			addr1=#{addr1, jdbcType=VARCHAR}, addr2=#{addr2, jdbcType=VARCHAR}
+		WHERE userId=#{userId}
+    </update>
+    
 </mapper>
