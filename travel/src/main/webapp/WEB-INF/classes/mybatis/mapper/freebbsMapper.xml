@@ -42,9 +42,8 @@
 		SELECT NVL(COUNT(*), 0)
 		FROM freebbs
 		<where>
-			userId = #{userId}
 			<if test="keyword != null and keyword!=''  ">
-				AND <include refid="where-list"/>
+				<include refid="where-list"/>
 			</if>
 		</where>
 	</select>
@@ -53,22 +52,21 @@
 	<select id="listBoard" parameterType="map" resultType="com.sp.trip.freebbs.Board">
 		SELECT * FROM (
 			SELECT ROWNUM rnum, tb.* FROM (
-				SELECT a.freenum, userId, subject, imageFilename
+				SELECT a.freeNum, userId, subject, saveFilename, reg_date
 				FROM freebbs a
 				LEFT OUTER JOIN (
 					SELECT freeFileNum, freeNum, saveFilename FROM (
-						SELECT freeFileNum, freeNum, imageFilename, 
-							ROW_NUMBER() OVER(PARTITION BY freeNum ORDER BY fileNum ASC) rank
+						SELECT freeFileNum, freeNum, saveFilename, 
+							ROW_NUMBER() OVER(PARTITION BY freeNum ORDER BY freeFileNum ASC) rank
 						 FROM freebbsFile
 					) WHERE rank = 1
 				) i ON a.freeNum = i.freeNum
 				<where>
-					userId = #{userId}
 					<if test="keyword != null and keyword != ''">
-						AND <include refid="where-list"/>
+						<include refid="where-list"/>
 					</if>
 				</where>
-				ORDER BY num DESC			
+				ORDER BY freeNum DESC			
 			) tb WHERE ROWNUM &lt;= #{end}
 		) WHERE rnum &gt;= #{start}
 	 </select>
@@ -85,6 +83,28 @@
 		) bc ON a.freeNum = ac.freeNum
 		WHERE a.freeNum = #{freeNum}
 	</select>
+	
+		<!-- 파일 -->
+	<insert id="insertFile" parameterType="com.sp.trip.freebbs.Board">
+		INSERT INTO freebbsFile(freeFileNum, freeNum, saveFilename)
+		VALUES (freebbsFile_seq.NEXTVAL, #{freeNum}, #{saveFilename})
+	</insert>
+	
+	<select id="listFile" parameterType="Integer" resultType="com.sp.trip.freebbs.Board">
+		SELECT freeFileNum, freeNum, saveFilename
+		FROM freebbsFile
+		WHERE freeNum = #{freeNum}
+	</select>
+	
+	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.freebbs.Board">
+		SELECT freeFileNum, freeNum, saveFilename
+		FROM freebbsFile
+	    WHERE freeFileNum = #{fileNum}      
+	</select>
+	
+	<delete id="deleteFile" parameterType="map">
+		DELETE FROM freebbsFile WHERE ${field} = #{num}
+	</delete>
 	
 		<!-- 조회수 증가 -->
 	<update id="updateHitCount" parameterType="Integer">

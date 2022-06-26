@@ -65,6 +65,19 @@ public class HotelServiceImpl implements HotelService {
 		return result;
 	}
 
+	@Override
+	public int minPrice(int hotelNum) {
+		int minPrice = 0;
+		
+		try {
+			minPrice = dao.selectOne("hotel.minPrice", hotelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return minPrice;
+	}
+
 
 
 }

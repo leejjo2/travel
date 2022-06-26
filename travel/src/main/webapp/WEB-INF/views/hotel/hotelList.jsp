@@ -73,6 +73,7 @@ function deleteHotel(hotelNum) {
                             <div class="my-1"> <label class="tick">오션뷰 <input type="checkbox"> <span class="check"></span> </label> </div>
                         </div>
                     </div>
+                    <div> <button style="width: 185px;" class="btn btn-primary text-uppercase">검색</button></div>
                 </div>
             </div>
                 <div id="content">

@@ -207,9 +207,9 @@ public class LodgingManageController {
 	// 숙소별 방 등록하기
 	@RequestMapping(value = "roomWrite", method = RequestMethod.GET)
 	public String roomWrite( @RequestParam int hotelNum, Model model) throws Exception {
-		String hotelName = service.hotelName(hotelNum);
+		LodgingManage hdto = service.readHotel(hotelNum);
 
-		model.addAttribute("hotelName", hotelName);
+		model.addAttribute("hdto", hdto);
 		model.addAttribute("mode", "roomWrite");
 		
 		return ".partner.lodgingManage.roomWrite";
@@ -217,8 +217,7 @@ public class LodgingManageController {
 	
 	// 방 등록완료
 	@RequestMapping(value = "roomWrite", method = RequestMethod.POST)
-	public String roomWriteSubmit(@RequestParam String hotelName,
-			@RequestParam int roomNum,
+	public String roomWriteSubmit(
 			LodgingManage dto, HttpSession session) throws Exception {
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "room";
@@ -227,7 +226,6 @@ public class LodgingManageController {
 		
 		try {
 			dto.setPartnerId(info.getUserId());
-			dto.setHotelName(hotelName);
 			service.insertRoom(dto, pathname);
 		} catch (Exception e) {
 		}
@@ -236,13 +234,15 @@ public class LodgingManageController {
 	}
 	
 	// 방 수정
-	@RequestMapping(value = "roomUpdate")
+	@RequestMapping(value = "roomUpdate",  method = RequestMethod.GET)
 	public String updateRoomForm(
 			@RequestParam int roomNum,
+			@RequestParam int hotelNum,
 			HttpSession session,
 			Model model) throws Exception {
 		
 		LodgingManage dto = service.readRoom(roomNum);
+		LodgingManage hdto = service.readHotel(hotelNum);
 		/*
 		if (dto == null) {
 			return "redirect:/partner/lodgingManage/lodgingList";
@@ -251,6 +251,7 @@ public class LodgingManageController {
 		model.addAttribute("dto", dto);
 		// model.addAttribute("page", page);
 		model.addAttribute("mode", "roomUpdate");
+		model.addAttribute("hdto", hdto);
 
 		return ".partner.lodgingManage.roomWrite";
 	}

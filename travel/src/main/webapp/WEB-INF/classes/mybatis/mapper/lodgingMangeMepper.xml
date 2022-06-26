@@ -107,7 +107,7 @@
 		INSERT INTO roomInfo(roomNum, hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
 	) VALUES (
 		roomInfo_seq.NEXTVAL, 
-		(SELECT hotelNum FROM hotel WHERE hotelNum = #{hotelNum}), 
+		#{hotelNum}, 
 		#{roomName}, 
 		#{roomPrice},
 		#{roomHo}, 
@@ -123,7 +123,7 @@
 	</select>
 	
 	<select id="listRoom" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelNum, h.partnerNum, roomOption, roomBed
+		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelName, h.hotelNum, h.partnerNum, roomOption, roomBed
 		FROM roomInfo r
 		JOIN hotel h ON h.hotelNum = r.hotelNum
 		JOIN partner p ON p.partnerNum = h.partnerNum

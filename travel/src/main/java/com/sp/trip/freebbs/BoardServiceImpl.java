@@ -50,20 +50,40 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int dataCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		
+		try {
+			result = dao.selectOne("freebbs.dataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	@Override
 	public List<Board> listBoard(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Board> list = null;
+		
+		try {
+			list = dao.selectList("freebbs.listBoard", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 	@Override
-	public Board readBoard(int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public Board readBoard(int freeNum) {
+		Board dto = null;
+		
+		try {
+			dto = dao.selectOne("freebbs.readBoard", freeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override
@@ -92,20 +112,38 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertFile(Board dto) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			dao.insertData("freebbs.insertFile", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
 	@Override
-	public List<Board> listFile(int num) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Board> listFile(int freeNum) {
+		List<Board> listFile = null;
+		
+		try {
+			listFile = dao.selectList("freebbs.listFile", freeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listFile;
 	}
 
 	@Override
-	public Board readFile(int fileNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public Board readFile(int freeFileNum) {
+		Board dto = null;
+		
+		try {
+			dto = dao.selectOne("freebbs.readFile", freeFileNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override

@@ -47,7 +47,6 @@ public class FreebbsController {
 				HttpSession session,
 				Model model) throws Exception {
 			
-			SessionInfo info = (SessionInfo) session.getAttribute("member");
 			String cp = req.getContextPath();
 			
 			int rows = 8;
@@ -60,7 +59,6 @@ public class FreebbsController {
 			
 			//전체 페이지수
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("userId", info.getUserId());
 			map.put("condition", condition);
 			map.put("keyword", keyword);
 			

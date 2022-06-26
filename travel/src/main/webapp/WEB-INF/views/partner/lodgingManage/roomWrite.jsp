@@ -55,30 +55,47 @@ function sendOk() {
 	var f = document.roomForm;
 	var str;
 	
+	if(! f.roomName.value.trim()) {
+		alert("방이름을 입력하세요. ");
+		f.roomName.focus();
+		return;
+	}
+	
 	if(! f.roomHo.value.trim()) {
 		alert("호수를 입력하세요. ");
-		f.groupCategoryNum.focus();
+		f.roomHo.focus();
 		return;
 	}
 	
 	if(! f.roomPrice.value.trim()) {
 		alert("가격을 입력하세요. ");
-		f.price.focus();
+		f.roomPrice.focus();
 		return;
 	}
 
 	if(! f.roomMen.value) {
 		alert("인원수를 선택하세요. ");
-		f.person.focus();
+		f.roomMen.focus();
 		return;
 	}
 	
 	if(! f.roomBed.value) {
 		alert("침대수를 선택하세요. ");
-		f.bed.focus();
+		f.roomBed.focus();
 		return;
 	}
 
+	
+	
+	var sumVal ="";
+
+	$("input:checkbox[name=roomCheck]:checked").each(function(){
+		sumVal += "," + $(this).val(); 
+	});
+	
+	sumVal = sumVal.replace(",", "");
+	
+	$("input[name=roomOption]").val(sumVal);
 	f.action="${pageContext.request.contextPath}/partner/lodgingManage/${mode}";
 	f.submit();
 }
@@ -217,11 +234,20 @@ $(function(){
 			    </div>
 			    
 				<form name="roomForm" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="hotelNum" value="${hdto.hotelNum}">
+				<input type="hidden" name="roomOption" value="">
 					<table class="table mt-5 write-form">
 						<tr>
 							<td class="table-light" scope="row" style="width: 100px;">숙소이름</td>
 							<td colspan="3">
-								<p class="form-control-plaintext">${hotelName}</p>
+								<p class="form-control-plaintext">${hdto.hotelName}</p>
+							</td>
+						</tr>
+						
+						<tr>
+							<td class="table-light" scope="row" style="width: 100px;">방이름</td>
+							<td colspan="3">
+								<input type="text" name="roomName" class="form-control" value="${dto.roomName}">
 							</td>
 						</tr>
 						
@@ -242,13 +268,13 @@ $(function(){
 								<div class="row">
 									<div class="col-sm-6 pe-1">
 										<select name="roomMen" class="form-select">
-											<option value="${dto.roomMen}">선택</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
+											<option>선택</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
 										</select>
 									</div>
 								</div>
@@ -258,13 +284,13 @@ $(function(){
 								<div class="row">
 									<div class="col-sm-5 pe-1">
 										<select name="roomBed" class="form-select">
-											<option value="${roomBed}">선택</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-												<option>6</option>
+											<option>선택</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
 										</select>
 									</div>
 								</div>
@@ -307,31 +333,31 @@ $(function(){
 							<td colspan="3">
 								<div class="row">
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 무료 Wi-Fi
+										<input type="checkbox" name="roomCheck" value="무료 Wi-Fi"> 무료 Wi-Fi
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 금연
+										<input type="checkbox" name="roomCheck" value="금연"> 금연
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 흡연구역
+										<input type="checkbox" name="roomCheck" value="흡연구역"> 흡연구역
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 발코니/테라스
+										<input type="checkbox" name="roomCheck" value="발코니/테라스"> 발코니/테라스
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 샤워실/욕조
+										<input type="checkbox" name="roomCheck" value="샤워실/욕조"> 샤워실/욕조
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 세탁기
+										<input type="checkbox" name="roomCheck" value="세탁기"> 세탁기
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 주방
+										<input type="checkbox" name="roomCheck" value="주방"> 주방
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 조식
+										<input type="checkbox" name="roomCheck" value="조식"> 조식
 									</div>
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomOption"> 오션뷰
+										<input type="checkbox" name="roomCheck" value="오션뷰"> 오션뷰
 									</div>
 								</div>
 							</td>
@@ -346,6 +372,7 @@ $(function(){
 								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/';">${mode=='roomUpdate'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='roomUpdate'}">
 									<input type="hidden" name="roomNum" value="${dto.roomNum}">
+									<input type="hidden" name="roomNum" value="${hdto.hotelNum}">
 									<input type="hidden" name="" value="">
 								</c:if>
 							</td>
