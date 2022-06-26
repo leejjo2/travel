@@ -396,18 +396,23 @@ CREATE SEQUENCE travelcourseImage_seq
 
 〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓
 
+
 --자유게시판
 CREATE TABLE freebbs(
  freeNum NUMBER NOT NULL
  , userId VARCHAR2(50) NOT NULL
- , title VARCHAR2(300) NOT NULL
  , subject VARCHAR2(300) NOT NULL
  , content CLOB NOT NULL
+ , freecateNum NUMBER NOT NULL
  , hitCount NUMBER DEFAULT 0
  , reg_date DATE DEFAULT SYSDATE
+ , freeFileNum NUMBER NOT NULL
  , CONSTRAINT pk_freebbs_freeNum PRIMARY KEY(freeNum)
  , CONSTRAINT fk_freebbs_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+ , CONSTRAINT fk_freebbs_freecateNum FOREIGN KEY(freecateNum) REFERENCES freecate(freecateNum) ON DELETE CASCADE
+ , CONSTRAINT fk_freebbs_freeFileNum FOREIGN KEY(freeFileNum) REFERENCES freebbsFile(freeFileNum) ON DELETE CASCADE
 );
+
 
 -- 자유게시판 시퀀스
 CREATE SEQUENCE freebbs_seq
@@ -471,7 +476,20 @@ create sequence freebbsReply_seq
     nocycle
     nocache;
 
+-- 자유게시판 카테고리
+CREATE TABLE freecate (
+    freecateNum NUMBER NOT NULL,
+    freecateName VARCHAR2(30) NOT NULL,
+    CONSTRAINT pk_freecate_freecateNum PRIMARY KEY(freecateNum)
+);
 
+-- 자유게시판 카테고리 시퀀스
+CREATE SEQUENCE freecate_seq
+ INCREMENT BY 1
+ START WITH 1
+ NOMAXVALUE
+ NOCYCLE
+ NOCACHE;
 
 
 ------------------------------------------

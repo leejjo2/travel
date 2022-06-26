@@ -13,7 +13,7 @@ public interface BoardService {
 	
 	
 	
-	public Board readBoard(int num);
+	public Board readBoard(int freeNum);
 	public Board preReadBoard(Map<String, Object> map);
 	public Board nextReadBoard(Map<String, Object> map);
 	
@@ -22,14 +22,14 @@ public interface BoardService {
 	public void deleteBoard(int num, String pathname) throws Exception;
 	
 	public void insertFile(Board dto) throws Exception;
-	public List<Board> listFile(int num);
-	public Board readFile(int fileNum);
+	public List<Board> listFile(int freeNum);
+	public Board readFile(int freeFileNum);
 	public void deleteFile(Map<String, Object> map) throws Exception;
 	
 	
 	public void insertBoardLike(Map<String, Object> map) throws Exception;
 	public void deleteBoardLike(Map<String, Object> map) throws Exception;
-	public int boardLikeCount(int num);
+	public int boardLikeCount(int freeNum);
 	public boolean userBoardLiked(Map<String, Object> map);
 	
 	public void insertReply(Reply dto) throws Exception;
