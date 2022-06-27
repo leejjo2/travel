@@ -28,6 +28,18 @@
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/dist/admin/build/css/custom.min.css" rel="stylesheet">
+	<!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/admin/vendors/jquery/dist/util-jquery.js"></script>
+    
+    	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/jquery/css/jquery-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" type="text/css">
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/style.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/main2.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/forms.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/paginate.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/ui-css.css" type="text/css">
 </head>
 
 <body class="nav-md">
@@ -39,13 +51,11 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
-
 <div id="loadingLayout" style="display:none; position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 9000; background: #eee;">
 	<div class="loader"></div>
 </div>
 
-<!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/dist/admin/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/dist/admin/vendors/jquery/dist/jquery-ui.min.js"></script>
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/dist/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->

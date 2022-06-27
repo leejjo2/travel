@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberManage">
+    <!-- 회원 리스트 -->
+	<sql id="where-list">
+		<choose>
+			<when test="condition=='userId'">
+				INSTR(userId, #{keyword}) &gt;= 1
+			</when>
+			<otherwise>
+				INSTR(${condition}, #{keyword}) &gt;= 1
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="dataCount" parameterType="map" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member 
+		<where>
+			<if test="keyword!=null and keyword!='' ">
+				<include refid="where-list"/>
+			</if>
+			<if test="enabled!=''">
+				AND enabled = #{enabled}
+			</if>
+			AND membership &lt; 30
+		</where> 
+    </select>
+    
+	<select id="listMember" parameterType="map" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT userId, userName, 
+					reg_date, modify_date, last_login,
+					enabled, email, tel, 
+					TO_CHAR(birth, 'YYYY-MM-DD') birth
+				FROM member 
+				<where>
+					<if test="keyword!=null and keyword!='' ">
+						<include refid="where-list"/>
+					</if>
+					<if test="enabled!=''">
+						AND enabled = #{enabled}
+					</if>
+					AND membership &lt; 30
+				</where> 
+				ORDER BY reg_date DESC
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+
+	<select id="readMember" parameterType="String" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT membership, userId, userName, userPwd, enabled,
+			reg_date, modify_date, last_login,
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel, 
+			zip, addr1, addr2
+		FROM member 
+		WHERE userId = #{userId}
+	</select>
+
+	<update id="updateFailureCountReset" parameterType="String">
+		UPDATE member SET failure_cnt = 0
+		WHERE userId = #{userId}
+	</update>
+
+    <update id="updateMemberEnabled" parameterType="map">
+		UPDATE member SET enabled=#{enabled} WHERE userId=#{userId}
+    </update>
+    
+	<insert id="insertMemberState" parameterType="com.sp.trip.admin.memberManage.Member">
+		INSERT INTO memberState(num, userId, stateCode, memo, registerId, reg_date)
+		VALUES (memberState_seq.NEXTVAL, #{userId}, #{stateCode}, #{memo}, #{registerId}, SYSDATE)
+	</insert>
+	
+	<select id="listMemberState" parameterType="String" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT num, userId, stateCode, memo, registerId, reg_date
+		FROM memberState
+		WHERE userId = #{userId}
+		ORDER BY num DESC
+	</select>
+
+	<select id="readMemberState" parameterType="String" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT * FROM (
+			SELECT num, userId, stateCode, memo, registerId, reg_date
+			FROM memberState
+			WHERE userId = #{userId}
+			ORDER BY num DESC
+		) WHERE ROWNUM = 1
+	</select>
+	
+	<select id="listAgeSection" resultType="com.sp.trip.admin.memberManage.Analysis">
+		WITH memberAge AS(
+		    SELECT userId, TRUNC(months_between(SYSDATE, birth)/12) age
+		    FROM member m
+		    WHERE membership &gt; 0 AND membership &lt; 10
+		)
+<![CDATA[
+		SELECT '10대' section, COUNT(*) count FROM memberAge WHERE age>= 10 AND age <20
+		UNION ALL
+		SELECT '20대' section, COUNT(*) count FROM memberAge WHERE age>= 20 AND age <30
+		UNION ALL
+		SELECT '30대' section, COUNT(*) count FROM memberAge WHERE age>= 30 AND age <40
+		UNION ALL
+		SELECT '40대' section, COUNT(*) count FROM memberAge WHERE age>= 40 AND age <50
+		UNION ALL
+		SELECT '50대' section, COUNT(*) count FROM memberAge WHERE age>= 50 AND age <60
+		UNION ALL
+		SELECT '60대' section, COUNT(*) count FROM memberAge WHERE age>= 60 AND age <70
+		UNION ALL
+		SELECT '기타' section, COUNT(*) count FROM memberAge WHERE age< 10 OR age >=70
+]]>
+	</select>
+	
+	<select id="dataCountPartner" parameterType="map" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member m
+		JOIN partner p ON m.userId = p.partnerId
+		<where>
+			<if test="keyword!=null and keyword!='' ">
+				<include refid="where-list"/>
+			</if>
+			<if test="enabled!=''">
+				AND enabled = #{enabled}
+			</if>
+			AND membership &lt; 50 
+		</where> 
+    </select>
+    
+	<select id="listPartner" parameterType="map" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT userId, userName, 
+					reg_date, modify_date, last_login,
+					enabled, email, tel, 
+					TO_CHAR(birth, 'YYYY-MM-DD') birth,
+					partnerTradeName,partnerTel, partnerInfo, partnerStatus, requestDate
+				FROM member m
+				JOIN partner p ON m.userId = p.partnerId
+				<where>
+					<if test="keyword!=null and keyword!='' ">
+						<include refid="where-list"/>
+					</if>
+					<if test="enabled!=''">
+						AND enabled = #{enabled}
+					</if>
+					AND membership &lt; 50
+				</where> 
+				ORDER BY reg_date DESC
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+	
+	<select id="readPartner" parameterType="String" resultType="com.sp.trip.admin.memberManage.Member">
+		SELECT membership, userId, userName, userPwd, enabled,
+			reg_date, modify_date, last_login,
+			TO_CHAR(birth, 'YYYY-MM-DD') birth, email, tel, 
+			zip, addr1, addr2,
+			partnerTradeName,partnerTel, partnerInfo, partnerStatus, requestDate
+		FROM member m
+		JOIN partner p ON m.userId = p.partnerId
+		WHERE userId = #{userId}
+	</select>
+	
+	<update id="updatePartnerStatus" parameterType="com.sp.trip.admin.memberManage.Member">
+		UPDATE partner SET partnerStatus=#{partnerStatus} WHERE partnerId=#{userId}
+    </update>
+	
+	
+
+
+</mapper>
