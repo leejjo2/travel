@@ -7,6 +7,15 @@
 .body-container {
 	max-width: 800px;
 }
+
+.profile {
+	width: 100px;
+	height: 100px;
+}
+
+.profileReset{
+	margin-top: 5px;
+}
 </style>
 
 <script type="text/javascript">
@@ -51,7 +60,7 @@ function memberOk() {
 
     str = f.birth.value;
     if( !str ) {
-        alert("생년월일를 입력하세요. ");
+        alert("생년월일을 입력하세요. ");
         f.birth.focus();
         return;
     }
@@ -90,7 +99,7 @@ function memberOk() {
         f.email2.focus();
         return;
     }
-
+    
    	f.action = "${pageContext.request.contextPath}/member/${mode}";
     f.submit();
 }
@@ -113,23 +122,117 @@ function changeEmail() {
 
 function userIdCheck() {
 	// 아이디 중복 검사
+	let userId = $("#userId").val();
 
+	if(!/^[a-z][a-z0-9_]{4,9}$/i.test(userId)) { 
+		var str = "아이디는 5~10자 이내이며, 첫글자는 영문자로 시작해야 합니다.";
+		$("#userId").focus();
+		$("#userId").parent().find(".help-block").html(str);
+		return;
+	}
+	
+	let url = "${pageContext.request.contextPath}/member/userIdCheck";
+	let query = "userId=" + userId;
+	$.ajax({
+		type:"POST"
+		,url:url
+		,data:query
+		,dataType:"json"
+		,success:function(data) {
+			let passed = data.passed;
+
+			if(passed === "true") {
+				let str = "<span style='color:blue; font-weight: bold;'>" + userId + "</span> 아이디는 사용가능 합니다.";
+				$(".userId-box").find(".help-block").html(str);
+				$("#userIdValid").val("true");
+			} else {
+				let str = "<span style='color:red; font-weight: bold;'>" + userId + "</span> 아이디는 사용할수 없습니다.";
+				$(".userId-box").find(".help-block").html(str);
+				$("#userId").val("");
+				$("#userIdValid").val("false");
+				$("#userId").focus();
+			}
+		}
+	});
 }
+
+//이미지 파일 선택
+$(function() {
+	$("body").on("click", ".profile", function() {
+		$("form input[name=selectFile]").trigger("click");
+		
+	});
+	
+	// 파일 선택창에서 수정이 발생했을 때
+	$("form input[name=selectFile]").change(function() {
+		if(! this.files){
+			return false;
+		}
+		const fileArr = Array.from(this.files); // 유사배열을 배열로 변환
+		
+		fileArr.forEach((file, index)=>{
+			const reader = new FileReader();
+			$profile = $(".profile");
+			$profile.attr("data-filename", file.name);
+			reader.onload = e => {
+				$profile.attr("src", e.target.result);
+			};
+			reader.readAsDataURL(file);
+		});
+		$('.profileReset').css('display', 'block');
+	});
+	
+	// 기본이미지 버튼
+	$("body").on("click", ".profileReset", function() {
+		$('form input[name=selectFile]').val(''); // 파일 초기화
+		$(".profile").attr("src", "${pageContext.request.contextPath}/resources/images/add_photo.png");
+		$(".profile").removeAttr("data-filename");
+		$('.profileReset').css('display', 'none');
+		$('form input[name=profileImgName]').val('');
+	});
+	
+	// 다시 입력 버튼
+	$("body").on("click", "form button[type=reset]", function() {
+		$(".profileReset").trigger("click");
+		
+	});
+	
+});
 </script>
 
 <div class="container">
-	<div class="body-container">	
+	<div class="body-container mt-5">	
 		<div class="body-title">
 			<h3><i class="bi bi-person-square"></i> ${mode=="member"?"회원가입":"정보수정"} </h3>
 		</div>
 		
 	    <div class="alert alert-info" role="alert">
-	        <i class="bi bi-person-check-fill"></i> SPRING의 회원이 되시면 회원님만의 유익한 정보를 만날수 있습니다.
+	        <i class="bi bi-person-check-fill"></i>
+	        ${mode=="member"?"TRAVELERS에 가입하시고 다양한 여행 정보들을 접해보세요!":"TRAVELERS의 회원님, 소중한 정보를 수정해주세요!"}
 	    </div>
 		    		
 		<div class="body-main">
 
-			<form name="memberForm" method="post">
+			<form name="memberForm" method="post" enctype="multipart/form-data">
+				<div class="row mb-3">
+					<label class="col-sm-2 col-form-label">프로필 사진</label>
+					<div class="col-sm-10">
+						<c:choose>
+							<c:when test="${dto.profileImgName == null}">
+								<img class="profile" name="userprofile" src="${pageContext.request.contextPath}/resources/images/add_photo.png">
+							</c:when>
+							<c:otherwise>
+								<img class="profile" name="userprofile" src="${pageContext.request.contextPath}/uploads/profile/${dto.profileImgName}">
+							</c:otherwise>
+						</c:choose>
+						<input type="file" name="selectFile" accept="image/*" style="display: none;" >
+						<div>
+							<input type="button" class="btn btn-light profileReset" value="기본 이미지" ${dto.profileImgName == null ? "style='display: none;'" : ""}>
+						</div>
+			        </div>
+			    </div>
+			
+			
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label" for="userId">아이디</label>
 					<div class="col-sm-10 userId-box">
@@ -269,6 +372,7 @@ function userIdCheck() {
 			            <button type="button" name="sendButton" class="btn btn-primary" onclick="memberOk();"> ${mode=="member"?"회원가입":"정보수정"} <i class="bi bi-check2"></i></button>
 			            <button type="button" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/';"> ${mode=="member"?"가입취소":"수정취소"} <i class="bi bi-x"></i></button>
 						<input type="hidden" name="userIdValid" id="userIdValid" value="false">
+						<input type="hidden" name="profileImgName" value="${dto.profileImgName}">
 			        </div>
 			    </div>
 			

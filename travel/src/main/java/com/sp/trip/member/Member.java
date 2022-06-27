@@ -1,11 +1,13 @@
 package com.sp.trip.member;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Member {
-	private long memberIdx;
 	private String userId;
 	private String userName;
 	private String userPwd;
-	private String profileImageName;
+	private String profileImgName;
+	private MultipartFile selectFile;
 	private String reg_date;
 	private String modify_date;
 	private String last_login;
@@ -26,12 +28,6 @@ public class Member {
 	private int failure_cnt;
 	
 	
-	public long getMemberIdx() {
-		return memberIdx;
-	}
-	public void setMemberIdx(long memberIdx) {
-		this.memberIdx = memberIdx;
-	}
 	public String getUserId() {
 		return userId;
 	}
@@ -50,11 +46,11 @@ public class Member {
 	public void setUserPwd(String userPwd) {
 		this.userPwd = userPwd;
 	}
-	public String getProfileImageName() {
-		return profileImageName;
+	public String getProfileImgName() {
+		return profileImgName;
 	}
-	public void setProfileImageName(String profileImageName) {
-		this.profileImageName = profileImageName;
+	public void setProfileImgName(String profileImgName) {
+		this.profileImgName = profileImgName;
 	}
 	public String getReg_date() {
 		return reg_date;
@@ -97,6 +93,24 @@ public class Member {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public String getTel1() {
+		return tel1;
+	}
+	public void setTel1(String tel1) {
+		this.tel1 = tel1;
+	}
+	public String getTel2() {
+		return tel2;
+	}
+	public void setTel2(String tel2) {
+		this.tel2 = tel2;
+	}
+	public String getTel3() {
+		return tel3;
+	}
+	public void setTel3(String tel3) {
+		this.tel3 = tel3;
 	}
 	public String getBirth() {
 		return birth;
@@ -146,23 +160,11 @@ public class Member {
 	public void setFailure_cnt(int failure_cnt) {
 		this.failure_cnt = failure_cnt;
 	}
-	public String getTel1() {
-		return tel1;
+	public MultipartFile getSelectFile() {
+		return selectFile;
 	}
-	public void setTel1(String tel1) {
-		this.tel1 = tel1;
+	public void setSelectFile(MultipartFile selectFile) {
+		this.selectFile = selectFile;
 	}
-	public String getTel2() {
-		return tel2;
-	}
-	public void setTel2(String tel2) {
-		this.tel2 = tel2;
-	}
-	public String getTel3() {
-		return tel3;
-	}
-	public void setTel3(String tel3) {
-		this.tel3 = tel3;
-	}
-
+	
 }
