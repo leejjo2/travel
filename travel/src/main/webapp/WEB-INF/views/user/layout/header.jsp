@@ -2,13 +2,22 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<style>
+ul, li, a {
+	text-decoration: none;
+}
+
+ul:hover, li:hover, a:hover {
+	text-decoration: none;
+}
+</style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" type="text/css">
 <div class="container-fluid mb-0 p-2 text-white" style="background-color: #0dcaf0;">
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<div class="col-7" style="font-size: 40px;">
-					<a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white;">6traptrip</a>
+					<a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white; font-weight:bold; font-family: 맑은고딕;">Travelers</a>
 				</div>
 			</div>
 			<div class="col">

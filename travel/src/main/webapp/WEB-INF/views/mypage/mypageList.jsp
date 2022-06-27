@@ -110,8 +110,8 @@
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="/mypage/tourist_info_list.do">
-					<strong>관광정보 수정/신규 요청</strong>
+				<a href="${pageContext.request.contextPath}/withpartner/join">
+					<strong>파트너 신청</strong>
 					<p class="number" id="jikimiCnt">0</p>
 				</a>
 			</li>

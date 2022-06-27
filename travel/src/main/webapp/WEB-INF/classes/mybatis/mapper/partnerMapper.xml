@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="partner">
+	<insert id="insertPartner" parameterType="com.sp.trip.partner.Partner">
+		INSERT INTO partner(partnerNum, partnerId, partnerName, partnerTel, partnerTradeName, partnerInfo, partnerStatus, requestDate)
+		VALUES (partner_seq.NEXTVAL, #{partnerId}, #{partnerName}, #{partnerTel}, #{partnerTradeName}, #{partnerInfo}, '요청완료', SYSDATE) 
+	</insert>
+	
+	<select id="readStatus" parameterType="String" resultType="com.sp.trip.partner.Partner">
+		SELECT partnerId, partnerStatus
+		FROM partner
+		WHERE partnerId = #{partnerId}
+	</select>
+</mapper>
