@@ -143,33 +143,33 @@
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#" class="post-subject">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#" class="post-subject">썬라이즈 호텔</a></h4>
+              <p>자연을 만끽하시고 편하고 안락한 여행을 완성하실 수 있습니다.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.7)</span>
             </div>
           </div>
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/3.jpg" class="slider-image">
+            <img src="https://image.tport.io/extranet/properties/122368/37255e1d-2ba1-07c6-d907-0c14b50c2c9e-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#"> 숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">브라운 스위트 호텔</a></h4>
+              <p>가족과 함께 편안한 여행을 만들어드리는 호텔입니다.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.5)</span>
             </div>
           </div>
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/2.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">갤럭시 호텔</a></h4>
+              <p>공항에서 가까운 위치!</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.3)</span>
             </div>
           </div>
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
+            <img src="https://dry7pvlp22cox.cloudfront.net/mrt-images-prod/2020/12/09/RF9R/njyqwOeaB7.jpg?height=838" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">바이더 힐</a></h4>
+              <p>심플하고 모던한 객실과 무료 감귤체험이 있는 펜션</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.1)</span>
             </div>
           </div>
         </div>
@@ -185,25 +185,25 @@
 				<button type="button" data-bs-target="#carouselImageCaptions" data-bs-slide-to="2" aria-current="true" aria-label="세번째 이미지"></button>
 			</div>
 			
-			<div class="carousel-inner" style="height: 200px;">
-					<div class="carousel-item active" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="d-block w-100">
+			<div class="carousel-inner" style="height: 300px;">
+					<div class="carousel-item active" style="height: 300px;">
+						<img src="${pageContext.request.contextPath}/resources/images/hotel/trip1.JPG" class="d-block w-100">
 						<div class="carousel-caption d-none d-md-block">
-							<h5>광고문의</h5>
+							<h5></h5>
 						</div>
 					</div>
 					
-					<div class="carousel-item" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/images/hotel/2.jpg" class="d-block w-100">
+					<div class="carousel-item" style="height: 300px;">
+						<img src="${pageContext.request.contextPath}/resources/images/hotel/trip.PNG" class="d-block w-100">
 						<div class="carousel-caption d-none d-md-block">
-							<h5>마일리지 이벤트</h5>
+							<h5></h5>
 						</div>
 					</div>
 					
-					<div class="carousel-item" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/resources/images/hotel/3.jpg" class="d-block w-100">
+					<div class="carousel-item" style="height: 300px;">
+						<img src="${pageContext.request.contextPath}/resources/images/hotel/trip2.JPG" class="d-block w-100">
 						<div class="carousel-caption d-none d-md-block">
-							<h5>기타 이벤트</h5>
+							<h5></h5>
 						</div>
 					</div>
 			</div>
@@ -228,35 +228,35 @@
         <span> <i class="bi bi-chevron-right next1"></i> </span>
         <div class="post-wrapper1">
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
+            <img src="https://image.tport.io/gds_properties/36258/fdfc9fda-12da-4e47-88b3-be7529f0ea0c-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#" class="post-subject">숙소명 </a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#" class="post-subject">제주 성산호텔 </a></h4>
+              <p>대자연의 신비가 가득한 제주 골든 튤립 제주 성산호텔!</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.5)</span>
             </div>
           </div>
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/2.jpg" class="slider-image">
+            <img src="https://image.tport.io/gds_properties/35320/33242837-54e8-4f4b-aa1d-b88b6dd030ac-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#"> 숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">샐리스 호텔</a></h4>
+              <p>모던한 감성을 채워넣은 제주 샐리스 호텔에서 퀄리티있는 쉼을 경험해보세요.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.4)</span>
             </div>
           </div>
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/3.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">리치 호텔</a></h4>
+              <p>푸른 경관이 아름다운 애월 읍에 위치한 고품격 호텔, 리치 호텔입니다.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.7)</span>
             </div>
           </div>
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
+            <img src="https://image.tport.io/gds_properties/91335/81fa9e96-d74e-42ca-94e6-02db596d7e9a-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
+              <h4><a href="#">광안리 HOTEL1</a></h4>
+              <p>넓고 푸르른 바다를 객실에서 바라보며, 일상의 피로를 안락하고 편안한 공간에서 해소하며 재충전할 수 있는 휴식처입니다.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.3)</span>
             </div>
           </div>
         </div>
@@ -271,35 +271,35 @@
         <span> <i class="bi bi-chevron-right next2"></i> </span>
         <div class="post-wrapper2">
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
+            <img src="https://image.tport.io/gds_properties/48818/1a2b5013-3961-48b5-911e-fc24de4fa5c0-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#" class="post-subject">숙소명 </a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★★☆</p>
-            </div>
-          </div>
-          <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/2.jpg" class="slider-image">
-            <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★☆☆</p>
+              <h4><a href="#" class="post-subject">디스빌라691 </a></h4>
+              <p>연인과 함께 추억을 만들 수 있는 프라이빗 스파 펜션</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.8)</span>
             </div>
           </div>
           <div class="post">
             <img src="${pageContext.request.contextPath}/resources/images/hotel/3.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★☆☆</p>
+              <h4><a href="#">리치 호텔</a></h4>
+              <p>푸른 경관이 아름다운 애월 읍에 위치한 고품격 호텔, 리치 호텔입니다.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.7)</span>
             </div>
           </div>
           <div class="post">
-            <img src="${pageContext.request.contextPath}/resources/images/hotel/1.jpg" class="slider-image">
+            <img src="https://image.tport.io/properties/115461/1f93c7ab-7e02-44b6-ac09-b6106594c915-1000.jpg" class="slider-image">
             <div class="post-info">
-              <h4><a href="#">숙소명</a></h4>
-              <i class="far fa-user" style="height:10%;">설명</i>
-              <p>별점 ★★★☆☆</p>
+              <h4><a href="#">강릉 힐링연펜션</a></h4>
+              <p>영진해변의 눈부신 바다가 내려다보이는 곳에 위치한 힐링연 스파펜션.</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.5)</span>
+            </div>
+          </div>
+          <div class="post">
+            <img src="${pageContext.request.contextPath}/resources/images/hotel/2.jpg" class="slider-image">
+            <div class="post-info">
+              <h4><a href="#">갤럭시 호텔</a></h4>
+              <p>공항에서 가까운 위치!</p>
+              <p style="color: #2b96ed; display: inline;">★</p><span>(4.3)</span>
             </div>
           </div>
         </div>

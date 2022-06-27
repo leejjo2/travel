@@ -45,9 +45,11 @@
 	</select>
 	
 	<select id="listHotel" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT h.hotelNum, p.partnerNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2
+		SELECT h.hotelNum, p.partnerNum, hotelName, hotelIntro, hotelNumber, hotelZip, hotelAddr1, hotelAddr2,
+        imageFileNum hotelImageFileNum, saveFilename hotelSaveFilename
 		FROM hotel h
 		JOIN partner p ON p.partnerNum = h.partnerNum
+		LEFT JOIN hotelImage hi ON h.hotelNum = hi.hotelNum
 		WHERE p.partnerId = #{partnerId}
 	</select>
 	

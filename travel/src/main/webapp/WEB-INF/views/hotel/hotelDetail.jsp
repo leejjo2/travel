@@ -106,7 +106,7 @@
                             <section class="StayRoomDesktop-module__container--oJm9D layout-module__unset-min-height--ApB_X">
                                 <div class="StayRoomDesktop-module__roomSummary--YACv2">
                                     <div class="StayRoomDesktop-module__roomImages--cnXOR">
-                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="[단독 특가★]체크인 시 배정 2인" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" data-src="https://image.tport.io/roomtypes/1263509/1ffe398c-66a0-46d7-a8f5-f590e1cdd186-500.jpg" src="https://image.tport.io/roomtypes/1263509/1ffe398c-66a0-46d7-a8f5-f590e1cdd186-500.jpg">
+                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="방이미지" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" data-src="">
                                             <div class="LazyImageLoader-module__placeholder--iH82U StayRoomDesktop-module__image--B2J58"></div>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                                     <div class="StayRoomRatePlanDesktop-module__priceBox--uqMXE">
                                         <div>
                                             <h1 class="StayPrice-module__mainPrice--kAnIk"><span class="StayPrice-module__benefitTotal--PfId7">${rdto.roomPrice}</span><span class="StayPrice-module__mainSuffix--RrxXq">원</span></h1>
-                                        </div><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__medium--bLzcD">예약</button>
+                                        </div><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__medium--bLzcD" onclick="location.href='${pageContext.request.contextPath}/hotel/hotelReserve?hotelNum=${dto.hotelNum}&roomNum=${dto.roomNum}';">예약</button>
                                     </div>
                                 </div>
                             </section>

@@ -1,10 +1,12 @@
 package com.sp.trip.hotel;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sp.trip.common.MyUtil;
+import com.sp.trip.member.SessionInfo;
 
 @Controller("hotel.hotelController")
 @RequestMapping(value = "/hotel/*")
@@ -28,8 +31,9 @@ public class HotelController {
 		return ".hotel.hotelMain";
 	}
 	
-	@RequestMapping(value = "hotelList", method = RequestMethod.GET)
+	@RequestMapping(value = "hotelList")
 	public String list2(@RequestParam(value = "page", defaultValue = "1") int current_page,
+			@RequestParam(defaultValue = "") String roomOption,
 			HttpServletRequest req,
 			Model model
 			) throws Exception {
@@ -41,7 +45,13 @@ public class HotelController {
 		int dataCount = 0;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		
+		List<String> options = null;
+		if(roomOption.length()!=0) {
+			options = Arrays.asList(roomOption.split(","));
+		}
+		
+		map.put("options", options);
 		dataCount = service.dataCount(map);
 		if (dataCount != 0) {
 			total_page = myUtil.pageCount(rows, dataCount);
@@ -99,6 +109,61 @@ public class HotelController {
 		
 		
 		return ".hotel.hotelDetail";
+	}
+	
+	@RequestMapping(value = "hotelReserve", method = RequestMethod.GET)
+	public String hotelReserve(
+			@RequestParam int hotelNum,
+			@RequestParam int roomNum,
+			HttpSession session,
+			Model model
+			) throws Exception{
+		SessionInfo info = (SessionInfo)session.getAttribute("member");
+		
+		Hotel dto = service.readHotel(hotelNum);
+		Hotel rdto = service.readRoom(hotelNum);
+		HotelReserve mdto = service.readMember(info.getUserId());
+		
+		model.addAttribute("dto", dto);
+		model.addAttribute("rdto", rdto);
+		model.addAttribute("memdto", mdto);
+		
+		return ".hotel.hotelReserve";
+	}
+	
+	// 호텔 예약 폼
+	@RequestMapping(value = "insertHotelReserve", method = RequestMethod.POST)
+	public String hotelReserve(
+			HotelReserve dto, 
+			HttpSession session) throws Exception {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		dto.setUserId(info.getUserId());
+		
+		int reserveNum = 0;
+		try {
+			reserveNum = service.insertHotelReserve(dto);
+		} catch (Exception e) {
+		}
+		
+		return "redirect:/hotel/completePage?reserveNum="+reserveNum;
+	}
+	
+	// 완료
+	@RequestMapping(value = "completePage", method = RequestMethod.GET)
+	public String reserveComplete(
+			@RequestParam int reserveNum,
+			Model model) throws Exception {
+		
+		HotelReserve dto = service.readPayment(reserveNum);
+		if( dto == null) {
+			return "redirect:/hotel/list?";
+		}
+		
+		model.addAttribute("totalPrice", dto.getTotalPrice());
+		model.addAttribute("payAmount", dto.getPayAmount());
+		
+		return ".hotel.payComplete";
 	}
 	
 }

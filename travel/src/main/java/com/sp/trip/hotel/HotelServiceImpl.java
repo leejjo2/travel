@@ -78,6 +78,62 @@ public class HotelServiceImpl implements HotelService {
 		return minPrice;
 	}
 
+	@Override
+	public HotelReserve readMember(String userId) {
+		HotelReserve dto = null;
+		
+		try {
+			dto = dao.selectOne("hotel.readMember", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public HotelReserve readHotelReserve(int roomNum) {
+		HotelReserve dto = null;
+		
+		try {
+			// dto = dao.selectOne("hotel.resev");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
+	@Override
+	public int insertHotelReserve(HotelReserve dto) throws Exception {
+		int reserveNum = 0;
+		try {
+			reserveNum = dao.selectOne("hotel.reserveNum_seq");
+			dto.setReserveNum(reserveNum);
+			
+			dao.insertData("hotel.insertHotelReserve", dto);
+			dao.insertData("hotel.insertHotelReservationDetail", dto);
+			dao.insertData("hotel.insertHotelPay", dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
+		return reserveNum;
+	}
+
+	@Override
+	public HotelReserve readPayment(int reserveNum) {
+		HotelReserve dto = null;
+		try {
+			dto = dao.selectOne("hotel.hotelPayment", reserveNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
 
 
 }
