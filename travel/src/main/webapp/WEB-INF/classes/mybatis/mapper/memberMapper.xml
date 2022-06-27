@@ -9,12 +9,21 @@
 	</select>
 	
 	<update id="updateLastLogin" parameterType="String">
-		UPDATE member1 SET last_login = SYSDATE, failure_cnt = 0
+		UPDATE member SET last_login = SYSDATE, failure_cnt = 0
 		WHERE userId=#{userId}
 	</update>
 	
+	<insert id="insertMember">
+		INSERT INTO member(userId, userName, userPwd, profileImgName, birth, email, tel, zip, addr1, addr2,
+			membership, reg_date, modify_date, enabled, failure_cnt) 
+		VALUES (#{userId}, #{userName}, #{userPwd}, #{profileImgName}, #{birth}, #{email}, #{tel}, 
+			#{zip, jdbcType=VARCHAR}, #{addr1, jdbcType=VARCHAR}, #{addr2, jdbcType=VARCHAR}
+			, 1, SYSDATE, SYSDATE, 1, 0)
+    </insert>
+	
+	
 	<select id="readMember" parameterType="String" resultType="com.sp.trip.member.Member">
-		SELECT userId, userName, userPwd, email, tel, TO_CHAR(birth, 'YYYY-MM-DD') birth,
+		SELECT userId, userName, userPwd, profileImgName, email, tel, TO_CHAR(birth, 'YYYY-MM-DD') birth,
 				 zip, addr1, addr2
 		FROM member 
 		WHERE userId = #{userId}
@@ -22,7 +31,7 @@
 	
 	<update id="updateMember" parameterType="com.sp.trip.member.Member">
 		UPDATE member SET userPwd=#{userPwd}, modify_date=SYSDATE,
-			email=#{email, jdbcType=VARCHAR}, 
+			email=#{email, jdbcType=VARCHAR}, profileImgName=#{profileImgName, jdbcType=VARCHAR},
 			tel=#{tel, jdbcType=VARCHAR}, birth=#{birth, jdbcType=VARCHAR},
 			zip=#{zip, jdbcType=VARCHAR},
 			addr1=#{addr1, jdbcType=VARCHAR}, addr2=#{addr2, jdbcType=VARCHAR}

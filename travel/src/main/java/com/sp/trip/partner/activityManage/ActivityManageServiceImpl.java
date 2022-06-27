@@ -23,7 +23,6 @@ public class ActivityManageServiceImpl implements ActivityManageService{
 		try {
 			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
 			if (saveFilename != null) {
-				System.out.println("title"+ saveFilename);
 				dto.setTitleImgname(saveFilename);
 
 				int seq = dao.selectOne("activityManage.seq");

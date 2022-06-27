@@ -5,12 +5,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.trip.common.FileManager;
 import com.sp.trip.common.dao.CommonDAO;
 
 @Service("member.memberService")
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private CommonDAO dao;
+	
+	@Autowired
+	private FileManager fileManager;
 	
 	@Override
 	public Member loginMember(String userId) {
@@ -26,8 +30,29 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void insertMember(Member dto) throws Exception {
-		// TODO Auto-generated method stub
+	public void insertMember(Member dto, String pathname) throws Exception {
+		try {
+			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
+			
+			if (saveFilename != null) {
+				dto.setProfileImgName(saveFilename);
+			}
+			
+			if (dto.getEmail1().length() != 0 && dto.getEmail2().length() != 0) {
+				dto.setEmail(dto.getEmail1() + "@" + dto.getEmail2());
+			}
+
+			if (dto.getTel1().length() != 0 && dto.getTel2().length() != 0 && dto.getTel3().length() != 0) {
+				dto.setTel(dto.getTel1() + "-" + dto.getTel2() + "-" + dto.getTel3());
+			}
+
+			// 회원정보 저장
+			dao.insertData("member.insertMember", dto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
@@ -39,13 +64,30 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void updateLastLogin(String userId) throws Exception {
-		// TODO Auto-generated method stub
-		
+		try {
+			dao.updateData("member.updateLastLogin", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override
-	public void updateMember(Member dto) throws Exception {
+	public void updateMember(Member dto, String pathname) throws Exception {
 		try {
+			// 업로드한 파일이 존재한 경우
+			String saveFilename = fileManager.doFileUpload(dto.getSelectFile(), pathname);
+			
+			System.out.println("getProfileImgName : " + dto.getProfileImgName());
+			if (saveFilename != null || dto.getProfileImgName().length() == 0) {
+				
+				// 이전 파일 지우기
+				if (dto.getProfileImgName().length() != 0) {
+					fileManager.doFileDelete(dto.getProfileImgName(), pathname);
+				}
+				dto.setProfileImgName(saveFilename);
+			}
+			
 			if (dto.getEmail1().length() != 0 && dto.getEmail2().length() != 0) {
 				dto.setEmail(dto.getEmail1() + "@" + dto.getEmail2());
 			}
@@ -53,7 +95,7 @@ public class MemberServiceImpl implements MemberService {
 			if (dto.getTel1().length() != 0 && dto.getTel2().length() != 0 && dto.getTel3().length() != 0) {
 				dto.setTel(dto.getTel1() + "-" + dto.getTel2() + "-" + dto.getTel3());
 			}
-
+			
 			dao.updateData("member.updateMember", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
