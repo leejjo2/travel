@@ -362,7 +362,7 @@ $(function() {
 				               		 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				               </div>
@@ -400,7 +400,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						               </div>
@@ -439,7 +439,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum} </span>
 						                  </button>
 						               </div>
@@ -479,7 +479,7 @@ $(function() {
 		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				               </div>
@@ -516,7 +516,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum} </span>
 						                  </button>
 						               </div>
@@ -555,7 +555,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						               </div>
@@ -595,7 +595,7 @@ $(function() {
 		                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+		                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 	                       	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 				                  </button>
 				               </div>
@@ -632,7 +632,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						               </div>
@@ -671,7 +671,7 @@ $(function() {
 				                           	 <span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						                  <button type="button" class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap">
-				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #424242;"></i>
+				                           	 <i class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"  style="color: #209ced;"></i>
 		                           	 			<span class="courseNum" style="visibility: hidden;"> ${dto.courseNum}</span>
 						                  </button>
 						               </div>

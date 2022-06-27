@@ -122,9 +122,6 @@ public class TravelCourseController {
 			articleUrl = cp + "/travelCourse/article?page=" + current_page + "&" + query;
 		}
 
-		System.out.println("얍!!!");
-		System.out.println("listUrl : " + listUrl);
-		System.out.println("articleUrl: " + articleUrl);
 		
 		String paging = myUtil.paging(current_page, total_page, listUrl);
 

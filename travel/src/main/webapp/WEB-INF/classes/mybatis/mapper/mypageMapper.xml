@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+
+<select id="searchMyLike" parameterType="String" resultType="Integer">
+	SELECT courseNum FROM travelcourselike WHERE userId = #{userId}
+</select>
+
+<select id="searchMyScrap" parameterType="String" resultType="Integer">
+	SELECT scrapSectionNum courseNum FROM scrap WHERE userId = #{userId} and scrapSection = 1
+</select>
+
+<select id="listMy" parameterType="map" resultType="com.sp.trip.travelCourse.TravelCourse">
+	SELECT * FROM (
+	    SELECT ROWNUM rnum, tb.* FROM (
+	        SELECT a.courseNum, cityName, themeName, period, subject, courseDetailNum, saveFilename
+	        FROM travelCourse a
+	        JOIN travelCourseDetail d ON  a.courseNum = d.courseNum
+	        LEFT OUTER JOIN city c ON a.cityNum = c.cityNum
+	        LEFT OUTER JOIN theme t ON a.themeNum = t.themeNum
+	        JOIN travelcourseImage i ON  i.travelCourseNum = d.courseDetailNum
+	        where course_seq=1 AND a.courseNum = #{courseNum}
+	        ORDER BY a.reg_date DESC
+	        )tb WHERE ROWNUM &lt;= #{end}
+	) WHERE rnum &gt;= #{start}
+</select>
+
+</mapper>
