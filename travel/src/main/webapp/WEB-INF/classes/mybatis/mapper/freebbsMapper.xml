@@ -52,7 +52,7 @@
 	<select id="listBoard" parameterType="map" resultType="com.sp.trip.freebbs.Board">
 		SELECT * FROM (
 			SELECT ROWNUM rnum, tb.* FROM (
-				SELECT a.freeNum, userId, subject, saveFilename, reg_date
+				SELECT a.freeNum, userId, subject, saveFilename, reg_date, hitCount, freecateNum
 				FROM freebbs a
 				LEFT OUTER JOIN (
 					SELECT freeFileNum, freeNum, saveFilename FROM (
@@ -73,17 +73,55 @@
 	
     <!-- 글보기 -->
     <select id="readBoard" parameterType="Integer" resultType="com.sp.trip.freebbs.Board">
-		SELECT freeNum, a.userId, userName, subject, content, reg_date,
-		NVL(boardLikeCount, 0) boardLikeCount
+		SELECT freeNum, a.userId, userName, subject, content, a.reg_date, hitCount, freecateNum
 		FROM freebbs a
-		JOIN member1 m ON a.userId = m.userId
-		LEFT OUTER JOIN (
-			SELECT freeNum, COUNT(*) boardLikeCount FROM freebbsLike
-			GROUP BY freeNum
-		) bc ON a.freeNum = ac.freeNum
-		WHERE a.freeNum = #{freeNum}
+		JOIN member m ON a.userId = m.userId
+		WHERE freeNum = #{freeNum}
 	</select>
 	
+	<!-- 이전글 -->
+	<select id="preReadBoard" parameterType="map" resultType="com.sp.trip.freebbs.Board">
+		SELECT * FROM (
+			SELECT freeNum, subject
+			FROM freebbs
+			<where>
+				userId = #{userId}
+				<if test="keyword != null and keyword != '' ">
+					AND <include refid="where-list"/>
+				</if>
+				AND (freeNum &gt; #{freeNum})
+			</where>
+			ORDER BY freeNum ASC
+		) WHERE ROWNUM = 1
+    </select>
+    
+    	<!-- 다음글 -->
+	<select id="nextReadBoard" parameterType="map" resultType="com.sp.trip.freebbs.Board">
+		SELECT * FROM (
+			SELECT freeNum, subject
+			FROM freebbs
+			<where>
+				userId = #{userId}
+				<if test="keyword != null and keyword != '' ">
+					AND <include refid="where-list"/>
+				</if>
+				AND (freeNum &lt; #{freeNum})
+			</where>
+			ORDER BY freeNum ASC
+		) WHERE ROWNUM = 1
+    </select>
+    
+    <!-- 수정 -->
+    <update id="updateBoard" parameterType="com.sp.trip.freebbs.Board">
+    	UPDATE freebbs SET subject=#{subject}, content=#{content}
+		WHERE freeNum = #{freeNum}
+    </update>
+    
+    <!-- 삭제 -->
+	<delete id="deleteBoard" parameterType="Integer">
+		DELETE FROM freebbs WHERE freeNum = #{freeNum}
+	</delete>
+    
 		<!-- 파일 -->
 	<insert id="insertFile" parameterType="com.sp.trip.freebbs.Board">
 		INSERT INTO freebbsFile(freeFileNum, freeNum, saveFilename)
@@ -99,16 +137,16 @@
 	<select id="readFile" parameterType="Integer" resultType="com.sp.trip.freebbs.Board">
 		SELECT freeFileNum, freeNum, saveFilename
 		FROM freebbsFile
-	    WHERE freeFileNum = #{fileNum}      
+	    WHERE freeFileNum = #{freeFileNum}      
 	</select>
 	
 	<delete id="deleteFile" parameterType="map">
-		DELETE FROM freebbsFile WHERE ${field} = #{num}
+		DELETE FROM freebbsFile WHERE ${field} = #{freeNum}
 	</delete>
 	
 		<!-- 조회수 증가 -->
 	<update id="updateHitCount" parameterType="Integer">
-		UPDATE freebbs SET hitCount=hitCount+1 WHERE num = #{num}
+		UPDATE freebbs SET hitCount=hitCount+1 WHERE freeNum = #{freeNum}
 	</update>
 	
 </mapper>
