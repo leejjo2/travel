@@ -96,7 +96,7 @@ public class HotelServiceImpl implements HotelService {
 		HotelReserve dto = null;
 		
 		try {
-			// dto = dao.selectOne("hotel.resev");
+			dto = dao.selectOne("hotel.readReserve", roomNum);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -115,6 +115,13 @@ public class HotelServiceImpl implements HotelService {
 			dao.insertData("hotel.insertHotelReservationDetail", dto);
 			dao.insertData("hotel.insertHotelPay", dto);
 			
+			if(dto.getMileageUse() != 0) {
+				dao.insertData("hotel.insertMileageUse", dto);
+			}
+			
+			dto.setTotalMileage(dto.getTotalMileage() + dto.getMileageSave());
+			dao.insertData("hotel.insertMileageSave", dto);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -132,6 +139,19 @@ public class HotelServiceImpl implements HotelService {
 			e.printStackTrace();
 		}
 		return dto;
+	}
+
+	@Override
+	public List<Hotel> listRoom(Map<String, Object> map) {
+		List<Hotel> list = null;
+		
+		try {
+			list = dao.selectList("hotel.listRoom", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 

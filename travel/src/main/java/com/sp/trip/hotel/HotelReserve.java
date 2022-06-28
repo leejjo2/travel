@@ -21,6 +21,7 @@ public class HotelReserve {
 	private String checkIn;
 	private String checkOut;
 	
+	// 숙소 결제
 	private int payWay;
 	private int payAmount;
 	private String pay_date;
@@ -29,6 +30,14 @@ public class HotelReserve {
 	private String userName;
 	private String email;
 	private String tel;
+	
+	// 숙박예약상세정보
+	private int hotelReserveDetailNum;
+	private int roomPrice;
+	
+	// 마일리지
+	private int totalMileage;
+	private int mileageSave;
 	
 	public int getRoomNum() {
 		return roomNum;
@@ -161,5 +170,29 @@ public class HotelReserve {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	public int getHotelReserveDetailNum() {
+		return hotelReserveDetailNum;
+	}
+	public void setHotelReserveDetailNum(int hotelReserveDetailNum) {
+		this.hotelReserveDetailNum = hotelReserveDetailNum;
+	}
+	public int getRoomPrice() {
+		return roomPrice;
+	}
+	public void setRoomPrice(int roomPrice) {
+		this.roomPrice = roomPrice;
+	}
+	public int getTotalMileage() {
+		return totalMileage;
+	}
+	public void setTotalMileage(int totalMileage) {
+		this.totalMileage = totalMileage;
+	}
+	public int getMileageSave() {
+		return mileageSave;
+	}
+	public void setMileageSave(int mileageSave) {
+		this.mileageSave = mileageSave;
 	}
 }

@@ -90,9 +90,6 @@ function searchList() {
 			                            <div class="rating"> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="fas fa-star"></span> <span class="far fa-star"></span> <!-- Book now Enquiry -->
 			                            </div>
 			                            <div class="d-flex flex-column tags pt-1">
-			                                <div><span class="fas fa-comment-dollar"></span></div>
-			                                <div><span class="fas fa-receipt"></span></div>
-			                                <div><span class="fas fa-concierge-bell"></span></div>
 			                            </div>
 			                        </div>
 			                    </div>

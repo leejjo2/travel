@@ -117,12 +117,12 @@
 
 								<div class="d-flex flex-column tags pt-1">
 									<div>
-										<span class="fas fa-comment-dollar"></span>${dto.hotelIntro}</div>
+										<span class="fas fa-comment-dollar"></span></div>
 									<div>
-										<span class="fas fa-receipt"></span> 옵션
+										<span class="fas fa-receipt"></span>
 									</div>
 									<div>
-										<span class="fas fa-concierge-bell"></span> 옵션
+										<span class="fas fa-concierge-bell"></span>
 									</div>
 								</div>
 							</div>

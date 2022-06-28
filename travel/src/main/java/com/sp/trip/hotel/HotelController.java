@@ -81,7 +81,7 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value = "hotelDetail", method = RequestMethod.GET)
-	public String hotelArticle(@RequestParam int hotelNum, Model model ) throws Exception {
+	public String hotelArticle(@RequestParam int hotelNum, Model model) throws Exception {
 
 		// String query = "page=" + page;
 		try {
@@ -89,10 +89,15 @@ public class HotelController {
 			Hotel rdto = service.readRoom(hotelNum);
 			int minPrice = service.minPrice(hotelNum);
 			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("hotelNum", hotelNum);
+			List<Hotel> list = service.listRoom(map);
+			
 			dto.setHotelIntro(myUtil.htmlSymbols(dto.getHotelIntro()));
 			
 			model.addAttribute("dto", dto);
 			model.addAttribute("rdto", rdto);
+			model.addAttribute("list", list);
 			model.addAttribute("minPrice", minPrice);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -140,17 +145,20 @@ public class HotelController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		dto.setUserId(info.getUserId());
 		
+		int totalMileage = dto.getTotalMileage() - dto.getMileageUse();
+		dto.setTotalMileage(totalMileage);
+		
 		int reserveNum = 0;
 		try {
 			reserveNum = service.insertHotelReserve(dto);
 		} catch (Exception e) {
 		}
 		
-		return "redirect:/hotel/completePage?reserveNum="+reserveNum;
+		return "redirect:/hotel/payComplete?reserveNum="+reserveNum;
 	}
 	
 	// 완료
-	@RequestMapping(value = "payComplete", method = RequestMethod.GET)
+	@RequestMapping(value = "payComplete")
 	public String reserveComplete(
 			@RequestParam int reserveNum,
 			Model model) throws Exception {

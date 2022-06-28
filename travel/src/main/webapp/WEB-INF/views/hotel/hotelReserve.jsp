@@ -21,6 +21,13 @@ function uncomma(str) {
     return str.replace(/[^\d]+/g, '');
 }
 
+function checkPoint() {
+	let usingPoint = parseInt(uncomma($(".css-o9jzai").val()));
+	if(usingPoint > ${memdto.totalMileage}){
+		$(".css-o9jzai").val(comma(${memdto.totalMileage}));
+	}
+}
+
 function getSavePoint(totalPayment) {
 	let savePoint = Math.ceil(totalPayment * 0.05);
 	$(".savingPoint").html(comma(savePoint));
@@ -30,13 +37,18 @@ function getSavePoint(totalPayment) {
 $(function() {
 	$(".ticketPrice").html(comma(${rdto.roomPrice}) + "원");
 	$(".totalPrice").html(comma(${rdto.roomPrice}));
+	$(".totalPoint").html(comma(${memdto.totalMileage}));
 	$('input[name=totalPrice]').val(${rdto.roomPrice});
 	$('input[name=payAmount]').val(${rdto.roomPrice});
 	getSavePoint(${rdto.roomPrice}); // 적립 예정 포인트 구하기
 	
+	if(${memdto.totalMileage} === 0){
+		$(".checkout-point-inputbox input").attr("disabled", "");
+		$(".checkout-point-button button").attr("disabled", "");
+	}
 	
 	$(".checkout-point-button button").click(function() {
-		$(".css-o9jzai").val(comma(${mdto.totalMileage}));
+		$(".css-o9jzai").val(comma(${memdto.totalMileage}));
 	});
 	
 	
@@ -53,6 +65,7 @@ $(function() {
 				$(".totalPay").html(comma(${rdto.roomPrice} - usingPoint));
 				$('input[name=payAmount]').val(${rdto.roomPrice} - usingPoint);
 				getSavePoint(${rdto.roomPrice} - usingPoint);
+				$('input[name=mileageUse]').val(usingPoint);
 			}
 		}
 	});
@@ -72,10 +85,10 @@ $(function() {
 
 $(document).ready(function() {
 	$("#paymentBtn").click(function() {
-		str = $('input[name=name]').val();
+		str = $('input[name=userName]').val();
 	    if( !str ) {
 	        alert("예약자 이름을 입력해주세요");
-	        $('input[name=name]').focus();
+	        $('input[name=userName]').focus();
 	        return;
 	    }
 	    payment();
@@ -87,7 +100,7 @@ function payment(){
 	let name = $('input[name=roomName]').val();
 	let amount = $('input[name=payAmount]').val();
 	let buyer_email = $('input[name=email]').val();
-	let buyer_name = $('input[name=name]').val();
+	let buyer_name = $('input[name=userName]').val();
 	let buyer_tel = $('input[name=tel]').val();
 	let payWay = $('input[name=payWay]').val();
 	
@@ -128,7 +141,7 @@ function payment(){
 
 function insertReserve() {
 	var f = document.reserveForm;
-	f.action="${pageContext.request.contextPath}/hotel/payComplete";
+	f.action="${pageContext.request.contextPath}/hotel/insertHotelReserve";
 	f.submit();
 }
 </script>
@@ -137,7 +150,8 @@ function insertReserve() {
 <div id="Mrt3Payment-react-component-af4ab29c-68dc-4758-85df-2bfa96d167d6">
 	<main class="css-iiwtf3--Order-style--container">
 		<form name="reserveForm" class="css-rl7jky--Order-style--formWrapper" data-gtm-form-interact-id="0" method="post">
-			<input type="hidden" name="tel" value="${mdto.tel}">
+			<input type="hidden" name="tel" value="${memdto.tel}">
+			<input type="hidden" name="email" value="${memdto.email}">
 			<input type="hidden" name="roomPrice" value="${rdto.roomPrice}">
 			<input type="hidden" name="roomNum" value="${rdto.roomNum}">
 			<input type="hidden" name="roomName" value="${rdto.roomName}">
@@ -145,6 +159,8 @@ function insertReserve() {
 			<input type="hidden" name="payAmount" value="">
 			<input type="hidden" name="payWay" value="1">
 			<input type="hidden" name="mileageSave" value="">
+			<input type="hidden" name="totalMileage" value="${memdto.totalMileage}">
+			<input type="hidden" name="mileageUse" value="">
 			
 			<h1 class="css-asuv60--OrderForm-style--title">예약하기</h1>
 			<div class="css-ho0ft8--OrderForm-style--content">
@@ -162,7 +178,7 @@ function insertReserve() {
                                     <div class="css-13kuit9--ProductInfoSummary-style--imageWrapper"><img src="${pageContext.request.contextPath}/uploads/hotel/${rdto.roomSaveFilename}" alt="방 이미지" class="css-1pgwovl--ProductInfoSummary-style--image"></div>
                                     <div class="css-1m4b4kf--ProductInfoSummary-style--textWrapper">
                                         <h3 class="css-b9w54p--ProductInfoSummary-style--title">${dto.hotelName}</h3>
-                                        <div class="css-1igu7h--ProductInfoSummary-style--schedule"><time class="css-1xidlmi--ProductInfoSummary-style--startDateTime">2022년 07월 26일 (화) ~</time><time>2022년 07월 27일 (수), </time><span>1박</span></div>
+                                        <div class="css-1igu7h--ProductInfoSummary-style--schedule"><time class="css-1xidlmi--ProductInfoSummary-style--startDateTime"><input type="date" name="checkIn"> ~</time><time><input type="date" name="checkOut"> </time></div>
                                     </div>
                                 </div>
                                 <ul class="css-dhq5u9--ProductInfoOptions-style--optionWrapper">
@@ -193,7 +209,7 @@ function insertReserve() {
 								</div>
 								<div class="css-18nj9ab--Point-style--inputWrapper">
 									<div class="checkout-point-inputbox css-1vqiqg7">
-										<input name="mileageUse" type="decimal" pattern="[0-9]*" class="css-o9jzai" value="0" 
+										<input name="mileageUse" type="number" pattern="[0-9]*" class="css-o9jzai" value="0" 
 											onkeyup="inputNumberFormat(this); checkPoint();">
 										<span class="css-1fwrkpi">원</span>
 									</div>
@@ -256,7 +272,7 @@ function insertReserve() {
 										예약자의 이름을 기입해 주세요.
 									</div>
 									<div class="css-p2k6j6">
-										<input name="name" type="text" placeholder="이름을 입력해 주세요." maxlength="100" class="css-hbvhc7" value=""
+										<input name="userName" type="text" placeholder="이름을 입력해 주세요." maxlength="100" class="css-hbvhc7" value=""
 											data-gtm-form-interact-field-id="0">
 									</div>
 								</div>

@@ -40,6 +40,17 @@
 		WHERE h.hotelNum = #{hotelNum}
 	</select>
 	
+	
+	<select id="listRoom" parameterType="map" resultType="com.sp.trip.hotel.Hotel">
+		SELECT r.roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelName, h.hotelNum, h.partnerNum, roomOption, roomBed,
+		imageFileNum roomImageFileNum, saveFilename roomSaveFilename
+		FROM roomInfo r
+		JOIN hotel h ON h.hotelNum = r.hotelNum
+		JOIN partner p ON p.partnerNum = h.partnerNum
+		LEFT JOIN roomImage ri ON r.roomNum = ri.roomNum
+		WHERE h.hotelNum = #{hotelNum}
+	</select>
+	
 	<select id="readRoom" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
 		SELECT r.roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelNum, roomOption, roomBed, p.partnerName,
 		imageFileNum roomImageFileNum, saveFilename roomSaveFilename
@@ -66,19 +77,33 @@
 		SELECT MIN(roomPrice) from roomInfo where hotelNum = #{hotelNum}
 	</select>
 	
+	
 	<select id="reserveNum_seq" resultType="Integer">
 		SELECT hotelReserve_seq.NEXTVAL FROM dual
 	</select>
 	
 	<select id="readMember" parameterType="String" resultType="com.sp.trip.hotel.HotelReserve">
-		SELECT userId, userName, email, tel
-		FROM member
-		WHERE userId = #{userId}
+		SELECT userId, userName, email, tel, totalMileage
+		  FROM (
+		        SELECT me.userId, userName, email, tel, NVL(totalMileage, 0)totalMileage, mileageDate
+		        FROM member me
+		        LEFT JOIN mileage mi ON me.userId = mi.userId
+		        WHERE me.userId = #{userId}
+		        ORDER BY mileagenum DESC
+		       )
+		 WHERE ROWNUM &lt;= 1
+	</select>
+		
+	<select id="readReserve" parameterType="Integer" resultType="com.sp.trip.hotel.HotelReserve">
+		SELECT h.hotelNum, hotelName, roomName, roomPrice, roomHo, roomMen
+	    FROM hotel h
+	    LEFT JOIN roomInfo r ON h.hotelNum = r.hotelNum
+	    WHERE roomNum = #{roomNum}
 	</select>
 	
 	<insert id="insertHotelReserve" parameterType="com.sp.trip.hotel.HotelReserve">
 		INSERT INTO hotelReservation(reserveNum, userId, totalPrice, mileageUse, men, reserveDoneDate, reserveName, reserveTel, checkIn, checkOut)
-		VALUES (hotelReservation_seq.NEXTVAL, #{userId}, #{totalPrice}, #{mileageUse}, #{men}, SYSDATE, #{reserveName}, #{reserveTel}, #{checkIn}, #{checkOut})
+		VALUES (#{reserveNum}, #{userId}, #{totalPrice}, #{mileageUse}, #{men}, SYSDATE, #{reserveName}, #{reserveTel}, #{checkIn}, #{checkOut})
 	</insert>
 	
 	<insert id="insertHotelPay" parameterType="com.sp.trip.hotel.HotelReserve">
@@ -87,7 +112,7 @@
 	</insert>
 	
 	<insert id="insertHotelReservationDetail" parameterType="com.sp.trip.hotel.HotelReserve">
-		INSERT INTO hotelReservationDetail(hotelReserveDetailNum, ReserveNum, roomNum, roomPrice)
+		INSERT INTO hotelReservationDetail(hotelReserveDetailNum, reserveNum, roomNum, roomPrice)
 		VALUES(hotelReservationDetail_seq.NEXTVAL, #{reserveNum}, #{roomNum}, #{roomPrice})
 	</insert>
 	
@@ -101,11 +126,11 @@
 		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '호텔 예약 적립')
 	</insert>
 	
-	<select id="hotelPayment" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
+	<select id="hotelPayment" parameterType="Integer" resultType="com.sp.trip.hotel.HotelReserve">
 		SELECT totalPrice, payAmount
 		FROM hotelReservation h
 		JOIN hotelPay hp ON h.reserveNum = hp.reserveNum
-		WHERE hr.reserveNum = #{reserveNum}
+		WHERE hp.reserveNum = #{reserveNum}
 	</select>
 
 </mapper>

@@ -25,7 +25,7 @@
                             <div class="StayDetailHeaderDesktop-module__hashtag--Z2nXb">
                                 <p class="StayHashTag-module__hashtag--iVCqy">4성급</p>
                             </div><a href="/accommodations/stays/1083146#StayDetail__review">
-                                <div class="StayDetailHeaderDesktop-module__review--OFknh css-sbks2i--ReviewRatingCount--Container e1qwal8s3"><img class="css-labkkb" src="${pageContext.request.contextPath}/uploads/hotel/${dto.hotelSaveFilename}" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_not_filled_gray_200.svg" alt="icon">
+                                <div class="StayDetailHeaderDesktop-module__review--OFknh css-sbks2i--ReviewRatingCount--Container e1qwal8s3"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_not_filled_gray_200.svg" alt="icon">
                                 </div>
                             </a>
                             <div class="StayDetailHeaderDesktop-module__meta--hynTx">
@@ -44,53 +44,9 @@
                                         <li>
                                             <div class="StayImageViewer-module__big--X0znA" role="button" tabindex="-1" style="background-image: url(&quot;https://image.tport.io/gds_properties/35821/dc1eb3c2-2022-44d9-b72e-8dd30ab00aee-1000.jpg&quot;);">
                                                 <div class="ImageLoader-module__container--BIQZz StayImageViewer-module__big--X0znA">
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__big--X0znA ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('https://image.tport.io/gds_properties/35821/dc1eb3c2-2022-44d9-b72e-8dd30ab00aee-1000.jpg')"></div>
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__children--aCOJM">
-                                                        <div class="StayImageViewer-module__zoom--AZIhE"><img class="StayImageViewer-module__zoomIcon--cCcju" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlPSIjNDk1MDU2IiBzdHJva2Utd2lkdGg9IjEuNSI+CiAgICAgICAgPGNpcmNsZSBjeD0iOCIgY3k9IjgiIHI9IjcuMjUiLz4KICAgICAgICA8cGF0aCBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBkPSJNOCA1LjMzM3Y1LjMzNE01LjMzMyA4aDUuMzM0Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="magnifier">
-                                                            <p class="StayImageViewer-module__zoomText--guEPW">크게 보기</p>
-                                                        </div>
-                                                        <div class="StayImageViewer-module__cover--QMBQz"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="StayImageViewer-module__small--Ncmhf" role="button" tabindex="-1" style="background-image: url(&quot;https://image.tport.io/properties/35821/92b87f4a-fe12-4906-a31a-0467f89b740e-1000.jpg&quot;);">
-                                                <div class="ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf">
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('https://image.tport.io/properties/35821/92b87f4a-fe12-4906-a31a-0467f89b740e-1000.jpg')"></div>
+                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__big--X0znA ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('${pageContext.request.contextPath}/uploads/hotel/${dto.hotelSaveFilename}')"></div>
                                                     <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__children--aCOJM">
                                                         <div class="StayImageViewer-module__cover--QMBQz"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="StayImageViewer-module__small--Ncmhf" role="button" tabindex="-1" style="background-image: url(&quot;https://image.tport.io/properties/35821/c5b06cfa-3c4d-44c5-ac6a-1c6fd629dbe4-1000.jpg&quot;);">
-                                                <div class="ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf">
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('https://image.tport.io/properties/35821/c5b06cfa-3c4d-44c5-ac6a-1c6fd629dbe4-1000.jpg')"></div>
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__children--aCOJM">
-                                                        <div class="StayImageViewer-module__cover--QMBQz"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="StayImageViewer-module__small--Ncmhf" role="button" tabindex="-1" style="background-image: url(&quot;https://image.tport.io/properties/35821/b71b524d-90e8-4a22-91b9-0c83732b7b81-1000.jpg&quot;);">
-                                                <div class="ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf">
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__small--Ncmhf ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('https://image.tport.io/properties/35821/b71b524d-90e8-4a22-91b9-0c83732b7b81-1000.jpg')"></div>
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__children--aCOJM">
-                                                        <div class="StayImageViewer-module__cover--QMBQz"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="StayImageViewer-module__last--DCJEA" role="button" tabindex="-1" style="background-image: url(&quot;https://image.tport.io/gds_properties/35821/87ce9942-6231-4bd1-a61f-0766a3982f02-1000.jpg&quot;);">
-                                                <div class="ImageLoader-module__container--BIQZz StayImageViewer-module__last--DCJEA">
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__loadedImage--gwyvB ImageLoader-module__container--BIQZz StayImageViewer-module__last--DCJEA ImageLoader-module__fadeInImage--z2Yoe" title="" style="background-image: url('https://image.tport.io/gds_properties/35821/87ce9942-6231-4bd1-a61f-0766a3982f02-1000.jpg')"></div>
-                                                    <div class="ImageLoader-module__absolute--Jtyy8 ImageLoader-module__children--aCOJM">
-                                                        <div class="StayImageViewer-module__lastImageCover--SOsq1"></div>
-                                                        <p class="StayImageViewer-module__lastImageCount--broLi">+9</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -103,20 +59,21 @@
                 </section>
                     <section>
                         <div>
+						<c:forEach var="room" items="${list}">
                             <section class="StayRoomDesktop-module__container--oJm9D layout-module__unset-min-height--ApB_X">
                                 <div class="StayRoomDesktop-module__roomSummary--YACv2">
                                     <div class="StayRoomDesktop-module__roomImages--cnXOR">
-                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="방이미지" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" src="${pageContext.request.contextPath}/uploads/hotel/${rdto.roomSaveFilename}">
+                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="방이미지" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" src="${pageContext.request.contextPath}/uploads/hotel/${room.roomSaveFilename}">
                                             <div class="LazyImageLoader-module__placeholder--iH82U StayRoomDesktop-module__image--B2J58"></div>
                                         </div>
                                     </div>
                                     <div class="StayRoomDesktop-module__column--Gmr6W StayRoomDesktop-module__roomInfo--otxvB">
                                         <div class="StayRoomDesktop-module__nameContainer--AcNgi">
-                                            <h3 class="StayRoomDesktop-module__name--CFUZD">${rdto.roomName}</h3>
+                                            <h3 class="StayRoomDesktop-module__name--CFUZD">${room.roomName}</h3>
                                         </div>
                                         <p class="StayRoomDesktop-module__desc--bxMsz"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_person_12x12_line_gray_500.svg" alt="수용인원">기준 ${rdto.roomMen}인 </p>
-                                        <p class="StayRoomDesktop-module__desc--bxMsz">호수 : ${rdto.roomHo} </p>
-                                        <p class="StayRoomDesktop-module__desc--bxMsz">판매자 : ${rdto.partnerName} </p>
+                                        <p class="StayRoomDesktop-module__desc--bxMsz">호수 : ${room.roomHo} </p>
+                                        <p class="StayRoomDesktop-module__desc--bxMsz">판매자 : ${room.partnerName} </p>
                                         <div class="StayTagLabels-module__container--XcFLa StayRoomDesktop-module__tag-list--oumS9"></div>
                                     </div>
                                 </div>
@@ -126,11 +83,12 @@
                                     </div>
                                     <div class="StayRoomRatePlanDesktop-module__priceBox--uqMXE">
                                         <div>
-                                            <h1 class="StayPrice-module__mainPrice--kAnIk"><span class="StayPrice-module__benefitTotal--PfId7">${rdto.roomPrice}</span><span class="StayPrice-module__mainSuffix--RrxXq">원</span></h1>
-                                        </div><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__medium--bLzcD" onclick="location.href='${pageContext.request.contextPath}/hotel/hotelReserve?hotelNum=${dto.hotelNum}&roomNum=${dto.roomNum}';">예약</button>
+                                            <h1 class="StayPrice-module__mainPrice--kAnIk"><span class="StayPrice-module__benefitTotal--PfId7">${room.roomPrice}</span><span class="StayPrice-module__mainSuffix--RrxXq">원</span></h1>
+                                        </div><button type="button" class="Button-module__button--nQweC Button-module__primary--loIc3 Button-module__medium--bLzcD" onclick="location.href='${pageContext.request.contextPath}/hotel/hotelReserve?hotelNum=${dto.hotelNum}&roomNum=${room.roomNum}';">예약</button>
                                     </div>
                                 </div>
                             </section>
+                            </c:forEach>
                         </div>
                     </section>
                 <section class="StayDetailDesktop-module__subsection--k85Ly StayDetailDesktop-module__introduction--thV7D" id="StayDetail__introduction">
@@ -143,76 +101,11 @@
                                     * 시행일시 : 2022년 5월 4일 ~
                                     * 적용 대상 :
                                     체크인 일자 기준 2022년 7월 1일 이후건 부터 적용
-                                    (7/1 이 ...
                             </div>
                         </div>
                     </div>
                 </section>
-                <div class="StayDetailDesktop-module__subsection--k85Ly StayDetailDesktop-module__checkIn--qO978">
-                    <div class="StayDetailDesktop-module__checkInInner--WRAQR">
-                        <h3 class="StayDetailDesktop-module__checkInOutTitle--JVzkF">체크인/체크아웃</h3>
-                        <p class="StayDetailDesktop-module__checkInOutInfo--BXf_w">체크인 - 15:00 / 체크아웃 - 11:00</p>
-                    </div>
-                </div>
-                <div class="StayDetailDesktop-module__subsection--k85Ly">
-                    <div class="StayDetailServices-module__container--VX94D">
-                        <h3 class="StayDetailServices-module__title--_W8dW">서비스</h3>
-                        <div class="StayDetailServices-module__wrapper--tWrQ3">
-                            <ul class="StayDetailServices-module__iconList--YF9V5">
-                                <li class="StayDetailServices-module__itemWithIcon--XSvcL"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_baggage_28x28_gray_700.svg" alt="짐보관">
-                                    <p class="StayDetailServices-module__itemText--hOnPv">짐보관</p>
-                                </li>
-                                <li class="StayDetailServices-module__itemWithIcon--XSvcL"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_wifi_28x28_gray_700.svg" alt="WIFI">
-                                    <p class="StayDetailServices-module__itemText--hOnPv">WIFI</p>
-                                </li>
-                                <li class="StayDetailServices-module__itemWithIcon--XSvcL"><img src="https://dffoxz5he03rp.cloudfront.net/icons/ic_parking_28x28_gray_700.svg" alt="주차가능">
-                                    <p class="StayDetailServices-module__itemText--hOnPv">주차가능</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <section class="StayDetailDesktop-module__subsection--k85Ly" id="StayDetail__guide">
-                    <div class="StayDetailGuide-module__container--yxeZI">
-                        <div class="StayDetailGuide-module__inner--kddjC">
-                            <h3 class="StayDetailGuide-module__title--vOJV6">이용 안내</h3>
-                            <div>
-                                <p class="StayDetailGuide-module__info--yDOPq">[숙소안내]
-                                    입실시간 : 15:00 / 퇴실시간 : 11:00
-
-                                    * 시행일시 : 2022년 5월 4일 ~
-                                    * 적용 대상 :
-                                    체크인 일자 기준 2022년 7월 1일 이후건 부터 적용
-                                    (7/1 이전일자 금액변동 없음)
-                                    * 변경내용
-                                    - 기존
-                                    성인 (현장결제 11,000원 / 사전예약 9,900원)
-                                    소인 (현장결제 8,000원 / 사전예약 7,700원)
-                                    - 변경
-                                    성인 (현장결제 12,000원 / 사전예약 11,000원)
-                                    소인 (현장결제 9,000원 / 사전예약 8,000원) 오픈기간 : 7/1(금) ~ 9/2(금)운영시간 : AM 1 ...
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="StayDetailDesktop-module__subsection--k85Ly" id="StayDetail__regulation">
-                    <div class="StayDetailRegulation-module__checkIn--ISc8h">
-                        <div class="StayDetailRegulation-module__checkInInner--N81FC">
-                            <h3 class="StayDetailRegulation-module__checkInOutTitle--yMihv">취소 및 환불 규정</h3>
-                            <div>
-                                <p class="StayDetailRegulation-module__checkInOutInfo--UqWX5">- 체크인 9일 전 : 무료 취소
-                                    - 체크인 8일 전 : 취소 수수료 10%
-                                    - 체크인 7일 전 ~ 6일 전 : 취소 수수료 30%
-                                    - 체크인 5일 전 ~ 4일 전 : 취소 수수료 50%
-                                    - 체크인 3일 전 ~ 2일 전 : 취소 수수료 80%
-                                    - 체크인 1일 전 ~ 당일 : 취소 환불 불가
-
-                                    - 취소요청 이후에는 취소의 철회가 불가능합니다.
-                                    - 구매당일 취소시에도 환불 규정에 따라 취소 수수료가 부과됩니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
                 <section id="StayDetail__review">
                     <div class=" css-1sfu9pu--ReviewListLayout-style--container">
                         <hr class="css-1yjat1i--ReviewListLayout-style--divider">
@@ -345,7 +238,7 @@
                     <div class="StaySideBar-module__container--LzdcQ">
                         <div class="StaySideBar-module__sideBar--mW8v2">
                             <div class="StaySideBar-module__wrapper--HpLbH">
-                                <p class="StaySideBarPrice-module__totalPrice--nbnzY"><span class="StaySideBarPrice-module__nights--NaYZG">1박</span>${minPrice}<small>원~</small></p>
+                                <p class="StaySideBarPrice-module__totalPrice--nbnzY"><span class="StaySideBarPrice-module__nights--NaYZG">1박</span>최저가 ${minPrice}<small>원~</small></p>
                                 <div class="StaySideBar-module__shareBtn--gSs9Z">
                                     <div class=" css-q35oaw--ShareButton-style--container">
                                         <div class="css-2dmbly--SharePopover-style--container">
