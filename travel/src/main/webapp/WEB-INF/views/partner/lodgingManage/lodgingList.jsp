@@ -74,7 +74,7 @@
 
 	function deleteHotel(hotelNum) {
 		if (confirm("숙소를 삭제 하시겠습니까 ? ")) {
-			let query = "hotelNum=" + hotelNum;
+			let query = "hotelNum=" + hotelNum + "&roomNum=${roomNum}";
 			let url = "${pageContext.request.contextPath}/partner/lodgingManage/delete?"
 					+ query;
 			location.href = url;
@@ -105,7 +105,7 @@
 					<div class="hotel py-2 px-2 pb-4 border-bottom">
 						<div class="row">
 							<div class="col-lg-3">
-								<img src="" alt="" class="hotel-img">
+								<img src="${pageContext.request.contextPath}/uploads/hotel/${dto.hotelSaveFilename}" alt="" class="hotel-img">
 							</div>
 							<div class="col-lg-9">
 								<div class="d-md-flex align-items-md-center">

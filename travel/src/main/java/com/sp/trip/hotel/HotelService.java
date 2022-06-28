@@ -11,6 +11,11 @@ public interface HotelService {
 	public int minPrice(int hotelNum);
 	
 	public int dataCount(Map<String, Object> map);
-
+	
+	public HotelReserve readMember(String userId);
+	public HotelReserve readHotelReserve(int roomNum);
+	
+	public int insertHotelReserve(HotelReserve dto) throws Exception;
+	public HotelReserve readPayment(int reserveNum);
 	
 }

@@ -1,5 +1,6 @@
 package com.sp.trip.freebbs;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,25 +89,74 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board preReadBoard(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		Board dto = null;
+		
+		try {
+			dto = dao.selectOne("freebbs.preReadBoard", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 	@Override
 	public Board nextReadBoard(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		Board dto = null;
+		
+		try {
+			dto = dao.selectOne("freebbs.nextReadBoard", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 
 	@Override
 	public void updateBoard(Board dto, String pathname) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			dao.updateData("freebbs.updateBoard", dto);
+			
+			if(!dto.getSelectFile().isEmpty()) {
+				for(MultipartFile mf : dto.getSelectFile()) {
+					String saveFilename = fileManager.doFileUpload(mf, pathname);
+					if(saveFilename == null) {
+						continue;
+					}
+					
+					dto.setSaveFilename(saveFilename);
+					
+					insertFile(dto);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
 	@Override
-	public void deleteBoard(int num, String pathname) throws Exception {
-		// TODO Auto-generated method stub
+	public void deleteBoard(int freeNum, String pathname) throws Exception {
+		try {
+			List<Board> listFile = listFile(freeNum);
+			if(listFile != null) {
+				for(Board dto : listFile) {
+					fileManager.doFileDelete(dto.getSaveFilename(), pathname);
+				}
+			}
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("field", "freeNum");
+			map.put("freeNum", freeNum);
+			deleteFile(map);
+			
+			dao.deleteData("freebbs.deleteBoard", freeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
@@ -148,7 +198,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteFile(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			dao.deleteData("freebbs.deleteFile", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
@@ -233,6 +288,17 @@ public class BoardServiceImpl implements BoardService {
 			e.printStackTrace();
 		}
 		return listCate;
+	}
+
+	@Override
+	public void updateHitCount(int freeNum) throws Exception {
+		try {
+			dao.updateData("freebbs.updateHitCount", freeNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		
 	}
 
 }

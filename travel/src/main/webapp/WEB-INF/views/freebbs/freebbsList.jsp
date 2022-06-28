@@ -115,10 +115,12 @@ function searchList() {
 			<c:forEach var="dto" items="${list}">
 				<div class="col-3">
 					<div class="border p-0" style="height: 200px;">
-						<img src="${pageContext.request.contextPath}/uploads/Board/${dto.saveFilename}" width="100%" height="100%">
+						<a href="${articleUrl}&freeNum=${dto.freeNum}">
+							<img src="${pageContext.request.contextPath}/uploads/Board/${dto.saveFilename}" width="100%" height="100%">
+						</a>
 					</div>
 					<div class="border p-2" style="height: 200px;">
-						<p><a href="#" style="font-weight: bold; font-size: 17px; line-height: 3px;">${dto.subject}</a></p>
+						<p><a href="${articleUrl}&freeNum=${dto.freeNum}" style="font-weight: bold; font-size: 17px; line-height: 3px;">${dto.subject}</a></p>
 						<p style="line-height: 10px;">작성자 : ${dto.userId}</p>
 						<p style="line-height: 0px;">조회수 : ${dto.hitCount}</p>
 						<p style="line-height: 0px;">${dto.reg_date}</p>

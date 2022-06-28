@@ -16,8 +16,8 @@
 <script type="text/javascript">
 function deleteOk() {
     if(confirm("게시글을 삭제 하시 겠습니까 ? ")) {
-	    let query = "num=${dto.num}&${query}";
-	    let url = "${pageContext.request.contextPath}/album/delete?" + query;
+	    let query = "freeNum=${dto.freeNum}&${query}";
+	    let url = "${pageContext.request.contextPath}/freebbs/delete?" + query;
     	location.href = url;
     }
 }
@@ -30,19 +30,20 @@ function imageViewer(src) {
 	$("#myDialogModal").modal("show");
 }
 </script>
-
+		<div class="container mb-0 p-0 text-white freebbstop" style="background: url('${pageContext.request.contextPath}/resources/img/freebbs/유우니사막.png');">
+			<p>${freecateName}</p>
+			
+		</div>
 <div class="container">
 	<div class="body-container">	
-		<div class="body-title">
-			<h3><i class="bi bi-images"></i> 포토 앨범 </h3>
-		</div>
+
 		
 		<div class="body-main">
 
 			<table class="table mb-0">
 				<thead>
 					<tr>
-						<td colspan="2" align="center">
+						<td colspan="2" align="center" style="font-size: 15px; font-weight: bold;">
 							${dto.subject}
 						</td>
 					</tr>
@@ -51,7 +52,7 @@ function imageViewer(src) {
 				<tbody>
 					<tr>
 						<td width="50%">
-							이름 : ${dto.userName}							
+							작성자 : ${dto.userId}							
 						</td>
 						<td align="right">
 							${dto.reg_date}
@@ -63,9 +64,9 @@ function imageViewer(src) {
 							<div class="row row-cols-6 img-box">
 								<c:forEach var="vo" items="${listFile}">
 									<div class="col p-1">
-										<img src="${pageContext.request.contextPath}/uploads/freebbs/${vo.saveFilename}"
+										<img src="${pageContext.request.contextPath}/uploads/Board/${vo.saveFilename}"
 											class="img-thumbnail w-100 h-100" style="max-height: 130px;"
-											onclick="imageViewer('${pageContext.request.contextPath}/uploads/freebbs/${vo.saveFilename}');">
+											onclick="imageViewer('${pageContext.request.contextPath}/uploads/Board/${vo.saveFilename}');">
 									</div>
 								</c:forEach>
 							</div>
@@ -82,7 +83,7 @@ function imageViewer(src) {
 						<td colspan="2">
 							이전글 :
 							<c:if test="${not empty preReadDto}">
-								<a href="${pageContext.request.contextPath}/freebbs/article?${query}&num=${preReadDto.num}">${preReadDto.subject}</a>
+								<a href="${pageContext.request.contextPath}/freebbs/article?${query}&freeNum=${preReadDto.freeNum}">${preReadDto.subject}</a>
 							</c:if>
 						</td>
 					</tr>
@@ -90,7 +91,7 @@ function imageViewer(src) {
 						<td colspan="2">
 							다음글 :
 							<c:if test="${not empty nextReadDto}">
-								<a href="${pageContext.request.contextPath}/album/article?${query}&num=${nextReadDto.num}">${nextReadDto.subject}</a>
+								<a href="${pageContext.request.contextPath}/freebbs/article?${query}&freeNum=${nextReadDto.freeNum}">${nextReadDto.subject}</a>
 							</c:if>
 						</td>
 					</tr>
@@ -100,7 +101,7 @@ function imageViewer(src) {
 			<table class="table table-borderless">
 				<tr>
 					<td width="50%">
-						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/update?num=${dto.num}&page=${page}';">수정</button>
+						<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/freebbs/update?freeNum=${dto.freeNum}&page=${page}';">수정</button>
 		    			<button type="button" class="btn btn-light" onclick="deleteOk();">삭제</button>
 					</td>
 					<td class="text-end">

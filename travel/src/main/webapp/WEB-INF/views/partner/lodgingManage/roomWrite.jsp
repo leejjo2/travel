@@ -333,7 +333,7 @@ $(function(){
 							<td colspan="3">
 								<div class="row">
 									<div class="col-sm-4 pe-1">
-										<input type="checkbox" name="roomCheck" value="무료 Wi-Fi"> 무료 Wi-Fi
+										<input type="checkbox" name="roomCheck" value="무료 Wi-Fi"> 무료 WI-FI
 									</div>
 									<div class="col-sm-4 pe-1">
 										<input type="checkbox" name="roomCheck" value="금연"> 금연

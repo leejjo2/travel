@@ -78,8 +78,8 @@
 			<if test="hashtag != null and hashtag != ''">
 				AND (INSTR(hashtag, #{hashtag}) &gt; 0)
 			</if>
-			<if test="period != 0">
-				AND ( period = #{period} )
+			<if test="period != null and period != ''">
+				AND ( INSTR(period, #{period}) &gt; 0 )
 			</if>
 		</where>
 	</select>
@@ -110,7 +110,7 @@
 						AND (INSTR(hashtag, #{hashtag}) &gt; 0)
 					</if>
 					<if test="period != null and period != ''">
-						AND ( period = #{period} )
+						AND ( INSTR(period, #{period}) &gt; 0 )
 					</if>
 				</where>
 				ORDER BY ac.courseNum DESC

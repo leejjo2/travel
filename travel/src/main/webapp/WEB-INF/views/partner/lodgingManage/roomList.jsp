@@ -56,7 +56,7 @@
 					<div class="hotel py-2 px-2 pb-4 border-bottom">
 						<div class="row">
 							<div class="col-lg-3">
-								<img src="" alt="" class="room-img">
+								<img src="${pageContext.request.contextPath}/uploads/room/" alt="방 이미지" class="room-img">
 							</div>
 							<div class="col-lg-9">
 								<div class="d-md-flex align-items-md-center">

@@ -276,9 +276,9 @@ function ajaxFun(url, method, query, dataType, fn) {
 								<td> 
 									<div class="img-box">
 										<c:forEach var="vo" items="${listFile}">
-											<img src="${pageContext.request.contextPath}/uploads/partner/${vo.saveFilename}"
+											<img src="${pageContext.request.contextPath}/uploads/hotel/${vo.hotelSaveFilename}"
 												class="delete-img"
-												data-fileNum="${vo.imageFileNum}">
+												data-fileNum="${vo.hotelImageFileNum}">
 										</c:forEach>
 									</div>
 								</td>
@@ -348,7 +348,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 	        },
 			language: 'ko',
 			ckfinder: {
-		        uploadUrl: '${pageContext.request.contextPath}/image/upload' // 업로드 url (post로 요청 감)
+		        uploadUrl: '${pageContext.request.contextPath}/partner/lodgingImage/upload' // 업로드 url (post로 요청 감)
 		    }
 		})
 		.then( editor => {

@@ -19,12 +19,13 @@ public interface BoardService {
 	
 	public void updateBoard(Board dto, String pathname) throws Exception;
 	
-	public void deleteBoard(int num, String pathname) throws Exception;
+	public void deleteBoard(int freeNum, String pathname) throws Exception;
 	
 	public void insertFile(Board dto) throws Exception;
 	public List<Board> listFile(int freeNum);
 	public Board readFile(int freeFileNum);
 	public void deleteFile(Map<String, Object> map) throws Exception;
+	public void updateHitCount(int freeNum) throws Exception;
 	
 	
 	public void insertBoardLike(Map<String, Object> map) throws Exception;

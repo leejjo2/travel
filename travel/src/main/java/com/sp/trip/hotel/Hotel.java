@@ -23,9 +23,16 @@ public class Hotel {
 	private int roomBed;
 	private int roomMen;
 	private String roomOption;
-	
+
 	private String partnerName;
 	
+	// 숙소이미지 테이블
+	private int hotelImageFileNum;
+	private String hotelSaveFilename;
+	
+	// 방이미지 테이블
+	private int roomImageFileNum;
+	private String roomSaveFilename;
 	
 	public int getHotelNum() {
 		return hotelNum;
@@ -123,5 +130,28 @@ public class Hotel {
 	public void setPartnerName(String partnerName) {
 		this.partnerName = partnerName;
 	}
-	
+	public int getHotelImageFileNum() {
+		return hotelImageFileNum;
+	}
+	public void setHotelImageFileNum(int hotelImageFileNum) {
+		this.hotelImageFileNum = hotelImageFileNum;
+	}
+	public String getHotelSaveFilename() {
+		return hotelSaveFilename;
+	}
+	public void setHotelSaveFilename(String hotelSaveFilename) {
+		this.hotelSaveFilename = hotelSaveFilename;
+	}
+	public int getRoomImageFileNum() {
+		return roomImageFileNum;
+	}
+	public void setRoomImageFileNum(int roomImageFileNum) {
+		this.roomImageFileNum = roomImageFileNum;
+	}
+	public String getRoomSaveFilename() {
+		return roomSaveFilename;
+	}
+	public void setRoomSaveFilename(String roomSaveFilename) {
+		this.roomSaveFilename = roomSaveFilename;
+	}
 }

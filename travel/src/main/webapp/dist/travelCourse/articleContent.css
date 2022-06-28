@@ -1707,7 +1707,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .titleType1 .tit span{display:inline-block;width:58px;line-height:28px;border-radius: 50px;color:#fff;font-size:14px;vertical-align: 7px;margin-left:12px;}
 .titleType1 .titTypeWrap h3{padding:25px 0 0;font-weight:700;word-break: keep-all;font-size:28px;color:#333;letter-spacing: -1px;}
 .titleType1 .area_address{display:inline-block;padding-top:10px;}
-.titleType1 .area_address span{float:left;font-size:16px;color:#666;}
+.titleType1 .area_address span{font-family:"맑은고딕"; float:left;font-size:16px;color:#666;}
 .titleType1 .area_address span + span:before{content:'';display:inline-block;width:1px;height:14px;background:#ccc;margin:0 10px;vertical-align: -2px;}
 .titleType1 .area_address .status1, .titleType1 .area_address .status2{display: inline-block;width: 55px;line-height: 25px;border-radius: 50px;color: #fff;font-size: 14px;margin-left:8px;}
 .titleType1 .area_address .status1:before, .titleType1 .area_address .status2:before{display:none;}

@@ -20,6 +20,36 @@ CREATE TABLE member (
     ,CONSTRAINT pk_member_userId PRIMARY KEY(userId)
 );
 
+-- 멤버 상태 테이블
+CREATE TABLE memberState (
+    num           NUMBER  PRIMARY KEY
+    ,userId        VARCHAR2(50) NOT NULL
+    ,stateCode   NUMBER(3) NOT NULL
+    ,memo        VARCHAR2(1000) NOT NULL
+    ,reg_date    DATE  DEFAULT SYSDATE
+    ,registerId   VARCHAR2(50) NOT NULL
+    ,FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
+    ,FOREIGN KEY(registerId) REFERENCES member(userId) ON DELETE CASCADE
+);
+
+CREATE SEQUENCE memberState_seq
+   INCREMENT BY 1
+   START WITH 1
+   NOMAXVALUE
+   NOCYCLE
+   NOCACHE;
+   
+  -- stateCode
+  -- 0 : 해제
+  -- 1 : 패스워드 5회이상 실패
+  -- 2 : 불법적인 방법으로 로그인
+  -- 3 : 불건전 게시물 등록
+  -- 4 : 다른 유저 비방
+  -- 5 : 타계정 도용
+  -- 6 : 기타 약관 위반
+  -- 7 : 1년이상 로그인하지 않음
+  -- 10 : 퇴사
+
 
 ----------------------------------
 

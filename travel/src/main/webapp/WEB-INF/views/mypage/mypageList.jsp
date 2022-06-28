@@ -80,7 +80,7 @@
 						<div class="photo">
 							<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
 						</div>
-						<strong class="userName">김수인</strong>
+						<strong class="userName">${sessionScope.member.userName}</strong>
 					</div>
 				</a>
 			</li>
@@ -92,19 +92,19 @@
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="../mypage/mypage_list_fav.do">
+				<a href="${pageContext.request.contextPath}/mypage/myScrapList">
 					<strong>스크랩</strong>
-					<p class="number" id="favoCnt">0</p>
+					<p class="number" id="favoCnt">${scrapCount}</p>
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="../mypage/mypage_list_cos.do">
+				<a href="${pageContext.request.contextPath}/mypage/myLikeList">
 					<strong>좋아요</strong>
-					<p class="number" id="cosCnt">1</p>
+					<p class="number" id="cosCnt">${likeCount}</p>
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="../mypage/mypage_list_reply.do">
+				<a href="#">
 					<strong>주문내역</strong>
 					<p class="number" id="commentCnt">0</p>
 				</a>
@@ -112,43 +112,21 @@
 			<li class="btn_myList">
 				<a href="${pageContext.request.contextPath}/withpartner/join">
 					<strong>파트너 신청</strong>
-					<p class="number" id="jikimiCnt">0</p>
+					<p class="number" id="commentCnt"><i class="bi bi-arrow-right"></i></p>
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="../mypage/mypage_list_qna.do">
+				<a href="#">
 					<strong>Q&amp;A</strong>
 					<p class="number" id="qnaCnt">0</p>
 				</a>
 			</li>
-			<!--
-			<li class="btn_myList">
-				<a href="/mypage/mypage_list_coupon.do">
-					<strong>여행가는 달</strong>
-					<p class="number" id="cpCnt"></p>
-				</a>
-			</li>
-
-			<li class="btn_myList">
-				<a href="">
-					<strong>쿠폰</strong>
-					<p class="number">0</p>
-				</a>
-			</li>
-
-	 			<li class="btn_myList"> 
-	 				<a href="/mypage/mypage_list_event.do"> 
-	 					<strong>이벤트</strong> 
-	 					<p class="number" id="eventCnt"></p> 
-	 				</a> 
-	 			</li> 
- 			 -->
-	 			<li class="btn_myList" id="stamp"> 
-	 				<a href="/mypage/mypage_list_stamp.do"> 
-	 					<strong>발도장</strong> 
-	 					<p class="number" id="stampCnt">0</p> 
-	 				</a> 
-	 			</li> 
+ 			<li class="btn_myList" id="stamp"> 
+ 				<a href="#"> 
+ 					<strong>발도장</strong> 
+ 					<p class="number" id="stampCnt">0</p> 
+ 				</a> 
+ 			</li> 
 		</ul>
 		<!-- //배너 -->
 
