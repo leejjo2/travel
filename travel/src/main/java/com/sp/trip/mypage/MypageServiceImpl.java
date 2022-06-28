@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.trip.activity.Reserve;
 import com.sp.trip.common.dao.CommonDAO;
 import com.sp.trip.travelCourse.TravelCourse;
 
@@ -49,6 +50,28 @@ public class MypageServiceImpl implements MypageService {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public List<Reserve> readOrderDetail(Map<String, Object> map) throws Exception {
+		List<Reserve> list = null;
+		try {
+			list = dao.selectList("mypage.listOrderDatail", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int orderCount(String userId) throws Exception {
+		int result = 0;
+		try {
+			result = dao.selectOne("mypage.orderCount", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

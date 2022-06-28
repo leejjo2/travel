@@ -2240,7 +2240,7 @@ input[type="radio"].commonRadio:focus + label {outline: 1px dotted #000; outline
 .relation_cos ul li .tit span{font-family: 맑은고딕;display:block;position:absolute; left:15px;right:15px; top:50%;transform: translateY(-50%);letter-spacing:-0.5px;line-height: 23px;display:block;overflow:hidden;display: -webkit-box;max-height: 46px;word-break: keep-all;text-overflow: ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 
 .relation_cos .cos_wrap ul li a:after{content:'';display:block;width:100%;height:100%;position:absolute;left:0;top:0;background:rgba(0,0,0,.3);border-radius: 10px;}
-.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background:rgb(13, 202, 204 / 0.5);}
+.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background: rgba(13,202,240,.8);}
 .relation_cos .swiper-container{position: static;}
 /*.relation_cos .swiper-container:after{position:absolute;left:30px;right:30px;bottom:80px;content:'';display:block;width:auto;height:2px;background:#e2e1e1;}*/
 .relation_cos .cos_wrap .swiper-button-next, .relation_cos .cos_wrap .swiper-button-prev{display:none;}

@@ -26,4 +26,23 @@
 	) WHERE rnum &gt;= #{start}
 </select>
 
+<select id="listOrderDatail" parameterType="map" resultType="com.sp.trip.activity.Reserve">
+    SELECT * FROM (
+		    SELECT ROWNUM rnum, tb.* FROM (
+		        	select a.reserveNum,  TO_CHAR(payDate, 'YYYY-MM-DD') payDate, payAmount, 
+                        TO_CHAR(usingDate, 'YYYY-MM-DD') usingDate, mileageUse, usingStatus, activityName
+                    from activityPay a
+                    JOIN activityReserve b ON a.reserveNum = b.reserveNum
+                    JOIN activityReserveDetail c ON b.reserveNum = c.reserveNum
+                    JOIN activityDetail d ON c.DetailNum = d.DetailNum
+                    JOIN activity e ON d.activityNum = e.activityNum
+                    WHERE userId = #{userId}
+  		 	ORDER BY payDate DESC 
+		    ) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+</select>
+
+<select id="orderCount" parameterType="String" resultType="Integer">
+SELECT NVL(COUNT(*), 0) FROM activityReserve WHERE userId = #{userId}
+</select>
 </mapper>

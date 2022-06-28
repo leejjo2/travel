@@ -6,7 +6,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/travelCourse/articleCommon.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/travelCourse/articleContent.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/travelCourse/swiper.min.css" type="text/css">
+<style type="text/css">
+.relation_cos .cos_wrap ul li.on1 a:after, .relation_cos .cos_wrap ul li:hover a:after{background: rgba(13,202,240,.8);}
 
+</style>
 <script type="text/javascript">
 $(function(){
 	$(".swiper-slide").eq(0).addClass("swiper-slide-active");
@@ -34,6 +37,7 @@ $(document).ready(function() {
 });
 
 </script>
+
 
 <div id="contents">
 	<div class="titleType1">
