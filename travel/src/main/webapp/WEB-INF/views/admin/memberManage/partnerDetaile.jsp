@@ -49,7 +49,6 @@
 			<td class="ps-5">
 				<select class="form-select" name="partnerStatus" id="partnerStatus">
 					<option value="">::승인상태::</option>
-					<option value="요청완료">요청완료</option>
 					<option value="승인거절">승인거절</option>
 					<option value="승인완료">승인완료</option>
 				</select>

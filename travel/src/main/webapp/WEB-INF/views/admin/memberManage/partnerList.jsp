@@ -146,7 +146,7 @@ function memberStateDetaileView() {
 	<div class="right_col" role="main" style="min-height: 4645px;">
 	<h1>Admin Page</h1>
 	    <div class="body-title">
-			<h2><i class="icofont-users"></i> 회원 관리 </h2>
+			<h2><i class="icofont-users"></i> 판매자 관리 </h2>
 	    </div>
 	    
 	    <div class="body-main ms-30">

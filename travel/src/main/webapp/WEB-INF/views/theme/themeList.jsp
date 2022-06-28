@@ -423,10 +423,13 @@ function callAdminCourseList() {
 							<i class="fa-solid fa-shield-dog"></i> 테마별 코스 추천
 						</span>
 					</div>
-					<span class="col-2" style="text-align: center;"><button
-							type="button" class="btn red" style="background: #0dcaf0;"
-							onclick="location.href='${pageContext.request.contextPath}/theme/write;'">글
-							등록하기</button></span>
+					<c:if test="${sessionScope.member.membership>50}">
+
+						<span class="col-2" style="text-align: center;"><button
+								type="button" class="btn red" style="background: #0dcaf0;"
+								onclick="location.href='${pageContext.request.contextPath}/theme/write;'">글
+								등록하기</button></span>
+					</c:if>
 				</div>
 				<div class="card p-4 mt-3 mb-3 bg-info">
 					<div class="justify-content-center px-5">
