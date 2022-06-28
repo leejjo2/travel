@@ -605,6 +605,14 @@ CREATE TABLE roomImage (
 		REFERENCES roomInfo(roomNum)
 );
 
+-- 방 이미지 시퀀스
+CREATE SEQUENCE roomImage_seq
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE;
+
 -- 숙소 예약
 CREATE TABLE hotelReservation (
 	ReserveNum NUMBER PRIMARY KEY
