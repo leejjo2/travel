@@ -128,7 +128,7 @@ function payment(){
 
 function insertReserve() {
 	var f = document.reserveForm;
-	f.action="${pageContext.request.contextPath}/hotel/insertHotelReserve";
+	f.action="${pageContext.request.contextPath}/hotel/payComplete";
 	f.submit();
 }
 </script>
@@ -159,7 +159,7 @@ function insertReserve() {
 						<div class="css-6oivj6--SectionContainer-style--body">
                             <div class="css-1ngshdk--ProductInfo-style--container">
                                 <div class="css-131e4uu--ProductInfoSummary-style--titleWrapper">
-                                    <div class="css-13kuit9--ProductInfoSummary-style--imageWrapper"><img src="${pageContext.request.contextPath}/uploads/room/" alt="방 이미지" class="css-1pgwovl--ProductInfoSummary-style--image"></div>
+                                    <div class="css-13kuit9--ProductInfoSummary-style--imageWrapper"><img src="${pageContext.request.contextPath}/uploads/hotel/${rdto.roomSaveFilename}" alt="방 이미지" class="css-1pgwovl--ProductInfoSummary-style--image"></div>
                                     <div class="css-1m4b4kf--ProductInfoSummary-style--textWrapper">
                                         <h3 class="css-b9w54p--ProductInfoSummary-style--title">${dto.hotelName}</h3>
                                         <div class="css-1igu7h--ProductInfoSummary-style--schedule"><time class="css-1xidlmi--ProductInfoSummary-style--startDateTime">2022년 07월 26일 (화) ~</time><time>2022년 07월 27일 (수), </time><span>1박</span></div>

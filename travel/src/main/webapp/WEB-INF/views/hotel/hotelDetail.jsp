@@ -25,7 +25,7 @@
                             <div class="StayDetailHeaderDesktop-module__hashtag--Z2nXb">
                                 <p class="StayHashTag-module__hashtag--iVCqy">4성급</p>
                             </div><a href="/accommodations/stays/1083146#StayDetail__review">
-                                <div class="StayDetailHeaderDesktop-module__review--OFknh css-sbks2i--ReviewRatingCount--Container e1qwal8s3"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_not_filled_gray_200.svg" alt="icon">
+                                <div class="StayDetailHeaderDesktop-module__review--OFknh css-sbks2i--ReviewRatingCount--Container e1qwal8s3"><img class="css-labkkb" src="${pageContext.request.contextPath}/uploads/hotel/${dto.hotelSaveFilename}" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_filled_blue_400.svg" alt="icon"><img class="css-labkkb" src="https://dffoxz5he03rp.cloudfront.net/icons/ic_ratingstar_14x14_not_filled_gray_200.svg" alt="icon">
                                 </div>
                             </a>
                             <div class="StayDetailHeaderDesktop-module__meta--hynTx">
@@ -106,7 +106,7 @@
                             <section class="StayRoomDesktop-module__container--oJm9D layout-module__unset-min-height--ApB_X">
                                 <div class="StayRoomDesktop-module__roomSummary--YACv2">
                                     <div class="StayRoomDesktop-module__roomImages--cnXOR">
-                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="방이미지" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" data-src="">
+                                        <div class="LazyImageLoader-module__container--xHxKX"><img alt="방이미지" class="LazyImageLoader-module__image--FB3yN MRT-LazyImageLoader__indicator LazyImageLoader-module__visible--n47Jt StayRoomDesktop-module__image--B2J58" src="${pageContext.request.contextPath}/uploads/hotel/${rdto.roomSaveFilename}">
                                             <div class="LazyImageLoader-module__placeholder--iH82U StayRoomDesktop-module__image--B2J58"></div>
                                         </div>
                                     </div>

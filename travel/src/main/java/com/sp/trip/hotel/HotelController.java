@@ -150,7 +150,7 @@ public class HotelController {
 	}
 	
 	// 완료
-	@RequestMapping(value = "completePage", method = RequestMethod.GET)
+	@RequestMapping(value = "payComplete", method = RequestMethod.GET)
 	public String reserveComplete(
 			@RequestParam int reserveNum,
 			Model model) throws Exception {

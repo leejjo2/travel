@@ -318,9 +318,9 @@ $(function(){
 								<td> 
 									<div class="img-box">
 										<c:forEach var="vo" items="${listFile}">
-											<img src="${pageContext.request.contextPath}/uploads/room/${vo.saveFilename}"
+											<img src="${pageContext.request.contextPath}/uploads/hotel/${vo.roomSaveFilename}"
 												class="delete-img"
-												data-fileNum="">
+												data-fileNum="${vo.roomImageFileNum}">
 										</c:forEach>
 									</div>
 								</td>

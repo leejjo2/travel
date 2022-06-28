@@ -220,7 +220,7 @@ public class LodgingManageController {
 	public String roomWriteSubmit(
 			LodgingManage dto, HttpSession session) throws Exception {
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "room";
+		String pathname = root + "uploads" + File.separator + "hotel";
 		
 		SessionInfo info = (SessionInfo)session.getAttribute("member");
 		
@@ -263,7 +263,7 @@ public class LodgingManageController {
 			HttpSession session) throws Exception {
 		
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "room";
+		String pathname = root + "uploads" + File.separator + "hotel";
 			
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		String userId = info.getUserId();
@@ -283,7 +283,7 @@ public class LodgingManageController {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 
 		String root = session.getServletContext().getRealPath("/");
-		String pathname = root + "uploads" + File.separator + "room";
+		String pathname = root + "uploads" + File.separator + "hotel";
 		
 		service.deleteRoom(roomNum, info.getUserId(), pathname);
 		

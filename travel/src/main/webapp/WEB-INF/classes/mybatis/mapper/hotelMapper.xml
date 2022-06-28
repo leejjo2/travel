@@ -41,10 +41,12 @@
 	</select>
 	
 	<select id="readRoom" parameterType="Integer" resultType="com.sp.trip.hotel.Hotel">
-		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelNum, roomOption, roomBed, p.partnerName
+		SELECT r.roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelNum, roomOption, roomBed, p.partnerName,
+		imageFileNum roomImageFileNum, saveFilename roomSaveFilename
 		FROM roomInfo r
 		JOIN hotel h ON h.hotelNum = r.hotelNum
 		JOIN partner p ON p.partnerNum = h.partnerNum
+		LEFT JOIN roomImage ri ON r.roomNum = ri.roomNum
         WHERE h.hotelNum = #{hotelNum}
 	</select>
 

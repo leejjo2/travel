@@ -22,6 +22,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	public void insertHotel(LodgingManage dto, String pathname) throws Exception {
 		try {
 
+			int seq = dao.selectOne("lodgingManage.hotelSeq");
+			dto.setHotelNum(seq);
 			dao.insertData("lodgingManage.insertHotel", dto);
 			
 			// 파일 업로드
@@ -181,7 +183,26 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertRoom(LodgingManage dto, String pathname) throws Exception {
 		try {
+			int roomSeq = dao.selectOne("lodgingManage.roomSeq");
+			dto.setRoomNum(roomSeq);
+			
 			dao.insertData("lodgingManage.insertRoom", dto);
+			
+			if (!dto.getSelectFile().isEmpty()) {
+				for (MultipartFile mf : dto.getSelectFile()) {
+					String roomImageFileNum = fileManager.doFileUpload(mf, pathname);
+					if (roomImageFileNum == null) {
+						continue;
+					}
+
+					dto.setRoomSaveFilename(roomImageFileNum);
+
+					insertRoomFile(dto);
+				}
+			}
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
@@ -201,8 +222,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 		return result;
 	}
 	
-	
-	// 방
+
 	@Override
 	public List<LodgingManage> listRoom(String partnerId) {
 		List<LodgingManage> list = null;
@@ -232,8 +252,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void updateRoom(LodgingManage dto, String userId, String pathname) throws Exception {
 		try {
-			dao.updateData("lodgingManage.updateRoom", dto);
-			
 			if (!dto.getSelectFile().isEmpty()) {
 				for (MultipartFile mf : dto.getSelectFile()) {
 					String roomImageFileNum = fileManager.doFileUpload(mf, pathname);
@@ -243,7 +261,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 
 					dto.setRoomSaveFilename(roomImageFileNum);
 
-					insertRoomFile(dto);
+					dao.updateData("lodgingManage.updateRoom", dto);
+					
 				}
 			}
 		} catch (Exception e) {

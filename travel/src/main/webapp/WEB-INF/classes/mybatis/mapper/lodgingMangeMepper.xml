@@ -24,7 +24,7 @@
 	<insert id="insertHotel" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		INSERT INTO hotel(hotelNum, partnerNum, hotelName, hotelIntro,hotelNumber, hotelZip, hotelAddr1, hotelAddr2
 	) VALUES (
-		hotel_seq.NEXTVAL, 
+		#{hotelNum}, 
 		(SELECT PARTNERNUM  FROM PARTNER WHERE PARTNERID = #{partnerId}), 
 		#{hotelName}, 
 		#{hotelIntro},
@@ -34,10 +34,6 @@
 		#{hotelAddr2}
 	)
 	</insert>
-	
-	<select id="hotelNum" resultType="Integer" >
-		SELECT NVL(MAX(HOTELNUM),0) + 1 AS HOTELNUM FROM HOTEL 
-	</select>
 	
 	<select id="dataCount" parameterType="map" resultType="Integer">
 		SELECT NVL(COUNT(*), 0)
@@ -72,7 +68,7 @@
 	
 	<!-- 숙소파일 -->
 	<insert id="insertFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		INSERT INTO hotelImage(imageFileNum AS hotelImageFileNum, hotelNum, saveFilename AS hotelSaveFilename)
+		INSERT INTO hotelImage(imageFileNum, hotelNum, saveFilename)
 		VALUES (hotelImage_seq.NEXTVAL, #{hotelNum}, #{hotelSaveFilename})
 	</insert>
 	
@@ -108,7 +104,7 @@
 	<insert id="insertRoom" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
 		INSERT INTO roomInfo(roomNum, hotelNum, roomName, roomPrice, roomHo, roomMen, roomOption, roomBed
 	) VALUES (
-		roomInfo_seq.NEXTVAL, 
+		#{roomNum}, 
 		#{hotelNum}, 
 		#{roomName}, 
 		#{roomPrice},
@@ -125,10 +121,12 @@
 	</select>
 	
 	<select id="listRoom" parameterType="map" resultType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		SELECT roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelName, h.hotelNum, h.partnerNum, roomOption, roomBed
+		SELECT r.roomNum, roomName, roomPrice, roomHo, roomMen, h.hotelName, h.hotelNum, h.partnerNum, roomOption, roomBed,
+		imageFileNum roomImageFileNum, saveFilename roomSaveFilename
 		FROM roomInfo r
 		JOIN hotel h ON h.hotelNum = r.hotelNum
 		JOIN partner p ON p.partnerNum = h.partnerNum
+		LEFT JOIN roomImage ri ON r.roomNum = ri.roomNum
 		WHERE p.partnerId = #{partnerId}
 	</select>
 	
@@ -152,7 +150,7 @@
 	
 	<!-- 방 파일 -->
 	<insert id="insertRoomFile" parameterType="com.sp.trip.partner.lodgingManage.LodgingManage">
-		INSERT INTO roomImage(imageFileNum AS roomImageFileNum, roomNum, saveFilename AS roomSaveFilename)
+		INSERT INTO roomImage(imageFileNum, roomNum, saveFilename)
 		VALUES (roomImage_seq.NEXTVAL, #{roomNum}, #{roomSaveFilename})
 	</insert>
 	
