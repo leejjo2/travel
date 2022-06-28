@@ -200,5 +200,16 @@ public class MemberManageServiceImpl implements MemberManageService {
 			throw e;
 		}
 	}
+	@Override
+	public void updatePartnerMembership(Member dto) throws Exception {
+		try {
+			dao.updateData("memberManage.updatePartnerMembership", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
+	
 
 }

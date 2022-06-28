@@ -24,22 +24,9 @@ $(function() {
 <div id="contents">
 	<!-- 상단 -->
 	<div class="titleType1">
-		<div class="fes_status">
-			<span class="status2">${status}</span>
-		</div>
-		<h2 id="topTitle">${title}</h2>
-		<div class="area_address" id="topAddr">
-			<span>${sigungu}</span><span>${eventstartdate} ~ ${eventenddate}</span>
-		</div>
 
-		<!-- 캐치플레이스 -->
-		<div class="dbDetail titBg" id="topCp">
-			<div class="titTypeWrap">
-				<h3>
-					<em>초록 자연에서의 휴식과 토마토를 활용한 다양한 체험을 만나보세요!</em>
-				</h3>
-			</div>
-		</div>
+		<h2 id="topTitle">${title}</h2>
+
 		<!-- //캐치플레이스 -->
 
 		<!-- 조회수, 공유하기 -->
@@ -76,9 +63,6 @@ $(function() {
 		<div id="galleryGo">
 			<h3 class="blind">사진보기</h3>
 			<div class="photo_gallery">
-				<div class="festivalBanner">
-					<a href="${pageContext.request.contextPath}/festival/list">지금 핫한 축제가 궁금해?</a>
-				</div>
 				<!-- 공사 사진 영역 -->
 				<div class="swiper-container">
 					<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
@@ -144,20 +128,11 @@ $(function() {
 					<div class="inr_wrap" style="overflow: visible; height: auto;">
 						<div class="inr">
 							<ul>
-								<li><strong>시작일</strong><span>${eventstartdate}</span></li>
-								<li><strong>종료일</strong><span>${eventenddate}</span></li>
-								<li>
-									<strong>전화번호</strong>
-									<span class="pc">${sponsor1tel}</span>
-								</li>
+								<li><strong>주소</strong><span>${addr1}${addr2}</span></li>
 								<li>
 									<strong>홈페이지</strong>
 									<span>${homepage}</span>
 								</li>
-								<li><strong>주소</strong><span>${addr}</span></li>
-								<li><strong>행사장소</strong><span>${eventplace}</span></li>
-								<li><strong>주최</strong><span>${sponsor1}</span></li>
-								<li><strong>주관</strong><span>${sponsor2}</span></li>
 							</ul>
 						</div>
 					</div>

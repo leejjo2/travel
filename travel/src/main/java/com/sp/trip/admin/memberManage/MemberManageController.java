@@ -268,19 +268,27 @@ public class MemberManageController {
 
 		return "admin/memberManage/partnerDetaile";
 	}
+
 	// 회원 상세정보 수정
-		@RequestMapping(value = "updatePartnerState", method = RequestMethod.POST)
-		@ResponseBody
-		public Map<String, Object> updatePartnerState(Member dto) throws Exception {
+	@RequestMapping(value = "updatePartnerState", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> updatePartnerState(Member dto) throws Exception {
 
-			try {
-					service.updatePartnerStatus(dto);
-
-			} catch (Exception e) {
+		try {
+			service.updatePartnerStatus(dto);
+			if (dto.getPartnerStatus().equals("승인완료")) {
+				dto.setMembership(33);
+				service.updatePartnerMembership(dto);
+			} else if (dto.getPartnerStatus().equals("승인거절")) {
+				dto.setMembership(1);
+				service.updatePartnerMembership(dto);
 			}
 
-			Map<String, Object> model = new HashMap<>();
-			return model;
+		} catch (Exception e) {
 		}
+
+		Map<String, Object> model = new HashMap<>();
+		return model;
+	}
 
 }

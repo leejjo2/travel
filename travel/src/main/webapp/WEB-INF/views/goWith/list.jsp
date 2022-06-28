@@ -6,6 +6,71 @@
 <link href="${pageContext.request.contextPath}/dist/goWith/css/style.css" rel="stylesheet"/>
 
 
+<script type="text/javascript">
+$(function(){
+	$("#btnStatus1").click(function(){
+		location.href = "${pageContext.request.contextPath}/gowith/list?recruit_status=N";		
+	});
+});
+
+$(document).on('click', '#btnJoin', function(e){
+	var offset = $("#divider").offset(); 
+	$("html, body").animate({scrollTop: offset.top},100); 
+});
+	
+</script>
+
+<script type="text/javascript">
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data){
+			fn(data);
+		},
+		error:function(e) {
+			console.log(e.responseText);
+		}
+	});
+}
+
+$(function(){
+	$(".tabButtonType").click(function(){
+		var cityNum = $(this).attr("data-cityNum");
+				
+		let url = "${pageContext.request.contextPath}/gowith/cityList";
+		let query = "cityNum="+cityNum;
+		var out="";
+				
+		const fn = function(data){
+			for(var i=0; i<data.list.length; i++) {
+				var item = data.list[i];
+				console.log(data.list[i]);
+				var spotName = item.spotName;
+				var spotNum = item.spotNum;
+				
+               	out += "<div class='checkRadioBoxCircleType'>";	
+               	out += "<input type='radio' id='placeSelect"+ spotNum + "' name='spotNum' value='"+ spotNum + "'/>";
+               	out += "<label for='placeSelect"+ spotNum + "'>"; 
+               	out += "<div class='circle'>";
+               	out += "<div class='inside' ></div>";
+               	out += "</div>";
+               	out += "<p>"+spotName+"</p>";
+               	out += "</label>";
+               	out += "</div>";
+			}
+				
+			$(".spotList").html(out);
+		}; 
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+});
+</script>
+
+
             <div id="topImgDiv" class="topImg">
                 <div class="overlay"></div>
                 <div class="img">
@@ -52,56 +117,31 @@
                                     <div class="menu marginTopMd marginBottomMd">
                                         <ul>
                                         	<li>
-                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active">
-                                                	서울
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>                                       
-                                                    <div id="productTab1" class="tabButtonType tabButtonType1Active">
-                                                	경기
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>
-                                                    <div id="productTab2" class="tabButtonType tabButtonType1Active">
-                                                	인천
-                                                    <input type="hidden" name="product_name" value="M01">
-                                                    </div>  
+                                                	 <c:forEach var="vo" items="${listCity}">
+                                                	<div id="productTab0" class="tabButtonType tabButtonType1Active" data-cityNum="${vo.cityNum}">
+                                                	<input type="hidden" name="product_name" class="cityNum" value="${vo.cityNum}" ${vo.cityNum==dto.cityNum ? "selected='selected'":""} onclick="clickCity();">	
+                                                		${vo.cityName}
+                                             		</div>
+													</c:forEach>
+													
                                             </li>
                                         </ul>
                                     </div>	
                                     	
                                     	<div id="divProduct0" class="contentInsideType" style="display:block">
 	                                        <ul>  	
-	                                            <li>
+	                                            <li class="spotList">
+	                                                <c:forEach var="vo" items="${listSpot}">
 	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect0" name="place" value="M0101" onclick="checkProduct(this)">
-	                                                    <label for="placeSelect0">
+	                                                	<input type="radio" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""}/>
+	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
 	                                                        </div>
-	                                                        <p>종로구</p>
+	                                                        <p>${vo.spotName}</p>
 	                                                    </label>
 	                                                </div>
-	                                            </li>   	
-	                                            <li>
-	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect1" name="place" value="M0102" onclick="checkProduct(this)">
-	                                                    <label for="placeSelect1">
-	                                                        <div class="circle">
-	                                                            <div class="inside"></div>
-	                                                        </div>
-	                                                        <p>중구</p>
-	                                                    </label>
-	                                                </div>
-	                                            </li>              	
-	                                            <li>
-	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="checkbox" id="placeSelect2" name="place" value="M0103" onclick="checkProduct(this)">
-	                                                    <label for="placeSelect2">
-	                                                        <div class="circle">
-	                                                            <div class="inside"></div>
-	                                                        </div>
-	                                                        <p>동대문구</p>
-	                                                    </label>
-	                                                </div>
+	                                                </c:forEach>
 	                                            </li>             
 	                                        </ul>
 	                                    </div>
@@ -281,7 +321,7 @@
                             <ul>
                                 <li>
                                     <select id="searchGubun" class="selectBoxType1" name="gubun">
-		                                <option value="0" selected="">제목</option>
+		                                <option value="0" selected="">제목 </option>
 		                                <option value="1">글쓴이</option>
 		                                </select>
                                 </li>
@@ -293,40 +333,16 @@
                         
                         <div class="sortBox">
                             <select class="selectBoxType2" id="sort" name="sort" onchange="onchange_sort()">
-                                <option value="0" selected="">최신순 </option>
-                                <option value="1">매칭점수순</option>
+                                <option value="0" selected="">최신순</option>
+                                <option value="1">조회수순</option>
+                                
                             </select>
+                            
                             
                         </div>
                     </div>
                 </div>
-                <div id="searchMobileDiv" class="subHead marginTopMd marginBottomMd mobile" style="display: none;">
-                    <div class="left">
-                        <div class="searchBox searchInput">
-                            <ul>
-                                <li>
-                                	<select id="searchGubun2" class="selectBoxType1" name="gubun2">
-		                                <option value="0" selected="">제목</option>
-		                                <option value="1">글쓴이</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <input id="searchText2" type="text" class="textBoxType1" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){fn_searchText()}" value="">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div id="btnStatus2" class="tabButtonType1 tabButtonType2">진행중만 보기</div>
-                        
-                        <div class="sortBox">
-                            <select class="selectBoxType2" id="sort2" name="sort2" onchange="onchange_sort2()">
-                                <option value="0" selected="">최신순</option>
-                                <option value="1">매칭점수순</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+             
                 <c:forEach var="vo" items="${list}">
                 <ul>
                 <li>

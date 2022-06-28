@@ -20,4 +20,5 @@ public interface MemberManageService {
 	public List<Member> listPartner(Map<String, Object> map);
 	public Member readPartner(String userId);
 	public void updatePartnerStatus(Member dto) throws Exception;
+	public void updatePartnerMembership(Member dto) throws Exception;
 }

@@ -117,7 +117,7 @@ public class GoWithServiceImpl implements GoWithService {
 		if (saveFilename != null) {
 			if (dto.getImageFilename() != null && dto.getImageFilename().length() != 0) {
 				fileManager.doFileDelete(dto.getImageFilename(), pathname);
-			}
+			} 
 
 			dto.setImageFilename(saveFilename);
 		}
@@ -147,25 +147,57 @@ public class GoWithServiceImpl implements GoWithService {
 
 	@Override
 	public void insertReply(Reply dto) throws Exception {
-		// TODO Auto-generated method stub
+		try {
+			dao.insertData("goWith.insertReply", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 		
 	}
 
 	@Override
 	public List<Reply> listReply(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Reply> list = null;
+		
+		try {
+			list = dao.selectList("goWith.listReply", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
 	public int replyCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		
+		try {
+			result = dao.selectOne("goWith.replyCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public void updateReply(Map<String, Object> map) throws Exception {
+		try {
+			dao.updateData("goWith.updateReply", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override
 	public void deleteReply(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		
+		try {
+			dao.deleteData("goWith.deleteReply", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 }

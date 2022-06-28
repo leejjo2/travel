@@ -49,34 +49,11 @@
 			<td class="ps-5">
 				<select class="form-select" name="partnerStatus" id="partnerStatus">
 					<option value="">::승인상태::</option>
-					<option value="요청완료">요청완료</option>
 					<option value="승인거절">승인거절</option>
 					<option value="승인완료">승인완료</option>
 				</select>
 			</td>
 		</tr>
-<!-- 		<tr> -->
-<!-- 			<td class="wp-15 text-center bg-light">계정상태</td> -->
-<!-- 			<td class="ps-5"> -->
-<!-- 				<select class="form-select" name="stateCode" id="stateCode" onchange="selectStateChange()"> -->
-<!-- 					<option value="">::상태코드::</option> -->
-<%-- 					<c:if test="${dto.enabled==0}"> --%>
-<!-- 						<option value="0">잠금 해제</option> -->
-<%-- 					</c:if> --%>
-<!-- 					<option value="2">불법적인 방법으로 로그인</option> -->
-<!-- 					<option value="3">불건전 게시물 등록</option> -->
-<!-- 					<option value="4">다른 유저 비방</option> -->
-<!-- 					<option value="5">타계정 도용</option> -->
-<!-- 					<option value="6">기타 약관 위반</option> -->
-<!-- 				</select> -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td class="pe-7 text-center bg-light">메 모</td> -->
-<!-- 			<td class="ps-5"> -->
-<!-- 				<input type="text" name="memo" id="memo" class="form-control" style="width: 95%;"> -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
 	</table>
 	
 	<input type="hidden" name="userId" value="${dto.userId}">

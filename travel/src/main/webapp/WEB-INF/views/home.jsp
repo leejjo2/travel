@@ -5,10 +5,58 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/common.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/main2.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/mainmo.css">
 
+<style>
+.imtext2 {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    left: 15px;
+    z-index: 1;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 87%;
+}
+.imtext5 {
+    position: absolute;
+    top: 54px;
+    left: 15px;
+    z-index: 1;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+}
 
+.imtext3 {
+    position: absolute;
+    top: 175px;
+    left: 15px;
+    z-index: 1;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.imtext4 {
+    position: absolute;
+    top: 205px;
+    left: 15px;
+    z-index: 1;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+}
+</style>
 
 
 <div class="swiper-container" id="mainTab">
@@ -31,7 +79,7 @@
 					<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
 						<div class="swiper-wrapper" id="curationlist" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
 							<div class="swiper-slide swiper-slide-duplicate" onclick="" >
-								<a href="">
+								<a href="#">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/산.jpg');"></span>
 									</div>
@@ -40,21 +88,21 @@
 							</div>
 							
 							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" onclick="">
-								<a href="">
+								<a href="#">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/바다.jpg');"></span>
 									</div>
 									<strong>바다 코스</strong></a>
 							</div>
 							<div class="swiper-slide swiper-slide-active" onclick="">
-								<a href="">
+								<a href="#">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/도시.jpg');"></span>
 									</div>
 									<strong>도시 코스</strong></a>
 							</div>
 							<div class="swiper-slide swiper-slide-next" onclick="">
-								<a href="">
+								<a href="#">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/나들이.jpg');"></span>
 									</div>
@@ -63,14 +111,12 @@
 							
 							
 							<div class="swiper-slide" onclick="">
-								<a href="">
+								<a href="#">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/액티비티.jpg');"></span>
 									</div>
 									<strong>액티비티 코스</strong></a>
 							</div>
-							
-							
 						</div>
 						
 						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -137,14 +183,46 @@
 										<li class="swiper-slide swiper-slide-next"
 											data-swiper-slide-index="2" style="width: 465px;">
 											<ul>
-												<%for(int i=0; i<4; i++) {%>
 												<li>
-													<a href="" onclick="">
+													<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=25&page=1">
 														<img class="swiper-lazy swiper-lazy-loaded" alt="" style="background-color: #ffffff;"
-															src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a07d58ae-4bab-4f36-baeb-b5b44614d3ad">
+															src="${pageContext.request.contextPath}/uploads/course/20220623152618282867366784900.jpg">
+														<span class="imtext2">제주도 맛집탐험!</span>
+														<span class="imtext5"># 맛코스</span>
+														<span class="imtext3">지역 : 제주도</span>
+														<span class="imtext4">기간: 1박2일</span>
 													</a>
 												</li>
-												<%} %>
+												<li>
+													<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=23&page=1">
+														<img class="swiper-lazy swiper-lazy-loaded" alt="" style="background-color: #ffffff;"
+															src="${pageContext.request.contextPath}/uploads/course/2022062016485828621950924600.jpg">
+														<span class="imtext2">대전으로 떠나봐요!</span>
+														<span class="imtext5"># 맛코스</span>
+														<span class="imtext3">지역 : 대전</span>
+														<span class="imtext4">기간: 2박3일</span>
+													</a>
+												</li>
+												<li>
+													<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=20&page=1">
+														<img class="swiper-lazy swiper-lazy-loaded" alt="" style="background-color: #ffffff;"
+															src="${pageContext.request.contextPath}/uploads/course/2022062016250627190400385800.jpg">
+														<span class="imtext2">전북나들이</span>
+														<span class="imtext5"># 힐링코스</span>
+														<span class="imtext3">지역 : 전라북도</span>
+														<span class="imtext4">기간: 1박2일</span>
+													</a>
+												</li>
+												<li>
+													<a href="${pageContext.request.contextPath}/travelCourse/article?courseNum=19&page=1">
+														<img class="swiper-lazy swiper-lazy-loaded" alt="" style="background-color: #ffffff;"
+															src="${pageContext.request.contextPath}/uploads/course/2022062016183426797912584400.jpg">
+														<span class="imtext2">충청북도 코스</span>
+														<span class="imtext5"># 가족코스</span>
+														<span class="imtext3">지역 : 충청북도</span>
+														<span class="imtext4">기간: 3박4일</span>
+													</a>
+												</li>
 											</ul>
 										</li>
 									</ul>
@@ -158,158 +236,46 @@
 						<div class="article">
 							<!-- 홍보배너 (모바일) 갯수 추가 -->
 							<div class="banner_mobileTop slider">
-								<div
-									class="swiper-container swiper-container-initialized swiper-container-horizontal">
+								<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
 									<ul class="swiper-wrapper" id="bannerMobile1"
 										style="transition-duration: 300ms;">
 										<li class="swiper-slide swiper-slide-duplicate"
 											data-swiper-slide-index="2">
 											<ul class="clfix">
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/tweek2022/playlistEvent.do','나만의 여행플레이리스트 만들기');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a07d58ae-4bab-4f36-baeb-b5b44614d3ad"
-														alt="나만의 여행플레이리스트 만들기" style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/event_detail.do?cotid=1f83e8b8-93ca-455f-adbe-988feea942c6','부모님과의 여.행.기 인증샷 이벤트');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=478a03d0-aa62-401d-b6e8-b979ebb8ceaa"
-														alt="부모님과의 여.행.기 인증샷 이벤트"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://visitkoreanmarket.or.kr/kor/','시장이 여행이 되다! 이벤트 참여하고 경품받자!');"
-													tabindex="-1"><img
+												<li>
+													<a href="" onclick="" tabindex="-1">
+														<img
+															src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a07d58ae-4bab-4f36-baeb-b5b44614d3ad"
+															alt="나만의 여행플레이리스트 만들기" style="background-color: #ffffff;">
+													</a>
+												</li>
+												<li>
+													<a href="" onclick="" tabindex="-1">
+														<img
+															src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=478a03d0-aa62-401d-b6e8-b979ebb8ceaa"
+															alt="부모님과의 여.행.기 인증샷 이벤트"
+															style="background-color: #ffffff;">
+													</a>
+												</li>
+												<li>
+													<a href="" onclick="" tabindex="-1">
+													<img
 														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=6f7e5519-390e-4b9b-a8c8-8ddc7be1c042"
 														alt="시장이 여행이 되다! 이벤트 참여하고 경품받자!"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=57a4c482-c099-4bb2-971a-0ad13afe5759&amp;chk=c6FLGQAaXZPqtsWY','Pokémon GO와 함께하는 대한민국 구석구석 발도장깨기! ');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=e86984fd-e0e4-4d7d-af40-f71c0e92e5ff"
-														alt="Pokémon GO와 함께하는 대한민국 구석구석 발도장깨기! "
-														style="background-color: #ffffff;"></a></li>
-											</ul>
-										</li>
-										<li class="swiper-slide" data-swiper-slide-index="0">
-											<ul class="clfix">
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=55d51611-060e-4a0b-b254-16f20368804e&amp;chk=cXu0Cve5GixNOrB9','국내 여행 준비중이라면 [교통할인혜택]');"
-													tabindex="0"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=026ba0e0-990e-4661-9ef1-03c79c5e56f9"
-														alt="국내 여행 준비중이라면 [교통할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=3242fac5-7436-4767-9470-36b2803d4433&amp;chk=7fipohAeCxUbVMt0','여행의 완성은 잠자리! [숙박할인혜택]');"
-													tabindex="0"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=c1ce6037-5a5a-47ab-8450-e54422d59993"
-														alt="여행의 완성은 잠자리! [숙박할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=bccc1b89-885c-4fbf-a6d2-c436a109817b&amp;chk=qUtHOZBomDpWXZWK','다양한 놀거리가 궁금하다면? [놀거리할인혜택]');"
-													tabindex="0"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=bd81307d-4134-49ec-8c7f-8338b3d9dbc0"
-														alt="다양한 놀거리가 궁금하다면? [놀거리할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=c9bf1ed3-7833-4109-8107-efc012785b44&amp;chk=R23GpJdh51dWLsiR','2022 놀이공원 할인대전');"
-													tabindex="0"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=917e3976-e2b0-4183-9689-b9d00712eb3e"
-														alt="2022 놀이공원 할인대전" style="background-color: #ffffff;"></a></li>
-											</ul>
-										</li>
-										<li class="swiper-slide" data-swiper-slide-index="1">
-											<ul class="clfix">
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=35088067-41ac-4191-994e-56f77df3f46d&amp;con_type=10000','월간 19투어 영주편! 영주의 숨은 매력을 발견해보세요!');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=ed866238-f2fb-4344-af25-0502efd2d1a1"
-														alt="월간 19투어 영주편! 영주의 숨은 매력을 발견해보세요!"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=610ce1b1-0a60-4b1f-9d06-3e8c03b244e5&amp;chk=7ZMLJdRfXDNNsH0m','포토존에도 퍼스널 컬러가 필요해~! 재미로 보는 웜톤 쿨톤 여행지');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=435e07bb-0e45-43f9-b01c-1ae9dfe2a183"
-														alt="포토존에도 퍼스널 컬러가 필요해~! 재미로 보는 웜톤 쿨톤 여행지"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/trss/applyintro.do?utm_source=main_showcase','지금 바로 여행을 구독하세요!');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=91efcf86-3f94-4b63-97bf-3a75877b0daa"
-														alt="지금 바로 여행을 구독하세요!" style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=f02e220a-1d95-47fb-90ac-414a91a6e881&amp;chk=f9ugag4AJLdGrvs8','경북 · 강원 산불 피해지역으로 떠나는 착한 여행 ‘GO EAST’ ');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=03fc4121-63b9-497c-bc83-e2299ff1e577"
-														alt="경북 · 강원 산불 피해지역으로 떠나는 착한 여행 ‘GO EAST’ "
-														style="background-color: #ffffff;"></a></li>
-											</ul>
-										</li>
-										<li class="swiper-slide" data-swiper-slide-index="2">
-											<ul class="clfix">
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/tweek2022/playlistEvent.do','나만의 여행플레이리스트 만들기');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=a07d58ae-4bab-4f36-baeb-b5b44614d3ad"
-														alt="나만의 여행플레이리스트 만들기" style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/event_detail.do?cotid=1f83e8b8-93ca-455f-adbe-988feea942c6','부모님과의 여.행.기 인증샷 이벤트');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=478a03d0-aa62-401d-b6e8-b979ebb8ceaa"
-														alt="부모님과의 여.행.기 인증샷 이벤트"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://visitkoreanmarket.or.kr/kor/','시장이 여행이 되다! 이벤트 참여하고 경품받자!');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=6f7e5519-390e-4b9b-a8c8-8ddc7be1c042"
-														alt="시장이 여행이 되다! 이벤트 참여하고 경품받자!"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=57a4c482-c099-4bb2-971a-0ad13afe5759&amp;chk=c6FLGQAaXZPqtsWY','Pokémon GO와 함께하는 대한민국 구석구석 발도장깨기! ');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=e86984fd-e0e4-4d7d-af40-f71c0e92e5ff"
-														alt="Pokémon GO와 함께하는 대한민국 구석구석 발도장깨기! "
-														style="background-color: #ffffff;"></a></li>
-											</ul>
-										</li>
-										<li class="swiper-slide swiper-slide-duplicate"
-											data-swiper-slide-index="0">
-											<ul class="clfix">
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=55d51611-060e-4a0b-b254-16f20368804e&amp;chk=cXu0Cve5GixNOrB9','국내 여행 준비중이라면 [교통할인혜택]');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=026ba0e0-990e-4661-9ef1-03c79c5e56f9"
-														alt="국내 여행 준비중이라면 [교통할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=3242fac5-7436-4767-9470-36b2803d4433&amp;chk=7fipohAeCxUbVMt0','여행의 완성은 잠자리! [숙박할인혜택]');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=c1ce6037-5a5a-47ab-8450-e54422d59993"
-														alt="여행의 완성은 잠자리! [숙박할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=bccc1b89-885c-4fbf-a6d2-c436a109817b&amp;chk=qUtHOZBomDpWXZWK','다양한 놀거리가 궁금하다면? [놀거리할인혜택]');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=bd81307d-4134-49ec-8c7f-8338b3d9dbc0"
-														alt="다양한 놀거리가 궁금하다면? [놀거리할인혜택]"
-														style="background-color: #ffffff;"></a></li>
-												<li><a href="javascript:"
-													onclick="goMarketing('undefined','undefined','https://korean.visitkorea.or.kr/detail/detail_view.html?cotid=c9bf1ed3-7833-4109-8107-efc012785b44&amp;chk=R23GpJdh51dWLsiR','2022 놀이공원 할인대전');"
-													tabindex="-1"><img
-														src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=917e3976-e2b0-4183-9689-b9d00712eb3e"
-														alt="2022 놀이공원 할인대전" style="background-color: #ffffff;"></a></li>
+														style="background-color: #ffffff;">
+													</a>
+												</li>
+												<li>
+													<a href="" onclick="" tabindex="-1">
+														<img
+															src="https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&amp;id=e86984fd-e0e4-4d7d-af40-f71c0e92e5ff"
+															alt="Pokémon GO와 함께하는 대한민국 구석구석 발도장깨기! "
+															style="background-color: #ffffff;">
+													</a>
+												</li>
 											</ul>
 										</li>
 									</ul>
-									<span class="swiper-notification" aria-live="assertive"
-										aria-atomic="true"></span>
-								</div>
-								<div class="paging">
-									<div class="btn_autoArea">
-										<button class="btn_autoPlay">재생</button>
-										<button class="btn_autoStop">멈춤</button>
-									</div>
-									<div
-										class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
 								</div>
 							</div>
 							<!-- // 홍보배너 (모바일)-->

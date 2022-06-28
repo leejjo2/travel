@@ -166,6 +166,9 @@
 		UPDATE partner SET partnerStatus=#{partnerStatus} WHERE partnerId=#{userId}
     </update>
 	
+	<update id="updatePartnerMembership" parameterType="com.sp.trip.admin.memberManage.Member">
+		UPDATE member SET membership=#{membership} WHERE userId=#{userId}
+    </update>
 	
 
 

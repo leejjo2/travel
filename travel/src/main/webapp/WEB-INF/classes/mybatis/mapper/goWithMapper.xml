@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="goWith">
 	<!-- 도시 이름 출력 -->
@@ -26,6 +27,9 @@
 				( spotNum = #{keyword} AND startAge = #{keyword} AND endAge = #{keyword} AND gender = #{keyword}
 		          AND startDate = #{keyword} AND endDate = #{keyword} AND discussion = #{keyword})
 			</when>
+			<when test="condition == 'subject' ">
+				( INSTR(subject, #{keyword}) &gt; 0)
+			</when>
 			<when test="condition == 'userName' ">
 				( INSTR(userName, #{keyword}) &gt; 0)
 			</when>
@@ -42,6 +46,12 @@
 		<where>
 			<if test="keyword!=null and keyword!='' ">
 				<include refid="where-list"/>
+			</if>
+			<if test="recruit_status!=null and recruit_status!='' ">
+				AND recruit_status = #{recruit_status}
+			</if>
+			<if test="spotNum!=null and spotNum!=0">
+				AND spotNum = #{spotNum}
 			</if>
 		</where>   
 	</select>
@@ -68,6 +78,9 @@
 					<if test="keyword != null and keyword != ''">
 						<include refid="where-list"/>
 					</if>
+					<if test="recruit_status!=null and recruit_status!='' ">
+						AND recruit_status = #{recruit_status}
+					</if>
 				</where>
 				ORDER BY goWithNum DESC
 			) tb WHERE ROWNUM &lt;= #{end}
@@ -76,7 +89,7 @@
 	
 	<!-- 글보기 -->
 	<select id="readGoWith" parameterType="Integer" resultType="com.sp.trip.goWith.GoWith">
-		SELECT g.goWithNum, g.userId, userName, subject, cityName, spotName, content,
+		SELECT g.goWithNum, g.userId, userName, subject, g.spotNum, s.cityNum, cityName, spotName, content,
 				recruit_cnt, recruit_status, TO_CHAR(startDate, 'YYYY-MM-DD') startDate,
 				TO_CHAR(endDate, 'YYYY-MM-DD') endDate, age, gender, discussion, drink, cigar,
 				tripType1, tripType2, tripType3,
@@ -106,5 +119,36 @@
 	<!-- 삭제 -->
 	<delete id="deleteGoWith" parameterType="Integer">
 		DELETE FROM goWith WHERE goWithNum = #{goWithNum}
+	</delete>
+
+	<!-- 댓글 -->
+	<insert id="insertReply" parameterType="com.sp.trip.goWith.Reply">
+		INSERT INTO goWithReply(goWithReplyNum, goWithNum, userId, pwd, content, reg_date)
+		VALUES (goWithReply_seq.NEXTVAL, #{goWithNum}, #{userId}, #{pwd}, #{content}, SYSDATE)
+	</insert>
+
+	<select id="replyCount" parameterType="map" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) FROM goWithReply
+		WHERE goWithNum=#{goWithNum}
+	</select>
+
+	<!-- 댓글리스트 -->
+	<select id="listReply" parameterType="map" resultType="com.sp.trip.goWith.Reply">
+		SELECT * FROM (
+			SELECT ROWNUM rnum, tb.* FROM (
+				SELECT goWithReplyNum, r.userId, userName, r.goWithNum, r.content, r.reg_date
+				FROM goWithReply r
+				JOIN member m ON r.userId = m.userId
+				JOIN goWith g ON r.goWithNum = g.goWithNum
+				WHERE r.goWithNum = #{goWithNum}  
+				ORDER BY goWithReplyNum DESC
+			) tb WHERE ROWNUM &lt;= #{end}
+		) WHERE rnum &gt;= #{start}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="map">
+		DELETE FROM goWithReply
+		WHERE goWithReplyNum = #{goWithReplyNum}	
 	</delete>
 </mapper>

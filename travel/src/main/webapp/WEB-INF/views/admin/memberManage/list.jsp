@@ -7,10 +7,20 @@
 .body-main {
 	max-width: 1200px;
 }
+
+.body-container {width: 900px; margin: 50px auto 10px }
+
+.table-list tbody {
+    background-color: white;
+}
 </style>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tabs.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css" type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/tabs.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/board.css"
+	type="text/css">
 
 <script type="text/javascript">
 $(function(){
@@ -158,40 +168,43 @@ function selectStateChange() {
 }
 </script>
 
-	
-	<div class="right_col" role="main" style="min-height: 4645px;">
-	<h1>Admin Page</h1>
-	    <div class="body-title">
-			<h2><i class="icofont-users"></i> 회원 관리 </h2>
-	    </div>
-	    
-	    <div class="body-main ms-30">
+
+<div class="right_col" role="main" style="min-height: 4645px;">
+	<div class="body-container">
+		<div class="body-title">
+			<h2>
+				<i class="icofont-users"></i> 회원 관리
+			</h2>
+		</div>
+
+		<div class="body-main ms-30">
 			<div>
 				<ul class="tabs">
-					<li id="tab-0" data-tab="0"><i class="icofont-waiter-alt"></i> 회원 리스트</li>
-					<li id="tab-1" data-tab="1"><i class="icofont-spreadsheet"></i> 회원분석</li>
+					<li id="tab-0" data-tab="0"><i class="icofont-waiter-alt"></i>
+						회원 리스트</li>
+					<li id="tab-1" data-tab="1"><i class="icofont-spreadsheet"></i>
+						회원분석</li>
 				</ul>
 			</div>
-			<div id="tab-content" style="clear:both; padding: 20px 10px 0;">
-			
+			<div id="tab-content" style="clear: both; padding: 20px 10px 0;">
 				<table class="table">
 					<tr>
 						<td align="left" width="50%">
-							${dataCount}개(${page}/${total_page} 페이지)
-						</td>
-						<td align="right">
-							<select id="selectEnabled" class="form-select" onchange="searchList();">
+							${dataCount}개(${page}/${total_page} 페이지)</td>
+						<td align="right"><select id="selectEnabled"
+							class="form-select" onchange="searchList();">
 								<option value="" ${enabled=="" ? "selected='selected'":""}>::계정상태::</option>
-								<option value="0" ${enabled=="0" ? "selected='selected'":""}>잠금 계정</option>
-								<option value="1" ${enabled=="1" ? "selected='selected'":""}>활성 계정</option>
-							</select>
-						</td>
+								<option value="0" ${enabled=="0" ? "selected='selected'":""}>잠금
+									계정</option>
+								<option value="1" ${enabled=="1" ? "selected='selected'":""}>활성
+									계정</option>
+						</select></td>
 					</tr>
 				</table>
-					
+
 				<table class="table table-border table-list">
 					<thead>
-						<tr> 
+						<tr>
 							<th class="wx-60">번호</th>
 							<th class="wx-100">아이디</th>
 							<th class="wx-100">이름</th>
@@ -201,51 +214,56 @@ function selectStateChange() {
 							<th>이메일</th>
 						</tr>
 					</thead>
-					
+
 					<tbody>
 						<c:forEach var="dto" items="${list}">
-						<tr class="hover" onclick="detailedMember('${dto.userId}');"> 
-							<td>${dto.listNum}</td>
-							<td>${dto.userId}</td>
-							<td>${dto.userName}</td>
-							<td>${dto.birth}</td>
-							<td>${dto.tel}</td>
-							<td>${dto.enabled==1?"활성":"잠금"}</td>
-							<td>${dto.email}</td>
-						</tr>
+							<tr class="hover" onclick="detailedMember('${dto.userId}');">
+								<td>${dto.listNum}</td>
+								<td>${dto.userId}</td>
+								<td>${dto.userName}</td>
+								<td>${dto.birth}</td>
+								<td>${dto.tel}</td>
+								<td>${dto.enabled==1?"활성":"잠금"}</td>
+								<td>${dto.email}</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-						 
-				<div class="page-box">
-					${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
+
+				<div class="page-box">${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 				</div>
-						
+
 				<table class="table">
 					<tr>
 						<td align="left" width="120">
-							<button type="button" class="btn" onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';">새로고침</button>
+							<button type="button" class="btn"
+								onclick="location.href='${pageContext.request.contextPath}/admin/memberManage/list';">새로고침</button>
 						</td>
 						<td align="center">
-							<form name="searchForm" action="${pageContext.request.contextPath}/admin/memberManage/list" method="post">
+							<form name="searchForm"
+								action="${pageContext.request.contextPath}/admin/memberManage/list"
+								method="post">
 								<select name="condition" class="form-select">
-									<option value="userId"     ${condition=="userId" ? "selected='selected'":""}>아이디</option>
-									<option value="userName"   ${condition=="userName" ? "selected='selected'":""}>이름</option>
-									<option value="email"      ${condition=="email" ? "selected='selected'":""}>이메일</option>
-									<option value="tel"        ${condition=="tel" ? "selected='selected'":""}>전화번호</option>
-								</select>
-								<input type="text" name="keyword" class="form-control1" value="${keyword}">
-								<input type="hidden" name="enabled" value="${enabled}">
-								<input type="hidden" name="page" value="1">
+									<option value="userId"
+										${condition=="userId" ? "selected='selected'":""}>아이디</option>
+									<option value="userName"
+										${condition=="userName" ? "selected='selected'":""}>이름</option>
+									<option value="email"
+										${condition=="email" ? "selected='selected'":""}>이메일</option>
+									<option value="tel"
+										${condition=="tel" ? "selected='selected'":""}>전화번호</option>
+								</select> <input type="text" name="keyword" class="form-control1"
+									value="${keyword}"> <input type="hidden" name="enabled"
+									value="${enabled}"> <input type="hidden" name="page"
+									value="1">
 								<button type="button" class="btn" onclick="searchList()">검색</button>
 							</form>
 						</td>
 						<td align="right" width="100">&nbsp;</td>
 					</tr>
 				</table>
-			
 			</div>
-			
-	    </div>
-	<div id="member-dialog" style="display: none;"></div>
+		</div>
+		<div id="member-dialog" style="display: none;"></div>
 	</div>
+</div>

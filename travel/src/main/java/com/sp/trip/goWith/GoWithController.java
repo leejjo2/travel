@@ -37,6 +37,7 @@ public class GoWithController {
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "all") String condition,
 			@RequestParam(defaultValue = "") String keyword,
+			@RequestParam(defaultValue = "") String recruit_status,
 			HttpServletRequest req,
 			Model model
 			) {
@@ -59,6 +60,7 @@ public class GoWithController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("condition", condition);
 		map.put("keyword", keyword);
+		map.put("recruit_status", recruit_status);
 
 		dataCount = service.dataCount(map);
 		if (dataCount != 0) {
@@ -79,6 +81,20 @@ public class GoWithController {
 		// 글 리스트
 		List<GoWith> list = service.listGoWith(map);
 
+		List<GoWith> listCity = null;
+		List<GoWith> listSpot = null;
+		   
+		try {
+			listCity = service.listCity();
+			if(listCity.size() > 0) {
+				listSpot = service.listSpot(listCity.get(0).getCityNum());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("listCity", listCity);
+		model.addAttribute("listSpot", listSpot);
 
 
 		String query = "";
@@ -109,6 +125,7 @@ public class GoWithController {
 
 		model.addAttribute("condition", condition);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("recruit_status", recruit_status);
 		
 		return ".goWith.list";
 	}
@@ -184,6 +201,19 @@ public class GoWithController {
 		return ".goWith.article";
 	}
 	
+	@RequestMapping(value = "cityList")
+	@ResponseBody
+	public Map<String, Object> cityList(@RequestParam int cityNum) throws Exception{
+		List<GoWith> list = service.listSpot(cityNum);
+		Map<String, Object> model = new HashMap<String, Object>();
+		
+		model.put("list", list);
+		
+		System.out.println(list.size());
+		
+		return model;
+	}
+	
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String updateForm(@RequestParam int num,
 			@RequestParam String page,
@@ -196,6 +226,21 @@ public class GoWithController {
 		if (dto == null || ! info.getUserId().equals(dto.getUserId())) {
 			return "redirect:/gowith/list?page=" + page;
 		}
+		
+		List<GoWith> listCity = null;
+		List<GoWith> listSpot = null;
+		   
+		try {
+			listCity = service.listCity();
+			if(listCity.size() > 0) {
+				listSpot = service.listSpot(dto.getCityNum());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("listCity", listCity);
+		model.addAttribute("listSpot", listSpot);
 
 		model.addAttribute("dto", dto);
 		model.addAttribute("mode", "update");
@@ -221,16 +266,122 @@ public class GoWithController {
 		return "redirect:/gowith/list?page=" + page;
 	}
 	
-	@RequestMapping(value = "cityList")
+	@RequestMapping(value = "delete")
+	public String delete(@RequestParam int num,
+			@RequestParam String page,
+			@RequestParam(defaultValue = "all") String condition,
+			@RequestParam(defaultValue = "") String keyword,
+			HttpSession session) throws Exception {
+		
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+
+		keyword = URLDecoder.decode(keyword, "utf-8");
+		String query = "page=" + page;
+		if (keyword.length() != 0) {
+			query += "&condition=" + condition + "&keyword=" + URLEncoder.encode(keyword, "UTF-8");
+		}
+
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "photo";
+
+		service.deleteGoWith(num, pathname, info.getUserId(), info.getMembership());
+		
+		return "redirect:/gowith/list?" + query;
+	}
+	
+	@RequestMapping(value = "listReply")
+	public String listReply(@RequestParam int goWithNum,
+			@RequestParam(value = "pageNo", defaultValue = "1") int current_page,
+			Model model) throws Exception {
+		
+		int rows = 10;
+		int total_page = 0;
+		int dataCount = 0;
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("goWithNum", goWithNum);
+
+		dataCount = service.replyCount(map);
+		total_page = myUtil.pageCount(rows, dataCount);
+		if (current_page > total_page) {
+			current_page = total_page;
+		}
+
+		int start = (current_page - 1) * rows + 1;
+		int end = current_page * rows;
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<Reply> listReply = service.listReply(map);
+		
+		for (Reply dto : listReply) {
+			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+		}
+
+		String paging = myUtil.pagingMethod(current_page, total_page, "listPage");
+
+		model.addAttribute("listReply", listReply);
+		model.addAttribute("pageNo", current_page);
+		model.addAttribute("replyCount", dataCount);
+		model.addAttribute("total_page", total_page);
+		model.addAttribute("paging", paging);
+
+		return "goWith/listReply";
+	}
+	
+	@RequestMapping(value = "insertReply", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> cityList(@RequestParam int cityNum) throws Exception{
-		List<GoWith> list = service.listSpot(cityNum);
-		Map<String, Object> model = new HashMap<String, Object>();
-		
-		model.put("list", list);
-		
-		System.out.println(list.size());
-		
+	public Map<String, Object> insertReply(Reply dto, HttpSession session) {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String state = "true";
+
+		try {
+			dto.setUserId(info.getUserId());
+			service.insertReply(dto);
+		} catch (Exception e) {
+			state = "false";
+		}
+
+		Map<String, Object> model = new HashMap<>();
+		model.put("state", state);
 		return model;
+	}
+	
+	@RequestMapping(value = "updateReply", method = RequestMethod.POST)
+	public Map<String, Object> updateReply(
+			Reply dto,
+			@RequestParam Map<String, Object> paramMap,
+			HttpSession session) {
+		SessionInfo info = (SessionInfo) session.getAttribute("member");
+		String state = "true";
+		
+		try {
+			dto.setUserId(info.getUserId());
+			service.updateReply(paramMap);
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		
+		return map;
+	}
+	
+	@RequestMapping(value = "deleteReply", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteReply(@RequestParam Map<String, Object> paramMap) {
+		String state = "true";
+		
+		try {
+			service.deleteReply(paramMap);
+		} catch (Exception e) {
+			state = "false";
+		}
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("state", state);
+		return map;
 	}
 }
