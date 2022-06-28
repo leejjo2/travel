@@ -16,6 +16,8 @@
 	border: 1px solid #ccc;
 	text-align: center;
 }
+
+.body-container {width: 900px; margin: 50px auto 10px }
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/admin/build/css/tabs.css" type="text/css">
 
@@ -84,8 +86,6 @@ $(function(){
 </script>
 
 <div class="right_col" role="main" style="min-height: 4645px;">
-	<h1>Admin Page</h1>
-	
 	<div class="body-container">
 	    <div class="body-title">
 			<h2><i class="icofont-users"></i> 회원 관리 </h2>

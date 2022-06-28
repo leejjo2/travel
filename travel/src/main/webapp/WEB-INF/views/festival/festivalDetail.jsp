@@ -36,7 +36,7 @@ $(function() {
 		<div class="dbDetail titBg" id="topCp">
 			<div class="titTypeWrap">
 				<h3>
-					<em>문구 뭐로 할지 정하기!</em>
+					<em>초록 자연에서의 휴식과 토마토를 활용한 다양한 체험을 만나보세요!</em>
 				</h3>
 			</div>
 		</div>

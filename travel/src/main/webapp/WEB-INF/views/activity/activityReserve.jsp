@@ -61,11 +61,13 @@ $(function() {
 				$(".totalPay").html(comma(${rdto.price} * ${totalMen}));
 				$('input[name=payAmount]').val(${rdto.price} * ${totalMen});
 				getSavePoint(${rdto.price} * ${totalMen});
+				$('input[name=mileageUse]').val('0');
 			} else {
 				$(".usingPoint").html("-"+$(this).val());
 				$(".totalPay").html(comma(${rdto.price} * ${totalMen} - usingPoint));
 				$('input[name=payAmount]').val(${rdto.price} * ${totalMen} - usingPoint);
 				getSavePoint(${rdto.price} * ${totalMen} - usingPoint);
+				$('input[name=mileageUse]').val(usingPoint);
 			}
 		}
 	});
@@ -124,13 +126,6 @@ function payment(){
 	    buyer_tel : buyer_tel
 	}, function(rsp) {
 	    if ( rsp.success ) {
-	    	/*
-	    	var msg = '결제가 완료되었습니다.';
-	        msg += '고유ID : ' + rsp.imp_uid;
-	        msg += '상점 거래ID : ' + rsp.merchant_uid;
-	        msg += '결제 금액 : ' + rsp.paid_amount;
-	        msg += '카드 승인번호 : ' + rsp.apply_num;
-	        */
 	        insertReserve();
 	    } else {
 	    	 var msg = rsp.error_msg;
@@ -161,6 +156,7 @@ function insertReserve() {
 			<input type="hidden" name="payWay" value="1">
 			<input type="hidden" name="mileageSave" value="">
 			<input type="hidden" name="totalMileage" value="${mdto.totalMileage}">
+			<input type="hidden" name="mileageUse" value="">
 			
 			<h1 class="css-asuv60--OrderForm-style--title">예약하기</h1>
 			<div class="css-ho0ft8--OrderForm-style--content">
@@ -217,7 +213,7 @@ function insertReserve() {
 								</div>
 								<div class="css-18nj9ab--Point-style--inputWrapper">
 									<div class="checkout-point-inputbox css-1vqiqg7">
-										<input name="mileageUse" type="decimal" pattern="[0-9]*" class="css-o9jzai" value="0" 
+										<input name="mileageUseinput" type="decimal" pattern="[0-9]*" class="css-o9jzai" value="0" 
 											onkeyup="inputNumberFormat(this); checkPoint();">
 										<span class="css-1fwrkpi">원</span>
 									</div>
