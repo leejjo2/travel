@@ -3321,7 +3321,7 @@ a.mapPosition:before{content:'';position:absolute;left:-8px;top:50%;margin-top:-
 
 /* 달력 */
 .calendar_wrap:after{content:'';display:block;clear:both;}
-.ui-datepicker .ui-datepicker-title select{border:1px solid #ccc;background-color:#fff;font-family:Dotum,돋움 !important}
+.ui-datepicker .ui-datepicker-title select{border:1px solid #ccc;background-color:#fff;}
 .ui-datepicker .ui-datepicker-month{margin-left:2px !important}
 .ui-datepicker .ui-datepicker-calendar td a{text-align:center}
 .ui-datepicker .ui-datepicker-calendar td .ui-state-highlight,

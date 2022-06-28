@@ -21,7 +21,7 @@ h3.tit_nor{padding-bottom: 10px; color: #000; font-size: 20px;}
 .mdu_slider.slider2 .swiper-slide{position: relative; height: 780px;}
 .mdu_slider .swiper-slide img{width: 100%; height: 100%;}
 .mdu_slider .txt_info{position: absolute; bottom: 0; left: 0; width: 100%; height: 140px; padding: 30px 40px; background:url(../images/sub/bg_dim2.png) 0 0 repeat;}
-.mdu_slider .txt_info > strong{overflow: hidden; display: block; width: 100%; font-family: NotoSanB; color: #fff; font-size: 28px; font-weight: normal; text-overflow: ellipsis; white-space: nowrap;}
+.mdu_slider .txt_info > strong{overflow: hidden; display: block; width: 100%; color: #fff; font-size: 28px; font-weight: normal; text-overflow: ellipsis; white-space: nowrap;}
 .mdu_slider .txt_info > p{overflow: hidden; width: 100%; padding-top: 5px; color: #fff; font-size: 16px; text-overflow: ellipsis; white-space: nowrap;}
 .mdu_slider .swiper-button-next{overflow: hidden; right: 25px; width: 40px; height: 40px;margin-top:-20px;background:url(../images/sub/btn_slider_next.png) 0 0 no-repeat; text-indent: -9999px;}
 .mdu_slider .swiper-button-prev{overflow: hidden; left: 25px; width: 40px; height: 40px;margin-top:-20px;background:url(../images/sub/btn_slider_prev.png) 0 0 no-repeat; text-indent: -9999px;}
@@ -60,10 +60,10 @@ h3.tit_nor{padding-bottom: 10px; color: #000; font-size: 20px;}
 .festival_calendar .month_btn .next{background:url(../images/festival_calendar_next.png) no-repeat;}
 .festival_calendar .month_btn span{display:block;padding:19px 0 33px;font-size:20px;line-height:23px;letter-spacing: -1px;color:#000;}
 .festival_calendar table .thead{height:84px;border: 2px solid #000;border-radius: 10px;box-shadow: 4px 4px 0px 0px rgba(36, 36, 37, 0.16);}
-.festival_calendar table th{height:80px;font-size: 45px;line-height:50px;color:#333;border-left:1px solid #efeded;font-family: HY견명조;background:#fff;}
+.festival_calendar table th{height:80px;font-size: 45px;line-height:50px;color:#333;border-left:1px solid #efeded;background:#fff;}
 .festival_calendar table th:first-child{border:0;border-radius: 10px 0 0  10px;}
 .festival_calendar table th:last-child{border-radius:0 10px 10px 0;}
-.festival_calendar table th span{display:block;font-size: 13px;line-height:16px;font-weight: 300;font-family:NotoSansKR;}
+.festival_calendar table th span{display:block;font-size: 13px;line-height:16px;font-weight: 300;}
 .festival_calendar table .holiday{color:#ef386e;}
 .festival_calendar table .saturday{color:#1b8bd7;}
 .festival_calendar table .date{margin-top: 15px;border: 2px solid #000;border-radius: 10px;box-shadow: 4px 4px 0px 0px rgba(36, 36, 37, 0.16);}

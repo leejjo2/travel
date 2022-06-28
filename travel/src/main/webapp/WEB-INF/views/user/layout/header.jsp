@@ -62,12 +62,12 @@ ul:hover, li:hover, a:hover {
 	
 	<div class="container-fluid mb-0 p-4 text-white " style="background-color: #0dcaf0; font-weight: bold;" >
 			<div class="row">
-				<div class="col p-1" style="text-align: center; font-size: 17px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
-				<div class="col p-2" style="text-align: center; font-size: 17px;"><a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white;">홈</a></div>
+				<div class="col p-1" style="text-align: center; font-size: 18px;"><a href="#" style="text-decoration: none; color: white;"></a></div>
+				<div class="col p-2" style="text-align: center; font-size: 18px;"><a href="${pageContext.request.contextPath}/" style="text-decoration: none; color: white;">홈</a></div>
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 18px; text-align: center;">
 								여행지추천
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; border: none; text-align: center;">
@@ -82,7 +82,7 @@ ul:hover, li:hover, a:hover {
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 18px; text-align: center;">
 								예약
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
@@ -95,7 +95,7 @@ ul:hover, li:hover, a:hover {
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 18px; text-align: center;">
 								커뮤니티
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
@@ -109,7 +109,7 @@ ul:hover, li:hover, a:hover {
 				<div class="col wrap">
 					<ul class="navbar-nav mx-auto flex-nowrap"> 
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 17px; text-align: center;">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 18px; text-align: center;">
 								고객센터
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">

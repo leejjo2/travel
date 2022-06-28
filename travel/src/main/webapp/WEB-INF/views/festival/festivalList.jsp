@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/festival/css/swiper.min.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/festival/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/festival/css/common2.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/festival/css/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/festival/css/content.css">
 

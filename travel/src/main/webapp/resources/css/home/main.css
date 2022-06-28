@@ -323,7 +323,7 @@
 .list_board li{border-bottom:1px solid #e6e6e6;}
 .list_board li:first-child{border-top:0;background:#eee;}
 .list_board li:first-child a{margin:0 15px;width:auto;}
-.list_board li a{overflow:hidden;display:block;width:100%;font-weight:bold;color: #333;font-size:16px;text-overflow: ellipsis;white-space:nowrap;line-height:42px;}
+.list_board li a{overflow:hidden;display:block;width:100%;color: #333;font-size:16px;text-overflow: ellipsis;white-space:nowrap;line-height:42px;}
 .list_board li:hover a{text-decoration: underline;}
 .list_board li a em{padding-right: 5px;font-weight:bold;}
 .list_board li a .txt_r{color: #e60a00;}

@@ -4,8 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/swiper.min.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/common.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/main2.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/common2.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/home/mainmo.css">
 
 <style>
