@@ -97,6 +97,27 @@ $(function(){
 	});
 });
 
+$(function(){
+	$("body").on("click", ".deleteReply", function(){
+		if(! confirm("댓글을 삭제하시겠습니까 ? ")) {
+		    return false;
+		}
+		
+		let goWithReplyNum = $(this).attr("data-replyNum");
+		let page = $(this).attr("data-pageNo");
+		
+		let url = "${pageContext.request.contextPath}/gowith/deleteReply";
+		let query = "goWithReplyNum="+goWithReplyNum;
+		
+		const fn = function(data){
+			// let state = data.state;
+			listPage(page);
+		};
+		
+		ajaxFun(url, "post", query, "json", fn);
+	});
+});
+
 </script>
 
            <div class="topImg">

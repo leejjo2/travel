@@ -17,5 +17,6 @@ public interface GoWithService {
 	public void insertReply(Reply dto) throws Exception;
 	public List<Reply> listReply(Map<String, Object> map);
 	public int replyCount(Map<String, Object> map);
+	public void updateReply(Map<String, Object> map) throws Exception;
 	public void deleteReply(Map<String, Object> map) throws Exception;
 }

@@ -37,7 +37,7 @@
 	        $(document).on('click', '#btnRegister', function(e) {
 	        	const f = document.goWithForm;
 	        	
-	            f.action = "${pageContext.request.contextPath}/gowith/write";
+	            f.action = "${pageContext.request.contextPath}/gowith/${mode}";
 	            
 	            f.submit();
 	        });
@@ -129,7 +129,7 @@ $(function(){
                                                 		${vo.cityName}
                                              		</div>
 													</c:forEach>
-												</div>
+												
                                             </li>
                                         </ul>
                                     </div>
@@ -138,7 +138,7 @@ $(function(){
 	                                            <li class="spotList">
 	                                            	<c:forEach var="vo" items="${listSpot}">
 	                                                <div class="checkRadioBoxCircleType">
-	                                                	<input type="radio" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "selected='selected'":""}/>
+	                                                	<input type="radio" id="placeSelect${vo.spotNum}" name="spotNum" value="${vo.spotNum}" ${vo.spotNum==dto.spotNum ? "checked='checked'":""}/>
 	                                                    <label for="placeSelect${vo.spotNum}">
 	                                                        <div class="circle">
 	                                                            <div class="inside"></div>
@@ -158,7 +158,7 @@ $(function(){
                                     <h1>현재 팀의 연령대는요?</h1>
                                     <p>
                                         현재 함께하고 있는 구성원의 연령대를
-                                        모두 선택해 주세요
+                                        선택해 주세요
                                     </p>
                                 </div>
                                 <div class="contentContainer marginTopMd" >
@@ -166,7 +166,8 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="10s" name="age" value="10대" onclick='' />
+                                                    <input type="radio" id="10s" name="age" value="10대" ${dto.age=="10대"? "checked='checked'":""}/>
+                                
                                                     <label for="10s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -177,7 +178,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="20s" name="age" value="20대" onclick='' />
+                                                    <input type="radio" id="20s" name="age" value="20대" ${dto.age=="20대"? "checked='checked'":""} />
                                                     <label for="20s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -188,7 +189,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="30s" name="age" value="30대" onclick='' />
+                                                    <input type="radio" id="30s" name="age" value="30대" ${dto.age=="30대"? "checked='checked'":""} />
                                                     <label for="30s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -199,7 +200,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="40s" name="age" value="40대" onclick='' />
+                                                    <input type="radio" id="40s" name="age" value="40대" ${dto.age=="40대"? "checked='checked'":""} />
                                                     <label for="40s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -210,7 +211,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="50s" name="age" value="50대" onclick='' />
+                                                    <input type="radio" id="50s" name="age" value="50대" ${dto.age=="50대"? "checked='checked'":""}/>
                                                     <label for="50s">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -239,7 +240,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="all" name="gender" value="0" onclick='' checked />
+                                                    <input type="radio" id="all" name="gender" value="0" ${dto.gender=="0"? "checked='checked'":""} />
                                                     <label for="all">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -252,7 +253,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="male" name="gender" value="1" onclick='' />
+                                                    <input type="radio" id="male" name="gender" value="1" ${dto.gender=="1"? "checked='checked'":""} />
                                                     <label for="male">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -263,7 +264,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="female" name="gender" value="2" onclick='' />
+                                                    <input type="radio" id="female" name="gender" value="2" ${dto.gender=="2"? "checked='checked'":""} />
                                                     <label for="female">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -291,13 +292,13 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_start" name="startDate">
+                                                    <input type="date" id="tour_start" name="startDate" ${dto.startDate=="0"? "selected='selected'":""}>
                                                 </div>
                                             </li>
                                              <li><i class="bi bi-dash-lg"></i></li>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_end" name="endDate">
+                                                    <input type="date" id="tour_end" name="endDate" ${dto.endDate=="0"? "selected='selected'":""}>
                                                 </div>
                                             </li>
                                         </ul>
@@ -306,7 +307,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="yes" name="discussion" value="0" onclick='' checked />
+                                                    <input type="radio" id="yes" name="discussion" value="0" ${dto.discussion=="0"? "checked='checked'":""} />
                                                     <label for="yes">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -317,7 +318,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType" >
-                                                    <input type="radio" id="no" name="discussion" value="1"  onclick=''/>
+                                                    <input type="radio" id="no" name="discussion" value="1"  ${dto.discussion=="1"? "checked='checked'":""}/>
                                                     <label for="no">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -344,7 +345,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect1" name="drink" value="0" onclick='' checked />
+                                                    <input type="radio" id="alcoholselect1" name="drink" value="0" ${dto.drink=="0"? "checked='checked'":""} />
                                                     <label for="alcoholselect1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -355,7 +356,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect2" name="drink" value="1" onclick='' />
+                                                    <input type="radio" id="alcoholselect2" name="drink" value="1" ${dto.drink=="1"? "checked='checked'":""} />
                                                     <label for="alcoholselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -366,7 +367,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="alcoholselect3" name="drink" value="2" onclick='' />
+                                                    <input type="radio" id="alcoholselect3" name="drink" value="2" ${dto.drink=="2"? "checked='checked'":""} />
                                                     <label for="alcoholselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -392,7 +393,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect1" name="cigar" value="0" onclick='' checked />
+                                                    <input type="radio" id="tabaccoselect1" name="cigar" value="0" ${dto.cigar=="0"? "checked='checked'":""} />
                                                     <label for="tabaccoselect1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -403,7 +404,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect2" name="cigar" value="1" onclick='' />
+                                                    <input type="radio" id="tabaccoselect2" name="cigar" value="1" ${dto.cigar=="1"? "checked='checked'":""} />
                                                     <label for="tabaccoselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -414,7 +415,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tabaccoselect3" name="cigar" value="2" onclick='' />
+                                                    <input type="radio" id="tabaccoselect3" name="cigar" value="2" ${dto.cigar=="2"? "checked='checked'":""} />
                                                     <label for="tabaccoselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -443,7 +444,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tripselect2" name="tripType1" value="1" onclick=""/>
+                                                    <input type="radio" id="tripselect2" name="tripType1" value="1" ${dto.tripType1=="1"? "checked='checked'":""}/>
                                                     <label for="tripselect2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -457,7 +458,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="tripselect3" name="tripType1" value="2" onclick=""/>
+                                                    <input type="radio" id="tripselect3" name="tripType1" value="2" ${dto.tripType1=="2"? "checked='checked'":""}/>
                                                     <label for="tripselect3">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -474,7 +475,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip2select1" name="tripType2" value="1" onclick="" />
+                                                    <input type="radio" id="trip2select1" name="tripType2" value="1" ${dto.tripType2=="1"? "checked='checked'":""} />
                                                     <label for="trip2select1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -488,7 +489,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip2select2" name="tripType2" value="2" onclick="" />
+                                                    <input type="radio" id="trip2select2" name="tripType2" value="2" ${dto.tripType2=="2"? "checked='checked'":""} />
                                                     <label for="trip2select2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -503,7 +504,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip3select1" name="tripType3" value="1" onclick=""/>
+                                                    <input type="radio" id="trip3select1" name="tripType3" value="1" ${dto.tripType3=="1"? "checked='checked'":""}/>
                                                     <label for="trip3select1">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -517,7 +518,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxType2">
-                                                    <input type="radio" id="trip3select2" name="tripType3" value="2" onclick=""/>
+                                                    <input type="radio" id="trip3select2" name="tripType3" value="2" ${dto.tripType3=="2"? "checked='checked'":""}/>
                                                     <label for="trip3select2">
                                                         <div class="circle">
                                                             <div class="inside" ></div>
@@ -568,7 +569,12 @@ $(function(){
                                 <div class="contentContainer marginTopMd">
                                     <div class="photoUploadContainer">
                                         <div id="thumbnail" class="thumbnail">
-                                            <img id="thumbnailImg" name="imageFilename" src="${pageContext.request.contextPath}/dist/goWith/img/01.png" alt="사진"/>
+                                           <c:if test="${mode=='update'}">
+                                           	<img id="thumbnailImg" name="imageFilename" src="${pageContext.request.contextPath}/uploads/photo/${dto.imageFilename}" alt="사진"/>
+                                           </c:if>
+                                           <c:if test="${mode!='update'}">
+                                           	<img id="thumbnailImg" name="imageFilename" src="${pageContext.request.contextPath}/dist/goWith/img/01.png" alt="사진"/>
+                                           </c:if>
                                         </div>
                                         <div class="content">
                                             <p></p>
@@ -634,13 +640,13 @@ $(function(){
                     <ul>
                         <li>
                             <h1>제목</h1>
-                            <input type="text" id="title" name="subject" placeholder="제목을 입력해주세요" />
+                            <input type="text" id="title" name="subject" placeholder="제목을 입력해주세요" value="${dto.subject}"/>
                         </li>
                     </ul>
                     <ul>
                         <li>
                             <h1>내용</h1>
-                            <textarea id="content" name="content" placeholder="자유롭게 입력해주세요" ></textarea>
+                            <textarea id="content" name="content" placeholder="자유롭게 입력해주세요" >${dto.content}</textarea>
                         </li>
                     </ul>
                     <ul>
@@ -651,9 +657,14 @@ $(function(){
                     </ul>
                     
                     <div class="buttonContainer marginTopLg">
-                        <button type="button" id="btnRegister" class="buttonType2">모집글 업로드</button>
+                        <button type="button" id="btnRegister" class="buttonType2">${mode=='update'?'모집글 수정':'모집글 업로드'}</button>
                         <p>&nbsp;</p>
                         <button type="button" class="buttonType2" onclick="location.href='${pageContext.request.contextPath}/gowith/list';">${mode=='update'?'수정취소':'등록취소'}</button>
+                    	<c:if test="${mode=='update'}">
+								<input type="hidden" name="goWithNum" value="${dto.goWithNum}">
+								<input type="hidden" name="imageFilename" value="${dto.imageFilename}">
+								<input type="hidden" name="page" value="${page}">
+						</c:if>
                     </div>
                 </div>
             </div>

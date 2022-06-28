@@ -26,13 +26,10 @@
                                         <div class="buttonContainer">
                                             <ul>
                                                 <li>
-                                                    <a onclick="fn_displayModifyComment('modifyCommentDiv0');" style="cursor:pointer;"> 수정 </a>
+                                                    <a onclick="#" class="updateReply" data-replyNum='${vo.goWithReplyNum}' data-pageNo='${pageNo}' style="cursor:pointer;"> 수정 </a>
                                                 </li>
                                                 <li>
-                                                    <a onclick="fn_deleteComment('0');" style="cursor:pointer;"> 삭제 </a>
-                                                </li>
-                                                <li>
-                                                    <a onclick="fn_displayAddComment('addCommentDiv0');" style="cursor:pointer;"> 대댓글 </a>
+                                                    <a onclick="#" class="deleteReply" data-replyNum='${vo.goWithReplyNum}' data-pageNo='${pageNo}' style="cursor:pointer;"> 삭제 </a>
                                                 </li>
                                             </ul>
                                             </div>

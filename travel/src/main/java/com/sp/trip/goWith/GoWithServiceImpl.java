@@ -117,7 +117,7 @@ public class GoWithServiceImpl implements GoWithService {
 		if (saveFilename != null) {
 			if (dto.getImageFilename() != null && dto.getImageFilename().length() != 0) {
 				fileManager.doFileDelete(dto.getImageFilename(), pathname);
-			}
+			} 
 
 			dto.setImageFilename(saveFilename);
 		}
@@ -179,6 +179,16 @@ public class GoWithServiceImpl implements GoWithService {
 		}
 		
 		return result;
+	}
+	
+	@Override
+	public void updateReply(Map<String, Object> map) throws Exception {
+		try {
+			dao.updateData("goWith.updateReply", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override

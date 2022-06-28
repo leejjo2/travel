@@ -117,6 +117,17 @@ CREATE TABLE goWithApply (
     CONSTRAINT fk_goWithApply_userId FOREIGN KEY(userId) REFERENCES member(userId) ON DELETE CASCADE
 );
 
+CREATE TABLE goWithReply (
+    goWithReplyNum NUMBER PRIMARY KEY 
+    ,goWithNum NUMBER NOT NULL
+    ,userId VARCHAR2(50) NOT NULL
+    ,content VARCHAR2(2000) NOT NULL
+    ,reg_date DATE DEFAULT SYSDATE
+    ,pwd VARCHAR2(100) NOT NULL
+    ,CONSTRAINT fk_goWithReply_goWithNum foreign key(goWithNum) references goWith(goWithNum) ON DELETE CASCADE
+    ,CONSTRAINT fk_goWithReply_userId foreign key(userId) references member(userId) ON DELETE CASCADE
+);
+
 
 -- 사업자 
 CREATE TABLE partner (
