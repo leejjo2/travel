@@ -17,7 +17,6 @@
 		   <!-- 0703 클래스 ico 태그 추가 -->
 			<h2><span class="ico">My</span>마이페이지</h2>
 			<!-- // 0703 클래스 ico 태그 추가 -->
-			<button type="button" title="열기" class="btn_titview">더보기</button>
 			<!-- 팝업 메뉴 -->
 			<div class="pop_subMenu pop_myPage" tabindex="0">
 				<ul>
@@ -78,7 +77,14 @@
 				
 					<div class="profile">
 						<div class="photo">
-							<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+							<c:choose>
+								<c:when test="${userProfileImg == null}">
+									<img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png" alt="프로필 사진">
+								</c:when>
+								<c:otherwise>
+									<img class="profile" name="userprofile" src="${pageContext.request.contextPath}/uploads/profile/${userProfileImg}">
+								</c:otherwise>
+							</c:choose>	
 						</div>
 						<strong class="userName">${sessionScope.member.userName}</strong>
 					</div>
@@ -105,7 +111,7 @@
 			</li>
 			<li class="btn_myList">
 				<a href="${pageContext.request.contextPath}/mypage/orderDetaileList">
-					<strong>주문내역</strong>
+					<strong>예약내역</strong>
 					<p class="number" id="commentCnt">${orderCount}</p>
 				</a>
 			</li>

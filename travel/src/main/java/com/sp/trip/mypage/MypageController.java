@@ -36,14 +36,18 @@ public class MypageController {
 		int likeCount = 0;
 		int scrapCount = 0;
 		int orderCount = 0;
+		String userProfileImg = null;
 		
 		likeCount = service.searchMyLike(info.getUserId()).size();
 		scrapCount = service.searchMyScrap(info.getUserId()).size();
 		orderCount = service.orderCount(info.getUserId());
+		userProfileImg = service.userProfileImg(info.getUserId());
 
 		model.addAttribute("orderCount", orderCount);
 		model.addAttribute("likeCount", likeCount);
 		model.addAttribute("scrapCount", scrapCount);
+		model.addAttribute("userProfileImg", userProfileImg);
+		
 
 		return".mypage.mypageList";
 	}

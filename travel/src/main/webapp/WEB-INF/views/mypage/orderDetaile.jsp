@@ -14,40 +14,7 @@ a {border: none;}
 </style>
 
 <div style="margin-bottom: 50px;" >
-	<h3 style="font-size: 15px; padding-top: 10px;"><i class="icofont-double-right"></i>주문 정보</h3>
-	<table class="table td-border mx-auto my-10">
-		<tr>
-			<td class="wp-15 text-center bg-light">예약번호</td>
-			<td class="wp-35 ps-5">${dto.reserveNum}</td>
-			<td class="wp-15 text-center bg-light">아이디</td>
-			<td class="wp-35 ps-5">${dto.userId}</td>
-		</tr>
-		<tr>
-			<td class="text-center bg-light" colspan="1">상품명</td>
-			<td class="ps-5 bg-white" colspan="3">
-				<a href="${pageContext.request.contextPath}/activity/detail?activityNum=${dto.activityNum}&page=1">${dto.activityName}</a>
-			</td>		
-		</tr>
-		<tr>
-			<td class="text-center bg-light">결제 금액</td>
-			<td class="ps-5"> &#8361; ${dto.payAmount} </td>
-			<td class="text-center bg-light">마일리지 사용</td>
-			<td class="ps-5" >${dto.mileageUse}</td>
-		</tr>		
-		<tr>
-			<td class="text-center bg-light">결제완료일</td>
-			<td class="ps-5" >${dto.payDate}</td>
-			<td class="text-center bg-light">사용날짜</td>
-			<td class="ps-5">${dto.usingDate}</td>
-			
-		</tr>
-		<tr>
-			<td class="text-center bg-light">사용여부</td>
-			<td class="ps-5">
-				<span class="${dto.usingStatus == '미사용' ? 'notUsing' : 'using' }" >${dto.usingStatus}</span>
-			</td>
-		</tr>
-	</table>
+	
 	
 	<h3 style="font-size: 15px; padding-top: 10px;"><i class="icofont-double-right"></i>예약 정보</h3>	
 		<table class="table td-border mx-auto my-10">
@@ -58,7 +25,9 @@ a {border: none;}
 		</tr>
 		<tr>
 			<td class="text-center bg-light" colspan="1">상품명</td>
-			<td class="ps-5 bg-white" colspan="3">${dto.activityName}</td>		
+			<td class="ps-5 bg-white" colspan="3">
+				<a href="${pageContext.request.contextPath}/activity/detail?activityNum=${dto.activityNum}&page=1">${dto.activityName}</a>
+			</td>		
 		</tr>
 		<tr>
 			<td class="wp-15 text-center bg-light">예약자명</td>
@@ -80,6 +49,39 @@ a {border: none;}
 			<td class="text-center bg-light">총 인원</td>
 			<td class="ps-5" >${dto.totalMen}명</td>
 		</tr>		
+		<tr>
+			<td class="text-center bg-light">사용날짜</td>
+			<td class="ps-5">${dto.usingDate}</td>
+			<td class="text-center bg-light">사용여부</td>
+			<td class="ps-5">
+				<span class="${dto.usingStatus == '미사용' ? 'notUsing' : 'using' }" >${dto.usingStatus}</span>
+			</td>
+		</tr>
+		
+	</table>
+	
+	<h3 style="font-size: 15px; padding-top: 10px;"><i class="icofont-double-right"></i>결제 정보</h3>
+	<table class="table td-border mx-auto my-10">
+		<tr>
+			<td class="wp-15 text-center bg-light">예약번호</td>
+			<td class="wp-35 ps-5">${dto.reserveNum}</td>
+			<td class="wp-15 text-center bg-light">아이디</td>
+			<td class="wp-35 ps-5">${dto.userId}</td>
+		</tr>
+		<tr>
+			<td class="text-center bg-light" colspan="1">상품명</td>
+			<td class="ps-5 bg-white" colspan="3">${dto.activityName}</td>		
+		</tr>
+		<tr>
+			<td class="text-center bg-light">결제 금액</td>
+			<td class="ps-5"> &#8361; ${dto.payAmount} </td>
+			<td class="text-center bg-light">마일리지 사용</td>
+			<td class="ps-5" >${dto.mileageUse}</td>
+		</tr>		
+		<tr>
+			<td class="text-center bg-light">결제완료일</td>
+			<td class="ps-5" >${dto.payDate}</td>
+		</tr>
 		
 	</table>
 </div>

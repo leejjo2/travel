@@ -86,6 +86,17 @@ public class MypageServiceImpl implements MypageService {
 		return result;
 	}
 
+	@Override
+	public String userProfileImg(String userId) throws Exception {
+		String img = null;
+		try {
+			img = dao.selectOne("mypage.userProfile", userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return img;
+	}
+
 	
 
 }

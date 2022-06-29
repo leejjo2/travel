@@ -58,4 +58,9 @@
 <select id="orderCount" parameterType="String" resultType="Integer">
 SELECT NVL(COUNT(*), 0) FROM activityReserve WHERE userId = #{userId}
 </select>
+
+<select id="userProfile" parameterType="String" resultType="String">
+SELECT profileImgName FROM member WHERE userId = #{userId}
+</select>
+
 </mapper>

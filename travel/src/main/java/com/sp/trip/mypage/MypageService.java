@@ -14,5 +14,7 @@ public interface MypageService {
 	public List<Reserve> readOrderDetail(Map<String, Object> map) throws Exception;
 	public Reserve orderDetail(int reserveNum) throws Exception;
 	public int orderCount(String userId) throws Exception;
+	public String userProfileImg(String userId) throws Exception;
+
 
 }

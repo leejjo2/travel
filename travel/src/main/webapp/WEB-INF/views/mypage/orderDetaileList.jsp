@@ -31,9 +31,7 @@ h1 {    font-family: 맑은고딕;
     position: relative;
     padding: 6px 0 10px 28px;
     border-bottom: 2px solid #000;}
-.order:hover {
-	background: #efefef;
-}
+.order:hover {	background: #ccebf354;}
 </style>
 
 <script type="text/javascript">
@@ -69,7 +67,7 @@ function detailedMember(reserveNum) {
 		modal : true,
 		height : 540,
 		width : 830,
-		title : "주문상세정보",
+		title : "예약상세정보",
 		close : function(event, ui) {
 		}
 	});
@@ -90,7 +88,7 @@ function detailedMember(reserveNum) {
 <div class="container" style="width:1060px;">
 	<div class="title">
 		<div class="title2">
-			<h1 class="title_text"><span class="ico">My</span>주문 내역</h1>
+			<h1 class="title_text"><span class="ico">My</span>예약 내역</h1>
 		</div>
 	</div>
 	
