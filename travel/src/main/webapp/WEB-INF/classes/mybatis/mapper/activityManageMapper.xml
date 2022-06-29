@@ -70,4 +70,58 @@
 		WHERE activityNum = #{activityNum} AND partnerNum = #{partnerNum}
 	</delete>
 	
+	<select id="reserveDataCount" parameterType="Integer" resultType="Integer">
+		SELECT NVL(COUNT(*), 0)
+		FROM activityReserve a
+		JOIN activityPay b ON a.reserveNum = b.reserveNum
+		LEFT OUTER JOIN activityReserveDetail c ON a.reserveNum = c.reserveNum
+		LEFT OUTER JOIN activityDetail d ON c.DetailNum = d.DetailNum
+		LEFT OUTER JOIN activity e ON d.activityNum = e.activityNum
+		<where>
+			<if test="keyword!=null and keyword!='' ">
+				INSTR(${condition}, #{keyword}) &gt;= 1
+			</if>
+			<if test="reserveStatus!=''">
+				AND reserveStatus = #{reserveStatus}
+			</if>
+			AND partnerNum = #{partnerNum}
+		</where>
+	</select>
+	
+	<select id="reserveList" parameterType="map" resultType="com.sp.trip.activity.Reserve">
+	SELECT * FROM (
+	    SELECT ROWNUM rnum, tb.* FROM (
+	            select a.reserveNum, name, tel, activityName, TO_CHAR(reserveDoneDate, 'YYYY-MM-DD') reserveDoneDate,
+	                totalPrice, reserveStatus
+	            from activityReserve a
+	            JOIN activityPay b ON a.reserveNum = b.reserveNum
+	            LEFT OUTER JOIN activityReserveDetail c ON a.reserveNum = c.reserveNum
+	            LEFT OUTER JOIN activityDetail d ON c.DetailNum = d.DetailNum
+	            LEFT OUTER JOIN activity e ON d.activityNum = e.activityNum
+	            <where>
+					<if test="keyword!=null and keyword!='' ">
+						INSTR(${condition}, #{keyword}) &gt;= 1
+					</if>
+					<if test="reserveStatus!=''">
+						AND reserveStatus = #{reserveStatus}
+					</if>
+					AND partnerNum = #{partnerNum}
+				</where>
+	    ORDER BY reserveDoneDate DESC 
+	    ) tb WHERE ROWNUM &lt;= #{end}
+	) WHERE rnum &gt;= #{start}
+	</select>
+	
+	<select id="readReserve" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
+		SELECT a.reserveNum, activityName, name, tel, email, TO_CHAR(reserveDoneDate, 'YYYY-MM-DD') reserveDoneDate,
+                totalMen, totalPrice, mileageUse, payAmount, reserveStatus
+        FROM activityReserve a
+        JOIN activityPay b ON a.reserveNum = b.reserveNum
+        LEFT OUTER JOIN activityReserveDetail c ON a.reserveNum = c.reserveNum
+        LEFT OUTER JOIN activityDetail d ON c.DetailNum = d.DetailNum
+        LEFT OUTER JOIN activity e ON d.activityNum = e.activityNum
+        WHERE a.reserveNum = #{reserveNum}
+	</select>
+	
+	
 </mapper>

@@ -36,7 +36,7 @@
 					<li class="active"><a href="${pageContext.request.contextPath}/partner"><i class="fa fa-home"></i> 대쉬보드 </a></li>
 					<li>
 						<a>
-							<i class="fa fa-desktop"></i> 숙박업소 관리 <span class="fa fa-chevron-down"></span>
+							<i class="fa fa-bed"></i> 숙박업소 관리 <span class="fa fa-chevron-down"></span>
 						</a>
 						<ul class="nav child_menu">
 							<li><a href="${pageContext.request.contextPath}/partner/lodgingManage/lodgingList">숙소 리스트</a></li>
@@ -46,7 +46,7 @@
 					
 					<li>
 						<a>
-							<i class="fa fa-desktop"></i> 액티비티 관리 <span class="fa fa-chevron-down"></span>
+							<i class="fa fa-bicycle"></i> 액티비티 관리 <span class="fa fa-chevron-down"></span>
 						</a>
 						<ul class="nav child_menu">
 							<li><a href="${pageContext.request.contextPath}/partner/activityManage/activityList">액티비티 리스트</a></li>
@@ -63,6 +63,17 @@
 
 						</ul>
 					</li>
+					
+					<li>
+						<a>
+							<i class="fa fa-money"></i>예약현황 관리<span class="fa fa-chevron-down"></span>
+						</a>
+						<ul class="nav child_menu">
+							<li><a href="#">숙소 예약현황</a></li>
+							<li><a href="${pageContext.request.contextPath}/partner/activityManage/reserveList">액티비티 예약현황</a></li>
+						</ul>
+					</li>
+					
 					
 					<li>
 						<a>

@@ -26,6 +26,7 @@ public class Reserve {
 	private String userId; // 예약자 아이디
 	private String usingDate; // 사용 날짜
 	private String usingStatus; // 사용 여부
+	private String reserveStatus; // 예약현황 (결제완료, 취소 등)
 	
 	private int payWay; // 결제 방법
 	private int payAmount; // 결제 금액
@@ -162,6 +163,12 @@ public class Reserve {
 	}
 	public void setActivityName(String activityName) {
 		this.activityName = activityName;
+	}
+	public String getReserveStatus() {
+		return reserveStatus;
+	}
+	public void setReserveStatus(String reserveStatus) {
+		this.reserveStatus = reserveStatus;
 	}
 	
 }

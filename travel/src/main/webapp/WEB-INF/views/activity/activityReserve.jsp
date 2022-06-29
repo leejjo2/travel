@@ -156,7 +156,7 @@ function insertReserve() {
 			<input type="hidden" name="payWay" value="1">
 			<input type="hidden" name="mileageSave" value="">
 			<input type="hidden" name="totalMileage" value="${mdto.totalMileage}">
-			<input type="hidden" name="mileageUse" value="">
+			<input type="hidden" name="mileageUse" value="0">
 			
 			<h1 class="css-asuv60--OrderForm-style--title">예약하기</h1>
 			<div class="css-ho0ft8--OrderForm-style--content">

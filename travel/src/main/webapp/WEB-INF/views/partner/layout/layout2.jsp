@@ -28,8 +28,20 @@
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/dist/partner/build/css/custom.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/util-jquery.js"></script>
     <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/util-jquery.js"></script>
+    
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/jquery/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" type="text/css">
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/paginate.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ui-css.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/forms.css" type="text/css">
+	
 </head>
 
 <body class="nav-md">
@@ -45,7 +57,7 @@
 <div id="loadingLayout" style="display:none; position: absolute; left: 0; top:0; width: 100%; height: 100%; z-index: 9000; background: #eee;">
 	<div class="loader"></div>
 </div>
-
+	<script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/jquery-ui.min.js"></script>
     <!-- Bootstrap -->
     <script src="${pageContext.request.contextPath}/dist/partner/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->

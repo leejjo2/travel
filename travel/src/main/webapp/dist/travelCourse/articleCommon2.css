@@ -47,7 +47,7 @@ blockquote:before, blockquote:after,q:before, q:after{ content:''; content:none;
 button{ border:0 none; background-color:transparent; cursor:pointer;/*outline:0 none;*/}/*웹접근성1차수정 outline:0 none 삭제*/
 legend, hr { overflow:hidden; position:absolute; top:0; left:0;visibility:hidden; font-size:0; width:0; height:0; line-height:0;}
 address,caption,cite,code,dfn,em,var{ font-style:normal; font-weight:normal; }
-a{font-family: NotoSansKR,NotoSansJP,"돋움",Dotum,AppleGothic,Tahoma,Sans-serif;color:#333; text-decoration:none; }
+a{color:#333; text-decoration:none; }
 a:link, a:visited, a:hover, a:focus, a:active{ text-decoration:none; }
 a.under{ text-decoration:underline; }
 input::-ms-clear{ display: none; }

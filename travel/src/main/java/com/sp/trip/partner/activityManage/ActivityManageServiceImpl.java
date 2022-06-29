@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sp.trip.activity.Reserve;
 import com.sp.trip.common.FileManager;
 import com.sp.trip.common.dao.CommonDAO;
 
@@ -125,5 +126,47 @@ public class ActivityManageServiceImpl implements ActivityManageService{
 			e.printStackTrace();
 			throw e;
 		}
+	}
+
+
+	@Override
+	public int reserveDataCount(Map<String, Object> map) {
+		int result = 0;
+
+		try {
+			int partnerNum = dao.selectOne("activityManage.readPartnerNum", map.get("userId"));
+			map.put("partnerNum", partnerNum);
+			result = dao.selectOne("activityManage.reserveDataCount", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	@Override
+	public List<Reserve> reserveList(Map<String, Object> map) {
+		List<Reserve> list = null;
+		
+		try {
+			int partnerNum = dao.selectOne("activityManage.readPartnerNum", map.get("userId"));
+			map.put("partnerNum", partnerNum);
+			list = dao.selectList("activityManage.reserveList", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	@Override
+	public Reserve readReserve(int reserveNum) {
+		Reserve dto = null;
+		try {
+			dto = dao.selectOne("activityManage.readReserve", reserveNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 }

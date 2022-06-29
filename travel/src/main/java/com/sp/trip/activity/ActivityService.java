@@ -15,4 +15,5 @@ public interface ActivityService {
 	// 결제를 위한 함수
 	public int insertReserve(Reserve dto) throws Exception;
 	public Reserve readPayment(int reserveNum);
+	
 }

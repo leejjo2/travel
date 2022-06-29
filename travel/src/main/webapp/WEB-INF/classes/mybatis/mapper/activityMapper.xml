@@ -86,10 +86,10 @@
 	</select>
 	
 	<insert id="insertActivityReserve" parameterType="com.sp.trip.activity.Reserve">
-		INSERT INTO activityReserve(reserveNum, totalPrice, mileageUse, totalMen, reserveDoneDate,
-			name, tel, email, userId, usingStatus)
-		VALUES(#{reserveNum}, #{totalPrice}, #{mileageUse}, #{totalMen}, SYSDATE, 
-			#{name}, #{tel}, #{email}, #{userId}, '미사용')
+		INSERT INTO activityReserve(reserveNum, totalPrice, mileageUse, mileageSave, totalMen, reserveDoneDate,
+			name, tel, email, userId, usingStatus, reserveStatus)
+		VALUES(#{reserveNum}, #{totalPrice}, #{mileageUse}, #{mileageSave}, #{totalMen}, SYSDATE, 
+			#{name}, #{tel}, #{email}, #{userId}, '미사용', '결제완료')
 	</insert>
 	
 	<insert id="insertActivityReserveDetail" parameterType="com.sp.trip.activity.Reserve">
@@ -103,13 +103,13 @@
 	</insert>
 	
 	<insert id="insertMileageUse" parameterType="com.sp.trip.activity.Reserve">
-		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
-		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageUse}, 2 , #{totalMileage}, SYSDATE, '액티비티 구매 사용')
+		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo, reserveNum)
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageUse}, 2 , #{totalMileage}, SYSDATE, '액티비티 구매 사용', #{reserveNum})
 	</insert>
 	
 	<insert id="insertMileageSave" parameterType="com.sp.trip.activity.Reserve">
-		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
-		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '액티비티 구매 적립')
+		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo, reserveNum)
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '액티비티 구매 적립', #{reserveNum})
 	</insert>
 	
 	<select id="readPayment" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
