@@ -62,6 +62,18 @@ public class MypageServiceImpl implements MypageService {
 		}
 		return list;
 	}
+	
+	@Override
+	public Reserve orderDetail(int reserveNum) throws Exception {
+		Reserve dto = null;
+		try {
+			dto = dao.selectOne("mypage.orderDatail", reserveNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+
 
 	@Override
 	public int orderCount(String userId) throws Exception {
@@ -73,5 +85,7 @@ public class MypageServiceImpl implements MypageService {
 		}
 		return result;
 	}
+
+	
 
 }

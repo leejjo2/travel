@@ -6,13 +6,27 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dist/mypage/myLikeList2.css">
 <style type="text/css">
 .heart { color: red;    font-size: 25px;    padding-right: 5px;     padding-top: 5px;}
+h1 span {    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 26px;
+    height: 24px;
+    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_tit_list5.png) 0 0 no-repeat;
+    background-size: 26px auto;
+    text-indent: -9999px;}
+h1 {    font-family: 맑은고딕;
+    margin-top: 25px;
+    position: relative;
+    padding: 6px 0 10px 28px;
+    border-bottom: 2px solid #000;}
 </style>
 
 
 <main class="Wishlist-module__container--EE4As" data-turbolinks="false">
 	<div class="Grid-module__container--YH1rv">
 		<div class="Grid-module__row--GTpEN">
-			<h1 class="Wishlist-module__title--vmxlt">좋아요</h1>
+			<h1 class="Wishlist-module__title--vmxlt"><span class="ico">My</span>좋아요</h1>
 		</div>
 	</div>
 	<article>

@@ -42,6 +42,19 @@
 		) WHERE rnum &gt;= #{start}
 </select>
 
+<select id="orderDatail" parameterType="Integer" resultType="com.sp.trip.activity.Reserve">
+	select b.userId, a.reserveNum, d.activityNum,  TO_CHAR(payDate, 'YYYY-MM-DD') payDate, payAmount, 
+	     TO_CHAR(usingDate, 'YYYY-MM-DD') usingDate, mileageUse, usingStatus, activityName,
+	     titleImgname, d.price, totalMen,  name, tel, email, TO_CHAR(reserveDoneDate, 'YYYY-MM-DD') reserveDoneDate
+	 from activityPay a
+	 JOIN activityReserve b ON a.reserveNum = b.reserveNum
+	 JOIN activityReserveDetail c ON b.reserveNum = c.reserveNum
+	 JOIN activityDetail d ON c.DetailNum = d.DetailNum
+	 JOIN activity e ON d.activityNum = e.activityNum
+	 WHERE a.reserveNum = #{reserveNum}
+</select>
+
+
 <select id="orderCount" parameterType="String" resultType="Integer">
 SELECT NVL(COUNT(*), 0) FROM activityReserve WHERE userId = #{userId}
 </select>

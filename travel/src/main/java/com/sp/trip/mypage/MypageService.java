@@ -12,6 +12,7 @@ public interface MypageService {
 
 	public TravelCourse readMyList(Map<String, Object> map);
 	public List<Reserve> readOrderDetail(Map<String, Object> map) throws Exception;
+	public Reserve orderDetail(int reserveNum) throws Exception;
 	public int orderCount(String userId) throws Exception;
 
 }

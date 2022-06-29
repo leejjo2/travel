@@ -36,6 +36,11 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery-ui.min.js"></script>
+	
+
+	
 <style type="text/css">
 @import url("//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css");
 

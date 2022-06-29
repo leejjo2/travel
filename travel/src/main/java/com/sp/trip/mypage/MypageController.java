@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sp.trip.activity.Reserve;
+import com.sp.trip.admin.memberManage.Member;
 import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
 import com.sp.trip.travelCourse.TravelCourse;
@@ -160,7 +161,7 @@ public class MypageController {
 		return ".mypage.myScrapList";
 	}
 	
-	@RequestMapping(value = "orderDetail")
+	@RequestMapping(value = "orderDetaileList")
 	public String orderDetailList(@RequestParam(value="page", defaultValue = "1") int current_page,
 			HttpSession session, HttpServletRequest req, Model model) throws Exception {
 		 
@@ -198,7 +199,19 @@ public class MypageController {
 		model.addAttribute("list", list);
 		model.addAttribute("page", current_page);
 		model.addAttribute("paging", paging);
+		model.addAttribute("dataCount", dataCount);
 		
-		return ".mypage.orderDetail";
+		return ".mypage.orderDetaileList";
 	}
+	
+	// 파트너상세 정보 : AJAX-Text 응답
+		@RequestMapping(value = "orderDetaile")
+		public String orderDetaile(@RequestParam int reserveNum, Model model) throws Exception {
+			
+			Reserve dto = service.orderDetail(reserveNum);
+
+			model.addAttribute("dto", dto);
+
+			return "mypage/orderDetaile";
+		}
 }

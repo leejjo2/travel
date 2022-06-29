@@ -219,7 +219,7 @@ $(function() {
                   	<ul class="slides">
                   		<li  id = "0" ${themeNum=="0"?"class='on'":""}>
 		                      <a href="#" class="tagImg"
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/전체여행.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>전체</span>
@@ -228,7 +228,7 @@ $(function() {
 	                 	</li>
                   		<li id = "1" ${themeNum=="1"?"class='on'":""}>
 			                  	 <a href="#" class="tagImg" 
-			                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/1.jpg); ">
+			                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/가족여행.jpg); ">
 			                        <div class="title2_1"></div>
 			                        <h3>
 			                           <span>가족코스</span>
@@ -237,7 +237,7 @@ $(function() {
 	                     </li>
 	                     <li id = "2" ${themeNum=="2"?"class='on'":""}>
 		                     <a href="#" class="tagImg" 
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/2.JPG); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/혼자여행.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>혼자여행</span>
@@ -246,7 +246,7 @@ $(function() {
 		                  </li>
 		                  <li id = "3" ${themeNum=="3"?"class='on'":""}>
 		                     <a href="#" class="tagImg" 
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/3.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/도보여행.png); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>도보코스</span>
@@ -255,7 +255,7 @@ $(function() {
 		                  </li>
 		                  <li id = "4" ${themeNum=="4"?"class='on'":""}>
 		                     <a href="#" class="tagImg"   
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/4.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/힐링여행.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>힐링코스</span>
@@ -264,7 +264,7 @@ $(function() {
 		                  </li>
 		                  <li id = "5" ${themeNum=="5"?"class='on'":""}>
 		                   	 <a href="#" class="tagImg"
-		                         style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/5.jpg); ">
+		                         style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/맛코스.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>맛코스</span>
@@ -273,7 +273,7 @@ $(function() {
 		                   </li>
 		                   <li id = "6" ${themeNum=="6"?"class='on'":""}>
 		                     <a href="#" class="tagImg"
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/캠핑여행.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>캠핑코스</span>
@@ -282,7 +282,7 @@ $(function() {
 		                   </li>
 		                   <li id = "7" ${themeNum=="7"?"class='on'":""}>
 		                      <a href="#" class="tagImg"
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/반려동물.webp); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>반려둥물과 함께</span>
@@ -291,7 +291,7 @@ $(function() {
 		                   </li>
 		                   <li id = "8" ${themeNum=="8"?"class='on'":""}>
 		                      <a href="#" class="tagImg"
-		                        style="background-image: url(${pageContext.request.contextPath}/resources/img/travelCourse/6.jpg); ">
+		                        style="background-image: url(${pageContext.request.contextPath}/resources/images/theme/문화여행.jpg); ">
 		                        <div class="title2_1"></div>
 		                        <h3>
 		                           <span>문화코스</span>

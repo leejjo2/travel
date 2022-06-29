@@ -104,7 +104,7 @@
 				</a>
 			</li>
 			<li class="btn_myList">
-				<a href="${pageContext.request.contextPath}/mypage/orderDetail">
+				<a href="${pageContext.request.contextPath}/mypage/orderDetaileList">
 					<strong>주문내역</strong>
 					<p class="number" id="commentCnt">${orderCount}</p>
 				</a>
