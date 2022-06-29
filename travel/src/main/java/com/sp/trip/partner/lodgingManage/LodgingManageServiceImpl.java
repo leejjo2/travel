@@ -172,6 +172,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void deleteFile(Map<String, Object> map) throws Exception {
 		try {
+			
 			dao.deleteData("lodgingManage.deleteFile", map);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -201,8 +202,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 					insertRoomFile(dto);
 				}
 			}
-			
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -253,6 +252,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void updateRoom(LodgingManage dto, String userId, String pathname) throws Exception {
 		try {
+			dao.updateData("lodgingManage.updateRoom", dto);
+			
 			if (!dto.getSelectFile().isEmpty()) {
 				for (MultipartFile mf : dto.getSelectFile()) {
 					String roomImageFileNum = fileManager.doFileUpload(mf, pathname);
@@ -261,8 +262,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 					}
 
 					dto.setRoomSaveFilename(roomImageFileNum);
-
-					dao.updateData("lodgingManage.updateRoom", dto);
+					
+					insertRoomFile(dto);
 				}
 			}
 		} catch (Exception e) {

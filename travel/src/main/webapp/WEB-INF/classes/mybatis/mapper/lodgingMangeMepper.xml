@@ -85,7 +85,7 @@
 	</select>
 	
 	<delete id="deleteFile" parameterType="map">
-		DELETE FROM hotelImage WHERE ${field} = #{hotelNum}
+		DELETE FROM hotelImage WHERE ${field} = #{hotelImageFileNum}
 	</delete>
 	
 	
@@ -167,7 +167,7 @@
 	</select>
 	
 	<delete id="deleteRoomFile" parameterType="map">
-		DELETE FROM roomImage WHERE ${field} = #{roomNum}
+		DELETE FROM roomImage WHERE ${field} = #{roomImageFileNum}
 	</delete>
 	
 </mapper>

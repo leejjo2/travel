@@ -99,39 +99,6 @@ function sendOk() {
 	f.action="${pageContext.request.contextPath}/partner/lodgingManage/${mode}";
 	f.submit();
 }
-</script>
-
-<script type="text/javascript">
-function login() {
-	location.href="${pageContext.request.contextPath}/member/login";
-}
-
-function ajaxFun(url, method, query, dataType, fn) {
-	$.ajax({
-		type:method,
-		url:url,
-		data:query,
-		dataType:dataType,
-		success:function(data) {
-			fn(data);
-		},
-		beforeSend:function(jqXHR) {
-			jqXHR.setRequestHeader("AJAX", true);
-		},
-		error:function(jqXHR) {
-			if(jqXHR.status === 403) {
-				login();
-				return false;
-			} else if(jqXHR.status === 400) {
-				alert("요청 처리가 실패했습니다.");
-				return false;
-			}
-	    	
-			console.log(jqXHR.responseText);
-		}
-	});
-}
-
 
 <c:if test="${mode=='roomUpdate'}">
 $(function(){
@@ -142,7 +109,7 @@ $(function(){
 		var $img = $(this);
 		var fileNum = $img.attr("data-fileNum");
 		var url="${pageContext.request.contextPath}/partner/lodgingManage/deleteRoomFile";
-		$.post(url, {fileNum:fileNum}, function(data){
+		$.post(url, {roomImageFileNum:fileNum}, function(data){
 			$img.remove();
 		}, "json");
 	});
@@ -216,6 +183,39 @@ $(function(){
 		$(this).remove();
 	});
 });
+</script>
+
+<script type="text/javascript">
+function login() {
+	location.href="${pageContext.request.contextPath}/member/login";
+}
+
+function ajaxFun(url, method, query, dataType, fn) {
+	$.ajax({
+		type:method,
+		url:url,
+		data:query,
+		dataType:dataType,
+		success:function(data) {
+			fn(data);
+		},
+		beforeSend:function(jqXHR) {
+			jqXHR.setRequestHeader("AJAX", true);
+		},
+		error:function(jqXHR) {
+			if(jqXHR.status === 403) {
+				login();
+				return false;
+			} else if(jqXHR.status === 400) {
+				alert("요청 처리가 실패했습니다.");
+				return false;
+			}
+	    	
+			console.log(jqXHR.responseText);
+		}
+	});
+}
+
 
 
 </script>
@@ -373,7 +373,6 @@ $(function(){
 								<c:if test="${mode=='roomUpdate'}">
 									<input type="hidden" name="roomNum" value="${dto.roomNum}">
 									<input type="hidden" name="roomNum" value="${hdto.hotelNum}">
-									<input type="hidden" name="" value="">
 								</c:if>
 							</td>
 						</tr>

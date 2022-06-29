@@ -96,7 +96,7 @@
 			</div>
 
 			<button type="button" class="btn btn-light"
-				onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/lodgingWrite';">숙소
+				onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/write';">숙소
 				등록하기</button>
 		</div>
 		<div id="content">

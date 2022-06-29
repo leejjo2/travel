@@ -8,26 +8,6 @@
 	type="text/css">
 
 <script type="text/javascript">
-	/*
-	 window.addEventListener("load", function(){
-	 let page = ${page};
-	 let pageSize = ${rows};
-	 let dataCount = ${dataCount};
-	 let url = "${listUrl}";
-	
-	 let total_page = pageCount(dataCount, pageSize);
-	 let paging = pagingUrl(page, total_page, url);
-	
-	 document.querySelector(".dataCount").innerHTML = dataCount +"개 (" 
-	 + page + "/" + total_page + "페이지)";
-	
-	 document.querySelector(".page-box").innerHTML = 
-	 dataCount == 0 ? "등록된 게시물이 없습니다." : paging;
-	
-	 }, false);
-	 * 
-	 */
-
 	function deleteRoom(roomNum) {
 		if (confirm("방을 삭제 하시겠습니까 ? ")) {
 			let query = "roomNum=" + roomNum;

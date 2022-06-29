@@ -79,7 +79,7 @@ public class LodgingManageController {
 
 	
 	// 숙소 등록하기
-	@RequestMapping(value = "lodgingWrite")
+	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String lodgingWrite(Model model) throws Exception {
 		model.addAttribute("mode", "write");
 		return ".partner.lodgingManage.lodgingWrite";
@@ -103,7 +103,7 @@ public class LodgingManageController {
 	}
 	
 	// 수정
-	@RequestMapping(value = "update")
+	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String updateForm(
 			@RequestParam int hotelNum,
 			HttpSession session,
@@ -150,7 +150,7 @@ public class LodgingManageController {
 
 	
 	// 삭제
-	@RequestMapping(value = "delete")
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public String deleteHotel(@RequestParam int hotelNum,
 			HttpSession session) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
@@ -158,33 +158,40 @@ public class LodgingManageController {
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
 		
-		service.deleteHotel(hotelNum, info.getUserId(), pathname);
+		LodgingManage dto = service.readHotel(hotelNum);
+		
+		if (!dto.getPartnerId().equals(info.getUserId())) {
+			return "redirect:/";
+		}
+		
+		try {
+			service.deleteHotel(hotelNum, info.getUserId(), pathname);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		return "redirect:/partner/lodgingManage/lodgingList";
 	}
 	
 	// 파일 삭제
-	@RequestMapping(value = "deleteFile")
+	@RequestMapping(value = "deleteFile", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> deleteHotelFile(@RequestParam int hotelNum,
-			@RequestParam int fileNum,
+	public Map<String, Object> deleteHotelFile(
+			@RequestParam int hotelImageFileNum,
 			HttpSession session) throws Exception {
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
 		
-		LodgingManage fdto = service.readFile(fileNum);
-		LodgingManage dto = service.readHotel(hotelNum);
-		
-		
-		if (fdto != null) {
+		LodgingManage dto = service.readFile(hotelImageFileNum);
+		if (dto != null) {
 			fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname);
 		}
 		
-		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", "fileNum");
-		map.put("num", fileNum);
+		map.put("field", "imageFileNum");
+		map.put("hotelImageFileNum", hotelImageFileNum);
 		map.put("dto", dto);
 		service.deleteFile(map);
 
@@ -241,7 +248,6 @@ public class LodgingManageController {
 	
 	// 방 수정
 	@RequestMapping(value = "roomUpdate",  method = RequestMethod.GET)
-	@ResponseBody
 	public String updateRoomForm(
 			@RequestParam int roomNum,
 			@RequestParam int hotelNum,
@@ -286,7 +292,7 @@ public class LodgingManageController {
 	}
 	
 	// 방 삭제
-	@RequestMapping(value = "roomDelete")
+	@RequestMapping(value = "roomDelete", method = RequestMethod.GET)
 	public String deleteRoom(@RequestParam int roomNum,
 			HttpSession session) throws Exception {
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
@@ -300,23 +306,23 @@ public class LodgingManageController {
 	}
 	
 	// 방 파일 삭제
-	@RequestMapping(value = "deleteRoomFile")
+	@RequestMapping(value = "deleteRoomFile", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> deleteRoomFile(@RequestParam int fileNum,
+	public Map<String, Object> deleteRoomFile(@RequestParam int roomImageFileNum,
 			HttpSession session) throws Exception {
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
 
-		LodgingManage dto = service.readFile(fileNum);
+		LodgingManage dto = service.readRoomFile(roomImageFileNum);
 		
 		if (dto != null) {
 			fileManager.doFileDelete(dto.getRoomSaveFilename(), pathname);
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", "fileNum");
-		map.put("num", fileNum);
+		map.put("field", "imageFileNum");
+		map.put("roomImageFileNum", roomImageFileNum);
 		service.deleteRoomFile(map);
 
 		// 작업 결과를 json으로 전송
