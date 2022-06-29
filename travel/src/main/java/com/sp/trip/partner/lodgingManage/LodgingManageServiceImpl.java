@@ -98,7 +98,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 					}
 
 					dto.setHotelSaveFilename(hotelImageFileNum);
-
+					
 					insertFile(dto);
 				}
 			}
@@ -136,6 +136,7 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	// 숙소 이미지
 	@Override
 	public void insertFile(LodgingManage dto) throws Exception {
+		
 		try {
 			dao.insertData("lodgingManage.insertFile", dto);
 		} catch (Exception e) {
@@ -262,7 +263,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 					dto.setRoomSaveFilename(roomImageFileNum);
 
 					dao.updateData("lodgingManage.updateRoom", dto);
-					
 				}
 			}
 		} catch (Exception e) {

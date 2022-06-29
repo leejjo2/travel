@@ -87,7 +87,7 @@ $(function(){
 		}
 		var $img = $(this);
 		var fileNum = $img.attr("data-fileNum");
-		var url="${pageContext.request.contextPath}/partner/deleteFile";
+		var url="${pageContext.request.contextPath}/partner/lodgingManage/deleteFile";
 		$.post(url, {fileNum:fileNum}, function(data){
 			$img.remove();
 		}, "json");
@@ -274,6 +274,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 							<tr>
 								<td class="table-light" scope="row">등록이미지</td>
 								<td> 
+									<input type="hidden" name="hotelNum" value="${dto.hotelNum}">
 									<div class="img-box">
 										<c:forEach var="vo" items="${listFile}">
 											<img src="${pageContext.request.contextPath}/uploads/hotel/${vo.hotelSaveFilename}"
@@ -294,7 +295,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 								<button type="button" class="btn btn-light" onclick="location.href='${pageContext.request.contextPath}/partner/lodgingManage/lodgingList';">${mode=='update'?'수정취소':'등록취소'}&nbsp;<i class="bi bi-x"></i></button>
 								<c:if test="${mode=='update'}">
 									<input type="hidden" name="partnerNum" value="${dto.partnerNum}">
-									<input type="hidden" name="hotelNum" value="${dto.hotelNum}">						
+									<input type="hidden" name="hotelNum" value="${dto.hotelNum}">
+									<input type="hidden" name="num" value="${fdto.num}">						
 								</c:if>
 								</td>
 							</tr>

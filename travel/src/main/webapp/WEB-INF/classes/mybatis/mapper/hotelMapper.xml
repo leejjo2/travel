@@ -79,7 +79,7 @@
 	
 	
 	<select id="reserveNum_seq" resultType="Integer">
-		SELECT hotelReserve_seq.NEXTVAL FROM dual
+		SELECT hotelReservation_seq.NEXTVAL FROM dual
 	</select>
 	
 	<select id="readMember" parameterType="String" resultType="com.sp.trip.hotel.HotelReserve">
@@ -108,7 +108,7 @@
 	
 	<insert id="insertHotelPay" parameterType="com.sp.trip.hotel.HotelReserve">
 		INSERT INTO hotelPay(reserveNum, payWay, payAmount, pay_date)
-		VALUES (#{reserveNum}, #{payWay}, #{payAmount}, #{pay_date})
+		VALUES (#{reserveNum}, #{payWay}, #{payAmount}, SYSDATE)
 	</insert>
 	
 	<insert id="insertHotelReservationDetail" parameterType="com.sp.trip.hotel.HotelReserve">
@@ -118,12 +118,12 @@
 	
 	<insert id="insertMileageUse" parameterType="com.sp.trip.hotel.HotelReserve">
 		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
-		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageUse}, 2 , #{totalMileage}, SYSDATE, '호텔 예약 사용')
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageUse}, 2 , #{totalMileage}, SYSDATE, '숙소 예약 사용')
 	</insert>
 	
 	<insert id="insertMileageSave" parameterType="com.sp.trip.hotel.HotelReserve">
 		INSERT INTO mileage(mileageNum, userId, mileage, mileageSection, totalMileage, mileageDate, mileageMemo)
-		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '호텔 예약 적립')
+		VALUES(mileage_seq.NEXTVAL, #{userId}, #{mileageSave}, 1 , #{totalMileage}, SYSDATE, '숙소 예약 적립')
 	</insert>
 	
 	<select id="hotelPayment" parameterType="Integer" resultType="com.sp.trip.hotel.HotelReserve">

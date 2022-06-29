@@ -60,6 +60,7 @@ $(function() {
 				$(".totalPay").html(comma(${rdto.roomPrice}));
 				$('input[name=payAmount]').val(${rdto.roomPrice});
 				getSavePoint(${rdto.roomPrice});
+				$('input[name=mileageUse]').val('0');
 			} else {
 				$(".usingPoint").html("-"+$(this).val());
 				$(".totalPay").html(comma(${rdto.roomPrice} - usingPoint));
@@ -155,6 +156,9 @@ function insertReserve() {
 			<input type="hidden" name="roomPrice" value="${rdto.roomPrice}">
 			<input type="hidden" name="roomNum" value="${rdto.roomNum}">
 			<input type="hidden" name="roomName" value="${rdto.roomName}">
+			<input type="hidden" name="men" value="${rdto.roomMen}">
+			<input type="hidden" name="reserveTel" value="${memdto.tel}">
+			<input type="hidden" name="reserveName" value="${memdto.userName}">
 			<input type="hidden" name="totalPrice" value="">
 			<input type="hidden" name="payAmount" value="">
 			<input type="hidden" name="payWay" value="1">
@@ -209,8 +213,8 @@ function insertReserve() {
 								</div>
 								<div class="css-18nj9ab--Point-style--inputWrapper">
 									<div class="checkout-point-inputbox css-1vqiqg7">
-										<input name="mileageUse" type="number" pattern="[0-9]*" class="css-o9jzai" value="0" 
-											onkeyup="inputNumberFormat(this); checkPoint();">
+										<input name="mileageUseinput" type="decimal" pattern="[0-9]*" class="css-o9jzai" value="0" 
+											onkeyup="checkPoint();">
 										<span class="css-1fwrkpi">원</span>
 									</div>
 									<span role="button" class="checkout-point-button css-mkihkg">

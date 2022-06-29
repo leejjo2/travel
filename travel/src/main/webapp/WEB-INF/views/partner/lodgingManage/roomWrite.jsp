@@ -133,7 +133,7 @@ function ajaxFun(url, method, query, dataType, fn) {
 }
 
 
-<c:if test="${mode=='update'}">
+<c:if test="${mode=='roomUpdate'}">
 $(function(){
 	$(".delete-img").click(function(){
 		if(! confirm("이미지를 삭제 하시겠습니까 ?")) {
@@ -141,7 +141,7 @@ $(function(){
 		}
 		var $img = $(this);
 		var fileNum = $img.attr("data-fileNum");
-		var url="${pageContext.request.contextPath}/room/deleteFile";
+		var url="${pageContext.request.contextPath}/partner/lodgingManage/deleteRoomFile";
 		$.post(url, {fileNum:fileNum}, function(data){
 			$img.remove();
 		}, "json");

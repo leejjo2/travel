@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sp.trip.common.FileManager;
 import com.sp.trip.common.MyUtil;
@@ -115,9 +116,14 @@ public class LodgingManageController {
 			return "redirect:/partner/lodgingManage/lodgingList";
 		}
 		*/
+		
+		List<LodgingManage> listFile = service.listFile(hotelNum);
+		
 		model.addAttribute("dto", dto);
+		model.addAttribute("listFile", listFile);
 		// model.addAttribute("page", page);
 		model.addAttribute("mode", "update");
+
 
 		return ".partner.lodgingManage.lodgingWrite";
 	}
@@ -130,7 +136,7 @@ public class LodgingManageController {
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
-			
+		
 		SessionInfo info = (SessionInfo) session.getAttribute("member");
 		String userId = info.getUserId();
 		
@@ -159,34 +165,34 @@ public class LodgingManageController {
 	
 	// 파일 삭제
 	@RequestMapping(value = "deleteFile")
-	public String deleteHotelFile(@RequestParam int hotelNum,
+	@ResponseBody
+	public Map<String, Object> deleteHotelFile(@RequestParam int hotelNum,
+			@RequestParam int fileNum,
 			HttpSession session) throws Exception {
-		SessionInfo info = (SessionInfo) session.getAttribute("member");
-		String userId = info.getUserId();
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
-
+		
+		LodgingManage fdto = service.readFile(fileNum);
 		LodgingManage dto = service.readHotel(hotelNum);
-		if (dto == null) {
-			return "redirect:/partner/lodgingManage/lodgingList";
+		
+		
+		if (fdto != null) {
+			fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname);
 		}
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("field", "fileNum");
+		map.put("num", fileNum);
+		map.put("dto", dto);
+		service.deleteFile(map);
 
-		if(! info.getUserId().equals(dto.getPartnerId())) {
-			return "redirect:/partner/lodgingManage/lodgingList";
-		}
-
-		try {
-			if (dto.getHotelSaveFilename() != null) {
-				fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname); // 실제파일삭제
-				dto.setHotelSaveFilename("");
-				dto.setHotelImageFileNum(0);
-				service.updateHotel(dto, userId, pathname); // DB 테이블의 파일명 변경(삭제)
-			}
-		} catch (Exception e) {
-		}
-
-		return "redirect:/partner/lodgingManage/update?num=" + hotelNum;
+		// 작업 결과를 json으로 전송
+		Map<String, Object> model = new HashMap<>();
+		model.put("state", "true");
+		return model;
+		
 	}
 	
 	
@@ -235,6 +241,7 @@ public class LodgingManageController {
 	
 	// 방 수정
 	@RequestMapping(value = "roomUpdate",  method = RequestMethod.GET)
+	@ResponseBody
 	public String updateRoomForm(
 			@RequestParam int roomNum,
 			@RequestParam int hotelNum,
@@ -243,6 +250,7 @@ public class LodgingManageController {
 		
 		LodgingManage dto = service.readRoom(roomNum);
 		LodgingManage hdto = service.readHotel(hotelNum);
+		List<LodgingManage> listFile = service.listRoomFile(roomNum);
 		/*
 		if (dto == null) {
 			return "redirect:/partner/lodgingManage/lodgingList";
@@ -250,6 +258,7 @@ public class LodgingManageController {
 		*/
 		model.addAttribute("dto", dto);
 		// model.addAttribute("page", page);
+		model.addAttribute("listFile", listFile);
 		model.addAttribute("mode", "roomUpdate");
 		model.addAttribute("hdto", hdto);
 
@@ -288,6 +297,33 @@ public class LodgingManageController {
 		service.deleteRoom(roomNum, info.getUserId(), pathname);
 		
 		return "redirect:/partner/lodgingManage/roomList";
+	}
+	
+	// 방 파일 삭제
+	@RequestMapping(value = "deleteRoomFile")
+	@ResponseBody
+	public Map<String, Object> deleteRoomFile(@RequestParam int fileNum,
+			HttpSession session) throws Exception {
+		
+		String root = session.getServletContext().getRealPath("/");
+		String pathname = root + "uploads" + File.separator + "hotel";
+
+		LodgingManage dto = service.readFile(fileNum);
+		
+		if (dto != null) {
+			fileManager.doFileDelete(dto.getRoomSaveFilename(), pathname);
+		}
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("field", "fileNum");
+		map.put("num", fileNum);
+		service.deleteRoomFile(map);
+
+		// 작업 결과를 json으로 전송
+		Map<String, Object> model = new HashMap<>();
+		model.put("state", "true");
+		return model;
+		
 	}
 	
 }
