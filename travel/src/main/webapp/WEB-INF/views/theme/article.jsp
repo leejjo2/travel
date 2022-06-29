@@ -28,34 +28,203 @@
 	href="https://1330chat.visitkorea.or.kr/ttalk/css/ttalk-import.css">
 <link id="sphereCss" rel="stylesheet" type="text/css"
 	href="https://cdn.tand.kr/msg/style/sa-campaign.css">
+<style type="text/css">
+.imgSize{ width: 100%; height: 250px;object-fit: initial;}
+.btnIcons {border: none;}
+
+.btn-group {
+   vertical-align: middle;
+    background: white;
+    height: 40px;
+    float: left;
+    margin-right: 5px;
+}
+.iconSize{font-size: 25px; padding-top: 3px;}
+.btnBack{position:absolute; top: 10px; left: 300px; z-index: 9999;}
+.imtext5 {
+	position: absolute;
+	top: 54px; left : 15px;	z-index: 1;
+	font-size: 20px;	color: white;	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+}
+.yesBoardLike {font-weight: bolder; background: blue;}
+
+</style>
 
 <script type="text/javascript">
-$(function(){
-	$(".swiper-slide").eq(0).addClass("swiper-slide-active");
-	$(".swiper-slide").eq(0).addClass("on");
-	$(".swiper-slide").eq(0).addClass("on1");
-	$(".swiper-slide").eq(1).addClass("swiper-slide-next");
-	$(".cos_cont").eq(0).addClass("active");
-});
+	$(function() {
+		$(".swiper-slide").eq(0).addClass("swiper-slide-active");
+		$(".swiper-slide").eq(0).addClass("on");
+		$(".swiper-slide").eq(0).addClass("on1");
+		$(".swiper-slide").eq(1).addClass("swiper-slide-next");
+		$(".cos_cont").eq(0).addClass("active");
+	});
 
-$(document).ready(function() {
-	$(document).on("click", ".swiper-slide a", function() {
-		
-		let num = $(this).attr('id');
-		$(".swiper-slide").removeClass('on');
-		$(".swiper-slide").removeClass('on1');
-		for(let i=0; i<num; i++){
-			$(".swiper-slide").eq(i).addClass("on");
-			if(i==(num-1)){
-				$(".swiper-slide").eq(i).addClass("on1");
+	$(document).ready(function() {
+		$(document).on("click", ".swiper-slide a", function() {
+
+			let num = $(this).attr('id');
+			$(".swiper-slide").removeClass('on');
+			$(".swiper-slide").removeClass('on1');
+			for (let i = 0; i < num; i++) {
+				$(".swiper-slide").eq(i).addClass("on");
+				if (i == (num - 1)) {
+					$(".swiper-slide").eq(i).addClass("on1");
+				}
 			}
-		}
-		$(".cos_cont").removeClass("active");
-		$(".cos_cont").eq(num-1).addClass("active");
-    });
-});
+			$(".cos_cont").removeClass("active");
+			$(".cos_cont").eq(num - 1).addClass("active");
+		});
+	});
+	
+	function ajaxFun(url, method, query, dataType, fn) {
+		$.ajax({
+			type:method,
+			url:url,
+			data:query,
+			dataType:dataType,
+			success:function(data) {
+				fn(data);
+			},
+			beforeSend:function(jqXHR) {
+				jqXHR.setRequestHeader("AJAX", true);
+			},
+			error:function(jqXHR) {
+				if(jqXHR.status === 403) {
+					login();
+					return false;
+				} else if(jqXHR.status === 400) {
+					alert("요청 처리가 실패 했습니다.");
+					return false;
+				}
+		    	
+				console.log(jqXHR.responseText);
+			}
+		});
+	}
+
+	function insertLike(userLiked, courseNum, $i) {
+		let url = "${pageContext.request.contextPath}/theme/insertBoardLike";
+		let query = "courseNum="+courseNum+"&userLiked="+userLiked;
+		console.log(query);
+		console.log("userLiked"+userLiked);
+		console.log("state1 !! : ");
+
+		const fn = function(data) {
+			let state = data.state;
+
+			if(state === "true") {
+				if( userLiked ){
+					$i.removeClass("fas fa-heart iconSize").addClass("far fa-heart iconSize");
+					if(${dto.userBoardLiked}){
+						$(".boardLike .likeCountNum").text(${dto.likeCount}-1);
+					} else{
+						$(".boardLike .likeCountNum").text(${dto.likeCount});
+					}
+				} else {
+					$i.removeClass("far fa-heart iconSize").addClass("fas fa-heart iconSize");
+					if(${dto.userBoardLiked}){
+						$(".boardLike .likeCountNum").text(${dto.likeCount});
+					} else{
+						$(".boardLike .likeCountNum").text(${dto.likeCount}+1);
+					}
+				}
+			}
+		};
+		ajaxFun(url, "post", query, "json", fn);
+	}
+
+	function insertScrap(userScraped, courseNum, $i) {
+		let url = "${pageContext.request.contextPath}/theme/insertBoardScrap";
+		let query = "courseNum="+courseNum+"&userScraped="+userScraped;
+		console.log(query);
+		console.log("userScraped"+userScraped);
+		console.log("state1 !! : ");
+
+		const fn = function(data) {
+			let state = data.state;
+
+			if(state === "true") {
+				if( userScraped ){
+					$i.removeClass("fas fa-bookmark iconSize").addClass("far fa-bookmark iconSize");
+					if(${dto.userBoardScraped}){
+						$(".boardScrap .scrapCountNum").text(${dto.scrapCount}-1);
+					} else{
+						$(".boardScrap .scrapCountNum").text(${dto.scrapCount});
+					}
+				} else {
+					$i.removeClass("far fa-bookmark iconSize").addClass("fas fa-bookmark iconSize");
+					if(${dto.userBoardScraped}){
+						$(".boardScrap .scrapCountNum").text(${dto.scrapCount});
+					} else{
+						$(".boardScrap .scrapCountNum").text(${dto.scrapCount}+1);
+					}
+				}
+			}
+		};
+		ajaxFun(url, "post", query, "json", fn);
+	}
+
+	function boardLiked(courseNum) {
+		let url = "${pageContext.request.contextPath}/theme/userBoardLiked";
+		let query = "courseNum="+courseNum;
+		
+		const fn = function(data) {
+			let state = data.state;
+			if(state === "true") {
+				console.log("눌럿다.");
+			} else {
+				console.log("안눌렀다.");
+			}
+		};
+		ajaxFun(url, "post", query, "json", fn);
+	}
+
+	function boardScraped(courseNum) {
+		let url = "${pageContext.request.contextPath}/theme/userBoardScraped";
+		let query = "courseNum="+courseNum;
+		
+		const fn = function(data) {
+			let state = data.state;
+			if(state === "true") {
+				console.log("눌럿다.");
+			} else {
+				console.log("안눌렀다.");
+			}
+		};
+		ajaxFun(url, "post", query, "json", fn);
+	}
+
+	// 좋아요 여부
+	$(function() {
+		$(".boardLike").click(function() {
+			const $i = $(this).find("i");
+			let userLiked = $i.hasClass("fas fa-heart iconSize");
+			
+			let courseNum =$(this).find(".courseNum").text();
+			console.log("CourseNum : "+ courseNum)
+			
+			insertLike(userLiked, courseNum, $i); // 좋아요/좋아요 취소
+			boardLiked(courseNum); // 좋아요 여부 가져오기
+			
+		});
+	});
+
+	//스크랩 여부
+	$(function() {
+		$(".boardScrap").click(function() {
+			const $i = $(this).find("i");
+			let userLiked = $i.hasClass("fas fa-bookmark iconSize");
+			
+			let courseNum =$(this).find(".courseNum").text();
+			console.log("CourseNum : "+ courseNum)
+			
+			insertScrap(userLiked, courseNum, $i); // 스크랩/스크랩 취소
+			boardScraped(courseNum); // 스크랩 여부 가져오기
 
 
+		});
+	});
 </script>
 
 
@@ -74,34 +243,28 @@ $(document).ready(function() {
 			</h2>
 		</div>
 		<div class="area_address">
-			<span class="address">${dto.cityName}</span> 
+			<span class="address">${dto.cityName}</span>
 		</div>
 		<div class="post_area">
-			<button type="button" class="btn_good" onclick="setLike();">
-				<span class="ico">좋아요</span><span class="num" id="conLike">1</span>
+			<button type="button"
+				class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardLike"
+				style="color:#000; height:35px;">
+				<i
+					class="${dto.userBoardLiked ? 'fas fa-heart iconSize':'far fa-heart iconSize'}"
+					style="color: red;"></i> &nbsp; <span class="likeCountNum"> ${dto.likeCount} </span><span class="courseNum"
+					style="visibility: hidden;"> ${dto.courseNum}</span>
 			</button>
-			<button type="button" class="btn_sharing" onclick="openShare();">
-				<span class="ico">공유하기</span><span class="num" id="conShare">0</span>
+			<button type="button"
+				class="btn  btn-outline-light shadow-sm btn1 title4_1  btnIcons boardScrap"
+				style="color:#000; height:35px;">
+				<i
+					class="${dto.userBoardScraped ? 'fas fa-bookmark iconSize':'far fa-bookmark iconSize'}"
+					style="color: #209ced;"></i> &nbsp; <span class="scrapCountNum"> ${dto.scrapCount}</span><span class="courseNum"
+					style="visibility: hidden;"> ${dto.courseNum}</span>
 			</button>
-			<span class="num_view"><em class="tit">조회수 </em><span
-				class="num" id="conRead">${dto.hitCount}</span></span> <span class="rline">
-				<button type="button" class="btn_bookmark"
-					onclick="setFavoContentDetail();">
-					<span class="ico">즐겨찾기</span>
-				</button>
-				<button type="button" class="btn_print" onclick="openPrint();"
-					title="새창 열림">
-					<span class="ico" title="새창 열림">인쇄하기</span>
-				</button>
-				<button type="button" class="btn_cos"
-					onclick="myCourseCartDetail('C','25','');">
-					<span class="ico">코스 담기</span>
-				</button>
-			</span>
-			<div class="cos_layer" style="display: none;">
-				코스에 담기 진행 후<br>코스를 편집해보세요.
-				<button type="button">닫기</button>
-			</div>
+
+			<span class="rline num_view"><em class="tit">조회수 </em><span
+				class="num" id="conRead">${dto.hitCount}</span></span> 
 		</div>
 	</div>
 	<div class="course_detail">
@@ -153,9 +316,9 @@ $(document).ready(function() {
 				<div class="pc js_slider">
 					<div
 						class="swiper-container swiper-container-initialized swiper-container-horizontal">
-							<ul class="swiper-wrapper cosList"
-								style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-								<c:forEach var="list" items="${courseList}">
+						<ul class="swiper-wrapper cosList"
+							style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+							<c:forEach var="list" items="${courseList}">
 								<li class="swiper-slide"><em>${list.course_seq}<span>코스</span></em>
 									<a id="${list.course_seq}"> <span class="img"
 										style="background: url('${pageContext.request.contextPath}/uploads/course/${list.saveFileName}') 50% 50%/cover no-repeat;"></span>
@@ -163,8 +326,8 @@ $(document).ready(function() {
 											<span>${list.placeName}</span>
 										</div>
 								</a></li>
-								</c:forEach>
-							</ul>
+							</c:forEach>
+						</ul>
 						<!-- Add Arrows -->
 						<div class="swiper-button-next" tabindex="0" role="button"
 							aria-label="Next slide" aria-disabled="false"></div>
@@ -180,30 +343,31 @@ $(document).ready(function() {
 
 			<!-- tab cont -->
 			<div id="tabCont">
-				<c:forEach var ="list" items="${courseList}">
+				<c:forEach var="list" items="${courseList}">
 					<div class="cos_cont" id="cosTab01">
 						<div class="detail_box">
 							<div class="title">
 								<div class="tit_wrap">
 									<em>${list.course_seq}</em> <strong><a
 										href="/detail/detail_view.do?cotid=bf26a90b-9060-45f0-b574-5c15eae57d1e">
-										${list.placeName}
-										</a></strong>
+											${list.placeName} </a></strong>
 								</div>
 								<span>${list.address}</span>
 							</div>
 							<div class="info_area pc">
 								<div class="wrap">
 									<div>
-										<a href="/detail/detail_view.do?cotid=bf26a90b-9060-45f0-b574-5c15eae57d1e"
+										<a
+											href="/detail/detail_view.do?cotid=bf26a90b-9060-45f0-b574-5c15eae57d1e"
 											style="background: url('${pageContext.request.contextPath}/uploads/course/${list.saveFileName}') 50% 50%/cover no-repeat;">
 										</a>
 									</div>
-									<div style="width:400px; padding: 20px;">
-										<span style="display:block; height:30px; line-height: 30px;">코스소개</span>
-											<strong><span style="display:block; height:130px; border-top: solid 1px #eee;border-bottom: solid 1px #eee; padding: 10px; line-height: 110px;">${list.courseContent}</span></strong>
-										<span style="display:block; height:50px; line-height: 50px;">
-										<c:forEach var="hashtag" items="${fn:split(dto.hashtag,',')}">
+									<div style="width: 400px; padding: 20px;">
+										<span style="display: block; height: 30px; line-height: 30px;">코스소개</span>
+										<strong><span
+											style="display: block; height: 130px; border-top: solid 1px #eee; border-bottom: solid 1px #eee; padding: 10px; line-height: 110px;">${list.courseContent}</span></strong>
+										<span style="display: block; height: 50px; line-height: 50px;">
+											<c:forEach var="hashtag" items="${fn:split(dto.hashtag,',')}">
 											# ${hashtag}
 										</c:forEach>
 										</span>
@@ -229,99 +393,99 @@ $(document).ready(function() {
 	<!-- //0521 지도 크게보기 팝업 -->
 
 	<!-- 여행톡 -->
-<!-- 	<h3 class="blind">여행톡</h3> -->
-<!-- 	<div class="db_cont_detail"> -->
-<!-- 		<div id="replyGo"> -->
-<!-- 			<div class="replyWrap"> -->
-<!-- 				login 추가시 로그인 후 form -->
-<!-- 				<h3 class="tit_reply"> -->
-<!-- 					여행톡<span>4</span> -->
-<!-- 				</h3> -->
-<!-- 				<div class="write"> -->
-<!-- 					<div class="form"> -->
-<!-- 						<form name="tform" id="tform"> -->
-<!-- 							<label class="blind" for="comment">로그인 후 소중한 댓글을 남겨주세요.</label> <span -->
-<!-- 								class="writeForm"><textarea name="" rows="" id="comment" -->
-<!-- 									placeholder="로그인 후 소중한 댓글을 남겨주세요." cols="" readonly="readonly"></textarea></span> -->
-<!-- 							<div class="fileRegbtn_wrap"> -->
-<!-- 								<span class="fileRegbtn"> <input type="file" id="fileUp" -->
-<!-- 									name="fileUp" multiple="" onchange="fileChange(this)" -->
-<!-- 									disabled="disabled"> <label for="fileUp" -->
-<!-- 									class="btn_fileUp">파일찾기</label> <a href="javascript:" -->
-<!-- 									class="btn_apply ContentComment">로그인</a> -->
-<!-- 								</span> -->
-<!-- 							</div> -->
-<!-- 						</form> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="wrap_reply"> -->
-<!-- 					<p class="reply_none" style="display: none;">등록된 댓글이 없습니다.</p> -->
-<!-- 				</div> -->
-<!-- 				<div class="wrap_reply"> -->
-<!-- 					<div class="list_reply"> -->
-<!-- 						<ul> -->
-<!-- 							<li id="e4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-<!-- 								class="level_mission"><div class="mission"> -->
-<!-- 									<span>여행구독 6월 미션 진행 중</span> -->
-<!-- 								</div> -->
-<!-- 								<div class="profile"> -->
-<!-- 									<div class="photo" icid="e4ba3e14-2c59-4136-95bf-1d8f362d70f2"> -->
-<!-- 										<img -->
-<!-- 											src="https://k.kakaocdn.net/dn/lqnu2/btrxHuo9aqS/Df6X3prlbQoWvSPITOmZl1/img_640x640.jpg" -->
-<!-- 											alt="프로필 사진"> -->
-<!-- 									</div> -->
-<!-- 									<span class="ico"><img -->
-<%-- 										src="${pageContext.request.contextPath}/dist/theme/article/resources/images/sub/ico_kakao.png" --%>
-<!-- 										alt="카카오"></span> -->
-<!-- 								</div> -->
-<!-- 								<div class="txt_reply"> -->
-<!-- 									<p>대구만의 특별함을 느낄 수 있는 곳으로 가득하네요! 너무 좋아요 대구?</p> -->
-<!-- 									<div class="date"> -->
-<!-- 										<em class="name">은*</em> <span>2022-06-16</span> -->
-<!-- 									</div> -->
-<!-- 								</div> <span class="replyBtn active"><button type="button" -->
-<!-- 										class="btn1"> -->
-<!-- 										<span>0</span> -->
-<!-- 									</button> -->
-<!-- 									<button type="button" class="btn2"> -->
-<!-- 										<span>0</span> -->
-<!-- 									</button></span><span class="btn_report"><button type="button" -->
-<!-- 										onclick="OpenReportPopup('e4ba3e14-2c59-4136-95bf-1d8f362d70f2');">신고하기</button></span> -->
-<!-- 								<div class="replyBox" style="display: none;"> -->
-<!-- 									<ul> -->
-<!-- 										<li class="inputcomment"> -->
-<!-- 											<div class="mLine"> -->
-<!-- 												<div class="replyForm"> -->
-<!-- 													<form name="form"> -->
-<!-- 														<label class="blind" for="replyForm">답글을 입력하세요.</label> -->
-<!-- 														<textarea class="comment" id="replyForm" rows="" -->
-<!-- 															placeholder="로그인 후 소중한 답글을 남겨주세요." cols="" -->
-<!-- 															readonly="readonly"></textarea> -->
-<!-- 														<div class="btn"> -->
-<!-- 															<span class="fileRegbtn"> <input type="file" -->
-<!-- 																class="fileUp" -->
-<!-- 																id="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-<!-- 																name="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-<!-- 																onchange="fileChange(this)" disabled="disabled"> -->
-<!-- 																<label for="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-<!-- 																class="btn_fileUp">파일찾기</label> -->
-<!-- 															</span> <a href="javascript:;" class="btn_apply ContentComment">로그인</a> -->
-<!-- 														</div> -->
-<!-- 													</form> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</li> -->
-<!-- 									</ul> -->
-<!-- 								</div></li> -->
-<!-- 						</ul> -->
-<!-- 						<div class="btn_center" id="commentMore" style=""> -->
-<!-- 							<a href="javascript:" class="btn_more">댓글 더보기</a> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<!-- 	<h3 class="blind">여행톡</h3> -->
+	<!-- 	<div class="db_cont_detail"> -->
+	<!-- 		<div id="replyGo"> -->
+	<!-- 			<div class="replyWrap"> -->
+	<!-- 				login 추가시 로그인 후 form -->
+	<!-- 				<h3 class="tit_reply"> -->
+	<!-- 					여행톡<span>4</span> -->
+	<!-- 				</h3> -->
+	<!-- 				<div class="write"> -->
+	<!-- 					<div class="form"> -->
+	<!-- 						<form name="tform" id="tform"> -->
+	<!-- 							<label class="blind" for="comment">로그인 후 소중한 댓글을 남겨주세요.</label> <span -->
+	<!-- 								class="writeForm"><textarea name="" rows="" id="comment" -->
+	<!-- 									placeholder="로그인 후 소중한 댓글을 남겨주세요." cols="" readonly="readonly"></textarea></span> -->
+	<!-- 							<div class="fileRegbtn_wrap"> -->
+	<!-- 								<span class="fileRegbtn"> <input type="file" id="fileUp" -->
+	<!-- 									name="fileUp" multiple="" onchange="fileChange(this)" -->
+	<!-- 									disabled="disabled"> <label for="fileUp" -->
+	<!-- 									class="btn_fileUp">파일찾기</label> <a href="javascript:" -->
+	<!-- 									class="btn_apply ContentComment">로그인</a> -->
+	<!-- 								</span> -->
+	<!-- 							</div> -->
+	<!-- 						</form> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="wrap_reply"> -->
+	<!-- 					<p class="reply_none" style="display: none;">등록된 댓글이 없습니다.</p> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="wrap_reply"> -->
+	<!-- 					<div class="list_reply"> -->
+	<!-- 						<ul> -->
+	<!-- 							<li id="e4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
+	<!-- 								class="level_mission"><div class="mission"> -->
+	<!-- 									<span>여행구독 6월 미션 진행 중</span> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="profile"> -->
+	<!-- 									<div class="photo" icid="e4ba3e14-2c59-4136-95bf-1d8f362d70f2"> -->
+	<!-- 										<img -->
+	<!-- 											src="https://k.kakaocdn.net/dn/lqnu2/btrxHuo9aqS/Df6X3prlbQoWvSPITOmZl1/img_640x640.jpg" -->
+	<!-- 											alt="프로필 사진"> -->
+	<!-- 									</div> -->
+	<!-- 									<span class="ico"><img -->
+	<%-- 										src="${pageContext.request.contextPath}/dist/theme/article/resources/images/sub/ico_kakao.png" --%>
+	<!-- 										alt="카카오"></span> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="txt_reply"> -->
+	<!-- 									<p>대구만의 특별함을 느낄 수 있는 곳으로 가득하네요! 너무 좋아요 대구?</p> -->
+	<!-- 									<div class="date"> -->
+	<!-- 										<em class="name">은*</em> <span>2022-06-16</span> -->
+	<!-- 									</div> -->
+	<!-- 								</div> <span class="replyBtn active"><button type="button" -->
+	<!-- 										class="btn1"> -->
+	<!-- 										<span>0</span> -->
+	<!-- 									</button> -->
+	<!-- 									<button type="button" class="btn2"> -->
+	<!-- 										<span>0</span> -->
+	<!-- 									</button></span><span class="btn_report"><button type="button" -->
+	<!-- 										onclick="OpenReportPopup('e4ba3e14-2c59-4136-95bf-1d8f362d70f2');">신고하기</button></span> -->
+	<!-- 								<div class="replyBox" style="display: none;"> -->
+	<!-- 									<ul> -->
+	<!-- 										<li class="inputcomment"> -->
+	<!-- 											<div class="mLine"> -->
+	<!-- 												<div class="replyForm"> -->
+	<!-- 													<form name="form"> -->
+	<!-- 														<label class="blind" for="replyForm">답글을 입력하세요.</label> -->
+	<!-- 														<textarea class="comment" id="replyForm" rows="" -->
+	<!-- 															placeholder="로그인 후 소중한 답글을 남겨주세요." cols="" -->
+	<!-- 															readonly="readonly"></textarea> -->
+	<!-- 														<div class="btn"> -->
+	<!-- 															<span class="fileRegbtn"> <input type="file" -->
+	<!-- 																class="fileUp" -->
+	<!-- 																id="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
+	<!-- 																name="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
+	<!-- 																onchange="fileChange(this)" disabled="disabled"> -->
+	<!-- 																<label for="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
+	<!-- 																class="btn_fileUp">파일찾기</label> -->
+	<!-- 															</span> <a href="javascript:;" class="btn_apply ContentComment">로그인</a> -->
+	<!-- 														</div> -->
+	<!-- 													</form> -->
+	<!-- 												</div> -->
+	<!-- 											</div> -->
+	<!-- 										</li> -->
+	<!-- 									</ul> -->
+	<!-- 								</div></li> -->
+	<!-- 						</ul> -->
+	<!-- 						<div class="btn_center" id="commentMore" style=""> -->
+	<!-- 							<a href="javascript:" class="btn_more">댓글 더보기</a> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
 	<!-- //여행톡 -->
 </div>
 

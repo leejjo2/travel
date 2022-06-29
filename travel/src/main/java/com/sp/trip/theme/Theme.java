@@ -44,9 +44,50 @@ public class Theme {
 	// 게시물의 상세코스 리스트
 	private List<Theme> adminCourseList;
 	
+	// 좋아요, 스크랩 개수
+	private int likeCount;
+	private int scrapCount;
+	private int scrapNum;
+
+	
+	private boolean userBoardLiked;
+	private boolean userBoardScraped;
 	
 	
 	
+	
+	
+	
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+	public int getScrapCount() {
+		return scrapCount;
+	}
+	public void setScrapCount(int scrapCount) {
+		this.scrapCount = scrapCount;
+	}
+	public int getScrapNum() {
+		return scrapNum;
+	}
+	public void setScrapNum(int scrapNum) {
+		this.scrapNum = scrapNum;
+	}
+	public boolean isUserBoardLiked() {
+		return userBoardLiked;
+	}
+	public void setUserBoardLiked(boolean userBoardLiked) {
+		this.userBoardLiked = userBoardLiked;
+	}
+	public boolean isUserBoardScraped() {
+		return userBoardScraped;
+	}
+	public void setUserBoardScraped(boolean userBoardScraped) {
+		this.userBoardScraped = userBoardScraped;
+	}
 	public List<String> getSaveFileNames() {
 		return saveFileNames;
 	}

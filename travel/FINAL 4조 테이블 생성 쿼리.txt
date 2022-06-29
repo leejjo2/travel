@@ -118,6 +118,16 @@ CREATE TABLE adminCourseImg (
     CONSTRAINT fk_adminCourseImg_courseNum FOREIGN KEY(courseDetailNum) REFERENCES adminCourseDetail(courseDetailNum) ON DELETE CASCADE
 );
 
+CREATE TABLE adminCourseLike (
+   courseNum NUMBER 
+   ,userId VARCHAR2(50)
+    ,CONSTRAINT pk_adminCourseLike_numId PRIMARY KEY(courseNum,userId)
+    ,CONSTRAINT fk_adminCourseLike_courseNum FOREIGN KEY(courseNum)
+                REFERENCES adminCourse(courseNum) ON DELETE CASCADE
+    ,CONSTRAINT fk_adminCourseLike_userId FOREIGN KEY(userId)
+                REFERENCES member(userId)  ON DELETE CASCADE          
+);
+
 
 -- 같이가요 
 CREATE TABLE goWith (

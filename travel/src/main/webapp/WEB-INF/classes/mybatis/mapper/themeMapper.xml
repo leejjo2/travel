@@ -157,5 +157,50 @@
 	<update id="updateHitCount" parameterType="Integer">
 		UPDATE adminCourse SET hitCount=hitCount+1 WHERE courseNum = #{courseNum}
 	</update>
+	
+	<!-- 게시 글 좋아요 추가 -->
+	<insert id="insertBoardLike" parameterType="map">
+		INSERT INTO adminCourseLike(courseNum, userId) VALUES (#{courseNum}, #{userId})
+	</insert>
+
+	<!-- 게시 글 좋아요 삭제 -->
+	<delete id="deleteBoardLike" parameterType="map">
+		DELETE FROM adminCourseLike WHERE courseNum = #{courseNum} AND userId = #{userId}
+	</delete>
+	
+	<!-- 게시글 좋아요 개수 -->
+	<select id="boardLikeCount" parameterType="Integer" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) FROM adminCourseLike
+		WHERE courseNum = #{courseNum}
+	</select>
+	
+	<!-- 게시글 좋아요 여부 -->
+	<select id="userBoardLiked" parameterType="map" resultType="com.sp.trip.theme.Theme">
+		SELECT courseNum, userId FROM adminCourseLike WHERE courseNum = #{courseNum} AND userId = #{userId}
+	</select>
+	
+	
+	<!-- 게시글 스크랩 추가 -->
+	<insert id="insertBoardScrap" parameterType="map">
+		INSERT INTO scrap(scrapNum, userId, scrapSection, scrapSectionNum) VALUES ( scrap_seq.NEXTVAL, #{userId}, 2, #{courseNum})
+	</insert>
+
+	<!-- 게시글 스크랩 삭제 -->
+	<delete id="deleteBoardScrap" parameterType="map">
+		DELETE FROM scrap WHERE scrapSectionNum = #{courseNum} AND userId = #{userId}
+	</delete>
+	
+	
+	
+	<!-- 게시글 스크랩 개수 -->
+	<select id="boardScrapCount" parameterType="Integer" resultType="Integer">
+		SELECT NVL(COUNT(*), 0) FROM scrap
+		WHERE scrapSection = 2 AND scrapSectionNum = #{courseNum}
+	</select>
+	
+	<!-- 게시글 스크랩 여부 -->
+	<select id="userBoardScraped" parameterType="map" resultType="com.sp.trip.theme.Theme">
+		SELECT scrapSectionNum, userId FROM scrap WHERE scrapSectionNum = #{courseNum} AND userId = #{userId} AND scrapSection = 2
+	</select>
    
 </mapper>

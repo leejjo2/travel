@@ -220,6 +220,7 @@ a:link {
 .post .transparentCover:hover{
 	cursor: pointer;
 }
+
 </style>
 
 

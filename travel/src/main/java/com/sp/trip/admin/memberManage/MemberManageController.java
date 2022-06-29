@@ -139,6 +139,9 @@ public class MemberManageController {
 				map.put("enabled", 0);
 			}
 			service.updateMemberEnabled(map);
+			
+			// 회원 상태 변경 사항 저장
+			service.insertMemberState(dto);
 
 			if (dto.getStateCode() == 0) {
 				// 회원 패스워드 실패횟수 초기화

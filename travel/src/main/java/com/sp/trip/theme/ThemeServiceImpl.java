@@ -86,7 +86,7 @@ public class ThemeServiceImpl implements ThemeService {
 	@Override
 	public List<Theme> listAdminCourse(Map<String, Object> map) {
 		List<Theme> list = null;
-		
+
 		try {
 			list = dao.selectList("theme.listAdminCourse", map);
 		} catch (Exception e) {
@@ -94,10 +94,11 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return list;
 	}
+
 	@Override
 	public List<Theme> listAdminDetailCourse(int courseNum) {
 		List<Theme> list = null;
-		
+
 		try {
 			list = dao.selectList("theme.listAdminDetailCourse", courseNum);
 		} catch (Exception e) {
@@ -105,10 +106,11 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return list;
 	}
+
 	@Override
 	public String listImg(int courseNum) {
 		String saveFileName = null;
-		
+
 		try {
 			saveFileName = dao.selectOne("theme.listImg", courseNum);
 		} catch (Exception e) {
@@ -116,10 +118,11 @@ public class ThemeServiceImpl implements ThemeService {
 		}
 		return saveFileName;
 	}
+
 	@Override
 	public String listImgs(int courseDetailNum) {
 		String saveFileName = null;
-		
+
 		try {
 			saveFileName = dao.selectOne("theme.listImgs", courseDetailNum);
 		} catch (Exception e) {
@@ -131,15 +134,15 @@ public class ThemeServiceImpl implements ThemeService {
 	@Override
 	public Theme readBoard(int courseNum) {
 		Theme dto = null;
-		
+
 		try {
 			dto = dao.selectOne("theme.readBoard", courseNum);
 		} catch (Exception e) {
 		}
-		
+
 		return dto;
 	}
-	
+
 	@Override
 	public void updateHitCount(int num) throws Exception {
 		// 조회수 증가
@@ -151,9 +154,100 @@ public class ThemeServiceImpl implements ThemeService {
 			throw e;
 		}
 	}
-	
-	
-	
-	
+
+	@Override
+	public void insertBoardLike(Map<String, Object> map) throws Exception {
+		try {
+			dao.insertData("theme.insertBoardLike", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	// 좋아요 취소
+	@Override
+	public void deleteBoardLike(Map<String, Object> map) throws Exception {
+		try {
+			dao.deleteData("theme.deleteBoardLike", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+	}
+
+	// 좋아요 개수
+	@Override
+	public int boardLikeCount(int courseNum) {
+		int result = 0;
+		try {
+			result = dao.selectOne("theme.boardLikeCount", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// 유저 좋아요 불러오기
+	@Override
+	public boolean userBoardLiked(Map<String, Object> map) {
+		boolean result = false;
+		try {
+			Theme dto = dao.selectOne("theme.userBoardLiked", map);
+			if (dto != null) { // 검색 된 것이 없으면
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public void insertBoardScrap(Map<String, Object> map) throws Exception {
+		try {
+			dao.insertData("theme.insertBoardScrap", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+	}
+
+	@Override
+	public void deleteBoardScrap(Map<String, Object> map) throws Exception {
+		try {
+			dao.deleteData("theme.deleteBoardScrap", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+	}
+
+	@Override
+	public int boardScrapCount(int courseNum) {
+		int result = 0;
+		try {
+			result = dao.selectOne("theme.boardLikeCount", courseNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public boolean userBoardScraped(Map<String, Object> map) {
+		boolean result = false;
+		try {
+			Theme dto = dao.selectOne("theme.userBoardScraped", map);
+			if (dto != null) { // 검색 된 것이 없으면
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
