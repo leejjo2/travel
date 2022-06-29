@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/dist/theme/css/swiper.min.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/dist/theme/css/common.css">
+	href="${pageContext.request.contextPath}/dist/theme/css/common2.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/dist/theme/css/content.css">
 

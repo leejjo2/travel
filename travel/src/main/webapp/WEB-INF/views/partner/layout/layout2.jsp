@@ -28,11 +28,11 @@
 
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath}/dist/partner/build/css/custom.min.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/util-jquery.js"></script>
+    
     <!-- jQuery -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/jquery/js/jquery.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/util-jquery.js"></script>
-    
+    <script src="${pageContext.request.contextPath}/dist/partner/vendors/jquery/dist/util-jquery.js"></script>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/jquery/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendor/icofont/icofont.min.css" type="text/css">
