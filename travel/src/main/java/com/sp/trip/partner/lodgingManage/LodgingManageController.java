@@ -81,6 +81,7 @@ public class LodgingManageController {
 	// 숙소 등록하기
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String lodgingWrite(Model model) throws Exception {
+		
 		model.addAttribute("mode", "write");
 		return ".partner.lodgingManage.lodgingWrite";
 	}
@@ -160,8 +161,8 @@ public class LodgingManageController {
 		
 		LodgingManage dto = service.readHotel(hotelNum);
 		
-		if (!dto.getPartnerId().equals(info.getUserId())) {
-			return "redirect:/";
+		if (dto == null) {
+			return "redirect:/partner/lodgingManage/lodgingList";
 		}
 		
 		try {
@@ -178,20 +179,20 @@ public class LodgingManageController {
 	@RequestMapping(value = "deleteFile", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> deleteHotelFile(
-			@RequestParam int hotelImageFileNum,
+			@RequestParam int hotelNum,
 			HttpSession session) throws Exception {
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
 		
-		LodgingManage dto = service.readFile(hotelImageFileNum);
+		LodgingManage dto = service.readFile(hotelNum);
 		if (dto != null) {
 			fileManager.doFileDelete(dto.getHotelSaveFilename(), pathname);
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", "imageFileNum");
-		map.put("hotelImageFileNum", hotelImageFileNum);
+		map.put("field", "hotelNum");
+		map.put("hotelNum", hotelNum);
 		map.put("dto", dto);
 		service.deleteFile(map);
 
@@ -219,9 +220,9 @@ public class LodgingManageController {
 	
 	// 숙소별 방 등록하기
 	@RequestMapping(value = "roomWrite", method = RequestMethod.GET)
-	public String roomWrite( @RequestParam int hotelNum, Model model) throws Exception {
+	public String roomWrite(@RequestParam int hotelNum, Model model) throws Exception {
 		LodgingManage hdto = service.readHotel(hotelNum);
-
+		
 		model.addAttribute("hdto", hdto);
 		model.addAttribute("mode", "roomWrite");
 		
@@ -308,21 +309,21 @@ public class LodgingManageController {
 	// 방 파일 삭제
 	@RequestMapping(value = "deleteRoomFile", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> deleteRoomFile(@RequestParam int roomImageFileNum,
+	public Map<String, Object> deleteRoomFile(@RequestParam int roomNum,
 			HttpSession session) throws Exception {
 		
 		String root = session.getServletContext().getRealPath("/");
 		String pathname = root + "uploads" + File.separator + "hotel";
 
-		LodgingManage dto = service.readRoomFile(roomImageFileNum);
+		LodgingManage dto = service.readRoomFile(roomNum);
 		
 		if (dto != null) {
 			fileManager.doFileDelete(dto.getRoomSaveFilename(), pathname);
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", "imageFileNum");
-		map.put("roomImageFileNum", roomImageFileNum);
+		map.put("field", "roomNum");
+		map.put("roomNum", roomNum);
 		service.deleteRoomFile(map);
 
 		// 작업 결과를 json으로 전송

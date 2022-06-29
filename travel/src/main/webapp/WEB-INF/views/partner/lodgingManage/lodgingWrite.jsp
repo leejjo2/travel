@@ -88,7 +88,7 @@ $(function(){
 		var $img = $(this);
 		var fileNum = $img.attr("data-fileNum");
 		var url="${pageContext.request.contextPath}/partner/lodgingManage/deleteFile";
-		$.post(url, {hotelImageFileNum:fileNum}, function(data){
+		$.post(url, {hotelNum:fileNum}, function(data){
 			$img.remove();
 		}, "json");
 	});
@@ -211,8 +211,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 			    </div>
 			    
 				<form name="hotelForm" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="hotelImageFileNum" value="${dto.hotelImageFileNum}">
 					<table class="table mt-5 write-form">
+						
 						<tr>
 							<td class="table-light" scope="row" style="width: 90px;">숙소이름</td>
 							<td colspan="3">
@@ -227,7 +227,8 @@ function ajaxFun(url, method, query, dataType, fn) {
 									<div class="col-sm-5">
 										<input type="text" name="hotelNumber" id="hotelNumber" class="form-control" value="${dto.hotelNumber}" maxlength="13">
 								</div>
-							</td>	</div>
+								</div>
+							</td>
 								
 						</tr>
 		

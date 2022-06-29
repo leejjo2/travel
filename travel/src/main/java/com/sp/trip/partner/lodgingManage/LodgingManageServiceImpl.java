@@ -21,7 +21,6 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertHotel(LodgingManage dto, String pathname) throws Exception {
 		try {
-
 			int seq = dao.selectOne("lodgingManage.hotelSeq");
 			dto.setHotelNum(seq);
 			dao.insertData("lodgingManage.insertHotel", dto);
@@ -138,6 +137,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	public void insertFile(LodgingManage dto) throws Exception {
 		
 		try {
+			int imageSeq = dao.selectOne("lodgingManage.hotelImageSeq");
+			dto.setHotelImageFileNum(imageSeq);
 			dao.insertData("lodgingManage.insertFile", dto);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,6 +301,8 @@ public class LodgingManageServiceImpl implements LodgingManageService {
 	@Override
 	public void insertRoomFile(LodgingManage dto) throws Exception {
 		try {
+			int imageSeq = dao.selectOne("lodgingManage.roomImageSeq");
+			dto.setRoomImageFileNum(imageSeq);
 			dao.insertData("lodgingManage.insertRoomFile", dto);
 		} catch (Exception e) {
 			e.printStackTrace();

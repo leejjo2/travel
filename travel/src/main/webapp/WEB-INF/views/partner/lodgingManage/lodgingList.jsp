@@ -74,7 +74,7 @@
 
 	function deleteHotel(hotelNum) {
 		if (confirm("숙소를 삭제 하시겠습니까 ? ")) {
-			let query = "hotelNum=" + hotelNum + "&roomNum=${roomNum}";
+			let query = "hotelNum=" + hotelNum;
 			let url = "${pageContext.request.contextPath}/partner/lodgingManage/delete?"
 					+ query;
 			location.href = url;

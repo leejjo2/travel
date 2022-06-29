@@ -109,7 +109,7 @@ $(function(){
 		var $img = $(this);
 		var fileNum = $img.attr("data-fileNum");
 		var url="${pageContext.request.contextPath}/partner/lodgingManage/deleteRoomFile";
-		$.post(url, {roomImageFileNum:fileNum}, function(data){
+		$.post(url, {roomNum:fileNum}, function(data){
 			$img.remove();
 		}, "json");
 	});
