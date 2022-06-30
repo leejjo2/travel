@@ -383,110 +383,108 @@
 		<!-- //연관 코스 -->
 	</div>
 
-	<!-- 0521 지도 크게보기 팝업 -->
 	<div class="wrap_layerpop layer_mapView">
 		<div class="tit">
 			<button type="button" class="btn_close2">닫기</button>
 		</div>
 		<div class="area_map" id="map3"></div>
 	</div>
-	<!-- //0521 지도 크게보기 팝업 -->
 
 	<!-- 여행톡 -->
-	<!-- 	<h3 class="blind">여행톡</h3> -->
-	<!-- 	<div class="db_cont_detail"> -->
-	<!-- 		<div id="replyGo"> -->
-	<!-- 			<div class="replyWrap"> -->
-	<!-- 				login 추가시 로그인 후 form -->
-	<!-- 				<h3 class="tit_reply"> -->
-	<!-- 					여행톡<span>4</span> -->
-	<!-- 				</h3> -->
-	<!-- 				<div class="write"> -->
-	<!-- 					<div class="form"> -->
-	<!-- 						<form name="tform" id="tform"> -->
-	<!-- 							<label class="blind" for="comment">로그인 후 소중한 댓글을 남겨주세요.</label> <span -->
-	<!-- 								class="writeForm"><textarea name="" rows="" id="comment" -->
-	<!-- 									placeholder="로그인 후 소중한 댓글을 남겨주세요." cols="" readonly="readonly"></textarea></span> -->
-	<!-- 							<div class="fileRegbtn_wrap"> -->
-	<!-- 								<span class="fileRegbtn"> <input type="file" id="fileUp" -->
-	<!-- 									name="fileUp" multiple="" onchange="fileChange(this)" -->
-	<!-- 									disabled="disabled"> <label for="fileUp" -->
-	<!-- 									class="btn_fileUp">파일찾기</label> <a href="javascript:" -->
-	<!-- 									class="btn_apply ContentComment">로그인</a> -->
-	<!-- 								</span> -->
-	<!-- 							</div> -->
-	<!-- 						</form> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="wrap_reply"> -->
-	<!-- 					<p class="reply_none" style="display: none;">등록된 댓글이 없습니다.</p> -->
-	<!-- 				</div> -->
-	<!-- 				<div class="wrap_reply"> -->
-	<!-- 					<div class="list_reply"> -->
-	<!-- 						<ul> -->
-	<!-- 							<li id="e4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-	<!-- 								class="level_mission"><div class="mission"> -->
-	<!-- 									<span>여행구독 6월 미션 진행 중</span> -->
-	<!-- 								</div> -->
-	<!-- 								<div class="profile"> -->
-	<!-- 									<div class="photo" icid="e4ba3e14-2c59-4136-95bf-1d8f362d70f2"> -->
-	<!-- 										<img -->
-	<!-- 											src="https://k.kakaocdn.net/dn/lqnu2/btrxHuo9aqS/Df6X3prlbQoWvSPITOmZl1/img_640x640.jpg" -->
-	<!-- 											alt="프로필 사진"> -->
-	<!-- 									</div> -->
-	<!-- 									<span class="ico"><img -->
-	<%-- 										src="${pageContext.request.contextPath}/dist/theme/article/resources/images/sub/ico_kakao.png" --%>
-	<!-- 										alt="카카오"></span> -->
-	<!-- 								</div> -->
-	<!-- 								<div class="txt_reply"> -->
-	<!-- 									<p>대구만의 특별함을 느낄 수 있는 곳으로 가득하네요! 너무 좋아요 대구?</p> -->
-	<!-- 									<div class="date"> -->
-	<!-- 										<em class="name">은*</em> <span>2022-06-16</span> -->
-	<!-- 									</div> -->
-	<!-- 								</div> <span class="replyBtn active"><button type="button" -->
-	<!-- 										class="btn1"> -->
-	<!-- 										<span>0</span> -->
-	<!-- 									</button> -->
-	<!-- 									<button type="button" class="btn2"> -->
-	<!-- 										<span>0</span> -->
-	<!-- 									</button></span><span class="btn_report"><button type="button" -->
-	<!-- 										onclick="OpenReportPopup('e4ba3e14-2c59-4136-95bf-1d8f362d70f2');">신고하기</button></span> -->
-	<!-- 								<div class="replyBox" style="display: none;"> -->
-	<!-- 									<ul> -->
-	<!-- 										<li class="inputcomment"> -->
-	<!-- 											<div class="mLine"> -->
-	<!-- 												<div class="replyForm"> -->
-	<!-- 													<form name="form"> -->
-	<!-- 														<label class="blind" for="replyForm">답글을 입력하세요.</label> -->
-	<!-- 														<textarea class="comment" id="replyForm" rows="" -->
-	<!-- 															placeholder="로그인 후 소중한 답글을 남겨주세요." cols="" -->
-	<!-- 															readonly="readonly"></textarea> -->
-	<!-- 														<div class="btn"> -->
-	<!-- 															<span class="fileRegbtn"> <input type="file" -->
-	<!-- 																class="fileUp" -->
-	<!-- 																id="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-	<!-- 																name="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-	<!-- 																onchange="fileChange(this)" disabled="disabled"> -->
-	<!-- 																<label for="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2" -->
-	<!-- 																class="btn_fileUp">파일찾기</label> -->
-	<!-- 															</span> <a href="javascript:;" class="btn_apply ContentComment">로그인</a> -->
-	<!-- 														</div> -->
-	<!-- 													</form> -->
-	<!-- 												</div> -->
-	<!-- 											</div> -->
-	<!-- 										</li> -->
-	<!-- 									</ul> -->
-	<!-- 								</div></li> -->
-	<!-- 						</ul> -->
-	<!-- 						<div class="btn_center" id="commentMore" style=""> -->
-	<!-- 							<a href="javascript:" class="btn_more">댓글 더보기</a> -->
-	<!-- 						</div> -->
-	<!-- 					</div> -->
-	<!-- 				</div> -->
-	<!-- 			</div> -->
-	<!-- 		</div> -->
-	<!-- 	</div> -->
-	<!-- //여행톡 -->
+		<h3 class="blind">여행톡</h3>
+		<div class="db_cont_detail">
+			<div id="replyGo">
+				<div class="replyWrap">
+					<!-- login 추가시 로그인 후 form -->
+					<h3 class="tit_reply">
+						여행톡<span>4</span>
+					</h3>
+					<div class="write">
+						<div class="form">
+							<form name="tform" id="tform">
+								<label class="blind" for="comment">댓글을 남겨주세요.</label> <span
+									class="writeForm"><textarea name="" rows="" id="comment"
+										placeholder="댓글을 남겨주세요." cols="" ></textarea></span>
+								<div class="fileRegbtn_wrap">
+									<span class="fileRegbtn"> <input type="file" id="fileUp"
+										name="fileUp" multiple="" onchange="fileChange(this)"
+										disabled="disabled"> <label for="fileUp"
+										class="btn_fileUp">파일찾기</label> <a href="javascript:"
+										class="btn_apply ContentComment">댓글등록</a>
+									</span>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="wrap_reply">
+						<p class="reply_none" style="display: none;">등록된 댓글이 없습니다.</p>
+					</div>
+					<div class="wrap_reply">
+						<div class="list_reply">
+							<ul>
+								<li id="e4ba3e14-2c59-4136-95bf-1d8f362d70f2"
+									class="level_mission"><div class="mission">
+										<span>여행구독 6월 미션 진행 중</span>
+									</div>
+									<div class="profile">
+										<div class="photo" icid="e4ba3e14-2c59-4136-95bf-1d8f362d70f2">
+											<img
+												src="https://k.kakaocdn.net/dn/lqnu2/btrxHuo9aqS/Df6X3prlbQoWvSPITOmZl1/img_640x640.jpg"
+												alt="프로필 사진">
+										</div>
+										<span class="ico"><img
+											src="${pageContext.request.contextPath}/dist/theme/article/resources/images/sub/ico_kakao.png"
+											alt="카카오"></span>
+									</div>
+									<div class="txt_reply">
+										<p>대구만의 특별함을 느낄 수 있는 곳으로 가득하네요! 너무 좋아요 대구?</p>
+										<div class="date">
+											<em class="name">은*</em> <span>2022-06-16</span>
+										</div>
+									</div> <span class="replyBtn active"><button type="button"
+											class="btn1">
+											<span>0</span>
+										</button>
+										<button type="button" class="btn2">
+											<span>0</span>
+										</button></span><span class="btn_report"><button type="button"
+											onclick="OpenReportPopup('e4ba3e14-2c59-4136-95bf-1d8f362d70f2');">신고하기</button></span>
+									<div class="replyBox" style="display: none;">
+										<ul>
+											<li class="inputcomment">
+												<div class="mLine">
+													<div class="replyForm">
+														<form name="form">
+															<label class="blind" for="replyForm">답글을 입력하세요.</label>
+															<textarea class="comment" id="replyForm" rows=""
+																placeholder="로그인 후 소중한 답글을 남겨주세요." cols=""
+																readonly="readonly"></textarea>
+															<div class="btn">
+																<span class="fileRegbtn"> <input type="file"
+																	class="fileUp"
+																	id="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2"
+																	name="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2"
+																	onchange="fileChange(this)" disabled="disabled">
+																	<label for="fileUpe4ba3e14-2c59-4136-95bf-1d8f362d70f2"
+																	class="btn_fileUp">파일찾기</label>
+																</span> <a href="javascript:;" class="btn_apply ContentComment">로그인</a>
+															</div>
+														</form>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div></li>
+							</ul>
+							<div class="btn_center" id="commentMore" style="">
+								<a href="javascript:" class="btn_more">댓글 더보기</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 여행톡 -->
 </div>
 
 

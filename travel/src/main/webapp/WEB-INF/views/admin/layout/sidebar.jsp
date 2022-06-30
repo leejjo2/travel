@@ -60,7 +60,7 @@
 						<ul class="nav child_menu">
 							<li><a href="${pageContext.request.contextPath}/admin/a">여행코스</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/a">같이가요</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/a">자유게시판</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/a">자유소통공간</a></li>
 						</ul></li>
 					<li><a><i class="fa fa-bar-chart-o"></i> 고객센터 관리 <span
 							class="fa fa-chevron-down"></span></a>
