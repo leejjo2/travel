@@ -36,7 +36,7 @@ $(function() {
 		<div class="dbDetail titBg" id="topCp">
 			<div class="titTypeWrap">
 				<h3>
-					<em>초록 자연에서의 휴식과 토마토를 활용한 다양한 체험을 만나보세요!</em>
+					<em>빛,대면(The Light Contact) : 빛, 그리고 당신을 연결하는 광안리</em>
 				</h3>
 			</div>
 		</div>
@@ -47,11 +47,11 @@ $(function() {
 			<span class="rline">
 				<span class="num_view">
 					<em class="tit">조회수</em>
-					<span class="num" id="conRead">71.7K</span>
+					<span class="num" id="conRead">157</span>
 				</span>
 				<button type="button" class="btn_sharing" onclick="">
 					<span class="ico">공유하기</span>
-					<span class="num" id="conShare">94</span>
+					<span class="num" id="conShare">4</span>
 				</button>
 			</span>
 		</div>
@@ -171,27 +171,46 @@ $(function() {
 		<div id="relationGo"></div>
 		<div class="relation_cos">
 			<h3> 추천여행 </h3>
-			<strong class="stit"><span>함께 떠나는 </span>대구<span> 코스여행</span></strong>
+			<strong class="stit"><span>함께 떠나는 </span>부산<span> 코스여행</span></strong>
 			<div class="cos_wrap type1">
 				<div class="title">
 					<em>4코스</em>
-					<strong><a href="">가족들 웃음소리 가득 찬 하루</a></strong>
+					<strong><a href="${pageContext.request.contextPath}/theme/article?courseNum=13&page=1">부산을 제대로 즐기고 싶다면 해운대로 떠나세요!</a></strong>
 					<div>
-						<span>대구 달서구</span><span>코스 총거리 : 50km</span>
+						<span>부산 해운대구</span><span>힐링코스</span>
 					</div>
 				</div>
 				<div class="pc">
 					<div class="swiper-container">
 						<ul class="swiper-wrapper">
-							<%for(int i=0; i<4; i++) { %>
 							<li class="swiper-slide">
 								<em>1</em>
-								<a href="">
-									<span class="img" style="background: url(https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=36cd6f2b-274a-45c5-ba89-df6ca5c1dcf3) 50% 50%/cover no-repeat;"></span>
-									<span class="tit"><span>대구수목원</span></span>
+								<a href="#">
+									<span class="img" style="background: url(${pageContext.request.contextPath}/uploads/course/2022070100153351211531500500.jpg) 50% 50%/cover no-repeat;"></span>
+									<span class="tit"><span>동백섬</span></span>
 								</a>
 							</li>
-							<%}%>
+							<li class="swiper-slide">
+								<em>2</em>
+								<a href="#">
+									<span class="img" style="background: url(${pageContext.request.contextPath}/uploads/course/2022070100153351211917242700.jpg) 50% 50%/cover no-repeat;"></span>
+									<span class="tit"><span>동백공원</span></span>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<em>3</em>
+								<a href="#">
+									<span class="img" style="background: url(${pageContext.request.contextPath}/uploads/course/2022070100153351211947030200.jpg) 50% 50%/cover no-repeat;"></span>
+									<span class="tit"><span>선창횟집</span></span>
+								</a>
+							</li>
+							<li class="swiper-slide">
+								<em>4</em>
+								<a href="#">
+									<span class="img" style="background: url(${pageContext.request.contextPath}/uploads/course/2022070100153351212332005800.jpg) 50% 50%/cover no-repeat;"></span>
+									<span class="tit"><span>광안리해변테마거리</span></span>
+								</a>
+							</li>
 						</ul>
 						<div class="swiper-button-next"></div>
 						<div class="swiper-button-prev"></div>
