@@ -82,7 +82,7 @@ function searchList() {
 
 		<div style="padding: 10px;"></div>
 		<div class="container mb-0 p-0 text-white freebbstop" style="background: url('${pageContext.request.contextPath}/resources/img/freebbs/유우니사막.png');">
-			<p>자유게시판 </p>
+			<p>자유 소통 공간</p>
 			<br>
 			<div style="font-size: 20px; line-height: 10px; padding: 10px;"> 당신만의 여행관련 지식들을 자유롭게 공유하세요 </div>
 		</div>

@@ -101,7 +101,7 @@ ul:hover, li:hover, a:hover {
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #0dcaf0; color: white; border: none; text-align: center;">
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/travelCourse/list">여행코스공유</a></li>
 								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/gowith/list">같이가요</a></li>
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/freebbs/list">자유게시판</a></li>
+								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/freebbs/list">자유 소통 공간</a></li>
 							</ul>
 						</li>
 					</ul>

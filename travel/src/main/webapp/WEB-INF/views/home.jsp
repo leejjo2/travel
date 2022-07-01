@@ -78,8 +78,8 @@
 					</div>
 					<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
 						<div class="swiper-wrapper" id="curationlist" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-							<div class="swiper-slide swiper-slide-duplicate" onclick="" >
-								<a href="#">
+							<div class="swiper-slide swiper-slide-duplicate">
+								<a href="${pageContext.request.contextPath}/theme/list">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/산.jpg');"></span>
 									</div>
@@ -87,22 +87,22 @@
 								</a>
 							</div>
 							
-							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" onclick="">
-								<a href="#">
+							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev">
+								<a href="${pageContext.request.contextPath}/theme/list">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/바다.jpg');"></span>
 									</div>
 									<strong>바다 코스</strong></a>
 							</div>
-							<div class="swiper-slide swiper-slide-active" onclick="">
-								<a href="#">
+							<div class="swiper-slide swiper-slide-active">
+								<a href="${pageContext.request.contextPath}/theme/list">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/도시.jpg');"></span>
 									</div>
 									<strong>도시 코스</strong></a>
 							</div>
-							<div class="swiper-slide swiper-slide-next" onclick="">
-								<a href="#">
+							<div class="swiper-slide swiper-slide-next">
+								<a href="${pageContext.request.contextPath}/theme/list">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/나들이.jpg');"></span>
 									</div>
@@ -145,26 +145,26 @@
 									</div>
 								</div>
 								<div class="article bd0">
-									<a href="/notice/news_list.do" class="tit_atc">자유 소통 공간<span
+									<a href="${pageContext.request.contextPath}/freebbs/list" class="tit_atc">자유 소통 공간<span
 										class="btn_more">더보기</span></a>
 									<ul class="list_board">
 										<li>
-											<a href="" onclick="" title="">
+											<a href="#" onclick="" title="">
 												<em style="color: #a2660d"> 제주토박이 |</em>제주도 현지인 로컬 맛집 추천합니다!!(광고 아님)
 											</a>
 										</li>
 										<li>
-											<a href="" onclick="" title="">
+											<a href="#" onclick="" title="">
 												<em style="color: #a2660d"> 할룽 ㅣ</em>강릉 여행 코스 한 번만 봐주세요~~
 											</a>
 										</li>
 										<li>
-											<a href="" onclick="" title="">
+											<a href="#" onclick="" title="">
 												<em style="color: #a2660d">핑크모자ㅣ</em>강릉 카페거리 쪽 맛집 추천 좀 해주세용! 
 											</a>
 										</li>
 										<li>
-											<a href="" onclick="" title="">
+											<a href="#" onclick="" title="">
 												<em style="color: #a2660d">인산타수ㅣ</em>놀려왔는데 비오네요..ㅜ
 											</a>
 										</li>

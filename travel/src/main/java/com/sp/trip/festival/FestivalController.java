@@ -81,7 +81,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&MobileOS=ETC";
@@ -111,7 +111,7 @@ public class FestivalController {
 	 		int pageNo = 1;
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange=P";
@@ -146,7 +146,7 @@ public class FestivalController {
 		String result = "";
 		try {
 			
-	 		int numOfRows = 10;
+	 		int numOfRows = 5;
 	 		int pageNo = pageNum;
 	 		String arrange = sort;
 	 		
@@ -158,7 +158,7 @@ public class FestivalController {
 	 		}
 	 		
 	 		String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&numOfRows="+ numOfRows;
 	 		spec += "&pageNo="+ pageNo;
 	 		spec += "&arrange="+ arrange;
@@ -273,7 +273,7 @@ public class FestivalController {
 		try {
 			// 첫번째 API
 			String spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&MobileOS=ETC";
 	 		spec += "&MobileApp=travel";
 	 		spec += "&contentId="+contentId;
@@ -301,7 +301,7 @@ public class FestivalController {
 	 		
 	 		// 두번째 API
 	 		spec = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro";
-	 		spec += "?serviceKey=서비스키" ;
+	 		spec += "?serviceKey=OXE%2BqFWcBW9SYgR6lvlpIlG%2BXPlSHFJ8mMf5dz6gQwfKrl9ONXPiN9pDLFtJoxAQJrP0W%2F3axVjSVae5y8yjPA%3D%3D" ;
 	 		spec += "&MobileOS=ETC";
 	 		spec += "&MobileApp=travel";
 	 		spec += "&contentId="+contentId;
