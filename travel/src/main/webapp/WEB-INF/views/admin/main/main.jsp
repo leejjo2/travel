@@ -29,7 +29,7 @@
 
 
 
-<div class="right_col" role="main" style="min-height: 1758px;">
+<div class="right_col" role="main" style="min-height: 1758px; text-align: center;">
           <!-- top tiles -->
           <div class="row" style="display: inline-block; width:1000px;">
           <div class="tile_count">
