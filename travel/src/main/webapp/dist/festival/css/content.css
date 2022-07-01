@@ -816,7 +816,7 @@
 .area_tagList .tag_list:after{content:'';display:block;clear:both;}
 .area_tagList .tag_list li{position:relative;float:left;margin:6px 5px 0 0;}
 .area_tagList .tag_list li:last-child{padding-right:0;}
-.area_tagList .tag_list li button{padding:5px 10px;height: auto;border-top-left-radius:35px;border-top-right-radius:35px;border-bottom-left-radius:35px;border-bottom-right-radius:35px;}
+.area_tagList .tag_list li button{padding:5px 10px;height: 36px;border-top-left-radius:35px;border-top-right-radius:35px;border-bottom-left-radius:35px;border-bottom-right-radius:35px;}
 .area_tagList .tag_list li:first-child button{color:#000;}
 .area_tagList .tag_list li:hover button.active:after{content:'';position:absolute;right:-4px;top:-6px;width:15px;height:16px;background:url(https://cdn.visitkorea.or.kr/resources/images/sub/btn_multi_close.png) no-repeat 0 0;}
 .area_tagList .tag_list li button span{position:relative;color:#666;font-weight:400;font-size:14px;letter-spacing: -0.6px;}
