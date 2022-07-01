@@ -153,8 +153,7 @@ public class FreebbsController {
 			if(dto == null) {
 				return "redirect:/freebbs/list?" + query;
 			}
-			if (!dto.getUserId().equals(info.getUserId()))
-				return "redirect:/";
+		
 
 			dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
 			
