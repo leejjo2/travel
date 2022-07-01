@@ -254,7 +254,21 @@ $(function() {
 });
 
 $(function(){
-	adminCourseList(0, '', 0, '', '', ${page});
+	let hashtagec = encodeURI(${hashtag});
+	let hashtagde = decodeURI(hashtagec);
+	
+	console.log(hashtagde);
+	
+	
+	let keyword = "#hashtagPickList #"+hashtagde+ " button";
+	if(hashtagde){
+		console.log(keyword);
+		$("#hashtagPickList button:first-child").removeClass('btn_all_active');
+		$("#hashtagPickList button:first-child").addClass('btn');
+		$(keyword).addClass('btn_all_active');
+		
+	}
+	adminCourseList(0, '', 0, hashtagec, '', ${page});
 	$(".page-item.active .page-link").css("background-color", "#0dcaf0");
 	$(".page-item.active .page-link").css("border-color", "#0dcaf0");
 });

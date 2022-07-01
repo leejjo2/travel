@@ -1,6 +1,7 @@
 package com.sp.trip.theme;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ public class ThemeController {
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(
 			@RequestParam(value = "page", defaultValue ="1") int current_page,
+			@RequestParam (defaultValue = "") String hashtag,
 			Model model
-			) {
-		
+			) throws Exception {
+		hashtag = URLDecoder.decode(hashtag, "utf-8");
+		model.addAttribute("hashtag", hashtag);
 		model.addAttribute("page", current_page);
 		return ".theme.themeList";
 	}

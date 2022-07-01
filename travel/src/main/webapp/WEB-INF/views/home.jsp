@@ -79,7 +79,7 @@
 					<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
 						<div class="swiper-wrapper" id="curationlist" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
 							<div class="swiper-slide swiper-slide-duplicate">
-								<a href="${pageContext.request.contextPath}/theme/list">
+								<a href="${pageContext.request.contextPath}/theme/list?hashtag='산'">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/산.jpg');"></span>
 									</div>
@@ -88,21 +88,21 @@
 							</div>
 							
 							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev">
-								<a href="${pageContext.request.contextPath}/theme/list">
+								<a href="${pageContext.request.contextPath}/theme/list?hashtag='바다'">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/바다.jpg');"></span>
 									</div>
 									<strong>바다 코스</strong></a>
 							</div>
 							<div class="swiper-slide swiper-slide-active">
-								<a href="${pageContext.request.contextPath}/theme/list">
+								<a href="${pageContext.request.contextPath}/theme/list?hashtag='도시'">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/도시.jpg');"></span>
 									</div>
 									<strong>도시 코스</strong></a>
 							</div>
 							<div class="swiper-slide swiper-slide-next">
-								<a href="${pageContext.request.contextPath}/theme/list">
+								<a href="${pageContext.request.contextPath}/theme/list?hashtag='나들이'">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/나들이.jpg');"></span>
 									</div>
@@ -111,7 +111,7 @@
 							
 							
 							<div class="swiper-slide" onclick="">
-								<a href="#">
+								<a href="${pageContext.request.contextPath}/theme/list?hashtag='액티비티'">
 									<div class="wrap">
 										<span class="swiper-lazy swiper-lazy-loaded" style="background-image: url('/trip/resources/images/home/액티비티.jpg');"></span>
 									</div>
