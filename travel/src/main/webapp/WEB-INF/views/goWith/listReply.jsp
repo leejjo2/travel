@@ -25,11 +25,12 @@
                                         </div>
                                         <div class="buttonContainer">
                                             <ul>
-                                                <li>
-                                                    <a onclick="#" class="updateReply" data-replyNum='${vo.goWithReplyNum}' data-pageNo='${pageNo}' style="cursor:pointer;"> 수정 </a>
-                                                </li>
-                                                <li>
-                                                    <a onclick="#" class="deleteReply" data-replyNum='${vo.goWithReplyNum}' data-pageNo='${pageNo}' style="cursor:pointer;"> 삭제 </a>
+                                                <li> 	
+													<a type="button" class="btn btn-link" style="cursor:pointer;" onclick="updateReply(${vo.goWithReplyNum}, '${vo.content}');">
+													  수정
+													</a>
+													
+                                                     <a onclick="#" class="deleteReply" data-replyNum='${vo.goWithReplyNum}' data-pageNo='${pageNo}' style="cursor:pointer;"> 삭제 </a>
                                                 </li>
                                             </ul>
                                             </div>
@@ -43,4 +44,7 @@
                                    <div class="page-box">     
                                    		${paging}
                                 	</div>
+                                	
+                                	
+                       
                                

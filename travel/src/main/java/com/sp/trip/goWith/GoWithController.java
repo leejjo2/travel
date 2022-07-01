@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sp.trip.common.MyUtil;
 import com.sp.trip.member.SessionInfo;
 
-
 @Controller("gowith.gowithController")
 @RequestMapping(value = "/gowith/*")
 public class GoWithController {
@@ -30,14 +29,20 @@ public class GoWithController {
 	@Autowired
 	private GoWithService service;
 	
+	
 	@Autowired
 	private MyUtil myUtil;
 	
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "list")
 	public String list(@RequestParam(value = "page", defaultValue = "1") int current_page,
 			@RequestParam(defaultValue = "all") String condition,
 			@RequestParam(defaultValue = "") String keyword,
 			@RequestParam(defaultValue = "") String recruit_status,
+			@RequestParam(defaultValue = "0") int spotNum,
+			@RequestParam(defaultValue = "") String gender,
+			@RequestParam(defaultValue = "") String startDate,
+			@RequestParam(defaultValue = "") String endDate,
+			@RequestParam(defaultValue = "0") int discussion,
 			HttpServletRequest req,
 			Model model
 			) {
@@ -60,6 +65,12 @@ public class GoWithController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("condition", condition);
 		map.put("keyword", keyword);
+		map.put("spotNum", spotNum);
+		map.put("gender", gender);
+		map.put("startDate", startDate);
+		map.put("endDate", endDate);
+		map.put("discussion", discussion);
+		
 		map.put("recruit_status", recruit_status);
 
 		dataCount = service.dataCount(map);
@@ -147,6 +158,7 @@ public class GoWithController {
 		
 		model.addAttribute("listCity", listCity);
 		model.addAttribute("listSpot", listSpot);
+		model.addAttribute("mode", "write");
 		
 		return ".goWith.write";
 		

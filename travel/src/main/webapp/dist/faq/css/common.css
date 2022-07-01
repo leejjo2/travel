@@ -1,0 +1,44 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+/* common.css */
+
+/* reset css */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video 
+{margin:0; padding:0; border:0 none; font-size:100%; font-style:normal; font-weight:400; text-decoration:none; text-align:left; background:transparent;}
+
+
+html {}
+body { margin:0; padding:0; font-size:12px; font-family:"Nanum Gothic", "나눔고딕", Dotum, "돋움체", sans-serif; letter-spacing:-0.025em;  line-height:1.5em; font-weight:400; color:#666;}
+table { border-collapse: collapse; border-spacing: 1px; font-size: 1em; }
+img { border: 0 none; }
+input[type="radio"], input[type="checkbox"] {border: 0 none!important; }
+input[type="image"] { border:0 none; cursor: pointer; }
+input[type="text"] { ime-mode:active;} /*korean first*/
+fieldset, legend { border: 0; }
+hr { display: none; margin: 0; padding: 0;	height: 0;	 border: 0 none;}
+ul, li, ol, dl, dt, dd { margin: 0; padding: 0; list-style:none }
+button, select, textarea, input { padding: 0; margin: 0;  vertical-align: middle;  border: 0 none; font-weight:400;  line-height: 1.25em;  color:#777; }
+button { cursor: pointer; border-radius:4px; background:transparent}
+select {border-radius:4px; }
+textarea {border-radius:4px;}
+input {border-radius:4px;background:transparent}
+a:link, a:visited { text-decoration: none; color:inherit; font-weight:inherit; font-size:inherit; letter-spacing:inherit; }
+a:hover, a:active { text-decoration: underline; color:inherit; font-weight:inherit; font-size:inherit; letter-spacing:inherit; }
+
+.noview, caption, legend { position:absolute; top:0; left:0; line-height:0; width:0; height:0; overflow:hidden; visibility:hidden;  }
+.label_visible{ visibility:visible; display:inline; position:relative; width:auto; height:auto;line-height:1.25em; }
+.ft_left{float:left;}
+.ft_right{float:right;}
+.clear{clear:both;}
+
+/*skip menu */
+#skip { position: absolute; top: 0; left:0; z-index:10000; width:100%;}
+#skip > * { width:100%;}
+#skip a { position: absolute; top: -9999px; font-weight:bold; color:#333; }
+#skip a:hover,
+#skip a:active,
+#skip a:focus { top: 0; left:0; width:100%; height:30px; line-height:30px; background-color: #f07f1c; color: #fff; font-size:16px; font-weight: 700; text-align: center;}

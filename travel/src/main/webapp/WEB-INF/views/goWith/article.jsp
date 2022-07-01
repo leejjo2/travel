@@ -118,6 +118,16 @@ $(function(){
 	});
 });
 
+// 댓글 수정
+function updateReply(goWithReplyNum, content) {
+	$("#updategoWithReplyNum").val(goWithReplyNum);
+	$("#commentContent").val(content);
+	$("#exampleModal").modal('show');
+}
+
+function updateReplyOk(){
+	alert('jj');
+}
 </script>
 
            <div class="topImg">
@@ -402,6 +412,37 @@ $(function(){
                 </div>
             </div>
             
+            
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													  <div class="modal-dialog">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title" id="exampleModalLabel">댓글 수정</h5>
+													        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													      </div>
+													      <div class="modal-body">
+													        <div class="commentContainer">
+								                        	 <div id="listReply"></div>
+								                                <div class="textInputContainer">
+								                                <form name="replyUpdateForm">
+								                                    <ul>
+								                                        <li>
+								                                            <textarea id="commentContent" name="content" placeholder="어느 말이든 좋아요. 무엇이든 물어보세요:D"></textarea>
+								                                        </li>
+								                                    </ul>
+								                                    <input type="hidden" name="goWithReplyNum" id="updategoWithReplyNum">
+								                                    </form>
+								                                    </div>
+								                                    </div>
+													      </div>
+													      <div class="modal-footer">
+													        <button type="button" class="btn btn-light" data-bs-dismiss="modal">닫기</button>
+													        <button type="button" class="btn btn-info" onclick="updateReplyOk();">수정하기!</button>
+													      </div>
+													    </div>
+													  </div>
+													</div>
 
 
 	            

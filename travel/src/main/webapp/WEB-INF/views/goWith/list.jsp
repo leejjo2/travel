@@ -7,6 +7,16 @@
 
 
 <script type="text/javascript">
+function searchList() {
+	const f = document.searchForm;
+	f.submit();
+}
+
+function searchOption() {
+	const f = document.optionForm;
+	f.submit();
+}
+
 $(function(){
 	$("#btnStatus1").click(function(){
 		location.href = "${pageContext.request.contextPath}/gowith/list?recruit_status=N";		
@@ -70,7 +80,7 @@ $(function(){
 });
 </script>
 
-
+			<form name="optionForm" method="post" action="${pageContext.request.contextPath}/gowith/list">
             <div id="topImgDiv" class="topImg">
                 <div class="overlay"></div>
                 <div class="img">
@@ -149,38 +159,7 @@ $(function(){
                             </div>
                         </li>
                     </ul>
-                    <ul>  
-                         <li>
-                            <div class="contentBoxType1">
-                            <input type="hidden" id="y_10" name="y_10" value="">
-							<input type="hidden" id="y_20" name="y_20" value="">
-							<input type="hidden" id="y_30" name="y_30" value="">
-							<input type="hidden" id="y_40" name="y_40" value="">
-							<input type="hidden" id="y_50" name="y_50" value="">
-                                <div class="headType2">
-                                    <h1>함께하고 싶은 분들의 연령대를 알려주세요</h1>
-                                    <p>
-                                        같이 동행하고 싶은 연령대를
-                                        선택해주세요.
-                                    </p>
-                                </div>
-                                <div class="contentContainer">
-                                    <div class="rangeContainer marginTopMd marginBottomMd">
-								            <div class="slider-track" style="background-image: linear-gradient(to right, rgb(218, 218, 229) 0%, rgb(77, 183, 255) 0%, rgb(77, 183, 255) 100%, rgb(218, 218, 229) 100%);"></div>
-								            <input type="range" min="10" max="50" value="10" id="slider-1" step="10" oninput="slideOne()">
-								            <input type="range" min="10" max="50" value="50" id="slider-2" step="10" oninput="slideTwo()">
-								            <p class="start">10대 이하</p>
-                                       		<p class="end">50대 이상</p>
-                                    </div>
-							        <div class="contentInsideType1 marginTopLg">
-                                        <div class="text">
-                                            <span id="range1">10</span>대 이하 - <span id="range2">50</span>대를 선택
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
+
                             <div class="contentBoxType1">
                             <input type="hidden" id="tourType" name="tourType" value="">
                                 <div class="headType2">
@@ -197,7 +176,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType">
-                                                    <input type="radio" id="all" name="gender" value="0" onclick="checkGender(this)" checked="">                                     
+                                                    <input type="radio" id="all" name="gender" value="0" ${dto.gender=="0"? "checked='checked'":""}>                                     
                                                     <label for="all">
                                                         <div class="circle">
                                                             <div class="inside"></div>
@@ -210,7 +189,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType">
-                                                    <input type="radio" id="male" value="1" name="gender" onclick="checkGender(this)">
+                                                    <input type="radio" id="male" value="1" name="gender" ${dto.gender=="1"? "checked='checked'":""}>
                                                     <label for="male">
                                                         <div class="circle">
                                                             <div class="inside"></div>
@@ -221,7 +200,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType">
-                                                    <input type="radio" id="female" value="2" name="gender" onclick="checkGender(this)">
+                                                    <input type="radio" id="female" value="2" name="gender" ${dto.gender=="2"? "checked='checked'":""}>
                                                     <label for="female">
                                                         <div class="circle">
                                                             <div class="inside"></div>
@@ -234,8 +213,7 @@ $(function(){
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li>
+
                             <div class="contentBoxType1">
                             <input type="hidden" id="tourStart" name="tourStart" value="">
 							<input type="hidden" id="tourEnd" name="tourEnd" value="">
@@ -250,13 +228,13 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="box">            	
-                                                	<input type="date" id="startDate" name="startDate" class="hasDatepicker">
+                                                	<input type="date" id="startDate" name="startDate" class="hasDatepicker" value = "${startDate}">
                                                 </div>
                                             </li>
                                             <li><i class="bi bi-dash-lg"></i></li>
                                             <li>
                                                 <div class="box">                              	
-                                                	<input type="date" id="endDate" name="endDate" class="hasDatepicker">
+                                                	<input type="date" id="endDate" name="endDate" class="hasDatepicker" value= "${endDate}">
                                                 </div>
                                             </li>
                                         </ul>
@@ -266,7 +244,7 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="checkRadioBoxCircleType">
-                                                    <input type="radio" id="yes" value="0" name="negotiation" onclick="checkDate(this)" checked="">       
+                                                    <input type="radio" id="yes" value="0" name="discussion" ${discussion=="0"?"checked='checked'":""}>       
                                                     <label for="yes">
                                                         <div class="circle">
                                                             <div class="inside"></div>
@@ -277,7 +255,7 @@ $(function(){
                                             </li>
                                             <li>
                                                 <div class="checkRadioBoxCircleType">
-                                                    <input type="radio" id="no" value="1" name="negotiation" onclick="checkDate(this)">
+                                                    <input type="radio" id="no" value="1" name="discussion" ${discussion=="1"?"checked='checked'":""}>
                                                     <label for="no">
                                                         <div class="circle">
                                                             <div class="inside"></div>
@@ -290,17 +268,17 @@ $(function(){
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+
                     <div class="buttonContainer">
                         <p>현재 ${dataCount} 개의 동행 리스트가 있어요 :D</p>
-                        <div id="btnNext" class="buttonType2">
+                        <div id="btnNext" class="buttonType2" onclick="searchOption();">
                             검색하기&nbsp;
                             <i class="bi bi-search"></i>
                         </div>
                     </div>
                 </div>
             </div>
+            </form>
             <div id="divider" class="divider marginTopXxl marginBottomXxl"></div>
             <div id="boardListDiv" class="postList">
                 <div class="head">
@@ -309,37 +287,28 @@ $(function(){
                     </h1>
                 </div>
                 <div id="searchPcDiv" class="subHead marginTopMd marginBottomMd pc" style="display: block;">
-                <input type="hidden" id="dateStatus" name="dateStatus" value="">
-                <input type="hidden" id="searchType" name="searchType" value="">
-                <input type="hidden" id="keyword" name="keyword" value="">
-                <input type="hidden" id="orderType" name="orderType" value="">
                     <div class="left">
                         <div id="btnStatus1" class="tabButtonType">모집중만 보기</div>
                     </div>
                     <div class="right">
+                    	<form class="row" name="searchForm" action="${pageContext.request.contextPath}/gowith/list" method="post">
                         <div class="searchBox searchInput">
                             <ul>
                                 <li>
-                                    <select id="searchGubun" class="selectBoxType1" name="gubun">
-		                                <option value="0" selected="">제목 </option>
-		                                <option value="1">글쓴이</option>
+                                    <select id="searchGubun" class="selectBoxType1" name="condition">
+		                                <option value="subject" ${condition=="subject"?"selected='selected'":""}>제목 </option>
+		                                <option value="userName" ${condition=="userName"?"selected='selected'":""}>글쓴이</option>
 		                                </select>
                                 </li>
                                 <li>
-                                    <input id="searchText" type="text" class="textBoxType1" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){fn_searchText()}" value="">
+                                    <input id="searchText" name="keyword" type="text" class="textBoxType1" placeholder="검색어 입력" value="${keyword}">
+                                </li>
+                                <li>
+                                	<button type="button" class="btn btn-light" onclick="searchList()"> <i class="bi bi-search"></i> </button>
                                 </li>
                             </ul>
                         </div>
-                        
-                        <div class="sortBox">
-                            <select class="selectBoxType2" id="sort" name="sort" onchange="onchange_sort()">
-                                <option value="0" selected="">최신순</option>
-                                <option value="1">조회수순</option>
-                                
-                            </select>
-                            
-                            
-                        </div>
+                        </form>
                     </div>
                 </div>
              

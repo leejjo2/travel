@@ -292,13 +292,13 @@ $(function(){
                                         <ul>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_start" name="startDate" ${dto.startDate=="0"? "selected='selected'":""}>
+                                                    <input type="date" id="tour_start" name="startDate" ${dto.startDate==""? "selected='selected'":""}>
                                                 </div>
                                             </li>
                                              <li><i class="bi bi-dash-lg"></i></li>
                                             <li>
                                                 <div class="box">
-                                                    <input type="date" id="tour_end" name="endDate" ${dto.endDate=="0"? "selected='selected'":""}>
+                                                    <input type="date" id="tour_end" name="endDate" ${dto.endDate==""? "selected='selected'":""}>
                                                 </div>
                                             </li>
                                         </ul>
