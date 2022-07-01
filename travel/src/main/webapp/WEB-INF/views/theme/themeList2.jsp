@@ -6,9 +6,9 @@
 
 <!-- 슬릭 -->
 <link rel="stylesheet" type="text/css"
-	href="/trip/dist/theme/slick/slick.css" />
+	href="${pageContext.request.contextPath}/dist/theme/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
-	href="/trip/dist/theme/slick/slick-theme.css" />
+	href="${pageContext.request.contextPath}/dist/theme/slick/slick-theme.css" />
 
 
 
@@ -630,8 +630,8 @@ a:link {
 
 
 <!-- 슬릭 -->
-<script type="text/javascript" src="/trip/dist/theme/slick/slick.min.js"></script>
-<script type="text/javascript" src="/trip/dist/theme/slick/slick.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/theme/slick/slick.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/theme/slick/slick.js"></script>
 
 <script type="text/javascript">
 $('.post-wrapper').slick({

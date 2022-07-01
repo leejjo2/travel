@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" href="/trip/dist/activity/css/activityList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/activity/css/activityList.css">
 <link rel="stylesheet" href="https://dffoxz5he03rp.cloudfront.net/build/production/156e94213ea0bff2eb5fe3229c4779b4db0d304f/application.css">
 
 <script type="text/javascript">

@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<link rel="stylesheet" media="all" href="/trip/dist/activity/css/activityDetail2.css">
-<link rel="stylesheet" media="screen" href="/trip/dist/activity/css/activityDetail1.css">
+<link rel="stylesheet" media="all" href="${pageContext.request.contextPath}/dist/activity/css/activityDetail2.css">
+<link rel="stylesheet" media="screen" href="${pageContext.request.contextPath}/dist/activity/css/activityDetail1.css">
 
 <style>
 .Detailinfo img {

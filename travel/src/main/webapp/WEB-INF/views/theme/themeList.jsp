@@ -6,9 +6,9 @@
 
 <!-- 슬릭 -->
 <link rel="stylesheet" type="text/css"
-	href="/trip/dist/theme/slick/slick.css" />
+	href="${pageContext.request.contextPath}/dist/theme/slick/slick.css" />
 <link rel="stylesheet" type="text/css"
-	href="/trip/dist/theme/slick/slick-theme.css" />
+	href="${pageContext.request.contextPath}/dist/theme/slick/slick-theme.css" />
 
 <!-- 리스트부분 -->
 <link rel="stylesheet" type="text/css"
@@ -257,8 +257,9 @@ $(function(){
 	let hashtagec = encodeURI(${hashtag});
 	let hashtagde = decodeURI(hashtagec);
 	
-	console.log(hashtagde);
-	
+	if(hashtagde === "undefined"){
+		hashtagde = '';
+	}
 	
 	let keyword = "#hashtagPickList #"+hashtagde+ " button";
 	if(hashtagde){
@@ -266,9 +267,9 @@ $(function(){
 		$("#hashtagPickList button:first-child").removeClass('btn_all_active');
 		$("#hashtagPickList button:first-child").addClass('btn');
 		$(keyword).addClass('btn_all_active');
-		
 	}
-	adminCourseList(0, '', 0, hashtagec, '', ${page});
+
+	adminCourseList(0, '', 0, hashtagde, '', ${page});
 	$(".page-item.active .page-link").css("background-color", "#0dcaf0");
 	$(".page-item.active .page-link").css("border-color", "#0dcaf0");
 });
@@ -768,8 +769,8 @@ function callAdminCourseList() {
 
 
 <!-- 슬릭 -->
-<script type="text/javascript" src="/trip/dist/theme/slick/slick.min.js"></script>
-<script type="text/javascript" src="/trip/dist/theme/slick/slick.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/theme/slick/slick.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/dist/theme/slick/slick.js"></script>
 
 <script type="text/javascript">
 $('.post-wrapper').slick({
