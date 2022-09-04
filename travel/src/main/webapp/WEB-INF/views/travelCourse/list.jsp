@@ -80,6 +80,60 @@ function ajaxFun(url, method, query, dataType, fn) {
 	});
 }
 
+$(function() {
+	function travelCourseList() {
+	let themeNum = $(".title1_5 ul .on").attr("id");
+	console.log("테마번호" + themeNum);
+	
+	let query = "themeNum="+themeNum;
+    let url = "${pageContext.request.contextPath}/travelCourse/list?" + query;
+    location.href = url;
+	}
+	
+	$(".title1_5 ul li").click(function() {
+		$(".title1_5 ul li").removeAttr("class");
+		$(this).attr("class", "on");
+		travelCourseList();
+	
+	});
+});
+
+function searchList() {
+	if (window.event.keyCode == 13) {
+    	// 엔터키가 눌렸을 때
+		const f = document.searchForm;
+		f.submit();
+    }
+}
+
+
+$(function() {
+	function travelCourseList() {
+	let themeNum = $(".title1_5 ul .on").attr("id");
+	console.log("테마번호" + themeNum);
+	
+	let query = "themeNum="+themeNum;
+    let url = "${pageContext.request.contextPath}/travelCourse/list?" + query;
+    console.log("쿼리"+query);
+    location.href = url;
+	}
+	
+	$(".title1_5 ul li").click(function() {
+		$(".title1_5 ul li").removeAttr("class");
+		$(this).attr("class", "on");
+		travelCourseList();
+	
+	});
+});
+
+function searchList() {
+	if (window.event.keyCode == 13) {
+    	// 엔터키가 눌렸을 때
+		const f = document.searchForm;
+		f.submit();
+    }
+}
+
 function insertLike(userLiked, courseNum, $i) {
 	let url = "${pageContext.request.contextPath}/travelCourse/insertBoardLike";
 	let query = "courseNum="+courseNum+"&userLiked="+userLiked;
